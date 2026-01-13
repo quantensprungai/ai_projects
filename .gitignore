@@ -1,0 +1,42 @@
+# ai_projects (docs/infra) - root repo ignore rules
+
+# OS / tooling
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+
+# Python
+**/__pycache__/
+**/*.py[cod]
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.venv/
+**/venv/
+
+# Node / JS
+**/node_modules/
+**/.next/
+**/dist/
+**/build/
+
+# Logs / outputs (generic)
+**/*.log
+**/output/
+**/outputs/
+**/downloads/
+**/tmp/
+**/.cache/
+
+# IMPORTANT:
+# `code/` contains separate git repos per project.
+# The root repo is docs/infra only; do not vendor code repos here.
+/code/**
+!/code/
+!/code/README.md
+
+

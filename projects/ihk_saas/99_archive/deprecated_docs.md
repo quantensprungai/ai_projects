@@ -1,0 +1,17 @@
+<!-- Reality Block
+last_update: 2026-01-13
+status: draft
+scope:
+  summary: "Deprecated Docs (IHK SaaS)."
+  in_scope:
+    - deprecated docs list
+  out_of_scope:
+    - active docs
+notes: []
+-->
+
+# Deprecated Docs – IHK SaaS
+
+TODO
+
+
