@@ -29,6 +29,39 @@ notes: []
 - Updates: `git pull`
 - Vorteil: reproduzierbar, sauber versioniert
 
+#### VM102 Zugriff auf GitHub (wenn Repo privat ist)
+
+Wenn `git pull` auf VM102 nach Username/Passwort fragt, ist das Repo **privat** und VM102 hat noch keine GitHub‑Credentials.
+
+Empfehlung (clean & sicher): **Deploy Key (read-only)** für VM102.
+
+Auf VM102 (einmalig):
+
+```bash
+mkdir -p ~/.ssh
+ssh-keygen -t ed25519 -C "vm102 annas-archive-toolkit deploy key" -f ~/.ssh/gh_annas_archive_toolkit -N ""
+ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+cat > ~/.ssh/config << 'EOF'
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/gh_annas_archive_toolkit
+  IdentitiesOnly yes
+EOF
+chmod 600 ~/.ssh/config
+```
+
+Dann den Public Key ausgeben:
+
+```bash
+cat ~/.ssh/gh_annas_archive_toolkit.pub
+```
+
+Und in GitHub hinzufügen:
+- Repo `annas-archive-toolkit` → **Settings → Deploy keys → Add deploy key**
+- **Read-only** reicht für `clone/pull`
+
 ## Empfohlenes Zielbild (Laptop → VM105 → VM102)
 
 Du willst, dass VM105 “alles gesammelt” hat. Das ist kompatibel mit Git, ohne dass du manuell kopierst:

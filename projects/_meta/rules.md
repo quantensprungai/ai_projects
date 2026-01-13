@@ -47,4 +47,15 @@ Konvention:
 - KI ändert nur Inhalte, die im Reality‑Block unter `in_scope` liegen.
 - Bei größeren Änderungen: `last_update` aktualisieren und relevante Querverweise pflegen.
 
+## Git-Strategie (Multi-Repo)
+
+- **Root Repo (`ai_projects/`)**: Docs/Infra/Meta (dieses Repository).
+  - Enthält: `projects/`, `infrastructure/`, Root-`README.md`, Meta-Dateien.
+  - Ignoriert: `code/` (Code-Repos werden **nicht** im Root committed).
+- **Code-Repos (`code/<repo>/`)**: pro Projekt ein eigenes Git-Repo (eigener Remote, eigener Release-Zyklus).
+
+Konsequenzen:
+- Du kannst in Cursor entweder den **gesamten Workspace** öffnen (Kontext) oder **nur ein Code-Repo** als Workspace (fokussiert), ohne dass Git “alles” mischt.
+- Optional (wenn du im Root definierte Code-Versionen referenzieren willst): **Git Submodules** für `code/<repo>/`.
+
 
