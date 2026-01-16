@@ -14,5 +14,6 @@ Infrastruktur-Dokumentation (Proxmox, Netzwerk/VPN, Docker, Monitoring, Backups,
 - `monitoring/`
 - `dev_environment/`
 - `backups/`
+- `next-supabase-turbo/` (Makerkit Referenz-Doku + Cursor Rules)
 
 
