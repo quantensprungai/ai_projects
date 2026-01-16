@@ -41,6 +41,7 @@ Empfohlen:
 ## Kanonische Doku (hier)
 
 - `00_overview/` (Mission, Problem, Value)
+- `00_overview/status.md` (aktueller Stand + nächste Schritte)
 - `01_spec/` (Topics/Profiles)
 - `02_system_design/` (Deployment/Sync, Workflow)
 

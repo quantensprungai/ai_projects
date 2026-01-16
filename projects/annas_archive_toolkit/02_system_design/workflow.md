@@ -17,10 +17,14 @@ notes: []
 
 1. **Input**: Topics/Profile (z. B. `projects/esoteric/topics.txt`, `projects/survival/config.json`)
 2. **Collect**: Metadaten sammeln (Checkpoint/Resume)
-3. **Select**: Kandidaten priorisieren (Heuristiken/Rules)
-4. **Acquire**: Inhalte beschaffen/holen (Quelle abhängig; rechtmäßig)
-5. **Organize**: Sortieren/Dedupe/Katalog
-6. **Publish**: Export/Index (z. B. CSV/JSON) und Übergabe an HD‑SaaS/RAG/KG
+3. **Select**: Kandidaten priorisieren (Heuristiken/Rules/Manuell)
+4. **Acquire (optional)**: Inhalte beschaffen/holen (**quelle abhängig, rechtmäßig**)
+5. **Organize**: Sortieren/Dedupe/Katalog (falls Inhalte vorhanden sind)
+6. **Publish**:
+   - **metadata-only**: Export/Index (CSV/JSON/`assets.jsonl`) für Downstream‑Pipelines
+   - **content**: Übergabe an Verarbeitung (OCR/Whisper → Extraction → Text2KG → KG)
+
+> Wichtig: `assets.jsonl` ist ein **Ingest‑Contract** und kann **metadata‑only** sein. “Acquire” ist davon getrennt.
 
 ## Run Location
 

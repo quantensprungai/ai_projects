@@ -202,8 +202,6 @@ Stand: 2026-01-12 (bitte bei Änderungen aktualisieren)
 ### Embeddings
 - `bge-3` – ✔ (du nutzt BGE; Details nachtragen, z. B. `bge-m3`)
 
-### GPT‑OSS
-- Ordner vorhanden, leer (falls zutreffend)
 
 ## Links
 
