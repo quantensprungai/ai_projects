@@ -17,7 +17,10 @@ notes: []
 
 - `00_overview/mission.md`: Zweck & Nutzen (schlank)
 - `00_overview/scope.md`: Scope/Non‑Scope (Schutz vor Feature‑Creep)
+- `00_overview/mvp.md`: MVP (schlank, realistisch)
+- `00_overview/scope_shield.md`: Kurztext für Meetings/Mails (Abgrenzung)
 - `02_system_design/architecture.md`: High‑Level Architektur (Makerkit + Supabase + optionale Services)
 - `01_spec/ipw_email_templates.md`: sehr schlanke IPW‑Formulierungen + Mail‑Vorlagen
+- `99_archive/keep2_sanitized_notes.md`: sanitisierte Langnotizen (ohne Kontaktdaten)
 
 
