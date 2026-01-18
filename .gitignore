@@ -39,4 +39,9 @@ Desktop.ini
 !/code/
 !/code/README.md
 
+# Local scratch notes (do not commit by default)
+/keep*.md
+/keep.md
+/hd_system_raw.md
+
 

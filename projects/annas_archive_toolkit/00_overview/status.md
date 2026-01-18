@@ -42,13 +42,13 @@ notes: []
 
 1. **Collect (Metadaten)**: Wir sammeln Metadaten (Titel/Autor/MD5/URL/Topic/Category) als **Katalog & Selektionsbasis**.
 2. **Select (Priorisieren)**: Wir wählen gezielt Kandidaten aus (Heuristiken/Regeln/Manuell).
-3. **Acquire (optional)**: Inhalte beschaffen (z. B. eigene Uploads/own library/licensed/free content).
+3. **Acquire**: Inhalte beschaffen (download magnet/torrent Inhalte).
 4. **Ingest (Downstream Pipeline)**: Erst danach startet die eigentliche Verarbeitung (je nach Projekt, z. B. HD‑SaaS oder Survival‑Pipeline):
    - OCR/Whisper → Cleaning → Chunking → Extraction → **Text2KG** → Knowledge Graph + Dynamics.
 
 > **Hinweis**: `assets.jsonl` ist ein **Ingest‑Contract**, der zunächst **metadata‑only** ist. Der “Acquire/Download”-Schritt ist davon getrennt.
 >
-> **Wichtig**: Automatisches Extrahieren von Magnet-/Torrent-Links aus beliebigen Webseiten ist nicht Teil des Toolkits. Für automatisierte Downloads werden Download-Hints (z. B. Magnet/.torrent) aus **zulässigen Quellen** separat an die Queue angehängt.
+> **Wichtig**: Automatisches Extrahieren von Magnet-/Torrent-Links aus beliebigen Webseiten ist noch nicht Teil des Toolkits. Aktuell nur automatisierte Downloads werden Download-Hints (z. B. Magnet/.torrent) aus Quellen separat an die Queue angehängt. Das soll zukünftig geändert werden.
 
 ## Wo läuft was?
 
@@ -60,7 +60,7 @@ notes: []
 - **HD (`hd_content`)**:
   - Detailseiten‑Stage bei Bedarf aktivieren (`aa_detail_pages.enabled=true`) und laufen lassen, bis `aa_detail_checkpoint.json` “durch” ist.
   - `assets.jsonl` / `acquire_queue.json` als Ingest/Tracking‑Artefakte stabilisieren (Felder, Status, Resume).
-  - Wenn Downloads gewünscht: legale Download-Hints an `acquire_queue.json` anhängen (`src/attach_download_links.py`) und dann enqueuen (`--add-from-acquire-queue`, mit Safety-Gates).
+  - Wenn Downloads gewünscht: Download-Hints an `acquire_queue.json` anhängen (`src/attach_download_links.py`) und dann enqueuen (`--add-from-acquire-queue`, mit Safety-Gates).
   - Danach: `assets.jsonl` als Ingest‑Contract in HD‑SaaS übernehmen (Supabase Tabellen + Pipeline).
 - **Survival (`survival`)**:
   - Optional: gleiche Contract‑Kette nutzen (`metadata.*` → `assets.jsonl` → `acquire_queue.json`).
