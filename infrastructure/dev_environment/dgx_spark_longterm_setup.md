@@ -54,8 +54,9 @@ Wichtig: **einfach reproduzierbar**, wenig „Ops‑Drama“, klar getrennte Ver
 
 | Service | Port | Ownership | Kommentar |
 |---|---:|---|---|
-| Ollama | 11434 | base | ein Ollama für alles |
-| ArangoDB | 8529 | base | eine ArangoDB für alles |
+| vLLM / SGLang (OpenAI-compatible) | (z. B. 8001) | base | bevorzugt auf Spark (GPU/UMA), statt Ollama |
+| Ollama | 11434 | optional | nur wenn ihr explizit Ollama nutzen wollt |
+| ArangoDB | 8529 | optional | nur wenn ihr eine Graph-DB wirklich braucht (sonst Supabase Postgres) |
 | txt2kg UI/API | 3001 | optional | nur wenn wir es nutzen |
 | Whisper | 9000 | optional | nur wenn wir es nutzen |
 
@@ -81,10 +82,10 @@ Dein aktueller Konflikt (aus `keep10-spark.md`) ist erwartbar:
 - Playbook startet eigene `arangodb` + `ollama`
 - du hast aber bereits `arangodb:8529` und `ollama:11434`
 
-**Target State**:
-- `base/` stellt ArangoDB + Ollama bereit
-- `txt2kg` Stack startet **nur** die App (UI/API)
-- App zeigt auf `host.docker.internal:8529` und `host.docker.internal:11434`
+**Target State** (nur falls ihr txt2kg wirklich nutzt):
+- `base/` stellt **genau eine** Inference-API bereit (vLLM/SGLang *oder* Ollama)
+- optional: ArangoDB, falls ihr Graph-DB wirklich wollt
+- `txt2kg` Stack startet **nur** die App (UI/API) und nutzt die bestehenden Services
 
 Wichtig:
 - `depends_on` auf arangodb/ollama entfernen oder Services im Compose nicht definieren
@@ -112,7 +113,7 @@ Du hast sehr große Modelle herumliegen (z. B. DeepSeek‑V3). Für langfristi
 
 ## Minimaler Start (empfohlen)
 
-1) Base Services stabil: Ollama + ArangoDB laufen (oder nur Ollama, wenn Arango noch nicht gebraucht wird).
+1) Base Services stabil: vLLM/SGLang (oder Ollama) läuft.
 2) Worker v0 läuft: `import_assets_jsonl` Job → `hd_assets` in Supabase.
 3) Erst danach: PDF/Text/Audio‑Extraktion + Text2KG‑Integration.
 
