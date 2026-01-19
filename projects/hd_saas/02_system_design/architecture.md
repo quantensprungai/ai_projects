@@ -21,6 +21,8 @@ HD‑SaaS besteht aus drei Ebenen:
 - **Pipeline Layer (Batch/Jobs)**: OCR/Whisper → Cleaning → Classification → Extraction → KG Update → Synthesis.
 - **App Layer (Makerkit/Next.js)**: UI + Auth + Admin/Curate + Chat/Query.
 
+Siehe auch: `projects/hd_saas/02_system_design/worker_contract_spark_supabase.md` (konkreter Contract Spark/DGX ↔ Supabase).
+
 ## Kernkomponenten
 
 ### 1) Storage & DB (Supabase)

@@ -327,6 +327,11 @@ Details zum vollständigen `docker-compose.yml` kannst du bei Bedarf separat erg
 - UEFI (OVMF), TPM 2.0  
 - VirtIO‑Treiber  
 
+**Wichtig (Docker Desktop/WSL2 in Windows‑VM auf Proxmox):**
+- Für WSL2/Docker in einer Windows‑VM brauchst du **Nested Virtualization** (Intel `+vmx` / AMD `+svm`) inkl. SLAT/EPT.
+- In Proxmox daher für VM105 bevorzugt: **CPU Type = `host`** (oder explizit Flags inkl. `+vmx`).
+- Deep Debugging & Runbook: `infrastructure/dev_environment/vm105_wsl2.md`
+
 ### WSL2 aktivieren
 
 ```powershell
