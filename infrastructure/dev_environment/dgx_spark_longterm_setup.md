@@ -59,6 +59,7 @@ Wichtig: **einfach reproduzierbar**, wenig „Ops‑Drama“, klar getrennte Ver
 | ArangoDB | 8529 | optional | nur wenn ihr eine Graph-DB wirklich braucht (sonst Supabase Postgres) |
 | txt2kg UI/API | 3001 | optional | nur wenn wir es nutzen |
 | Whisper | 9000 | optional | nur wenn wir es nutzen |
+| Open WebUI | 8080 | optional | UI-Frontend; braucht ein Backend (vLLM/SGLang/Ollama) |
 
 Regel: wenn ein Port belegt ist, **nicht** neuen Container mit gleichem Port starten – stattdessen:
 - bestehende Instanz **wiederverwenden**, oder
@@ -116,6 +117,21 @@ Du hast sehr große Modelle herumliegen (z. B. DeepSeek‑V3). Für langfristi
 1) Base Services stabil: vLLM/SGLang (oder Ollama) läuft.
 2) Worker v0 läuft: `import_assets_jsonl` Job → `hd_assets` in Supabase.
 3) Erst danach: PDF/Text/Audio‑Extraktion + Text2KG‑Integration.
+
+## Remote Zugriff: Empfehlung (VM105 → Spark)
+
+In der Praxis kann **Tailscale SSH** je nach Installationsart (z. B. snap confinement) Sessions annehmen, aber die Command-Execution fehlschlagen lassen.
+
+**Robuste Lösung:** zusätzlich klassisches OpenSSH `sshd` auf Spark aktivieren und über Tailscale‑IP nutzen.
+
+- SSHD Port: **2222**
+- VM105 Test:
+
+```powershell
+ssh -p 2222 sparkuser@100.96.115.1 whoami
+```
+
+Damit können wir Spark zuverlässig remote administrieren (Start/Stop Services, Deploy Worker, Logs).
 
 ## Ist‑Zustand Check (bitte auf Spark ausführen)
 

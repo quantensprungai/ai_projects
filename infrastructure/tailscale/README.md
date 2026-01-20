@@ -87,7 +87,16 @@ tailscale debug prefs
 **Server (Spark):**
 ```bash
 sudo tailscale debug prefs | head -60
-sudo journalctl -u tailscaled -n 200 --no-pager | tail -120
+sudo snap services tailscale || true
+sudo snap logs tailscale -n 200 | tail -120 || true
+```
+
+## Hinweis: Tailscale via snap (Spark)
+
+Wenn Spark Tailscale via **snap** nutzt, existiert oft kein `tailscaled.service` unter systemd. Nutze dann:
+
+```bash
+sudo snap logs tailscale -n 200
 ```
 
 
