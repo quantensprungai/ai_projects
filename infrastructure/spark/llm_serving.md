@@ -61,7 +61,8 @@ Auf Spark laufen die Inferenzserver als Container. In diesem Repo wird **nur dok
 ## Engines
 
 - **SGLang**: interaktiv/low-latency, Agents, ggf. multimodal
-- **vLLM**: OpenAI‑kompatibles API, Throughput, Batch/RAG, große Kontexte
+- **vLLM**: OpenAI‑kompatibles API, Throughput, Batch/RAG, große Kontexte (**Achtung: auf GB10 aktuell je nach Image/Toolchain broken**)
+- **Ollama (Fallback)**: schnell “wieder online”, aber nicht der langfristige Standard auf Spark
 
 ## Embeddings (aktueller Stand)
 
@@ -72,6 +73,17 @@ Auf Spark laufen die Inferenzserver als Container. In diesem Repo wird **nur dok
 
 - **SGLang**: `30000`
 - **vLLM**: `8000`
+- **Ollama**: `11434` (Fallback)
+- **Open WebUI**: `8080`
+
+## Ist‑Stand (Spark‑56d0, GB10) – Reality Check
+
+- **Open WebUI** läuft als Docker Container auf `:8080`.
+- **Open WebUI Storage** liegt in einem Docker Volume:
+  - `/var/lib/docker/volumes/open-webui/_data`
+- **vLLM** kann auf GB10 je nach Container/Toolchain scheitern (PTXAS/Triton `sm_121a`).
+  → In dem Fall ist **SGLang** die bevorzugte Engine.
+- **Ollama** kann als Übergangslösung genutzt werden, wenn Open WebUI “sofort” ein Backend braucht.
 
 ## Wie “Modelle starten” wirklich funktioniert (Mental Model)
 
@@ -99,8 +111,10 @@ Praktisch heißt das:
 
 ### Modus 3: “Hybrid” (empfohlen)
 
-- **vLLM always-on** für API/Projekte (Tools/RAG/Trading/Services)
-- **SGLang on-demand** für interaktives Chat/Vision/Agent‑Dev (oder umgekehrt)
+- **SGLang always-on** für “Default Chat/Agent/Multimodal”
+- **SGLang on-demand** auf separatem Port für “uncensored / private” Workflows
+- **vLLM** nur dann als always-on, wenn ein GB10-kompatibles Image bestätigt ist
+- **Ollama** nur als kurzfristiger Fallback
 
 ## Minimaler Operations-Flow
 
@@ -109,6 +123,39 @@ Praktisch heißt das:
 3. Service starten (systemd oder docker run)
 4. Health/Test Call
 5. Logs prüfen
+
+## Quick Cheat Sheet (kurz & praktisch)
+
+### Start/Stop/Health
+
+```bash
+# SGLang (Port 30000)
+curl -sf http://localhost:30000/health
+
+# Ollama (Fallback)
+curl -sf http://localhost:11434/api/tags
+
+# Open WebUI
+curl -sf http://localhost:8080 | head
+```
+
+### Monitoring (minimal)
+
+```bash
+docker ps --format 'table {{.Names}}\t{{.Status}}\t{{.Ports}}'
+nvidia-smi
+```
+
+## Open WebUI – Privacy / Delete
+
+Open WebUI speichert Chats/Settings im Docker-Volume `open-webui`.
+
+**Alles löschen:**
+
+```bash
+docker rm -f open-webui
+docker volume rm open-webui
+```
 
 ## Autostart (systemd) – “D” aus der anderen KI
 
@@ -191,7 +238,7 @@ Stand: 2026-01-12 (bitte bei Änderungen aktualisieren)
 - `llama4-scout-17b-nvfp4` – ✔ installiert
 
 ### DeepSeek
-- `deepseek-v3` – ✔ installiert
+- `deepseek-v3` – (Hinweis) Ordner existiert ggf., Modell kann aber fehlen → `ls -la ~/ai/models/deepseek`
 
 ### Phi‑4
 - `phi4-reasoning` – ✔ installiert

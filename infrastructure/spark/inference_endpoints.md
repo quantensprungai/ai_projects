@@ -39,6 +39,13 @@ curl http://<spark-host>:8000/v1/chat/completions \
   -d '{"model":"local","messages":[{"role":"user","content":"Hallo"}]}'
 ```
 
+### Ollama (Fallback, wenn Open WebUI schnell “online” muss)
+- **Base URL**: `http://<spark-host>:11434`
+
+```bash
+curl http://<spark-host>:11434/api/tags
+```
+
 ## Zugriff & Steuerung (VM105 / Tailscale / OpenWebUI)
 
 ### Zugriffspfade (empfohlen)
