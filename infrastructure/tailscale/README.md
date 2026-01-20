@@ -46,5 +46,49 @@ Ziel: von VM105/WSL2 aus Spark steuern (Start/Stop, Deploy von Configs), ohne da
 - systemd start/stop: `sudo systemctl start vllm`
 - Logs: `journalctl -u vllm -f`
 
+## Tailscale SSH ACL – Minimalbeispiel (Server via Tag)
+
+Wenn `tailscale ssh ...` oder `ssh user@100.x.y.z` mit **`operation not permitted`** endet, ist das fast immer:
+- SSH‑Policy matched nicht, oder
+- Tailscale SSH Server ist auf dem Ziel nicht aktiv.
+
+**Empfohlener Minimal‑Rule‑Set** (Spark als `tag:spark`):
+
+```jsonc
+{
+  "tagOwners": {
+    "tag:spark": ["autogroup:admin"]
+  },
+  "ssh": [
+    {
+      "action": "accept",
+      "src": ["autogroup:member"],
+      "dst": ["tag:spark"],
+      "users": ["autogroup:nonroot", "root"]
+    }
+  ]
+}
+```
+
+**Hinweise:**
+- `dst` in `ssh` Rules enthält **nur Hosts/Tags**, keine User‑Strings.
+- Auf dem Ziel (Spark) muss Tailscale SSH aktiv sein: `sudo tailscale set --ssh` (oder `sudo tailscale up --ssh`).
+
+## Troubleshooting – SSH
+
+**Client (VM105):**
+```powershell
+tailscale ping spark-56d0
+tailscale whois 100.96.115.1
+tailscale ssh sparkuser@spark-56d0 "hostname && whoami"
+tailscale debug prefs
+```
+
+**Server (Spark):**
+```bash
+sudo tailscale debug prefs | head -60
+sudo journalctl -u tailscaled -n 200 --no-pager | tail -120
+```
+
 
 
