@@ -31,6 +31,21 @@ curl http://<spark-host>:30000/health
 curl http://<spark-host>:30001/health
 ```
 
+#### SGLang – OpenAI-kompatibel (praktisch für Apps/Tools)
+
+Viele Clients (Cursor/OpenWebUI/SDKs) erwarten OpenAI‑Endpoints. SGLang kann diese anbieten:
+
+- **Models**: `GET /v1/models`
+- **Chat**: `POST /v1/chat/completions`
+
+```bash
+curl http://<spark-host>:30000/v1/models
+
+curl http://<spark-host>:30000/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{"model":"local","messages":[{"role":"user","content":"Hallo"}]}'
+```
+
 ### vLLM (OpenAI compatible)
 - **Base URL**: `http://<spark-host>:8000`
 - **Chat Completions**: `POST /v1/chat/completions`
@@ -60,6 +75,17 @@ curl http://<spark-host>:11434/api/tags
 - **Spark** hostet nur Inferenz (SGLang/vLLM).
 - **OpenWebUI**:
   - Entweder auf Spark (optional) oder besser auf einer VM (z. B. VM105/VM102), die über Tailscale Spark erreicht.
+
+### SSH Admin-Zugriff (robust)
+
+Wir nutzen zusätzlich klassisches OpenSSH auf Spark, da Tailscale SSH je nach Installationsart (snap confinement) “operation not permitted” verursachen kann.
+
+- **SSHD Port (Spark)**: `2222`
+- **Test (von VM105)**:
+
+```powershell
+ssh -p 2222 sparkuser@<spark-ts-ip> whoami
+```
 
 ### Tailscale (typisch “Enterprise‑sauber”)
 

@@ -37,6 +37,23 @@ Für lokale Arbeit ist der Makerkit‑Standard:
 
 - **`apps/web/.env.local`**: lokal, gitignored (hier gehören echte Secrets für lokale Dev rein).
 
+## Local vs Cloud Dev (Reality Check für unseren Stack)
+
+Makerkit ist **local-first** (Supabase lokal). Für unseren HD‑Ingestion E2E‑Pfad mit Spark Worker brauchen wir aber oft **Cloud**:
+
+- **Local Mode** (Makerkit default):
+  - UI + lokale Supabase (`http://127.0.0.1:54321`)
+  - gut für schnelle UI‑Iteration
+  - Spark Worker sieht diese Jobs **nicht**
+
+- **Cloud Mode** (E2E: UI → Job → Spark Worker):
+  - UI schreibt gegen Supabase Cloud
+  - Spark Worker pollt Supabase Cloud und verarbeitet Jobs
+
+Wichtig (Makerkit-Key-Priorität):
+- Browser‑Client nutzt `NEXT_PUBLIC_SUPABASE_URL` und **primär** `NEXT_PUBLIC_SUPABASE_PUBLIC_KEY` (wenn gesetzt), sonst `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
+- Daher im Cloud Mode am besten **beide** Keys auf den Cloud Anon Key setzen, um “Invalid API key” durch Override/Mix zu vermeiden.
+
 Hinweis: die Makerkit‑Doku im Repo referenziert den üblichen Schritt `cp apps/web/.env.example apps/web/.env.local` – je nach Kit‑Version kann statt `.env.example` auch eine andere Vorlage genutzt werden; entscheidend ist: **echte Secrets nur in `.env.local` oder im Hosting‑Secret‑Store**.
 
 ## Was wir bewusst NICHT gemacht haben

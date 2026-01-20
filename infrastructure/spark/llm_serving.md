@@ -75,6 +75,7 @@ Auf Spark laufen die Inferenzserver als Container. In diesem Repo wird **nur dok
 - **vLLM**: `8000`
 - **Ollama**: `11434` (Fallback)
 - **Open WebUI**: `8080`
+- **OpenSSH (sshd, Admin-Fallback)**: `2222`
 
 ## Ist‑Stand (Spark‑56d0, GB10) – Reality Check
 
@@ -84,6 +85,13 @@ Auf Spark laufen die Inferenzserver als Container. In diesem Repo wird **nur dok
 - **vLLM** kann auf GB10 je nach Container/Toolchain scheitern (PTXAS/Triton `sm_121a`).
   → In dem Fall ist **SGLang** die bevorzugte Engine.
 - **Ollama** kann als Übergangslösung genutzt werden, wenn Open WebUI “sofort” ein Backend braucht.
+
+## Zugriff (VM105 → Spark) – Reality Check
+
+- **Tailscale SSH** kann je nach Installationsart (snap confinement) “operation not permitted” auslösen.
+- Daher nutzen wir zusätzlich klassisches **OpenSSH (`sshd`)** als robusten Admin‑Pfad:
+  - Port: **`2222`**
+  - Nutzung: `ssh -p 2222 sparkuser@<spark-ts-ip> ...`
 
 ## Wie “Modelle starten” wirklich funktioniert (Mental Model)
 
@@ -137,6 +145,18 @@ curl -sf http://localhost:11434/api/tags
 
 # Open WebUI
 curl -sf http://localhost:8080 | head
+```
+
+## SGLang – OpenAI-kompatible Calls (praktisch)
+
+Wenn Tools eine OpenAI‑API erwarten, sind diese Checks hilfreich:
+
+```bash
+curl -sf http://localhost:30000/v1/models | head
+
+curl http://localhost:30000/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{"model":"local","messages":[{"role":"user","content":"Hallo"}]}'
 ```
 
 ### Monitoring (minimal)

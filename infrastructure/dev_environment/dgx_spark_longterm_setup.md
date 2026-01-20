@@ -133,6 +133,11 @@ ssh -p 2222 sparkuser@100.96.115.1 whoami
 
 Damit können wir Spark zuverlässig remote administrieren (Start/Stop Services, Deploy Worker, Logs).
 
+## HD Worker – Ops/Debug
+
+Für den konkreten Betrieb (Jobs debuggen, Requeue, typische Fehlerbilder) siehe:
+- `infrastructure/spark/hd_worker_ops.md`
+
 ## Ist‑Zustand Check (bitte auf Spark ausführen)
 
 Damit wir entscheiden können „aufräumen vs. weiterbauen“, poste bitte diese Outputs:

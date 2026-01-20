@@ -1,7 +1,7 @@
 # ai_projects (Multi‑Projekt Repository)
 
 <!-- Reality Block
-last_update: 2026-01-13
+last_update: 2026-01-20
 status: stable
 scope:
   summary: "Repo-Root: Überblick, Struktur und harte Trennregeln."
@@ -43,5 +43,11 @@ Dort existieren **nur** diese Dateien:
 - `inference_endpoints.md`
 - `optimizations.md`
 - `quantizations.md`
+
+### Aktueller Stand (Reality Check)
+
+- **Spark Inference** ist dokumentiert unter `infrastructure/spark/` (Ports, Engines, Endpoints).
+- **Robuster Admin-Zugriff**: zusätzliches OpenSSH (`sshd`) auf Spark via Port `2222` (weil Tailscale SSH je nach Installationsart problematisch sein kann).
+- **HD Worker Ops**: Debug/Retry/typische Fehlerbilder unter `infrastructure/spark/hd_worker_ops.md`.
 
 

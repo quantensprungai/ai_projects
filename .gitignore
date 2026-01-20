@@ -44,4 +44,7 @@ Desktop.ini
 /keep.md
 /hd_system_raw.md
 
+# Local artifacts (examples, scratch)
+/assets.jsonl
+
 
