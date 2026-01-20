@@ -161,6 +161,19 @@ docker volume rm open-webui
 
 Note: Das Repo enthält hier **nur die Vorlagen**. Auf Spark legst du die Dateien unter `/etc/systemd/system/` an.
 
+## On-demand Serving (empfohlen – passt zu unserem Setup)
+
+Wir nutzen auf Spark kleine Helper-Skripte unter:
+- `/home/sparkuser/ai/scripts/serve/`
+
+Praktisch (von VM105 aus):
+- Qwen starten:
+  - `ssh -p 2222 sparkuser@<spark-ip> "/home/sparkuser/ai/scripts/serve/sglang_qwen_uncensored.sh"`
+- Health:
+  - `ssh -p 2222 sparkuser@<spark-ip> "/home/sparkuser/ai/scripts/serve/sglang_health.sh 30001"`
+- Generate (ohne JSON-Quoting-Stress in PowerShell):
+  - `ssh -p 2222 sparkuser@<spark-ip> "/home/sparkuser/ai/scripts/serve/sglang_generate.sh 30001 \"Hallo\""`
+
 ### `sglang.service` (Beispiel)
 
 ```ini
@@ -181,6 +194,9 @@ WantedBy=multi-user.target
 ```
 
 ### `vllm.service` (Beispiel)
+
+> Reality Check: vLLM ist auf unserem Spark/GB10 aktuell **nicht stabil** (Toolchain/`ptxas`/SM-Arch).  
+> Dieses Beispiel ist eine Vorlage – wir pinnen später ein GB10‑kompatibles Image (nicht `latest`).
 
 ```ini
 [Unit]
@@ -238,16 +254,18 @@ Stand: 2026-01-12 (bitte bei Änderungen aktualisieren)
 - `llama4-scout-17b-nvfp4` – ✔ installiert
 
 ### DeepSeek
-- `deepseek-v3` – (Hinweis) Ordner existiert ggf., Modell kann aber fehlen → `ls -la ~/ai/models/deepseek`
+- `deepseek-v3` – ❌ aktuell **nicht installiert** (Ordner existiert, ist aber leer): `ls -la ~/ai/models/deepseek`
 
 ### Phi‑4
 - `phi4-reasoning` – ✔ installiert
 
 ### Qwen3
 - `qwen3-32b-nvfp4` – ✔ installiert
+- Hinweis: Qwen NVFP4 kann in SGLang `--quantization modelopt_fp4` benötigen (sonst Config-Mismatch durch `kv_cache_quant_algo: FP8`).
 
 ### Embeddings
-- `bge-3` – ✔ (du nutzt BGE; Details nachtragen, z. B. `bge-m3`)
+- `bge-m3` – ✔ installiert
+- `bge-multilingual-gemma2` – ✔ installiert
 
 
 ## Links

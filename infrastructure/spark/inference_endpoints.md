@@ -22,11 +22,13 @@ Eine einzige Referenz für: **Hostnames/IPs, Ports, URLs** und minimale Test-Cal
 ## Endpoints (Default)
 
 ### SGLang
-- **Base URL**: `http://<spark-host>:30000`
+- **Base URL (Scout‑10m / long-context on-demand)**: `http://<spark-host>:30000`
+- **Base URL (Qwen3‑32B NVFP4 “uncensored” on-demand)**: `http://<spark-host>:30001`
 - **Health**: `GET /health`
 
 ```bash
 curl http://<spark-host>:30000/health
+curl http://<spark-host>:30001/health
 ```
 
 ### vLLM (OpenAI compatible)
@@ -38,6 +40,9 @@ curl http://<spark-host>:8000/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{"model":"local","messages":[{"role":"user","content":"Hallo"}]}'
 ```
+
+> Hinweis (Reality Check): vLLM ist auf unserem Spark/GB10 aktuell **nicht stabil** (Toolchain/`ptxas`/SM-Arch).  
+> Daher ist **SGLang** unser Primary. vLLM später wieder aktivieren mit einem GB10‑kompatiblen Image (nicht `latest`).
 
 ### Ollama (Fallback, wenn Open WebUI schnell “online” muss)
 - **Base URL**: `http://<spark-host>:11434`
