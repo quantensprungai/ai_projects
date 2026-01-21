@@ -47,4 +47,8 @@ Desktop.ini
 # Local artifacts (examples, scratch)
 /assets.jsonl
 
+# Scratch staging area (LLM-inbox; never commit contents)
+/scratch/**
+!/scratch/README.md
+
 
