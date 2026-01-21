@@ -12,7 +12,7 @@ notes: []
 
 # keep2 – Sanitisierte Notizen (Auszug)
 
-Zweck dieser Datei: **Ideen/Details aus `keep2.md` sichern**, ohne personenbezogene Kontaktdaten oder private Infos zu übernehmen.
+Zweck dieser Datei: **Ideen/Details aus Scratch/Legacy-Notizen (ehemals `keep2.md`) sichern**, ohne personenbezogene Kontaktdaten oder private Infos zu übernehmen.
 
 ## Kerngedanken (komprimiert)
 - ReST ist ein **Datenhub** für ASTRA/WPs: Datenintegration, Analyse, Visualisierung.

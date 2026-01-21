@@ -79,7 +79,7 @@ Oder: konsequent `sudo docker ...` nutzen.
 
 ## txt2kg Playbook: sauberer Betrieb im „shared services“ Setup
 
-Dein aktueller Konflikt (aus `keep10-spark.md`) ist erwartbar:
+Dein aktueller Konflikt (aus Scratch/Legacy-Notizen – ehemals `keep10-spark.md`) ist erwartbar:
 - Playbook startet eigene `arangodb` + `ollama`
 - du hast aber bereits `arangodb:8529` und `ollama:11434`
 
@@ -102,7 +102,7 @@ Pragmatischer Weg:
 
 Für den Start des Systems ist PDF‑Extraction **nicht** nötig: wir beginnen mit `import_assets_jsonl`.
 
-## Modelle / Storage Cleanup (aus `keep.md`)
+## Modelle / Storage Cleanup (aus Scratch/Legacy-Notizen – ehemals `keep.md`)
 
 Du hast sehr große Modelle herumliegen (z. B. DeepSeek‑V3). Für langfristige Stabilität:
 - Modelle in **einem** Verzeichnis konsolidieren (z. B. `~/ai/models/…`)

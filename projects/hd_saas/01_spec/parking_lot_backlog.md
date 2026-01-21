@@ -13,13 +13,13 @@ notes: []
 
 # Parking Lot – HD‑SaaS (vNext Ideen)
 
-## Personas / Schools (aus `keep5-hd.md`)
+## Personas / Schools (aus Scratch/Legacy-Notizen – ehemals `keep5-hd.md`)
 
 - **School‑to‑Persona Mapping** (Business/Spiritual/Explorer/Expert)
 - **Cross‑School Comparisons** (Terminologie‑Vergleich, “Lens Switching”)
 - **Pricing Tiers by School Access** (später, nicht MVP)
 
-## Multi‑System / Multi‑Cultural Engine (aus `keep5-hd.md`)
+## Multi‑System / Multi‑Cultural Engine (aus Scratch/Legacy-Notizen – ehemals `keep5-hd.md`)
 
 - Eine Engine, mehrere “Skins” (nicht mehrere Apps)
 - Weitere Systeme sukzessive (BaZi, Gene Keys, 64keys, …)
