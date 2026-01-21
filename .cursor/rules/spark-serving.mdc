@@ -1,0 +1,28 @@
+<!--
+title: Spark Serving – SGLang/vLLM/Ollama (operational rules)
+last_update: 2026-01-21
+status: draft
+scope:
+  summary: "Regeln für LLM-Serving Entscheidungen und Debugging im Spark-Setup."
+  in_scope:
+    - endpoint correctness (base URL, /v1 paths, model IDs)
+    - SGLang flags that impact client compatibility
+    - safe advice for Cursor/OpenWebUI integration
+  out_of_scope:
+    - deep GPU tuning
+    - public exposure / security hardening beyond basics
+notes: []
+-->
+
+## Client-Kompatibilität (Cursor/OpenWebUI)
+- Docker-Hostnames wie `sglang-qwen-uncensored` funktionieren **nicht** als Client-URL von Windows aus.
+- Verwende immer Spark-Tailscale-IP/MagicDNS + Port.
+
+## OpenAI-kompatible APIs
+- Wenn ein Client Modell-Liste nutzt: stelle sicher, dass `/v1/models` **einen sauberen Modellnamen** liefert.
+- Für SGLang: nutze `--served-model-name <name>` statt dass `/model` als ID auftaucht.
+- Teste mit `/health`, `/v1/models`, `/v1/chat/completions` bevor du “Cursor-Konfig kaputt-toggelst”.
+
+## Cursor: Keine globalen Overrides
+- Vermeide “Override OpenAI Base URL” dauerhaft; das kann Cursor-eigene Modelle (GPT‑5.2 etc.) brechen.
+

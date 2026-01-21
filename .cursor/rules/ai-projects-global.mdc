@@ -1,0 +1,41 @@
+<!--
+title: ai_projects (global) – Doku/Infra Multi-Projekt Regeln
+last_update: 2026-01-21
+status: draft
+scope:
+  summary: "Regeln für Arbeiten im ai_projects Root-Repo (Docs/Infra/Meta), inkl. Scratch-Workflow und Multi-Projekt-Kontext."
+  in_scope:
+    - documentation edits under /projects and /infrastructure
+    - cross-linking and naming conventions
+    - scratch inbox → promote workflow
+    - language/tone consistency
+  out_of_scope:
+    - code implementation details inside /code (separate repos)
+notes: []
+-->
+
+## Sprache
+- Antworte **immer auf Deutsch**.
+
+## Repo-Intent (wichtig)
+- Das Root-Repo `ai_projects/` ist **Docs/Infra/Meta**.
+- `/code/**` ist ein separater Bereich (eigene Repos). Änderungen dort nur, wenn explizit gefordert.
+
+## Reality-Block Konvention
+- Jede Markdown-Datei hat einen Reality-Block.
+- Ändere nur Dinge, die im Reality-Block `in_scope` liegen; bei größeren Änderungen `last_update` aktualisieren.
+
+## Links & Verweise
+- Nutze relative Links im Repo.
+- Verweise auf volatile Rohnotizen **nie** als “Source of Truth”; lieber “Scratch/Legacy-Notizen (ehemals …)” oder direkt auf promotete Dateien.
+
+## Scratch-Workflow (Inbox → Wissen → Promote)
+- `scratch/inbox/`: roh/unstrukturiert (Scrapes, Copy/Paste Dumps, Logs).
+- `scratch/wissen/`: kuratierte Notizen, bereit zum “Promote”.
+- `scratch/legacy_keep/`: große/alte Rohnotizen, die noch nicht sanitiert/aufgeteilt sind.
+- “Source of Truth” muss nach `projects/` oder `infrastructure/` promotet werden.
+
+## Multi-Projekt Arbeitsweise
+- Frage bei Ambiguität: **welches Projekt** (z. B. `projects/hd_saas`, `projects/rest_data_platform`, …)?
+- Halte Änderungen projektlokal; keine Vermischung von Begriffen/Artefakten zwischen Projekten ohne explizite Entscheidung.
+
