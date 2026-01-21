@@ -25,15 +25,29 @@ notes: []
 - Jede Markdown-Datei hat einen Reality-Block.
 - Ändere nur Dinge, die im Reality-Block `in_scope` liegen; bei größeren Änderungen `last_update` aktualisieren.
 
+## Entscheidungs-Doku (ADR-lite)
+- Wenn du Design/Architektur-Entscheidungen dokumentierst, nutze das Muster:
+  - **Decision**
+  - **Rationale**
+  - **Consequences**
+
 ## Links & Verweise
 - Nutze relative Links im Repo.
 - Verweise auf volatile Rohnotizen **nie** als “Source of Truth”; lieber “Scratch/Legacy-Notizen (ehemals …)” oder direkt auf promotete Dateien.
+
+## Projects ↔ Code ↔ Infra Crosslinks (Konvention)
+- In `projects/<name>/README.md` soll ein Link auf das passende Code-Repo unter `code/<repo>/` stehen (falls vorhanden).
+- In `code/<repo>/README.md` soll “Docs live here” stehen und auf `../../projects/<name>/` + relevante `../../infrastructure/...` Dateien verlinken.
 
 ## Scratch-Workflow (Inbox → Wissen → Promote)
 - `scratch/inbox/`: roh/unstrukturiert (Scrapes, Copy/Paste Dumps, Logs).
 - `scratch/wissen/`: kuratierte Notizen, bereit zum “Promote”.
 - `scratch/legacy_keep/`: große/alte Rohnotizen, die noch nicht sanitiert/aufgeteilt sind.
 - “Source of Truth” muss nach `projects/` oder `infrastructure/` promotet werden.
+
+## Spark-Doku Allowlist (wichtig)
+- Spark-Dokumentation liegt ausschließlich unter `infrastructure/spark/`.
+- Neue Spark-Doku-Dateien nur anlegen, wenn es bewusst entschieden wurde (sonst bestehende Dateien erweitern).
 
 ## Multi-Projekt Arbeitsweise
 - Frage bei Ambiguität: **welches Projekt** (z. B. `projects/hd_saas`, `projects/rest_data_platform`, …)?
