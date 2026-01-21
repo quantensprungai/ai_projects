@@ -77,3 +77,18 @@ docker ps --format 'table {{.Names}}\t{{.Status}}\t{{.Ports}}'
 nvidia-smi
 ```
 
+## Open WebUI ↔ Spark verbinden (kurz)
+
+Open WebUI ist nur ein Frontend – du musst ein Backend eintragen.
+
+- **SGLang (empfohlen auf GB10)**:
+  - **Default (Qwen)**: `http://<spark-host>:30001`
+  - **Optional (zweites Modell, z. B. Scout on-demand)**: `http://<spark-host>:30000`
+  - Health: `GET /health`
+  - OpenAI‑API: `POST /v1/chat/completions`
+
+- **Ollama (Fallback)**:
+  - URL: `http://<spark-host>:11434`
+
+Reality Check:
+- vLLM kann auf GB10 je nach Image/Toolchain scheitern (`ptxas ... sm_121a`) → dann ist SGLang der Standardweg.

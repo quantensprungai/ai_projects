@@ -62,6 +62,10 @@ Der Worker verarbeitet **Jobs** aus `public.hd_ingestion_jobs` und schreibt Erge
   - minimale Felder (MVP): `title`, `source_type`, `source_ref`, `metadata`
   - Alles weitere kann in `metadata` landen (jsonb)
 
+**Wichtig (Reality Check):**
+- `metadata` muss **JSON-serialisierbar** bleiben. Keine “ganzen Objekte” (z. B. komplette Parsed-Payload) in `metadata` ablegen.
+- Praktisch: wenn du “Originalzeile” speichern willst, dann nur als **kleines Subset** (`id`, `title`, `source_type`, `source_ref`, …), sonst drohen Fehler wie `Circular reference detected`.
+
 ### 2) (später) `extract_text`
 
 - **Input**:
@@ -101,3 +105,6 @@ Der Worker verarbeitet **Jobs** aus `public.hd_ingestion_jobs` und schreibt Erge
 - **Service Role**:
   - Worker nutzt Service Role Key, damit er schreiben kann; trotzdem `account_id` strikt setzen.
 
+## Ops/Debug (Pragmatik)
+
+Siehe auch: `infrastructure/spark/hd_worker_ops.md`
