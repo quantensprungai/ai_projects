@@ -22,8 +22,8 @@ Eine einzige Referenz für: **Hostnames/IPs, Ports, URLs** und minimale Test-Cal
 ## Endpoints (Default)
 
 ### SGLang
-- **Base URL (Scout‑10m / long-context on-demand)**: `http://<spark-host>:30000`
-- **Base URL (Qwen3‑32B NVFP4 “uncensored” on-demand)**: `http://<spark-host>:30001`
+- **Base URL (Port 30000, optional/secondary)**: `http://<spark-host>:30000`
+- **Base URL (Qwen3‑32B NVFP4 “uncensored”, current default)**: `http://<spark-host>:30001`
 - **Health**: `GET /health`
 
 ```bash
@@ -45,6 +45,27 @@ curl http://<spark-host>:30000/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{"model":"local","messages":[{"role":"user","content":"Hallo"}]}'
 ```
+
+## Cursor Integration (wichtig: Cursor-Modelle nicht “kaputt-konfigurieren”)
+
+Reality Check: Wenn du in Cursor **global** “OpenAI API Key aktivierst” und gleichzeitig “Override OpenAI Base URL” setzt,
+route’t Cursor damit oft **auch seine eigenen Cursor-Modelle** (z. B. GPT‑5.2) auf diese Base URL.
+Dann kommt `Unauthorized`/`Invalid API key`, weil Spark keine Cursor‑Auth versteht.
+
+**Empfehlung:**
+- Cursor‑eigene Modelle (GPT‑5.2 etc.) weiter normal nutzen (kein Override auf deren Traffic).
+- Spark‑Modelle als **separater OpenAI‑kompatibler Endpoint** anbinden (falls Cursor das als “Custom/OpenAI-Compatible Provider” anbietet).
+
+**Wenn du im UI nur diesen einen Override‑Schalter hast (Workaround):**
+- Für Cursor‑GPT‑5.2: Override **aus** (sonst geht GPT‑5.2 kaputt).
+- Für Spark‑Tests: Override **temporär an**, danach wieder **aus**.
+
+**Base URL Empfehlung:**
+- Nutze in Cursor meist `http://<spark-host>:30001` (ohne `/v1`).
+- Falls Cursor zwingend `/v1` erwartet: `http://<spark-host>:30001/v1`
+
+**API Key Feld (wenn Cursor eins verlangt):**
+- Oft reicht ein Dummy wie `sk-local` (Spark validiert standardmäßig keinen Key).
 
 ### vLLM (OpenAI compatible)
 - **Base URL**: `http://<spark-host>:8000`

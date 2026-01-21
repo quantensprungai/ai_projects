@@ -85,6 +85,8 @@ Auf Spark laufen die Inferenzserver als Container. In diesem Repo wird **nur dok
 - **vLLM** kann auf GB10 je nach Container/Toolchain scheitern (PTXAS/Triton `sm_121a`).
   → In dem Fall ist **SGLang** die bevorzugte Engine.
 - **Ollama** kann als Übergangslösung genutzt werden, wenn Open WebUI “sofort” ein Backend braucht.
+- **SGLang Qwen** läuft stabil auf `:30001` (OpenAI‑kompatibel: `/v1/models`, `/v1/chat/completions`).
+- **SGLang Llama4‑Scout‑17B NVFP4** ist installiert, aber der Start benötigt korrekte Flags/Quant‑Handling (siehe `sglang_config.md`).
 
 ## Zugriff (VM105 → Spark) – Reality Check
 
@@ -158,6 +160,13 @@ curl http://localhost:30000/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{"model":"local","messages":[{"role":"user","content":"Hallo"}]}'
 ```
+
+## Cursor – wichtiges Setup-Prinzip
+
+Wenn du in Cursor global “OpenAI API Key aktivierst” und die “Base URL overridest”, kann Cursor damit
+auch seine **Cursor‑gehosteten Modelle** (z. B. GPT‑5.2) auf deine Base URL routen → dann kommt `Unauthorized`.
+
+Empfehlung: Spark als separater Provider/Custom Model (OpenAI‑compatible) anbinden – oder den Override nur temporär nutzen.
 
 ### Monitoring (minimal)
 
