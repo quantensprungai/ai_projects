@@ -21,6 +21,10 @@ Dev-Setup (Laptop/VM105), Cursor/Tools, OS/Driver, Repo-Konventionen.
 - **Spark** ist reiner Runtime-Server (Modelle/Container/Serving)
 - Steuerung erfolgt von VM105 aus via **Tailscale SSH**
 
+## Cursor Workflow (multi-repo)
+
+- `cursor_workflow.md`
+
 ## Git Workflow (Docs/Infra vs Code)
 
 - **Docs/Infra**: `ai_projects/` ist ein eigenes Git-Repo (push nach GitHub ok).

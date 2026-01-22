@@ -45,6 +45,7 @@ docker run --rm --name sglang --gpus all \
   lmsysorg/sglang:spark \
   python3 -m sglang.launch_server \
     --model-path /model \
+    --served-model-name llama4-scout-10m \
     --host 0.0.0.0 \
     --port 30000 \
     --trust-remote-code \
@@ -56,6 +57,15 @@ Health:
 ```bash
 curl -sf http://localhost:30000/health
 ```
+
+Model-ID Check (wichtig für Cursor/OpenWebUI):
+
+```bash
+curl -sf http://localhost:30000/v1/models
+```
+
+> Reality Check: Der `id` Wert aus `/v1/models` ist genau der Modellname, den Cursor später “sieht”.
+> Wenn dort z. B. `gpt-4o-mini` steht, dann wurde der Server mit `--served-model-name gpt-4o-mini` gestartet – unabhängig davon, welches Modell tatsächlich gemountet ist.
 
 Stop:
 

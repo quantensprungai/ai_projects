@@ -39,6 +39,62 @@ Beispiele:
 - `ssh sparkuser@spark-56d0` (MagicDNS)
 - `ssh sparkuser@100.x.x.x` (Tailscale-IP)
 
+## HTTPS Exposure im Tailnet (für Cursor / “OpenAI-compatible” Endpoints)
+
+Reality Check: Manche Clients (insb. IDEs/Enterprise-Setups) sind bei `http://`/SSE empfindlich oder blocken “unsichere” Base URLs.
+Für Cursor↔Spark ist daher unser Standard:
+
+- **Spark** bleibt privat (nur Tailnet)
+- **SGLang** bleibt lokal auf Spark (z. B. `127.0.0.1:30001`)
+- **Tailscale Serve** stellt eine **HTTPS**‑URL bereit (mit `*.ts.net` Zertifikat), die intern auf den lokalen Port forwarded
+
+### Voraussetzungen (Admin‑Panel)
+
+Wenn auf Spark beim Serve/Cert sowas kommt:
+- `Serve is not enabled on your tailnet`
+- `Access denied: cert access denied`
+
+dann muss im Tailscale Admin‑Panel (Tailnet Settings) aktiviert sein:
+- Serve/Funnel Feature
+- HTTPS Certificates
+- (optional, je nach Policy) Berechtigung für dein Gerät/User, Zertifikate zu beziehen
+
+### Commands (Spark)
+
+Beispiel: SGLang/Qwen läuft auf `:30001`:
+
+```bash
+sudo tailscale serve reset
+sudo tailscale serve --bg --yes 30001
+tailscale serve status
+```
+
+Die Ausgabe von `tailscale serve status` ist die **Source of Truth** für die HTTPS‑URL, die du in Cursor als Base URL eintragen solltest.
+
+### Hinweis: Tailscale als snap (Spark) – Operator/Root erforderlich
+
+Wenn Tailscale auf Spark als **snap** installiert ist, sind `tailscale serve ...` Änderungen oft nur als root erlaubt.
+Typische Fehlermeldung:
+
+- `Access denied: serve config denied`
+
+Dann hast du zwei saubere Optionen:
+
+1) **Einmalig Operator setzen** (empfohlen), danach kann `sparkuser` `tailscale serve` ohne sudo:
+
+```bash
+sudo tailscale set --operator=sparkuser
+tailscale serve --bg --yes 30001
+tailscale serve status
+```
+
+2) Alternativ immer via Root-Socket (wenn du explizit sein willst):
+
+```bash
+sudo tailscale --socket /var/snap/tailscale/common/socket/tailscaled.sock serve --bg --yes 30001
+sudo tailscale --socket /var/snap/tailscale/common/socket/tailscaled.sock serve status
+```
+
 ## SSH (für Remote-Operations)
 
 Ziel: von VM105/WSL2 aus Spark steuern (Start/Stop, Deploy von Configs), ohne dass Repo auf Spark liegen muss.

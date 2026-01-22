@@ -60,9 +60,44 @@ Dann kommt `Unauthorized`/`Invalid API key`, weil Spark keine Cursor‑Auth vers
 - Für Cursor‑GPT‑5.2: Override **aus** (sonst geht GPT‑5.2 kaputt).
 - Für Spark‑Tests: Override **temporär an**, danach wieder **aus**.
 
-**Base URL Empfehlung:**
-- Nutze in Cursor meist `http://<spark-host>:30001` (ohne `/v1`).
-- Falls Cursor zwingend `/v1` erwartet: `http://<spark-host>:30001/v1`
+### Base URL Empfehlung (robust: HTTPS via Tailscale Serve)
+
+Reality Check aus unserem Debugging: Wenn Cursor beim “Refresh” **keine** Requests an `GET /v1/models` auf Spark schickt,
+ist es oft ein Client-/Network-Stack Thema (z. B. `http://` wird blockiert/abgelehnt, Proxy/VPN-Middleware, etc.).
+
+Unser stabilster Pfad ist daher: **Spark per HTTPS innerhalb des Tailnets exponieren** und Cursor nur auf diese HTTPS‑URL zeigen lassen.
+
+#### 1) Admin-Panel (Tailnet) – einmalig
+
+Wenn du Fehler siehst wie:
+- `Serve is not enabled on your tailnet`
+- `Access denied: cert access denied`
+
+dann muss im Tailscale Admin‑Panel (Tailnet Settings) Folgendes erlaubt sein:
+- Serve/Funnel Features aktiviert
+- HTTPS Certificates erlaubt
+- (falls nötig) deinem Gerät/User die Berechtigung geben, Zertifikate für `*.ts.net` zu beziehen
+
+#### 2) Auf Spark (Beispiel: Qwen auf Port 30001) – einmalig/bei Änderungen
+
+```bash
+sudo tailscale serve reset
+sudo tailscale serve --bg --yes 30001
+tailscale serve status
+```
+
+Ergebnis: du bekommst eine **HTTPS**‑URL im Tailnet (typisch `https://spark-56d0.<tailnet>.ts.net`), die intern auf `http://127.0.0.1:30001` forwarded.
+
+#### 3) Cursor Settings (Spark Provider)
+
+- **Base URL**: nutze die **HTTPS**‑URL von `tailscale serve status`.
+  - Manche Cursor‑Builds erwarten hier **explizit** ein Suffix `/v1` (dann wird intern `GET /models` → effektiv `GET /v1/models`).
+  - Wenn du **ohne** `/v1` einträgst, kann Cursor `GET /models` callen → das ist bei SGLang typischerweise **404**.
+  - Deshalb, wenn bei “Refresh” **no models available** kommt, setze die Base URL auf: `https://<spark>.ts.net/v1`
+- **Model Name**: `qwen3-32b-nvfp4` (oder wie du ihn via `--served-model-name` gesetzt hast)
+- **API Key**: falls Cursor eins verlangt, Dummy wie `sk-local`
+
+> Für reine CLI-Tests/`curl` kannst du weiterhin `http://<spark-host>:30001` nutzen. Für Cursor bevorzugen wir HTTPS.
 
 **API Key Feld (wenn Cursor eins verlangt):**
 - Oft reicht ein Dummy wie `sk-local` (Spark validiert standardmäßig keinen Key).
@@ -129,6 +164,36 @@ Du hast zwei saubere Optionen:
 2. **Mehrere Endpoints** (mehrere Ports), je Modell ein eigener Service:
    - z. B. `vllm-scout.service` auf `8000`, `vllm-deepseek.service` auf `8001`
    - Nur sinnvoll, wenn Memory reicht (oft nicht für mehrere “große” Modelle parallel).
+
+## Cursor Workaround (wenn “No models available” trotz funktionierendem `/v1/models`)
+
+Reality Check aus unserem Setup: Cursor kann den Endpoint **nutzen**, zeigt aber im Settings‑Screen oft trotzdem dauerhaft
+`No models available` (auch nach Refresh). Das ist dann meist nur UI/Caching/Provider‑Flow – nicht dein Server.
+
+**Pragmatischer Weg:**
+
+- **Custom Model manuell hinzufügen** (über “Add Custom Model”)
+- **Model Name** = exakt die `id` aus `GET /v1/models`
+- Wenn “Refresh” in Cursor nichts anzeigt, ist das ok – entscheidend ist, ob Chat funktioniert.
+
+### Stabiler Pfad für Cursor: lokale Port‑Forwards (SSH)
+
+Wenn Cursor `*.ts.net`/HTTPS/Proxy‑Pfad nicht zuverlässig nutzt, ist der stabilste Workaround:
+du forwardest die Spark‑Ports lokal und verwendest `http://127.0.0.1:<port>` in Cursor.
+
+Beispiel (VM105/Windows PowerShell):
+
+```powershell
+# Qwen-Proxy (Spark:31001 -> lokal:18001)
+ssh -N -L 18001:127.0.0.1:31001 -p 2222 sparkuser@100.96.115.1
+
+# Scout-Proxy (Spark:31000 -> lokal:18000)
+ssh -N -L 18000:127.0.0.1:31000 -p 2222 sparkuser@100.96.115.1
+```
+
+Dann in Cursor:
+- **Qwen Base URL**: `http://127.0.0.1:18001`  → Model: `qwen3-32b-nvfp4`
+- **Scout Base URL**: `http://127.0.0.1:18000` → Model: `llama4-scout-17b-nvfp4`
 
 ### Minimaler “Switch”-Workflow (praktisch)
 
