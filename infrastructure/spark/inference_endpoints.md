@@ -19,11 +19,13 @@ notes: []
 
 Eine einzige Referenz für: **Hostnames/IPs, Ports, URLs** und minimale Test-Calls.
 
+> Model-Assets / Ist-Stand auf Disk: siehe `infrastructure/spark/model_inventory.md`.
+
 ## Endpoints (Default)
 
 ### SGLang
 - **Base URL (Port 30000, optional/secondary)**: `http://<spark-host>:30000`
-- **Base URL (Qwen3‑32B NVFP4 “uncensored”, current default)**: `http://<spark-host>:30001`
+- **Base URL (Primary Slot, per Switch – z. B. Qwen ↔ DeepSeek R1‑8B BF16)**: `http://<spark-host>:30001`
 - **Health**: `GET /health`
 
 ```bash
@@ -100,7 +102,76 @@ Ergebnis: du bekommst eine **HTTPS**‑URL im Tailnet (typisch `https://spark-56
 > Für reine CLI-Tests/`curl` kannst du weiterhin `http://<spark-host>:30001` nutzen. Für Cursor bevorzugen wir HTTPS.
 
 **API Key Feld (wenn Cursor eins verlangt):**
-- Oft reicht ein Dummy wie `sk-local` (Spark validiert standardmäßig keinen Key).
+- **Tailnet-only (Serve)**: oft reicht ein Dummy wie `sk-local` (Spark/Caddy validiert standardmäßig keinen Key).
+- **Internet (Funnel)**: **Dummy ist NICHT sicher**. Wenn Funnel dauerhaft an ist, musst du am Proxy **echte Auth** erzwingen
+  (sonst kann jeder mit der URL dein Compute nutzen).
+
+### Funnel (Internet) – Security Minimalstandard (Bearer Token Pflicht)
+
+Reality Check aus unserem Setup: Cursor kann `127.0.0.1`/private IPs teils nicht nutzen (SSRF-Block). Mit Funnel klappt’s – aber
+Funnel ist öffentlich. Deshalb: Proxy vor SGLang mit Bearer-Token schützen.
+
+- **Token-Datei (auf Spark, nicht committen)**: `~/ai/configs/caddy/cursor_bearer_token.txt`
+- **Proxy Configs (auf Spark)**:
+  - `~/ai/configs/caddy/cursor-openai-proxy.Caddyfile` (Qwen, `:31001` → `127.0.0.1:30001`)
+  - `~/ai/configs/caddy/cursor-openai-proxy-scout.Caddyfile` (Scout, `:31000` → `127.0.0.1:30000`)
+- **Container**:
+  - `cursor-openai-proxy`
+  - `cursor-openai-proxy-scout`
+
+#### Token erzeugen/rotieren
+
+```bash
+TOK=$(openssl rand -hex 32)
+echo "$TOK" > ~/ai/configs/caddy/cursor_bearer_token.txt
+```
+
+#### Caddy: Bearer Token erzwingen (Beispiel, Qwen)
+
+> Wichtig: Caddy v2.7.x hat bei `header Authorization "Bearer ..."` in Matcher-Blöcken in unserem Container gezickt.
+> Stabil war `header_regexp` mit Whitespace-Matcher.
+
+```caddyfile
+:31001 {
+  @authed {
+    header_regexp authed Authorization ^Bearer[[:space:]]+<TOKEN>$
+  }
+
+  handle @authed {
+    # ... reverse_proxy Regeln ...
+  }
+
+  respond 401
+}
+```
+
+Nach Änderungen (weil `/etc/caddy/Caddyfile` read-only gemountet ist): Container neu starten, damit Mount-Inhalt sicher aktiv ist:
+
+```bash
+docker restart cursor-openai-proxy cursor-openai-proxy-scout
+```
+
+#### Quick Test (muss 401/200 sein)
+
+```bash
+# ohne Header -> 401
+curl -s -o /dev/null -w '%{http_code}\n' https://<spark>.ts.net/v1/models
+
+# mit Header -> 200
+TOK=$(cat ~/ai/configs/caddy/cursor_bearer_token.txt)
+curl -s -o /dev/null -w '%{http_code}\n' \
+  -H "Authorization: Bearer $TOK" \
+  https://<spark>.ts.net/v1/models
+```
+
+### Cursor: SSRF-Block / “private IP is blocked”
+
+Wenn Cursor meldet `ssrf_blocked` / “connection to private IP is blocked”, dann versucht Cursor die Model-URL nicht “lokal”
+zu erreichen, sondern über einen Provider-/Proxy-Flow. `127.0.0.1` (oder `100.x` Tailnet IPs) werden dann blockiert.
+
+Pragmatischer Fix:
+- **Funnel URL** nutzen (z. B. `https://spark-56d0.<tailnet>.ts.net/`)
+- **API Key in Cursor** = dein Bearer Token (aus `cursor_bearer_token.txt`)
 
 ### vLLM (OpenAI compatible)
 - **Base URL**: `http://<spark-host>:8000`
@@ -201,9 +272,64 @@ Dann in Cursor:
 2. Lege **ein** systemd Service als Default fest.
 3. Alles andere läuft **on-demand** (start/stop).
 
+## Ops Cheat Sheet (praktisch)
+
+### Modelle “umschalten” (Qwen ↔ Scout)
+
+Reality Check: parallel große Modelle ist meist RAM/KV‑Cache‑Limit → Switch per Start/Stop.
+
+```bash
+# Qwen stoppen
+docker stop sglang-qwen-uncensored
+
+# Scout starten (served-model-name: llama4-scout-17b-nvfp4)
+bash ~/ai/scripts/serve/sglang_scout_17b.sh
+
+# Check
+curl -s http://127.0.0.1:30000/v1/models
+```
+
+Analog zurück:
+
+```bash
+docker stop sglang-scout 2>/dev/null || true
+bash ~/ai/scripts/serve/sglang_qwen_32b.sh
+curl -s http://127.0.0.1:30001/v1/models
+```
+
+### Cursor: Model-Namen, die wir aktuell nutzen
+
+- Qwen: `qwen3-32b-nvfp4`
+- Scout: `llama4-scout-17b-nvfp4`
+- DeepSeek R1 8B (abliterated, BF16): `deepseek-r1-8b-abliterated-bf16`
+
+### Neues Modell hinzufügen (z. B. “echtes uncensored”, NVFP4/FP8)
+
+Minimaler Flow:
+- **1) Model besorgen**: Weights nach `~/ai/models/<vendor>/<model>/` (Speicher + Lizenz beachten)
+- **2) Quantization wählen**: siehe `infrastructure/spark/quantizations.md`
+  - **FP8 (Default)**: in der Praxis oft der stabilste Sweet Spot auf GB10 (Performance/Qualität/Kompatibilität).
+  - **NVFP4/MXFP4 (FP4)**: theoretisch “best” (Blackwell), aber nur dann wirklich schnell, wenn Engine/Kernels den nativen FP4‑Pfad sauber treffen (sonst Fallbacks).
+  - **Wichtig**: Viele Community‑“FP8/NVFP4” Repos sind **`compressed-tensors`**. Unser aktuelles SGLang‑Image ist damit (Stand heute) unzuverlässig → lieber NVIDIA‑Playbook/ModelOpt Checkpoints oder plain BF16/FP16.
+- **3) Serve Script anpassen**:
+  - `--model-path` auf den neuen Pfad
+  - `--served-model-name <sauberer_name>` setzen (damit `/v1/models` eine brauchbare ID liefert)
+  - passende Flags, z. B. `--quantization modelopt_fp4 --modelopt-quant nvfp4` (siehe `infrastructure/spark/sglang_config.md`)
+- **4) Start/Health/Models testen**: `/health`, `/v1/models`, `/v1/chat/completions`
+- **5) Cursor: Custom Model Name** = exakt die `id` aus `GET /v1/models`
+
 ## Notizen
 
 - “Extern erreichbar” (Tailscale, Reverse Proxy, etc.) wird in `infrastructure/tailscale/` bzw. Networking-Doku beschrieben.
 - Wenn du später Auth brauchst: hier nur das Doku-Interface, keine Secrets.
+
+## Reality Check (GB10): wenn “FP8/NVFP4” nicht startet
+
+Wenn ein Download “FP8/NVFP4” im Repo-Namen hat, heißt das nicht automatisch, dass es mit unserem SGLang‑Image lädt.
+Der schnellste Diagnose-Schritt ist:
+
+- `config.json` öffnen und `quantization_config.quant_method` prüfen.
+  - Bei **`compressed-tensors`**: aktuell häufige Ursache für “kommt nie ready / Scheme not found”.
+  - Bei **ModelOpt/NVIDIA NVFP4/FP8** oder **plain BF16/FP16**: deutlich höhere Chance, dass es sofort läuft.
 
 

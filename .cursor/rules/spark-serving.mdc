@@ -26,3 +26,17 @@ notes: []
 ## Cursor: Keine globalen Overrides
 - Vermeide “Override OpenAI Base URL” dauerhaft; das kann Cursor-eigene Modelle (GPT‑5.2 etc.) brechen.
 
+## Funnel (Internet): niemals “Dummy-Key” als Security
+- Wenn Tailscale **Funnel** genutzt wird, ist der Endpoint internet-exponiert.
+- **`sk-local` o. ä. ist KEINE Security** (leicht erratbar). Für Funnel immer einen **starken Bearer Token** erzwingen
+  (am Proxy/Caddy) und den Token **nur lokal auf Spark** speichern (nicht committen).
+
+## Quantization Reality (GB10 / SM121): “läuft” vs “schnell”
+- **FP8 ist unser Default**, wenn es “einfach laufen” soll (gute Performance, breite Unterstützung).
+- **NVFP4/MXFP4 (FP4)** ist das Ziel-Format (Blackwell), aber Performance hängt stark vom Engine‑Build/Kernels ab (Fallbacks möglich).
+- **`compressed-tensors` vermeiden (Stand heute)**: viele Community‑FP8/NVFP4 Repos sind `compressed-tensors` (float‑quantized) und können in SGLang an fehlenden Schemes/Loadern scheitern.
+  - Quick Check: `config.json` → `quantization_config.quant_method`. Bei `compressed-tensors`: lieber anderen Checkpoint wählen oder Engine/Image upgraden.
+
+## Kernel/Backend Footguns (praktisch)
+- Wenn FP4/NVFP4 Modelle “komisch” performen oder Backends zicken: für SGLang auf GB10 ist `--attention-backend triton` oft der robusteste Pfad.
+

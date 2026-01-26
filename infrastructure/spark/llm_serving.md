@@ -62,7 +62,18 @@ Auf Spark laufen die Inferenzserver als Container. In diesem Repo wird **nur dok
 
 - **SGLang**: interaktiv/low-latency, Agents, ggf. multimodal
 - **vLLM**: OpenAI‑kompatibles API, Throughput, Batch/RAG, große Kontexte (**Achtung: auf GB10 aktuell je nach Image/Toolchain broken**)
+- **TensorRT-LLM**: maximale Performance (insb. NVFP4/FP8), aber weniger flexibel (Build/Compile/Cache-Zyklen; eher “production” als “experiment”)
 - **Ollama (Fallback)**: schnell “wieder online”, aber nicht der langfristige Standard auf Spark
+
+## Reality Check: Quantisierung (GB10 / SM121)
+
+- **NVFP4/MXFP4 (FP4)** ist das “native” Blackwell‑Ziel, aber in der Praxis hängt die Performance stark vom Engine‑Build und den verwendeten Kernels ab.
+  - In vLLM können FP4‑Weights (je nach Build/Detection) auf **Marlin/weight-only FP4 Fallback** laufen → dann ist der Performance‑Gewinn gegenüber FP8/BF16 kleiner oder negativ.
+  - Einige FP4‑Pfade (FlashInfer/CUTLASS) sind historisch stark auf **SM100a** fokussiert; auf GB10 (SM121) kann es daher zu **Fallbacks** oder Build‑Footguns kommen.
+- **FP8** ist im Alltag oft der **stabile Sweet Spot**: deutlich schneller/kleiner als BF16, und in SGLang/vLLM breit unterstützt.
+- **`compressed-tensors` vermeiden (Stand heute)**:
+  - Viele Community‑“FP8/NVFP4” Repos sind `compressed-tensors` (float‑quantized). Unser aktuelles SGLang‑Setup hat damit bekannte Scheme/Loader‑Probleme.
+  - Wenn ein Modell nicht startet: zuerst `config.json` prüfen (`quantization_config.quant_method`). Bei `compressed-tensors` ist ein Engine/Image‑Upgrade oder ein anderer Checkpoint meistens der schnellste Fix.
 
 ## Embeddings (aktueller Stand)
 
@@ -84,8 +95,10 @@ Auf Spark laufen die Inferenzserver als Container. In diesem Repo wird **nur dok
   - `/var/lib/docker/volumes/open-webui/_data`
 - **vLLM** kann auf GB10 je nach Container/Toolchain scheitern (PTXAS/Triton `sm_121a`).
   → In dem Fall ist **SGLang** die bevorzugte Engine.
-- **Ollama** kann als Übergangslösung genutzt werden, wenn Open WebUI “sofort” ein Backend braucht.
-- **SGLang Qwen** läuft stabil auf `:30001` (OpenAI‑kompatibel: `/v1/models`, `/v1/chat/completions`).
+- **Open WebUI** kann (und sollte) als OpenAI‑compatible Backend direkt auf SGLang zeigen (Ports `30000/30001`),
+  statt über Ollama zu gehen.
+- **SGLang Slot `:30001`** läuft stabil (OpenAI‑kompatibel: `/v1/models`, `/v1/chat/completions`) – welches Modell dort “default” ist,
+  hängt vom Switch‑Script ab (z. B. Qwen ↔ R1‑8B BF16).
 - **SGLang Llama4‑Scout‑17B NVFP4** ist installiert, aber der Start benötigt korrekte Flags/Quant‑Handling (siehe `sglang_config.md`).
 
 ## Zugriff (VM105 → Spark) – Reality Check
@@ -275,26 +288,13 @@ Wenn du “möglichst frei” willst:
 
 ## Model Inventory (Doku-Abschnitt)
 
-> Hinweis: Dieser Abschnitt ist eine **Dokumentation** (kein Source-of-Truth für den tatsächlichen Inhalt auf Spark).
+Dieser Abschnitt ist bewusst kurz gehalten. Die **Source of Truth** (Doku) liegt hier:
 
-Stand: 2026-01-12 (bitte bei Änderungen aktualisieren)
+- `infrastructure/spark/model_inventory.md`
 
-### Llama 4 (NVFP4)
-- `llama4-scout-17b-nvfp4` – ✔ installiert
-
-### DeepSeek
-- `deepseek-v3` – ❌ aktuell **nicht installiert** (Ordner existiert, ist aber leer): `ls -la ~/ai/models/deepseek`
-
-### Phi‑4
-- `phi4-reasoning` – ✔ installiert
-
-### Qwen3
-- `qwen3-32b-nvfp4` – ✔ installiert
-- Hinweis: Qwen NVFP4 kann in SGLang `--quantization modelopt_fp4` benötigen (sonst Config-Mismatch durch `kv_cache_quant_algo: FP8`).
-
-### Embeddings
-- `bge-m3` – ✔ installiert
-- `bge-multilingual-gemma2` – ✔ installiert
+Dort unterscheiden wir sauber:
+- **on disk** (liegt unter `~/ai/models/...` auf Spark)
+- **served** (läuft aktuell über SGLang/Proxy und ist in Cursor nutzbar)
 
 
 ## Links
