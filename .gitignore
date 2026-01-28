@@ -51,4 +51,7 @@ Desktop.ini
 /scratch/**
 !/scratch/README.md
 
+# Secrets / tokens (never commit)
+**/API_key_*.md
+
 
