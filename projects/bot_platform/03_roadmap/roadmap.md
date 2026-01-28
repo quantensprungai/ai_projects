@@ -15,6 +15,29 @@ notes: []
 
 # Roadmap – Bot Platform (Clawdbot)
 
+## Current Status (Snapshot, damit man ohne Chat-Kontext weiterkommt)
+Stand: **2026-01-28**
+
+- **VM102**
+  - `personal` Gateway läuft **always-on** auf **Port `18789`** und ist per **Tailscale Serve** erreichbar.
+  - Control UI/WebChat ist erreichbar; **Device‑Pairing** ist erforderlich (Fix dokumentiert).
+  - `health` ist serverseitig **ok**.
+- **Docs**
+  - Runbook: `infrastructure/docker/clawdbot_vm102.md`
+  - Hosting Überblick: `projects/bot_platform/02_system_design/hosting_vm102.md`
+
+## Next Up (konkret)
+- **`ops` Profil fertigstellen** (Port `18790`):
+  - UI exposure (Serve) + Device‑Pairing + `health` ok
+- **Spark als LLM Provider aktiv nutzen**:
+  - Provider/Model so konfigurieren, dass ein Chat tatsächlich über Spark läuft (nicht über Default Cloud Provider)
+- **1 Channel anbinden** (Telegram als v1-Default):
+  - DM Policy `pairing`, Approve‑Workflow, Smoke-Test
+- **Guardrails für `ops`**:
+  - Tool-/Command‑Allowlist + “human-in-the-loop” für risky Actions
+- **Backup konkretisieren & testen**:
+  - Welche `~/.clawdbot*` + `~/clawd-*` Pfade werden gesichert, Restore‑Probe
+
 ## Prinzipien (damit’s nicht entgleist)
 - **Doku zuerst**, dann Setup, dann Tools, dann Automatisierung.
 - **Zwei Trust‑Zonen** (Profile) sind Pflicht: `ops` und `personal`.
@@ -39,6 +62,7 @@ notes: []
 - **Akzeptanzkriterien**
   - `health/status/logs` sind von Admin-Seite abrufbar.
   - Persistente State‑Pfade sind bekannt und gesichert (Plan dokumentiert).
+  - Erster Zugriff auf Control UI/WebChat ist möglich (inkl. notwendigem Device‑Pairing).
 
 ## Phase 2 — Profiles & Baseline Security
 **Ziel:** Saubere Trennung ops/personal + sichere Defaults.
@@ -62,6 +86,7 @@ notes: []
 - **Akzeptanzkriterien**
   - Bot kann eine Antwort über Spark generieren.
   - Keine globalen Cursor‑Overrides nötig (Spark‑Setup bleibt separat).
+  - Model‑ID entspricht exakt `GET /v1/models` (keine “fantasy model names”).
 
 ## Phase 4 — Die 4 Bots (v1) benutzbar machen
 **Ziel:** Jeder Bot hat ein klares “Minimum Feature Set”.
