@@ -119,5 +119,6 @@ Reality Check:
 
 Wenn du Modelle **visuell auswählen** willst (und im Hintergrund per SSH automatisch Start/Stop/Switch passiert), nutze:
 
-- `tools/spark_model_switcher/` (lokales Streamlit‑Dashboard)
+- `infrastructure/spark/tools/spark_model_switcher/` (lokales Streamlit‑Dashboard)
 - Es zeigt `/health` + `/v1/models` live und kann deine Switch‑Scripts ausführen.
+- **Pfad im Repo**: `infrastructure/spark/tools/spark_model_switcher/`

@@ -27,6 +27,7 @@ Dieses Repository bündelt mehrere Projekte in einer gemeinsamen “Landschaft�
 - **Kiosk Agent** (`projects/kiosk_agent`)
 - **Super Buddy** (`projects/super_buddy`)
 - **Anna’s Archive Toolkit** (`projects/annas_archive_toolkit`)
+- **Bot Platform (Clawdbot)** (`projects/bot_platform`)
 - **AL Meta** (`projects/al_meta`)
 - **AI 2027** (`projects/ai_2027`)
 - **Spark Infrastructure (Doku/Stack)** (`infrastructure/spark`)
@@ -34,6 +35,7 @@ Dieses Repository bündelt mehrere Projekte in einer gemeinsamen “Landschaft�
 ## Beziehungen (high level)
 
 - Projekte nutzen **lokale Modelle + LLM Serving** (Spark) via definierte Endpoints.
+- **Bot Platform** nutzt Spark als LLM‑Backend und steuert (im `ops` Profil) Infrastruktur/Worker‑Ops über allowlisted Tools.
 - RAG / Agents / Pipelines werden pro Projekt beschrieben und später konsolidiert.
 
 ## Architektur-Ebenen (high level)

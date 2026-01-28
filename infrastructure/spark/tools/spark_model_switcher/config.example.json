@@ -1,0 +1,58 @@
+{
+  "spark": {
+    "host": "100.96.115.1",
+    "ssh_user": "sparkuser",
+    "ssh_port": 2222,
+    "ssh_identity_file": "",
+    "ssh_extra_args": [
+      "-o",
+      "StrictHostKeyChecking=accept-new"
+    ]
+  },
+  "status_checks": {
+    "ports": [30001, 30000]
+  },
+  "actions": [
+    {
+      "id": "deepseek-r1-8b-abliterated-bf16",
+      "label": "DeepSeek R1 8B (BF16)",
+      "category": "Uncensored-ish",
+      "order": 40,
+      "slot": "primary",
+      "description": "Reasoning + uncensored-ish; stabil, aber nur 8B.",
+      "type": "script",
+      "remote_path": "/home/sparkuser/ai/scripts/serve/sglang_switch_to_r1_8b_bf16.sh"
+    },
+    {
+      "id": "qwen3-32b-nvfp4",
+      "label": "Qwen3 32B (NVFP4)",
+      "category": "Allround",
+      "order": 10,
+      "slot": "primary",
+      "description": "Allround + schnell (multilingual).",
+      "type": "script",
+      "remote_path": "/home/sparkuser/ai/scripts/serve/sglang_switch_to_qwen.sh"
+    },
+    {
+      "id": "llama4-scout-17b-nvfp4",
+      "label": "Llama4 Scout 17B (NVFP4)",
+      "category": "Long-context",
+      "order": 30,
+      "slot": "secondary",
+      "description": "Großes Kontextfenster (KV-Cache/Unified Memory beachten).",
+      "type": "script",
+      "remote_path": "/home/sparkuser/ai/scripts/serve/sglang_switch_to_scout.sh"
+    },
+    {
+      "id": "qwen3-coder-30b-nvfp4",
+      "label": "Qwen3 Coder 30B (NVFP4)",
+      "category": "Coding",
+      "order": 20,
+      "slot": "primary",
+      "description": "Coding-optimiert (kein 'uncensored' per se).",
+      "type": "script",
+      "remote_path": "/home/sparkuser/ai/scripts/serve/sglang_switch_to_qwen3_coder_30b.sh"
+    }
+  ]
+}
+

@@ -247,6 +247,15 @@ Reality Check aus unserem Setup: Cursor kann den Endpoint **nutzen**, zeigt aber
 - **Model Name** = exakt die `id` aus `GET /v1/models`
 - Wenn “Refresh” in Cursor nichts anzeigt, ist das ok – entscheidend ist, ob Chat funktioniert.
 
+### Wichtiger Reality Check: Config wird pro Chat “gecacht”
+
+Wenn du Base URL / API Key / Model in Cursor änderst, gilt das manchmal **nicht** für bereits offene Chats/Agent-Sessions.
+Symptom: “We’re having trouble connecting…” obwohl `/v1/models` via `curl` **200** liefert.
+
+**Pragmatischer Fix:**
+- **Neuen Chat starten** (oder Cursor “Reload Window”)
+- Dann das Custom‑Model erneut auswählen und testen
+
 ### Stabiler Pfad für Cursor: lokale Port‑Forwards (SSH)
 
 Wenn Cursor `*.ts.net`/HTTPS/Proxy‑Pfad nicht zuverlässig nutzt, ist der stabilste Workaround:
@@ -271,6 +280,17 @@ Dann in Cursor:
 1. Entscheide: welches Modell läuft “always-on”?
 2. Lege **ein** systemd Service als Default fest.
 3. Alles andere läuft **on-demand** (start/stop).
+
+### Optional: GUI zum Umschalten (Spark Model Switcher)
+
+Wenn du Modelle **visuell auswählen** willst (und die Switch‑Skripte automatisch via SSH ausgeführt werden), nutze:
+
+- Tool: `infrastructure/spark/tools/spark_model_switcher/`
+- Es zeigt live `/health` + `/v1/models` für `30001` (Primary) und `30000` (Secondary).
+- Es hat Buttons für “Stop Secondary (30000)” und “Stop ALL SGLang”.
+
+Reality Check (Cursor):
+- Nach einem Switch (oder nach Änderungen an Base URL / API Key / Model) in Cursor ggf. **neuen Chat öffnen** oder **Reload Window**.
 
 ## Ops Cheat Sheet (praktisch)
 

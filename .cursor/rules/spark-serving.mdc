@@ -26,6 +26,10 @@ notes: []
 ## Cursor: Keine globalen Overrides
 - Vermeide “Override OpenAI Base URL” dauerhaft; das kann Cursor-eigene Modelle (GPT‑5.2 etc.) brechen.
 
+## Cursor UI Footgun: bestehende Chats cachen Provider/Model
+- Nach Änderungen an Base URL / API Key / Model ggf. **neuen Chat öffnen** oder **Reload Window**.
+- Sonst kann Cursor “We’re having trouble connecting…” zeigen, obwohl der Endpoint per `curl /v1/models` OK ist.
+
 ## Funnel (Internet): niemals “Dummy-Key” als Security
 - Wenn Tailscale **Funnel** genutzt wird, ist der Endpoint internet-exponiert.
 - **`sk-local` o. ä. ist KEINE Security** (leicht erratbar). Für Funnel immer einen **starken Bearer Token** erzwingen

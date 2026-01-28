@@ -28,3 +28,4 @@ Du willst themenbasierte Collections (z. B. Survival, Human Design, BaZi) wied
 - Keine Umgehungs-/Piraterie-Anleitungen. Das Toolkit ist als generische Collection‑Pipeline gedacht.
 
 
+
