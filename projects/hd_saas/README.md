@@ -22,6 +22,10 @@ notes: []
 - `03_roadmap/` (MVP, Milestones, v1/v2/v3, Risiken)
 - `04_assets/` (Prompts, Datasets, Diagrams)
 
+## Aktueller Stand (damit neue Chats sofort Kontext haben)
+
+- Local Dev (Supabase + HD ingestion): `00_overview/current_status_local_dev.md`
+
 ## Code (separates Repo unter `code/`)
 
 - **Code-Repo (working copy)**: `code/hd_saas_app/` (eigenes Git-Repo)
