@@ -34,10 +34,9 @@ Desktop.ini
 
 # IMPORTANT:
 # `code/` contains separate git repos per project.
-# The root repo is docs/infra only; do not vendor code repos here.
-/code/**
-!/code/
-!/code/README.md
+# We keep it readable for Cursor (context across docs/infra + code),
+# but we still treat each subfolder as its own repo and do NOT commit it
+# into this docs/infra root repo.
 
 # Local scratch notes (do not commit by default)
 /keep*.md

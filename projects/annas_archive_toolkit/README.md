@@ -38,6 +38,13 @@ Empfohlen:
 - **Code-Repo (working copy)**: `code/annas-archive-toolkit/`
 - **Doku/Projektstruktur**: `projects/annas_archive_toolkit/`
 
+## Cursor Setup (damit “Code KI” auch Docs/Infra kennt)
+
+Wenn du im Code arbeitest (z. B. Autocomplete/Agent), aber gleichzeitig Kontext aus `projects/` und `infrastructure/` brauchst:
+
+- Öffne als Workspace: `ai_projects.code-workspace` (Multi-Root, 1 Fenster)
+- Alternativ: öffne `ai_projects/` und stelle sicher, dass `code/` im Workspace sichtbar/indexierbar ist (kein “nur docs” Setup).
+
 ## Kanonische Doku (hier)
 
 - `00_overview/` (Mission, Problem, Value)

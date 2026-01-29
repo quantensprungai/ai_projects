@@ -19,7 +19,9 @@ notes: []
 
 ## Repo-Intent (wichtig)
 - Das Root-Repo `ai_projects/` ist **Docs/Infra/Meta**.
-- `/code/**` ist ein separater Bereich (eigene Repos). Änderungen dort nur, wenn explizit gefordert.
+- `/code/**` ist ein separater Bereich (eigene Repos).
+  - **Lesen/Referenzieren** ist ausdrücklich ok (damit KI Code+Docs+Infra zusammen versteht).
+  - **Änderungen/Commits** im jeweiligen Code-Repo nur, wenn explizit gefordert (und dann im richtigen Repo committen).
 
 ## Reality-Block Konvention
 - Jede Markdown-Datei hat einen Reality-Block.
