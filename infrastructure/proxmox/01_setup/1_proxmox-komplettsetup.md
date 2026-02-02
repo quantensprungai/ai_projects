@@ -145,16 +145,54 @@ Remote‑Management über:
 
 ## 3. Überblick der VMs und Container
 
+### Soll-Konfiguration (Baseline / empfohlen)
+
 | Typ  | ID  | Name         | RAM  | Cores | Lokale IP       | Tailscale Name | Funktion                         |
 |------|-----|--------------|------|-------|----------------|----------------|----------------------------------|
 | Host | –   | pve          | –    | –     | 192.168.0.50   | pve            | Proxmox Hypervisor               |
-| VM   | 101 | management   | 4 GB | 1     | 192.168.0.12   | management     | RustDesk, Portainer, Tailscale   |
+| VM   | 101 | management   | 2 GB | 1     | 192.168.0.12   | management     | RustDesk, Portainer, Tailscale   |
 | VM   | 102 | docker-apps  | 8 GB | 2     | 192.168.0.16   | docker-apps    | Docker + Downloader (ohne VPN)  |
 | VM   | 103 | linux-mint   | 8 GB | 2     | DHCP           | –              | Optional                         |
-| VM   | 105 | win11pro     | 20 GB| 4     | DHCP           | win11pro105    | Entwicklung & WSL2               |
+| VM   | 105 | win11pro     | 16 GB| 4     | DHCP           | win11pro105    | Entwicklung & WSL2               |
 | LXC  | 110 | homeassistant| 2 GB | 2     | 192.168.0.90   | –              | Home Assistant                   |
 
 ---
+
+### Ist-Zustand (Reality Check, aus Proxmox UI)
+
+Stand: **2026-01-30** (aus der Proxmox Übersicht; inkl. nachträglicher Ressourcen-Anpassungen).
+
+| Typ  | ID  | Name         | RAM  | Cores | Status   | Beobachtung |
+|------|-----|--------------|------|-------|----------|------------|
+| VM   | 101 | management   | 2 GB | 1     | running  | ok; RAM ~50% genutzt |
+| VM   | 102 | docker-apps  | 8 GB | 2     | running  | vorher sehr knapp; nach Upgrade weniger Memory-Pressure erwartet |
+| VM   | 105 | win11pro     | 16 GB| 4     | running  | bleibt CPU-sensitiv → WSL2/Docker limitieren |
+| LXC  | 110 | homeassistant| 2 GB | 2     | stopped  | aktuell aus |
+
+Host-Health (Proxmox):
+- Werte hängen stark von „was läuft gerade“ ab.
+- Wenn der Host **swappt**: Ressourcen so verteilen, dass der Host dauerhaft Puffer hat (siehe Empfehlungen unten).
+
+### Was das praktisch heißt (und was man optimieren kann)
+
+- **VM105 ist CPU-bound**: Wenn Windows/WSL2/Docker + Cursor gleichzeitig laufen, sind **4 vCPU** schnell voll.
+  - Gegenmaßnahme: WSL2/Docker **hart limitieren** (siehe `infrastructure/dev_environment/vm105_wsl2.md` → Performance-Tuning, `.wslconfig`).
+  - Zusätzlich: in Cursor **Workspaces fokussieren** (siehe `infrastructure/dev_environment/cursor_workflow.md`).
+
+- **Host swappt**: Auch wenn es “nur” ~1 GiB ist, ist Swap auf dem Proxmox Host ein klares Signal, dass RAM knapp wird (VMs + Page Cache + Host).
+  - Gegenmaßnahme: **RAM-Zuteilungen** so planen, dass dem Host dauerhaft ein Puffer bleibt (Faustregel: mehrere GiB frei).
+
+- **VM102 ist sehr knapp** (4 GB / 1 Core bei ~92% RAM): Alles was “mehr Docker” ist (z. B. Dev-Supabase) wird dort **schnell eng**, wenn gleichzeitig andere Apps laufen.
+  - Wenn VM102 “Docker-Apps” bleiben soll: eher Richtung **2 vCPU / 8–12 GB**.
+  - Alternativ: Dev-Services in **separate VM** (sauberer als alles auf VM102 zu stapeln).
+
+#### Empfohlene Ressourcen-Verteilung (bei 32 GB Host-RAM)
+
+Ein konservatives Profil (Priorität: VM105 interaktiv, Host swap vermeiden):
+- VM105 (win11pro): **16 GB RAM**, 4 vCPU (Windows braucht “Luft”, aber 20 GB ist nicht immer nötig)
+- VM102 (docker-apps): **6–8 GB RAM**, 2 vCPU (falls dort mehr Docker-Workloads geplant sind)
+- VM101 (management): **2–3 GB RAM**, 1 vCPU
+- Host: **Puffer einplanen** (Rest nicht verplanen; Swap vermeiden)
 
 ## 4. Proxmox Host Netzwerk & Firewall
 
@@ -205,7 +243,7 @@ iface vmbr0 inet static
 
 **Ressourcen:**
 - 1 Core  
-- 4 GB RAM  
+- 2 GB RAM  
 - IP: 192.168.0.12  
 
 **Funktionen:**
@@ -322,7 +360,7 @@ Details zum vollständigen `docker-compose.yml` kannst du bei Bedarf separat erg
 
 **Ausstattung:**
 - 4 Cores  
-- 20 GB RAM  
+- 16 GB RAM  
 - 800 GB NVMe  
 - UEFI (OVMF), TPM 2.0  
 - VirtIO‑Treiber  

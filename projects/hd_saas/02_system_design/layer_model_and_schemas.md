@@ -119,15 +119,16 @@ Edge:
 {
   "interpretation_id": "uuid",
   "system": "HD|BaZi|Astro|GeneKeys|...",
-  "source": "book|lecture|transcript|website",
-  "element_type": "Gate|Line|Profile|Stem|Branch|...",
+  "element_type": "Gate|Line|Profile|Type|Authority|Strategy|Stem|Branch|...",
   "element_id": "string",
-  "text_raw": "string",
-  "text_clean": "string",
-  "highlighted_statements": ["string"],
-  "metadata": { "ingest_id": "uuid", "chunk_id": "uuid", "created_at": "timestamp" }
+  "payload": { "...": "siehe Interpretations Contract" },
+  "evidence": { "chunk_id": "uuid|null", "quotes": ["string"] },
+  "metadata": { "source": "book|lecture|transcript|website", "created_at": "timestamp" }
 }
 ```
+
+Autoritativ für `payload` ist:
+- `projects/hd_saas/02_system_design/interpretations_contract.md`
 
 ### L6 Dynamics Engine (Prozesslogik)
 
@@ -201,7 +202,10 @@ Edge:
   "synthesis_id": "uuid",
   "element_type": "Gate|Line|Profile|...",
   "element_id": "string",
-  "generated_description": "string",
+  "canonical_description": "string",
+  "canonical_wording": "string|null",
+  "styles": { "natural": "string|null", "coaching": "string|null", "poetic": "string|null", "technical": "string|null" },
+  "language": "de|en|...",
   "version": 1,
   "sources_used": ["interpretation_id"],
   "metadata": { "model": "string", "created_at": "timestamp" }

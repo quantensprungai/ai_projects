@@ -51,9 +51,18 @@ Wenn du im Code arbeitest (z. B. Autocomplete/Agent), aber gleichzeitig Kontex
 - `00_overview/status.md` (aktueller Stand + nächste Schritte)
 - `01_spec/` (Topics/Profiles)
 - `02_system_design/` (Deployment/Sync, Workflow)
+  - `workflow.md` - High-Level Workflow
+  - `complete_workflow.md` - Kompletter Workflow (Topics → KG, Duplikat-Prävention)
+  - `daily_workflow.md` - Täglicher Workflow für Fast-Downloads
+  - `hd_saas_processing.md` - Weiterverarbeitung in HD-SaaS (Worker-Pipeline, Status-Management)
+  - `next_steps.md` - Nächste Schritte (wenn output/hd_content leer ist)
 
 Siehe auch:
 - `infrastructure/proxmox/01_setup/3_annas-archive-wissenssystem.md`
 - `projects/annas_archive_toolkit/02_system_design/deployment_and_sync.md`
+
+**Technische Anleitungen (Code-Repo):**
+- `../../code/annas-archive-toolkit/docs/FAST_DOWNLOAD_SETUP.md` - Fast-Download Setup
+- `../../code/annas-archive-toolkit/docs/EXECUTION_GUIDE.md` - Wo Scripts ausgeführt werden
 
 

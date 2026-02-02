@@ -19,6 +19,16 @@ notes:
 ## Zweck
 VM102 ist dein zentraler Docker‑Host für Apps/Downloader/Utilities.
 
+## Sizing / Ressourcen (Reality Check)
+
+Wenn auf VM102 mehrere Stacks parallel laufen (z. B. Nextcloud + DB + Redis + Proxy), ist VM102 schnell der Engpass.
+
+Empfehlung als Baseline:
+- **2 vCPU**
+- **8 GB RAM**
+
+Wenn VM102 dauerhaft „rot“ läuft (RAM permanent >80%, viel IO), sind **10–12 GB RAM** realistischer.
+
 ## Basisinstallation (Debian)
 
 ```bash

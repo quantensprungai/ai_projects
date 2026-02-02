@@ -1,5 +1,5 @@
 <!-- Reality Block
-last_update: 2026-01-16
+last_update: 2026-01-30
 status: draft
 scope:
   summary: "Aktueller Stand (Snapshot) + nächste Schritte für Anna's Archive Toolkit (HD + Survival)."
@@ -37,6 +37,17 @@ notes: []
     - `HD_DUPLICATES` → `/downloads_hd/_DUPLICATES`
   - Credentials laufen über `/etc/annas-archive-toolkit/qbt.env` (env vars), nicht im Repo.
   - `--setup-categories` funktioniert und authentifiziert auf VM102.
+- **Fast-Download (Member-API) ist implementiert**:
+  - Direkte Downloads ohne Magnet/Torrent über Anna's Archive Member-API
+  - Resume-Support für unterbrochene Downloads
+  - **Automatische Relevanz-Filterung** basierend auf `topics.txt`:
+    - Relevanz-Scoring (0.0-1.0) basierend auf Titel/Autor-Matches
+    - False-Positive-Erkennung (z.B. "UX Design" ohne "human design" → Score 0.0)
+    - Autor-Bonuses (Ra Uru Hu, Karen Curry Parker, Richard Rudd)
+    - Standard-Threshold: 0.2 (konfigurierbar)
+  - Queue-Management: `reset_queue_status.py` zum Zurücksetzen von `completed` Items
+  - Download-Pfad-Korrektur: Keine doppelte Verschachtelung mehr
+  - Detailliertes Debug-Output: Status-Verteilung, Score-Verteilung, Top 20 Items
 
 ## Pipeline‑Logik (wichtig: “Metadaten vs Download vs Ingestion”)
 
@@ -65,5 +76,38 @@ notes: []
 - **Survival (`survival`)**:
   - Optional: gleiche Contract‑Kette nutzen (`metadata.*` → `assets.jsonl` → `acquire_queue.json`).
   - Danach: separate Acquire/Weiterverarbeitung (eigenes Projekt, nur gemeinsame Toolkit‑Infrastruktur).
+
+## Runbook: Daily Downloads (VM102)
+
+- **Wichtig**: `run_daily_downloads.ps1` ist **Windows/PowerShell** (VM105) und steuert VM102 via SSH.
+- Auf **VM102** läuft der eigentliche Run als Bash: `scripts/run_daily_downloads.sh`.
+
+### Start auf VM102 (Linux)
+
+```bash
+cd /home/user/annas-archive-toolkit
+chmod +x scripts/run_daily_downloads.sh
+
+# Normal: neue Downloads
+bash scripts/run_daily_downloads.sh 50 false
+
+# Retry: fehlgeschlagene Downloads
+bash scripts/run_daily_downloads.sh 50 true
+```
+
+### Start auf VM105 (Windows PowerShell → remote VM102)
+
+```powershell
+cd "C:\Users\Admin105\ai_projects\code\annas-archive-toolkit"
+
+# Status/Limits prüfen
+powershell -ExecutionPolicy Bypass -File .\run_daily_downloads.ps1 -CheckOnly
+
+# Retry (failed)
+powershell -ExecutionPolicy Bypass -File .\run_daily_downloads.ps1 -RetryFailed -MaxItems 50
+
+# Neue Downloads
+powershell -ExecutionPolicy Bypass -File .\run_daily_downloads.ps1 -MaxItems 50
+```
 
 

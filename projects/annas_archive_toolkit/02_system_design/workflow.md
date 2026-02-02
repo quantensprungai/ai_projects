@@ -31,6 +31,11 @@ notes: []
 - **VM105**: Code/Doku, Parameter/Profiles pflegen
 - **VM102**: Pipeline ausführen (Runtime)
 
+## Detaillierte Workflows
+
+- **Kompletter Workflow:** `complete_workflow.md` - End-to-End von Topics zu Knowledge Graph
+- **Täglicher Workflow:** `daily_workflow.md` - Fast-Downloads, Limit-Management, Retries
+
 ## Links
 
 - Code: `../../code/annas-archive-toolkit/`

@@ -22,6 +22,12 @@ Dieses Repository ist die **Entwicklungs‑ und Dokumentations‑Basis** für al
 - `infrastructure/` – Infrastruktur-Themen (Proxmox, Tailscale, Monitoring, Dev-Environment, …)
 - `code/` – **separate** Code-Repositories (je Projekt eigenes Git-Repo; nicht Teil des Root-Repos)
 
+## Cursor Workspace (wichtig, damit Code-KI Docs/Infra kennt)
+
+- **Wenn du im Code arbeitest** (Autocomplete/Agent), aber gleichzeitig Kontext aus `projects/` und `infrastructure/` brauchst:
+  - Öffne **`ai_projects.code-workspace`** (Multi-Root) statt nur den Ordner `ai_projects/`.
+- Du kannst **mehrere Cursor-Fenster mit demselben Workspace** öffnen (z. B. 1 Fenster “Docs/Infra”, 1 Fenster “Code”).
+
 ## Git-Strategie (wichtig)
 
 - Dieses Root-Repo (falls du es auf GitHub pushst) ist **Docs/Infra only**.

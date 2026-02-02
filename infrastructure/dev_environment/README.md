@@ -52,5 +52,12 @@ Wenn Windows die Auflösung nicht ändern lässt (z. B. nur 1280×800, ausgegrau
 
 - `vm105_wsl2.md`
 
+## Performance-Notizen (VM105/Cursor/Docker)
+
+Wenn VM105 (Windows/WSL2/Docker) spürbar langsam wird:
+
+- **Cursor-Workspaces**: möglichst fokussiert arbeiten (siehe `cursor_workflow.md` → Performance).
+- **Docker/WSL2**: Ressourcen limitieren + `.wslconfig` nutzen (siehe `vm105_wsl2.md` → Performance-Tuning).
+
 
 

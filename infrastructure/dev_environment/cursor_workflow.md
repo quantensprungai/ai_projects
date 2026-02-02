@@ -38,6 +38,18 @@ Ein gemeinsamer, reproduzierbarer Workflow für Cursor in unserem Setup:
 - **Implementierung in einem Projekt**: Workspace = `code/<repo>/` (fokussiert)
 - **Crosslinks**: In Code-Repos kurze “Docs live here” Sektion (siehe `projects/_meta/rules.md`)
 
+### Performance: was wirklich hilft (wenn die VM langsam wird)
+
+- **Weniger parallele Workspaces**: Root-Repo + mehrere Code-Repos gleichzeitig triggert mehrfaches Indexing (TypeScript Server, Search, Watcher).
+- **Fokussieren statt „alles offen“**:
+  - Doku/Infra: Workspace = `ai_projects/`
+  - Coding: Workspace = `code/<repo>/`
+  - Nicht beides “voll” parallel, wenn die Maschine knapp ist.
+- **Docker begrenzen**: Docker Desktop/WSL2 kann sonst CPU/RAM „wegfressen“. Siehe `vm105_wsl2.md` → Performance-Tuning.
+- **Symptom-getrieben**:
+  - UI hängt → meist CPU/RAM contention (zu viele Prozesse gleichzeitig)
+  - Builds langsam → oft IO (Repo auf Windows-FS statt WSL-Linux-FS)
+
 ### Regeln & Slash Commands
 
 Wir nutzen Rules/Commands, um wiederkehrende Arbeit zu standardisieren:
