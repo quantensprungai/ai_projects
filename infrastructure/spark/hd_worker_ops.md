@@ -1,5 +1,5 @@
 <!-- Reality Block
-last_update: 2026-02-06
+last_update: 2026-02-09
 status: draft
 scope:
   summary: "Ops-Notizen für den HD Worker auf Spark: Debug/Retry, typische Fehler, Supabase Checks."
@@ -13,6 +13,11 @@ notes: []
 -->
 
 # HD Worker – Ops (Spark)
+
+## Status (Stand 2026-02-09)
+
+- **Requeue:** Der Worker wählt Jobs **nur** nach `status = queued` (und `job_type`). Die Spalte **`error`** wird in `_pick_next_job` **nicht** gefiltert. Trotzdem empfohlen beim Requeue: `status = 'queued'` **und** `error = null` setzen, damit die Anzeige stimmt und der Job sofort als „queued“ gilt.
+- **MinerU / OCR-Route (offen):** Ein bestimmter `extract_text`-Job (PDF) wird seit vielen Attempts (27–29) stets mit **`routed_to: "extract_text_ocr"`**, **`extracted_text_len: 0`** und **ohne** `mineru_fallback` im Job-Debug abgeschlossen. Im Worker-Code ist bei OCR-Route **`**debug`** bzw. **`_debug_out`** mit Truncation von `mineru_fallback_detail` eingebaut; `mineru_fallback` erscheint in der DB trotzdem nicht. In journalctl erscheinen für den laufenden Run teils **nicht** die erwarteten Zeilen (`[extract_text] routing to OCR`, `update payload has mineru_fallback=...`), obwohl nur ein Worker-Prozess läuft und die .env unter systemd stimmt (HD_USE_MINERU etc.). **Bereits erledigt:** .env CRLF-Fix; Prüfung Env unter systemd (`/proc/$PID/environ`); **debug im Update-Payload; _debug_out + Truncation + Ops-Prints im Skript.** **Nächste Schritte:** Einmal mit gestopptem Service (`systemctl stop hd-worker`) und **Job auf queued + error=null** den Worker per `systemd-run --pipe --wait ... hd_worker_mvp.py --once` ausführen und Output prüfen; oder journalctl für den exakten Zeitraum des Runs (started_at/finished_at) mit `-l` durchsuchen.
 
 ## Zweck
 
@@ -74,7 +79,7 @@ Minimal‑ENV:
 - `SUPABASE_URL` (Cloud)
 - `SUPABASE_SERVICE_ROLE_KEY` (Service Role; server‑only)
 
-**MinerU (strukturiertes Markdown für RAG):** Auf Spark mit **`requirements-hd-worker-spark.txt`** ist MinerU bereits im venv installiert. In `.env`: `HD_USE_MINERU=true`, ggf. `HD_MINERU_BACKEND=hybrid`, `HD_MINERU_DEVICE=cuda`, `HD_MINERU_LANG=latin` (oder `en`, `ch`). **Automatische Spracherkennung (z. B. Chinesisch):** `HD_MINERU_AUTO_LANG=true` (und `HD_MINERU_LANG` leer) – Worker erkennt Sprache aus ersten Seiten (fast_langdetect) und übergibt sie an MinerU; Ergebnis in **asset.metadata.detected_language**. Dann nutzt `extract_text` (PDF) MinerU statt PyMuPDF; Chunking ist **heading-aware** (##/###-Abschnitte), optimal für LLM-Extraktion. Kein separater `extract_text_ocr`-Pfad für Hybrid-PDFs nötig. Gesamtprozess (PDF → Chunks → classify_domain → extract_interpretations): `infrastructure/spark/pdf_extraction_options.md`.
+**MinerU (strukturiertes Markdown für RAG):** Auf Spark mit **`requirements-hd-worker-spark.txt`** ist MinerU bereits im venv installiert. In `.env`: `HD_USE_MINERU=true`, ggf. `HD_MINERU_BACKEND=hybrid`, `HD_MINERU_DEVICE=cuda`, `HD_MINERU_LANG=latin` (oder `en`, `ch`). **Timeout:** Standard 1800 s (30 min); für große Scans z. B. `HD_MINERU_TIMEOUT=3600` (1 h). **Automatische Spracherkennung (z. B. Chinesisch):** `HD_MINERU_AUTO_LANG=true` (und `HD_MINERU_LANG` leer) – Worker erkennt Sprache aus ersten Seiten (fast_langdetect) und übergibt sie an MinerU; Ergebnis in **asset.metadata.detected_language**. Dann nutzt `extract_text` (PDF) MinerU statt PyMuPDF; Chunking ist **heading-aware** (##/###-Abschnitte), optimal für LLM-Extraktion. Kein separater `extract_text_ocr`-Pfad für Hybrid-PDFs nötig. Gesamtprozess (PDF → Chunks → classify_domain → extract_interpretations): `infrastructure/spark/pdf_extraction_options.md`.
 
 **MinerU mit CUDA (optional):** Wenn im Job-Debug `Torch not compiled with CUDA enabled` steht, nutzt das venv PyTorch ohne CUDA – MinerU (hybrid-auto-engine) schreibt dann keine .md, der Worker leitet Scans auf **extract_text_ocr** (EasyOCR) um. Das reicht für den Betrieb. Falls ihr MinerU auch für Scans mit strukturiertem Markdown nutzen wollt: im Worker-venv PyTorch mit CUDA nachinstallieren (siehe unten).
 
@@ -126,6 +131,8 @@ print("HAS_SERVICE_ROLE_KEY =", bool(os.environ.get("SUPABASE_SERVICE_ROLE_KEY")
 PY
 ```
 
+**`.env` mit Windows-Zeilenenden (CRLF):** Wenn die `.env` unter Windows erstellt/ bearbeitet wurde, können Werte ein `\r` am Ende haben (z. B. `HD_USE_MINERU 'true\r'`). Der Worker nutzt für Umgebungsvariablen `.strip()`, trotzdem kann das unter Linux/systemd zu Problemen führen. **Fix auf Spark:** `sed -i 's/\r$//' ~/srv/hd-worker/.env` (entfernt nur `\r` am Zeilenende), danach `sudo systemctl restart hd-worker.service`. Prüfen: `python3 -c "import os; ...; source .env ...; print(repr(os.environ.get('HD_USE_MINERU')))"` → sollte `'true'` ohne `\r` sein.
+
 ## Betrieb als Service (systemd)
 
 Ziel: Worker läuft stabil weiter, Restart‑Policy, Logs über journalctl, keine „hängenden“ Sessions.
@@ -160,6 +167,25 @@ WantedBy=multi-user.target
 ```
 
 Hinweis: `ProtectHome=false`, weil wir typischerweise unter `/home/sparkuser/srv/...` arbeiten. Kann später strenger werden.
+
+**Was sieht der Worker unter systemd? (Env prüfen)**  
+Wenn sich der Worker unter systemd anders verhält als beim manuellen Test mit `source .env`, die **tatsächliche Prozess-Umgebung** prüfen (während der Service läuft):
+
+```bash
+# PID des Worker-Prozesses
+PID=$(systemctl show hd-worker.service -p MainPID --value)
+# oder: PID=$(pgrep -f hd_worker_mvp.py)
+
+# Alle HD_*-Variablen, die der laufende Prozess sieht (sudo nötig)
+sudo cat /proc/$PID/environ | tr '\0' '\n' | grep -E '^HD_|^SUPABASE_'
+```
+
+Fehlt `HD_USE_MINERU` hier, liest systemd die `.env` nicht wie erwartet (Format, Pfad, Rechte). Steht es da, liegt die Ursache im Worker-Code/Logik.
+
+**Warum kann der CLI-Test anders sein?**  
+- **Shell:** `set -a; source .env; set +a; python3 ...` – die Shell parst die `.env` (Zeilen, Anführungszeichen, Export) und exportiert jede Variable; Python erbt sie.  
+- **systemd:** `EnvironmentFile=` wird von systemd geparst – andere Regeln (z. B. keine Variablen-Expansion wie `$VAR`, Zeilen mit `#` = Kommentar, evtl. sensibel bei Sonderzeichen). Außerdem: systemd lädt die Datei beim **Start der Unit**; Änderungen an `.env` erst nach `systemctl restart` sichtbar.  
+- Mögliche Unterschiede: (1) CRLF in `.env` (bereinigen mit `sed -i 's/\r$//' .env`). (2) Zeilen mit Leerzeichen um `=` oder Werte in Anführungszeichen – bei systemd manchmal anders. (3) Reihenfolge/Überschreibung – wenn systemd noch andere `Environment=`-Zeilen setzt, können Werte überschrieben werden.
 
 ### 2) Enable/Start/Logs
 
@@ -352,4 +378,15 @@ So siehst du direkt, was MinerU ausgibt und ob Dateien woanders landen. Bei Beda
 | PDF verschlüsselt | `doc.is_encrypted` in Schritt 2 |
 | Reiner Scan, OCR schlägt fehl (Modell/CUDA) | MinerU **stderr** in Job‑Error/Debug (Schritt 1) |
 | MinerU schreibt woanders hin | `find /tmp/mineru_debug` in Schritt 3 |
+
+### 5) MinerU: Predict 100 % aber keine .md
+
+Wenn MinerU mit **Exit 0** endet, **Predict 100 %** in stderr steht und **Bilder** in `…/hybrid_auto/images/` liegen, aber **keine .md-Datei** erzeugt wird, fehlt vermutlich ein Pipeline-Schritt in MinerU (Layout/OCR → Markdown-Schreibschritt). Das ist **nicht** im Worker lösbar.
+
+- **Worker:** Liefert bei „no .md“ die **vollständige Liste aller Dateien** im Ausgabeverzeichnis (nicht nur Ordner-Inhalt) – damit siehst du genau, was MinerU geschrieben hat (z. B. nur .jpg, oder auch .json). Im Job-Debug steht zusätzlich **`mineru_duration_sec`** (Laufzeit des MinerU-Subprocesses in Sekunden), sodass du z. B. siehst, wie lange MinerU bis zu den JPGs gebraucht hat.
+- **Vorgehen:**  
+  1. Job-Debug bzw. Fehlermeldung prüfen („All files in output dir:“).  
+  2. Bei opendatalab/MinerU ein **Issue** öffnen: „hybrid-auto-engine, Predict 100 %, images present, no .md file“ + Ausschnitt aus stderr und Dateiliste.  
+  3. **Bis zum Fix:** Weiter **Fallback zu extract_text_ocr** (EasyOCR) nutzen – Chunks entstehen zuverlässig, nur ohne MinerU-Markdown-Struktur.
+- **Ziel:** Sobald MinerU wieder .md ausgibt (oder ein Nachbearbeitungsschritt dokumentiert ist), liefert der Worker automatisch MinerU-Chunks (heading-aware), ohne Änderung am Worker.
 
