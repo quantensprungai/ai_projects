@@ -1,0 +1,21 @@
+ehemaligen CIA-Spionen Andrew und Jihi Bustamante, basierend auf den vorliegenden Quellen. Ihr Bericht bietet einen einzigartigen Einblick in die Welt der Spionage, die Jagd nach einem Maulwurf und eine düstere geopolitische Prognose für die USA.
+Andrew & Jihi Bustamante: Die Schattenwelt der Spionage und der „Maulwurf“
+Andrew Bustamante (ehemaliger clandestine CIA-Offizier und Air-Force-Veteran) und seine Frau Jihi (ehemalige CIA-Targeterin) arbeiteten als Tandem-Paar – ein echtes Ehepaar, das gemeinsam für verdeckte Operationen trainiert wurde. Ihr wichtigster Einsatz war die Mitwirkung an der Enttarnung eines Maulwurfs innerhalb der CIA.
+Die Operation „Shadow Cell“ und die Jagd nach dem Verräter
+• Der Anlass: Ein ausländischer Verbündeter informierte die CIA, dass es in den eigenen Reihen eine „Penetration“ (einen Maulwurf) gebe, der Geheimnisse an ein feindliches Land (Codename „Falcon“) weitergab.
+• Das Ziel: Da der Maulwurf Zugriff auf alle bestehenden Quellen hatte, mussten die Bustamantes in einem Nachbarland (Codename „Wolf“) völlig neue, isolierte Geheimdienstquellen aufbauen. Das Kalkül war, dass der Maulwurf versuchen würde, diese neuen Informationen zu „erproben“, dabei Fehler machen würde und so enttarnt werden könnte.
+• Das terroristische Modell: Die Bustamantes nutzten für ihren Aufbau das Zellen-Modell von Terrororganisationen, gegen das die USA in den letzten 20 Jahren oft machtlos waren. Dieses Modell basierte auf radikaler Kompartimentierung und dem Verzicht auf komplexe Technologie zugunsten von „Sticks and Bricks“ (einfache, bewährte Methoden), die schwerer zu hacken sind.
+Tradecraft: Die Kunst der Täuschung
+Die Bustamantes offenbaren spezifische Techniken, die sie im Feld anwandten:
+• Reinigungsrouten (Cleansing Routes): Um von „Wolf“ nach „Falcon“ zu reisen, nutzten sie neutrale Drittländer und führten dort Pass-Swaps durch, damit der Feind ihre wahre Herkunft nicht zurückverfolgen konnte.
+• SDR (Surveillance Detection Route): Andrew beschreibt detailliert, wie er eine dreieinhalbstündige Route durch eine Stadt nutzte, um Verfolger zu identifizieren. Dabei geht es darum, dieselben Personen oder Fahrzeuge an mehreren, nicht zusammenhängenden Orten zu sichten.
+• Psychologisches „Mirroring“: In Verhörsituationen ist es das Ziel, dem Gegenüber die Körpersprache und Emotionen eines Unschuldigen zurückzuspiegeln, um Vertrauen zu erzeugen und Verdacht abzuwenden.
+Die Warnung: Warum sie die USA verlassen
+Die Bustamantes vertreten die radikale Ansicht, dass die USA vor 2030 verlassen werden sollten, und planen selbst, das Land bis spätestens 2026 zu verlassen.
+• Niedergang der „Old America“: Sie beschreiben ein „altes Amerika“, das von Konsens und funktionierenden Institutionen geprägt war. Das „neue Amerika“ sei durch einen starken Exekutiv-Präsidenten (der immer mehr Macht an sich reißt) und einen politisch blockierten Kongress gekennzeichnet.
+• Geopolitische Schwäche: Andrew argumentiert, dass der Einfluss der USA weltweit schwindet und das Land strategisch „ausgehöhlt“ wurde, indem es Verbündete (wie in Europa oder Lateinamerika) künstlich schwach hielt.
+• Zivilisatorischer Umbruch: Jihi vergleicht die aktuelle Lage mit ihrer Heimat Venezuela in den 80er Jahren – eine damals florierende Demokratie, die innerhalb weniger Jahre kollabierte. Sie warnen davor, dass die „Schrift an der Wand“ in den USA bereits sichtbar sei (Polarisierung, Misstrauen gegenüber der Regierung, wirtschaftliche Instabilität).
+Weitere wichtige Erkenntnisse
+• Privatsphäre ist eine Illusion: Sie warnen eindringlich, dass Technologie niemals 100% sicher ist. Behörden und Kriminelle können Festplatten klonen, Passwörter in Minuten knacken und Kontakte scannen, oft ohne dass der Nutzer es merkt.
+• CIA als Wirtschaftsunternehmen: Die CIA betreibt zahlreiche Tarnfirmen, die teilweise hochprofitabel sind. Die Gewinne fließen in das sogenannte „Black Budget“, ein diskretionärer Geldtopf außerhalb des Steuerzahlers.
+• Epstein als „Konstrukt“: Andrew vermutet (auf Basis von Wahrscheinlichkeiten), dass Jeffrey Epstein ein „Konstrukt“ von Geheimdiensten war, der kompromittierende Informationen über die US-Elite sammelte.
