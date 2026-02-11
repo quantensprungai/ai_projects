@@ -1,0 +1,74 @@
+{
+  "system_id": "enneagram",
+  "system_name": "Enneagram of Personality",
+  "canonical_prefix": "enn.",
+  "input_format": "assessment|observation",
+  "calendar_basis": "none",
+  "element_types": [
+    "type",
+    "wing",
+    "tritype",
+    "instinctual_variant",
+    "integration_line",
+    "disintegration_line",
+    "level_of_development"
+  ],
+  "identifier_rules": {
+    "type": "1-9",
+    "wing": "w1-w9",
+    "tritype": "three_digit_combination",
+    "instinctual_variant": "sp|so|sx"
+  },
+  "canonical_id_rules": {
+    "format": "enn.{element_type}.{element_id}",
+    "examples": [
+      "enn.type.5",
+      "enn.wing.5w4",
+      "enn.tritype.548",
+      "enn.instinctual_variant.sp_sx"
+    ]
+  },
+  "term_mapping_rules": {
+    "schools": ["Riso_Hudson", "Naranjo", "Palmer", "Maitri", "Chestnut"],
+    "synonym_sources": ["interpretations", "manual"],
+    "normalization": "lowercase_underscore",
+    "allow_unknown_terms": false
+  },
+  "kg_rules": {
+    "allowed_relation_types": [
+      "integrates_to",
+      "disintegrates_to",
+      "wings_to",
+      "part_of_tritype",
+      "connects_to",
+      "opposes"
+    ],
+    "node_types": ["Type", "Wing", "Tritype", "Instinct", "Level", "Arrow"]
+  },
+  "dynamics_rules": {
+    "has_dynamics": true,
+    "dynamic_types": [
+      "integration_path",
+      "stress_path",
+      "growth_levels",
+      "passion_to_virtue"
+    ],
+    "temporal_alignment": []
+  },
+  "synthesis_rules": {
+    "default_style": "psychological",
+    "allowed_styles": ["psychological", "coaching", "spiritual", "natural"],
+    "wording_tone": "psychologisch präzise, entwicklungsorientiert",
+    "language_defaults": ["de", "en"]
+  },
+  "interaction_rules": {
+    "supports_interactions": true,
+    "interaction_entities": ["type", "wing", "instinct"]
+  },
+  "body_mechanics_support": true,
+  "hidden_expectations_support": true,
+  "relationship_dynamics_support": true,
+  "environment_fate_support": false,
+  "integration_note": "Enneagram is NOT birth-based. Input is assessment/observation only. No automatic mapping from HD chart to Enneagram type in core.",
+  "documentation_ref": "specs/enneagram.md"
+}

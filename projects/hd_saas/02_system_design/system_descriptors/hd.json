@@ -1,0 +1,106 @@
+{
+  "system_id": "hd",
+  "system_name": "Human Design",
+  "canonical_prefix": "hd.",
+  "input_format": "datetime+location",
+  "calendar_basis": "gregorian",
+  "element_types": [
+    "type",
+    "strategy",
+    "authority",
+    "center",
+    "gate",
+    "line",
+    "channel",
+    "profile",
+    "circuit",
+    "definition",
+    "incarnation_cross",
+    "not_self_theme",
+    "signature"
+  ],
+  "identifier_rules": {
+    "gate": "1-64",
+    "line": "1-6",
+    "profile": "digit_digit",
+    "definition": "single|split|triple_split|quadruple_split"
+  },
+  "canonical_id_rules": {
+    "format": "hd.{element_type}.{element_id}",
+    "examples": [
+      "hd.type.generator",
+      "hd.profile.3_5",
+      "hd.center.g",
+      "hd.gate.34",
+      "hd.definition.split",
+      "hd.incarnation_cross.right_angle_cross_of_planning"
+    ]
+  },
+  "term_mapping_rules": {
+    "schools": ["HD_classic", "64keys", "GeneKeys", "Modern_HD"],
+    "synonym_sources": ["interpretations", "manual"],
+    "normalization": "lowercase_underscore",
+    "allow_unknown_terms": false
+  },
+  "kg_rules": {
+    "allowed_relation_types": [
+      "part_of",
+      "belongs_to",
+      "depends_on",
+      "amplifies",
+      "weakens",
+      "maps_to"
+    ],
+    "node_types": [
+      "Type",
+      "Strategy",
+      "Authority",
+      "Center",
+      "Gate",
+      "Line",
+      "Channel",
+      "Profile",
+      "Circuit",
+      "Definition",
+      "Cross"
+    ]
+  },
+  "dynamics_rules": {
+    "has_dynamics": true,
+    "dynamic_types": [
+      "phase_cycle",
+      "trap",
+      "growth_path",
+      "channel_duality_spectrum"
+    ],
+    "temporal_alignment": [
+      "saturn_return",
+      "uranus_opposition",
+      "chiron_return",
+      "seven_year_cell_cycle"
+    ]
+  },
+  "synthesis_rules": {
+    "default_style": "natural",
+    "allowed_styles": ["natural", "coaching", "poetic", "technical"],
+    "wording_tone": "klar, modern, verständlich",
+    "language_defaults": ["de", "en"]
+  },
+  "interaction_rules": {
+    "supports_interactions": true,
+    "interaction_entities": ["type", "profile", "center", "authority"]
+  },
+  "body_mechanics_support": true,
+  "hidden_expectations_support": true,
+  "relationship_dynamics_support": true,
+  "environment_fate_support": true,
+  "research_layer": {
+    "supports_research_hypotheses": true,
+    "hypothesis_types_allowed": [
+      "intra_system_correlation",
+      "inter_system_mapping",
+      "mechanism_theory"
+    ]
+  },
+  "documentation_ref": "specs/hd_system.md"
+}

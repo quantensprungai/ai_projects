@@ -1,0 +1,63 @@
+{
+  "system_id": "numerology",
+  "system_name": "Numerology (Pythagorean & Chaldean)",
+  "canonical_prefix": "num.",
+  "input_format": "datetime+name",
+  "calendar_basis": "gregorian",
+  "element_types": [
+    "life_path",
+    "destiny",
+    "soul_urge",
+    "personality",
+    "maturity",
+    "karmic_debt",
+    "master_number"
+  ],
+  "identifier_rules": {
+    "life_path": "1-9|11|22|33",
+    "destiny": "1-9|11|22|33",
+    "karmic_debt": "13|14|16|19"
+  },
+  "canonical_id_rules": {
+    "format": "num.{element_type}.{element_id}",
+    "examples": [
+      "num.life_path.7",
+      "num.destiny.11",
+      "num.karmic_debt.16"
+    ]
+  },
+  "term_mapping_rules": {
+    "schools": ["pythagorean", "chaldean", "kabbalah"],
+    "normalization": "number",
+    "allow_unknown_terms": false
+  },
+  "kg_rules": {
+    "allowed_relation_types": [
+      "resonates_with",
+      "challenges",
+      "complements",
+      "harmonizes"
+    ],
+    "node_types": ["LifePath", "Destiny", "SoulUrge", "Personality", "KarmicDebt"]
+  },
+  "dynamics_rules": {
+    "has_dynamics": true,
+    "dynamic_types": ["personal_year_cycle", "pinnacle_cycle"],
+    "temporal_alignment": ["9_year_cycle", "pinnacles"]
+  },
+  "synthesis_rules": {
+    "default_style": "natural",
+    "allowed_styles": ["natural", "mystical", "psychological"],
+    "wording_tone": "klar, zahlenmystisch, archetypisch",
+    "language_defaults": ["de", "en"]
+  },
+  "interaction_rules": {
+    "supports_interactions": true,
+    "interaction_entities": ["life_path", "destiny"]
+  },
+  "body_mechanics_support": false,
+  "hidden_expectations_support": false,
+  "relationship_dynamics_support": true,
+  "environment_fate_support": false,
+  "documentation_ref": "specs/numerology.md"
+}

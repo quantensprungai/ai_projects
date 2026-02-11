@@ -39,11 +39,13 @@ Eine Interpretation ist eine **strukturierte, zitier-/evidenzfähige Aussage** z
 - `expression`: string
 - `challenges`: string[]  (leer erlaubt)
 - `growth`: string[]      (leer erlaubt)
-- `source`: string        (z.B. `HD_classic`, `GeneKeys`, `64keys`, `modern_hd`)
+- `source`: string – **Herkunft der Extraktion** (vom Worker gesetzt): `llm_extraction` (echte LLM-Extraktion) oder `mvp_stub` (Platzhalter). Damit ist erkennbar, ob die Zeile „echt“ extrahiert wurde. **System/Schule** (hd, bazi, HD_classic, GeneKeys, …) steht in der Tabellenspalte `hd_interpretations.system`, nicht in payload.source.
 
 ### 2.2 Dimensions (required object, nullable values)
 
-**Regel:** `dimensions` muss **immer** vorhanden sein (stabiler Contract), aber jeder Slot darf `null` sein.
+**Regel:** `dimensions` muss **immer** vorhanden sein (stabiler Contract), aber jeder Slot darf `null` sein. **All dimensions MUST be propagated downstream to KG:** text2kg schreibt sie vollständig in `node.metadata.dimensions` (nie als Edges). Vollständiges Schema: **dimensions_contract.md**.
+
+**Core + erweiterte Layer (Keys mandatory, Werte nullable):**
 
 ```json
 {
@@ -55,7 +57,11 @@ Eine Interpretation ist eine **strukturierte, zitier-/evidenzfähige Aussage** z
     "shadow": null,
     "gift": null,
     "role": null,
-    "archetype": null
+    "archetype": null,
+    "body_mechanics": null,
+    "environment": null,
+    "relationship_pattern": null,
+    "projection_field": null
   }
 }
 ```
@@ -139,9 +145,102 @@ Beispiel (Type: Generator):
     "shadow": "Frustration durch falsche Commitments.",
     "gift": "Zufriedenheit durch korrektes Ja/Nein.",
     "role": null,
-    "archetype": null
+    "archetype": null,
+    "body_mechanics": null,
+    "environment": null,
+    "relationship_pattern": null,
+    "projection_field": null
   },
-  "source": "HD_classic"
+  "source": "llm_extraction"
+}
+```
+(Das System, z. B. hd/bazi/HD_classic, steht in der Zeile in `hd_interpretations.system`.)
+
+Beispiel (Type: Projektor):
+
+```json
+{
+  "essence": "Weisheit durch Erkennen und Gesehen-Werden.",
+  "mechanics": "Kein konstantes Energie-System; erkennt und lenkt Energie anderer.",
+  "expression": "Im Flow wenn eingeladen; Bitterkeit bei Nicht-Anerkennung.",
+  "challenges": ["ungeladen initiieren", "Nicht-Warten auf Einladung"],
+  "growth": ["Warten auf richtige Einladung", "sich gesehen und anerkannt fühlen"],
+  "interactions": {
+    "with_centers": ["offenes Sacral → Energiemanagement"],
+    "with_profile": ["4/6 verstärkt Netzwerk-Orientierung"],
+    "with_authority": []
+  },
+  "dimensions": {
+    "mechanical": "Erkennen statt Erzeugen.",
+    "psychological": null,
+    "somatic": null,
+    "social": "Einladung als Schlüssel.",
+    "shadow": "Bitterkeit durch Nicht-Anerkennung.",
+    "gift": "Weisheit durch richtige Einladung.",
+    "role": null,
+    "archetype": null,
+    "body_mechanics": null,
+    "environment": null,
+    "relationship_pattern": null,
+    "projection_field": null
+  },
+  "source": "llm_extraction"
+}
+```
+
+Beispiel (Strategy: Wait to Respond):
+
+```json
+{
+  "essence": "Reaktive Antwort auf Leben.",
+  "mechanics": "Sakral reagiert auf Reize; keine Initiation.",
+  "expression": "Zufriedenheit durch korrektes Ja/Nein.",
+  "challenges": ["zu früh initiieren", "Ja sagen ohne sakrale Antwort"],
+  "growth": ["Warten auf Reize", "sakrale Vokale hören"],
+  "interactions": { "with_centers": [], "with_profile": [], "with_authority": [] },
+  "dimensions": {
+    "mechanical": "Reaktion via Sakral.",
+    "psychological": null,
+    "somatic": null,
+    "social": null,
+    "shadow": null,
+    "gift": null,
+    "role": null,
+    "archetype": null,
+    "body_mechanics": null,
+    "environment": null,
+    "relationship_pattern": null,
+    "projection_field": null
+  },
+  "source": "llm_extraction"
+}
+```
+
+Beispiel (Authority: Sacral):
+
+```json
+{
+  "essence": "Körperliche Ja/Nein-Antwort.",
+  "mechanics": "Sakral antwortet direkt; keine Mentallogik nötig.",
+  "expression": "Uh-huh / Un-uh als Leitfaden.",
+  "challenges": ["zu schnell entscheiden", "auf Kopf hören statt auf Körper"],
+  "growth": ["Warten auf Körperantwort", "Sakral-Vokale beachten"],
+  "interactions": { "with_centers": [], "with_profile": [], "with_authority": [] },
+  "dimensions": {
+    "mechanical": "Sakral-Reaktion.",
+    "psychological": null,
+    "somatic": "Körper als Autorität.",
+    "social": null,
+    "shadow": null,
+    "gift": null,
+    "role": null,
+    "archetype": null,
+    "body_mechanics": null,
+    "environment": null,
+    "relationship_pattern": null,
+    "projection_field": null
+  },
+  "source": "llm_extraction"
 }
 ```
 

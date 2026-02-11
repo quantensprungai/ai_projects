@@ -1,0 +1,73 @@
+{
+  "system_id": "jyotish",
+  "system_name": "Jyotish (Vedic Astrology)",
+  "canonical_prefix": "jyo.",
+  "input_format": "datetime+location",
+  "calendar_basis": "sidereal",
+  "element_types": [
+    "rashi",
+    "nakshatra",
+    "pada",
+    "graha",
+    "bhava",
+    "dasha",
+    "yoga",
+    "aspect",
+    "dignity"
+  ],
+  "identifier_rules": {
+    "rashi": "1-12",
+    "nakshatra": "1-27",
+    "pada": "1-4",
+    "graha": ["sun", "moon", "mars", "mercury", "jupiter", "venus", "saturn", "rahu", "ketu"],
+    "bhava": "1-12",
+    "dasha": "vimshottari|ashtottari|..."
+  },
+  "canonical_id_rules": {
+    "format": "jyo.{element_type}.{element_id}",
+    "examples": [
+      "jyo.nakshatra.ashwini",
+      "jyo.rashi.aries",
+      "jyo.dasha.mercury",
+      "jyo.bhava.7"
+    ]
+  },
+  "term_mapping_rules": {
+    "schools": ["parasara", "jaimini", "nadi", "krishnamurti"],
+    "normalization": "lowercase_underscore",
+    "allow_unknown_terms": false
+  },
+  "kg_rules": {
+    "allowed_relation_types": [
+      "rules",
+      "exalted_in",
+      "debilitated_in",
+      "friendly_to",
+      "enemy_to",
+      "aspects",
+      "part_of",
+      "influences"
+    ],
+    "node_types": ["Rashi", "Nakshatra", "Graha", "Bhava", "Dasha", "Yoga"]
+  },
+  "dynamics_rules": {
+    "has_dynamics": true,
+    "dynamic_types": ["dasha_cycle", "bhukti_cycle", "transit"],
+    "temporal_alignment": ["vimshottari_120_year", "transit_cycles"]
+  },
+  "synthesis_rules": {
+    "default_style": "traditional",
+    "allowed_styles": ["traditional", "modern", "psychological"],
+    "wording_tone": "klassisch, präzise, vedisch",
+    "language_defaults": ["en", "de", "hi", "sa"]
+  },
+  "interaction_rules": {
+    "supports_interactions": true,
+    "interaction_entities": ["graha", "bhava", "rashi"]
+  },
+  "body_mechanics_support": true,
+  "hidden_expectations_support": true,
+  "relationship_dynamics_support": true,
+  "environment_fate_support": true,
+  "documentation_ref": "specs/jyotish.md"
+}

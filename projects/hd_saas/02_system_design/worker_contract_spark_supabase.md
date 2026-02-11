@@ -1,5 +1,5 @@
 <!-- Reality Block
-last_update: 2026-01-19
+last_update: 2026-02-10
 status: draft
 scope:
   summary: "Contract zwischen Makerkit/Supabase (Control Plane) und Spark/DGX (Worker/Data Plane)."
@@ -7,9 +7,11 @@ scope:
     - job types
     - input/output payloads
     - storage path conventions
+    - Worker-Laufort, schrittweiser Ablauf
   out_of_scope:
     - konkrete Spark Implementierung
-notes: []
+notes:
+  - "text2kg: Spec text2kg_spec.md, Implementierungsskizze text2kg_implementation_sketch.md, Export-Entwurf export_supabase_to_arangodb.md"
 -->
 
 # Worker Contract – Spark/DGX ↔ Supabase (HD‑SaaS)
@@ -17,7 +19,7 @@ notes: []
 ## Zielbild
 
 - **Supabase** ist die **Control Plane**: Auth/RLS, Storage, Tabellen, Job-Queue.
-- **Spark/DGX Worker** ist die **Data Plane**: OCR/Whisper/LLM-Extraction/Text2KG/Synthesis im Batch.
+- **Ein einziger HD-Worker** (Spark/DGX) ist die **Data Plane**: ein Prozess (`hd_worker_mvp.py`), der alle Job-Typen nacheinander verarbeitet – extract_text, extract_interpretations, text2kg, synthesize_node usw. Es gibt **keine** separaten Worker-Prozesse pro Job-Typ.
 
 Der Worker verarbeitet **Jobs** aus `public.hd_ingestion_jobs` und schreibt Ergebnisse in:
 - `public.hd_assets`
@@ -80,12 +82,11 @@ Der Worker verarbeitet **Jobs** aus `public.hd_ingestion_jobs` und schreibt Erge
 - **Output**:
   - `public.hd_interpretations.payload` (jsonb: statements/rules/relations candidates)
 
-### 4) (später) `text2kg`
+### 4) `text2kg` (Spec + Skizze vorhanden, Job noch nicht im Worker)
 
-- **Input**:
-  - Interpretations/Chunks
-- **Output**:
-  - Upsert `public.hd_kg_nodes` + `public.hd_kg_edges`
+- **Input**: Interpretations (`hd_interpretations`) + Term-Mapping (`hd_term_mapping`); Scope optional per `debug.asset_id` / `debug.document_id`.
+- **Output**: Upsert `public.hd_kg_nodes` + `public.hd_kg_edges` (nur strukturelle Edges; dimensions/interactions in node.metadata).
+- **Doku**: Spec `text2kg_spec.md`; Implementierungsskizze (Pseudo-Code, DB-Queries, Einbindung in `hd_worker_mvp.py`) `text2kg_implementation_sketch.md`; optionaler Export Supabase → ArangoDB `export_supabase_to_arangodb.md`.
 
 ### 5) (später) `synthesize_node`
 
@@ -104,6 +105,11 @@ Der Worker verarbeitet **Jobs** aus `public.hd_ingestion_jobs` und schreibt Erge
   - `status` und `error` in `hd_ingestion_jobs` sauber setzen.
 - **Service Role**:
   - Worker nutzt Service Role Key, damit er schreiben kann; trotzdem `account_id` strikt setzen.
+
+## Worker-Laufort und Ablauf (Spark)
+
+- **Laufzeit:** Spark (`spark-56d0`), systemd `hd-worker.service`, WorkingDir `~/srv/hd-worker`. Code-Basis: `code/hd_saas_app/apps/web/scripts/hd_worker_mvp.py` (lokal bearbeiten, Deployment z. B. per SCP).
+- **Schrittweiser Prozess:** MinerU und LLM können aus Ressourcengründen getrennt laufen; die Pipeline ist ohnehin sequentiell (extract_text → … → extract_interpretations → text2kg → …), sodass ein stückweiser Ablauf vorgesehen ist.
 
 ## Ops/Debug (Pragmatik)
 

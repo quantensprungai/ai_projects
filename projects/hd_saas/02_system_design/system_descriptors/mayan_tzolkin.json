@@ -1,0 +1,60 @@
+{
+  "system_id": "mayan_tzolkin",
+  "system_name": "Mayan Tzolkin (Sacred Calendar)",
+  "canonical_prefix": "tzol.",
+  "input_format": "datetime",
+  "calendar_basis": "260_day_cycle",
+  "element_types": [
+    "solar_seal",
+    "tone",
+    "kin",
+    "wavespell",
+    "castle"
+  ],
+  "identifier_rules": {
+    "solar_seal": "1-20",
+    "tone": "1-13",
+    "kin": "1-260"
+  },
+  "canonical_id_rules": {
+    "format": "tzol.{element_type}.{element_id}",
+    "examples": [
+      "tzol.solar_seal.red_dragon",
+      "tzol.tone.8",
+      "tzol.kin.137"
+    ]
+  },
+  "term_mapping_rules": {
+    "schools": ["arguelles", "traditional_mayan"],
+    "normalization": "lowercase_underscore",
+    "allow_unknown_terms": false
+  },
+  "kg_rules": {
+    "allowed_relation_types": [
+      "part_of",
+      "harmonizes_with",
+      "challenges",
+      "guides"
+    ],
+    "node_types": ["SolarSeal", "Tone", "Kin", "Wavespell", "Castle"]
+  },
+  "dynamics_rules": {
+    "has_dynamics": true,
+    "dynamic_types": ["13_day_wavespell", "260_day_cycle"],
+    "temporal_alignment": ["daily_kin", "13_day_wavespell", "260_day_tzolkin"]
+  },
+  "synthesis_rules": {
+    "default_style": "mystical",
+    "allowed_styles": ["mystical", "natural", "shamanic"],
+    "wording_tone": "archetypisch, zyklisch, zeitlos",
+    "language_defaults": ["en", "de", "es"]
+  },
+  "interaction_rules": {
+    "supports_interactions": false
+  },
+  "body_mechanics_support": false,
+  "hidden_expectations_support": false,
+  "relationship_dynamics_support": true,
+  "environment_fate_support": false,
+  "documentation_ref": "specs/mayan_tzolkin.md"
+}

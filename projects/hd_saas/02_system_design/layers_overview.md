@@ -1,5 +1,5 @@
 <!-- Reality Block
-last_update: 2026-01-31
+last_update: 2026-02-10
 status: draft
 scope:
   summary: "1-Doc Übersicht der Processing-Layer (Flow B/C/D) für HD-SaaS inkl. Tabellen/Jobs/Artefakte und Einordnung des Interpretations-Schemas."
@@ -7,10 +7,12 @@ scope:
     - Processing layer map (Flow B/C/D)
     - responsibilities (Supabase control plane vs worker data plane)
     - where Interpretations schema fits
+    - Abgleich: payload.source vs. system, text2kg implementiert
   out_of_scope:
     - full infra topology (VM105/VM102) (kommt später in einer End-to-End Übersicht)
     - implementation code details
-notes: []
+notes:
+  - "payload.source = llm_extraction|mvp_stub (Herkunft Extraktion); System (hd, bazi) in Zeile. interpretations_contract.md."
 -->
 
 # Processing Layer Overview (Flow B/C/D)
@@ -29,6 +31,7 @@ Referenzen:
 - Ops: `infrastructure/spark/hd_worker_ops.md`
 - Flows: `projects/hd_saas/02_system_design/data_flows.md`
 - Layer‑Blueprints: `projects/hd_saas/02_system_design/layer_model_and_schemas.md`
+- **Abgleich Layer-Vorgabe ↔ Implementierung:** `layer_implementation_abgleich.md` (prüft, ob alle in diesem Doc vorgesehenen Flows/Jobs/Schemas in DB und Worker berücksichtigt sind)
 
 ---
 
@@ -103,12 +106,9 @@ Hinweis: Flow E (Query/Chat) ist bewusst **nicht** Teil dieses Dokuments (Focus:
 - Dateien/Objekte in Storage (tenant‑safe): `accounts/{account_id}/...` in Bucket `hd_uploads_raw`
 - Metadaten‑Registry: `public.hd_assets` (mindestens metadata‑only möglich)
 
-### Jobs (geplant)
-- `extract_text`
-  - **PDF Text Extraction** (wenn textbasiert)
-  - **OCR** (wenn Scan/Images)
-- optional (Audio/Video):
-  - Whisper Transcript → Text
+### Jobs
+- `extract_text` (implementiert; PDF inkl. MinerU/OCR-Fallback)
+- optional (Audio/Video): Whisper Transcript → Text
 
 ### Outputs (DB‑Artefakte)
 - `public.hd_document_texts` (optional “raw text”, pragmatischer Zwischenspeicher)
@@ -129,13 +129,13 @@ Hinweis: Flow E (Query/Chat) ist bewusst **nicht** Teil dieses Dokuments (Focus:
 - `public.hd_asset_chunks` (primär)
 - optional: `public.hd_document_texts`
 
-### Jobs (geplant)
-- `classify_domain` (HD|BaZi|Astro|Mixed|Other)
-- `extract_interpretations` (Chunks → Interpretations)
-- `extract_term_mapping` (Interpretations + Chunks → Term-Mapping)
-- `text2kg` (Interpretations → KG Nodes/Edges)
-- `extract_dynamics` (Interpretations + Chunks → Dynamics)
-- `extract_interactions` (Interpretations + Chunks → Interaction Patterns)
+### Jobs
+- `classify_domain` (implementiert)
+- `extract_term_mapping` (implementiert; Seed + optional erweitert)
+- `extract_interpretations` (implementiert; LLM oder Stub; payload.source = llm_extraction|mvp_stub)
+- `text2kg` (implementiert; Interpretations → hd_kg_nodes/hd_kg_edges, Term-Mapping-Lookup für node_key)
+- `extract_dynamics` (geplant)
+- `extract_interactions` (geplant)
 
 ### Outputs (DB‑Artefakte)
 - `public.hd_interpretations` (strukturierte Extraktionen; jsonb `payload`)
@@ -216,7 +216,10 @@ Diese Trennung darf nicht verwischen:
 
 ## Kritische Ergänzung 3: Meaning Dimensions (Synthesis braucht explizite Dimensionen)
 
-Deine Interpretations‑Ontology (essence/mechanics/expression/…) ist ein sehr guter Start, aber für “deep human” Synthesis brauchen wir explizite **Dimensions‑Slots**, damit:\n- Mechanics nicht mit Social Role vermischt wird\n- Challenges nicht pauschal “Shadow” bedeutet\n- Interactions nicht die ganze Bedeutungslandschaft tragen muss
+Deine Interpretations‑Ontology (essence/mechanics/expression/…) ist ein sehr guter Start, aber für “deep human” Synthesis brauchen wir explizite **Dimensions‑Slots**, damit:
+- Mechanics nicht mit Social Role vermischt wird
+- Challenges nicht pauschal “Shadow” bedeutet
+- Interactions nicht die ganze Bedeutungslandschaft tragen muss
 
 **Pflicht-Contract: payload.dimensions (Keys immer vorhanden, Werte dürfen null sein)**
 
@@ -236,7 +239,8 @@ Optional (später erweiterbar, ohne Contract zu brechen):
 - `language`: string|null
 - `examples`: string[]|null
 
-**Wichtig:** Das muss nicht alles “immer” gefüllt sein.\nDer Nutzen ist: Synthesis kann gezielt Slots ziehen und konsistent zusammensetzen.
+**Wichtig:** Das muss nicht alles “immer” gefüllt sein.
+Der Nutzen ist: Synthesis kann gezielt Slots ziehen und konsistent zusammensetzen.
 
 ### Empfohlenes Mapping in HD‑SaaS
 
@@ -253,7 +257,7 @@ Empfohlene Keys (aus dem Raw‑Teil):
   - `with_centers`: string[]
   - `with_profile`: string[]
   - `with_authority`: string[]
-- `source`: string (z.B. "HD_classic", "GeneKeys", …)
+- `source`: string – **Herkunft der Extraktion:** `llm_extraction` oder `mvp_stub` (vom Worker gesetzt). **System** (hd, bazi, HD_classic, …) steht in der Zeile `hd_interpretations.system`. Siehe `interpretations_contract.md`.
 
 Zusätzliche, systemische Felder (aus dem DB‑Modell):
 - `hd_interpretations.system`: z.B. `hd`
@@ -277,9 +281,10 @@ Beispiel (Typ: Generator) – Payload:
     "with_centers": ["offenes Solarplexus erhöht Reaktivität"],
     "with_authority": ["emotionale Autorität → Warten auf Klarheit"]
   },
-  "source": "HD_classic"
+  "source": "llm_extraction"
 }
 ```
+(System, z. B. hd/bazi, steht in der Zeile in `hd_interpretations.system`.)
 
 ---
 
@@ -311,9 +316,9 @@ Empfohlenes Shape (in `hd_syntheses.payload` oder Child‑Table):
 
 ## Kritische Ergänzung 5: System Descriptor / Registry (Multi‑System)
 
-Damit HD ↔ GeneKeys ↔ BaZi ↔ Astro später nicht „hardcoded“ vermischt wird, definieren wir pro System einen Descriptor.
+Damit HD ↔ GeneKeys ↔ BaZi ↔ Astro später nicht „hardcoded“ vermischt wird, definieren wir pro System einen **System Descriptor**. **Offizielle Spec:** `system_descriptor_spec.md`. Konkrete Deskriptoren: `system_descriptors/hd.json`, `bazi.json`, `astro.json`, `genekeys.json`. DB-Registry: `public.hd_systems`. Worker-Integration: `worker_contract_system_descriptor.md`.
 
-Minimaler Descriptor:
+Minimaler Descriptor (Blueprint):
 
 ```json
 {

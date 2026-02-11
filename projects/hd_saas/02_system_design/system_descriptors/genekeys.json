@@ -1,0 +1,68 @@
+{
+  "system_id": "genekeys",
+  "system_name": "Gene Keys",
+  "canonical_prefix": "gk.",
+  "input_format": "human_design_gates",
+  "calendar_basis": "none",
+  "element_types": [
+    "gene_key",
+    "sequence_step",
+    "shadow",
+    "gift",
+    "siddhi",
+    "programming_partner"
+  ],
+  "identifier_rules": {
+    "gene_key": "1-64",
+    "sequence_step": "activation|venus|pearl"
+  },
+  "canonical_id_rules": {
+    "format": "gk.{element_type}.{element_id}",
+    "examples": [
+      "gk.gene_key.22",
+      "gk.shadow.22",
+      "gk.gift.22",
+      "gk.siddhi.22",
+      "gk.sequence_step.activation.purpose"
+    ]
+  },
+  "term_mapping_rules": {
+    "schools": ["classic_gk", "rudd"],
+    "normalization": "lower"
+  },
+  "kg_rules": {
+    "allowed_relation_types": [
+      "maps_to",
+      "shadow_of",
+      "gift_of",
+      "siddhi_of",
+      "programming_partner_to"
+    ],
+    "node_types": [
+      "GeneKey",
+      "Shadow",
+      "Gift",
+      "Siddhi",
+      "SequenceStep"
+    ]
+  },
+  "dynamics_rules": {
+    "has_dynamics": true,
+    "dynamic_types": ["shadow_gift_siddhi_path", "contemplation_cycle"],
+    "temporal_alignment": ["venus_sequence", "pearl_sequence"]
+  },
+  "synthesis_rules": {
+    "default_style": "poetic",
+    "wording_tone": "tief, transformativ, kontemplativ",
+    "allowed_styles": ["poetic", "natural", "spiritual"],
+    "language_defaults": ["de", "en"]
+  },
+  "interaction_rules": {
+    "supports_interactions": false
+  },
+  "body_mechanics_support": false,
+  "hidden_expectations_support": false,
+  "relationship_dynamics_support": true,
+  "environment_fate_support": false,
+  "documentation_ref": "specs/gene_keys.md"
+}

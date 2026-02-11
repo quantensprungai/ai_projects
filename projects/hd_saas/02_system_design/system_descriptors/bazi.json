@@ -1,0 +1,83 @@
+{
+  "system_id": "bazi",
+  "system_name": "BaZi (Four Pillars of Destiny)",
+  "canonical_prefix": "bazi.",
+  "input_format": "datetime",
+  "calendar_basis": "lunar_solar",
+  "element_types": [
+    "stem",
+    "branch",
+    "pillar",
+    "day_master",
+    "luck_pillar",
+    "ten_gods",
+    "hidden_stems",
+    "useful_god",
+    "element_balance"
+  ],
+  "identifier_rules": {
+    "stem": "10_heavenly_stems",
+    "branch": "12_earthly_branches",
+    "pillar": "stem_branch_pair",
+    "ten_gods": "direct_officer|indirect_wealth|eating_god|..."
+  },
+  "canonical_id_rules": {
+    "format": "bazi.{element_type}.{element_id}",
+    "examples": [
+      "bazi.day_master.geng",
+      "bazi.pillar.year.jia_zi",
+      "bazi.stem.yi",
+      "bazi.ten_gods.direct_officer",
+      "bazi.useful_god.wood"
+    ]
+  },
+  "term_mapping_rules": {
+    "schools": ["traditional_CN", "modern_bazi", "joey_yap", "raymond_lo"],
+    "normalization": "lowercase",
+    "allow_unknown_terms": false
+  },
+  "kg_rules": {
+    "allowed_relation_types": [
+      "part_of",
+      "belongs_to",
+      "clashes_with",
+      "combines_with",
+      "harmonizes_with",
+      "harms",
+      "punishes",
+      "destroys",
+      "emerges_to",
+      "produces",
+      "controls"
+    ],
+    "node_types": [
+      "Stem",
+      "Branch",
+      "Pillar",
+      "Day_Master",
+      "Luck_Pillar",
+      "Ten_God",
+      "Useful_God"
+    ]
+  },
+  "dynamics_rules": {
+    "has_dynamics": true,
+    "dynamic_types": ["luck_pillar_cycle", "annual_pillar", "clash_harm_cycle"],
+    "temporal_alignment": ["10_year_luck_cycle", "annual_cycle", "monthly_cycle"]
+  },
+  "synthesis_rules": {
+    "default_style": "technical",
+    "allowed_styles": ["technical", "natural", "coaching"],
+    "wording_tone": "präzise, astrologisch, klassisch",
+    "language_defaults": ["de", "en", "zh"]
+  },
+  "interaction_rules": {
+    "supports_interactions": true,
+    "interaction_entities": ["stem", "branch", "pillar"]
+  },
+  "body_mechanics_support": true,
+  "hidden_expectations_support": false,
+  "relationship_dynamics_support": true,
+  "environment_fate_support": true,
+  "documentation_ref": "specs/bazi.md"
+}

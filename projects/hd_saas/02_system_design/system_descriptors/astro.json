@@ -1,0 +1,80 @@
+{
+  "system_id": "astro",
+  "system_name": "Western Astrology",
+  "canonical_prefix": "astro.",
+  "input_format": "datetime+location",
+  "calendar_basis": "tropical",
+  "element_types": [
+    "sign",
+    "house",
+    "planet",
+    "aspect",
+    "transit",
+    "ascendant",
+    "midheaven",
+    "node",
+    "dignity"
+  ],
+  "identifier_rules": {
+    "sign": "aries-pisces",
+    "house": "1-12",
+    "planet": ["sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto"],
+    "aspect": ["conjunction", "opposition", "trine", "square", "sextile"],
+    "dignity": ["domicile", "exaltation", "detriment", "fall"]
+  },
+  "canonical_id_rules": {
+    "format": "astro.{element_type}.{element_id}",
+    "examples": [
+      "astro.planet.sun",
+      "astro.house.7",
+      "astro.sign.aries",
+      "astro.ascendant.leo",
+      "astro.node.north"
+    ]
+  },
+  "term_mapping_rules": {
+    "schools": ["traditional", "modern", "evolutionary", "psychological"],
+    "normalization": "lower_underscore"
+  },
+  "kg_rules": {
+    "allowed_relation_types": [
+      "part_of",
+      "aspect_to",
+      "rules",
+      "exalted_in",
+      "detriment_in",
+      "fall_in",
+      "belongs_to",
+      "opposes"
+    ],
+    "node_types": [
+      "Planet",
+      "Sign",
+      "House",
+      "Aspect",
+      "Transit",
+      "Node",
+      "Dignity"
+    ]
+  },
+  "dynamics_rules": {
+    "has_dynamics": true,
+    "dynamic_types": ["transit", "progression", "solar_return", "lunar_cycle"],
+    "temporal_alignment": ["daily_transits", "monthly_progressions", "annual_solar_return"]
+  },
+  "synthesis_rules": {
+    "default_style": "poetic",
+    "wording_tone": "symbolisch, bildhaft, archetypisch",
+    "allowed_styles": ["natural", "poetic", "coaching", "psychological"],
+    "language_defaults": ["de", "en"]
+  },
+  "interaction_rules": {
+    "supports_interactions": true,
+    "interaction_entities": ["planet", "sign", "house"]
+  },
+  "body_mechanics_support": true,
+  "hidden_expectations_support": true,
+  "relationship_dynamics_support": true,
+  "environment_fate_support": true,
+  "documentation_ref": "specs/astro.md"
+}

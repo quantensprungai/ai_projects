@@ -1,0 +1,61 @@
+{
+  "system_id": "nine_star_ki",
+  "system_name": "Nine Star Ki (Japanese Astrology)",
+  "canonical_prefix": "nsk.",
+  "input_format": "datetime",
+  "calendar_basis": "lunar_solar",
+  "element_types": [
+    "principal_star",
+    "character_star",
+    "energetic_star",
+    "element",
+    "direction"
+  ],
+  "identifier_rules": {
+    "star": "1-9",
+    "element": "water|earth|tree|metal|fire",
+    "direction": "north|south|east|west|center|..."
+  },
+  "canonical_id_rules": {
+    "format": "nsk.{element_type}.{element_id}",
+    "examples": [
+      "nsk.principal_star.5",
+      "nsk.element.water",
+      "nsk.direction.north"
+    ]
+  },
+  "term_mapping_rules": {
+    "schools": ["traditional_japanese", "modern"],
+    "normalization": "lowercase",
+    "allow_unknown_terms": false
+  },
+  "kg_rules": {
+    "allowed_relation_types": [
+      "produces",
+      "controls",
+      "harmonizes_with",
+      "clashes_with"
+    ],
+    "node_types": ["Star", "Element", "Direction"]
+  },
+  "dynamics_rules": {
+    "has_dynamics": true,
+    "dynamic_types": ["nine_year_cycle", "monthly_energy"],
+    "temporal_alignment": ["9_year_cycle", "monthly_cycle"]
+  },
+  "synthesis_rules": {
+    "default_style": "natural",
+    "allowed_styles": ["natural", "traditional"],
+    "wording_tone": "elementar, zyklisch, harmonisch",
+    "language_defaults": ["en", "de", "ja"]
+  },
+  "interaction_rules": {
+    "supports_interactions": true,
+    "interaction_entities": ["star", "element"]
+  },
+  "body_mechanics_support": false,
+  "hidden_expectations_support": false,
+  "relationship_dynamics_support": true,
+  "environment_fate_support": true,
+  "documentation_ref": "specs/nine_star_ki.md"
+}
