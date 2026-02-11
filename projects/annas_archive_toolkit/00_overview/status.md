@@ -19,6 +19,7 @@ notes: []
 
 - **Profile vorhanden**:
   - **`hd_content`**: keyword/topic driven Collection (`code/annas-archive-toolkit/projects/hd_content/`)
+  - **`bazi_content`**: BaZi / Four Pillars Collection (`code/annas-archive-toolkit/projects/bazi_content/`)
   - **`survival`**: category-driven Collection (`code/annas-archive-toolkit/projects/survival/config.json`)
 - **Metadaten‑Output**:
   - `hd_content` schreibt nach **`output/hd_content/`**:
@@ -76,6 +77,11 @@ notes: []
 - **Survival (`survival`)**:
   - Optional: gleiche Contract‑Kette nutzen (`metadata.*` → `assets.jsonl` → `acquire_queue.json`).
   - Danach: separate Acquire/Weiterverarbeitung (eigenes Projekt, nur gemeinsame Toolkit‑Infrastruktur).
+
+- **BaZi (`bazi_content`)**:
+  - Profile ist getrennt von HD, mit eigener `topics.txt` und separatem Output unter `output/bazi_content/`.
+  - Start (VM102): `cp projects/bazi_content/config_vm102.json projects/bazi_content/config.json; export AAT_CONFIG=projects/bazi_content/config.json; python3 src/simple_collector.py`
+  - Danach: `export_assets.py` → `build_acquire_queue.py` → `fast_download_acquire.py` (mit verfügbarem Tageslimit).
 
 ## Runbook: Daily Downloads (VM102)
 

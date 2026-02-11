@@ -110,43 +110,40 @@ cat output/hd_content/acquire_queue.json | jq '.queue[] | select(.status == "fai
 
 ## Erweiterung für weitere Inhalte (BaZi, etc.)
 
-### 1. Topics-Liste erweitern
+Empfehlung: **nicht** HD-Topics mischen, sondern ein **eigenes Profile** anlegen (saubere Outputs/Queues).
 
-**Auf VM105 (Windows):**
+Beispiel: `bazi_content` (BaZi / Four Pillars)
+
+### 1) Profile pflegen (VM105) + nach VM102 übertragen
+
+- Profile lebt unter: `code/annas-archive-toolkit/projects/bazi_content/` (`config*.json` + `topics.txt`)
+
+Übertragen:
+
 ```powershell
-# Öffne topics.txt
-code code\annas-archive-toolkit\projects\hd_content\topics.txt
-
-# Füge neue Topics hinzu:
-# BaZi / Four Pillars
-bazi
-four pillars
-八字
-四柱
-```
-
-**Übertragen:**
-```powershell
-cd code\annas-archive-toolkit
+cd "C:\Users\Admin105\ai_projects\code\annas-archive-toolkit"
 powershell -ExecutionPolicy Bypass -File .\transfer_to_vm102.ps1
 ```
 
-### 2. Queue neu erstellen (optional)
+### 2) Run auf VM102 (Collector → assets.jsonl → acquire_queue → downloads)
 
-**Auf VM102 (Linux):**
 ```bash
-# Falls neue Metadaten gesammelt wurden
-python3 src/libgen_metadata_collector.py  # Mit erweiterten Topics
+cd /home/user/annas-archive-toolkit
+
+# Profile aktivieren
+cp projects/bazi_content/config_vm102.json projects/bazi_content/config.json
+export AAT_CONFIG=projects/bazi_content/config.json
+
+# 1) Metadaten sammeln
+python3 src/simple_collector.py
+
+# 2) Ingest-Contract exportieren + Queue bauen
 python3 src/export_assets.py
 python3 src/build_acquire_queue.py
-```
 
-### 3. Downloads starten
-
-```bash
-# Gleicher Workflow wie oben
+# 3) Downloads starten (falls Limit verfügbar)
 python3 src/check_daily_limit.py
-python3 src/fast_download_acquire.py --max-items 50
+python3 src/fast_download_acquire.py --max-items 20
 ```
 
 ## Code-Updates von VM105 nach VM102

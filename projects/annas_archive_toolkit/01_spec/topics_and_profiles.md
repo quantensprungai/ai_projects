@@ -61,11 +61,19 @@ Konzeptuell (im Code‑Repo):
 
 - `projects/survival/…` (z. B. config)
 - `projects/hd_content/…` (topics + config)
+- `projects/bazi_content/…` (topics + config) – **separates Profile für BaZi/Four Pillars** (geburtsdatenbasiert, eigenes Vokabular)
 
 Jedes Profile enthält:
 - **Input**: `topics.txt` oder `config.json`
 - **Output Root**: eigener Zielordner (damit nie gemischt wird)
 - **Pipeline Flags**: Selenium/Proxy/Rate‑Limit/etc.
+
+### Praxis-Regel: „Profile“ vs „Schools/Personas“
+
+- **Profile** trennen *Domänen/Systeme* mit eigener Ontologie/Mechanik (z. B. `hd_content` vs `bazi_content` vs später `astro_content`).
+- **Schools/Personas** sind *Rendering-/Terminologie-Layer* innerhalb derselben Domäne (z. B. HD classic vs 64keys vs Gene Keys als Lens).
+
+Dadurch bleibt der Download-/Ingest-Workflow gleich, aber du kannst später im HD‑SaaS gezielt pro System weiterverarbeiten (Filter nach `metadata.profile_id` / `system`).
 
 ### Wann wäre ein separates Unterprojekt sinnvoll?
 
