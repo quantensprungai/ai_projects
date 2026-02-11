@@ -54,6 +54,6 @@ Dort existieren **nur** diese Dateien:
 
 - **Spark Inference** ist dokumentiert unter `infrastructure/spark/` (Ports, Engines, Endpoints).
 - **Robuster Admin-Zugriff**: zusätzliches OpenSSH (`sshd`) auf Spark via Port `2222` (weil Tailscale SSH je nach Installationsart problematisch sein kann).
-- **HD Worker Ops**: Debug/Retry/typische Fehlerbilder unter `infrastructure/spark/hd_worker_ops.md`.
+- **HD Worker Ops**: Debug/Retry/typische Fehlerbilder unter `infrastructure/spark/hd_worker_ops.md`. **Spark-Setup (Schritt für Schritt):** `infrastructure/spark/HD_WORKER_SPARK_SELBST_CHECKLISTE.md`.
 
 

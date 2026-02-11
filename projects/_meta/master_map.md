@@ -30,6 +30,7 @@ Dieses Repository bündelt mehrere Projekte in einer gemeinsamen “Landschaft�
 - **Bot Platform (Clawdbot)** (`projects/bot_platform`)
 - **AL Meta** (`projects/al_meta`)
 - **AI 2027** (`projects/ai_2027`)
+- **ReST Data Platform (WP 2.1 Offshore CE)** (`projects/rest_data_platform`)
 - **Spark Infrastructure (Doku/Stack)** (`infrastructure/spark`)
 
 ## Beziehungen (high level)
