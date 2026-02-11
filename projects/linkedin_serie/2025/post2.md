@@ -1,4 +1,4 @@
-Heiko Driever  • YouYou Tech-Reality-Translator | Future Impact ResearchTech-Reality-Translator | Future Impact Research 4mo • Edited • 
+YouYou Tech-Reality-Translator | Future Impact ResearchTech-Reality-Translator | Future Impact Research 4mo • Edited • 
  4 months ago • Edited • Visible to anyone on or off LinkedIn
 Geoffrey Hinton (Nobelpreis Physik 2024) erinnert: „Wir wissen nicht, ob wir die Kontrolle behalten“ – deshalb zählen Signale und Mechanismen, nicht Stichtage.
 

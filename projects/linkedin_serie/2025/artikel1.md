@@ -1,3 +1,14 @@
+YouYou Tech-Reality-Translator | Future Impact ResearchTech-Reality-Translator | Future Impact Research 6mo • 
+ 6 months ago • Visible to anyone on or off LinkedIn
+Nach 20+ Jahren Tech-Erfahrung ist das mein erster Post überhaupt – weil die Zeit für Ausreden vorbei ist.
+Warum ignoriert Deutschland die KI-Revolution, während international längst Klartext gesprochen wird?
+Prognosen für Superintelligenz rücken auf 2027 vor – aber deutsche Planung bleibt im letzten Jahrzehnt stecken.
+Was bedeutet das für Ausbildung, Arbeit, Zukunft?
+Diskutiere mit mir: Welche Szenarien fehlen in der deutschen Debatte?
+hashtag#AGI hashtag#KI hashtag#StrategicPlanning hashtag#FutureOfWork hashtag#TechTranslation
+
+
+
 Der KI-Splitter: Warum Deutschland die AGI-Timeline verschläft
 
 Tech-Reality-Translator | Future Impact Research
