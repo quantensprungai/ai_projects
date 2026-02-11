@@ -33,27 +33,28 @@ notes:
 - **Output**:
   - Scope Shield final (`00_overview/scope_shield.md`)
   - MVP als “Minimum Useful Product” präzisiert (`00_overview/mvp.md`)
-  - 1–2 Pilotdomänen + Datenzugriff geklärt (wer darf was, wo liegt was?)
+  - 1 Pilotdomäne WP 2.1 Offshore‑CE + Datenzugriff geklärt (wer darf was, wo liegt was?)
 - **Kommunikation**:
   - Kickoff-Update: “Was ist es / was ist es nicht?”
 
 ### Etappe 1: MVP-Vertical Slice (ca. +5 bis +12 Wochen)
 - **Output**:
-  - 1 Upload-/Erfassungsflow + 1 Datenansicht + 1 Export/Report
+  - 1 Upload-/Erfassungsflow + 1 Offshore‑Asset‑View + 1 Export/Report
   - Rollen/RLS minimal (wer sieht was)
 - **Success Kriterien**:
   - 1–2 Nutzer können es ohne dich bedienen (Onboarding-Notiz/Video optional)
 
 ### Etappe 2: Datenqualität & Reporting (Q3–Q4 2026)
 - **Output**:
-  - Indikatoren/Projekte sauber strukturiert (Definitionen, Versionierung, “Quelle/Stand”)
+  - Offshore‑Daten sauber strukturiert (Definitionen, Versionierung, “Quelle/Stand”)
   - 1–2 Standardreports (Superset o.ä.) als Single Source of Truth
 - **Kommunikation**:
   - “Ab jetzt ist das der Ort, wo Zahlen/Status herkommen”
 
 ### Etappe 3: KI als Assist (lightweight, wenn wirklich nützlich) (2027 H1)
 - **Output (optional, nur bei Bedarf)**:
-  - RAG light (Q&A + Quellen) oder “Draft Generator” für Updates
+  - RAG light (Q&A + Quellen) fuer Offshore‑Docs
+  - DPP‑Light Demonstrator (1 Beispielkomponente)
   - Evaluation: Genauigkeit/Quellen/Fehlerfälle
 - **Guardrails**:
   - klare Datenklassifizierung + keine sensiblen Inhalte unkontrolliert

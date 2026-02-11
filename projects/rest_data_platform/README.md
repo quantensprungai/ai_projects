@@ -16,6 +16,7 @@ notes: []
 # ReST Data Platform (ASTRA) – Doku Index
 
 - `00_overview/mission.md`: Zweck & Nutzen (schlank)
+- `00_overview/wp2_1_offshore_ce_summary.md`: WP 2.1 Kurzfassung (Offshore Circular Economy)
 - `00_overview/scope.md`: Scope/Non‑Scope (Schutz vor Feature‑Creep)
 - `00_overview/mvp.md`: MVP (schlank, realistisch)
 - `00_overview/scope_shield.md`: Kurztext für Meetings/Mails (Abgrenzung)
@@ -24,6 +25,7 @@ notes: []
 - `01_spec/ipw_email_templates.md`: sehr schlanke IPW‑Formulierungen + Mail‑Vorlagen
 - `01_spec/idea_backlog.md`: offener Ideen-Backlog (Hypothesen/Experimente, noch nicht festgelegt)
 - `03_roadmap/phase_a_timeline_2026_2028.md`: Phase A Roadmap (bis 31.08.2028) + Übergabepunkt
+- `03_roadmap/technical_next_steps.md`: Technisch: erster Schritt und folgende (Reihenfolge)
 - `04_communication/stakeholders_and_comms.md`: Stakeholder + Kommunikationslogik
 - `04_communication/status_update_template.md`: 1‑seitiges Status Update Template
 - `99_archive/keep2_sanitized_notes.md`: sanitisierte Langnotizen (ohne Kontaktdaten)

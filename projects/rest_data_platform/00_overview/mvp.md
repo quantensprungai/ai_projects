@@ -14,31 +14,34 @@ notes: []
 # MVP – ReST Data Platform (schlank)
 
 ## Ziel (6–8 Wochen, realistisch)
-Ein funktionsfähiges „ReST Portal“ (Makerkit) + Supabase‑Backend, das **Daten/Dokumente sauber organisiert** und **standardisierte Sichtbarkeit** erzeugt – ohne Service‑Falle.
+Ein funktionsfaehiges „ReST Portal“ + Supabase‑Backend, das **Offshore‑Daten und Dokumente** sauber organisiert und **standardisierte Sichtbarkeit** erzeugt – ohne Service‑Falle.
 
 ## MVP‑Module (4 Bausteine)
 
-1) **Portal & Rollen (Makerkit)**
+1) **Portal & Rollen**
 - Login, Rollen (Admin/Editor/Viewer) für AP 5.2 (intern)
-- Keine WP‑spezifischen Bereiche
+- Fokus: WP 2.1 Offshore‑CE, keine WP‑Sonderportale
 
-2) **Upload & Datenorganisation (Supabase)**
+2) **Offshore‑Asset‑Register + Upload**
 - Upload von **PDFs** und **Tabellen** (CSV/XLSX)
 - Minimal: Metadaten (Titel, Quelle, Version, Verantwortliche, Datum)
+- Strukturierte Asset‑Basis (Standort, Typ, Leistung, Lebenszyklus)
 
 3) **Transparente Outputs (ohne große Dashboard-Commitments)**
 - Entweder:
   - a) sehr schlanke „KPI/Status Cards“ im Portal (Uploads, letzte Aktualisierung, Datensatzanzahl), oder
   - b) Superset separat (Self‑Service) – nur Templates, kein Custom‑Build
+- Erste Rueckbau‑Zeitachsen (low‑complexity)
 
 4) **Optionale KI‑Funktion (nur wenn wirklich gewollt)**
-- Dokumenten‑Q&A (RAG) **für AP 5.2 Dokumente**
+- Dokumenten‑Q&A (RAG) **für Offshore‑Docs**
 - Ergebnis: Quellenzitierung + einfache Zusammenfassungen
+- Optional: DPP‑Light Demonstrator (1 Beispielkomponente)
 
 ## Erfolgskriterien (einfach, messbar)
 - Upload/Versionierung funktioniert reproduzierbar (keine “Dateichaos”-Ablage)
 - Klare Rollen/Policies (niemand sieht, was er nicht sehen soll)
-- Mindestens 1 “offizieller” Daten-/Dokumenten-Katalog (für Abstimmungen/Reporting)
-- Optional: RAG beantwortet 10 typische Projektfragen zuverlässig mit Quellen
+- Offshore‑Asset‑Register mit belastbaren Grunddaten steht
+- Optional: RAG beantwortet 10 typische Fragen zuverlässig mit Quellen
 
 

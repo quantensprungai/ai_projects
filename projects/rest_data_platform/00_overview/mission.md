@@ -15,6 +15,8 @@ notes: []
 
 Die ReST Data Platform ist eine **schlanke, modulare Daten- und Analyseplattform** für das ASTRA‑Projekt, die regionale Indikatoren, Projektdaten und ausgewählte Dokumente **geordnet**, **nachvollziehbar** und **auswertbar** macht.
 
+Aktueller Fokus (WP 2.1): **Offshore Circular Economy** – Aufbau eines modularen Informationssystems zu Offshore‑Infrastruktur, Lebenszyklen, Rueckbaupotenzialen und Materialstroemen.
+
 Kernnutzen:
 - **Bessere Datenorganisation** (einheitliche Strukturen statt verstreuter Dateien/Insellösungen)
 - **Transparente Auswertung & Kommunikation** (Dashboards/Reports als “Single Source of Truth”)

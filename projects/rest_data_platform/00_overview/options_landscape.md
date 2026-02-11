@@ -29,6 +29,26 @@ Guardrail (bleibt gültig):
 - **Stakeholder Pull**: wer „zieht“ wirklich daran (Partner/WPs/Leitung)?
 - **Risiko**: Scope-Falle, Datenschutz, Datenqualität, Erwartungsmanagement.
 
+## Ergänzung: Plattform-Add-ons (KI/Protokolle, optional)
+Diese Add-ons sind **übergreifend** zu den Optionen A–I gedacht. Sie erhöhen die Zukunftsfähigkeit,
+ohne den MVP zu überfrachten. **Nur aktivieren, wenn Aufwand/Nutzen passt.**
+
+1) **KI‑Assist (RAG light / Drafts)**
+- Fokus: Dokumenten‑Q&A mit Quellen oder Status‑Drafts.
+- Risiko: Erwartungsmanagement, Datenklassifizierung.
+
+2) **MCP‑Interface (Tooling‑Anbindung light)**
+- Fokus: standardisierte Tool‑Aufrufe (z. B. Upload, Query, Report) für interne Agenten.
+- Risiko: API‑Stabilität, Sicherheitsgrenzen.
+
+3) **Gaia‑X / Interoperabilität light (DCAT‑AP)**
+- Fokus: Metadaten‑Katalog/Exports, keine schweren Dataspace‑Connectoren.
+- Risiko: Overhead ohne klaren Daten‑Pull.
+
+4) **Agentic Framework (intern, z. B. AG2)**
+- Fokus: interne Automationen/Workflows, keine „Autopilot“‑Versprechen.
+- Risiko: Betrieb/Qualität/Monitoring.
+
 ## 9 Archetypen (Optionen A–I)
 > Hinweis: Bewertung ist absichtlich grob und diskutierbar. Ziel ist ein gemeinsames Bild, keine „Wahrheit“.
 
@@ -78,6 +98,7 @@ flowchart TD
    - **Pilot 2 (Fundament/Intern)**: A oder I (ggf. plus H als Add‑on).
 
 ## Empfehlung als Entscheidungsprinzip (ohne Festlegung)
+- **Aktueller Favorit (WP 2.1)**: **B** als Pilot (Offshore‑Asset‑Register) + **H** als Add‑on (RAG light), falls Datenlage/Compliance passt.
 - Wenn **Datenlage unsicher**: starte mit **A/I** (SSoT/Katalog) und baue B/C darauf auf, sobald Daten sauber fließen.
 - Wenn **Partner-Pull stark** und Daten verfügbar: starte mit **B** (Asset Register) als „Showcase“, aber halte die Scope‑Grenzen strikt.
 
