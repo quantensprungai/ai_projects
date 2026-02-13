@@ -199,7 +199,20 @@ clawdbot --profile personal onboard --install-daemon --gateway-port 18789
 clawdbot --profile ops onboard --install-daemon --gateway-port 18790
 ```
 
-## Channel Setup (Beispiel: Telegram, ohne öffentliche Webhooks)
+## Channel Setup
+
+### Signal (empfohlen als primärer Channel)
+Quelle: `https://docs.clawd.bot/channels/signal`
+
+- **Voraussetzung:** `signal-cli` (Java nötig), separate Bot-Nummer empfohlen
+- **Pairing:** `clawdbot pairing list signal` / `clawdbot pairing approve signal <CODE>`
+- **Peer-ID für Bindings:** E.164 (`+49...`) oder `uuid:<id>`
+
+Minimaler Setup (Docs):
+- `signal-cli link -n "OpenClaw"` → QR-Code in Signal scannen
+- Config: `channels.signal.enabled: true`, `account` (E.164), `dmPolicy: "pairing"`, `allowFrom`
+
+### Telegram (optional, nice to have)
 Quelle: `https://docs.clawd.bot/channels/telegram`
 
 Telegram ist “production-ready” und nutzt **Long‑Polling by default** (kein Public URL nötig).

@@ -56,4 +56,8 @@ Dort existieren **nur** diese Dateien:
 - **Robuster Admin-Zugriff**: zusätzliches OpenSSH (`sshd`) auf Spark via Port `2222` (weil Tailscale SSH je nach Installationsart problematisch sein kann).
 - **HD Worker Ops**: Debug/Retry/typische Fehlerbilder unter `infrastructure/spark/hd_worker_ops.md`. **Spark-Setup (Schritt für Schritt):** `infrastructure/spark/HD_WORKER_SPARK_SELBST_CHECKLISTE.md`.
 
+## Doku & Rules (KI-freundlich)
+
+- **Strategie:** `projects/_meta/doc_and_rules_strategy.md` – wie Docs und Cursor-Rules organisiert werden (Rules First, Docs Lean).
+- **Projektlandkarte:** `projects/_meta/master_map.md`
 

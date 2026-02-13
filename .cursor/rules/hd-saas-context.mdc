@@ -1,0 +1,31 @@
+---
+description: HD-SaaS Projekt-Kontext – Einstiegspunkte für Architektur, Pipeline, Contracts
+globs: projects/hd_saas/**/*,code/hd_saas_app/**/*
+alwaysApply: false
+---
+
+# HD-SaaS Kontext
+
+## Einstieg (immer zuerst lesen)
+
+- **Status:** `projects/hd_saas/00_overview/current_status_local_dev.md`
+- **Nächste Schritte:** `projects/hd_saas/02_system_design/next_steps_was_fehlt_noch.md`
+- **Chat-Handover:** `projects/hd_saas/00_overview/chat_handover_hd_saas.md`
+
+## Zentrale Contracts (Implementierung)
+
+- `interpretations_contract.md` – Payload-Form
+- `dimensions_contract.md` – 12 Keys
+- `text2kg_spec.md` – Nodes/Edges aus Interpretations
+- `worker_contract_spark_supabase.md` – Worker ↔ Supabase
+
+## Architektur
+
+- **Control Plane:** Supabase Cloud
+- **Data Plane:** Spark (MinerU, LLM), VM102 (Download, Upload, optional Phase-1-Worker)
+- **Code:** `code/hd_saas_app/` (eigenes Repo)
+
+## Bei Unsicherheit
+
+- `projects/hd_saas/README.md` – Index
+- `projects/hd_saas/02_system_design/plan_option_b_roadmap.md` – Option B Reihenfolge

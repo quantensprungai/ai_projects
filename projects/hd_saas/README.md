@@ -24,7 +24,12 @@ notes: []
 
 ## Aktueller Stand (damit neue Chats sofort Kontext haben)
 
-- Local Dev (Supabase + HD ingestion): `00_overview/current_status_local_dev.md`
+- **Local Dev (Supabase + HD ingestion):** `00_overview/current_status_local_dev.md`
+- **Priorität & Reihenfolge (Option B):** `02_system_design/next_steps_was_fehlt_noch.md`
+- **Roadmap:** `02_system_design/plan_option_b_roadmap.md`
+- **Chat-Handover (Copy-Paste für neue Chats):** `00_overview/chat_handover_hd_saas.md`
+
+Für Implementierung: `interpretations_contract.md`, `text2kg_spec.md`, `dimensions_contract.md`, `layer_implementation_abgleich.md`, Worker-Contracts in `02_system_design/`.
 
 ## Code (separates Repo unter `code/`)
 

@@ -13,7 +13,7 @@ Arbeitsittel: *„The Inner Voice Returns“* / *„The Human Code“* / *„Awa
 | Kapitel | Fokus | Plattform-Bezug |
 |---------|--------|------------------|
 | **1 – Die Zeit der Verluste** | Welt 2025–2026: Überforderung, KI übernimmt, innere Orientierung fehlt. AL: spirituelle Autorität verloren; HD: nicht aus dem Inneren leben. | – |
-| **2 – Die Fragmente der Wahrheit** | Aria (HD), Jian (BaZi), Priya (Jyotish), Luka (Astro) – verschiedene Kulturen, dieselben Themen (Blockaden, Muster, fehlende Klarheit). Worte verschieden, Phänomen dasselbe. | Dimensions-Layer, Dual-System (HD + BaZi). |
+| **2 – Die Fragmente der Wahrheit** | Aria (HD), Jian (BaZi), Priya (Jyotish), Luka (Astro), Amara (Akan) – verschiedene Kulturen, dieselben Themen (Blockaden, Muster, fehlende Klarheit). Worte verschieden, Phänomen dasselbe. | Dimensions-Layer, Dual-System (HD + BaZi). |
 | **3 – Die erste Verbindung** | Charaktere treffen sich (Synchronicity, Forschung, globales Ereignis). Experimente: HD + BaZi, Jyotish + Astro → gleiche Aussagen. „Alle Systeme zeigen auf den Menschen – nicht auf sich selbst.“ | Cross-System-Erkennung. |
 | **4 – Die Plattform entsteht** | Übersetzungsschicht zwischen Systemen zur Aktivierung der **inneren Stimme**. Kein neues System, keine Religion, kein Orakel. Spiegelt die Kraft zurück, die jeder in sich trägt. Jedes Feature wird durch Story eingeführt. | Echte App: KG, Synthesis, Dimensions, Agent (erklärt, entscheidet nicht). |
 | **5 – Die Welt erwacht** | Nutzung, Klarheit, Muster erkennen, innere Wahrheit. Viral (TikTok, Insta, X). „Die Menschen brauchten nie ein System. Sie brauchten eine Erinnerung.“ | Story + App interagieren; Live-Events. |
@@ -39,7 +39,8 @@ Arbeitsittel: *„The Inner Voice Returns“* / *„The Human Code“* / *„Awa
 
 - **Jedes System bleibt im Original** – keine Umbenennung, keine Vermischung. Respekt = Authentizität.
 - **Plattform = Fenster**, das alle Systeme nebeneinander zeigt; User nimmt, was ihn ruft. Kein „Fusion-System“.
-- **Botschafterfiguren** (Aria, Jian, Priya, Luka) = Perspektiven, nicht Dogma. Story: „Wir alle teilen dieselben inneren Kräfte – egal in welcher Kultur.“
+- **Botschafterfiguren** (Aria, Jian, Priya, Luka, Amara) = Perspektiven, nicht Dogma. Story: „Wir alle teilen dieselben inneren Kräfte – egal in welcher Kultur.“
+- **Amara** (Afrika, Akan/Krada) = Ghana/Westafrika; Soul-Name aus Geburts-Wochentag; Obosom, Okra, Schicksal.
 - **Kulturelle Tiefe:** Optional „Kulturelle Perspektive verstehen“ → HD (mechanisch), BaZi (elementar), Jyotish (archetypisch), Astro (emotional) → dann universelle Synthese in einfacher Sprache.
 
 ---

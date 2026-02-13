@@ -53,12 +53,33 @@ Wir schneiden nicht “pro Bot ein Server”, sondern **pro Trust‑Zone ein Pro
 ### 3) Learning Bot (Profile `personal`)
 - Lernpläne/Spaced repetition (Cron)
 - Wissensbasis im Workspace (Memory‑Files), später optional DB/Embeddings
+- **Multi‑Person:** Unterschiedliche Lernthemen pro Person → **ein Agent pro Person** (nicht ein Profil pro Person). Siehe Abschnitt unten.
 
 ### 4) Project Bot (Test) (Profile `personal` oder eigenes Agent‑Binding)
 - “Projekt‑Support” (Zusammenfassungen, TODOs, Doku‑Hilfe)
 - Für Coding Workflows: **nicht** “Cline fernsteuern”, sondern klarer Trigger:
   - Bot erzeugt ein Ticket/Plan/Change‑Request
   - Umsetzung passiert im jeweiligen `code/<repo>` (Cursor/Cline), oder später via separatem CI/Runner
+
+## Profile vs. Agent (Multi‑Person Learning)
+
+**Frage:** Verschiedene Lernthemen für verschiedene Personen – brauchen wir weitere Profile?
+
+**Antwort:** Nein. **Profile** = Trust‑Zonen (ops vs. personal). **Agent** = ein isolierter „Brain“ mit eigenem Workspace, Sessions, Memory.
+
+Für unterschiedliche Personen mit eigenen Lernthemen nutzen wir **Multi‑Agent Routing** innerhalb des Profils `personal`:
+
+- **Ein Agent pro Person** (z. B. `learning-alex`, `learning-mia`)
+- Jeder Agent: eigener Workspace (`~/clawd/workspace-<agentId>`), eigene Sessions, eigene Memory
+- **Bindings** routen z. B. Telegram‑DM von Person A → Agent A, von Person B → Agent B
+
+Quelle: `https://docs.clawd.bot/concepts/multi-agent` – „One WhatsApp number, multiple people (DM split)“, „true isolation requires one agent per person“.
+
+**Praktisch:** Im Profil `personal` mehrere Agents definieren. Pro Person ein Agent mit eigenem Workspace. Routing via `bindings` (match auf `peer.id` / E.164 oder Channel). Alle teilen dieselbe Trust‑Zone (kein SSH, kein Service Role), aber **keine Datenvermischung**.
+
+**Konkrete Agents (v1):** `heiko` (Projekte/Reminder), `noah` (Lernagent 5.–6. Klasse Gym), `flora` (Lernagent Physiotherapie), `familie` (Allgemeinwissen, Termine, Finanzen).
+
+**Umsetzungsplan:** `projects/bot_platform/03_roadmap/multi_agent_learning_plan.md`
 
 ## Optional (später): Trading Bot Assistant
 Falls wir im Trading Bot einen Agent‑Support wollen, ist das ein **Project Bot** Use‑Case:

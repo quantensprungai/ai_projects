@@ -26,7 +26,7 @@ Daraus folgt fürs Interface: Der **Inhalt** (Synthesis, kanonische Beschreibung
 | **2 – Chat** | Chat als **eine** Form des Zugriffs: Fragen stellen, Antworten aus RAG/Synthesis/Mechanik. | Wichtig, aber zweitrangig gegenüber „Inhalte strukturiert anzeigen und navigieren“. Chat baut auf der gleichen Content-Schicht auf. |
 | **3 – Erweiterungen** | Persona/School-Umschaltung, erweiterte Suche, Favoriten, Export. | Nach dem stabilen Content-Zugang. |
 
-**Konsequenz für nächste Schritte:** Zuerst **Insight-Engine-UI** (Listen/Detail-Ansichten für Assets, Nodes, Synthesis) umsetzen; Chat darauf aufsetzen oder parallel, sobald die Content-Basis steht. Siehe **next_steps_was_fehlt_noch.md**.
+**Konsequenz für nächste Schritte:** Die **Reihenfolge** (Option B) steht in **02_system_design/next_steps_was_fehlt_noch.md**: zuerst Edges, Dynamics, Interactions; danach Insight-Engine-UI (Listen/Detail für Assets, Nodes, Synthesis); Chat darauf aufsetzen oder parallel.
 
 ---
 

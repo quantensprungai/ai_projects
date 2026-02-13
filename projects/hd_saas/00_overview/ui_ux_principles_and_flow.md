@@ -64,7 +64,7 @@ Komplexität erscheint, **wenn der Nutzer bereit dafür ist**. So bleibt es mass
 ## 6) Bezug zur Implementierung
 
 - **Aktuell:** Pipeline + KG + Synthesis; keine Voice-UI, kein voller Agent-Flow, keine MCP.
-- **Insight-Engine-UI** (next_steps) = erster Schritt zu „Inhalte/Muster sichtbar“ (Listen, Detail, optional erste Visualisierungen).
+- **Insight-Engine-UI** (next_steps) = erster sichtbarer Schritt (nach Backend-Phase, Option B) zu „Inhalte/Muster sichtbar“ (Listen, Detail, optional erste Visualisierungen).
 - **Später:** Voice-first, visuelle Dynamik (KG → Diagramme), MCP, episode-based Unlock – wie in vision_2026_2027 beschrieben.
 
 ---

@@ -1,8 +1,28 @@
 # Wie geht es weiter? Was fehlt noch?
 
-<!-- last_update: 2026-02-10 -->
+<!-- last_update: 2026-02-11 -->
 
-Kurzer Status: **Was ist fertig**, **was fehlt**, **in welcher Reihenfolge** weitermachen.  
+Kurzer Status: **Was ist fertig**, **was fehlt**, **in welcher Reihenfolge** weitermachen.
+
+---
+
+## Anna's Archive: Daily Download Limit (50/Tag)
+
+**Limit:** 50 Downloads pro Tag gesamt (Anna's Archive Member-API, account-weit).
+
+**Limit abrufen:**
+```bash
+ssh user@100.83.17.106 "cd ~/annas-archive-toolkit && export AAT_CONFIG=projects/bazi_content/config.json && python3 src/check_daily_limit.py"
+```
+
+Mit JSON-Output (für Scripts):
+```bash
+ssh user@100.83.17.106 "cd ~/annas-archive-toolkit && export AAT_CONFIG=projects/bazi_content/config.json && python3 src/check_daily_limit.py --json"
+```
+
+Profil wechseln: `AAT_CONFIG=projects/hd_content/config.json` (oder jyotish_content, astro_content, akan_content).
+
+**Strategie:** Pro Tag maximal 50 Items pro Profil; Queues für HD, BaZi, Jyotish laufen parallel. Weitere Themen (Astro, Akan) nach Metadaten-Setup.  
 **Vision, Story und UI** sind in den Overview-Docs beschrieben (vision_2026_2027, story_and_mythology, ui_ux_principles_and_flow); die Reihenfolge unten baut das „Gehirn“ (KG, Synthesis, Edges) und die erste sichtbare Schicht (Insight-Engine) auf, die die Agent/Voice/Visual-Experience später nutzt.
 
 ---
@@ -85,6 +105,42 @@ Kurzer Status: **Was ist fertig**, **was fehlt**, **in welcher Reihenfolge** wei
 
 ---
 
+## Nächster konkreter Schritt: Pipeline validieren oder weiterbauen?
+
+| Option | Aktion | Pro | Contra |
+|--------|--------|-----|--------|
+| **A – HD-Extraktion starten** | Bestehende HD-PDFs (VM102) mit MinerU durch die Pipeline jagen (extract_text → … → synthesize_node, Stub-Modus). | Echte Daten im System; Pipeline validiert; erste Nodes/Synthesis auch ohne LLM. | Dauert (MinerU pro PDF); LLM aus → Stub-Interpretations. |
+| **B – Pipeline weiterbauen** | KG-Edges, extract_dynamics etc. implementieren. | Architektur steht; später mit Daten befüllen. | Keine echten Daten zum Testen; Edges brauchen payload.relations vom LLM. |
+| **C – Warten auf Downloads** | Erst alle Themen auf 50/Tag hochziehen. | Keine parallele Arbeit. | Verzögert; Downloads laufen ohnehin im Hintergrund. |
+
+**Empfehlung: Option A + B parallel.**  
+- **HD-Extraktion starten** (z. B. 10–20 PDFs) – validiert MinerU, Stub, text2kg, synthesize; liefert erste nutzbare Daten.  
+- **KG-Edges** weiterbauen – Schema/Spec steht; sobald LLM oder Stub `payload.relations` liefert, werden Edges geschrieben. Die HD-Extraktion kann im Hintergrund laufen (Spark/Worker), während ihr an Edges arbeitet.
+
+---
+
+## Download → Ingestion → Pipeline (Workflow)
+
+**Ablauf pro Thema** (analog zu Daily Downloads, stückweise):
+
+| Schritt | Aktion | Wo |
+|---------|--------|-----|
+| 1. Download | `run_daily.ps1 -Profile hd_content` (Max 50/Tag) | VM102, Anna's Archive |
+| 2. Upload | `hd_saas_uploader.py --upload-pdfs output/hd_content/downloads/fast_download --max-pdfs N` | VM102 → Supabase |
+| 3. Verarbeitung | Worker läuft `extract_text` (MinerU) → … → `synthesize_node` | Spark/VM102 |
+
+**Frequenz:**  
+- Jedes Mal, wenn ein Thema neue PDFs hat, Upload + Worker starten.  
+- Oder: täglich ein Batch (z. B. 10 HD, 10 BaZi) hochladen; Worker verarbeitet im Hintergrund.
+
+**Doku:**  
+- `code/annas-archive-toolkit/docs/DAILY_DOWNLOAD_BAZI_UND_MEHR.md` (§ „Nach Download: Ingestion“)  
+- `code/hd_saas_app/docs/hd_ingestion_local_dev.md` (Worker, MinerU, Cloud-Setup)
+
+**Nächster Schritt jetzt:** HD-PDFs mit MinerU ingestion starten, dann weiter an Gesamtpipeline (KG-Edges, etc.) arbeiten.
+
+---
+
 ## Empfohlene Reihenfolge (Option B – Datenbasis zuerst)
 
 1. **KG-Edges** – `payload.relations` vom LLM oder einem vorbereitenden Schritt liefern; text2kg schreibt Edges (part_of, amplifies, depends_on, maps_to) inkl. strength. Wichtig für Abhängigkeiten und Agent/Pattern-Reasoning (Vision: „Muster erklären“, Graph-Navigation). Siehe Abschnitt KG-Edges oben.
@@ -107,6 +163,7 @@ Kurzer Status: **Was ist fertig**, **was fehlt**, **in welcher Reihenfolge** wei
 
 - **Plan Option B / Roadmap:** plan_option_b_roadmap.md
 - **Erkenntnisse & Ideen für später:** erkenntnisse_und_fuer_spaeter.md (Relation Types, Dimensions-Abgleich, Priority Rules, etc.)
+- **Doku-Audit (Inhalt, Referenzen, Einstiegspunkte):** doc_audit_hd_saas.md
 - **Pipeline-Stand (Details):** text2kg_spec.md §9  
 - **Layer-Abgleich:** layer_implementation_abgleich.md  
 - **Sprachmodell:** language_and_pipeline_overview.md §0  

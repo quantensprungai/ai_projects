@@ -55,3 +55,10 @@ notes: []
 - Frage bei Ambiguität: **welches Projekt** (z. B. `projects/hd_saas`, `projects/rest_data_platform`, …)?
 - Halte Änderungen projektlokal; keine Vermischung von Begriffen/Artefakten zwischen Projekten ohne explizite Entscheidung.
 
+## Doku & Rules (Wildwuchs vermeiden)
+- **Strategie:** `projects/_meta/doc_and_rules_strategy.md` – Gesamtplan für lebende Struktur.
+- **Neue Docs:** Nur anlegen, wenn Inhalt in keine bestehende passt UND aktiv referenziert wird.
+- **Pro Projekt:** Max. 15–20 aktive Docs; Einstieg = README + current_status + next_steps.
+- **Chat-Wechsel:** Handover-Block aus `chat_handover_*.md` kopieren – enthält Links, keine Spez.
+- **Rules über Docs:** Wenn KI-Kontext nötig → Rule (globs/alwaysApply); Docs für Vertiefung.
+

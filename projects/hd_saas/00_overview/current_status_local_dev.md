@@ -1,5 +1,5 @@
 <!-- Reality Block
-last_update: 2026-02-04
+last_update: 2026-02-12
 status: stable
 scope:
   summary: "Aktueller Stand: Makerkit lokal (Supabase) + HD ingestion slice (assets.jsonl) end-to-end bis hd_assets."
@@ -72,7 +72,7 @@ Stand: **2026-02-10**
 ### payload.source vs. System (2026-02-10)
 
 - **payload.source** = Herkunft der Extraktion: `llm_extraction` (vom LLM) oder `mvp_stub` (Stub). Wird vom Worker gesetzt; bei LLM-Aufruf immer `llm_extraction`, damit erkennbar ist, ob die Extraktion „echt“ war.
-- **System** (hd, bazi, …) steht in der Spalte `hd_interpretations.system`, nicht in payload.source. Doku: `interpretations_contract.md`, `worker_contract_extract_interpretations.md`.
+- **System** (hd, bazi, …) steht in der Spalte `hd_interpretations.system`, nicht in payload.source. Doku: `02_system_design/interpretations_contract.md`, `02_system_design/worker_contract_extract_interpretations.md`.
 
 ### LLM-Extraktion und text2kg (2026-02-09 / 2026-02-10)
 
@@ -94,6 +94,19 @@ Stand: **2026-02-10**
 - **Entwicklung:** Worker-Code liegt in `code/hd_saas_app/apps/web/scripts/hd_worker_mvp.py`; Änderungen lokal vornehmen, dann z. B. per SCP nach Spark deployen.
 
 **Stand pushen:** Nach größeren Schritten (z. B. text2kg, source-Fix, Term-Mapping) empfiehlt sich Commit + Push des Repos (ai_projects und ggf. code/hd_saas_app), damit Spark und andere den gleichen Stand ziehen können.
+
+### Zwei-Phasen-Betrieb (Phase 1 ohne LLM, 2026-02-12)
+
+- **Phase 1 (VM102, kein LLM):** `HD_WORKER_JOB_TYPES=extract_text,extract_text_ocr` in hd-worker.service → Worker verarbeitet nur Textextraktion, keine Stub-Interpretations. MinerU auf VM102: nicht (PyMuPDF); MinerU auf Spark.
+- **Phase 2 (mit LLM):** `HD_WORKER_JOB_TYPES` entfernen → Worker verarbeitet alle Jobs inkl. extract_interpretations (LLM-Extraktion).
+- **Stub-Cleanup:** `docs/sql_hd_delete_stub_interpretations.sql` – löscht Interpretationen mit `payload.source = 'mvp_stub'`.
+
+### Datenstand (2026-02-12)
+
+- **681** hd_assets (Metadaten aus assets.jsonl)
+- **111** PDFs hochgeladen (VM102 fast_download)
+- **Interpretations:** system = hd/bazi/…/mixed/other (classify_domain); viele mixed/other wegen Keyword-Heuristik oder mehrsprachigen Texten
+- **Titel-Backfill:** `backfill_asset_titles.py` nutzt assets.jsonl; MD5-Dateinamen sind kompatibel (source_ref = Content-MD5)
 
 ### Hinweis: Windows vs Linux Worker
 

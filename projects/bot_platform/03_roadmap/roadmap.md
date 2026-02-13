@@ -108,6 +108,7 @@ Stand: **2026-01-28**
 - **MVP**
   - 1 Memory‑Workflow (Notizen → Struktur)
   - 1 Cron‑Job (z. B. daily recap)
+- **Multi‑Person (ein Agent pro Person):** Unterschiedliche Lernthemen pro Person → Multi‑Agent Routing. Umsetzungsplan: `03_roadmap/multi_agent_learning_plan.md`
 - **Akzeptanzkriterien**
   - Cron läuft, produziert Output, ohne Tools außerhalb Workspace zu nutzen
 

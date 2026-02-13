@@ -1,13 +1,23 @@
 # Chat Handover – HD-SaaS (Copy/Paste Block)
 
 <!--
-last_update: 2026-02-10
+last_update: 2026-02-12
 status: aktuell
 scope:
   summary: "Ausgefülltes Handover für Chat-Wechsel – HD-SaaS Fokus."
 notes:
   - "Template: projects/_meta/chat_handover_template.md"
 -->
+
+## Schritte vorher (vor dem Chat-Wechsel)
+
+1. **Current Status prüfen** – `current_status_local_dev.md` lesen; ggf. Reality Block aktualisieren (letzte Änderungen, Blocker, Datenstand).
+2. **Next Steps abgleichen** – `02_system_design/next_steps_was_fehlt_noch.md` prüfen; Reihenfolge ggf. anpassen.
+3. **Handover-Block aktualisieren** – Abschnitt 3 (Zustand), 5 (Hypothese), 6 (Nächste Schritte) mit aktuellem Stand füllen.
+4. **Links prüfen** – Abschnitt 7: Alle Pfade existieren? (master_map, README, plan_option_b, etc.)
+5. **Dann:** Block unten kopieren und in neuen Chat einfügen.
+
+---
 
 **Kopiere den Block unten in einen neuen Chat.**
 
@@ -31,13 +41,14 @@ notes:
 ### 3) Aktueller Zustand
 
 - **Status**: Partially working – Pipeline bis text2kg + synthesize_node läuft (Cloud + Spark).
-- **Letzte bestätigte gute Version**: 2026-02-10 – text2kg, LLM-Extraktion, MinerU, Worker als systemd-Service auf Spark.
-- **Blocker**: Keine aktuell. OCR-Fallback-Fix (debug.cleanup) war erledigt.
+- **Letzte bestätigte gute Version**: 2026-02-12 – text2kg, LLM-Extraktion, MinerU, Worker als systemd-Service auf Spark. Zwei-Phasen-Betrieb: HD_WORKER_JOB_TYPES auf VM102 für Phase 1 (keine Stubs).
+- **Datenstand**: 681 hd_assets, 111 PDFs hochgeladen; Interpretations system = hd/bazi/mixed/other (classify_domain).
+- **Blocker**: Keine aktuell.
 
 ### 4) Architektur-Schnittstellen
 
 - **Control Plane**: Supabase Cloud (HD Tabellen, RLS, Worker service_role)
-- **Data Plane**: Spark Worker (`spark-56d0`), systemd `hd-worker.service`, WorkingDir `~/srv/hd-worker`
+- **Data Plane**: Spark Worker (`spark-56d0`), systemd `hd-worker.service`, `~/srv/hd-worker`; VM102 (docker-apps) für Phase 1 oder Uploads
 - **Speicher**: Buckets (hd_uploads_raw), Tabellen (hd_assets, hd_asset_chunks, hd_interpretations, hd_kg_nodes, hd_kg_edges, hd_synthesis_wordings)
 - **Endpoints**: HD_LLM_EXTRACTION_URL (SGLang/Qwen auf Spark Port 30001), MinerU für PDFs
 
@@ -47,7 +58,7 @@ Option B: Datenbasis zuerst. Nächster Fokus: KG-Edges (payload.relations vom LL
 
 ### 6) Nächste Schritte (max. 5)
 
-1. KG-Edges – payload.relations definieren/erzeugen, text2kg erweitern
+1. KG-Edges – payload.relations definieren/erzeugen, text2kg erweitern (Schema bereit)
 2. extract_dynamics (optional) – Dimensions + challenges/growth → hd_dynamics
 3. extract_interactions (optional) – payload.interactions → hd_interactions
 4. UI/UX Insight Engine – KG + Synthesis in App anzeigen

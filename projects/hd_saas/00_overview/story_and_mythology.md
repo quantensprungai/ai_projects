@@ -44,6 +44,7 @@ Die App hilft, **zurück in die eigene Autorität** zu finden – nicht in Abhä
 | **Jian** | China (BaZi, Wuxing) | Elemente, Rhythmen, Kräfte, Zyklen |
 | **Priya/Amaya** | Indien (Jyotish, Ayurveda) | Archetypen, Rollen, Lebensphasen |
 | **Luka** | Lateinamerika (Astro, Naturzyklen) | Emotionale Strömungen, kosmische Rhythmen |
+| **Amara** | Afrika/Ghana (Akan, Krada) | Soul-Name, Geburts-Wochentag, Obosom, Okra |
 
 **Gemeinsame Erkenntnis:** „Unsere Systeme sehen unterschiedlich aus, aber sie beschreiben dieselben Bewegungen im Menschen.“ Die App ist die **Sprache zwischen den Systemen** – Übersetzungsschicht, menschlicher Kompass, keine Tradition für sich.
 
