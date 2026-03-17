@@ -1,0 +1,49 @@
+﻿system_class,system,element,element_id,level_tags,level_label,ux_phases,kg_layer,dynamic_type,human_review,notes,level_count,earliest_ux_phase,latest_ux_phase
+A,BaZi,Day Master,bazi.day_master,[4],Disposition,[1],B,spectrum,optional,"Kern-Charakter, primäre Energiequelle; Einstiegspunkt Phase 1",1,1,1
+A,BaZi,Jahrespfeiler / Monatspfeiler,bazi.annual_pillar,[1],Oberfläche / Verhalten,"[1, 3]",A,phase_cycle,optional,"Timing, sichtbares Verhalten im Jahr; astronomische Dynamik",1,1,3
+A,BaZi,Element-Konstitution (5 Elemente),bazi.element_constitution,[3],Körper / Konstitution,"[2, 3]",B,spectrum,optional,Elementare Gesundheit und Körperlichkeit; Brücke TCM,1,2,3
+A,BaZi,Clashing Pillars,bazi.clashing_pillars,[5],Psychodynamik,"[2, 3, 5]",C,trap,required,"Konfliktmuster, innere Spannungen; Hypothesen-Sprache",1,2,5
+A,BaZi,Fehlende Elemente,bazi.missing_elements,"[4, 5]",Disposition + Psychodynamik,"[3, 4]",C,trap,required,"Blind Spots, Entwicklungsfelder; Überschneidung offene HD-Zentren",2,3,4
+A,BaZi,Luck Pillars (10-Jahres-Zyklen),bazi.luck_pillars,[4],Disposition (zeitlich),"[3, 4, 5]",C,phase_cycle,optional,Biographische Dynamik; Zeitband-Visualisierung; Lebensabschnitte,1,3,5
+A,BaZi,Nützliche Götter (Yong Shen),bazi.useful_gods,[7],Transzendent / Seelenpfad,"[6, 7]",D,growth_path,required,Idealer Entwicklungspfad; Experten-Ebene; Hypothesen-Sprache,1,6,7
+A,Human Design,Typ (MG/G/M/P/R),hd.type,[4],Disposition,[1],B,spectrum,optional,Energie-Strategie; primärer Einstiegspunkt Phase 1,1,1,1
+A,Human Design,Autorität,hd.authority,[4],Disposition,"[1, 2]",B,spectrum,optional,Entscheidungsmodus; eng verknüpft mit Typ,1,1,2
+A,Human Design,Profil (Linie),hd.profile,"[4, 7]",Disposition + Transzendent,"[2, 7]",B,spectrum,optional,Rolle (4) + Lebensthema / Dharma-Aspekt (7),2,2,7
+A,Human Design,Gates & Kanäle (bewusst/unbewusst),hd.gates_channels,[4],Disposition,"[2, 3]",B,spectrum,optional,Kern-Charakteristik; berechnet aus Geburts- und Design-Moment,1,2,3
+A,Human Design,Definierte Zentren,hd.defined_centers,[4],Disposition,"[2, 3]",B,spectrum,optional,"Stabile, konsistente Charaktereigenschaften",1,2,3
+A,Human Design,Offene Zentren,hd.open_centers,"[3, 5]",Körper/Konstitution + Psychodynamik,"[3, 4, 5]",C,trap,required,Konditionierungsort körperlich (3) UND psychodynamisch (5); Schlüssel für Nicht-Selbst-Thema,2,3,5
+A,Human Design,PHS / Variables,hd.phs,[3],Körper / Konstitution,"[3, 4]",B,spectrum,optional,Ernährungs- und Wahrnehmungsstrategie; körpernahe Ebene,1,3,4
+A,Human Design,Nicht-Selbst-Thema,hd.not_self_theme,[5],Psychodynamik,"[4, 5]",C,trap,required,Konditionierungsmuster im Alltag; Warnsignal-Sprache nötig,1,4,5
+A,Human Design,Inkarnationskreuz,hd.incarnation_cross,[7],Transzendent / Seelenpfad,"[6, 7]",D,growth_path,required,Höchste Ausdrucksebene; nur in späten Phasen zugänglich machen,1,6,7
+A,Maya / Tzolkin,Kin (Sonnensiegel + Ton),maya.kin,[4],Disposition,[1],B,spectrum,optional,Kern-Signatur; Einstiegspunkt Phase 1; kulturell zugänglich,1,1,1
+A,Maya / Tzolkin,Sonnensiegel (Solar Seal),maya.solar_seal,[4],Disposition,"[1, 2]",B,spectrum,optional,Archetypische Rolle / Energie-Qualität,1,1,2
+A,Maya / Tzolkin,Galaktischer Ton,maya.galactic_tone,"[4, 6]",Disposition + Bewusstsein,"[2, 6]",B,spectrum,optional,Energie-Frequenz und Bewusstseinsqualität,2,2,6
+A,Maya / Tzolkin,Wellenzauber (Wavespell),maya.wavespell,"[4, 6]",Disposition + Bewusstsein,"[3, 6]",C,phase_cycle,optional,13-tägiger Zyklus; Prozessdynamik,2,3,6
+A,Maya / Tzolkin,Analogsiegel / Antipodesiegel,maya.analog_antipode,[5],Psychodynamik,"[3, 4]",C,trap,required,Schatten- und Ergänzungsdimension; Herausforderung,1,3,4
+A,Maya / Tzolkin,260-Tage-Zyklus / 13 Monde,maya.tzolkin_cycle,[1],Oberfläche / Verhalten,"[3, 4]",C,phase_cycle,optional,Zeitdimension / Synchronizitäts-Tracking; Zeitband,1,3,4
+A,Maya / Tzolkin,Orakel-Siegel (Guide),maya.guide,"[6, 7]",Bewusstsein + Transzendent,"[6, 7]",D,growth_path,required,Höherer Lebensweg; nur späte Phasen,2,6,7
+A,Westliche Astrologie,Sonnenzeichen,astro.sun_sign,[4],Disposition,[1],B,spectrum,optional,Kern-Identität; Einstiegspunkt Phase 1; breiteste kulturelle Anschlussfähigkeit,1,1,1
+A,Westliche Astrologie,Aszendent,astro.ascendant,[1],Oberfläche / Verhalten,"[1, 2]",B,spectrum,optional,"Äußere Wirkung, Erscheinung; Brücke zur sozialen Welt",1,1,2
+A,Westliche Astrologie,Mondzeichen,astro.moon_sign,[5],Psychodynamik,"[2, 3, 5]",B,trap,optional,"Emotionale Muster, innere Reaktionen; Brücke zu Bindungsprägung",1,2,5
+A,Westliche Astrologie,Häuser 1–12,astro.houses,[4],Disposition + Lebensbereiche,"[2, 3]",B,spectrum,optional,Domänen der Disposition; direkte Verknüpfung zu 11 Lebensbereichen,1,2,3
+A,Westliche Astrologie,Saturn,astro.saturn,[5],Psychodynamik,"[3, 4, 5]",C,trap,required,"Struktur, Grenze, Konditionierungsmuster; Saturn-Return als Zeitanker",1,3,5
+A,Westliche Astrologie,Transite / Progressionen,astro.transits,"[1, 4]",Verhalten + Disposition (zeitlich),"[3, 4, 5]",C,phase_cycle,optional,Zeitdimension; astronomische Dynamik; Zeitband-Visualisierung,2,3,5
+A,Westliche Astrologie,Chiron,astro.chiron,"[3, 5]",Körper/Konstitution + Psychodynamik,"[4, 5]",C,growth_path,required,Verwundung (5) und Heilungspotenzial (3); sensibles UX-Wording nötig,2,4,5
+A,Westliche Astrologie,Nordknoten / Südknoten,astro.lunar_nodes,[7],Transzendent / Seelenpfad,"[6, 7]",D,growth_path,required,Karmische Richtung; nur in späten Phasen; Hypothesen-Sprache,1,6,7
+B,Gene Keys,Geschenk (Gift),gk.gift,"[2, 3, 4]",Kognition + Körper + Disposition,"[3, 4, 5]",C,growth_path,required,Gelebte Stärke im Alltag; Lizenzprüfung ausstehend (OE-04),3,3,5
+B,Gene Keys,Aktivierungssequenz,gk.activation_sequence,"[4, 5]",Disposition + Psychodynamik,"[3, 4]",C,growth_path,required,Charakter-Prägung und Kernwunde; Lizenzprüfung (OE-04),2,3,4
+B,Gene Keys,Schatten (Shadow),gk.shadow,[5],Psychodynamik,"[4, 5]",C,trap,required,"Unbewusstes Muster, Überlebensstrategie; Lizenzprüfung ausstehend (OE-04)",1,4,5
+B,Gene Keys,Venus-Sequenz,gk.venus_sequence,[5],Psychodynamik,"[4, 5]",C,growth_path,required,Beziehungs- und Herzöffnungs-Arbeit; Lizenzprüfung (OE-04),1,4,5
+B,Gene Keys,Siddhi,gk.siddhi,"[6, 7]",Bewusstsein + Transzendent,"[6, 7]",D,growth_path,required,"Höchstes Potenzial, Bewusstseinszustand; nur Phase 6–7; Lizenzprüfung (OE-04)",2,6,7
+B,Gene Keys,Pearl-Sequenz,gk.pearl_sequence,[7],Transzendent / Seelenpfad,[7],D,growth_path,required,"Dharma, Beitrag, Sinn; nur Phase 7; Lizenzprüfung (OE-04)",1,7,7
+B,Jyotish,Lagna (Aszendent),jyotish.lagna,[4],Disposition,"[2, 3]",B,spectrum,optional,Kern-Disposition; Ergänzung zu westl. Aszendent,1,2,3
+B,Jyotish,Nakshatras (Mondstationen),jyotish.nakshatra,"[4, 5]",Disposition + Psychodynamik,"[2, 3]",B,spectrum,optional,27 Mondstationen; feingranulare Charaktertiefe,2,2,3
+B,Jyotish,Dasha-System (Planetenperioden),jyotish.dasha,[4],Disposition (zeitlich),"[3, 4, 5]",C,phase_cycle,optional,Biographische Lebensabschnitte; Analogie zu BaZi Luck Pillars,1,3,5
+B,Jyotish,Karaka-Planeten,jyotish.karaka,"[4, 5]",Disposition + Psychodynamik,"[3, 4]",C,spectrum,required,Signifikatoren für Lebensbereiche,2,3,4
+B,Jyotish,Artha/Kama/Moksha-Häuser,jyotish.house_groups,"[5, 6]",Psychodynamik + Bewusstsein,"[4, 5, 6]",C,spectrum,required,Motivations- und Bewusstseinsstruktur,2,4,6
+B,Jyotish,Dharma-Trikon (1/5/9 Häuser),jyotish.dharma_trikon,[7],Transzendent / Seelenpfad,"[6, 7]",D,growth_path,required,Sinn und Lebensweg; Hypothesen-Sprache; nur Phase 6–7,1,6,7
+C,Enneagramm,Triade (Kopf/Herz/Körper),ennea.triad,"[3, 5]",Körper/Konstitution + Psychodynamik,"[2, 3]",C,spectrum,required,Abgeleitet via HD-Brücke (Triade-by-HD-Hypothese); opt-in Micro-Assessment,2,2,3
+C,Enneagramm,Typ (1–9),ennea.type,[5],Psychodynamik,"[3, 4]",C,spectrum,required,Grundmotivation; Hypothesen-Sprache; opt-in Micro-Assessment,1,3,4
+C,Enneagramm,Flügel (Wing),ennea.wing,[5],Psychodynamik,"[4, 5]",C,spectrum,required,Nuancierung des Typs; nur nach Typ-Bestätigung,1,4,5
+C,Enneagramm,Instinkt-Subtyp,ennea.subtype,"[3, 5]",Körper/Konstitution + Psychodynamik,"[4, 5]",C,trap,required,sp/sx/so Überlebensstrategie; körpernahe Konditionierungsebene,2,4,5
+C,Enneagramm,Wachstums-/Stresspfeil,ennea.growth_stress_arrow,"[5, 6]",Psychodynamik + Bewusstsein,"[5, 6]",D,growth_path,required,Integrationsrichtung; fortgeschrittene Phase,2,5,6

@@ -1,0 +1,45 @@
+---
+description: Inner Compass Projekt-Kontext – Einstiegspunkte für Architektur, Pipeline, Contracts
+globs: projects/inner_compass/**/*,code/inner_compass_app/**/*,code/hd_saas_app/**/*
+alwaysApply: false
+---
+
+# Inner Compass Kontext
+
+## Einstieg (immer zuerst lesen)
+
+- **Status:** projects/inner_compass/cursor/status.md
+- **Handover:** projects/inner_compass/cursor/handover.md
+
+## Zentrale Contracts (Implementierung)
+
+- **Dimensionen, Payloads, Enums:** projects/inner_compass/cursor/contracts.md
+- **Schema, Schichten, Tech Stack:** projects/inner_compass/cursor/architecture.md
+- **Pipeline-Jobs, Flows:** projects/inner_compass/cursor/pipeline.md
+- **Chart-Engines:** projects/inner_compass/cursor/engines.md
+
+## Prinzipien
+
+- Schema nutzt `sys_*`-Präfix (NICHT `hd_*`). Siehe architecture.md.
+- 15 Dimensionen (nicht 12). Siehe contracts.md.
+- 10 Lebensbereiche. Siehe contracts.md.
+- Canonical IDs: `{system}.{element_type}.{element_id}` (z.B. `hd.gate.34`)
+- Alle Payloads sind jsonb. Dimensions sind nullable.
+- Strukturbäume aus Deskriptoren (system_descriptors/*.json), NICHT aus PDFs.
+
+## Architektur
+
+- **Control Plane:** Supabase Cloud (Postgres + pgvector + Auth + Storage)
+- **Data Plane:** Spark (MinerU GPU, LLM via SGLang/vLLM, Python Worker)
+- **Code:** code/hd_saas_app/ (wird zu code/inner_compass_app/) — Makerkit Next.js + Supabase
+
+## Bei Unsicherheit
+
+- projects/inner_compass/README.md — Gesamtindex
+- projects/inner_compass/reference/decisions.md — Warum wurde X so entschieden?
+- projects/inner_compass/reference/prd_v3.md — Vollständige Produktvision
+
+## Wichtig: Alte Docs
+
+- projects/hd_saas/ ist **archiviert**. Nicht referenzieren, nicht als Source of Truth verwenden.
+- Wenn du Widersprüche zwischen alten und neuen Docs findest: **Neue Docs gewinnen immer.**

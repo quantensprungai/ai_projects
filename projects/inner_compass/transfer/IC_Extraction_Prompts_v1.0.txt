@@ -1,0 +1,1016 @@
+================================================================================
+INNER COMPASS -- IC_EXTRACTION_PROMPTS
+LLM-Extraktions-Prompts fuer den KG-Aufbau
+Version: 1.0  |  Stand: 25.02.2026
+Grundlage: IC_KG_Node_Edge_Schema_v1.1 + Leitdokument v4
+================================================================================
+
+ZWECK DIESES DOKUMENTS
+-----------------------
+Verbindliche Prompt-Vorlagen fuer LLM-gestuetzte Extraktion aus Quellmaterial
+in den Inner Compass Knowledge Graph (KG).
+
+Dieses Dokument ist die Referenz fuer:
+  - Entwickler (Pipeline-Implementierung)
+  - Content-Redakteure (Extraktion aus Buechern / PDFs / Lehr-Material)
+  - QA / Human-Review-Reviewer (Kalibrierung Erwartungen)
+  - KI-Assistenten (Prompt-Selection nach Schicht + System)
+
+Dieses Dokument ersetzt NICHT das Schema (IC_KG_Node_Edge_Schema_v1.1).
+Es referenziert es an jedem relevanten Punkt.
+
+LESEANLEITUNG
+--------------
+Jeder Prompt ist strukturiert als:
+  [PROMPT-ID]  Bezeichnung
+  Schicht:     KG-Schicht A | B | C | D | E
+  Trigger:     Wann wird dieser Prompt eingesetzt?
+  Eingabe:     Was geht rein?
+  Ausgabe:     Was kommt raus? (JSON-Format, Schema-konform)
+  Warnungen:   Kritische Fehlerquellen
+  Prompt:      Der eigentliche Prompt-Text (einsatzbereit)
+
+
+================================================================================
+TEIL 0: SYSTEM-KONTEXT (wird allen Prompts vorangestellt)
+================================================================================
+
+SYSTEM_CONTEXT_BLOCK = <BEGIN>
+Du bist ein spezialisierter Knowledge-Graph-Extraktor fuer Inner Compass (IC).
+
+Inner Compass ist ein System zur ganzheitlichen Selbstnavigation, das Konzepte
+aus Human Design (HD), BaZi, Westlicher Astrologie, Maya/Tzolkin, Jyotish,
+Gene Keys und Enneagramm in einem strukturierten Wissens-Graphen vereint.
+
+Deine Aufgabe ist die STRUKTURIERTE EXTRAKTION -- keine Interpretation, kein
+Urteilen, keine eigene Einschaetzung der Qualitaet der Systeme.
+
+GRUNDREGELN (nie verletzen):
+1. Extrahiere NUR, was im Text steht. Keine Erfindungen.
+2. Gib confidence-Werte ehrlich an (lieber 0.6 als falsches 0.9).
+3. Markiere IMMER human_review_required = true bei:
+   - KG-Schicht D oder E
+   - edge_type = maps_to oder contradicts
+   - confidence < 0.7
+   - node_type = meta_node (cross_system), system_annotation, inner_strategy
+4. Verwende IMMER das Originalvokabular der Schule in school_references.
+5. level_tag (1-7) ist ein IC-Feld -- NICHT zu verwechseln mit
+   hd_ontological_layer (HD-intern, 1-13).
+6. Liefere ausschliesslich valides JSON. Kein Prosa-Text ausserhalb von JSON.
+7. Bei Unsicherheit: confidence senken und review_notes fuellen, nicht raten.
+
+KG-SCHICHTEN KURZ:
+  A = Rohsignal (Fakten, berechenbar)
+  B = System-Konzepte / Interpretationen
+  C = Cross-System / Meta / Prozess
+  D = Handbuch-Text (user-facing, human_review PFLICHT)
+  E = User-Aktionen / Experimente (human_review PFLICHT)
+
+LEVEL_TAG (IC-Ebenen 1-7):
+  1 = Koerper / Biologie
+  2 = Unbewusstes / Praegung
+  3 = Emotion / Reaktion
+  4 = Mechanik / Struktur
+  5 = Muster / Prozess
+  6 = Bewusstsein / Entwicklung
+  7 = Sinn / Mission
+<END>
+
+
+================================================================================
+TEIL 1: SCHICHT A -- ROHSIGNAL-EXTRAKTION
+================================================================================
+
+--------------------------------------------------------------------------------
+[P-A01]  ENTITAETEN-EXTRAKTION: Systemelemente (mechanisch)
+--------------------------------------------------------------------------------
+Schicht:   A
+Trigger:   Primaeres Quellmaterial (Lehrbuecker, Referenzwerke) wird geladen.
+           Erster Schritt jeder Pipeline.
+Eingabe:   Textchunk (500-1500 Tokens) aus Primaerquelle.
+Ausgabe:   Array von system_concept-Nodes (mechanisch, Schicht A).
+Warnungen:
+  - Kein Umschreiben der Originalsprache in D-Schicht-Sprache.
+  - school_references PFLICHT wenn system_tag != inner_compass.
+  - level_tag nach Element vergeben, NICHT nach System global.
+
+PROMPT:
+>>>
+{SYSTEM_CONTEXT_BLOCK}
+
+AUFGABE: SCHICHT-A-EXTRAKTION (Rohsignal / Systemelemente)
+
+Du erhaeltst einen Textchunk aus einem Primaerwerk.
+Extrahiere alle mechanischen System-Konzepte (Faktenwissen, berechenbar,
+nicht interpretativ) als JSON-Array.
+
+TEXTCHUNK:
+---TEXT---
+{chunk_text}
+---END---
+
+QUELLENINFOS:
+  source_id:    {source_id}
+  source_class: {source_class}   # primary | secondary | tertiary
+  page:         {page}
+  chunk_id:     {chunk_id}
+  system_tag:   {system_tag}     # hd | bazi | astro | maya | gene_keys | jyotish | ...
+  language:     {language}       # ISO 639-1 (de | en | ...)
+
+EXTRAKTIONSREGELN:
+  1. Extrahiere NUR mechanische Fakten (keine Bedeutungen, keine Interpretationen).
+     Beispiele fuer Schicht A:
+       HD:     Gate-Nummer, Planetenposition, Zentrum-Status (defined/open/undefined)
+       BaZi:   Pillar-Element, Heavenly Stem, Earthly Branch (Faktum)
+       Astro:  Planetenposition in Grad, Haus-Position, Aspekt-Winkel
+       Maya:   Kin-Nummer, Ton, Wavespell-Zugehoerigkeit
+  2. name_canonical: Standardisierter englischer Bezeichner (snake_case)
+     Beispiel: "hd.gate.49" | "bazi.heavenly_stem.jia_wood" | "astro.planet.sun"
+  3. level_tag: Per Element entscheiden (nicht System-global).
+  4. Wenn expression_stern relevant (HD): Pruefe ob zwei Planeten dieselbe Linie
+     aktivieren, einer in Exaltation + einer in Detriment gleichzeitig.
+
+AUSGABE-FORMAT (JSON-Array, valide):
+[
+  {
+    "id":                   "UUID-PLACEHOLDER",
+    "node_type":            "system_concept",
+    "kg_layer":             "A",
+    "system_tag":           "{system_tag}",
+    "name_canonical":       "string (snake_case)",
+    "name_display":         "string (human-readable)",
+    "name_original":        "string (Originalbezeichnung aus Quelle)",
+    "level_tag":            [int],
+    "domain_tag":           [int],
+    "phase_tag":            null,
+    "dynamic_type":         null,
+    "source_provenance": {
+      "source_id":          "{source_id}",
+      "source_class":       "{source_class}",
+      "page":               null,
+      "chunk_id":           "{chunk_id}",
+      "text_snippet":       "max 500 Zeichen Originaltext",
+      "language":           "{language}",
+      "confidence":         0.0,
+      "human_reviewed":     false,
+      "review_notes":       null
+    },
+    "school_references": [
+      {
+        "school_name":      "string",
+        "original_term":    "string",
+        "tradition":        "string",
+        "stage_label":      null,
+        "lens_type":        null
+      }
+    ],
+    "human_review_required": false,
+    "created_at":           "ISO 8601 TIMESTAMP"
+  }
+]
+
+Falls keine Schicht-A-Entitaeten im Chunk: Gib leeres Array [] zurueck.
+<<<
+
+
+--------------------------------------------------------------------------------
+[P-A02]  HD-SPEZIFISCH: Gate- und Kanal-Extraktion
+--------------------------------------------------------------------------------
+Schicht:   A
+Trigger:   system_tag = hd UND Chunk enthaelt Gate/Kanal-Beschreibungen.
+Eingabe:   HD-Textchunk.
+Ausgabe:   system_concept-Nodes mit HD-spezifischen Feldern.
+Warnungen:
+  - hd_ontological_layer != level_tag (zwei verschiedene Systeme!).
+  - expression_stern: NUR true wenn Exaltation + Detriment GLEICHZEITIG,
+    selbe Linie. Nicht verwechseln mit fixed_star-Nodes.
+  - activation_mode: conscious / unconscious / dual / open -- aus Chart-Position.
+
+PROMPT:
+>>>
+{SYSTEM_CONTEXT_BLOCK}
+
+AUFGABE: HD-GATE/KANAL-EXTRAKTION (Schicht A, HD-spezifisch)
+
+TEXTCHUNK (HD-Quelle):
+---TEXT---
+{chunk_text}
+---END---
+
+QUELLENINFOS: source_id={source_id} | chunk_id={chunk_id} | page={page}
+HD-Schule: {hd_school}   # Classical HD | Gene Keys | Quantum HD
+
+Extrahiere alle Gates und Kanaele als system_concept-Nodes.
+Fuege HD-spezifische Felder hinzu.
+
+AUSGABE-FORMAT:
+[
+  {
+    "id":                     "UUID-PLACEHOLDER",
+    "node_type":              "system_concept",
+    "kg_layer":               "A",
+    "system_tag":             "hd",
+    "name_canonical":         "hd.gate.{nr}",
+    "name_display":           "Gate {nr}: {Name}",
+    "name_original":          "string (Originalbezeichnung der Schule)",
+    "level_tag":              [int],
+    "domain_tag":             [int],
+    "hd_ontological_layer":   0,
+    "activation_mode":        "conscious | unconscious | dual | open",
+    "expression_quality":     "exaltation | detriment | variable",
+    "expression_stern":       false,
+    "planetary_source":       "sun | moon | mercury | venus | mars | jupiter | saturn | uranus | neptune | pluto | north_node | south_node",
+    "planetary_weight":       0.0,
+    "circuit":                "individual | tribal | collective",
+    "chart_position":         "upper | lower",
+    "golden_path_sequence":   "activation | venus | pearl | saturn",
+    "dynamic_type":           null,
+    "source_provenance": {
+      "source_id":            "{source_id}",
+      "source_class":         "primary",
+      "page":                 null,
+      "chunk_id":             "{chunk_id}",
+      "text_snippet":         "max 500 Zeichen",
+      "language":             "{language}",
+      "confidence":           0.0,
+      "human_reviewed":       false,
+      "review_notes":         null
+    },
+    "school_references": [
+      {
+        "school_name":        "{hd_school}",
+        "original_term":      "string",
+        "tradition":          "Human Design",
+        "stage_label":        null,
+        "lens_type":          "mechanics | transformation | integration"
+      }
+    ],
+    "human_review_required":  false
+  }
+]
+<<<
+
+
+================================================================================
+TEIL 2: SCHICHT B -- SYSTEM-KONZEPTE / INTERPRETATIONEN
+================================================================================
+
+--------------------------------------------------------------------------------
+[P-B01]  INTERPRETATIONS-EXTRAKTION: Bedeutungen und Lehrsprache
+--------------------------------------------------------------------------------
+Schicht:   B
+Trigger:   Chunk enthaelt Interpretationen, Bedeutungen, Lehrsprache.
+           NACH P-A01/A02 (Schicht A muss existieren).
+Eingabe:   Textchunk + Liste bereits extrahierter Schicht-A-Node-IDs.
+Ausgabe:   system_concept-Nodes (interpretativ) + system_annotation-Nodes.
+Warnungen:
+  - system_annotation = Lehrsprache einzelner Autoren. human_review PFLICHT.
+  - NICHT direkt user-facing ohne Review.
+  - Keine Cross-System-Mappings hier (-> P-C01).
+  - level_tag pro Bedeutungs-Element entscheiden.
+
+PROMPT:
+>>>
+{SYSTEM_CONTEXT_BLOCK}
+
+AUFGABE: SCHICHT-B-EXTRAKTION (Interpretationen + Lehrsprache)
+
+TEXTCHUNK:
+---TEXT---
+{chunk_text}
+---END---
+
+QUELLENINFOS: source_id={source_id} | chunk_id={chunk_id} | page={page}
+system_tag={system_tag} | Autor/Schule: {author_school}
+
+BEREITS EXTRAHIERTE SCHICHT-A-NODES (IDs fuer Verknuepfung):
+{existing_layer_a_node_ids}
+
+UNTERSCHEIDE:
+  system_concept (interpretativ):
+    -> Allgemeine Bedeutung des Konzepts laut Schule (nicht autorspezifisch)
+    -> KG-Schicht: B | human_review: bei confidence < 0.7
+
+  system_annotation:
+    -> Spezifische Formulierung / Lehrsprache eines einzelnen Autors
+    -> Beispiel: "Ra Uru Hu nennt dies...", "Karen Curry Parker schreibt..."
+    -> KG-Schicht: B | human_review_required: TRUE (immer)
+
+AUSGABE (zwei getrennte Arrays):
+{
+  "system_concepts_B": [
+    {
+      "id":                   "UUID-PLACEHOLDER",
+      "node_type":            "system_concept",
+      "kg_layer":             "B",
+      "system_tag":           "{system_tag}",
+      "name_canonical":       "string",
+      "name_display":         "string",
+      "name_original":        "string",
+      "level_tag":            [int],
+      "domain_tag":           [int],
+      "phase_tag":            null,
+      "dynamic_type":         null,
+      "development_stage":    null,
+      "source_provenance":    { "source_id": "", "source_class": "", "page": null, "chunk_id": "", "text_snippet": "", "language": "", "confidence": 0.0, "human_reviewed": false, "review_notes": null },
+      "school_references": [
+        {
+          "school_name":      "string",
+          "original_term":    "string",
+          "tradition":        "string",
+          "stage_label":      null,
+          "lens_type":        null
+        }
+      ],
+      "human_review_required": false
+    }
+  ],
+  "system_annotations_B": [
+    {
+      "id":                   "UUID-PLACEHOLDER",
+      "node_type":            "system_annotation",
+      "kg_layer":             "B",
+      "system_tag":           "{system_tag}",
+      "name_canonical":       "annotation.{system_tag}.{autor_kuerzel}.{thema}",
+      "name_display":         "string",
+      "annotation_author":    "{author_school}",
+      "annotation_text":      "Originaltext max 500 Zeichen",
+      "level_tag":            [int],
+      "source_provenance":    { "source_id": "", "source_class": "", "page": null, "chunk_id": "", "text_snippet": "", "language": "", "confidence": 0.0, "human_reviewed": false, "review_notes": null },
+      "school_references":    [],
+      "human_review_required": true
+    }
+  ],
+  "edges_A_to_B": [
+    {
+      "id":             "UUID-PLACEHOLDER",
+      "edge_type":      "extends",
+      "source_node_id": "Schicht-A-Node-UUID",
+      "target_node_id": "Schicht-B-Node-UUID",
+      "confidence":     0.0,
+      "human_reviewed": false,
+      "source_provenance": { "source_id": "", "source_class": "", "page": null, "chunk_id": "", "text_snippet": "", "language": "", "confidence": 0.0, "human_reviewed": false, "review_notes": null },
+      "created_at":     "ISO 8601"
+    }
+  ]
+}
+<<<
+
+
+--------------------------------------------------------------------------------
+[P-B02]  DYNAMIC-TYPE-KLASSIFIKATION (Schicht B)
+--------------------------------------------------------------------------------
+Schicht:   B
+Trigger:   Node hat potenziell dynamic_type != null.
+           Wird nach P-B01 als Nachklassifikation eingesetzt.
+Eingabe:   Einzelner B-Node (JSON) + Originaltext.
+Ausgabe:   dynamic_type-Klassifikation + Begruendung.
+Warnungen:
+  - Die vier Typen schliessen sich aus. Lieber NULL als falsch klassifizieren.
+  - Spektren haben KEINE Prozesssprache, KEIN Datum.
+  - Traps haben KEINE Entwicklungsrichtung (nur Schleife).
+
+PROMPT:
+>>>
+{SYSTEM_CONTEXT_BLOCK}
+
+AUFGABE: DYNAMIC_TYPE-KLASSIFIKATION
+
+Du erhaeltst einen bereits extrahierten Node und den dazugehoerigen Originaltext.
+Klassifiziere den dynamic_type des Nodes.
+
+NODE:
+{node_json}
+
+ORIGINALTEXT (Quelle des Nodes):
+---TEXT---
+{source_text}
+---END---
+
+KLASSIFIKATIONS-REGELN:
+
+  phase_cycle -> WENN: Zeitangaben vorhanden, Zyklusdauer messbar,
+                       Anfang/Ende identifizierbar.
+                SIGNALWOERTER: "Jahre", "Zyklus", "Phase", "Return",
+                              "Dasha", "Pillar", "Wavespell", "Transit"
+                BEISPIELE: Saturn Return, BaZi Luck Pillar, Maya Wavespell
+
+  trap        -> WENN: Wiederkehrende konditionierte Reaktion OHNE Entwicklung,
+                       OHNE Zeitbezug, OHNE Richtung.
+                SIGNALWOERTER: "Not-Self", "shadow", "Falle", "clash",
+                              "punishment", "Konditionierung", "Verzerrung"
+                BEISPIELE: Not-Self Frustration, BaZi Clash-Muster
+
+  growth_path -> WENN: Entwicklungsrichtung vorhanden (distorted -> transcendent),
+                       Stufen erkennbar, KEIN festes Datum.
+                SIGNALWOERTER: "Reife", "Integration", "Entwicklung",
+                              "Stufen", triadische Frames, "shadow/gift/siddhi"
+                BEISPIELE: Gene Keys Dreiheit, HD-Dekonditionierung
+
+  spectrum    -> WENN: Pole/Kontinuum vorhanden, KEIN Datum, KEIN Prozess,
+                       KEINE Entwicklungsrichtung.
+                SIGNALWOERTER: "Polar", Kontinua, Pole
+                BEISPIELE: Defined / Open, Yin / Yang
+
+  null        -> WENN: keiner der obigen Typen passt (statisches Konzept).
+
+AUSGABE:
+{
+  "node_id":                    "UUID des Nodes",
+  "dynamic_type":               "phase_cycle | trap | growth_path | spectrum | null",
+  "development_stage":          "distorted | aligned | transcendent | null",
+  "classification_confidence":  0.0,
+  "classification_reasoning":   "Max 3 Saetze Begruendung",
+  "human_review_required":      false
+}
+<<<
+
+
+================================================================================
+TEIL 3: SCHICHT C -- CROSS-SYSTEM / META / PROZESS
+================================================================================
+
+--------------------------------------------------------------------------------
+[P-C01]  CROSS-SYSTEM-BRIDGE-EXTRAKTION (maps_to Edges)
+--------------------------------------------------------------------------------
+Schicht:   C
+Trigger:   Zwei oder mehr Systeme im Chunk / bekannter Kontext.
+           NUR nach Abschluss von Schicht A + B beider Systeme.
+Eingabe:   Textchunk + Nodes aus System A + Nodes aus System B.
+Ausgabe:   maps_to-Edges zwischen Schicht-A/B-Nodes.
+Warnungen:
+  - maps_to = semantische Aehnlichkeit, NICHT Identitaet.
+  - human_review PFLICHT (immer bei maps_to).
+  - Nur explizit belegte Mappings -- keine Vermutungen.
+  - Widersprueche -> P-C02 (contradicts), NICHT hier.
+
+PROMPT:
+>>>
+{SYSTEM_CONTEXT_BLOCK}
+
+AUFGABE: CROSS-SYSTEM-BRIDGE-EXTRAKTION (Schicht C, maps_to-Edges)
+
+TEXTCHUNK:
+---TEXT---
+{chunk_text}
+---END---
+
+SYSTEM A: {system_a}
+NODES SYSTEM A (relevanter Ausschnitt):
+{nodes_system_a}
+
+SYSTEM B: {system_b}
+NODES SYSTEM B (relevanter Ausschnitt):
+{nodes_system_b}
+
+AUFGABE:
+Extrahiere maps_to-Edges NUR fuer explizit im Text belegte semantische
+Aehnlichkeiten zwischen Konzepten aus System A und System B.
+
+REGELN:
+  1. maps_to = "aehnlich, verwandt, vergleichbar" -- NICHT "identisch".
+  2. Jede Edge braucht einen text_snippet als Beleg.
+  3. similarity_basis: WAS ist aehnlich? (max 200 Zeichen)
+  4. Confidence < 0.7 -> human_review_required: true.
+  5. KEINE Edges fuer Annahmen ohne Textbeleg.
+
+AUSGABE:
+{
+  "maps_to_edges": [
+    {
+      "id":               "UUID-PLACEHOLDER",
+      "edge_type":        "maps_to",
+      "source_node_id":   "UUID (System A Node)",
+      "target_node_id":   "UUID (System B Node)",
+      "similarity_basis": "string (max 200 Zeichen)",
+      "confidence":       0.0,
+      "human_reviewed":   false,
+      "human_review_required": true,
+      "source_provenance": {
+        "source_id":      "{source_id}",
+        "source_class":   "{source_class}",
+        "page":           null,
+        "chunk_id":       "{chunk_id}",
+        "text_snippet":   "max 500 Zeichen Originaltext als Beleg",
+        "language":       "{language}",
+        "confidence":     0.0,
+        "human_reviewed": false,
+        "review_notes":   null
+      },
+      "created_at":       "ISO 8601"
+    }
+  ],
+  "unmapped_concepts": []
+}
+<<<
+
+
+--------------------------------------------------------------------------------
+[P-C02]  WIDERSPRUCHS-EXTRAKTION (contradicts Edges)
+--------------------------------------------------------------------------------
+Schicht:   C
+Trigger:   Chunk enthaelt Widersprueche zwischen Systemen.
+           Oder: maps_to-Edge confidence < 0.5.
+Eingabe:   Textchunk + Nodes beider Systeme.
+Ausgabe:   contradicts-Edges.
+Warnungen:
+  - contradicts = Wert, kein Fehler. UX nutzt diese fuer Widerspruchs-Protokoll.
+  - human_review PFLICHT (2 Reviewer, Quorum).
+  - resolution_hint: Erklaerungsrahmen, NICHT "wer hat Recht".
+  - Widerspruch != unterschiedliche Ebene. Erst level_tag pruefen.
+
+PROMPT:
+>>>
+{SYSTEM_CONTEXT_BLOCK}
+
+AUFGABE: WIDERSPRUCHS-EXTRAKTION (contradicts-Edges)
+
+TEXTCHUNK:
+---TEXT---
+{chunk_text}
+---END---
+
+BEREITS EXTRAHIERTE NODES (Kontext):
+{existing_nodes}
+
+WIDERSPRUCHS-TYPEN (fuer contradiction_type):
+  level_conflict:    Systeme beschreiben dieselbe Frage auf verschiedenen Ebenen.
+                     -> Kein echter Widerspruch, sondern Ebenen-Differenz.
+                     -> Aufloesung: verschiedene level_tags.
+
+  content_conflict:  Systeme machen inhaltlich entgegengesetzte Aussagen
+                     zur SELBEN Frage auf DERSELBEN Ebene.
+                     -> Echter Widerspruch, user-facing mit IC-Widerspruchs-UX.
+
+  scope_conflict:    Systeme haben unterschiedliche Geltungsbereiche,
+                     die im Quelltext verwechselt werden.
+
+AUSGABE:
+{
+  "contradicts_edges": [
+    {
+      "id":                 "UUID-PLACEHOLDER",
+      "edge_type":          "contradicts",
+      "source_node_id":     "UUID",
+      "target_node_id":     "UUID",
+      "contradiction_type": "level_conflict | content_conflict | scope_conflict",
+      "contradiction_desc": "string (Was widerspricht sich? Max 300 Zeichen)",
+      "resolution_hint":    "string | null (Moeglicher Rahmen, kein Urteil)",
+      "confidence":         0.0,
+      "human_reviewed":     false,
+      "human_review_required": true,
+      "reviewer_quorum":    2,
+      "source_provenance":  { "source_id": "", "source_class": "", "page": null, "chunk_id": "", "text_snippet": "", "language": "", "confidence": 0.0, "human_reviewed": false, "review_notes": null },
+      "created_at":         "ISO 8601"
+    }
+  ]
+}
+<<<
+
+
+--------------------------------------------------------------------------------
+[P-C03]  META-NODE-GENERIERUNG (mind. 3 Systeme Konvergenz)
+--------------------------------------------------------------------------------
+Schicht:   C
+Trigger:   Mind. 3 Schicht-B-Nodes aus verschiedenen Systemen konvergieren
+           semantisch auf denselben menschlichen Erfahrungsbereich.
+Eingabe:   Set konvergierender Nodes (mind. 3, aus mind. 3 Systemen).
+Ausgabe:   meta_node (cross_system) + maps_to-Edges zu Quell-Nodes.
+Warnungen:
+  - human_review PFLICHT (2 Reviewer + Domaenen-Experte, Quorum 3).
+  - system_tag: "cross_system" (nicht einzelnes System).
+  - name_display: IC-eigene Meta-Sprache (nicht System-Sprache).
+  - Minimum: 3 Systeme. Weniger -> noch kein Meta-Node.
+
+PROMPT:
+>>>
+{SYSTEM_CONTEXT_BLOCK}
+
+AUFGABE: META-NODE-GENERIERUNG (Schicht C, cross_system)
+
+Du erhaeltst eine Gruppe von Schicht-B-Nodes aus verschiedenen Systemen,
+die semantisch auf denselben menschlichen Erfahrungsbereich zeigen.
+
+KONVERGIERENDE NODES:
+{converging_nodes_json}
+
+ERFAHRUNGSBEREICH (aus Analyse oder redaktioneller Vorgabe):
+{experience_domain}
+
+AUFGABE:
+1. Pruefe: Konvergieren diese Nodes wirklich? Confidence fuer Konvergenz?
+2. Wenn ja: Erzeuge einen meta_node in IC-eigener Sprache.
+3. Erzeuge maps_to-Edges von den Quell-Nodes zum meta_node.
+
+REGELN FUER META-NODE-NAME:
+  - In IC-Meta-Sprache (nicht "Gate 34" oder "Jia Wood")
+  - Beschreibend, erfahrungsnah, nicht esoterisch
+  - Beispiel: "Emotionale Durchlaessigkeit" statt "Offenes Emotionalzentrum"
+
+AUSGABE:
+{
+  "meta_node": {
+    "id":                    "UUID-PLACEHOLDER",
+    "node_type":             "meta_node",
+    "kg_layer":              "C",
+    "system_tag":            "cross_system",
+    "name_canonical":        "ic.meta.{thema_snake_case}",
+    "name_display":          "string (IC-Meta-Sprache)",
+    "name_original":         null,
+    "contributing_systems":  ["hd", "bazi"],
+    "contributing_nodes":    ["UUID", "UUID", "UUID"],
+    "level_tag":             [int],
+    "domain_tag":            [int],
+    "convergence_confidence": 0.0,
+    "convergence_reasoning":  "string (max 500 Zeichen)",
+    "source_provenance":     { "source_id": "", "source_class": "", "page": null, "chunk_id": "", "text_snippet": "", "language": "", "confidence": 0.0, "human_reviewed": false, "review_notes": null },
+    "school_references":     null,
+    "human_review_required": true,
+    "reviewer_quorum":       3,
+    "experimental_flag":     true
+  },
+  "maps_to_edges_to_meta": [
+    {
+      "id":             "UUID-PLACEHOLDER",
+      "edge_type":      "maps_to",
+      "source_node_id": "UUID (Quell-Node)",
+      "target_node_id": "UUID (meta_node Placeholder)",
+      "confidence":     0.0,
+      "human_reviewed": false,
+      "human_review_required": true,
+      "source_provenance": { "source_id": "", "source_class": "", "page": null, "chunk_id": "", "text_snippet": "", "language": "", "confidence": 0.0, "human_reviewed": false, "review_notes": null }
+    }
+  ],
+  "convergence_not_sufficient": false,
+  "missing_systems":            []
+}
+<<<
+
+
+================================================================================
+TEIL 4: SCHICHT D -- HANDBUCH-TEXT (user-facing)
+================================================================================
+
+--------------------------------------------------------------------------------
+[P-D01]  HANDBUCH-SCHICHT-1-GENERIERUNG (Basistext, user-facing)
+--------------------------------------------------------------------------------
+Schicht:   D
+Trigger:   Schicht A + B + C fuer einen Themenbereich abgeschlossen + QA bestanden.
+           ERST dann -- niemals vor Schicht C.
+Eingabe:   meta_node oder konsolidierter B-Node + Quell-Nodes.
+Ausgabe:   Handbuch-Schicht-1-Text (kurz, zugaenglich, hypothesenbasiert).
+Warnungen:
+  - human_review_required: true -- IMMER. Kein D-Node ohne Review.
+  - Keine Systemsprache verwenden (nicht "Gate 34", nicht "Jia Wood").
+  - Hypothesen-Sprache PFLICHT: "koennte", "zeigt sich oft als", "kann sein".
+  - Karte != Territorium: Einschraenkungshinweis einbauen.
+  - Keine Diagnose, keine Vorhersage, keine Garantie.
+
+PROMPT:
+>>>
+{SYSTEM_CONTEXT_BLOCK}
+
+AUFGABE: HANDBUCH-SCHICHT-1-TEXT-GENERIERUNG (Schicht D, user-facing)
+
+Du erzeugst einen kurzen Einfuehrungstext (Schicht 1 von 4) fuer das IC-Handbuch.
+Dieser Text ist der ERSTE Kontaktpunkt des Users mit diesem Thema.
+
+ZIEL:
+  - Zugaenglich, warm, einladend.
+  - Keine Systemsprache, keine technischen Begriffe.
+  - Klare Hypothesen-Sprache (keine Aussagen als Fakten).
+  - Kurz: 80-150 Woerter.
+
+QUELL-NODES (Input, nicht direkt zitieren):
+{source_nodes_json}
+
+IC-META-SPRACHE FUER DIESES THEMA: {meta_name_display}
+
+HANDBUCH-SCHICHT-UEBERSICHT:
+  Schicht 1: Zugang / erste Begegnung (80-150 Woerter, kein Jargon)
+  Schicht 2: Muster-Beschreibung (150-300 Woerter, erste Vertiefung)
+  Schicht 3: Praxis / Experiment-Anschluss (150-250 Woerter)
+  Schicht 4: Systemlinse (optional, fuer Fortgeschrittene)
+
+PFLICHT-RAHMENSATZ (am Ende oder Anfang des Textes einbauen):
+"Diese Beschreibung ist eine Hypothese, die aus verschiedenen Perspektiven
+ entsteht. Wie sie sich in deinem Leben zeigt, weisst du am besten selbst."
+
+AUSGABE:
+{
+  "id":                    "UUID-PLACEHOLDER",
+  "node_type":             "system_concept",
+  "kg_layer":              "D",
+  "handbook_layer":        1,
+  "system_tag":            "inner_compass",
+  "name_canonical":        "ic.handbook.{thema}.layer1",
+  "name_display":          "{meta_name_display}",
+  "handbook_text":         "string (80-150 Woerter, Deutsch)",
+  "level_tag":             [int],
+  "domain_tag":            [int],
+  "phase_tag":             null,
+  "contributing_nodes":    ["UUID"],
+  "source_provenance":     { "source_id": "", "source_class": "", "page": null, "chunk_id": "", "text_snippet": "", "language": "de", "confidence": 0.0, "human_reviewed": false, "review_notes": null },
+  "human_review_required": true,
+  "review_notes":          null,
+  "experimental_flag":     false
+}
+<<<
+
+
+================================================================================
+TEIL 5: SCHICHT E -- EXPERIMENTE / USER-AKTIONEN
+================================================================================
+
+--------------------------------------------------------------------------------
+[P-E01]  EXPERIMENT-GENERIERUNG (strukturierter Selbstversuch)
+--------------------------------------------------------------------------------
+Schicht:   E
+Trigger:   D-Node existiert + human_review bestanden.
+           Themen-Cluster braucht konkrete Praxis-Einladung.
+Eingabe:   D-Node + Phase-Tag + Domain-Tag.
+Ausgabe:   experiment-Node (Schicht E).
+Warnungen:
+  - human_review_required: true -- IMMER.
+  - Keine Aufgaben, keine Anforderungen -- nur Einladungen.
+  - Kein "Du musst", kein "Du solltest".
+  - Experiment muss in 5-15 Minuten durchfuehrbar sein.
+  - Phase 1-2: beobachten. Phase 3-5: erproben. Phase 6-7: integrieren.
+
+PROMPT:
+>>>
+{SYSTEM_CONTEXT_BLOCK}
+
+AUFGABE: EXPERIMENT-GENERIERUNG (Schicht E)
+
+Du erzeugst eine Einladung zu einem strukturierten Selbstversuch.
+
+HANDBUCH-TEXT (D-Node, Grundlage):
+{handbook_node_json}
+
+PHASE: {phase_tag}   # 1=Erkennen | 2=Verstehen | 3=Verkoerpern |
+                     # 4=Schatten | 5=Navigation | 6=Integration | 7=Horizont
+DOMAIN: {domain_tag} # 1-11
+
+EXPERIMENT-LEITLINIEN:
+  - Phase 1-2: NUR beobachten (kein Handeln, kein Bewerten)
+  - Phase 3-4: Kleine Erprobung, sicher abbruchbar
+  - Phase 5-6: Reflektion + Integration
+  - Phase 7:   Langzeit-Praxis, keine Deadline
+
+SPRACHREGELN:
+  - Einladung, nicht Aufgabe
+  - "Beobachte heute..." | "Wenn du magst..." | "Bring deine Aufmerksamkeit..."
+  - Kein "Musst", "Solltest", "Vergiss nicht"
+  - Zeitfenster klar benennen (5 Min? 1 Tag? 1 Woche?)
+
+AUSGABE:
+{
+  "id":                    "UUID-PLACEHOLDER",
+  "node_type":             "experiment",
+  "kg_layer":              "E",
+  "system_tag":            "inner_compass",
+  "name_canonical":        "ic.experiment.{thema}.phase{phase}",
+  "name_display":          "string (kurzer Titel, max 8 Woerter)",
+  "experiment_text":       "string (Einladungstext, 50-120 Woerter)",
+  "experiment_duration":   "string (z.B. '5 Minuten', '1 Tag', '1 Woche')",
+  "phase_tag":             0,
+  "domain_tag":            [0],
+  "level_tag":             [int],
+  "contributing_d_node":   "UUID (D-Node)",
+  "source_provenance":     { "source_id": "", "source_class": "", "page": null, "chunk_id": "", "text_snippet": "", "language": "de", "confidence": 0.0, "human_reviewed": false, "review_notes": null },
+  "human_review_required": true,
+  "experimental_flag":     false
+}
+<<<
+
+
+================================================================================
+TEIL 6: QA-PROMPTS (Qualitaets-Checks)
+================================================================================
+
+--------------------------------------------------------------------------------
+[P-QA01]  LEVEL_TAG-VALIDIERUNG
+--------------------------------------------------------------------------------
+Schicht:   Alle
+Trigger:   Nach jeder Extraktion, vor human_review.
+Eingabe:   Node-JSON.
+Ausgabe:   Validierungsbericht.
+Warnungen:
+  - Haeufigstes Problem: level_tag zu hoch angesetzt (alles auf 7).
+  - Haeufigstes Problem: hd_ontological_layer mit level_tag verwechselt.
+
+PROMPT:
+>>>
+{SYSTEM_CONTEXT_BLOCK}
+
+AUFGABE: LEVEL_TAG-VALIDIERUNG
+
+Du pruefst einen extrahierten Node auf Korrektheit des level_tag.
+
+NODE:
+{node_json}
+
+LEVEL_TAG-REFERENZ (IC-Ebenen 1-7):
+  1 = Koerper / Biologie          Ernaehrung, Schlaf, koerperliche Reaktionen
+  2 = Unbewusstes / Praegung      Fruehe Praegungen, unbewusste Muster
+  3 = Emotion / Reaktion          Emotionale Reaktionen, Konditionierungen
+  4 = Mechanik / Struktur         Geburts-Chart, Grund-Architektur, Strategie
+  5 = Muster / Prozess            Wiederkehrende Lebens-Muster, Zyklen
+  6 = Bewusstsein / Entwicklung   Entwicklungsarbeit, Bewusstseinsschritte
+  7 = Sinn / Mission              Dharma, Seelenpfad, Lebensaufgabe
+
+WICHTIG: Dies ist NICHT hd_ontological_layer (HD-intern 1-13).
+
+PRUEFE:
+  1. Ist level_tag als Array angegeben? (Mehrfachzuweisung erlaubt)
+  2. Passt level_tag zum Inhalt des Nodes?
+  3. Wurde level_tag pro Element entschieden (nicht System-global)?
+  4. Falls hd_ontological_layer vorhanden: Sind beide Felder korrekt getrennt?
+
+AUSGABE:
+{
+  "node_id":             "UUID",
+  "level_tag_valid":     false,
+  "level_tag_current":   [int],
+  "level_tag_suggested": [int],
+  "reasoning":           "string (max 200 Zeichen)",
+  "flag_confusion_with_hd_ontological_layer": false
+}
+<<<
+
+
+--------------------------------------------------------------------------------
+[P-QA02]  HUMAN-REVIEW-TRIGGER-CHECK
+--------------------------------------------------------------------------------
+Schicht:   Alle
+Trigger:   Vor Eintrag in Produktions-KG. Letzter Check.
+Eingabe:   Node oder Edge JSON.
+Ausgabe:   human_review_required korrekt gesetzt? Review-Quorum?
+
+PROMPT:
+>>>
+{SYSTEM_CONTEXT_BLOCK}
+
+AUFGABE: HUMAN-REVIEW-TRIGGER-CHECK
+
+Du pruefst, ob human_review_required korrekt gesetzt ist.
+
+ELEMENT (Node oder Edge):
+{element_json}
+
+REVIEW-TRIGGER-REGELN (aus IC_KG_Node_Edge_Schema_v1.1):
+  Automatisch TRUE (keine Ausnahme):
+    - kg_layer = D oder E
+    - node_type = system_annotation | meta_node (cross_system) | inner_strategy
+    - edge_type = maps_to | contradicts
+    - confidence < 0.7
+
+  Automatisch FALSE (Review optional):
+    - kg_layer = A (Faktenwissen, berechenbar)
+    - node_type = domain | phase
+
+  Quorum-Anforderungen:
+    - contradicts-Edges:  reviewer_quorum = 2
+    - meta_nodes:         reviewer_quorum = 2
+    - inner_strategy:     reviewer_quorum = 2 + Domaenen-Experte (= 3)
+
+PRUEFE und korrigiere wenn noetig.
+
+AUSGABE:
+{
+  "element_id":                       "UUID",
+  "human_review_required_current":    false,
+  "human_review_required_correct":    false,
+  "reviewer_quorum_required":         null,
+  "trigger_reason":                   "string (welche Regel greift?)",
+  "correction_needed":                false
+}
+<<<
+
+
+--------------------------------------------------------------------------------
+[P-QA03]  SCHEMA-VOLLSTAENDIGKEITS-CHECK (Batch)
+--------------------------------------------------------------------------------
+Schicht:   Alle
+Trigger:   Vor Batch-Import in Produktions-KG.
+Eingabe:   Array von Nodes/Edges.
+Ausgabe:   Validierungsbericht mit Fehler-Liste.
+
+PROMPT:
+>>>
+{SYSTEM_CONTEXT_BLOCK}
+
+AUFGABE: SCHEMA-VOLLSTAENDIGKEITS-CHECK (Batch)
+
+Du pruefst ein Array von Nodes/Edges auf Schema-Konformitaet mit
+IC_KG_Node_Edge_Schema_v1.1.
+
+ELEMENTS:
+{elements_json}
+
+PFLICHTFELDER-CHECKLISTE fuer Nodes:
+  [ ] id (UUID-Format)
+  [ ] node_type (gueltiger ENUM-Wert)
+  [ ] system_tag (gueltiger ENUM-Wert)
+  [ ] level_tag (Array von INT 1-7)
+  [ ] source_provenance (Objekt mit allen Pflichtfeldern)
+  [ ] human_review_required (BOOLEAN)
+  [ ] created_at (ISO 8601)
+
+BEDINGTE PFLICHTFELDER:
+  [ ] kg_layer: PFLICHT wenn node_type != domain | phase
+  [ ] dynamic_type: PFLICHT wenn node_type = dynamic_concept oder meta_node
+                    mit zeitlicher Komponente
+  [ ] development_stage: PFLICHT wenn dynamic_type = growth_path
+  [ ] school_references: PFLICHT fuer Schicht A/B wenn system_tag != inner_compass
+  [ ] hd_ontological_layer: PFLICHT wenn system_tag = hd
+  [ ] contributing_nodes: PFLICHT wenn node_type = meta_node | inner_strategy
+
+AUSGABE:
+{
+  "total_elements":   0,
+  "valid_elements":   0,
+  "invalid_elements": 0,
+  "errors": [
+    {
+      "element_id":   "UUID oder index",
+      "element_type": "node | edge",
+      "field":        "Feldname",
+      "error_type":   "missing | invalid_value | wrong_type",
+      "detail":       "string"
+    }
+  ],
+  "warnings": [
+    {
+      "element_id":   "UUID oder index",
+      "field":        "Feldname",
+      "warning":      "string"
+    }
+  ]
+}
+<<<
+
+
+================================================================================
+TEIL 7: PIPELINE-REIHENFOLGE (Referenz)
+================================================================================
+
+MANDATORY SEQUENCE:
+------------------
+
+  SCHRITT 1 (Schicht A):
+    P-A01  Entitaeten-Extraktion (alle Systeme)
+    P-A02  HD-spezifisch (wenn system_tag = hd)
+    -> QA: P-QA01 + P-QA02 + P-QA03
+
+  SCHRITT 2 (Schicht B):
+    P-B01  Interpretations-Extraktion
+    P-B02  Dynamic-Type-Klassifikation (Nachklassifikation)
+    -> QA: P-QA01 + P-QA02 + P-QA03
+    -> Human Review: bei confidence < 0.7 oder system_annotation
+
+  SCHRITT 2.5 (Schicht C -- Bridges):
+    P-C01  Cross-System-Bridges (maps_to)
+    P-C02  Widersprueche (contradicts)
+    P-C03  Meta-Node-Generierung (mind. 3 Systeme)
+    -> Human Review PFLICHT (alle C-Cross-System-Nodes)
+
+  *** STOPP: Human Review muss abgeschlossen sein, bevor Schritt 3 beginnt. ***
+
+  SCHRITT 3 (Schicht D) -- NUR nach QA + Human Review von Schritt 1+2+2.5:
+    P-D01  Handbuch-Schicht-1-Generierung
+    -> Human Review PFLICHT (alle D-Nodes)
+
+  SCHRITT 4 (Schicht E) -- NUR nach Review von Schicht D:
+    P-E01  Experiment-Generierung
+    -> Human Review PFLICHT (alle E-Nodes)
+
+
+LIZENZ-GATE (vor Schritt 1):
+-----------------------------
+  Gene Keys / Laurent-Material (OE-04):
+    -> Lizenzstatus MUSS vor Extraktion geklaert sein.
+    -> Wenn Lizenz: source_class = "primary", human_review PFLICHT
+    -> Wenn keine Lizenz: Extraktion NICHT erlaubt. Ersatzstrategie aktivieren.
+    -> Zwischenstatus: source_class = "tertiary", review_notes = "OE-04 pending"
+
+  HD (Ra Uru Hu / IHDS):
+    -> Lizenzstatus gemaess Leitdokument v4 VIII.2 klaeren.
+    -> Extraktion -> eigene Sprache (Schritt 3) erst nach Lizenzklarung.
+
+
+================================================================================
+CHANGE-LOG
+================================================================================
+
+  25.02.2026 | v1.0 | Erstversion
+                      Grundlage: IC_KG_Node_Edge_Schema_v1.1 + Leitdokument v4
+                      Prompts: P-A01, P-A02, P-B01, P-B02, P-C01, P-C02, P-C03,
+                               P-D01, P-E01, P-QA01, P-QA02, P-QA03
+                      Pipeline-Reihenfolge dokumentiert
+                      Lizenz-Gate integriert
+
+================================================================================
+END OF DOCUMENT
+================================================================================

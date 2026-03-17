@@ -38,6 +38,8 @@ After ensuring Docker is running, start the Supabase container using the followi
 pnpm run supabase:web:start
 ```
 
+On Windows, prefer `pnpm run supabase:web:start` over `npx supabase start` to avoid PowerShell execution policy issues.
+
 This command initiates the local Supabase web server. This allows us to develop locally without having to deploy to Supabase.
 
 When you're ready to deploy the project to production, follow the [checklist](../going-to-production/checklist) to ensure everything is properly configured.
@@ -88,6 +90,21 @@ Can't resolve 'react-dom/client'`), you're likely running into Windows-related
 issues with Node.js.
 
 Please see the [the Troubleshooting section](../troubleshooting/troubleshooting-module-not-found) for more information.
+
+**Windows: PowerShell blockiert npx/Skripte**
+
+Wenn `npx supabase start` mit "Die Ausführung von Skripts auf diesem System deaktiviert ist" fehlschlägt:
+- **Lösung:** Nutze `pnpm run supabase:web:start` (läuft ohne npx.ps1)
+- Alternativ: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser` (einmalig)
+- Oder: cmd.exe statt PowerShell verwenden
+
+**Windows: Supabase Health-Check-Timeout**
+
+Falls Supabase-Container auf Windows nicht starten (Storage/Health-Check hängt):
+```bash
+npx supabase start --ignore-health-check
+```
+Oder mit pnpm: `pnpm exec supabase start --ignore-health-check` (im apps/web-Verzeichnis).
 
 #### Super Admin Credentials
 

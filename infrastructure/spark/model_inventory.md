@@ -115,6 +115,13 @@ Diese Liste ist **keine** Aussage, dass die Modelle NVFP4/FP8 sind; das ist pro 
 - DeepSeek‑R1 Distill Llama‑70B “abliterated” (groß, Kandidat)
 - GPT‑OSS‑20B “abliterated” (falls verfügbar; Kandidat)
 
+### Llama 3.1 / 3.2 (neu, Setup siehe `llama_31_32_setup.md`)
+
+| Model folder (Spark) | Format | Größe | Served name | Notes |
+|---|---|---:|---|---|
+| `~/ai/models/llama/llama-3.1-8b-instruct` | BF16 (safetensors) | ~16G | `llama-3.1-8b-instruct` | Leichtgewichtig; OpenClaw: 14B+ empfohlen |
+| `~/ai/models/llama/llama-3.2-11b-instruct` | BF16 (safetensors) | ~22G | `llama-3.2-11b-instruct` | 11B, multilingual |
+
 ### Minimaler Ablauf pro neuem Modell
 1. **Download** nach `~/ai/models/<vendor>/<model>/`
 2. **Serve‑Script** anlegen/duplizieren (Port + `--served-model-name`)

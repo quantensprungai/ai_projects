@@ -34,4 +34,6 @@ tailscale status
 
 oder das Admin-Panel (Machines).
 
+**Aktuelle Referenz** (Stand kann abweichen): `infrastructure/proxmox/01_setup/1_proxmox-komplettsetup.md` — Abschnitt "Tailscale IPs – Aktuelle Maschinen".
+
 

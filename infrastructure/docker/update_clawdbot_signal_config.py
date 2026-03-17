@@ -16,6 +16,7 @@ das Gruppen-Binding mit Platzhalter (oder entferne es manuell).
 import argparse
 import json
 import sys
+from typing import Optional
 
 CONFIG_PATH = "/home/user/.clawdbot-personal/clawdbot.json"
 
@@ -28,6 +29,9 @@ def main():
     ap.add_argument("--flora", required=True, help="Floras Signal-Nummer (E.164)")
     ap.add_argument("--familie", default=None, help="Familie: E.164 für DM oder base64 Gruppen-ID")
     ap.add_argument("--familie-allow-from", default=None, help="Gruppen-Zulassung: E.164 mit Komma (z.B. +49HEIKO,+49LILY). Ohne: Heiko/Noah/Flora")
+    ap.add_argument("--heiko-uuid", default=None, help="Heikos Signal-UUID (aus Logs: delivered reply to signal:UUID)")
+    ap.add_argument("--noah-uuid", default=None, help="Noahs Signal-UUID")
+    ap.add_argument("--flora-uuid", default=None, help="Floras Signal-UUID")
     ap.add_argument("--dry-run", action="store_true", help="Nur anzeigen, nicht schreiben")
     args = ap.parse_args()
 
@@ -62,12 +66,19 @@ def main():
     cfg["channels"]["signal"] = signal_cfg
 
     # Schritt 5: Bindings
-    # peer.kind: "dm" für DMs, "group" für Gruppen (Clawdbot 2026.x Schema)
-    bindings = [
-        {"agentId": "heiko", "match": {"channel": "signal", "peer": {"kind": "dm", "id": args.heiko}}},
-        {"agentId": "noah", "match": {"channel": "signal", "peer": {"kind": "dm", "id": args.noah}}},
-        {"agentId": "flora", "match": {"channel": "signal", "peer": {"kind": "dm", "id": args.flora}}},
-    ]
+    # peer.kind: "dm" für DMs, "group" für Gruppen. Signal nutzt oft uuid:<id> nach Pairing!
+    # Pro Person: E.164 + optional uuid (aus Logs: "delivered reply to signal:UUID")
+    def peer_bindings(agent_id: str, e164: str, uuid_id: Optional[str] = None) -> list:
+        out = [{"agentId": agent_id, "match": {"channel": "signal", "peer": {"kind": "dm", "id": e164}}}]
+        if uuid_id:
+            uid = uuid_id if uuid_id.startswith("uuid:") else f"uuid:{uuid_id}"
+            out.append({"agentId": agent_id, "match": {"channel": "signal", "peer": {"kind": "dm", "id": uid}}})
+        return out
+
+    bindings = []
+    bindings.extend(peer_bindings("heiko", args.heiko, args.heiko_uuid))
+    bindings.extend(peer_bindings("noah", args.noah, args.noah_uuid))
+    bindings.extend(peer_bindings("flora", args.flora, args.flora_uuid))
 
     if args.familie:
         kind = "dm" if args.familie.startswith("+") else "group"
@@ -78,18 +89,33 @@ def main():
     bindings.append({"agentId": "main", "match": {"channel": "signal"}})
     cfg["bindings"] = bindings
 
-    # Familie-Agent: mentionPatterns fuer Signal-Gruppen (Signal hat keine @mentions)
-    # ".*" = jede Nachricht triggert (entspricht requireMention: false)
-    if args.familie and not args.familie.startswith("+"):
-        if "agents" not in cfg:
-            cfg["agents"] = {}
-        if "list" not in cfg["agents"]:
-            cfg["agents"]["list"] = []
-        # familie-Agent in list finden oder anlegen
-        familie_agent = next((a for a in cfg["agents"]["list"] if a.get("id") == "familie"), None)
-        if familie_agent is None:
-            cfg["agents"]["list"].append({"id": "familie", "groupChat": {"mentionPatterns": [".*"]}})
+    # agents.list: Alle 4 Agents mit explizitem Workspace + identity (fuer klares Routing)
+    BASE = "/home/user/clawd"
+    agent_specs = [
+        {"id": "heiko", "workspace": f"{BASE}/workspace-heiko", "identity": {"name": "Heikos Assistent"}},
+        {"id": "noah", "workspace": f"{BASE}/workspace-noah", "identity": {"name": "Noahs Lern-Assistent"}},
+        {"id": "flora", "workspace": f"{BASE}/workspace-flora", "identity": {"name": "Floras Lern-Assistent"}},
+        {"id": "familie", "workspace": f"{BASE}/workspace-familie", "identity": {"name": "Lumi (Familien-Assistent)"}},
+    ]
+    if "agents" not in cfg:
+        cfg["agents"] = {}
+    if "list" not in cfg["agents"]:
+        cfg["agents"]["list"] = []
+    existing_ids = {a.get("id") for a in cfg["agents"]["list"]}
+    for spec in agent_specs:
+        if spec["id"] not in existing_ids:
+            cfg["agents"]["list"].append(spec)
+            existing_ids.add(spec["id"])
         else:
+            a = next(x for x in cfg["agents"]["list"] if x.get("id") == spec["id"])
+            a["workspace"] = spec["workspace"]
+            if "identity" in spec:
+                a["identity"] = spec["identity"]
+
+    # Familie-Agent: mentionPatterns fuer Signal-Gruppen (Signal hat keine @mentions)
+    if args.familie and not args.familie.startswith("+"):
+        familie_agent = next((a for a in cfg["agents"]["list"] if a.get("id") == "familie"), None)
+        if familie_agent:
             familie_agent["groupChat"] = familie_agent.get("groupChat") or {}
             familie_agent["groupChat"]["mentionPatterns"] = [".*"]
 

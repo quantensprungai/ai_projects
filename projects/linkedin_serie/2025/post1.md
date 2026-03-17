@@ -1,5 +1,5 @@
 
-Heiko Driever  • YouYou Tech-Reality-Translator | Future Impact ResearchTech-Reality-Translator | Future Impact Research 5mo • Edited • 
+YouYou Tech-Reality-Translator | Future Impact ResearchTech-Reality-Translator | Future Impact Research 5mo • Edited • 
  5 months ago • Edited • Visible to anyone on or off LinkedIn
 McKinsey: 5.000 Menschen raus, 12.000 AI-Agenten rein. 
 

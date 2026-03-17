@@ -1,7 +1,7 @@
 # Proxmox‑Komplettsetup – Vollständige Dokumentation (Master, Dezember 2025)
 
 <!-- Reality Block
-last_update: 2026-01-13
+last_update: 2026-02-23
 status: stable
 scope:
   summary: "Konsolidierte Master-Version des Proxmox-Setups inkl. VM/CT-Übersicht, Netzwerk, Remotezugriff, Backups und Troubleshooting."
@@ -50,19 +50,18 @@ Dieses Dokument bleibt weiterhin das **Setup-Narrativ**, aber Querschnitt wird b
 4. Proxmox Host Netzwerk & Firewall  
 5. VM 101 – Management & RustDesk‑Server  
 6. VM 102 – Docker‑Apps / Downloader  
-7. VM 103 – Linux Mint (optional)  
-8. VM 105 – Windows 11 Pro  
-9. CT 110 – Home Assistant (LXC)  
-10. Windows 11 Installation ohne Microsoft‑Konto  
-11. RustDesk‑ und Tailscale‑Konfiguration  
-12. Backup‑Strategie  
-13. Troubleshooting (Erweitert)  
-14. Quick Reference  
-15. Projektplan Phase 1–7  
-16. Übersicht: Dienste & Ports  
-17. Tailscale – Erweiterte Konfiguration  
-18. Archivierte Inhalte & Legacy‑Dokumentation  
-19. Wartung, Pflege & Weiterentwicklung  
+7. VM 105 – Windows 11 Pro  
+8. CT 110 – Home Assistant (LXC)  
+9. Windows 11 Installation ohne Microsoft‑Konto  
+10. RustDesk‑ und Tailscale‑Konfiguration  
+11. Backup‑Strategie  
+12. Troubleshooting (Erweitert)  
+13. Quick Reference  
+14. Projektplan Phase 1–7  
+15. Übersicht: Dienste & Ports  
+16. Tailscale – Erweiterte Konfiguration  
+17. Archivierte Inhalte & Legacy‑Dokumentation  
+18. Wartung, Pflege & Weiterentwicklung  
 
 ---
 
@@ -74,7 +73,6 @@ Dieses Setup stellt dein modernes, robustes und sicheres Homelab bereit:
 - **Docker‑Host & Downloader‑Stack** über VM102 (`docker-apps`)  
 - **Windows‑11‑Entwicklungsumgebung** (VM105, WSL2, Dev‑Tools)  
 - **Home Assistant Smart Home** (LXC110)  
-- **Optional: Linux Mint** (VM103)  
 - **Proxmox Host** als Hypervisor (`pve`, 192.168.0.50)  
 
 Remote‑Management über:
@@ -132,10 +130,6 @@ Remote‑Management über:
 - Ressourcen: 2 GB RAM, 2 Cores  
 - Firewall deaktiviert, DHCP empfohlen  
 
-### ▶ VM103 – Linux Mint (optional)
-
-- Wird nur bei Bedarf gestartet.
-
 ### ▶ Remote‑Zugriff insgesamt
 
 - RustDesk (intern + extern)  
@@ -147,31 +141,30 @@ Remote‑Management über:
 
 ### Soll-Konfiguration (Baseline / empfohlen)
 
+**Host-RAM: 48 GB** – Verteilung: 40 GB VMs, ~8 GB für pve (Host nutzt Rest automatisch).
+
 | Typ  | ID  | Name         | RAM  | Cores | Lokale IP       | Tailscale Name | Funktion                         |
 |------|-----|--------------|------|-------|----------------|----------------|----------------------------------|
-| Host | –   | pve          | –    | –     | 192.168.0.50   | pve            | Proxmox Hypervisor               |
+| Host | –   | pve          | –    | –     | 192.168.0.50   | pve            | Proxmox Hypervisor (Intel i350)  |
 | VM   | 101 | management   | 2 GB | 1     | 192.168.0.12   | management     | RustDesk, Portainer, Tailscale   |
-| VM   | 102 | docker-apps  | 8 GB | 2     | 192.168.0.16   | docker-apps    | Docker + Downloader (ohne VPN)  |
-| VM   | 103 | linux-mint   | 8 GB | 2     | DHCP           | –              | Optional                         |
-| VM   | 105 | win11pro     | 16 GB| 4     | DHCP           | win11pro105    | Entwicklung & WSL2               |
+| VM   | 102 | docker-apps  | 12 GB| 2     | 192.168.0.16   | docker-apps    | Docker + Downloader (ohne VPN)  |
+| VM   | 105 | win11pro     | 24 GB| 4     | DHCP           | win11pro105    | Entwicklung & WSL2               |
 | LXC  | 110 | homeassistant| 2 GB | 2     | 192.168.0.90   | –              | Home Assistant                   |
 
 ---
 
 ### Ist-Zustand (Reality Check, aus Proxmox UI)
 
-Stand: **2026-01-30** (aus der Proxmox Übersicht; inkl. nachträglicher Ressourcen-Anpassungen).
+Stand: **2026-02-23** (48 GB Host-RAM, Intel i350 als Bridge-Port).
 
 | Typ  | ID  | Name         | RAM  | Cores | Status   | Beobachtung |
 |------|-----|--------------|------|-------|----------|------------|
 | VM   | 101 | management   | 2 GB | 1     | running  | ok; RAM ~50% genutzt |
-| VM   | 102 | docker-apps  | 8 GB | 2     | running  | vorher sehr knapp; nach Upgrade weniger Memory-Pressure erwartet |
-| VM   | 105 | win11pro     | 16 GB| 4     | running  | bleibt CPU-sensitiv → WSL2/Docker limitieren |
+| VM   | 102 | docker-apps  | 12 GB| 2     | running  | Docker-Stack mit Puffer |
+| VM   | 105 | win11pro     | 24 GB| 4     | running  | CPU-bound → WSL2/Docker limitieren |
 | LXC  | 110 | homeassistant| 2 GB | 2     | stopped  | aktuell aus |
 
-Host-Health (Proxmox):
-- Werte hängen stark von „was läuft gerade“ ab.
-- Wenn der Host **swappt**: Ressourcen so verteilen, dass der Host dauerhaft Puffer hat (siehe Empfehlungen unten).
+**Host (pve):** Nutzt automatisch den Rest (~8 GB bei allen VMs an). Keine feste Zuteilung – in Proxmox UI: Datacenter → pve → Summary → Memory.
 
 ### Was das praktisch heißt (und was man optimieren kann)
 
@@ -186,13 +179,13 @@ Host-Health (Proxmox):
   - Wenn VM102 “Docker-Apps” bleiben soll: eher Richtung **2 vCPU / 8–12 GB**.
   - Alternativ: Dev-Services in **separate VM** (sauberer als alles auf VM102 zu stapeln).
 
-#### Empfohlene Ressourcen-Verteilung (bei 32 GB Host-RAM)
+#### Empfohlene Ressourcen-Verteilung (bei 48 GB Host-RAM)
 
-Ein konservatives Profil (Priorität: VM105 interaktiv, Host swap vermeiden):
-- VM105 (win11pro): **16 GB RAM**, 4 vCPU (Windows braucht “Luft”, aber 20 GB ist nicht immer nötig)
-- VM102 (docker-apps): **6–8 GB RAM**, 2 vCPU (falls dort mehr Docker-Workloads geplant sind)
-- VM101 (management): **2–3 GB RAM**, 1 vCPU
-- Host: **Puffer einplanen** (Rest nicht verplanen; Swap vermeiden)
+- VM105 (win11pro): **24 GB RAM**, 4 vCPU (Windows braucht “Luft”, aber 20 GB ist nicht immer nötig)
+- VM102 (docker-apps): **12 GB RAM**, 2 vCPU
+- VM101 (management): **2 GB RAM**, 1 vCPU
+- CT110 (homeassistant): **2 GB RAM**, 2 Cores
+- Host: **~8 GB** (automatisch; Summe VMs max. 40 GB)
 
 ## 4. Proxmox Host Netzwerk & Firewall
 
@@ -202,14 +195,14 @@ Ein konservatives Profil (Priorität: VM105 interaktiv, Host swap vermeiden):
 auto lo
 iface lo inet loopback
 
-auto nic0
-iface nic0 inet manual
+auto enp3s0f0
+iface enp3s0f0 inet manual
 
 auto vmbr0
 iface vmbr0 inet static
     address 192.168.0.50/24
     gateway 192.168.0.1
-    bridge-ports nic0
+    bridge-ports enp3s0f0
     bridge-stp off
     bridge-fd 0
 ```
@@ -296,7 +289,7 @@ tailscale up --ssh
 
 **Ressourcen:**
 - 2 Cores  
-- 8 GB RAM  
+- 12 GB RAM  
 - IP: 192.168.0.16  
 
 **Architektur:**
@@ -348,19 +341,11 @@ Details zum vollständigen `docker-compose.yml` kannst du bei Bedarf separat erg
 
 ---
 
-## 7. VM 103 – Linux Mint (optional)
-
-- Optional, im Normalbetrieb gestoppt.  
-- 2 Cores, 8 GB RAM.  
-- Für GUI‑Tests oder alternative Linux‑Workflows.  
-
----
-
-## 8. VM 105 – Windows 11 Pro (Hauptarbeitsmaschine)
+## 7. VM 105 – Windows 11 Pro (Hauptarbeitsmaschine)
 
 **Ausstattung:**
 - 4 Cores  
-- 16 GB RAM  
+- 24 GB RAM  
 - 800 GB NVMe  
 - UEFI (OVMF), TPM 2.0  
 - VirtIO‑Treiber  
@@ -390,7 +375,7 @@ Tailscale für Windows: Download von der offiziellen Seite (`https://tailscale.c
 
 ---
 
-## 9. CT 110 – Home Assistant (LXC)
+## 8. CT 110 – Home Assistant (LXC)
 
 ### Container erstellen
 
@@ -417,7 +402,7 @@ pct exec 110 -- docker run -d --name homeassistant --restart=unless-stopped \
 
 ---
 
-## 10. Windows 11 Installation ohne Microsoft‑Konto
+## 9. Windows 11 Installation ohne Microsoft‑Konto
 
 Während des Setups:
 
@@ -430,7 +415,7 @@ OOBE\BYPASSNRO
 
 ---
 
-## 11. RustDesk‑ & Tailscale‑Konfiguration
+## 10. RustDesk‑ & Tailscale‑Konfiguration
 
 ### RustDesk Key anzeigen
 
@@ -462,7 +447,7 @@ cat /opt/rustdesk/data/id_ed25519.pub
 
 ---
 
-## 12. Backup‑Strategie
+## 11. Backup‑Strategie
 
 ### Proxmox VMs / CTs
 
@@ -484,7 +469,7 @@ tar -czf /root/docker-backup.tar.gz /opt/docker
 
 ---
 
-## 13. Troubleshooting (Erweitert)
+## 12. Troubleshooting (Erweitert)
 
 ### Tailscale
 
@@ -618,7 +603,7 @@ Hosts‑Datei unter Windows:
 
 ---
 
-## 14. Quick Reference
+## 13. Quick Reference
 
 ### Lokale Zugriffe (LAN)
 
@@ -647,7 +632,7 @@ Hosts‑Datei unter Windows:
 
 ---
 
-## 15. Projektplan Phase 1–7
+## 14. Projektplan Phase 1–7
 
 ### Phase 1 – Infrastruktur ✔
 
@@ -685,7 +670,7 @@ Hosts‑Datei unter Windows:
 
 ---
 
-## 16. Übersicht: Dienste & Ports (Vollständige Referenz)
+## 15. Übersicht: Dienste & Ports (Vollständige Referenz)
 
 | Service        | Port/Protokoll        | Notes                          |
 |----------------|----------------------|--------------------------------|
@@ -704,7 +689,7 @@ Hosts‑Datei unter Windows:
 
 ---
 
-## 17. Tailscale – Erweiterte Konfiguration
+## 16. Tailscale – Erweiterte Konfiguration
 
 ### MagicDNS aktivieren
 - Ermöglicht Zugriffe via `hostname.tailnet-name.ts.net`
@@ -753,7 +738,7 @@ Alle Maschinen findest du hier: https://login.tailscale.com/admin/machines
 
 ---
 
-## 18. Archivierte Inhalte & Legacy‑Dokumentation
+## 17. Archivierte Inhalte & Legacy‑Dokumentation
 
 ### Alte Home Assistant VM (historisch)
 Vor der LXC‑basierten Lösung (CT110) wurde Home Assistant in einer vollständigen KVM‑VM betrieben. Diese Version war funktionsfähig, aber:
@@ -775,6 +760,9 @@ Früher genutzt:
 **Aktueller Stand:** DHCP + Tailscale für Adress‑Management
 
 ### Alte Netzwerk‑Konfigurationen (nur Referenz)
+
+**Bis Feb 2026:** Bridge nutzte `nic0` (Intel I219-LM onboard). Aktuell: `enp3s0f0` (Intel i350).
+
 ```text
 auto ens18
 iface ens18 inet static
@@ -788,6 +776,10 @@ Diese Variante ist obsolet, da:
 - kein Vorteil durch statische lokale IPs besteht
 
 ### Weitere Legacy‑Komponenten
+
+**ehem. VM103 – Linux Mint (optional):**
+- Nicht mehr im Einsatz
+- War für GUI‑Tests / alternative Linux‑Workflows
 
 **ehem. VM104 – „downloads-old":**
 - Wurde vollständig migriert
@@ -803,7 +795,7 @@ Diese Variante ist obsolet, da:
 
 ---
 
-## 19. Wartung, Pflege & Weiterentwicklung
+## 18. Wartung, Pflege & Weiterentwicklung
 
 ### Regelmäßige Tasks
 

@@ -1,0 +1,582 @@
+
+================================================================================
+INNER COMPASS — KG NODE & EDGE SCHEMA
+Konsolidierte Spezifikation v1.1
+Stand: 25.02.2026
+Grundlage: Leitdokument v4 + IC_KG_Schema_v1.0 + Synthese-Lexikon Ebene 0
+================================================================================
+
+ZWECK DIESES DOKUMENTS
+-----------------------
+Verbindliche Referenz für:
+  • KG-Extraktoren (Pflicht-Tags, Extraktionsregeln)
+  • Content-Redakteure (Felddefinitionen pro Node-Typ)
+  • Entwickler (Schema-Definition für Datenbank / Graph-Engine)
+  • Human-Review-Prozess (Review-Trigger)
+  • LLM-Extraktions-Prompts (Prompt-Engineering-Referenz — separates Dokument)
+
+Dieses Dokument ist kein Leitdokument. Es zieht aus Leitdokument v4 (E-03,
+E-07–E-11, E-14, E-18–E-22, E-25–E-30, E-36) und ist eigenständig versioniert.
+
+
+================================================================================
+TEIL 1: NODE-SCHEMA
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+1.A  PFLICHTFELDER — alle Nodes, keine Ausnahme
+────────────────────────────────────────────────────────────────────────────────
+
+  id                  : UUID v4
+                        Eindeutige Node-ID. Unveränderlich nach Erstellung.
+
+  node_type           : ENUM  →  siehe Abschnitt 1.C
+
+  system_tag          : ENUM
+                        hd | bazi | astro | maya | gene_keys | jyotish |
+                        numerology | nine_star_ki | akan | kabbalah |
+                        enneagram | inner_compass | cross_system
+                        "inner_compass"  → emergente IC-eigene Meta-Nodes
+                        "cross_system"   → systemübergreifende Brücken
+
+  level_tag           : INT 1–7  [E-36]
+                        IC-Perspektiv-Ebene. PFLICHT per Element, nicht per System.
+                        Mehrfachzuweisung: Array [int]
+                        1 = Körper / Biologie
+                        2 = Unbewusstes / Prägung
+                        3 = Emotion / Reaktion
+                        4 = Mechanik / Struktur
+                        5 = Muster / Prozess
+                        6 = Bewusstsein / Entwicklung
+                        7 = Sinn / Mission
+                        ⚠️ UNTERSCHIED zu hd_ontological_layer (1–13, HD-intern):
+                           Das sind zwei verschiedene Koordinatensysteme.
+
+  domain_tag          : INT 1–11  [E-18]
+                        Lebensbereich (Mandala-Domäne). Mehrfachzuweisung: Array [int]
+                        1=Identität   2=Emotionen     3=Partnerschaft
+                        4=Familie     5=Beruf         6=Ressourcen
+                        7=Ausdruck    8=Gesundheit    9=Spiritualität
+                        10=Gemeinschaft  11=Transformation
+
+  phase_tag           : INT 1–7 | NULL  [E-20]
+                        Heldenreise-Phase. NULL wenn nicht phasenbezogen.
+                        1=Erkennen  2=Verstehen  3=Verkörpern  4=Schatten
+                        5=Navigation  6=Integration  7=Horizont
+
+  dimension_key       : STRING | ENUM  [E-03]
+                        15 Kern-Dimensionen. Mehrfachzuweisung: Array [string]
+                        mechanical | psychological | somatic | shadow |
+                        gift | archetype | role | social |
+                        relationship_pattern | projection_field |
+                        environment | body_mechanics | elemental_quality |
+                        temporal_phase | destiny_pattern
+
+  source_provenance   : OBJECT
+                        {
+                          source_id:      STRING,
+                          source_class:   ENUM,     # primary | secondary | tertiary
+                          page:           INT | NULL,
+                          chunk_id:       STRING,
+                          text_snippet:   STRING,   # max 500 Zeichen Originaltext
+                          language:       STRING,   # ISO 639-1
+                          confidence:     FLOAT,    # 0.0–1.0
+                          human_reviewed: BOOLEAN,  # Default: false
+                          review_notes:   STRING | NULL
+                        }
+
+  human_review_required : BOOLEAN
+                          true PFLICHT für:
+                          • kg_layer D oder E
+                          • node_type = system_annotation, meta_node (cross_system)
+                          • edge_type = maps_to | contradicts
+                          • confidence < 0.7
+
+  created_at          : TIMESTAMP (ISO 8601)
+  updated_at          : TIMESTAMP (ISO 8601)
+
+
+────────────────────────────────────────────────────────────────────────────────
+1.B  BEDINGTE FELDER — nach node_type / dynamic_type
+────────────────────────────────────────────────────────────────────────────────
+
+  kg_layer            : ENUM A | B | C | D | E  [E-14]
+                        A = Rohsignal       Planetenpositionen, Gate-Aktivierungen
+                        B = System-Konzepte HD-Typ, Day Master, Astro-Zeichen
+                        C = Cross-System    Bridges, Innere Strategie, Prozess-Patterns
+                        D = Handbuch-Text   User-facing — human_review PFLICHT
+                        E = User-Aktion     Impuls, Experiment, Reflexionsfrage
+                                            human_review PFLICHT
+                        ⚠️ Innere Strategie = Schicht C (emergent, nicht User-Aktion).
+                           User-Aktionen   = Schicht E. Beides ist klar getrennt.
+
+  dynamic_type        : ENUM | NULL  [E-25]
+                        PFLICHT wenn node_type = dynamic_concept oder meta_node
+                        mit zeitlicher/prozessualer Komponente.
+
+                        phase_cycle  Zeitlich begrenzt, Anfang/Ende messbar
+                                     Beispiele: Luck Pillars, Dashas, Saturn Return,
+                                     Maya Wavespells
+                                     Extraktor sucht nach: Zeitangaben, Lebensphasen,
+                                     Zyklusdauern, Trigger-Zeitpunkten
+
+                        trap         Wiederkehrende konditionierte Reaktion
+                                     Beispiele: Not-Self-Muster, Clashes, Shadow-Muster
+                                     Extraktor sucht nach: "Not-Self", "shadow",
+                                     "Fallen", "clash", "punishment", "Verzerrung"
+
+                        growth_path  Entwicklungspfad mit Richtung (distorted→transcendent)
+                                     Beispiele: Gene Keys Dreiheit, HD-Dekonditionierung
+                                     Extraktor sucht nach: Reife, Integration,
+                                     triadische Frames, Entwicklungsstufen
+
+                        spectrum     Kontinuum ohne Richtung und ohne Zeitbezug
+                                     Beispiele: Defined/Offen, Yin/Yang, Element-Balance,
+                                     Channel-Polaritäten
+                                     Extraktor sucht nach: Pole, Spektren, "↔",
+                                     Kontinua ohne Prozesssprache
+
+                        ⚠️ Das ist kein Schema-Problem — es ist ein
+                           Prompt-Engineering-Problem. Der LLM-Extraktionsprompt
+                           muss pro dynamic_type kalibriert werden.
+                           → Referenz: IC_Extraction_Prompts (separates Dokument)
+
+  development_stage   : ENUM | NULL
+                        PFLICHT wenn dynamic_type = growth_path.
+                        IC-eigene, system-agnostische Entwicklungsachse:
+
+                        distorted    Konditionierte, angstgetriebene Reaktion
+                        aligned      Bewusste, authentische Ausdrucksweise
+                        transcendent Integration auf höherer Ebene / Embodiment
+
+                        Schul-Mapping (in school_references[].stage_label):
+                        Gene Keys:   shadow      / gift       / siddhi
+                        HD:          not_self    / experiment / embodied
+                        BaZi:        clash_pattern / balance  / mastery
+                        Jyotish:     papa_graha  / shubha    / yogakaraka
+
+                        ⚠️ development_stage ist IC-Sprache (Schicht D/E).
+                           Originalbegriffe der Schule bleiben in school_references
+                           als stage_label erhalten.
+
+  school_references   : ARRAY of OBJECT | NULL
+                        Originalbezeichnungen aller relevanten Schulen/Traditionen.
+                        PFLICHT für Schicht A/B wenn system_tag ≠ inner_compass.
+                        {
+                          school_name:   STRING,    # z.B. "Classical HD"
+                          original_term: STRING,    # Originalbezeichnung
+                          tradition:     STRING,    # übergeordnete Tradition
+                          stage_label:   STRING | NULL,
+                                         # Originalbezeichnung der Entwicklungsstufe
+                                         # (nur wenn dynamic_type = growth_path)
+                                         # Beispiel: "shadow", "gift", "siddhi"
+                          lens_type:     ENUM | NULL
+                                         # mechanics | transformation | integration
+                                         # Optional: Charakterisierung des
+                                         # hermeneutischen Zugangswegs der Schule.
+                                         # Nicht erzwungen, nur wenn inhaltlich passend.
+                        }
+
+                        Lens-Typen (Erläuterung für Annotator):
+                        mechanics       → rohe Struktur, für den Verstand
+                                          (Klass. HD, Parashara-Jyotish,
+                                           Klass. BaZi, Hellenistisch-Astro)
+                        transformation  → Prozess und Reife, für die Seele
+                                          (Gene Keys, Jaimini-Jyotish, Psychol.-Astro)
+                        integration     → Ermutigung und Anwendung, für das Herz
+                                          (Quantum HD, moderne BaZi-Schulen)
+
+                        Schulen nach System (nicht abschließend):
+                        HD:     Classical HD | Gene Keys | Quantum HD
+                        Jyotish: Parashara | Jaimini | KP-System
+                        BaZi:   Joey Yap | Lily Chung | Klassisch-Chinesisch
+                        Astro:  Hellenistisch | Modern-Psychologisch | Traditionell
+                        Maya:   Argüelles-Linie | Traditionell-Maya
+
+
+────────────────────────────────────────────────────────────────────────────────
+1.B2  HD-SPEZIFISCHE FELDER (nur wenn system_tag = hd)
+────────────────────────────────────────────────────────────────────────────────
+
+  hd_ontological_layer : INT 1–13 | NULL
+                         HD-interne Architekturschicht.
+                         ⚠️ NICHT zu verwechseln mit level_tag (IC-Ebenen 1–7).
+                         1  = Basis (5)       2  = Ton (6)
+                         3  = Farbe (6)       4  = Linie (6)
+                         5  = Tor (64)        6  = Kanal (36)
+                         7  = Zentrum (9)     8  = Profil (12)
+                         9  = Variable/Pfeile (4)  10 = Autorität (7)
+                         11 = Typ (5)         12 = Definition (4)
+                         13 = Inkarnationskreuz (192)
+
+  activation_mode      : ENUM | NULL
+                         conscious    nur schwarz (bewusst bekannt)
+                         unconscious  nur rot (körperlich gelebt, nicht bewusst)
+                         dual         schwarz + rot (maximale Betonung)
+                         open         nicht aktiviert (empfangend, konditionierbar)
+
+  expression_quality   : ENUM | NULL
+                         Primär auf Gate/Linien-Ebene (hd_ontological_layer 4–5).
+                         exaltation   Planet kongruent mit Linienqualität
+                         detriment    Planet quer zur Linienqualität (Reibung)
+                         variable     weder fixiert noch konstant
+
+  expression_stern     : BOOLEAN | NULL
+                         TRUE = ✦ Stern-Phänomen:
+                         Zwei Planeten aktivieren DIESELBE Linie,
+                         einer in Exaltation + einer in Detriment GLEICHZEITIG.
+                         → Maximale Betonung, kein Mittelweg, kein Spektrum.
+                         → Internes Chart-Phänomen, NICHT "Fixe Sterne".
+                         ⚠️ Fixe Sterne (Sirius, Regulus, Algol etc.) =
+                            eigenständiger Node-Typ "fixed_star" (Schicht A).
+                            Keine Verwechslung.
+
+  planetary_source     : ENUM | NULL
+                         sun | earth | moon | mercury | venus | mars |
+                         jupiter | saturn | uranus | neptune | pluto |
+                         north_node | south_node
+
+  planetary_weight     : FLOAT 0.0–1.0 | NULL
+                         Relative Gewichtung im Neutrinostrom.
+                         Sonne ≈ 0.70 | Erde ≈ 0.29 | alle anderen < 0.10
+
+  circuit              : ENUM | NULL
+                         individual | tribal | collective
+                         (Kanäle und Tore, hd_ontological_layer 5–6)
+
+  chart_position       : ENUM | NULL
+                         upper   Bewusstsein/Ausdruck (Ajna, G, Kehlkopf, Kopf)
+                         lower   Energie/Antrieb (Sakral, Wurzel, Solar, Milz)
+
+  golden_path_sequence : ENUM | NULL  [D13]
+                         activation | venus | pearl | saturn
+                         Rolle im Gene Keys Goldenen Pfad.
+                         NULL wenn nicht im Goldenen Pfad verortet.
+
+
+────────────────────────────────────────────────────────────────────────────────
+1.C  NODE-TYPEN
+────────────────────────────────────────────────────────────────────────────────
+
+  system_concept       Konzept innerhalb eines Systems
+                       Beispiel: hd.type.generator | bazi.day_master.yin_wood
+                       KG-Schicht: A / B
+
+  dynamic_concept      Dynamisches Muster oder zeitliches Konzept
+                       Beispiel: hd.saturn_return | bazi.luck_pillar
+                       KG-Schicht: C  |  dynamic_type PFLICHT
+
+  meta_node            Systemübergreifend emergent, ≥3 Systeme Konvergenz
+                       Beispiel: "Emotionale Durchlässigkeit"
+                       KG-Schicht: C  |  human_review PFLICHT
+
+  inner_strategy       Meta-Node Innere Strategie [E-19]
+                       Emergent aus: Signatur × Prägung × Zyklus × Kontext
+                       KG-Schicht: C  |  experimental_flag PFLICHT [E-27]
+                       human_review PFLICHT
+
+  domain               Lebensbereich aus dem Mandala (11 Domänen)
+                       Navigationselement, kein Inhaltselement
+
+  phase                Phase der Heldenreise (1–7) [E-20]
+                       Navigationselement, kein Inhaltselement
+
+  experiment           Strukturierter Selbstversuch für User
+                       KG-Schicht: E  |  human_review PFLICHT
+
+  life_event           Optionaler biographischer Kontextpunkt [E-24]
+                       User-Layer (nicht im System-KG)  |  opt-in only
+
+  system_annotation    Lehrsprache/Interpretation einzelner Autoren [E-26]
+                       Beispiel: Ra Uru Hu Zitat | Karen Curry Parker Wording
+                       KG-Schicht: B / D  |  human_review PFLICHT immer
+                       NICHT direkt user-facing ohne Review
+
+  fixed_star           Astronomischer Fixstern mit Zodiak-Position
+                       Beispiele: Sirius, Regulus, Algol
+                       KG-Schicht: A  |  level_tag: 4
+                       ⚠️ NICHT zu verwechseln mit expression_stern (HD-intern)
+
+  convergence_marker   Konvergenzpunkt über mehrere Dynamik-Dimensionen
+                       (astronomisch + biographisch + psychologisch gleichzeitig)
+                       KG-Schicht: C  |  experimental
+
+
+================================================================================
+TEIL 2: EDGE-SCHEMA
+================================================================================
+
+PFLICHTFELDER für alle Edges
+-----------------------------
+  id               : UUID v4
+  edge_type        : ENUM (siehe unten)
+  source_node_id   : UUID
+  target_node_id   : UUID
+  confidence       : FLOAT 0.0–1.0
+  human_reviewed   : BOOLEAN
+  source_provenance: OBJECT (vereinfacht wie Node)
+  created_at       : TIMESTAMP
+
+
+EDGE-TYPEN
+----------
+
+  maps_to          Semantische Ähnlichkeit zwischen Konzepten
+                   (gleiche Bedeutung, verschiedene Systeme)
+                   Attribute: confidence FLOAT | similarity_basis STRING
+                   human_review PFLICHT
+
+  extends          Vertiefungsbeziehung: Schicht A → B → C
+                   (Granularitätsebene, nicht Synonymie)
+                   Beispiel: HD Gate 49 → GK Schatten "Reaktion"
+                   Attribute: depth_direction ENUM (shallow_to_deep)
+
+  deepens          Inhaltliche Vertiefung ohne Schicht-Wechsel
+                   Beispiel: Handbuch-Schicht 1 → Handbuch-Schicht 2
+                   Attribute: depth_level INT
+                   ⚠️ UNTERSCHIED zu extends:
+                      extends = Granularität (andere Schicht)
+                      deepens = mehr Tiefe auf gleicher Schicht
+
+  influences       Kausaler / energetischer Einfluss
+                   Beispiel: Definiertes Zentrum → beeinflusst offenes Zentrum
+                   Attribute: influence_strength FLOAT | direction STRING
+
+  contradicts      Widerspruch zwischen Systemen (wertvoll — nicht entfernen)
+                   Attribute: contradiction_type STRING | resolution_hint STRING | NULL
+                   human_review PFLICHT | user-facing mit Widerspruchs-UX
+
+  correlates       Statistische Assoziation (Forschungs-Backlog OE-12)
+                   Attribute: correlation_type STRING | study_reference STRING | NULL
+                              n_sample INT | NULL
+                   EXPERIMENTAL — nicht user-facing bis validiert
+
+  triggers         Zeitliche Aktivierung: Auslöser → Element
+                   Beispiel: Saturn Transit Tor 57 → aktiviert Milz-Thema
+                   Attribute: trigger_type ENUM (transit | cycle | event)
+                              duration_days INT | NULL
+                   ⚠️ triggers = Auslöser-Beziehung (Ursache)
+
+  active_during    Zeitfenster: Element aktiv in Periode
+                   Beispiel: Luck Pillar "Metal Dog" aktiv 2019–2029
+                   Attribute: start_date DATE | NULL | end_date DATE | NULL
+                   ⚠️ active_during = Zeitfenster (nicht Ursache)
+                      UNTERSCHIED zu triggers: triggers = WAS aktiviert es,
+                      active_during = WANN ist es aktiv
+
+  belongs_to_domain Zuordnung zu Lebensbereich (1–11)
+                   Navigationskante
+                   Attribute: domain_id INT 1–11 | primary BOOLEAN
+
+  part_of_phase    Zuordnung zu Heldenreise-Phase (1–7)
+                   Navigationskante
+                   Attribute: phase_id INT 1–7 | entry_condition STRING | NULL
+
+  develops_into    Entwicklungsrichtung auf der Entwicklungsachse
+                   Beispiel: distorted → aligned → transcendent
+                   Attribute: from_stage ENUM | to_stage ENUM
+                   Ergänzung zu extends für growth_path-Nodes
+
+
+================================================================================
+TEIL 3: KG-SCHICHTEN A–E (konsolidiert)
+================================================================================
+
+  A — Rohsignal / System-Ontologie
+      Planetenpositionen, Gate-Aktivierungen, Pillar-Fakten, Fixsterne
+      Pipeline: extract_entities
+      Review: optional (Faktenwissen, berechenbar)
+      Nodes: system_concept (mechanisch), fixed_star
+
+  B — System-Konzepte / Interpretationen
+      HD-Typ, BaZi Day Master, Astro-Zeichen, Bedeutungen, Lehrsprache
+      Pipeline: extract_entities + extract_interpretations
+      Review: bei confidence < 0.7 oder node_type = system_annotation
+      Nodes: system_concept (interpretativ), system_annotation
+
+  C — Cross-System / Prozess / Meta
+      Bridges, Innere Strategie, Prozess-Patterns, Fallen, Zeitphasen,
+      Konvergenzmarker, Meta-Nodes
+      Pipeline: extract_cross_mappings + extract_process_patterns
+                + generate_meta_nodes
+      Review: IMMER für cross_system-Bridges
+      Nodes: meta_node, inner_strategy, dynamic_concept, convergence_marker
+
+  D — Handbuch-Text (User-facing)
+      Sprachliche Übersetzung für User (Handbuch-Schichten)
+      Pipeline: generate_handbook_text — ERST nach A–C abgeschlossen + QA
+      Review: PFLICHT — kein D-Node ohne human_review
+      Nodes: system_concept (formuliert), meta_node (formuliert)
+
+  E — User-Aktion
+      Impulse, Experimente, Reflexionsfragen
+      Pipeline: generate_experiments — ERST nach D
+      Review: PFLICHT — kein E-Node ohne human_review
+      Nodes: experiment
+
+  ⚠️ Innere Strategie = Schicht C (emergent, nicht Aktion)
+     User-Aktionen    = Schicht E (Experiment, Impuls)
+     Beides ist strikt getrennt.
+
+
+================================================================================
+TEIL 4: INNERE STRATEGIE — NODE-SCHEMA  [E-19, E-27]
+================================================================================
+
+  inner_strategy_node: {
+    id:                       UUID,
+    node_type:                "inner_strategy",
+    kg_layer:                 "C",
+    contributing_nodes:       [UUID, ...],   # min. 3 Nodes aus Schicht A/B
+    factor_scores: {                          # ⚠️ EXPERIMENTAL — nicht user-facing
+      signature:              FLOAT,          # Hypothetisch, nicht validiert
+      conditioning:           FLOAT,          # Hypothetisch, nicht validiert
+      transit:                FLOAT,          # Hypothetisch, nicht validiert
+      affect:                 FLOAT | NULL,   # nur wenn opt-in aktiv [E-22]
+      consciousness:          FLOAT           # Hypothetisch, nicht validiert
+    },
+    synthesis_text:           STRING,         # DEFAULT-Output (narrativ, user-facing)
+    recommended_experiments:  [UUID, ...],    # Verweise auf experiment-Nodes (Schicht E)
+    experimental_flag:        true,           # PFLICHT bis N > 30 Validierungen
+    human_review_required:    true            # PFLICHT immer
+  }
+
+  Freischalt-Bedingungen für factor_scores (user-facing) [E-27]:
+  • N > 30 qualitative Validierungen abgeschlossen
+  • A/B-Test: numerisch > narrativ in Nutzwert
+  • Human Review durch Domänen-Experten
+
+
+================================================================================
+TEIL 5: HUMAN-REVIEW-TRIGGER (konsolidiert)
+================================================================================
+
+  Automatisch true (keine Ausnahme):
+    kg_layer = D oder E
+    node_type = system_annotation | meta_node (cross_system) | inner_strategy
+    edge_type = maps_to | contradicts
+    confidence < 0.7
+
+  Automatisch false (Review optional):
+    kg_layer = A (Faktenwissen, berechenbar)
+    node_type = domain | phase (Navigationselemente)
+
+  Quorum-Anforderung:
+    contradicts-Edges:  2 Reviewer
+    meta_nodes:         2 Reviewer
+    inner_strategy:     2 Reviewer + Domänen-Experte
+
+
+================================================================================
+TEIL 6: DYNAMICS — DREI KONZEPTE (Klarstellung)
+================================================================================
+
+  Die folgenden drei Konzepte wurden historisch unter "Dynamics" gemischt.
+  Sie sind klar unterschieden und alle durch dynamic_type abgedeckt.
+
+  1. ZEITLICHE PROZESSE (dynamic_type = phase_cycle)
+     Haben: Trigger-Zeitpunkt, Dauer, Phasen, berechenbar
+     Beispiele: Saturn Return (29J), BaZi Luck Pillars (10J),
+                Maya Wavespells (13 Tage), Chiron Return (50J)
+     Extraktions-Signal: Zeitangaben, Zyklusdauern, Lebensphasen
+
+  2. VERHALTENS-MUSTER (dynamic_type = trap | growth_path)
+     Haben: Richtung oder Wiederholung, KEIN Datum
+     Beispiele: Not-Self Trap "Frustration → Aufgeben → Burnout",
+                Profil 3/5: Trial & Error, BaZi Jia: Starrheit unter Druck
+     trap:        konditionierte Reaktion, keine Entwicklungsrichtung
+     growth_path: Entwicklungspfad mit Richtung (distorted → transcendent)
+     Extraktions-Signal: Prozeßsprache ohne Zeitbezug
+
+  3. SPEKTREN / POLARITÄTEN (dynamic_type = spectrum)
+     Haben: Pole, KEIN Datum, KEIN Prozess
+     Beispiele: Channel 34-20 (Geschäftigkeit ↔ Charisma),
+                GK 34 (Force ↔ Strength ↔ Majesty)
+     Extraktions-Signal: "↔", Polaritäten, Kontinua, keine Prozesssprache
+
+  ⚠️ Das ist KEIN Schema-Problem.
+     Das Schema deckt alle drei ab (dynamic_type ENUM).
+     Die Abgrenzung ist ein PROMPT-ENGINEERING-Problem.
+     → Referenz: IC_Extraction_Prompts (separates Dokument, zu erstellen)
+
+
+================================================================================
+TEIL 7: WORDING-MAPPING (KG ↔ UI)
+================================================================================
+
+  kg_layer   UI-Ebene         Sprache                  Beispiel
+  ──────────────────────────────────────────────────────────────────────────────
+  A/B        System-Linse     System-Sprache            "Offenes Emotionalzentrum"
+  C/D        Handbuch         Handbuch-Sprache          "Du nimmst Gefühle auf wie ein Schwamm"
+  C/D        Meta-Synthese    Meta-Sprache              "Deine Durchlässigkeit ist Geschenk UND Herausforderung"
+  E          Experiment       Handlungsorientiert       "Beobachte heute abend..."
+
+  User kann zwischen System-Linse und Handbuch jederzeit wechseln.
+  Meta-Sprache = Brücke. Immer zusätzlich, nie allein.
+
+  Drei-Linsen-Prinzip (für Annotator bei school_references):
+  mechanics      → rohe Struktur, für den Verstand
+  transformation → Prozess und Reife, für die Seele
+  integration    → Ermutigung und Anwendung, für das Herz
+  Die drei Linsen sind komplementär, keine ist besser oder vollständiger.
+  Keine schließt die andere aus.
+
+
+================================================================================
+TEIL 8: EXTRAKTIONS-REGELN (Kurzreferenz)
+================================================================================
+
+  Chunking:
+    Größe:       500–1500 Tokens (semantische Einheiten, kein mechanisches Split)
+    Overlap:     100 Tokens an Chunk-Grenzen
+    Metadaten:   source_id | page_range | chapter | section | language
+    Sonderfälle: Tabellen, Listen, Diagramme → eigene Chunks mit Typ-Tag
+
+  Quellenstrategie-Reihenfolge [E-28]:
+    Schritt 1:  Originalquellen → Schicht A/B  (KEIN Umschreiben)
+    Schritt 2:  Cross-Mappings  → Schicht C
+    Schritt 3:  Meta-Nodes / eigene Sprache → Schicht D/E
+    WICHTIG: Schritt 3 erst nach Abschluss + QA von Schritt 1+2.
+
+  Extraktions-Signale pro dynamic_type:
+    phase_cycle  → Zeitangaben, Zyklusdauern, Lebensphasen, Trigger-Zeitpunkte
+    trap         → "Not-Self", "shadow", "Falle", "clash", "punishment"
+    growth_path  → Reife, Integration, triadische Frames, Entwicklungsstufen
+    spectrum     → "↔", Polaritäten, Kontinua, Pole ohne Prozesssprache
+
+  Konfidenz-Schwellen:
+    < 0.7  → human_review_required = true (automatisch)
+    < 0.5  → Node NICHT in Schicht D/E verwendbar bis Review
+    ≥ 0.9  → Review optional für Schicht A/B
+
+
+================================================================================
+CHANGE-LOG
+================================================================================
+
+  25.02.2026 | v1.0 | Erstkonsolidierung aus Leitdokument v3 + v4
+  25.02.2026 | v1.0 | Synthese-Lexikon Ebene 0 integriert
+  25.02.2026 | v1.0 | v3-Gaps wiederhergestellt: influences, deepens,
+                      active_during, belongs_to_domain, part_of_phase,
+                      Node-Typen: domain / phase / experiment / life_event /
+                      inner_strategy / system_annotation, dimension_key
+  25.02.2026 | v1.0 | Korrekturen: expression_stern = boolean (nicht Enum),
+                      development_stage systemagnostisch, school_references Array,
+                      KG-Schicht E ≠ Innere Strategie (getrennt)
+  25.02.2026 | v1.0 | Neu: develops_into Edge | convergence_marker Node |
+                      fixed_star Node (klar getrennt von expression_stern)
+
+  25.02.2026 | v1.1 | development_stage + stage_label in school_references:
+                      Zwei-Ebenen-Lösung — IC-agnostische Achse + Schuloriginalvokabular
+  25.02.2026 | v1.1 | school_references: lens_type optional ergänzt
+                      (mechanics | transformation | integration)
+                      mit Drei-Linsen-Prinzip-Erläuterung für Annotator
+  25.02.2026 | v1.1 | Dynamics-Klarstellung: 3 Konzepte explizit (Teil 6)
+                      + Extraktions-Signal-Hinweise pro dynamic_type
+  25.02.2026 | v1.1 | Extraktions-Regeln: Konfidenz-Schwellen ergänzt (Teil 8)
+  25.02.2026 | v1.1 | Prompt-Engineering-Referenz: IC_Extraction_Prompts
+                      als separates Dokument vermerkt (noch zu erstellen)
+
+================================================================================
+END OF DOCUMENT
+================================================================================

@@ -95,6 +95,19 @@ sudo tailscale --socket /var/snap/tailscale/common/socket/tailscaled.sock serve 
 sudo tailscale --socket /var/snap/tailscale/common/socket/tailscaled.sock serve status
 ```
 
+## Inner Compass S5 — Topologie
+
+| Komponente | Host | Tailscale | Erreichbarkeit |
+|------------|------|-----------|----------------|
+| Supabase | VM105 (win11pro105) | `100.70.238.41` | `http://100.70.238.41:54321` |
+| Worker + MinerU + LLM | Spark (spark-56d0) | `100.96.115.1` | Läuft auf Spark |
+| PDFs (Anna's Archive) | VM102 (docker-apps) | `100.83.17.106` | `output/hd_content/downloads/fast_download` |
+
+**IPs können sich ändern** → `tailscale status` ist die Quelle der Wahrheit. Vollständige Tabelle: `infrastructure/proxmox/01_setup/1_proxmox-komplettsetup.md` (Abschnitt Tailscale IPs).
+
+S5-Flow: VM102 uploadt PDF → Supabase (VM105) → Worker auf Spark pollt, MinerU extrahiert, LLM interpretiert.
+→ Runbook: `projects/inner_compass/reference/s5_runbook.md`
+
 ## SSH (für Remote-Operations)
 
 Ziel: von VM105/WSL2 aus Spark steuern (Start/Stop, Deploy von Configs), ohne dass Repo auf Spark liegen muss.

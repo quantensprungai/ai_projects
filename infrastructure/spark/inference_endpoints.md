@@ -322,6 +322,8 @@ curl -s http://127.0.0.1:30001/v1/models
 - Qwen: `qwen3-32b-nvfp4`
 - Scout: `llama4-scout-17b-nvfp4`
 - DeepSeek R1 8B (abliterated, BF16): `deepseek-r1-8b-abliterated-bf16`
+- Llama 3.1 8B: `llama-3.1-8b-instruct`
+- Llama 3.2 11B: `llama-3.2-11b-instruct`
 
 ### Neues Modell hinzufügen (z. B. “echtes uncensored”, NVFP4/FP8)
 

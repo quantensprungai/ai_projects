@@ -285,6 +285,67 @@ python3 /tmp/apply_agent_templates.py
 
 **Manuell:** `~/clawd/workspace-{heiko,noah,flora,familie}/AGENTS.md` bearbeiten.
 
+### Voice (STT + TTS)
+
+Sprachnachrichten verstehen + Sprachantwort bei Voice-Inbound:
+
+```bash
+# 1. ffmpeg (STT) + Node.js (TTS) – auf VM102 (einmalig, sudo nötig):
+sudo apt install ffmpeg
+# Node 22+ für Edge TTS:
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# 2. Voice-Config deployen
+scp infrastructure/docker/update_clawdbot_voice_config.py user@docker-apps:/tmp/
+# Auf VM102:
+python3 /tmp/update_clawdbot_voice_config.py
+systemctl --user restart clawdbot-gateway-personal.service
+```
+
+**STT:** Whisper-CLI (lokal, kein API-Key). `pip install openai-whisper` auf VM102. Alternative: faster-whisper (4× schneller, weniger RAM) – erfordert Anpassung der Config.
+**TTS:** Edge TTS (kein Key), weibliche Stimme (Katja). Braucht Node.js 22+ (node-edge-tts). `auto: "always"` – jede Antwort als Sprachnachricht.
+**ffmpeg:** Pflicht für Signal-Voice – Opus→WAV. Ohne ffmpeg: „ffmpeg-Decoder nicht installiert“.
+
+**Wichtig bei TTS:**
+- **Emojis** im Reply-Text brechen den Signal-Versand (Bug: Media-Pfad enthält Emoji). In **allen** Agent-Workspaces in AGENTS.md: *„Keine Emojis – technische Einschränkung bei Sprachnachrichten.“*
+- **Kein TTS-Tool:** Agent darf kein `<tool_call>` mit name "tts" verwenden – Plattform übernimmt TTS automatisch. Nur normalen Text schreiben. Falls Agent „Ich habe keine Sprachausgabe“ sagt oder `[[tts:...]]` / `tool_call tts` ausgibt: In AGENTS.md ergänzen. **Familie:** `scp infrastructure/docker/patch_familie_agents_tts.py user@docker-apps:/tmp/` → `python3 /tmp/patch_familie_agents_tts.py`: *„Sprachausgabe wird von der Plattform automatisch übernommen. Einfach normalen Text schreiben – kein tool_call tts, kein [[tts]]-Tag.“*
+
+### Flora (Sage) – vollständiges Custom-Setup
+
+Flora hat ein eigenes, umfangreiches Setup (Sage-Persona, WELCOME_MESSAGE, etc.):
+
+```bash
+# Von VM105: Templates + Skript auf VM102 kopieren
+scp -r infrastructure/docker/workspace-flora infrastructure/docker/apply_flora_workspace.py user@docker-apps:/tmp/
+
+# Auf VM102: deployen
+python3 /tmp/apply_flora_workspace.py
+
+# Gateway neu starten
+systemctl --user restart clawdbot-gateway-personal.service
+```
+
+Dateien: `AGENTS.md`, `SOUL.md`, `USER.md`, `WELCOME_MESSAGE.md`, `HEARTBEAT.md`, `CRON.md` – siehe `infrastructure/docker/workspace-flora/`.
+
+### Flora Heartbeat + Cron
+
+**Heartbeat (4h, 09:00–20:00):**
+```bash
+scp infrastructure/docker/update_clawdbot_flora_config.py user@docker-apps:/tmp/
+# Auf VM102:
+python3 /tmp/update_clawdbot_flora_config.py
+systemctl --user restart clawdbot-gateway-personal.service
+```
+
+**Cron-Jobs (Pflanze der Woche, Jahreszeitenimpuls):**
+```bash
+scp infrastructure/docker/setup_flora_cron.py user@docker-apps:/tmp/
+# Auf VM102 (beliebiges Verzeichnis):
+python3 /tmp/setup_flora_cron.py
+```
+*Python-Version vermeidet CRLF-Probleme bei SCP von Windows (setup_flora_cron.sh hatte Zeilenenden-Fehler).*
+
 ---
 
 ## Externes Wissen (PDFs, Word, Text)
@@ -398,6 +459,16 @@ Details: `infrastructure/docker/clawdbot_vm102.md`, `infrastructure/spark/infere
      signal-cli -a +49XXXXXXXXX daemon --http 127.0.0.1:8081
      ```
      In `clawdbot.json` unter `channels.signal`: `"httpUrl": "http://127.0.0.1:8081"`, `"autoStart": false` setzen.
+- **Agent verwechselt Identität (Heiko antwortet wie Familien-Bot):**
+  1. **Service-Profil prüfen:** `systemctl --user cat clawdbot-gateway-personal.service` – muss `--profile personal` enthalten.
+  2. **State-Dir erzwingen** (falls ~/.clawdbot und ~/.clawdbot-personal beide existieren): In der Service-Datei `Environment="OPENCLAW_STATE_DIR=/home/user/.clawdbot-personal"` setzen.
+  3. **~/.clawdbot deaktivieren:** Falls der Doctor in ~/.clawdbot geschrieben hat, Config dort prüfen/bereinigen – nur ~/.clawdbot-personal soll aktiv sein.
+  4. **Session löschen:** `rm -rf ~/.clawdbot-personal/agents/heiko/sessions/*` und Gateway neu starten.
+  5. **Routing prüfen:** Beim Senden Logs beobachten: `journalctl --user -u clawdbot-gateway-personal.service -f` – nach „agent:heiko“ oder „agent:familie“ suchen.
+
+- **Voice: „ffmpeg-Decoder nicht installiert“:** Signal sendet Sprachnachrichten als Opus. Clawdbot/Whisper brauchen ffmpeg zum Decodieren. Lösung: `sudo apt install ffmpeg` auf VM102, dann Gateway neu starten.
+- **TTS liefert keine Sprachnachricht:** Edge TTS braucht Node.js 22+. Prüfen: `node -v`. Wenn fehlt: `curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -` und `sudo apt-get install -y nodejs`, dann Gateway neu starten.
+- **TTS mit Signal:** Log-Fehler: `signal block reply failed: ENOENT ... open '.../media/inbound/UUID 🌿'` – der Media-Pfad enthält ein Emoji (aus Reply-Text) und ist ungültig. Signal kann Audio senden (`message send --media` funktioniert). Bug in Clawdbot: Reply-Text wird fälschlich in Media-Pfad eingebaut. Issue bei openclaw/openclaw öffnen mit diesem Log-Eintrag.
 - **Gateway stürzt ab (exit-code 1, auto-restart):** Logs prüfen:
   ```bash
   journalctl --user -u clawdbot-gateway-personal.service -n 80 --no-pager
@@ -409,3 +480,67 @@ Details: `infrastructure/docker/clawdbot_vm102.md`, `infrastructure/spark/infere
   systemctl --user restart clawdbot-gateway-personal.service
   ```
   Weitere Ursachen: ungültige Config (JSON), Signal-Account nicht in signal-cli, fehlender Spark-Zugang.
+- **Config invalid / Unrecognized key audioAsVoice:** Gateway crasht in Restart-Loop. Sofort: `~/.clawdbot/bin/clawdbot --profile personal doctor --fix` oder `python3 remove_audio_as_voice_config.py`, dann Gateway neu starten.
+- **Voice: Bot schickt Sprachnachricht zurück (Echo-Bug):** User sendet Voice → Bot antwortet mit demselben Audio + Text. Vermutung: STT-Flow oder Media-Anhang bei Reply fehlerhaft. Workaround: Telegram als zusätzlichen Kanal testen (siehe unten).
+- **Telegram: TTS kommt als Musik-Datei statt Sprachmemo:** Agent fügt `[[audio_as_voice]]` in Antwort ein (AGENTS.md). Nicht: `audioAsVoice` in Config – ungültiger Key!
+- **TTS liefert nur Text, keine Sprachnachricht:** (1) **messages.tts.edge.enabled = false** – häufigste Ursache! tts.js überspringt mit "edge: disabled". Fix: `messages.tts.edge.enabled: true` in ~/.clawdbot-personal/clawdbot.json setzen. (2) node-edge-tts fehlt: `cd ~/.clawdbot/lib/node_modules/clawdbot && npm install node-edge-tts`. (3) tools.deny, Antwort < 10 Zeichen. (4) Laut Clawdbot-Docs: *"If reply exceeds maxLength and summary is off, audio is skipped."* Flora neigt zu langen Antworten → oft > 8000 Zeichen → kein TTS. **Fix:** (1) `tts.json` prüfen – `auto` darf nicht `"off"` sein (überschreibt clawdbot.json!). (2) Kurztest: `/tts always` + „Sag nur: Hallo Welt“. (3) Wenn kurz funktioniert: `maxLength` auf 15000 erhöhen ODER Flora-Prompt kürzen. (4) OpenClaw nutzt `node-edge-tts` (Node.js), nicht Python edge-tts.
+
+---
+
+## Optional: Telegram zusätzlich einrichten
+
+**Zweck:** Telegram als zweiten Kanal nutzen – evtl. besseres Voice-Handling als bei Signal (Echo-Bug).
+
+**Quelle:** https://docs.clawd.bot/channels/telegram
+
+### 1. Bot anlegen
+
+1. In Telegram: @BotFather öffnen
+2. `/newbot` → Name + Username wählen
+3. Token kopieren (z.B. `123456789:ABCdefGHIjklMNOpqrsTUVwxyz`)
+
+### 2. Skript ausführen (Config + Bindings)
+
+```bash
+scp infrastructure/docker/update_clawdbot_telegram_config.py user@docker-apps:/tmp/
+ssh user@docker-apps
+python3 /tmp/update_clawdbot_telegram_config.py --bot-token "DEIN_TOKEN"
+```
+
+Optional – Agent-spezifische Zuordnung (Telegram-User-IDs nach Pairing):
+
+```bash
+python3 /tmp/update_clawdbot_telegram_config.py --bot-token "..." \
+  --heiko "123456789" --noah "987654321" --flora "111222333" --familie "444555666"
+```
+
+Telegram-User-ID ermitteln: `~/.clawdbot/bin/clawdbot pairing list telegram`, Logs oder `curl "https://api.telegram.org/bot<TOKEN>/getUpdates"`.
+
+### 3. Gateway neu starten
+
+```bash
+systemctl --user restart clawdbot-gateway-personal.service
+```
+
+### 4. Pairing
+
+```bash
+~/.clawdbot/bin/clawdbot --profile personal pairing list telegram
+# Code anzeigen lassen, dann in Telegram an den Bot senden
+~/.clawdbot/bin/clawdbot --profile personal pairing approve telegram <CODE>
+```
+
+**Hinweis:** Voice-Config (STT/TTS) gilt kanalübergreifend – wenn sie für Signal gesetzt ist, gilt sie auch für Telegram. Bestehende Signal-Bindings bleiben erhalten.
+
+**Telegram Voice Note:** Standardmäßig sendet OpenClaw TTS als Audio-Datei (Musik-Player). Für Sprachmemo-Bubble: `messages.tts.audioAsVoice: true` in Config (update_clawdbot_voice_config.py setzt das automatisch). Alternativ: Agent fügt `[[audio_as_voice]]` in Antwort ein.
+
+**Routing:** Ohne Agent-Bindings (`--flora` etc.) gehen alle Telegram-DMs an den **main**-Agent (oft = Lumi/Familie). Für Flora (Sage): `--flora <DEINE_TELEGRAM_USER_ID>` setzen. User-ID z.B. aus `getUpdates` oder Logs.
+
+**TTS-Bug (message asVoice):** Falls du Rohtext wie `<tool_call>{"name":"message","asVoice":true}</tool_call>` erhältst: Agent nutzt fälschlich das message-Tool. Fix:
+```bash
+scp infrastructure/docker/patch_agents_message_asvoice.py infrastructure/docker/workspace-flora user@docker-apps:/tmp/
+# Flora: apply_flora_workspace.py (AGENTS.md enthält bereits den Fix)
+# Alle Agents: python3 /tmp/patch_agents_message_asvoice.py
+rm -rf ~/.clawdbot-personal/agents/*/sessions/*
+systemctl --user restart clawdbot-gateway-personal.service
+```

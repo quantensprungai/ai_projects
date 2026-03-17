@@ -1,64 +1,58 @@
-<!--
-title: ai_projects (global) – Doku/Infra Multi-Projekt Regeln
-last_update: 2026-01-21
-status: draft
-scope:
-  summary: "Regeln für Arbeiten im ai_projects Root-Repo (Docs/Infra/Meta), inkl. Scratch-Workflow und Multi-Projekt-Kontext."
-  in_scope:
-    - documentation edits under /projects and /infrastructure
-    - cross-linking and naming conventions
-    - scratch inbox → promote workflow
-    - language/tone consistency
-  out_of_scope:
-    - code implementation details inside /code (separate repos)
-notes: []
--->
+---
+description: "Regeln für Arbeiten im ai_projects Root-Repo (Docs/Infra/Meta), inkl. Multi-Projekt-Kontext."
+globs: "**/*"
+alwaysApply: true
+---
 
 ## Sprache
+
 - Antworte **immer auf Deutsch**.
 
 ## Repo-Intent (wichtig)
-- Das Root-Repo `ai_projects/` ist **Docs/Infra/Meta**.
-- `/code/**` ist ein separater Bereich (eigene Repos).
+
+- Das Root-Repo ai_projects/ ist **Docs/Infra/Meta**.
+- /code/** ist ein separater Bereich (eigene Repos).
   - **Lesen/Referenzieren** ist ausdrücklich ok (damit KI Code+Docs+Infra zusammen versteht).
-  - **Änderungen/Commits** im jeweiligen Code-Repo nur, wenn explizit gefordert (und dann im richtigen Repo committen).
+  - **Änderungen/Commits** im jeweiligen Code-Repo nur, wenn explizit gefordert.
 
 ## Reality-Block Konvention
-- Jede Markdown-Datei hat einen Reality-Block.
-- Ändere nur Dinge, die im Reality-Block `in_scope` liegen; bei größeren Änderungen `last_update` aktualisieren.
 
-## Entscheidungs-Doku (ADR-lite)
-- Wenn du Design/Architektur-Entscheidungen dokumentierst, nutze das Muster:
-  - **Decision**
-  - **Rationale**
-  - **Consequences**
+- Jede Markdown-Datei hat einen Reality-Block (YAML-Frontmatter oder Kommentar).
+- Ändere nur Dinge, die im Reality-Block in_scope liegen; bei größeren Änderungen last_update aktualisieren.
 
 ## Links & Verweise
+
 - Nutze relative Links im Repo.
-- Verweise auf volatile Rohnotizen **nie** als “Source of Truth”; lieber “Scratch/Legacy-Notizen (ehemals …)” oder direkt auf promotete Dateien.
+- Verweise auf volatile Rohnotizen **nie** als "Source of Truth".
 
-## Projects ↔ Code ↔ Infra Crosslinks (Konvention)
-- In `projects/<name>/README.md` soll ein Link auf das passende Code-Repo unter `code/<repo>/` stehen (falls vorhanden).
-- In `code/<repo>/README.md` soll “Docs live here” stehen und auf `../../projects/<name>/` + relevante `../../infrastructure/...` Dateien verlinken.
+## Projects ↔ Code ↔ Infra Crosslinks
 
-## Scratch-Workflow (Inbox → Wissen → Promote)
-- `scratch/inbox/`: roh/unstrukturiert (Scrapes, Copy/Paste Dumps, Logs).
-- `scratch/wissen/`: kuratierte Notizen, bereit zum “Promote”.
-- `scratch/legacy_keep/`: große/alte Rohnotizen, die noch nicht sanitiert/aufgeteilt sind.
-- “Source of Truth” muss nach `projects/` oder `infrastructure/` promotet werden.
+- In projects/<name>/README.md → Link auf passendes Code-Repo unter code/<repo>/
+- In code/<repo>/README.md → "Docs live here" + Link auf ../../projects/<name>/
 
-## Spark-Doku Allowlist (wichtig)
-- Spark-Dokumentation liegt ausschließlich unter `infrastructure/spark/`.
-- Neue Spark-Doku-Dateien nur anlegen, wenn es bewusst entschieden wurde (sonst bestehende Dateien erweitern).
+## Scratch-Workflow
+
+- scratch/inbox/: roh/unstrukturiert
+- scratch/wissen/: kuratierte Notizen
+- scratch/legacy_keep/: große/alte Rohnotizen
+- "Source of Truth" muss nach projects/ oder infrastructure/ promotet werden.
 
 ## Multi-Projekt Arbeitsweise
-- Frage bei Ambiguität: **welches Projekt** (z. B. `projects/hd_saas`, `projects/rest_data_platform`, …)?
-- Halte Änderungen projektlokal; keine Vermischung von Begriffen/Artefakten zwischen Projekten ohne explizite Entscheidung.
+
+- Frage bei Ambiguität: **welches Projekt?**
+- Halte Änderungen projektlokal; keine Vermischung.
+
+## Aktive Projekte
+
+| Projekt | Docs | Code | Status |
+|---------|------|------|--------|
+| Inner Compass | projects/inner_compass/ | code/hd_saas_app/ (→ inner_compass_app) | Aktiv |
+| Trading Bot | projects/trading_bot/ | code/trading-bot/ | Aktiv |
+| Rest Data Platform | projects/rest_data_platform/ | — | Planung |
 
 ## Doku & Rules (Wildwuchs vermeiden)
-- **Strategie:** `projects/_meta/doc_and_rules_strategy.md` – Gesamtplan für lebende Struktur.
-- **Neue Docs:** Nur anlegen, wenn Inhalt in keine bestehende passt UND aktiv referenziert wird.
-- **Pro Projekt:** Max. 15–20 aktive Docs; Einstieg = README + current_status + next_steps.
-- **Chat-Wechsel:** Handover-Block aus `chat_handover_*.md` kopieren – enthält Links, keine Spez.
-- **Rules über Docs:** Wenn KI-Kontext nötig → Rule (globs/alwaysApply); Docs für Vertiefung.
 
+- **Pro Projekt:** cursor/ Ordner mit max. 6-8 aktiven Docs. reference/ für Kontext.
+- **Chat-Wechsel:** Handover-Block aus cursor/handover.md kopieren.
+- **Rules über Docs:** Wenn KI-Kontext nötig → Rule (globs/alwaysApply); Docs für Vertiefung.
+- **Neue Docs:** Nur anlegen, wenn Inhalt in keine bestehende passt UND aktiv referenziert wird.

@@ -1,48 +1,26 @@
-<!-- Reality Block
-last_update: 2026-01-29
-status: draft
-scope:
-  summary: "HD-SaaS – Doku Index + Code/Infra Crosslinks (Multi-System Setup)."
-  in_scope:
-    - index + crosslinks
-    - cursor workspace guidance
-  out_of_scope:
-    - implementation details
-    - secrets
-notes: []
--->
+> **ARCHIVIERT** (2026-02-16). Dieses Projekt wurde zu **Inner Compass** umbenannt und neu strukturiert.
+> Aktive Dokumentation: `projects/inner_compass/`
+> Einzigartiger Inhalt wurde konsolidiert nach:
+> - `projects/inner_compass/reference/vision_and_story.md` (Story, UX, Vision)
+> - `projects/inner_compass/reference/schema_and_descriptor_specs.md` (Layer-Schemas, Descriptor-Spec)
+> - Integriert in cursor/pipeline.md, cursor/architecture.md, reference/decisions.md, reference/ideas.md
+> Restliche Dateien hier dienen als historische Referenz. Nicht als Source of Truth verwenden.
 
-# HD‑SaaS – Doku Index
+# HD‑SaaS – Archivierter Doku Index
 
-## Kanonische Doku (hier)
+## Aktive Nachfolger-Dokumentation
 
-- `00_overview/` (Mission, Problem, Value, Scope Frame, Makerkit Orientierung)
-- `01_spec/` (Requirements, PRD, Journeys, Edge Cases)
-- `02_system_design/` (Architektur, Datenflüsse, Agents, Worker-Contract Spark↔Supabase)
-- `03_roadmap/` (MVP, Milestones, v1/v2/v3, Risiken)
-- `04_assets/` (Prompts, Datasets, Diagrams)
+| Thema | Neue Location |
+|-------|---------------|
+| Projekt-Status & Roadmap | `projects/inner_compass/cursor/status.md` |
+| Schema & Architektur | `projects/inner_compass/cursor/architecture.md` |
+| Contracts & Payloads | `projects/inner_compass/cursor/contracts.md` |
+| Pipeline & Worker | `projects/inner_compass/cursor/pipeline.md` |
+| PRD & Produkt | `projects/inner_compass/reference/prd_v3.md` |
+| Vision, Story, UX | `projects/inner_compass/reference/vision_and_story.md` |
+| Layer-Schemas, Descriptors | `projects/inner_compass/reference/schema_and_descriptor_specs.md` |
+| Entscheidungen | `projects/inner_compass/reference/decisions.md` |
 
-## Aktueller Stand (damit neue Chats sofort Kontext haben)
+## Code
 
-- **Local Dev (Supabase + HD ingestion):** `00_overview/current_status_local_dev.md`
-- **Priorität & Reihenfolge (Option B):** `02_system_design/next_steps_was_fehlt_noch.md`
-- **Roadmap:** `02_system_design/plan_option_b_roadmap.md`
-- **Chat-Handover (Copy-Paste für neue Chats):** `00_overview/chat_handover_hd_saas.md`
-
-Für Implementierung: `interpretations_contract.md`, `text2kg_spec.md`, `dimensions_contract.md`, `layer_implementation_abgleich.md`, Worker-Contracts in `02_system_design/`.
-
-## Code (separates Repo unter `code/`)
-
-- **Code-Repo (working copy)**: `code/hd_saas_app/` (eigenes Git-Repo)
-
-## Infra / Shared Docs
-
-- Spark Serving / Modelle / Endpoints: `infrastructure/spark/`
-- Tailscale / VPN: `infrastructure/tailscale/`
-
-## Cursor Setup (wichtig)
-
-Damit die “Code KI” beim Arbeiten im HD‑SaaS Code gleichzeitig Kontext aus `projects/` und `infrastructure/` hat:
-
-- Öffne als Workspace: `ai_projects.code-workspace` (Multi‑Root, 1 Fenster)
-
+- **Code-Repo:** `code/hd_saas_app/` (wird zu `code/inner_compass_app/`)

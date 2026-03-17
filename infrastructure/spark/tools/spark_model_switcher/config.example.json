@@ -52,6 +52,26 @@
       "description": "Coding-optimiert (kein 'uncensored' per se).",
       "type": "script",
       "remote_path": "/home/sparkuser/ai/scripts/serve/sglang_switch_to_qwen3_coder_30b.sh"
+    },
+    {
+      "id": "llama-3.1-8b-instruct",
+      "label": "Llama 3.1 8B Instruct",
+      "category": "Allround",
+      "order": 12,
+      "slot": "primary",
+      "description": "Leichtgewichtig, schnelle Antworten. OpenClaw: 14B+ empfohlen.",
+      "type": "script",
+      "remote_path": "/home/sparkuser/ai/scripts/serve/sglang_switch_to_llama31_8b.sh"
+    },
+    {
+      "id": "llama-3.2-11b-instruct",
+      "label": "Llama 3.2 11B Instruct",
+      "category": "Allround",
+      "order": 13,
+      "slot": "primary",
+      "description": "11B, multilingual. OpenClaw: 14B+ empfohlen.",
+      "type": "script",
+      "remote_path": "/home/sparkuser/ai/scripts/serve/sglang_switch_to_llama32_11b.sh"
     }
   ]
 }
