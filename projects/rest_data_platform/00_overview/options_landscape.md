@@ -1,8 +1,8 @@
 <!-- Reality Block
-last_update: 2026-01-29
+last_update: 2026-03-27
 status: draft
 scope:
-  summary: "Optionen-Landkarte für AP 5.2 (ReST Data Platform): mehrere Richtungen, Vergleich, Shortlist-Logik fürs interne Brainstorming."
+  summary: "Optionen-Landkarte für WP 5.2 (ReST Data Platform): mehrere Richtungen, Vergleich, Shortlist-Logik fürs interne Brainstorming."
   in_scope:
     - options catalog
     - comparisons (effort/impact/maintenance/data readiness)
@@ -14,7 +14,7 @@ notes:
   - "Ziel: viele Optionen sichtbar machen, ohne Festlegung. Danach bewusst 1–2 Piloten auswählen."
 -->
 
-# Optionen-Landkarte (AP 5.2 – ReST Data Platform)
+# Optionen-Landkarte (WP 5.2 – ReST Data Platform)
 
 ## Zweck (für das interne Meeting)
 Wir wollen **nicht** sofort festlegen, *was* ReST wird, sondern **sinnvolle Richtungen vergleichbar machen** und am Ende **1–2 Piloten** auswählen, die in 6–12 Wochen etwas Sichtbares liefern.

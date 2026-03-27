@@ -1,8 +1,8 @@
 <!-- Reality Block
-last_update: 2026-02-02
+last_update: 2026-03-27
 status: draft
 scope:
-  summary: "Kurzfassung WP 2.1 Offshore Circular Economy – ReST Data Platform."
+  summary: "Kurzfassung ASTRA WP 2.1 (Incubator Maritime Circularity) / Offshore CE – Pilot für WP 5.2 ReST Data Platform."
   in_scope:
     - problem framing
     - goals
@@ -13,7 +13,9 @@ scope:
 notes: []
 -->
 
-# WP 2.1 Offshore Circular Economy – Kurzfassung
+# WP 2.1 — Incubator for Maritime Circularity 2050 (Offshore Circular Economy) – Kurzfassung
+
+Im ASTRA-Antrag: **WP 2.1**; fachlicher Schwerpunkt u. a. Offshore-Wind und Lebenszyklus. Die **ReST Data Platform** wird in **WP 5.2** gebaut und nutzt WP 2.1 als **Pilotdomäne** (siehe [`naming_canon.md`](naming_canon.md)).
 
 ## 1) Ausgangslage
 Vor Ostfriesland steht eine der groessten Offshore‑Infrastruktur‑Konzentrationen Deutschlands (WEA, Konverter, Fundamente, Kabel, Logistik). Es fehlt eine konsolidierte Sicht auf Standorte, Alter, Komponenten, Rueckbaupflichten und Materialstroeme. Gleichzeitig kommen Ausbau und Rueckbau parallel – ein strategisch kritischer “Gegenverkehr”.

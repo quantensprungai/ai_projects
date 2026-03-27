@@ -1,5 +1,5 @@
 <!-- Reality Block
-last_update: 2026-01-28
+last_update: 2026-03-19
 status: draft
 scope:
   summary: "Stakeholder Map + Kommunikationslogik (intern/extern) für ReST Data Platform."
@@ -18,6 +18,11 @@ notes: []
 ## Interne Stakeholder (genannt)
 - **Projektleitung**: Kotzur, Hanfeld
 - **Optional/je nach Rolle**: Schleuter
+- **Plattform-Owner**: Heiko (Architektur, Integration, Priorisierung Backlog)
+- **Simulation-Owner**: Marc (AnyLogic Input/Output, Szenarien Stage A)
+- **LCA/BOM-Owner**: Thomas (Material- und Emissionsannahmen, LCA-Proxy)
+- **DPP/AAS-Owner**: Shubham (DPP-Light Scope, AAS-Mapping, Orchestrierungsbezug)
+- **Daten-/Kontakt-Support**: Eike, Dirk (Hafendaten/Recycler/Industriekontakte je nach Verfuegbarkeit)
 - **Schwesterprojekte**: nach Bedarf (Alignment, Daten-/Schnittstellen-Abstimmung)
 
 ## Kommunikationsziele

@@ -1,5 +1,5 @@
 <!-- Reality Block
-last_update: 2026-01-28
+last_update: 2026-03-27
 status: draft
 scope:
   summary: "Phase A Plan bis 31.08.2028 (100% Stelle) – bewusst in Etappen, nicht zu schnell/nicht zu langsam."
@@ -33,7 +33,7 @@ notes:
 - **Output**:
   - Scope Shield final (`00_overview/scope_shield.md`)
   - MVP als “Minimum Useful Product” präzisiert (`00_overview/mvp.md`)
-  - 1 Pilotdomäne WP 2.1 Offshore‑CE + Datenzugriff geklärt (wer darf was, wo liegt was?)
+  - 1 Pilotdomäne **WP 2.1** Offshore‑CE + Datenzugriff geklärt (Plattform **WP 5.2**; wer darf was, wo liegt was?)
 - **Kommunikation**:
   - Kickoff-Update: “Was ist es / was ist es nicht?”
 

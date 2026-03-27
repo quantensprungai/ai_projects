@@ -1,8 +1,8 @@
 <!-- Reality Block
-last_update: 2026-01-28
+last_update: 2026-03-27
 status: template
 scope:
-  summary: "1-seitiges Status Update Template – ReST Data Platform."
+  summary: "1-seitiges Status Update Template – ASTRA WP 5.2 ReST Data Platform."
   in_scope:
     - concise monthly update structure
   out_of_scope:
@@ -11,7 +11,7 @@ scope:
 notes: []
 -->
 
-# Status Update – ReST Data Platform (ASTRA)
+# Status Update – ReST Data Platform (ASTRA WP 5.2)
 
 **Zeitraum:** YYYY-MM (oder KW xx–yy)  
 **Autor:** <Name>  

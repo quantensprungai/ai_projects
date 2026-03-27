@@ -48,7 +48,7 @@ alwaysApply: true
 |---------|------|------|--------|
 | Inner Compass | projects/inner_compass/ | code/hd_saas_app/ (→ inner_compass_app) | Aktiv |
 | Trading Bot | projects/trading_bot/ | code/trading-bot/ | Aktiv |
-| Rest Data Platform | projects/rest_data_platform/ | — | Planung |
+| Rest Data Platform / ASTRA IMC | projects/rest_data_platform/ | `code/astra-imc-platform/` → `git@github.com:quantensprungai/astra-imc-platform.git` (nicht hd_saas_app) | Planung |
 
 ## Doku & Rules (Wildwuchs vermeiden)
 

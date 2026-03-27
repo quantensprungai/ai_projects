@@ -23,7 +23,7 @@ ai_projects/
 ├── projects/              ← Projekt-Dokumentation
 │   ├── inner_compass/     ← Geburtsbasiertes Meta-System (Aktiv)
 │   ├── trading_bot/       ← Trading Bot (Aktiv)
-│   ├── rest_data_platform/← ReST Data Platform (Planung)
+│   ├── rest_data_platform/← ASTRA WP 5.2 ReST / IMC-Doku (Code: quantensprungai/astra-imc-platform)
 │   ├── [weitere]/         ← Siehe _meta/master_map.md
 │   └── _meta/             ← Globale Konventionen, Glossar, Landkarte
 │
@@ -51,6 +51,29 @@ ai_projects/
 ## Git-Strategie
 
 Dieses Root-Repo ist **Docs/Infra only**. Jedes Code-Repo unter `code/` ist ein eigenes Git-Repo.
+
+### Setup auf neuem Rechner (Clone + Code-Repos)
+
+1. **Gesamt-Repo klonen**
+   ```bash
+   git clone https://github.com/quantensprungai/ai_projects.git
+   cd ai_projects
+   ```
+   Oder per SSH (wenn SSH-Key bei GitHub hinterlegt):  
+   `git clone git@github.com:quantensprungai/ai_projects.git`  
+   Danach hast du Docs + Infra; der Ordner `code/` ist leer.
+
+2. **Code-Repos separat klonen** (in `code/`):
+   ```bash
+   cd code
+   git clone git@github.com:quantensprungai/hd-saas-app.git hd_saas_app
+   git clone git@github.com:quantensprungai/annas-archive-toolkit.git annas-archive-toolkit
+   # optional: git clone <url> trading-bot
+   ```
+   Ohne SSH: URLs mit `https://github.com/quantensprungai/...` nutzen; Zugriff dann über Git Credential Manager / Token.  
+   **SSH einrichten:** Key erzeugen (`ssh-keygen -t ed25519 -C "github"`), öffentlichen Key unter https://github.com/settings/ssh/new eintragen.
+
+3. **Workspace:** `ai_projects.code-workspace` öffnen (Multi-Root) — dann siehst du Docs + Infra + Code zusammen.
 
 ## Einstiegspunkte
 

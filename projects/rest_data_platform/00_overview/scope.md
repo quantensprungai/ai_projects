@@ -1,27 +1,31 @@
 <!-- Reality Block
-last_update: 2026-01-17
+last_update: 2026-03-27
 status: draft
 scope:
-  summary: "Scope/Non‑Scope zur bewussten Begrenzung von AP 5.2 (ReST Data Platform)."
+  summary: "Scope/Non‑Scope zur bewussten Begrenzung von WP 5.2 (ReST Data Platform)."
   in_scope:
     - standard modules
     - boundaries
   out_of_scope:
     - bespoke development for other WPs
-notes: []
+notes:
+  - "WP 5.2 = ReST Data Platform im ASTRA-Antrag; Pilotinhalt WP 2.1."
 -->
 
-# Scope / Non‑Scope (AP 5.2 – ReST Data Platform)
+# Scope / Non‑Scope (WP 5.2 – ReST Data Platform)
 
 ## Scope (was wir liefern)
 - **Backbone**: Portal als “ReST Portal” (Login, Rollen, Basis‑UI).
 - **Datenorganisation**: standardisierte Ablage/Metadaten für projektbezogene Daten & Dokumente.
 - **Standard-Upload**: CSV/XLSX/PDF Upload + minimale Validierung/Versionierung (so schlank wie möglich).
 - **Offshore‑Asset‑Register (WP 2.1)**: Anlagen, Standorte, Lebenszyklen, Rueckbauwellen, Grunddaten.
-- **Dokumenten‑Erschliessung (RAG light)**: Upload → Verarbeitung → Q&A mit Quellen.
-- **DPP‑Light Demonstrator**: 1 Beispielkomponente, 1 QR‑Code, 1 Credential, 1 Event‑Kette.
 - **Low‑Complexity Analysen**: Zeitachsen, einfache Mengenschaetzungen, Clusterkarten.
 - **Analytics**: Dashboards/Exploration als separater Self‑Service‑Bereich (z. B. Superset) *oder* minimale “KPI Cards” im Portal – abhaengig vom Projektentscheid.
+- **Interface Agreements**: Modul-Schnittstellen werden vor Integration verbindlich spezifiziert.
+
+## Optional / Stretch (nur bei Zeit/Nutzen)
+- **Dokumenten‑Erschliessung (RAG light)**: Upload → Verarbeitung → Q&A mit Quellen.
+- **DPP‑Light Demonstrator**: 1 Beispielkomponente, 1 QR‑Code, 1 Event‑Kette.
 
 ## Non‑Scope (was wir explizit NICHT liefern)
 - Keine **WP‑spezifischen Portale** oder individuellen Fach‑UIs.

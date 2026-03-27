@@ -2,12 +2,6 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		{
-			"path": "code/annas-archive-toolkit"
-		},
-		{
-			"path": "code/hd_saas_app"
 		}
 	]
 }

@@ -1,8 +1,8 @@
 <!-- Reality Block
-last_update: 2026-02-02
+last_update: 2026-03-27
 status: draft
 scope:
-  summary: "Technische Schritte – ReST WP 2.1: erster Schritt und folgende."
+  summary: "Technische Schritte – WP 5.2 ReST Data Platform; Pilot WP 2.1."
   in_scope:
     - first step
     - sequence of technical actions
@@ -25,9 +25,9 @@ Ohne das steht später alles auf wackeligen Beinen.
 ---
 
 ## Schritt 2: Backbone aufsetzen
-**Portal + Supabase, kein WP-spezifischer Inhalt.**
+**Portal + Supabase, kein fremd-WP-spezifisches Portal** (Backbone WP 5.2; Pilotdaten WP 2.1).
 - **Supabase-Projekt** anlegen (Auth, Postgres, Storage, RLS)
-- **Next.js-App** (oder Makerkit-Basis) mit Login/Rollen und einem einfachen Upload-Flow
+- **Next.js-App** (lizenzierte Supabase-Basis) mit Login/Rollen und einem einfachen Upload-Flow
 - **Erste Tabelle(n)** für das Asset-Register (Schema aus Schritt 1)
 - **Upload-Pfad** für CSV/XLSX/PDF (Speicherung + Metadaten)
 
@@ -91,4 +91,4 @@ Ziel: Zahlen und Zeitachsen kommen aus dem System, nicht aus Excel.
 6. Reporting + Zeitachsen  
 7. Optional: DPP-Light, Agenten  
 
-Die Schritte 1–4 sollten in 6–8 Wochen ein sichtbares, nutzbares System liefern.
+Die Schritte 1-4 sollten in 5-12 Wochen ein sichtbares, nutzbares System liefern.

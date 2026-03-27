@@ -1,8 +1,8 @@
 <!-- Reality Block
-last_update: 2026-01-17
+last_update: 2026-03-27
 status: draft
 scope:
-  summary: "MVP Definition – ReST Data Platform (schlank, wenig Ops, hoher Nutzen)."
+  summary: "MVP Definition – ReST Data Platform WP 5.2 (schlank), Pilot WP 2.1."
   in_scope:
     - mvp modules
     - what success looks like
@@ -13,14 +13,14 @@ notes: []
 
 # MVP – ReST Data Platform (schlank)
 
-## Ziel (6–8 Wochen, realistisch)
+## Ziel (5-12 Wochen, realistisch)
 Ein funktionsfaehiges „ReST Portal“ + Supabase‑Backend, das **Offshore‑Daten und Dokumente** sauber organisiert und **standardisierte Sichtbarkeit** erzeugt – ohne Service‑Falle.
 
 ## MVP‑Module (4 Bausteine)
 
 1) **Portal & Rollen**
-- Login, Rollen (Admin/Editor/Viewer) für AP 5.2 (intern)
-- Fokus: WP 2.1 Offshore‑CE, keine WP‑Sonderportale
+- Login, Rollen (Admin/Editor/Viewer) für **WP 5.2** (ReST Data Platform, intern)
+- Fokus: **WP 2.1** Offshore‑CE / Maritime Circularity, keine WP‑Sonderportale
 
 2) **Offshore‑Asset‑Register + Upload**
 - Upload von **PDFs** und **Tabellen** (CSV/XLSX)

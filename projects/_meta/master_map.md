@@ -1,7 +1,7 @@
 # Global Master Map
 
 <!-- Reality Block
-last_update: 2026-02-16
+last_update: 2026-03-27
 status: stable
 scope:
   summary: "Globale Projektlandkarte: Was existiert, wo liegt es, wie hängt es zusammen."
@@ -20,7 +20,7 @@ notes: []
 |---------|------|------|-------|--------|
 | **Inner Compass** | `projects/inner_compass/` | `code/hd_saas_app/` → `inner_compass_app` | Spark (Worker, MinerU, LLM) | Aktiv — Pre-Launch |
 | **Trading Bot** | `projects/trading_bot/` | `code/trading-bot/` | — | Aktiv |
-| **Rest Data Platform** | `projects/rest_data_platform/` | — | — | Planung |
+| **Rest Data Platform (ASTRA IMC)** | `projects/rest_data_platform/` | `quantensprungai/astra-imc-platform` | — | Planung |
 | **Bot Platform** | `projects/bot_platform/` | — | Spark (LLM-Backend) | Pause |
 | **Anna's Archive Toolkit** | `projects/annas_archive_toolkit/` | `code/annas-archive-toolkit/` | — | Wartung |
 
