@@ -1,0 +1,1484 @@
+{
+  "meta": {
+    "step": 1,
+    "schema_version": "1.2.0",
+    "description": "BaZi K1: @yhjs/bagua (60甲子等) + shensha_aux (Spiegel @yhjs/bazi); nicht Chart-Instanz.",
+    "sources": {
+      "@yhjs/bagua": "1.0.0",
+      "@yhjs/bazi": "1.0.0"
+    },
+    "generated_at": "2026-04-13T06:49:55.704Z"
+  },
+  "heavenly_stems": [
+    {
+      "key": "jia",
+      "label_zh": "甲",
+      "canonical_id": "bazi.stem.jia"
+    },
+    {
+      "key": "yi",
+      "label_zh": "乙",
+      "canonical_id": "bazi.stem.yi"
+    },
+    {
+      "key": "bing",
+      "label_zh": "丙",
+      "canonical_id": "bazi.stem.bing"
+    },
+    {
+      "key": "ding",
+      "label_zh": "丁",
+      "canonical_id": "bazi.stem.ding"
+    },
+    {
+      "key": "wu",
+      "label_zh": "戊",
+      "canonical_id": "bazi.stem.wu"
+    },
+    {
+      "key": "ji",
+      "label_zh": "己",
+      "canonical_id": "bazi.stem.ji"
+    },
+    {
+      "key": "geng",
+      "label_zh": "庚",
+      "canonical_id": "bazi.stem.geng"
+    },
+    {
+      "key": "xin",
+      "label_zh": "辛",
+      "canonical_id": "bazi.stem.xin"
+    },
+    {
+      "key": "ren",
+      "label_zh": "壬",
+      "canonical_id": "bazi.stem.ren"
+    },
+    {
+      "key": "gui",
+      "label_zh": "癸",
+      "canonical_id": "bazi.stem.gui"
+    }
+  ],
+  "earthly_branches": [
+    {
+      "key": "zi",
+      "label_zh": "子",
+      "canonical_id": "bazi.branch.zi"
+    },
+    {
+      "key": "chou",
+      "label_zh": "丑",
+      "canonical_id": "bazi.branch.chou"
+    },
+    {
+      "key": "yin",
+      "label_zh": "寅",
+      "canonical_id": "bazi.branch.yin"
+    },
+    {
+      "key": "mao",
+      "label_zh": "卯",
+      "canonical_id": "bazi.branch.mao"
+    },
+    {
+      "key": "chen",
+      "label_zh": "辰",
+      "canonical_id": "bazi.branch.chen"
+    },
+    {
+      "key": "si",
+      "label_zh": "巳",
+      "canonical_id": "bazi.branch.si"
+    },
+    {
+      "key": "wu",
+      "label_zh": "午",
+      "canonical_id": "bazi.branch.wu"
+    },
+    {
+      "key": "wei",
+      "label_zh": "未",
+      "canonical_id": "bazi.branch.wei"
+    },
+    {
+      "key": "shen",
+      "label_zh": "申",
+      "canonical_id": "bazi.branch.shen"
+    },
+    {
+      "key": "you",
+      "label_zh": "酉",
+      "canonical_id": "bazi.branch.you"
+    },
+    {
+      "key": "xu",
+      "label_zh": "戌",
+      "canonical_id": "bazi.branch.xu"
+    },
+    {
+      "key": "hai",
+      "label_zh": "亥",
+      "canonical_id": "bazi.branch.hai"
+    }
+  ],
+  "ten_gods": [
+    {
+      "key": "zhengcai",
+      "label_zh": "正财",
+      "canonical_id": "bazi.ten_god.zhengcai"
+    },
+    {
+      "key": "piancai",
+      "label_zh": "偏财",
+      "canonical_id": "bazi.ten_god.piancai"
+    },
+    {
+      "key": "zhengguan",
+      "label_zh": "正官",
+      "canonical_id": "bazi.ten_god.zhengguan"
+    },
+    {
+      "key": "qisha",
+      "label_zh": "七煞",
+      "canonical_id": "bazi.ten_god.qisha"
+    },
+    {
+      "key": "shangguan",
+      "label_zh": "伤官",
+      "canonical_id": "bazi.ten_god.shangguan"
+    },
+    {
+      "key": "shishen",
+      "label_zh": "食神",
+      "canonical_id": "bazi.ten_god.shishen"
+    },
+    {
+      "key": "zhengyin",
+      "label_zh": "正印",
+      "canonical_id": "bazi.ten_god.zhengyin"
+    },
+    {
+      "key": "pianyin",
+      "label_zh": "偏印",
+      "canonical_id": "bazi.ten_god.pianyin"
+    },
+    {
+      "key": "jiecai",
+      "label_zh": "劫财",
+      "canonical_id": "bazi.ten_god.jiecai"
+    },
+    {
+      "key": "bijian",
+      "label_zh": "比肩",
+      "canonical_id": "bazi.ten_god.bijian"
+    }
+  ],
+  "sixty_jiazi": [
+    {
+      "index": 0,
+      "name_zh": "甲子",
+      "pair_slug": "jia_zi",
+      "canonical_id": "bazi.jiazi.jia_zi",
+      "nayin": {
+        "name_zh": "海中金",
+        "wuxing_zh": "金"
+      },
+      "kong_wang_zhi": [
+        "戌",
+        "亥"
+      ],
+      "xun_index": 0
+    },
+    {
+      "index": 1,
+      "name_zh": "乙丑",
+      "pair_slug": "yi_chou",
+      "canonical_id": "bazi.jiazi.yi_chou",
+      "nayin": {
+        "name_zh": "海中金",
+        "wuxing_zh": "金"
+      },
+      "kong_wang_zhi": [
+        "戌",
+        "亥"
+      ],
+      "xun_index": 0
+    },
+    {
+      "index": 2,
+      "name_zh": "丙寅",
+      "pair_slug": "bing_yin",
+      "canonical_id": "bazi.jiazi.bing_yin",
+      "nayin": {
+        "name_zh": "炉中火",
+        "wuxing_zh": "火"
+      },
+      "kong_wang_zhi": [
+        "戌",
+        "亥"
+      ],
+      "xun_index": 0
+    },
+    {
+      "index": 3,
+      "name_zh": "丁卯",
+      "pair_slug": "ding_mao",
+      "canonical_id": "bazi.jiazi.ding_mao",
+      "nayin": {
+        "name_zh": "炉中火",
+        "wuxing_zh": "火"
+      },
+      "kong_wang_zhi": [
+        "戌",
+        "亥"
+      ],
+      "xun_index": 0
+    },
+    {
+      "index": 4,
+      "name_zh": "戊辰",
+      "pair_slug": "wu_chen",
+      "canonical_id": "bazi.jiazi.wu_chen",
+      "nayin": {
+        "name_zh": "大林木",
+        "wuxing_zh": "木"
+      },
+      "kong_wang_zhi": [
+        "戌",
+        "亥"
+      ],
+      "xun_index": 0
+    },
+    {
+      "index": 5,
+      "name_zh": "己巳",
+      "pair_slug": "ji_si",
+      "canonical_id": "bazi.jiazi.ji_si",
+      "nayin": {
+        "name_zh": "大林木",
+        "wuxing_zh": "木"
+      },
+      "kong_wang_zhi": [
+        "戌",
+        "亥"
+      ],
+      "xun_index": 0
+    },
+    {
+      "index": 6,
+      "name_zh": "庚午",
+      "pair_slug": "geng_wu",
+      "canonical_id": "bazi.jiazi.geng_wu",
+      "nayin": {
+        "name_zh": "路旁土",
+        "wuxing_zh": "土"
+      },
+      "kong_wang_zhi": [
+        "戌",
+        "亥"
+      ],
+      "xun_index": 0
+    },
+    {
+      "index": 7,
+      "name_zh": "辛未",
+      "pair_slug": "xin_wei",
+      "canonical_id": "bazi.jiazi.xin_wei",
+      "nayin": {
+        "name_zh": "路旁土",
+        "wuxing_zh": "土"
+      },
+      "kong_wang_zhi": [
+        "戌",
+        "亥"
+      ],
+      "xun_index": 0
+    },
+    {
+      "index": 8,
+      "name_zh": "壬申",
+      "pair_slug": "ren_shen",
+      "canonical_id": "bazi.jiazi.ren_shen",
+      "nayin": {
+        "name_zh": "剑锋金",
+        "wuxing_zh": "金"
+      },
+      "kong_wang_zhi": [
+        "戌",
+        "亥"
+      ],
+      "xun_index": 0
+    },
+    {
+      "index": 9,
+      "name_zh": "癸酉",
+      "pair_slug": "gui_you",
+      "canonical_id": "bazi.jiazi.gui_you",
+      "nayin": {
+        "name_zh": "剑锋金",
+        "wuxing_zh": "金"
+      },
+      "kong_wang_zhi": [
+        "戌",
+        "亥"
+      ],
+      "xun_index": 0
+    },
+    {
+      "index": 10,
+      "name_zh": "甲戌",
+      "pair_slug": "jia_xu",
+      "canonical_id": "bazi.jiazi.jia_xu",
+      "nayin": {
+        "name_zh": "山头火",
+        "wuxing_zh": "火"
+      },
+      "kong_wang_zhi": [
+        "申",
+        "酉"
+      ],
+      "xun_index": 1
+    },
+    {
+      "index": 11,
+      "name_zh": "乙亥",
+      "pair_slug": "yi_hai",
+      "canonical_id": "bazi.jiazi.yi_hai",
+      "nayin": {
+        "name_zh": "山头火",
+        "wuxing_zh": "火"
+      },
+      "kong_wang_zhi": [
+        "申",
+        "酉"
+      ],
+      "xun_index": 1
+    },
+    {
+      "index": 12,
+      "name_zh": "丙子",
+      "pair_slug": "bing_zi",
+      "canonical_id": "bazi.jiazi.bing_zi",
+      "nayin": {
+        "name_zh": "涧下水",
+        "wuxing_zh": "水"
+      },
+      "kong_wang_zhi": [
+        "申",
+        "酉"
+      ],
+      "xun_index": 1
+    },
+    {
+      "index": 13,
+      "name_zh": "丁丑",
+      "pair_slug": "ding_chou",
+      "canonical_id": "bazi.jiazi.ding_chou",
+      "nayin": {
+        "name_zh": "涧下水",
+        "wuxing_zh": "水"
+      },
+      "kong_wang_zhi": [
+        "申",
+        "酉"
+      ],
+      "xun_index": 1
+    },
+    {
+      "index": 14,
+      "name_zh": "戊寅",
+      "pair_slug": "wu_yin",
+      "canonical_id": "bazi.jiazi.wu_yin",
+      "nayin": {
+        "name_zh": "城头土",
+        "wuxing_zh": "土"
+      },
+      "kong_wang_zhi": [
+        "申",
+        "酉"
+      ],
+      "xun_index": 1
+    },
+    {
+      "index": 15,
+      "name_zh": "己卯",
+      "pair_slug": "ji_mao",
+      "canonical_id": "bazi.jiazi.ji_mao",
+      "nayin": {
+        "name_zh": "城头土",
+        "wuxing_zh": "土"
+      },
+      "kong_wang_zhi": [
+        "申",
+        "酉"
+      ],
+      "xun_index": 1
+    },
+    {
+      "index": 16,
+      "name_zh": "庚辰",
+      "pair_slug": "geng_chen",
+      "canonical_id": "bazi.jiazi.geng_chen",
+      "nayin": {
+        "name_zh": "白蜡金",
+        "wuxing_zh": "金"
+      },
+      "kong_wang_zhi": [
+        "申",
+        "酉"
+      ],
+      "xun_index": 1
+    },
+    {
+      "index": 17,
+      "name_zh": "辛巳",
+      "pair_slug": "xin_si",
+      "canonical_id": "bazi.jiazi.xin_si",
+      "nayin": {
+        "name_zh": "白蜡金",
+        "wuxing_zh": "金"
+      },
+      "kong_wang_zhi": [
+        "申",
+        "酉"
+      ],
+      "xun_index": 1
+    },
+    {
+      "index": 18,
+      "name_zh": "壬午",
+      "pair_slug": "ren_wu",
+      "canonical_id": "bazi.jiazi.ren_wu",
+      "nayin": {
+        "name_zh": "杨柳木",
+        "wuxing_zh": "木"
+      },
+      "kong_wang_zhi": [
+        "申",
+        "酉"
+      ],
+      "xun_index": 1
+    },
+    {
+      "index": 19,
+      "name_zh": "癸未",
+      "pair_slug": "gui_wei",
+      "canonical_id": "bazi.jiazi.gui_wei",
+      "nayin": {
+        "name_zh": "杨柳木",
+        "wuxing_zh": "木"
+      },
+      "kong_wang_zhi": [
+        "申",
+        "酉"
+      ],
+      "xun_index": 1
+    },
+    {
+      "index": 20,
+      "name_zh": "甲申",
+      "pair_slug": "jia_shen",
+      "canonical_id": "bazi.jiazi.jia_shen",
+      "nayin": {
+        "name_zh": "泉中水",
+        "wuxing_zh": "水"
+      },
+      "kong_wang_zhi": [
+        "午",
+        "未"
+      ],
+      "xun_index": 2
+    },
+    {
+      "index": 21,
+      "name_zh": "乙酉",
+      "pair_slug": "yi_you",
+      "canonical_id": "bazi.jiazi.yi_you",
+      "nayin": {
+        "name_zh": "泉中水",
+        "wuxing_zh": "水"
+      },
+      "kong_wang_zhi": [
+        "午",
+        "未"
+      ],
+      "xun_index": 2
+    },
+    {
+      "index": 22,
+      "name_zh": "丙戌",
+      "pair_slug": "bing_xu",
+      "canonical_id": "bazi.jiazi.bing_xu",
+      "nayin": {
+        "name_zh": "屋上土",
+        "wuxing_zh": "土"
+      },
+      "kong_wang_zhi": [
+        "午",
+        "未"
+      ],
+      "xun_index": 2
+    },
+    {
+      "index": 23,
+      "name_zh": "丁亥",
+      "pair_slug": "ding_hai",
+      "canonical_id": "bazi.jiazi.ding_hai",
+      "nayin": {
+        "name_zh": "屋上土",
+        "wuxing_zh": "土"
+      },
+      "kong_wang_zhi": [
+        "午",
+        "未"
+      ],
+      "xun_index": 2
+    },
+    {
+      "index": 24,
+      "name_zh": "戊子",
+      "pair_slug": "wu_zi",
+      "canonical_id": "bazi.jiazi.wu_zi",
+      "nayin": {
+        "name_zh": "霹雳火",
+        "wuxing_zh": "火"
+      },
+      "kong_wang_zhi": [
+        "午",
+        "未"
+      ],
+      "xun_index": 2
+    },
+    {
+      "index": 25,
+      "name_zh": "己丑",
+      "pair_slug": "ji_chou",
+      "canonical_id": "bazi.jiazi.ji_chou",
+      "nayin": {
+        "name_zh": "霹雳火",
+        "wuxing_zh": "火"
+      },
+      "kong_wang_zhi": [
+        "午",
+        "未"
+      ],
+      "xun_index": 2
+    },
+    {
+      "index": 26,
+      "name_zh": "庚寅",
+      "pair_slug": "geng_yin",
+      "canonical_id": "bazi.jiazi.geng_yin",
+      "nayin": {
+        "name_zh": "松柏木",
+        "wuxing_zh": "木"
+      },
+      "kong_wang_zhi": [
+        "午",
+        "未"
+      ],
+      "xun_index": 2
+    },
+    {
+      "index": 27,
+      "name_zh": "辛卯",
+      "pair_slug": "xin_mao",
+      "canonical_id": "bazi.jiazi.xin_mao",
+      "nayin": {
+        "name_zh": "松柏木",
+        "wuxing_zh": "木"
+      },
+      "kong_wang_zhi": [
+        "午",
+        "未"
+      ],
+      "xun_index": 2
+    },
+    {
+      "index": 28,
+      "name_zh": "壬辰",
+      "pair_slug": "ren_chen",
+      "canonical_id": "bazi.jiazi.ren_chen",
+      "nayin": {
+        "name_zh": "长流水",
+        "wuxing_zh": "水"
+      },
+      "kong_wang_zhi": [
+        "午",
+        "未"
+      ],
+      "xun_index": 2
+    },
+    {
+      "index": 29,
+      "name_zh": "癸巳",
+      "pair_slug": "gui_si",
+      "canonical_id": "bazi.jiazi.gui_si",
+      "nayin": {
+        "name_zh": "长流水",
+        "wuxing_zh": "水"
+      },
+      "kong_wang_zhi": [
+        "午",
+        "未"
+      ],
+      "xun_index": 2
+    },
+    {
+      "index": 30,
+      "name_zh": "甲午",
+      "pair_slug": "jia_wu",
+      "canonical_id": "bazi.jiazi.jia_wu",
+      "nayin": {
+        "name_zh": "沙中金",
+        "wuxing_zh": "金"
+      },
+      "kong_wang_zhi": [
+        "辰",
+        "巳"
+      ],
+      "xun_index": 3
+    },
+    {
+      "index": 31,
+      "name_zh": "乙未",
+      "pair_slug": "yi_wei",
+      "canonical_id": "bazi.jiazi.yi_wei",
+      "nayin": {
+        "name_zh": "沙中金",
+        "wuxing_zh": "金"
+      },
+      "kong_wang_zhi": [
+        "辰",
+        "巳"
+      ],
+      "xun_index": 3
+    },
+    {
+      "index": 32,
+      "name_zh": "丙申",
+      "pair_slug": "bing_shen",
+      "canonical_id": "bazi.jiazi.bing_shen",
+      "nayin": {
+        "name_zh": "山下火",
+        "wuxing_zh": "火"
+      },
+      "kong_wang_zhi": [
+        "辰",
+        "巳"
+      ],
+      "xun_index": 3
+    },
+    {
+      "index": 33,
+      "name_zh": "丁酉",
+      "pair_slug": "ding_you",
+      "canonical_id": "bazi.jiazi.ding_you",
+      "nayin": {
+        "name_zh": "山下火",
+        "wuxing_zh": "火"
+      },
+      "kong_wang_zhi": [
+        "辰",
+        "巳"
+      ],
+      "xun_index": 3
+    },
+    {
+      "index": 34,
+      "name_zh": "戊戌",
+      "pair_slug": "wu_xu",
+      "canonical_id": "bazi.jiazi.wu_xu",
+      "nayin": {
+        "name_zh": "平地木",
+        "wuxing_zh": "木"
+      },
+      "kong_wang_zhi": [
+        "辰",
+        "巳"
+      ],
+      "xun_index": 3
+    },
+    {
+      "index": 35,
+      "name_zh": "己亥",
+      "pair_slug": "ji_hai",
+      "canonical_id": "bazi.jiazi.ji_hai",
+      "nayin": {
+        "name_zh": "平地木",
+        "wuxing_zh": "木"
+      },
+      "kong_wang_zhi": [
+        "辰",
+        "巳"
+      ],
+      "xun_index": 3
+    },
+    {
+      "index": 36,
+      "name_zh": "庚子",
+      "pair_slug": "geng_zi",
+      "canonical_id": "bazi.jiazi.geng_zi",
+      "nayin": {
+        "name_zh": "壁上土",
+        "wuxing_zh": "土"
+      },
+      "kong_wang_zhi": [
+        "辰",
+        "巳"
+      ],
+      "xun_index": 3
+    },
+    {
+      "index": 37,
+      "name_zh": "辛丑",
+      "pair_slug": "xin_chou",
+      "canonical_id": "bazi.jiazi.xin_chou",
+      "nayin": {
+        "name_zh": "壁上土",
+        "wuxing_zh": "土"
+      },
+      "kong_wang_zhi": [
+        "辰",
+        "巳"
+      ],
+      "xun_index": 3
+    },
+    {
+      "index": 38,
+      "name_zh": "壬寅",
+      "pair_slug": "ren_yin",
+      "canonical_id": "bazi.jiazi.ren_yin",
+      "nayin": {
+        "name_zh": "金箔金",
+        "wuxing_zh": "金"
+      },
+      "kong_wang_zhi": [
+        "辰",
+        "巳"
+      ],
+      "xun_index": 3
+    },
+    {
+      "index": 39,
+      "name_zh": "癸卯",
+      "pair_slug": "gui_mao",
+      "canonical_id": "bazi.jiazi.gui_mao",
+      "nayin": {
+        "name_zh": "金箔金",
+        "wuxing_zh": "金"
+      },
+      "kong_wang_zhi": [
+        "辰",
+        "巳"
+      ],
+      "xun_index": 3
+    },
+    {
+      "index": 40,
+      "name_zh": "甲辰",
+      "pair_slug": "jia_chen",
+      "canonical_id": "bazi.jiazi.jia_chen",
+      "nayin": {
+        "name_zh": "覆灯火",
+        "wuxing_zh": "火"
+      },
+      "kong_wang_zhi": [
+        "寅",
+        "卯"
+      ],
+      "xun_index": 4
+    },
+    {
+      "index": 41,
+      "name_zh": "乙巳",
+      "pair_slug": "yi_si",
+      "canonical_id": "bazi.jiazi.yi_si",
+      "nayin": {
+        "name_zh": "覆灯火",
+        "wuxing_zh": "火"
+      },
+      "kong_wang_zhi": [
+        "寅",
+        "卯"
+      ],
+      "xun_index": 4
+    },
+    {
+      "index": 42,
+      "name_zh": "丙午",
+      "pair_slug": "bing_wu",
+      "canonical_id": "bazi.jiazi.bing_wu",
+      "nayin": {
+        "name_zh": "天河水",
+        "wuxing_zh": "水"
+      },
+      "kong_wang_zhi": [
+        "寅",
+        "卯"
+      ],
+      "xun_index": 4
+    },
+    {
+      "index": 43,
+      "name_zh": "丁未",
+      "pair_slug": "ding_wei",
+      "canonical_id": "bazi.jiazi.ding_wei",
+      "nayin": {
+        "name_zh": "天河水",
+        "wuxing_zh": "水"
+      },
+      "kong_wang_zhi": [
+        "寅",
+        "卯"
+      ],
+      "xun_index": 4
+    },
+    {
+      "index": 44,
+      "name_zh": "戊申",
+      "pair_slug": "wu_shen",
+      "canonical_id": "bazi.jiazi.wu_shen",
+      "nayin": {
+        "name_zh": "大驿土",
+        "wuxing_zh": "土"
+      },
+      "kong_wang_zhi": [
+        "寅",
+        "卯"
+      ],
+      "xun_index": 4
+    },
+    {
+      "index": 45,
+      "name_zh": "己酉",
+      "pair_slug": "ji_you",
+      "canonical_id": "bazi.jiazi.ji_you",
+      "nayin": {
+        "name_zh": "大驿土",
+        "wuxing_zh": "土"
+      },
+      "kong_wang_zhi": [
+        "寅",
+        "卯"
+      ],
+      "xun_index": 4
+    },
+    {
+      "index": 46,
+      "name_zh": "庚戌",
+      "pair_slug": "geng_xu",
+      "canonical_id": "bazi.jiazi.geng_xu",
+      "nayin": {
+        "name_zh": "钗钏金",
+        "wuxing_zh": "金"
+      },
+      "kong_wang_zhi": [
+        "寅",
+        "卯"
+      ],
+      "xun_index": 4
+    },
+    {
+      "index": 47,
+      "name_zh": "辛亥",
+      "pair_slug": "xin_hai",
+      "canonical_id": "bazi.jiazi.xin_hai",
+      "nayin": {
+        "name_zh": "钗钏金",
+        "wuxing_zh": "金"
+      },
+      "kong_wang_zhi": [
+        "寅",
+        "卯"
+      ],
+      "xun_index": 4
+    },
+    {
+      "index": 48,
+      "name_zh": "壬子",
+      "pair_slug": "ren_zi",
+      "canonical_id": "bazi.jiazi.ren_zi",
+      "nayin": {
+        "name_zh": "桑拓木",
+        "wuxing_zh": "木"
+      },
+      "kong_wang_zhi": [
+        "寅",
+        "卯"
+      ],
+      "xun_index": 4
+    },
+    {
+      "index": 49,
+      "name_zh": "癸丑",
+      "pair_slug": "gui_chou",
+      "canonical_id": "bazi.jiazi.gui_chou",
+      "nayin": {
+        "name_zh": "桑拓木",
+        "wuxing_zh": "木"
+      },
+      "kong_wang_zhi": [
+        "寅",
+        "卯"
+      ],
+      "xun_index": 4
+    },
+    {
+      "index": 50,
+      "name_zh": "甲寅",
+      "pair_slug": "jia_yin",
+      "canonical_id": "bazi.jiazi.jia_yin",
+      "nayin": {
+        "name_zh": "大溪水",
+        "wuxing_zh": "水"
+      },
+      "kong_wang_zhi": [
+        "子",
+        "丑"
+      ],
+      "xun_index": 5
+    },
+    {
+      "index": 51,
+      "name_zh": "乙卯",
+      "pair_slug": "yi_mao",
+      "canonical_id": "bazi.jiazi.yi_mao",
+      "nayin": {
+        "name_zh": "大溪水",
+        "wuxing_zh": "水"
+      },
+      "kong_wang_zhi": [
+        "子",
+        "丑"
+      ],
+      "xun_index": 5
+    },
+    {
+      "index": 52,
+      "name_zh": "丙辰",
+      "pair_slug": "bing_chen",
+      "canonical_id": "bazi.jiazi.bing_chen",
+      "nayin": {
+        "name_zh": "沙中土",
+        "wuxing_zh": "土"
+      },
+      "kong_wang_zhi": [
+        "子",
+        "丑"
+      ],
+      "xun_index": 5
+    },
+    {
+      "index": 53,
+      "name_zh": "丁巳",
+      "pair_slug": "ding_si",
+      "canonical_id": "bazi.jiazi.ding_si",
+      "nayin": {
+        "name_zh": "沙中土",
+        "wuxing_zh": "土"
+      },
+      "kong_wang_zhi": [
+        "子",
+        "丑"
+      ],
+      "xun_index": 5
+    },
+    {
+      "index": 54,
+      "name_zh": "戊午",
+      "pair_slug": "wu_wu",
+      "canonical_id": "bazi.jiazi.wu_wu",
+      "nayin": {
+        "name_zh": "天上火",
+        "wuxing_zh": "火"
+      },
+      "kong_wang_zhi": [
+        "子",
+        "丑"
+      ],
+      "xun_index": 5
+    },
+    {
+      "index": 55,
+      "name_zh": "己未",
+      "pair_slug": "ji_wei",
+      "canonical_id": "bazi.jiazi.ji_wei",
+      "nayin": {
+        "name_zh": "天上火",
+        "wuxing_zh": "火"
+      },
+      "kong_wang_zhi": [
+        "子",
+        "丑"
+      ],
+      "xun_index": 5
+    },
+    {
+      "index": 56,
+      "name_zh": "庚申",
+      "pair_slug": "geng_shen",
+      "canonical_id": "bazi.jiazi.geng_shen",
+      "nayin": {
+        "name_zh": "石榴木",
+        "wuxing_zh": "木"
+      },
+      "kong_wang_zhi": [
+        "子",
+        "丑"
+      ],
+      "xun_index": 5
+    },
+    {
+      "index": 57,
+      "name_zh": "辛酉",
+      "pair_slug": "xin_you",
+      "canonical_id": "bazi.jiazi.xin_you",
+      "nayin": {
+        "name_zh": "石榴木",
+        "wuxing_zh": "木"
+      },
+      "kong_wang_zhi": [
+        "子",
+        "丑"
+      ],
+      "xun_index": 5
+    },
+    {
+      "index": 58,
+      "name_zh": "壬戌",
+      "pair_slug": "ren_xu",
+      "canonical_id": "bazi.jiazi.ren_xu",
+      "nayin": {
+        "name_zh": "大海水",
+        "wuxing_zh": "水"
+      },
+      "kong_wang_zhi": [
+        "子",
+        "丑"
+      ],
+      "xun_index": 5
+    },
+    {
+      "index": 59,
+      "name_zh": "癸亥",
+      "pair_slug": "gui_hai",
+      "canonical_id": "bazi.jiazi.gui_hai",
+      "nayin": {
+        "name_zh": "大海水",
+        "wuxing_zh": "水"
+      },
+      "kong_wang_zhi": [
+        "子",
+        "丑"
+      ],
+      "xun_index": 5
+    }
+  ],
+  "twelve_states": [
+    {
+      "key": "changsheng",
+      "label_zh": "长生",
+      "canonical_id": "bazi.twelve_state.changsheng"
+    },
+    {
+      "key": "muyu",
+      "label_zh": "沐浴",
+      "canonical_id": "bazi.twelve_state.muyu"
+    },
+    {
+      "key": "guandai",
+      "label_zh": "冠带",
+      "canonical_id": "bazi.twelve_state.guandai"
+    },
+    {
+      "key": "linguan",
+      "label_zh": "临官",
+      "canonical_id": "bazi.twelve_state.linguan"
+    },
+    {
+      "key": "diwang",
+      "label_zh": "帝旺",
+      "canonical_id": "bazi.twelve_state.diwang"
+    },
+    {
+      "key": "shuai",
+      "label_zh": "衰",
+      "canonical_id": "bazi.twelve_state.shuai"
+    },
+    {
+      "key": "bing",
+      "label_zh": "病",
+      "canonical_id": "bazi.twelve_state.bing"
+    },
+    {
+      "key": "si",
+      "label_zh": "死",
+      "canonical_id": "bazi.twelve_state.si"
+    },
+    {
+      "key": "mu",
+      "label_zh": "墓",
+      "canonical_id": "bazi.twelve_state.mu"
+    },
+    {
+      "key": "jue",
+      "label_zh": "绝",
+      "canonical_id": "bazi.twelve_state.jue"
+    },
+    {
+      "key": "tai",
+      "label_zh": "胎",
+      "canonical_id": "bazi.twelve_state.tai"
+    },
+    {
+      "key": "yang",
+      "label_zh": "养",
+      "canonical_id": "bazi.twelve_state.yang"
+    }
+  ],
+  "xun_heads": [
+    {
+      "xun_index": 0,
+      "name_zh": "甲子",
+      "canonical_id": "bazi.xun.head.jia_zi"
+    },
+    {
+      "xun_index": 1,
+      "name_zh": "甲戌",
+      "canonical_id": "bazi.xun.head.jia_xu"
+    },
+    {
+      "xun_index": 2,
+      "name_zh": "甲申",
+      "canonical_id": "bazi.xun.head.jia_shen"
+    },
+    {
+      "xun_index": 3,
+      "name_zh": "甲午",
+      "canonical_id": "bazi.xun.head.jia_wu"
+    },
+    {
+      "xun_index": 4,
+      "name_zh": "甲辰",
+      "canonical_id": "bazi.xun.head.jia_chen"
+    },
+    {
+      "xun_index": 5,
+      "name_zh": "甲寅",
+      "canonical_id": "bazi.xun.head.jia_yin"
+    }
+  ],
+  "shensha_aux": {
+    "note": "K2-Hilfstabellen parallel @yhjs/bazi shensha.ts (驿马索引、天乙贵人、旺相休囚死矩阵). Keine Chart-Instanz.",
+    "yima_by_branch_group_mod4": [
+      {
+        "branch_group_mod4": 0,
+        "horse_zhi": {
+          "index": 2,
+          "label_zh": "寅"
+        }
+      },
+      {
+        "branch_group_mod4": 1,
+        "horse_zhi": {
+          "index": 11,
+          "label_zh": "亥"
+        }
+      },
+      {
+        "branch_group_mod4": 2,
+        "horse_zhi": {
+          "index": 8,
+          "label_zh": "申"
+        }
+      },
+      {
+        "branch_group_mod4": 3,
+        "horse_zhi": {
+          "index": 5,
+          "label_zh": "巳"
+        }
+      }
+    ],
+    "tianyi_guiren_by_gan": [
+      {
+        "gan_index": 0,
+        "gan_label_zh": "甲",
+        "yang_guiren_zhi": {
+          "index": 1,
+          "label_zh": "丑"
+        },
+        "yin_guiren_zhi": {
+          "index": 7,
+          "label_zh": "未"
+        }
+      },
+      {
+        "gan_index": 1,
+        "gan_label_zh": "乙",
+        "yang_guiren_zhi": {
+          "index": 0,
+          "label_zh": "子"
+        },
+        "yin_guiren_zhi": {
+          "index": 8,
+          "label_zh": "申"
+        }
+      },
+      {
+        "gan_index": 2,
+        "gan_label_zh": "丙",
+        "yang_guiren_zhi": {
+          "index": 11,
+          "label_zh": "亥"
+        },
+        "yin_guiren_zhi": {
+          "index": 9,
+          "label_zh": "酉"
+        }
+      },
+      {
+        "gan_index": 3,
+        "gan_label_zh": "丁",
+        "yang_guiren_zhi": {
+          "index": 11,
+          "label_zh": "亥"
+        },
+        "yin_guiren_zhi": {
+          "index": 9,
+          "label_zh": "酉"
+        }
+      },
+      {
+        "gan_index": 4,
+        "gan_label_zh": "戊",
+        "yang_guiren_zhi": {
+          "index": 1,
+          "label_zh": "丑"
+        },
+        "yin_guiren_zhi": {
+          "index": 7,
+          "label_zh": "未"
+        }
+      },
+      {
+        "gan_index": 5,
+        "gan_label_zh": "己",
+        "yang_guiren_zhi": {
+          "index": 0,
+          "label_zh": "子"
+        },
+        "yin_guiren_zhi": {
+          "index": 8,
+          "label_zh": "申"
+        }
+      },
+      {
+        "gan_index": 6,
+        "gan_label_zh": "庚",
+        "yang_guiren_zhi": {
+          "index": 1,
+          "label_zh": "丑"
+        },
+        "yin_guiren_zhi": {
+          "index": 7,
+          "label_zh": "未"
+        }
+      },
+      {
+        "gan_index": 7,
+        "gan_label_zh": "辛",
+        "yang_guiren_zhi": {
+          "index": 6,
+          "label_zh": "午"
+        },
+        "yin_guiren_zhi": {
+          "index": 2,
+          "label_zh": "寅"
+        }
+      },
+      {
+        "gan_index": 8,
+        "gan_label_zh": "壬",
+        "yang_guiren_zhi": {
+          "index": 5,
+          "label_zh": "巳"
+        },
+        "yin_guiren_zhi": {
+          "index": 3,
+          "label_zh": "卯"
+        }
+      },
+      {
+        "gan_index": 9,
+        "gan_label_zh": "癸",
+        "yang_guiren_zhi": {
+          "index": 5,
+          "label_zh": "巳"
+        },
+        "yin_guiren_zhi": {
+          "index": 3,
+          "label_zh": "卯"
+        }
+      }
+    ],
+    "wangxiangxiuqiusi_rows": [
+      {
+        "month_dominant_wuxing_zh": "木",
+        "by_target_wuxing": [
+          {
+            "target_wuxing_zh": "木",
+            "power_label_zh": "旺"
+          },
+          {
+            "target_wuxing_zh": "火",
+            "power_label_zh": "相"
+          },
+          {
+            "target_wuxing_zh": "土",
+            "power_label_zh": "死"
+          },
+          {
+            "target_wuxing_zh": "金",
+            "power_label_zh": "囚"
+          },
+          {
+            "target_wuxing_zh": "水",
+            "power_label_zh": "休"
+          }
+        ]
+      },
+      {
+        "month_dominant_wuxing_zh": "火",
+        "by_target_wuxing": [
+          {
+            "target_wuxing_zh": "木",
+            "power_label_zh": "休"
+          },
+          {
+            "target_wuxing_zh": "火",
+            "power_label_zh": "旺"
+          },
+          {
+            "target_wuxing_zh": "土",
+            "power_label_zh": "相"
+          },
+          {
+            "target_wuxing_zh": "金",
+            "power_label_zh": "死"
+          },
+          {
+            "target_wuxing_zh": "水",
+            "power_label_zh": "囚"
+          }
+        ]
+      },
+      {
+        "month_dominant_wuxing_zh": "土",
+        "by_target_wuxing": [
+          {
+            "target_wuxing_zh": "木",
+            "power_label_zh": "囚"
+          },
+          {
+            "target_wuxing_zh": "火",
+            "power_label_zh": "休"
+          },
+          {
+            "target_wuxing_zh": "土",
+            "power_label_zh": "旺"
+          },
+          {
+            "target_wuxing_zh": "金",
+            "power_label_zh": "相"
+          },
+          {
+            "target_wuxing_zh": "水",
+            "power_label_zh": "死"
+          }
+        ]
+      },
+      {
+        "month_dominant_wuxing_zh": "金",
+        "by_target_wuxing": [
+          {
+            "target_wuxing_zh": "木",
+            "power_label_zh": "死"
+          },
+          {
+            "target_wuxing_zh": "火",
+            "power_label_zh": "囚"
+          },
+          {
+            "target_wuxing_zh": "土",
+            "power_label_zh": "休"
+          },
+          {
+            "target_wuxing_zh": "金",
+            "power_label_zh": "旺"
+          },
+          {
+            "target_wuxing_zh": "水",
+            "power_label_zh": "相"
+          }
+        ]
+      },
+      {
+        "month_dominant_wuxing_zh": "水",
+        "by_target_wuxing": [
+          {
+            "target_wuxing_zh": "木",
+            "power_label_zh": "相"
+          },
+          {
+            "target_wuxing_zh": "火",
+            "power_label_zh": "死"
+          },
+          {
+            "target_wuxing_zh": "土",
+            "power_label_zh": "囚"
+          },
+          {
+            "target_wuxing_zh": "金",
+            "power_label_zh": "休"
+          },
+          {
+            "target_wuxing_zh": "水",
+            "power_label_zh": "旺"
+          }
+        ]
+      }
+    ]
+  },
+  "pillar_roles": [
+    {
+      "key": "year",
+      "note": "bazi.pillar.year.<gan_slug>_<zhi_slug> — Kombination muss in sixty_jiazi.pair_slug vorkommen"
+    },
+    {
+      "key": "month",
+      "note": "bazi.pillar.month.<gan_slug>_<zhi_slug> — Kombination muss in sixty_jiazi.pair_slug vorkommen"
+    },
+    {
+      "key": "day",
+      "note": "bazi.pillar.day.<gan_slug>_<zhi_slug> — Kombination muss in sixty_jiazi.pair_slug vorkommen"
+    },
+    {
+      "key": "hour",
+      "note": "bazi.pillar.hour.<gan_slug>_<zhi_slug> — Kombination muss in sixty_jiazi.pair_slug vorkommen"
+    }
+  ],
+  "counts": {
+    "stems": 10,
+    "branches": 12,
+    "ten_gods": 10,
+    "sixty_jiazi": 60,
+    "twelve_states": 12,
+    "xun_heads": 6,
+    "shensha_yima_rules": 4,
+    "shensha_guiren_rows": 10
+  }
+}

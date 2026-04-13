@@ -1,0 +1,991 @@
+{
+  "meta": {
+    "step": 2,
+    "version": "0.1.0",
+    "description": "Static structure: levels + deterministic edges (Palast-Ring, 五虎遁/五鼠遁, 干冲/支冲, 命主身主, 天干四化). Chart placements star→palace: runtime.",
+    "catalog_ref": "ziwei_catalog_v0.json",
+    "iztro_version": "2.5.8",
+    "catalog_schema_version": "1.1.0",
+    "generated_at": "2026-04-13T06:49:55.067Z"
+  },
+  "levels": [
+    {
+      "id": "calendar_frame",
+      "label_de": "五行局 / Rahmen",
+      "description": "Aus 命宫 stem/branch abgeleitete Element-Klasse (水二局…); steuert u. a. Großzyklen-Start.",
+      "kit_refs": [
+        "iztro FiveElementsClass",
+        "catalog.five_elements_class"
+      ]
+    },
+    {
+      "id": "stem_branch",
+      "label_de": "天干 / 地支",
+      "description": "Bausteine der Säulen; im Chart an Palästen und Zeitsäulen.",
+      "kit_refs": [
+        "catalog.heavenly_stems",
+        "catalog.earthly_branches"
+      ]
+    },
+    {
+      "id": "palace",
+      "label_de": "十二宫 (+ 身宫 / 来因)",
+      "description": "Palastrollen; native Reihenfolge siehe palaces_order im Katalog. Kanten: next_in_native_sequence.",
+      "kit_refs": [
+        "catalog.palaces",
+        "catalog.palaces_order"
+      ]
+    },
+    {
+      "id": "star",
+      "label_de": "星曜",
+      "description": "Alle im Kit benannten Sterne; Helligkeit/Raster nur wo STARS_INFO existiert (siehe Katalog counts).",
+      "kit_refs": [
+        "catalog.stars"
+      ]
+    },
+    {
+      "id": "mutagen",
+      "label_de": "四化",
+      "description": "禄权科忌 — Zuordnung zu Sternen im Chart (Instanz), nicht in dieser statischen Datei.",
+      "kit_refs": [
+        "catalog.mutagen"
+      ]
+    },
+    {
+      "id": "hour",
+      "label_de": "时辰",
+      "description": "Geburtszeit-Slot; Verbindung zu Tag ist über 五鼠遁 (rat_rule).",
+      "kit_refs": [
+        "catalog.chinese_hours"
+      ]
+    }
+  ],
+  "life_domain_map": [
+    {
+      "palace_key": "soulPalace",
+      "canonical_id": "ziwei.palace.soulPalace",
+      "life_domain": "self_identity"
+    },
+    {
+      "palace_key": "parentsPalace",
+      "canonical_id": "ziwei.palace.parentsPalace",
+      "life_domain": "family_home"
+    },
+    {
+      "palace_key": "spiritPalace",
+      "canonical_id": "ziwei.palace.spiritPalace",
+      "life_domain": "meaning_spirituality"
+    },
+    {
+      "palace_key": "propertyPalace",
+      "canonical_id": "ziwei.palace.propertyPalace",
+      "life_domain": "family_home"
+    },
+    {
+      "palace_key": "careerPalace",
+      "canonical_id": "ziwei.palace.careerPalace",
+      "life_domain": "career_calling"
+    },
+    {
+      "palace_key": "friendsPalace",
+      "canonical_id": "ziwei.palace.friendsPalace",
+      "life_domain": "relationships_community"
+    },
+    {
+      "palace_key": "surfacePalace",
+      "canonical_id": "ziwei.palace.surfacePalace",
+      "life_domain": "exchange_learning"
+    },
+    {
+      "palace_key": "healthPalace",
+      "canonical_id": "ziwei.palace.healthPalace",
+      "life_domain": "health_body"
+    },
+    {
+      "palace_key": "wealthPalace",
+      "canonical_id": "ziwei.palace.wealthPalace",
+      "life_domain": "money_resources"
+    },
+    {
+      "palace_key": "childrenPalace",
+      "canonical_id": "ziwei.palace.childrenPalace",
+      "life_domain": "creativity_expression"
+    },
+    {
+      "palace_key": "spousePalace",
+      "canonical_id": "ziwei.palace.spousePalace",
+      "life_domain": "love_partnership"
+    },
+    {
+      "palace_key": "siblingsPalace",
+      "canonical_id": "ziwei.palace.siblingsPalace",
+      "life_domain": "exchange_learning"
+    }
+  ],
+  "edges": [
+    {
+      "from": "ziwei.palace.soulPalace",
+      "to": "ziwei.palace.parentsPalace",
+      "relation_type": "next_in_native_sequence",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro constants PALACES order"
+    },
+    {
+      "from": "ziwei.palace.parentsPalace",
+      "to": "ziwei.palace.spiritPalace",
+      "relation_type": "next_in_native_sequence",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro constants PALACES order"
+    },
+    {
+      "from": "ziwei.palace.spiritPalace",
+      "to": "ziwei.palace.propertyPalace",
+      "relation_type": "next_in_native_sequence",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro constants PALACES order"
+    },
+    {
+      "from": "ziwei.palace.propertyPalace",
+      "to": "ziwei.palace.careerPalace",
+      "relation_type": "next_in_native_sequence",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro constants PALACES order"
+    },
+    {
+      "from": "ziwei.palace.careerPalace",
+      "to": "ziwei.palace.friendsPalace",
+      "relation_type": "next_in_native_sequence",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro constants PALACES order"
+    },
+    {
+      "from": "ziwei.palace.friendsPalace",
+      "to": "ziwei.palace.surfacePalace",
+      "relation_type": "next_in_native_sequence",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro constants PALACES order"
+    },
+    {
+      "from": "ziwei.palace.surfacePalace",
+      "to": "ziwei.palace.healthPalace",
+      "relation_type": "next_in_native_sequence",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro constants PALACES order"
+    },
+    {
+      "from": "ziwei.palace.healthPalace",
+      "to": "ziwei.palace.wealthPalace",
+      "relation_type": "next_in_native_sequence",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro constants PALACES order"
+    },
+    {
+      "from": "ziwei.palace.wealthPalace",
+      "to": "ziwei.palace.childrenPalace",
+      "relation_type": "next_in_native_sequence",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro constants PALACES order"
+    },
+    {
+      "from": "ziwei.palace.childrenPalace",
+      "to": "ziwei.palace.spousePalace",
+      "relation_type": "next_in_native_sequence",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro constants PALACES order"
+    },
+    {
+      "from": "ziwei.palace.spousePalace",
+      "to": "ziwei.palace.siblingsPalace",
+      "relation_type": "next_in_native_sequence",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro constants PALACES order"
+    },
+    {
+      "from": "ziwei.palace.siblingsPalace",
+      "to": "ziwei.palace.soulPalace",
+      "relation_type": "next_in_native_sequence",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro constants PALACES order"
+    },
+    {
+      "from": "ziwei.stem.jiaHeavenly",
+      "to": "ziwei.stem.bingHeavenly",
+      "relation_type": "tiger_rule_month_stem_for_yin_month",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro TIGER_RULE (五虎遁)"
+    },
+    {
+      "from": "ziwei.stem.yiHeavenly",
+      "to": "ziwei.stem.wuHeavenly",
+      "relation_type": "tiger_rule_month_stem_for_yin_month",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro TIGER_RULE (五虎遁)"
+    },
+    {
+      "from": "ziwei.stem.bingHeavenly",
+      "to": "ziwei.stem.gengHeavenly",
+      "relation_type": "tiger_rule_month_stem_for_yin_month",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro TIGER_RULE (五虎遁)"
+    },
+    {
+      "from": "ziwei.stem.dingHeavenly",
+      "to": "ziwei.stem.renHeavenly",
+      "relation_type": "tiger_rule_month_stem_for_yin_month",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro TIGER_RULE (五虎遁)"
+    },
+    {
+      "from": "ziwei.stem.wuHeavenly",
+      "to": "ziwei.stem.jiaHeavenly",
+      "relation_type": "tiger_rule_month_stem_for_yin_month",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro TIGER_RULE (五虎遁)"
+    },
+    {
+      "from": "ziwei.stem.jiHeavenly",
+      "to": "ziwei.stem.bingHeavenly",
+      "relation_type": "tiger_rule_month_stem_for_yin_month",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro TIGER_RULE (五虎遁)"
+    },
+    {
+      "from": "ziwei.stem.gengHeavenly",
+      "to": "ziwei.stem.wuHeavenly",
+      "relation_type": "tiger_rule_month_stem_for_yin_month",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro TIGER_RULE (五虎遁)"
+    },
+    {
+      "from": "ziwei.stem.xinHeavenly",
+      "to": "ziwei.stem.gengHeavenly",
+      "relation_type": "tiger_rule_month_stem_for_yin_month",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro TIGER_RULE (五虎遁)"
+    },
+    {
+      "from": "ziwei.stem.renHeavenly",
+      "to": "ziwei.stem.renHeavenly",
+      "relation_type": "tiger_rule_month_stem_for_yin_month",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro TIGER_RULE (五虎遁)"
+    },
+    {
+      "from": "ziwei.stem.guiHeavenly",
+      "to": "ziwei.stem.jiaHeavenly",
+      "relation_type": "tiger_rule_month_stem_for_yin_month",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro TIGER_RULE (五虎遁)"
+    },
+    {
+      "from": "ziwei.stem.jiaHeavenly",
+      "to": "ziwei.stem.jiaHeavenly",
+      "relation_type": "rat_rule_hour_stem_for_zi_hour",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro RAT_RULE (五鼠遁)"
+    },
+    {
+      "from": "ziwei.stem.yiHeavenly",
+      "to": "ziwei.stem.bingHeavenly",
+      "relation_type": "rat_rule_hour_stem_for_zi_hour",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro RAT_RULE (五鼠遁)"
+    },
+    {
+      "from": "ziwei.stem.bingHeavenly",
+      "to": "ziwei.stem.wuHeavenly",
+      "relation_type": "rat_rule_hour_stem_for_zi_hour",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro RAT_RULE (五鼠遁)"
+    },
+    {
+      "from": "ziwei.stem.dingHeavenly",
+      "to": "ziwei.stem.gengHeavenly",
+      "relation_type": "rat_rule_hour_stem_for_zi_hour",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro RAT_RULE (五鼠遁)"
+    },
+    {
+      "from": "ziwei.stem.wuHeavenly",
+      "to": "ziwei.stem.renHeavenly",
+      "relation_type": "rat_rule_hour_stem_for_zi_hour",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro RAT_RULE (五鼠遁)"
+    },
+    {
+      "from": "ziwei.stem.jiHeavenly",
+      "to": "ziwei.stem.jiaHeavenly",
+      "relation_type": "rat_rule_hour_stem_for_zi_hour",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro RAT_RULE (五鼠遁)"
+    },
+    {
+      "from": "ziwei.stem.gengHeavenly",
+      "to": "ziwei.stem.bingHeavenly",
+      "relation_type": "rat_rule_hour_stem_for_zi_hour",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro RAT_RULE (五鼠遁)"
+    },
+    {
+      "from": "ziwei.stem.xinHeavenly",
+      "to": "ziwei.stem.wuHeavenly",
+      "relation_type": "rat_rule_hour_stem_for_zi_hour",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro RAT_RULE (五鼠遁)"
+    },
+    {
+      "from": "ziwei.stem.renHeavenly",
+      "to": "ziwei.stem.gengHeavenly",
+      "relation_type": "rat_rule_hour_stem_for_zi_hour",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro RAT_RULE (五鼠遁)"
+    },
+    {
+      "from": "ziwei.stem.guiHeavenly",
+      "to": "ziwei.stem.renHeavenly",
+      "relation_type": "rat_rule_hour_stem_for_zi_hour",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro RAT_RULE (五鼠遁)"
+    },
+    {
+      "from": "ziwei.stem.jiaHeavenly",
+      "to": "ziwei.stem.gengHeavenly",
+      "relation_type": "gan_chong",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.crash (天干冲)"
+    },
+    {
+      "from": "ziwei.stem.yiHeavenly",
+      "to": "ziwei.stem.xinHeavenly",
+      "relation_type": "gan_chong",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.crash (天干冲)"
+    },
+    {
+      "from": "ziwei.stem.bingHeavenly",
+      "to": "ziwei.stem.renHeavenly",
+      "relation_type": "gan_chong",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.crash (天干冲)"
+    },
+    {
+      "from": "ziwei.stem.dingHeavenly",
+      "to": "ziwei.stem.guiHeavenly",
+      "relation_type": "gan_chong",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.crash (天干冲)"
+    },
+    {
+      "from": "ziwei.branch.ziEarthly",
+      "to": "ziwei.branch.wuEarthly",
+      "relation_type": "zhi_chong",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.crash (地支冲)"
+    },
+    {
+      "from": "ziwei.branch.chouEarthly",
+      "to": "ziwei.branch.weiEarthly",
+      "relation_type": "zhi_chong",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.crash (地支冲)"
+    },
+    {
+      "from": "ziwei.branch.yinEarthly",
+      "to": "ziwei.branch.shenEarthly",
+      "relation_type": "zhi_chong",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.crash (地支冲)"
+    },
+    {
+      "from": "ziwei.branch.maoEarthly",
+      "to": "ziwei.branch.youEarthly",
+      "relation_type": "zhi_chong",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.crash (地支冲)"
+    },
+    {
+      "from": "ziwei.branch.chenEarthly",
+      "to": "ziwei.branch.xuEarthly",
+      "relation_type": "zhi_chong",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.crash (地支冲)"
+    },
+    {
+      "from": "ziwei.branch.siEarthly",
+      "to": "ziwei.branch.haiEarthly",
+      "relation_type": "zhi_chong",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.crash (地支冲)"
+    },
+    {
+      "from": "ziwei.branch.ziEarthly",
+      "to": "ziwei.star.tanlangMaj",
+      "relation_type": "branch_mingzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.soul (命主)"
+    },
+    {
+      "from": "ziwei.branch.ziEarthly",
+      "to": "ziwei.star.huoxingMin",
+      "relation_type": "branch_shenzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.body (身主)"
+    },
+    {
+      "from": "ziwei.branch.chouEarthly",
+      "to": "ziwei.star.jumenMaj",
+      "relation_type": "branch_mingzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.soul (命主)"
+    },
+    {
+      "from": "ziwei.branch.chouEarthly",
+      "to": "ziwei.star.tianxiangMaj",
+      "relation_type": "branch_shenzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.body (身主)"
+    },
+    {
+      "from": "ziwei.branch.yinEarthly",
+      "to": "ziwei.star.lucunMin",
+      "relation_type": "branch_mingzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.soul (命主)"
+    },
+    {
+      "from": "ziwei.branch.yinEarthly",
+      "to": "ziwei.star.tianliangMaj",
+      "relation_type": "branch_shenzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.body (身主)"
+    },
+    {
+      "from": "ziwei.branch.maoEarthly",
+      "to": "ziwei.star.wenquMin",
+      "relation_type": "branch_mingzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.soul (命主)"
+    },
+    {
+      "from": "ziwei.branch.maoEarthly",
+      "to": "ziwei.star.tiantongMaj",
+      "relation_type": "branch_shenzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.body (身主)"
+    },
+    {
+      "from": "ziwei.branch.chenEarthly",
+      "to": "ziwei.star.lianzhenMaj",
+      "relation_type": "branch_mingzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.soul (命主)"
+    },
+    {
+      "from": "ziwei.branch.chenEarthly",
+      "to": "ziwei.star.wenchangMin",
+      "relation_type": "branch_shenzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.body (身主)"
+    },
+    {
+      "from": "ziwei.branch.siEarthly",
+      "to": "ziwei.star.wuquMaj",
+      "relation_type": "branch_mingzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.soul (命主)"
+    },
+    {
+      "from": "ziwei.branch.siEarthly",
+      "to": "ziwei.star.tianjiMaj",
+      "relation_type": "branch_shenzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.body (身主)"
+    },
+    {
+      "from": "ziwei.branch.wuEarthly",
+      "to": "ziwei.star.pojunMaj",
+      "relation_type": "branch_mingzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.soul (命主)"
+    },
+    {
+      "from": "ziwei.branch.wuEarthly",
+      "to": "ziwei.star.huoxingMin",
+      "relation_type": "branch_shenzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.body (身主)"
+    },
+    {
+      "from": "ziwei.branch.weiEarthly",
+      "to": "ziwei.star.wuquMaj",
+      "relation_type": "branch_mingzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.soul (命主)"
+    },
+    {
+      "from": "ziwei.branch.weiEarthly",
+      "to": "ziwei.star.tianxiangMaj",
+      "relation_type": "branch_shenzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.body (身主)"
+    },
+    {
+      "from": "ziwei.branch.shenEarthly",
+      "to": "ziwei.star.lianzhenMaj",
+      "relation_type": "branch_mingzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.soul (命主)"
+    },
+    {
+      "from": "ziwei.branch.shenEarthly",
+      "to": "ziwei.star.tianliangMaj",
+      "relation_type": "branch_shenzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.body (身主)"
+    },
+    {
+      "from": "ziwei.branch.youEarthly",
+      "to": "ziwei.star.wenquMin",
+      "relation_type": "branch_mingzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.soul (命主)"
+    },
+    {
+      "from": "ziwei.branch.youEarthly",
+      "to": "ziwei.star.tiantongMaj",
+      "relation_type": "branch_shenzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.body (身主)"
+    },
+    {
+      "from": "ziwei.branch.xuEarthly",
+      "to": "ziwei.star.lucunMin",
+      "relation_type": "branch_mingzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.soul (命主)"
+    },
+    {
+      "from": "ziwei.branch.xuEarthly",
+      "to": "ziwei.star.wenchangMin",
+      "relation_type": "branch_shenzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.body (身主)"
+    },
+    {
+      "from": "ziwei.branch.haiEarthly",
+      "to": "ziwei.star.jumenMaj",
+      "relation_type": "branch_mingzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.soul (命主)"
+    },
+    {
+      "from": "ziwei.branch.haiEarthly",
+      "to": "ziwei.star.tianjiMaj",
+      "relation_type": "branch_shenzhu_star",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro earthlyBranches.body (身主)"
+    },
+    {
+      "from": "ziwei.stem.jiaHeavenly",
+      "to": "ziwei.star.lianzhenMaj",
+      "relation_type": "stem_mutagen_lu",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.jiaHeavenly",
+      "to": "ziwei.star.pojunMaj",
+      "relation_type": "stem_mutagen_quan",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.jiaHeavenly",
+      "to": "ziwei.star.wuquMaj",
+      "relation_type": "stem_mutagen_ke",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.jiaHeavenly",
+      "to": "ziwei.star.taiyangMaj",
+      "relation_type": "stem_mutagen_ji",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.yiHeavenly",
+      "to": "ziwei.star.tianjiMaj",
+      "relation_type": "stem_mutagen_lu",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.yiHeavenly",
+      "to": "ziwei.star.tianliangMaj",
+      "relation_type": "stem_mutagen_quan",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.yiHeavenly",
+      "to": "ziwei.star.ziweiMaj",
+      "relation_type": "stem_mutagen_ke",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.yiHeavenly",
+      "to": "ziwei.star.taiyinMaj",
+      "relation_type": "stem_mutagen_ji",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.bingHeavenly",
+      "to": "ziwei.star.tiantongMaj",
+      "relation_type": "stem_mutagen_lu",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.bingHeavenly",
+      "to": "ziwei.star.tianjiMaj",
+      "relation_type": "stem_mutagen_quan",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.bingHeavenly",
+      "to": "ziwei.star.wenchangMin",
+      "relation_type": "stem_mutagen_ke",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.bingHeavenly",
+      "to": "ziwei.star.lianzhenMaj",
+      "relation_type": "stem_mutagen_ji",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.dingHeavenly",
+      "to": "ziwei.star.taiyinMaj",
+      "relation_type": "stem_mutagen_lu",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.dingHeavenly",
+      "to": "ziwei.star.tiantongMaj",
+      "relation_type": "stem_mutagen_quan",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.dingHeavenly",
+      "to": "ziwei.star.tianjiMaj",
+      "relation_type": "stem_mutagen_ke",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.dingHeavenly",
+      "to": "ziwei.star.jumenMaj",
+      "relation_type": "stem_mutagen_ji",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.wuHeavenly",
+      "to": "ziwei.star.tanlangMaj",
+      "relation_type": "stem_mutagen_lu",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.wuHeavenly",
+      "to": "ziwei.star.taiyinMaj",
+      "relation_type": "stem_mutagen_quan",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.wuHeavenly",
+      "to": "ziwei.star.youbiMin",
+      "relation_type": "stem_mutagen_ke",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.wuHeavenly",
+      "to": "ziwei.star.tianjiMaj",
+      "relation_type": "stem_mutagen_ji",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.jiHeavenly",
+      "to": "ziwei.star.wuquMaj",
+      "relation_type": "stem_mutagen_lu",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.jiHeavenly",
+      "to": "ziwei.star.tanlangMaj",
+      "relation_type": "stem_mutagen_quan",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.jiHeavenly",
+      "to": "ziwei.star.tianliangMaj",
+      "relation_type": "stem_mutagen_ke",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.jiHeavenly",
+      "to": "ziwei.star.wenquMin",
+      "relation_type": "stem_mutagen_ji",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.gengHeavenly",
+      "to": "ziwei.star.taiyangMaj",
+      "relation_type": "stem_mutagen_lu",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.gengHeavenly",
+      "to": "ziwei.star.wuquMaj",
+      "relation_type": "stem_mutagen_quan",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.gengHeavenly",
+      "to": "ziwei.star.taiyinMaj",
+      "relation_type": "stem_mutagen_ke",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.gengHeavenly",
+      "to": "ziwei.star.tiantongMaj",
+      "relation_type": "stem_mutagen_ji",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.xinHeavenly",
+      "to": "ziwei.star.jumenMaj",
+      "relation_type": "stem_mutagen_lu",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.xinHeavenly",
+      "to": "ziwei.star.taiyangMaj",
+      "relation_type": "stem_mutagen_quan",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.xinHeavenly",
+      "to": "ziwei.star.wenquMin",
+      "relation_type": "stem_mutagen_ke",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.xinHeavenly",
+      "to": "ziwei.star.wenchangMin",
+      "relation_type": "stem_mutagen_ji",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.renHeavenly",
+      "to": "ziwei.star.tianliangMaj",
+      "relation_type": "stem_mutagen_lu",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.renHeavenly",
+      "to": "ziwei.star.ziweiMaj",
+      "relation_type": "stem_mutagen_quan",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.renHeavenly",
+      "to": "ziwei.star.zuofuMin",
+      "relation_type": "stem_mutagen_ke",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.renHeavenly",
+      "to": "ziwei.star.wuquMaj",
+      "relation_type": "stem_mutagen_ji",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.guiHeavenly",
+      "to": "ziwei.star.pojunMaj",
+      "relation_type": "stem_mutagen_lu",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.guiHeavenly",
+      "to": "ziwei.star.jumenMaj",
+      "relation_type": "stem_mutagen_quan",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.guiHeavenly",
+      "to": "ziwei.star.taiyinMaj",
+      "relation_type": "stem_mutagen_ke",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    },
+    {
+      "from": "ziwei.stem.guiHeavenly",
+      "to": "ziwei.star.tanlangMaj",
+      "relation_type": "stem_mutagen_ji",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "iztro heavenlyStems.mutagen (四化 禄权科忌)"
+    }
+  ],
+  "counts": {
+    "levels": 6,
+    "edges_total": 106,
+    "edges_palace_ring": 12,
+    "edges_tiger_rule": 10,
+    "edges_rat_rule": 10,
+    "edges_gan_chong": 4,
+    "edges_zhi_chong": 6,
+    "edges_mingzhu_shenzhu": 24,
+    "edges_stem_mutagen": 40
+  },
+  "notes": [
+    "Chart-instanz: Stern→Palast, Brillanz, 四化 je Geburt — aus Engine-Output (computeZiweiChart), nicht als vollständige Kombinatorik vorab.",
+    "K3/K4 (Literatur): später sys_interpretations / sys_kg_edges mit evidence aus PDF."
+  ]
+}

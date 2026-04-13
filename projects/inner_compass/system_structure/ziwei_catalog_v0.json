@@ -1,0 +1,1846 @@
+{
+  "meta": {
+    "step": 1,
+    "schema_version": "1.1.0",
+    "description": "Static inventory from iztro (locales zh-CN + STARS_INFO + constants + heavenlyStems/earthlyBranches K2). Not a natal chart instance.",
+    "source": "iztro",
+    "iztro_version": "2.5.8",
+    "generated_at": "2026-04-13T06:49:54.525Z"
+  },
+  "palaces_order": [
+    "soulPalace",
+    "parentsPalace",
+    "spiritPalace",
+    "propertyPalace",
+    "careerPalace",
+    "friendsPalace",
+    "surfacePalace",
+    "healthPalace",
+    "wealthPalace",
+    "childrenPalace",
+    "spousePalace",
+    "siblingsPalace"
+  ],
+  "palaces": [
+    {
+      "key": "soulPalace",
+      "label_zh": "命宫",
+      "canonical_id": "ziwei.palace.soulPalace"
+    },
+    {
+      "key": "bodyPalace",
+      "label_zh": "身宫",
+      "canonical_id": "ziwei.palace.bodyPalace"
+    },
+    {
+      "key": "siblingsPalace",
+      "label_zh": "兄弟",
+      "canonical_id": "ziwei.palace.siblingsPalace"
+    },
+    {
+      "key": "spousePalace",
+      "label_zh": "夫妻",
+      "canonical_id": "ziwei.palace.spousePalace"
+    },
+    {
+      "key": "childrenPalace",
+      "label_zh": "子女",
+      "canonical_id": "ziwei.palace.childrenPalace"
+    },
+    {
+      "key": "wealthPalace",
+      "label_zh": "财帛",
+      "canonical_id": "ziwei.palace.wealthPalace"
+    },
+    {
+      "key": "healthPalace",
+      "label_zh": "疾厄",
+      "canonical_id": "ziwei.palace.healthPalace"
+    },
+    {
+      "key": "surfacePalace",
+      "label_zh": "迁移",
+      "canonical_id": "ziwei.palace.surfacePalace"
+    },
+    {
+      "key": "friendsPalace",
+      "label_zh": "仆役",
+      "canonical_id": "ziwei.palace.friendsPalace"
+    },
+    {
+      "key": "careerPalace",
+      "label_zh": "官禄",
+      "canonical_id": "ziwei.palace.careerPalace"
+    },
+    {
+      "key": "propertyPalace",
+      "label_zh": "田宅",
+      "canonical_id": "ziwei.palace.propertyPalace"
+    },
+    {
+      "key": "spiritPalace",
+      "label_zh": "福德",
+      "canonical_id": "ziwei.palace.spiritPalace"
+    },
+    {
+      "key": "parentsPalace",
+      "label_zh": "父母",
+      "canonical_id": "ziwei.palace.parentsPalace"
+    },
+    {
+      "key": "originalPalace",
+      "label_zh": "来因",
+      "canonical_id": "ziwei.palace.originalPalace"
+    }
+  ],
+  "heavenly_stems": [
+    {
+      "key": "jiaHeavenly",
+      "label_zh": "甲",
+      "canonical_id": "ziwei.stem.jiaHeavenly",
+      "yin_yang": "阳",
+      "five_elements": "木",
+      "crash_stem_key": "gengHeavenly",
+      "mutagen_star_keys": [
+        "lianzhenMaj",
+        "pojunMaj",
+        "wuquMaj",
+        "taiyangMaj"
+      ]
+    },
+    {
+      "key": "yiHeavenly",
+      "label_zh": "乙",
+      "canonical_id": "ziwei.stem.yiHeavenly",
+      "yin_yang": "阴",
+      "five_elements": "木",
+      "crash_stem_key": "xinHeavenly",
+      "mutagen_star_keys": [
+        "tianjiMaj",
+        "tianliangMaj",
+        "ziweiMaj",
+        "taiyinMaj"
+      ]
+    },
+    {
+      "key": "bingHeavenly",
+      "label_zh": "丙",
+      "canonical_id": "ziwei.stem.bingHeavenly",
+      "yin_yang": "阳",
+      "five_elements": "火",
+      "crash_stem_key": "renHeavenly",
+      "mutagen_star_keys": [
+        "tiantongMaj",
+        "tianjiMaj",
+        "wenchangMin",
+        "lianzhenMaj"
+      ]
+    },
+    {
+      "key": "dingHeavenly",
+      "label_zh": "丁",
+      "canonical_id": "ziwei.stem.dingHeavenly",
+      "yin_yang": "阴",
+      "five_elements": "火",
+      "crash_stem_key": "guiHeavenly",
+      "mutagen_star_keys": [
+        "taiyinMaj",
+        "tiantongMaj",
+        "tianjiMaj",
+        "jumenMaj"
+      ]
+    },
+    {
+      "key": "wuHeavenly",
+      "label_zh": "戊",
+      "canonical_id": "ziwei.stem.wuHeavenly",
+      "yin_yang": "阳",
+      "five_elements": "土",
+      "crash_stem_key": null,
+      "mutagen_star_keys": [
+        "tanlangMaj",
+        "taiyinMaj",
+        "youbiMin",
+        "tianjiMaj"
+      ]
+    },
+    {
+      "key": "jiHeavenly",
+      "label_zh": "己",
+      "canonical_id": "ziwei.stem.jiHeavenly",
+      "yin_yang": "阴",
+      "five_elements": "土",
+      "crash_stem_key": null,
+      "mutagen_star_keys": [
+        "wuquMaj",
+        "tanlangMaj",
+        "tianliangMaj",
+        "wenquMin"
+      ]
+    },
+    {
+      "key": "gengHeavenly",
+      "label_zh": "庚",
+      "canonical_id": "ziwei.stem.gengHeavenly",
+      "yin_yang": "阳",
+      "five_elements": "金",
+      "crash_stem_key": "jiaHeavenly",
+      "mutagen_star_keys": [
+        "taiyangMaj",
+        "wuquMaj",
+        "taiyinMaj",
+        "tiantongMaj"
+      ]
+    },
+    {
+      "key": "xinHeavenly",
+      "label_zh": "辛",
+      "canonical_id": "ziwei.stem.xinHeavenly",
+      "yin_yang": "阴",
+      "five_elements": "金",
+      "crash_stem_key": "yiHeavenly",
+      "mutagen_star_keys": [
+        "jumenMaj",
+        "taiyangMaj",
+        "wenquMin",
+        "wenchangMin"
+      ]
+    },
+    {
+      "key": "renHeavenly",
+      "label_zh": "壬",
+      "canonical_id": "ziwei.stem.renHeavenly",
+      "yin_yang": "阳",
+      "five_elements": "水",
+      "crash_stem_key": "bingHeavenly",
+      "mutagen_star_keys": [
+        "tianliangMaj",
+        "ziweiMaj",
+        "zuofuMin",
+        "wuquMaj"
+      ]
+    },
+    {
+      "key": "guiHeavenly",
+      "label_zh": "癸",
+      "canonical_id": "ziwei.stem.guiHeavenly",
+      "yin_yang": "阴",
+      "five_elements": "水",
+      "crash_stem_key": "dingHeavenly",
+      "mutagen_star_keys": [
+        "pojunMaj",
+        "jumenMaj",
+        "taiyinMaj",
+        "tanlangMaj"
+      ]
+    }
+  ],
+  "earthly_branches": [
+    {
+      "key": "ziEarthly",
+      "label_zh": "子",
+      "canonical_id": "ziwei.branch.ziEarthly",
+      "yin_yang": "阳",
+      "five_elements": "水",
+      "crash_branch_key": "wuEarthly",
+      "soul_star_key": "tanlangMaj",
+      "body_star_key": "huoxingMin",
+      "organ_inside_zh": "胆",
+      "body_region_outside_zh": "下体",
+      "health_tip_zh": "生殖系统、膀胱、尿道之疾病，听觉障碍"
+    },
+    {
+      "key": "chouEarthly",
+      "label_zh": "丑",
+      "canonical_id": "ziwei.branch.chouEarthly",
+      "yin_yang": "阴",
+      "five_elements": "土",
+      "crash_branch_key": "weiEarthly",
+      "soul_star_key": "jumenMaj",
+      "body_star_key": "tianxiangMaj",
+      "organ_inside_zh": "肝",
+      "body_region_outside_zh": "小腿、脚（右）",
+      "health_tip_zh": "胸部、肋膜炎、胃病、脚部"
+    },
+    {
+      "key": "yinEarthly",
+      "label_zh": "寅",
+      "canonical_id": "ziwei.branch.yinEarthly",
+      "yin_yang": "阳",
+      "five_elements": "木",
+      "crash_branch_key": "shenEarthly",
+      "soul_star_key": "lucunMin",
+      "body_star_key": "tianliangMaj",
+      "organ_inside_zh": "肺",
+      "body_region_outside_zh": "大腿（右）",
+      "health_tip_zh": "胆囊、关节、胫部、神经痛、风湿"
+    },
+    {
+      "key": "maoEarthly",
+      "label_zh": "卯",
+      "canonical_id": "ziwei.branch.maoEarthly",
+      "yin_yang": "阴",
+      "five_elements": "木",
+      "crash_branch_key": "youEarthly",
+      "soul_star_key": "wenquMin",
+      "body_star_key": "tiantongMaj",
+      "organ_inside_zh": "大肠",
+      "body_region_outside_zh": "腰（右）、背",
+      "health_tip_zh": "肝病、颜面神经、失眠、神经衰弱"
+    },
+    {
+      "key": "chenEarthly",
+      "label_zh": "辰",
+      "canonical_id": "ziwei.branch.chenEarthly",
+      "yin_yang": "阳",
+      "five_elements": "土",
+      "crash_branch_key": "xuEarthly",
+      "soul_star_key": "lianzhenMaj",
+      "body_star_key": "wenchangMin",
+      "organ_inside_zh": "胃",
+      "body_region_outside_zh": "胸、胳膊（右）",
+      "health_tip_zh": "消化系统、脊椎、皮肤疾病"
+    },
+    {
+      "key": "siEarthly",
+      "label_zh": "巳",
+      "canonical_id": "ziwei.branch.siEarthly",
+      "yin_yang": "阴",
+      "five_elements": "火",
+      "crash_branch_key": "haiEarthly",
+      "soul_star_key": "wuquMaj",
+      "body_star_key": "tianjiMaj",
+      "organ_inside_zh": "脾",
+      "body_region_outside_zh": "左肩",
+      "health_tip_zh": "喉头、牙病、感冒"
+    },
+    {
+      "key": "wuEarthly",
+      "label_zh": "午",
+      "canonical_id": "ziwei.branch.wuEarthly",
+      "yin_yang": "阳",
+      "five_elements": "火",
+      "crash_branch_key": "ziEarthly",
+      "soul_star_key": "pojunMaj",
+      "body_star_key": "huoxingMin",
+      "organ_inside_zh": "心",
+      "body_region_outside_zh": "头",
+      "health_tip_zh": "心脏、视觉、味觉障碍、火难"
+    },
+    {
+      "key": "weiEarthly",
+      "label_zh": "未",
+      "canonical_id": "ziwei.branch.weiEarthly",
+      "yin_yang": "阴",
+      "five_elements": "土",
+      "crash_branch_key": "chouEarthly",
+      "soul_star_key": "wuquMaj",
+      "body_star_key": "tianxiangMaj",
+      "organ_inside_zh": "小肠",
+      "body_region_outside_zh": "脸",
+      "health_tip_zh": "消化系统、胰脏、健忘症、疲倦、手腕、嘴唇"
+    },
+    {
+      "key": "shenEarthly",
+      "label_zh": "申",
+      "canonical_id": "ziwei.branch.shenEarthly",
+      "yin_yang": "阳",
+      "five_elements": "金",
+      "crash_branch_key": "yinEarthly",
+      "soul_star_key": "lianzhenMaj",
+      "body_star_key": "tianliangMaj",
+      "organ_inside_zh": "膀胱",
+      "body_region_outside_zh": "胸、胳膊（左）",
+      "health_tip_zh": "呼吸系统、肺部、消化系统、大肠"
+    },
+    {
+      "key": "youEarthly",
+      "label_zh": "酉",
+      "canonical_id": "ziwei.branch.youEarthly",
+      "yin_yang": "阴",
+      "five_elements": "金",
+      "crash_branch_key": "maoEarthly",
+      "soul_star_key": "wenquMin",
+      "body_star_key": "tiantongMaj",
+      "organ_inside_zh": "肾",
+      "body_region_outside_zh": "腰（左）、腹",
+      "health_tip_zh": "吐血、痢血、小肠之疾、脑出血、头腕部"
+    },
+    {
+      "key": "xuEarthly",
+      "label_zh": "戌",
+      "canonical_id": "ziwei.branch.xuEarthly",
+      "yin_yang": "阳",
+      "five_elements": "土",
+      "crash_branch_key": "chenEarthly",
+      "soul_star_key": "lucunMin",
+      "body_star_key": "wenchangMin",
+      "organ_inside_zh": "心包",
+      "body_region_outside_zh": "大腿（左）",
+      "health_tip_zh": "下半身之疾、子宫、痔疮、脚部"
+    },
+    {
+      "key": "haiEarthly",
+      "label_zh": "亥",
+      "canonical_id": "ziwei.branch.haiEarthly",
+      "yin_yang": "阴",
+      "five_elements": "水",
+      "crash_branch_key": "siEarthly",
+      "soul_star_key": "jumenMaj",
+      "body_star_key": "tianjiMaj",
+      "organ_inside_zh": "三焦",
+      "body_region_outside_zh": "小腿、脚（左）",
+      "health_tip_zh": "排泄机能障碍、肾脏、尿道、偏头痛"
+    }
+  ],
+  "mutagen": [
+    {
+      "key": "sihuaLu",
+      "canonical_id": "ziwei.mutagen.sihuaLu"
+    },
+    {
+      "key": "sihuaQuan",
+      "canonical_id": "ziwei.mutagen.sihuaQuan"
+    },
+    {
+      "key": "sihuaKe",
+      "canonical_id": "ziwei.mutagen.sihuaKe"
+    },
+    {
+      "key": "sihuaJi",
+      "canonical_id": "ziwei.mutagen.sihuaJi"
+    }
+  ],
+  "five_elements_class": [
+    {
+      "key": "water2nd",
+      "numeric": 2,
+      "canonical_id": "ziwei.frame.water2nd"
+    },
+    {
+      "key": "wood3rd",
+      "numeric": 3,
+      "canonical_id": "ziwei.frame.wood3rd"
+    },
+    {
+      "key": "metal4th",
+      "numeric": 4,
+      "canonical_id": "ziwei.frame.metal4th"
+    },
+    {
+      "key": "earth5th",
+      "numeric": 5,
+      "canonical_id": "ziwei.frame.earth5th"
+    },
+    {
+      "key": "fire6th",
+      "numeric": 6,
+      "canonical_id": "ziwei.frame.fire6th"
+    }
+  ],
+  "chinese_hours": [
+    {
+      "key": "earlyRatHour",
+      "time_range": "00:00~01:00",
+      "canonical_id": "ziwei.hour.earlyRatHour"
+    },
+    {
+      "key": "oxHour",
+      "time_range": "01:00~03:00",
+      "canonical_id": "ziwei.hour.oxHour"
+    },
+    {
+      "key": "tigerHour",
+      "time_range": "03:00~05:00",
+      "canonical_id": "ziwei.hour.tigerHour"
+    },
+    {
+      "key": "rabbitHour",
+      "time_range": "05:00~07:00",
+      "canonical_id": "ziwei.hour.rabbitHour"
+    },
+    {
+      "key": "dragonHour",
+      "time_range": "07:00~09:00",
+      "canonical_id": "ziwei.hour.dragonHour"
+    },
+    {
+      "key": "snakeHour",
+      "time_range": "09:00~11:00",
+      "canonical_id": "ziwei.hour.snakeHour"
+    },
+    {
+      "key": "horseHour",
+      "time_range": "11:00~13:00",
+      "canonical_id": "ziwei.hour.horseHour"
+    },
+    {
+      "key": "goatHour",
+      "time_range": "13:00~15:00",
+      "canonical_id": "ziwei.hour.goatHour"
+    },
+    {
+      "key": "monkeyHour",
+      "time_range": "15:00~17:00",
+      "canonical_id": "ziwei.hour.monkeyHour"
+    },
+    {
+      "key": "roosterHour",
+      "time_range": "17:00~19:00",
+      "canonical_id": "ziwei.hour.roosterHour"
+    },
+    {
+      "key": "dogHour",
+      "time_range": "19:00~21:00",
+      "canonical_id": "ziwei.hour.dogHour"
+    },
+    {
+      "key": "pigHour",
+      "time_range": "21:00~23:00",
+      "canonical_id": "ziwei.hour.pigHour"
+    },
+    {
+      "key": "lateRatHour",
+      "time_range": "23:00~00:00",
+      "canonical_id": "ziwei.hour.lateRatHour"
+    }
+  ],
+  "stars": [
+    {
+      "key": "ziweiMaj",
+      "label_zh": "紫微",
+      "canonical_id": "ziwei.star.ziweiMaj",
+      "stars_info": {
+        "brightness_by_palace_branch_order": [
+          "wang",
+          "wang",
+          "de",
+          "wang",
+          "miao",
+          "miao",
+          "wang",
+          "wang",
+          "de",
+          "wang",
+          "ping",
+          "miao"
+        ],
+        "five_elements": "土",
+        "yin_yang": "阴"
+      }
+    },
+    {
+      "key": "tianjiMaj",
+      "label_zh": "天机",
+      "canonical_id": "ziwei.star.tianjiMaj",
+      "stars_info": {
+        "brightness_by_palace_branch_order": [
+          "de",
+          "wang",
+          "li",
+          "ping",
+          "miao",
+          "xian",
+          "de",
+          "wang",
+          "li",
+          "ping",
+          "miao",
+          "xian"
+        ],
+        "five_elements": "木",
+        "yin_yang": "阴"
+      }
+    },
+    {
+      "key": "taiyangMaj",
+      "label_zh": "太阳",
+      "canonical_id": "ziwei.star.taiyangMaj",
+      "stars_info": {
+        "brightness_by_palace_branch_order": [
+          "wang",
+          "miao",
+          "wang",
+          "wang",
+          "wang",
+          "de",
+          "de",
+          "xian",
+          "bu",
+          "xian",
+          "xian",
+          "bu"
+        ],
+        "five_elements": "",
+        "yin_yang": ""
+      }
+    },
+    {
+      "key": "wuquMaj",
+      "label_zh": "武曲",
+      "canonical_id": "ziwei.star.wuquMaj",
+      "stars_info": {
+        "brightness_by_palace_branch_order": [
+          "de",
+          "li",
+          "miao",
+          "ping",
+          "wang",
+          "miao",
+          "de",
+          "li",
+          "miao",
+          "ping",
+          "wang",
+          "miao"
+        ],
+        "five_elements": "金",
+        "yin_yang": "阴"
+      }
+    },
+    {
+      "key": "tiantongMaj",
+      "label_zh": "天同",
+      "canonical_id": "ziwei.star.tiantongMaj",
+      "stars_info": {
+        "brightness_by_palace_branch_order": [
+          "li",
+          "ping",
+          "ping",
+          "miao",
+          "xian",
+          "bu",
+          "wang",
+          "ping",
+          "ping",
+          "miao",
+          "wang",
+          "bu"
+        ],
+        "five_elements": "水",
+        "yin_yang": "阳"
+      }
+    },
+    {
+      "key": "lianzhenMaj",
+      "label_zh": "廉贞",
+      "canonical_id": "ziwei.star.lianzhenMaj",
+      "stars_info": {
+        "brightness_by_palace_branch_order": [
+          "miao",
+          "ping",
+          "li",
+          "xian",
+          "ping",
+          "li",
+          "miao",
+          "ping",
+          "li",
+          "xian",
+          "ping",
+          "li"
+        ],
+        "five_elements": "火",
+        "yin_yang": "阴"
+      }
+    },
+    {
+      "key": "tianfuMaj",
+      "label_zh": "天府",
+      "canonical_id": "ziwei.star.tianfuMaj",
+      "stars_info": {
+        "brightness_by_palace_branch_order": [
+          "miao",
+          "de",
+          "miao",
+          "de",
+          "wang",
+          "miao",
+          "de",
+          "wang",
+          "miao",
+          "de",
+          "miao",
+          "miao"
+        ],
+        "five_elements": "土",
+        "yin_yang": "阳"
+      }
+    },
+    {
+      "key": "taiyinMaj",
+      "label_zh": "太阴",
+      "canonical_id": "ziwei.star.taiyinMaj",
+      "stars_info": {
+        "brightness_by_palace_branch_order": [
+          "wang",
+          "xian",
+          "xian",
+          "xian",
+          "bu",
+          "bu",
+          "li",
+          "bu",
+          "wang",
+          "miao",
+          "miao",
+          "miao"
+        ],
+        "five_elements": "水",
+        "yin_yang": "阴"
+      }
+    },
+    {
+      "key": "tanlangMaj",
+      "label_zh": "贪狼",
+      "canonical_id": "ziwei.star.tanlangMaj",
+      "stars_info": {
+        "brightness_by_palace_branch_order": [
+          "ping",
+          "li",
+          "miao",
+          "xian",
+          "wang",
+          "miao",
+          "ping",
+          "li",
+          "miao",
+          "xian",
+          "wang",
+          "miao"
+        ],
+        "five_elements": "水",
+        "yin_yang": ""
+      }
+    },
+    {
+      "key": "jumenMaj",
+      "label_zh": "巨门",
+      "canonical_id": "ziwei.star.jumenMaj",
+      "stars_info": {
+        "brightness_by_palace_branch_order": [
+          "miao",
+          "miao",
+          "xian",
+          "wang",
+          "wang",
+          "bu",
+          "miao",
+          "miao",
+          "xian",
+          "wang",
+          "wang",
+          "bu"
+        ],
+        "five_elements": "土",
+        "yin_yang": "阴"
+      }
+    },
+    {
+      "key": "tianxiangMaj",
+      "label_zh": "天相",
+      "canonical_id": "ziwei.star.tianxiangMaj",
+      "stars_info": {
+        "brightness_by_palace_branch_order": [
+          "miao",
+          "xian",
+          "de",
+          "de",
+          "miao",
+          "de",
+          "miao",
+          "xian",
+          "de",
+          "de",
+          "miao",
+          "miao"
+        ],
+        "five_elements": "水",
+        "yin_yang": ""
+      }
+    },
+    {
+      "key": "tianliangMaj",
+      "label_zh": "天梁",
+      "canonical_id": "ziwei.star.tianliangMaj",
+      "stars_info": {
+        "brightness_by_palace_branch_order": [
+          "miao",
+          "miao",
+          "miao",
+          "xian",
+          "miao",
+          "wang",
+          "xian",
+          "de",
+          "miao",
+          "xian",
+          "miao",
+          "wang"
+        ],
+        "five_elements": "土",
+        "yin_yang": ""
+      }
+    },
+    {
+      "key": "qishaMaj",
+      "label_zh": "七杀",
+      "canonical_id": "ziwei.star.qishaMaj",
+      "stars_info": {
+        "brightness_by_palace_branch_order": [
+          "miao",
+          "wang",
+          "miao",
+          "ping",
+          "wang",
+          "miao",
+          "miao",
+          "miao",
+          "miao",
+          "ping",
+          "wang",
+          "miao"
+        ],
+        "five_elements": "",
+        "yin_yang": ""
+      }
+    },
+    {
+      "key": "pojunMaj",
+      "label_zh": "破军",
+      "canonical_id": "ziwei.star.pojunMaj",
+      "stars_info": {
+        "brightness_by_palace_branch_order": [
+          "de",
+          "xian",
+          "wang",
+          "ping",
+          "miao",
+          "wang",
+          "de",
+          "xian",
+          "wang",
+          "ping",
+          "miao",
+          "wang"
+        ],
+        "five_elements": "水",
+        "yin_yang": ""
+      }
+    },
+    {
+      "key": "zuofuMin",
+      "label_zh": "左辅",
+      "canonical_id": "ziwei.star.zuofuMin",
+      "stars_info": null
+    },
+    {
+      "key": "youbiMin",
+      "label_zh": "右弼",
+      "canonical_id": "ziwei.star.youbiMin",
+      "stars_info": null
+    },
+    {
+      "key": "wenchangMin",
+      "label_zh": "文昌",
+      "canonical_id": "ziwei.star.wenchangMin",
+      "stars_info": {
+        "brightness_by_palace_branch_order": [
+          "xian",
+          "li",
+          "de",
+          "miao",
+          "xian",
+          "li",
+          "de",
+          "miao",
+          "xian",
+          "li",
+          "de",
+          "miao"
+        ]
+      }
+    },
+    {
+      "key": "wenquMin",
+      "label_zh": "文曲",
+      "canonical_id": "ziwei.star.wenquMin",
+      "stars_info": {
+        "brightness_by_palace_branch_order": [
+          "ping",
+          "wang",
+          "de",
+          "miao",
+          "xian",
+          "wang",
+          "de",
+          "miao",
+          "xian",
+          "wang",
+          "de",
+          "miao"
+        ]
+      }
+    },
+    {
+      "key": "lucunMin",
+      "label_zh": "禄存",
+      "canonical_id": "ziwei.star.lucunMin",
+      "stars_info": null
+    },
+    {
+      "key": "tianmaMin",
+      "label_zh": "天马",
+      "canonical_id": "ziwei.star.tianmaMin",
+      "stars_info": null
+    },
+    {
+      "key": "qingyangMin",
+      "label_zh": "擎羊",
+      "canonical_id": "ziwei.star.qingyangMin",
+      "stars_info": {
+        "brightness_by_palace_branch_order": [
+          "",
+          "xian",
+          "miao",
+          "",
+          "xian",
+          "miao",
+          "",
+          "xian",
+          "miao",
+          "",
+          "xian",
+          "miao"
+        ]
+      }
+    },
+    {
+      "key": "tuoluoMin",
+      "label_zh": "陀罗",
+      "canonical_id": "ziwei.star.tuoluoMin",
+      "stars_info": {
+        "brightness_by_palace_branch_order": [
+          "xian",
+          "",
+          "miao",
+          "xian",
+          "",
+          "miao",
+          "xian",
+          "",
+          "miao",
+          "xian",
+          "",
+          "miao"
+        ]
+      }
+    },
+    {
+      "key": "huoxingMin",
+      "label_zh": "火星",
+      "canonical_id": "ziwei.star.huoxingMin",
+      "stars_info": {
+        "brightness_by_palace_branch_order": [
+          "miao",
+          "li",
+          "xian",
+          "de",
+          "miao",
+          "li",
+          "xian",
+          "de",
+          "miao",
+          "li",
+          "xian",
+          "de"
+        ]
+      }
+    },
+    {
+      "key": "lingxingMin",
+      "label_zh": "铃星",
+      "canonical_id": "ziwei.star.lingxingMin",
+      "stars_info": {
+        "brightness_by_palace_branch_order": [
+          "miao",
+          "li",
+          "xian",
+          "de",
+          "miao",
+          "li",
+          "xian",
+          "de",
+          "miao",
+          "li",
+          "xian",
+          "de"
+        ]
+      }
+    },
+    {
+      "key": "tiankuiMin",
+      "label_zh": "天魁",
+      "canonical_id": "ziwei.star.tiankuiMin",
+      "stars_info": null
+    },
+    {
+      "key": "tianyueMin",
+      "label_zh": "天钺",
+      "canonical_id": "ziwei.star.tianyueMin",
+      "stars_info": null
+    },
+    {
+      "key": "dikongMin",
+      "label_zh": "地空",
+      "canonical_id": "ziwei.star.dikongMin",
+      "stars_info": null
+    },
+    {
+      "key": "dijieMin",
+      "label_zh": "地劫",
+      "canonical_id": "ziwei.star.dijieMin",
+      "stars_info": null
+    },
+    {
+      "key": "jieshaAdj",
+      "label_zh": "劫杀",
+      "canonical_id": "ziwei.star.jieshaAdj",
+      "stars_info": null
+    },
+    {
+      "key": "tiankong",
+      "label_zh": "天空",
+      "canonical_id": "ziwei.star.tiankong",
+      "stars_info": null
+    },
+    {
+      "key": "tianxing",
+      "label_zh": "天刑",
+      "canonical_id": "ziwei.star.tianxing",
+      "stars_info": null
+    },
+    {
+      "key": "tianyao",
+      "label_zh": "天姚",
+      "canonical_id": "ziwei.star.tianyao",
+      "stars_info": null
+    },
+    {
+      "key": "jieshen",
+      "label_zh": "解神",
+      "canonical_id": "ziwei.star.jieshen",
+      "stars_info": null
+    },
+    {
+      "key": "yinsha",
+      "label_zh": "阴煞",
+      "canonical_id": "ziwei.star.yinsha",
+      "stars_info": null
+    },
+    {
+      "key": "tianxi",
+      "label_zh": "天喜",
+      "canonical_id": "ziwei.star.tianxi",
+      "stars_info": null
+    },
+    {
+      "key": "tianguan",
+      "label_zh": "天官",
+      "canonical_id": "ziwei.star.tianguan",
+      "stars_info": null
+    },
+    {
+      "key": "tianfu",
+      "label_zh": "天福",
+      "canonical_id": "ziwei.star.tianfu",
+      "stars_info": null
+    },
+    {
+      "key": "tianku",
+      "label_zh": "天哭",
+      "canonical_id": "ziwei.star.tianku",
+      "stars_info": null
+    },
+    {
+      "key": "tianxu",
+      "label_zh": "天虚",
+      "canonical_id": "ziwei.star.tianxu",
+      "stars_info": null
+    },
+    {
+      "key": "longchi",
+      "label_zh": "龙池",
+      "canonical_id": "ziwei.star.longchi",
+      "stars_info": null
+    },
+    {
+      "key": "fengge",
+      "label_zh": "凤阁",
+      "canonical_id": "ziwei.star.fengge",
+      "stars_info": null
+    },
+    {
+      "key": "hongluan",
+      "label_zh": "红鸾",
+      "canonical_id": "ziwei.star.hongluan",
+      "stars_info": null
+    },
+    {
+      "key": "guchen",
+      "label_zh": "孤辰",
+      "canonical_id": "ziwei.star.guchen",
+      "stars_info": null
+    },
+    {
+      "key": "guasu",
+      "label_zh": "寡宿",
+      "canonical_id": "ziwei.star.guasu",
+      "stars_info": null
+    },
+    {
+      "key": "feilian",
+      "label_zh": "蜚廉",
+      "canonical_id": "ziwei.star.feilian",
+      "stars_info": null
+    },
+    {
+      "key": "posui",
+      "label_zh": "破碎",
+      "canonical_id": "ziwei.star.posui",
+      "stars_info": null
+    },
+    {
+      "key": "taifu",
+      "label_zh": "台辅",
+      "canonical_id": "ziwei.star.taifu",
+      "stars_info": null
+    },
+    {
+      "key": "fenggao",
+      "label_zh": "封诰",
+      "canonical_id": "ziwei.star.fenggao",
+      "stars_info": null
+    },
+    {
+      "key": "tianwu",
+      "label_zh": "天巫",
+      "canonical_id": "ziwei.star.tianwu",
+      "stars_info": null
+    },
+    {
+      "key": "tianyue",
+      "label_zh": "天月",
+      "canonical_id": "ziwei.star.tianyue",
+      "stars_info": null
+    },
+    {
+      "key": "santai",
+      "label_zh": "三台",
+      "canonical_id": "ziwei.star.santai",
+      "stars_info": null
+    },
+    {
+      "key": "bazuo",
+      "label_zh": "八座",
+      "canonical_id": "ziwei.star.bazuo",
+      "stars_info": null
+    },
+    {
+      "key": "engguang",
+      "label_zh": "恩光",
+      "canonical_id": "ziwei.star.engguang",
+      "stars_info": null
+    },
+    {
+      "key": "tiangui",
+      "label_zh": "天贵",
+      "canonical_id": "ziwei.star.tiangui",
+      "stars_info": null
+    },
+    {
+      "key": "tiancai",
+      "label_zh": "天才",
+      "canonical_id": "ziwei.star.tiancai",
+      "stars_info": null
+    },
+    {
+      "key": "tianshou",
+      "label_zh": "天寿",
+      "canonical_id": "ziwei.star.tianshou",
+      "stars_info": null
+    },
+    {
+      "key": "jiekong",
+      "label_zh": "截空",
+      "canonical_id": "ziwei.star.jiekong",
+      "stars_info": null
+    },
+    {
+      "key": "xunzhong",
+      "label_zh": "旬中",
+      "canonical_id": "ziwei.star.xunzhong",
+      "stars_info": null
+    },
+    {
+      "key": "xunkong",
+      "label_zh": "旬空",
+      "canonical_id": "ziwei.star.xunkong",
+      "stars_info": null
+    },
+    {
+      "key": "kongwang",
+      "label_zh": "空亡",
+      "canonical_id": "ziwei.star.kongwang",
+      "stars_info": null
+    },
+    {
+      "key": "jielu",
+      "label_zh": "截路",
+      "canonical_id": "ziwei.star.jielu",
+      "stars_info": null
+    },
+    {
+      "key": "yuede",
+      "label_zh": "月德",
+      "canonical_id": "ziwei.star.yuede",
+      "stars_info": null
+    },
+    {
+      "key": "tianshang",
+      "label_zh": "天伤",
+      "canonical_id": "ziwei.star.tianshang",
+      "stars_info": null
+    },
+    {
+      "key": "tianshi",
+      "label_zh": "天使",
+      "canonical_id": "ziwei.star.tianshi",
+      "stars_info": null
+    },
+    {
+      "key": "tianchu",
+      "label_zh": "天厨",
+      "canonical_id": "ziwei.star.tianchu",
+      "stars_info": null
+    },
+    {
+      "key": "changsheng",
+      "label_zh": "长生",
+      "canonical_id": "ziwei.star.changsheng",
+      "stars_info": null
+    },
+    {
+      "key": "muyu",
+      "label_zh": "沐浴",
+      "canonical_id": "ziwei.star.muyu",
+      "stars_info": null
+    },
+    {
+      "key": "guandai",
+      "label_zh": "冠带",
+      "canonical_id": "ziwei.star.guandai",
+      "stars_info": null
+    },
+    {
+      "key": "linguan",
+      "label_zh": "临官",
+      "canonical_id": "ziwei.star.linguan",
+      "stars_info": null
+    },
+    {
+      "key": "diwang",
+      "label_zh": "帝旺",
+      "canonical_id": "ziwei.star.diwang",
+      "stars_info": null
+    },
+    {
+      "key": "shuai",
+      "label_zh": "衰",
+      "canonical_id": "ziwei.star.shuai",
+      "stars_info": null
+    },
+    {
+      "key": "bing",
+      "label_zh": "病",
+      "canonical_id": "ziwei.star.bing",
+      "stars_info": null
+    },
+    {
+      "key": "si",
+      "label_zh": "死",
+      "canonical_id": "ziwei.star.si",
+      "stars_info": null
+    },
+    {
+      "key": "mu",
+      "label_zh": "墓",
+      "canonical_id": "ziwei.star.mu",
+      "stars_info": null
+    },
+    {
+      "key": "jue",
+      "label_zh": "绝",
+      "canonical_id": "ziwei.star.jue",
+      "stars_info": null
+    },
+    {
+      "key": "tai",
+      "label_zh": "胎",
+      "canonical_id": "ziwei.star.tai",
+      "stars_info": null
+    },
+    {
+      "key": "yang",
+      "label_zh": "养",
+      "canonical_id": "ziwei.star.yang",
+      "stars_info": null
+    },
+    {
+      "key": "boshi",
+      "label_zh": "博士",
+      "canonical_id": "ziwei.star.boshi",
+      "stars_info": null
+    },
+    {
+      "key": "lishi",
+      "label_zh": "力士",
+      "canonical_id": "ziwei.star.lishi",
+      "stars_info": null
+    },
+    {
+      "key": "qinglong",
+      "label_zh": "青龙",
+      "canonical_id": "ziwei.star.qinglong",
+      "stars_info": null
+    },
+    {
+      "key": "xiaohao",
+      "label_zh": "小耗",
+      "canonical_id": "ziwei.star.xiaohao",
+      "stars_info": null
+    },
+    {
+      "key": "jiangjun",
+      "label_zh": "将军",
+      "canonical_id": "ziwei.star.jiangjun",
+      "stars_info": null
+    },
+    {
+      "key": "zhoushu",
+      "label_zh": "奏书",
+      "canonical_id": "ziwei.star.zhoushu",
+      "stars_info": null
+    },
+    {
+      "key": "faylian",
+      "label_zh": "飞廉",
+      "canonical_id": "ziwei.star.faylian",
+      "stars_info": null
+    },
+    {
+      "key": "xishen",
+      "label_zh": "喜神",
+      "canonical_id": "ziwei.star.xishen",
+      "stars_info": null
+    },
+    {
+      "key": "bingfu",
+      "label_zh": "病符",
+      "canonical_id": "ziwei.star.bingfu",
+      "stars_info": null
+    },
+    {
+      "key": "dahao",
+      "label_zh": "大耗",
+      "canonical_id": "ziwei.star.dahao",
+      "stars_info": null
+    },
+    {
+      "key": "suipo",
+      "label_zh": "岁破",
+      "canonical_id": "ziwei.star.suipo",
+      "stars_info": null
+    },
+    {
+      "key": "fubing",
+      "label_zh": "伏兵",
+      "canonical_id": "ziwei.star.fubing",
+      "stars_info": null
+    },
+    {
+      "key": "guanfu",
+      "label_zh": "官府",
+      "canonical_id": "ziwei.star.guanfu",
+      "stars_info": null
+    },
+    {
+      "key": "suijian",
+      "label_zh": "岁建",
+      "canonical_id": "ziwei.star.suijian",
+      "stars_info": null
+    },
+    {
+      "key": "huiqi",
+      "label_zh": "晦气",
+      "canonical_id": "ziwei.star.huiqi",
+      "stars_info": null
+    },
+    {
+      "key": "sangmen",
+      "label_zh": "丧门",
+      "canonical_id": "ziwei.star.sangmen",
+      "stars_info": null
+    },
+    {
+      "key": "guansuo",
+      "label_zh": "贯索",
+      "canonical_id": "ziwei.star.guansuo",
+      "stars_info": null
+    },
+    {
+      "key": "gwanfu",
+      "label_zh": "官符",
+      "canonical_id": "ziwei.star.gwanfu",
+      "stars_info": null
+    },
+    {
+      "key": "longde",
+      "label_zh": "龙德",
+      "canonical_id": "ziwei.star.longde",
+      "stars_info": null
+    },
+    {
+      "key": "baihu",
+      "label_zh": "白虎",
+      "canonical_id": "ziwei.star.baihu",
+      "stars_info": null
+    },
+    {
+      "key": "tiande",
+      "label_zh": "天德",
+      "canonical_id": "ziwei.star.tiande",
+      "stars_info": null
+    },
+    {
+      "key": "diaoke",
+      "label_zh": "吊客",
+      "canonical_id": "ziwei.star.diaoke",
+      "stars_info": null
+    },
+    {
+      "key": "jiangxing",
+      "label_zh": "将星",
+      "canonical_id": "ziwei.star.jiangxing",
+      "stars_info": null
+    },
+    {
+      "key": "panan",
+      "label_zh": "攀鞍",
+      "canonical_id": "ziwei.star.panan",
+      "stars_info": null
+    },
+    {
+      "key": "suiyi",
+      "label_zh": "岁驿",
+      "canonical_id": "ziwei.star.suiyi",
+      "stars_info": null
+    },
+    {
+      "key": "xiishen",
+      "label_zh": "息神",
+      "canonical_id": "ziwei.star.xiishen",
+      "stars_info": null
+    },
+    {
+      "key": "huagai",
+      "label_zh": "华盖",
+      "canonical_id": "ziwei.star.huagai",
+      "stars_info": null
+    },
+    {
+      "key": "jiesha",
+      "label_zh": "劫煞",
+      "canonical_id": "ziwei.star.jiesha",
+      "stars_info": null
+    },
+    {
+      "key": "zhaisha",
+      "label_zh": "灾煞",
+      "canonical_id": "ziwei.star.zhaisha",
+      "stars_info": null
+    },
+    {
+      "key": "tiansha",
+      "label_zh": "天煞",
+      "canonical_id": "ziwei.star.tiansha",
+      "stars_info": null
+    },
+    {
+      "key": "zhibei",
+      "label_zh": "指背",
+      "canonical_id": "ziwei.star.zhibei",
+      "stars_info": null
+    },
+    {
+      "key": "xianchi",
+      "label_zh": "咸池",
+      "canonical_id": "ziwei.star.xianchi",
+      "stars_info": null
+    },
+    {
+      "key": "yuesha",
+      "label_zh": "月煞",
+      "canonical_id": "ziwei.star.yuesha",
+      "stars_info": null
+    },
+    {
+      "key": "wangshen",
+      "label_zh": "亡神",
+      "canonical_id": "ziwei.star.wangshen",
+      "stars_info": null
+    },
+    {
+      "key": "yunkui",
+      "label_zh": "运魁",
+      "canonical_id": "ziwei.star.yunkui",
+      "stars_info": null
+    },
+    {
+      "key": "yunyue",
+      "label_zh": "运钺",
+      "canonical_id": "ziwei.star.yunyue",
+      "stars_info": null
+    },
+    {
+      "key": "yunchang",
+      "label_zh": "运昌",
+      "canonical_id": "ziwei.star.yunchang",
+      "stars_info": null
+    },
+    {
+      "key": "yunqu",
+      "label_zh": "运曲",
+      "canonical_id": "ziwei.star.yunqu",
+      "stars_info": null
+    },
+    {
+      "key": "yunluan",
+      "label_zh": "运鸾",
+      "canonical_id": "ziwei.star.yunluan",
+      "stars_info": null
+    },
+    {
+      "key": "yunxi",
+      "label_zh": "运喜",
+      "canonical_id": "ziwei.star.yunxi",
+      "stars_info": null
+    },
+    {
+      "key": "yunlu",
+      "label_zh": "运禄",
+      "canonical_id": "ziwei.star.yunlu",
+      "stars_info": null
+    },
+    {
+      "key": "yunyang",
+      "label_zh": "运羊",
+      "canonical_id": "ziwei.star.yunyang",
+      "stars_info": null
+    },
+    {
+      "key": "yuntuo",
+      "label_zh": "运陀",
+      "canonical_id": "ziwei.star.yuntuo",
+      "stars_info": null
+    },
+    {
+      "key": "yunma",
+      "label_zh": "运马",
+      "canonical_id": "ziwei.star.yunma",
+      "stars_info": null
+    },
+    {
+      "key": "liukui",
+      "label_zh": "流魁",
+      "canonical_id": "ziwei.star.liukui",
+      "stars_info": null
+    },
+    {
+      "key": "liuyue",
+      "label_zh": "流钺",
+      "canonical_id": "ziwei.star.liuyue",
+      "stars_info": null
+    },
+    {
+      "key": "liuchang",
+      "label_zh": "流昌",
+      "canonical_id": "ziwei.star.liuchang",
+      "stars_info": null
+    },
+    {
+      "key": "liuqu",
+      "label_zh": "流曲",
+      "canonical_id": "ziwei.star.liuqu",
+      "stars_info": null
+    },
+    {
+      "key": "liuluan",
+      "label_zh": "流鸾",
+      "canonical_id": "ziwei.star.liuluan",
+      "stars_info": null
+    },
+    {
+      "key": "liuxi",
+      "label_zh": "流喜",
+      "canonical_id": "ziwei.star.liuxi",
+      "stars_info": null
+    },
+    {
+      "key": "liulu",
+      "label_zh": "流禄",
+      "canonical_id": "ziwei.star.liulu",
+      "stars_info": null
+    },
+    {
+      "key": "liuyang",
+      "label_zh": "流羊",
+      "canonical_id": "ziwei.star.liuyang",
+      "stars_info": null
+    },
+    {
+      "key": "liutuo",
+      "label_zh": "流陀",
+      "canonical_id": "ziwei.star.liutuo",
+      "stars_info": null
+    },
+    {
+      "key": "liuma",
+      "label_zh": "流马",
+      "canonical_id": "ziwei.star.liuma",
+      "stars_info": null
+    },
+    {
+      "key": "nianjie",
+      "label_zh": "年解",
+      "canonical_id": "ziwei.star.nianjie",
+      "stars_info": null
+    },
+    {
+      "key": "yuekui",
+      "label_zh": "月魁",
+      "canonical_id": "ziwei.star.yuekui",
+      "stars_info": null
+    },
+    {
+      "key": "yueyue",
+      "label_zh": "月钺",
+      "canonical_id": "ziwei.star.yueyue",
+      "stars_info": null
+    },
+    {
+      "key": "yuechang",
+      "label_zh": "月昌",
+      "canonical_id": "ziwei.star.yuechang",
+      "stars_info": null
+    },
+    {
+      "key": "yuequ",
+      "label_zh": "月曲",
+      "canonical_id": "ziwei.star.yuequ",
+      "stars_info": null
+    },
+    {
+      "key": "yueluan",
+      "label_zh": "月鸾",
+      "canonical_id": "ziwei.star.yueluan",
+      "stars_info": null
+    },
+    {
+      "key": "yuexi",
+      "label_zh": "月喜",
+      "canonical_id": "ziwei.star.yuexi",
+      "stars_info": null
+    },
+    {
+      "key": "yuelu",
+      "label_zh": "月禄",
+      "canonical_id": "ziwei.star.yuelu",
+      "stars_info": null
+    },
+    {
+      "key": "yueyang",
+      "label_zh": "月羊",
+      "canonical_id": "ziwei.star.yueyang",
+      "stars_info": null
+    },
+    {
+      "key": "yuetuo",
+      "label_zh": "月陀",
+      "canonical_id": "ziwei.star.yuetuo",
+      "stars_info": null
+    },
+    {
+      "key": "yuema",
+      "label_zh": "月马",
+      "canonical_id": "ziwei.star.yuema",
+      "stars_info": null
+    },
+    {
+      "key": "rikui",
+      "label_zh": "日魁",
+      "canonical_id": "ziwei.star.rikui",
+      "stars_info": null
+    },
+    {
+      "key": "riyue",
+      "label_zh": "日钺",
+      "canonical_id": "ziwei.star.riyue",
+      "stars_info": null
+    },
+    {
+      "key": "richang",
+      "label_zh": "日昌",
+      "canonical_id": "ziwei.star.richang",
+      "stars_info": null
+    },
+    {
+      "key": "riqu",
+      "label_zh": "日曲",
+      "canonical_id": "ziwei.star.riqu",
+      "stars_info": null
+    },
+    {
+      "key": "riluan",
+      "label_zh": "日鸾",
+      "canonical_id": "ziwei.star.riluan",
+      "stars_info": null
+    },
+    {
+      "key": "rixi",
+      "label_zh": "日喜",
+      "canonical_id": "ziwei.star.rixi",
+      "stars_info": null
+    },
+    {
+      "key": "rilu",
+      "label_zh": "日禄",
+      "canonical_id": "ziwei.star.rilu",
+      "stars_info": null
+    },
+    {
+      "key": "riyang",
+      "label_zh": "日羊",
+      "canonical_id": "ziwei.star.riyang",
+      "stars_info": null
+    },
+    {
+      "key": "rituo",
+      "label_zh": "日陀",
+      "canonical_id": "ziwei.star.rituo",
+      "stars_info": null
+    },
+    {
+      "key": "rima",
+      "label_zh": "日马",
+      "canonical_id": "ziwei.star.rima",
+      "stars_info": null
+    },
+    {
+      "key": "shikui",
+      "label_zh": "时魁",
+      "canonical_id": "ziwei.star.shikui",
+      "stars_info": null
+    },
+    {
+      "key": "shiyue",
+      "label_zh": "时钺",
+      "canonical_id": "ziwei.star.shiyue",
+      "stars_info": null
+    },
+    {
+      "key": "shichang",
+      "label_zh": "时昌",
+      "canonical_id": "ziwei.star.shichang",
+      "stars_info": null
+    },
+    {
+      "key": "shiqu",
+      "label_zh": "时曲",
+      "canonical_id": "ziwei.star.shiqu",
+      "stars_info": null
+    },
+    {
+      "key": "shiluan",
+      "label_zh": "时鸾",
+      "canonical_id": "ziwei.star.shiluan",
+      "stars_info": null
+    },
+    {
+      "key": "shixi",
+      "label_zh": "时喜",
+      "canonical_id": "ziwei.star.shixi",
+      "stars_info": null
+    },
+    {
+      "key": "shilu",
+      "label_zh": "时禄",
+      "canonical_id": "ziwei.star.shilu",
+      "stars_info": null
+    },
+    {
+      "key": "shiyang",
+      "label_zh": "时羊",
+      "canonical_id": "ziwei.star.shiyang",
+      "stars_info": null
+    },
+    {
+      "key": "shituo",
+      "label_zh": "时陀",
+      "canonical_id": "ziwei.star.shituo",
+      "stars_info": null
+    },
+    {
+      "key": "shima",
+      "label_zh": "时马",
+      "canonical_id": "ziwei.star.shima",
+      "stars_info": null
+    }
+  ],
+  "rule_blocks": {
+    "tiger_rule": {
+      "jiaHeavenly": "bingHeavenly",
+      "yiHeavenly": "wuHeavenly",
+      "bingHeavenly": "gengHeavenly",
+      "dingHeavenly": "renHeavenly",
+      "wuHeavenly": "jiaHeavenly",
+      "jiHeavenly": "bingHeavenly",
+      "gengHeavenly": "wuHeavenly",
+      "xinHeavenly": "gengHeavenly",
+      "renHeavenly": "renHeavenly",
+      "guiHeavenly": "jiaHeavenly"
+    },
+    "rat_rule": {
+      "jiaHeavenly": "jiaHeavenly",
+      "yiHeavenly": "bingHeavenly",
+      "bingHeavenly": "wuHeavenly",
+      "dingHeavenly": "gengHeavenly",
+      "wuHeavenly": "renHeavenly",
+      "jiHeavenly": "jiaHeavenly",
+      "gengHeavenly": "bingHeavenly",
+      "xinHeavenly": "wuHeavenly",
+      "renHeavenly": "gengHeavenly",
+      "guiHeavenly": "renHeavenly"
+    },
+    "note": "五虎遁 / 五鼠遁 — month stem from year stem, hour stem from day stem (K2, from iztro constants)."
+  },
+  "counts": {
+    "palaces": 14,
+    "stars": 162,
+    "stars_with_stars_info": 20,
+    "stems": 10,
+    "branches": 12,
+    "stem_gan_chong_pairs": 4,
+    "branch_zhi_chong_pairs": 6
+  }
+}

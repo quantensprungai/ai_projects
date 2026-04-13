@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "step": 2,
+    "version": "0.1.0",
+    "description": "BaZi structure: levels + pillar chain; 六十甲子/纳音 liegen in bazi_catalog_v0 (schema ≥1.1, @yhjs/bagua).",
+    "catalog_ref": "bazi_catalog_v0.json",
+    "generated_at": "2026-04-11T05:42:29.787Z"
+  },
+  "levels": [
+    {
+      "id": "pillar",
+      "label_de": "四柱",
+      "description": "年柱 → 月柱 → 日柱 → 时柱; 日主从日柱天干。",
+      "kit_refs": [
+        "@yhjs/bazi Bazi.year/month/day/hour"
+      ]
+    },
+    {
+      "id": "stem_branch",
+      "label_de": "天干 / 地支",
+      "description": "Bausteine; 藏干与十神由 Kit 展开。",
+      "kit_refs": [
+        "bazi_catalog_v0.json"
+      ]
+    },
+    {
+      "id": "ten_god",
+      "label_de": "十神",
+      "description": "相对日主的关系星。",
+      "kit_refs": [
+        "buildPillar hiddenGods"
+      ]
+    },
+    {
+      "id": "luck_cycle",
+      "label_de": "大运 / 流年",
+      "description": "大运柱序列; v0 nodes 含前 8 步大运示例性激活。",
+      "kit_refs": [
+        "Bazi.dayun",
+        "getLiunian"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "bazi.pillar.year.*",
+      "to": "bazi.pillar.month.*",
+      "relation_type": "next_in_four_pillars",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "classical BaZi ordering"
+    },
+    {
+      "from": "bazi.pillar.month.*",
+      "to": "bazi.pillar.day.*",
+      "relation_type": "next_in_four_pillars",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "classical BaZi ordering"
+    },
+    {
+      "from": "bazi.pillar.day.*",
+      "to": "bazi.pillar.hour.*",
+      "relation_type": "next_in_four_pillars",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "classical BaZi ordering"
+    }
+  ],
+  "counts": {
+    "levels": 4,
+    "edges": 3
+  },
+  "notes": [
+    "Luck pillars (dayun) sequential semantics: see @yhjs/bazi dayun ordering; full K2 graph TBD."
+  ]
+}
