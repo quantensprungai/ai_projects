@@ -1,6 +1,6 @@
 ---
-description: Inner Compass Projekt-Kontext – Einstiegspunkte für Architektur, Pipeline, Contracts
-globs: projects/inner_compass/**/*,code/inner_compass_app/**/*,code/hd_saas_app/**/*
+description: Inner Compass Projekt-Kontext – Einstiegspunkte für Architektur, Pipeline, Contracts, MCP-Tools
+globs: projects/inner_compass/**/*,code/inner_compass_app/**/*
 alwaysApply: false
 ---
 
@@ -17,21 +17,40 @@ alwaysApply: false
 - **Schema, Schichten, Tech Stack:** projects/inner_compass/cursor/architecture.md
 - **Pipeline-Jobs, Flows:** projects/inner_compass/cursor/pipeline.md
 - **Chart-Engines:** projects/inner_compass/cursor/engines.md
+- **Phase 1 Playbook (pro System: Katalog → Struktur → Validierung):** projects/inner_compass/reference/engine_integration_playbook.md
 
 ## Prinzipien
 
 - Schema nutzt `sys_*`-Präfix (NICHT `hd_*`). Siehe architecture.md.
 - 15 Dimensionen (nicht 12). Siehe contracts.md.
-- 10 Lebensbereiche. Siehe contracts.md.
+- **12 Lebensbereiche** (erweitert von 10, März 2026). Siehe contracts.md.
 - Canonical IDs: `{system}.{element_type}.{element_id}` (z.B. `hd.gate.34`)
 - Alle Payloads sind jsonb. Dimensions sind nullable.
 - Strukturbäume aus Deskriptoren (system_descriptors/*.json), NICHT aus PDFs.
+
+## Code-Repo
+
+- **Repo:** `code/inner_compass_app/` — Makerkit 3.1.3 (frischer Clone 2026-03-31)
+- **GitHub:** quantensprungai/inner-compass-app (privat), Upstream: makerkit/next-supabase-saas-kit-turbo
+- **TS-Engines:** `packages/engines/` (@ic/engines, npm-basiert)
+- **Python-Jyotish:** `services/jyotish/` (FastAPI, Docker, AGPL-isoliert)
+- **Makerkit MCP:** `packages/mcp-server/` (DB, Migrations, Env, Dev, Translations)
 
 ## Architektur
 
 - **Control Plane:** Supabase Cloud (Postgres + pgvector + Auth + Storage)
 - **Data Plane:** Spark (MinerU GPU, LLM via SGLang/vLLM, Python Worker)
-- **Code:** code/hd_saas_app/ (wird zu code/inner_compass_app/) — Makerkit Next.js + Supabase
+- **Engine-Architektur:** Hybrid TS-first (TS in Next.js + Python-Microservice NUR für Jyotish)
+
+## MCP-Tools (3 Server)
+
+| Server | Zweck | Nutzung |
+|--------|-------|---------|
+| **Makerkit Kit MCP** (`packages/mcp-server/`) | DB-Schema, Migrations, Env, Dev-Services, Translations, Scripts | `pnpm --filter "@kit/mcp-server" build` → Cursor mcp.json |
+| **Supabase MCP** (plugin-supabase-supabase) | Supabase Management API, direkte SQL-Queries | Bereits im Workspace, Auth nötig |
+| **Makerkit CLI MCP** | Plugin-Installation, Upstream-Updates, Merge-Konflikte | Via `npx @makerkit/cli@latest makerkit-cli-mcp` |
+
+Makerkit MCP = lokaler Code & Schema. Supabase MCP = Cloud-DB. Beide unabhängig, ergänzen sich.
 
 ## Bei Unsicherheit
 
@@ -41,5 +60,5 @@ alwaysApply: false
 
 ## Wichtig: Alte Docs
 
-- projects/hd_saas/ ist **archiviert**. Nicht referenzieren, nicht als Source of Truth verwenden.
+- projects/hd_saas/ und code/hd_saas_app_archived/ sind **archiviert**. Nicht referenzieren.
 - Wenn du Widersprüche zwischen alten und neuen Docs findest: **Neue Docs gewinnen immer.**

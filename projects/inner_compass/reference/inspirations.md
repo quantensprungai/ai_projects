@@ -96,7 +96,7 @@ BaZi ist der Beweis, dass Inner Compass kein "westlich-esoterisches" Produkt ist
 
 **Inspiration für Visualisierung:**
 - Tibetisch-buddhistisches Mandala: Kreis als Ganzheit, Segmente als Lebensbereiche, Zentrum als Kern-Identität.
-- Astrologie-Radix: 12 Häuser im Kreis → wir: 10 Lebensbereiche im Kreis.
+- Astrologie-Radix: 12 Häuser im Kreis → wir: 12 Lebensbereiche im Kreis (revidiert 2026-03).
 - Persönliches Mandala als Meditation (Jung): Der Zeichnungsprozess = Selbsterkenntnis. Unser Mandala wird nicht gezeichnet sondern berechnet — aber das Betrachten bleibt kontemplativ.
 
 ## 9. Zusammenfassung: Was Inner Compass NICHT ist

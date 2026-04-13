@@ -18,7 +18,7 @@ notes: []
 
 | Projekt | Docs | Code | Infra | Status |
 |---------|------|------|-------|--------|
-| **Inner Compass** | `projects/inner_compass/` | `code/hd_saas_app/` → `inner_compass_app` | Spark (Worker, MinerU, LLM) | Aktiv — Pre-Launch |
+| **Inner Compass** | `projects/inner_compass/` | `code/inner_compass_app/` | Spark (Worker, MinerU, LLM) | Aktiv — Pre-Launch |
 | **Trading Bot** | `projects/trading_bot/` | `code/trading-bot/` | — | Aktiv |
 | **Rest Data Platform (ASTRA IMC)** | `projects/rest_data_platform/` | `quantensprungai/astra-imc-platform` | — | Planung |
 | **Bot Platform** | `projects/bot_platform/` | — | Spark (LLM-Backend) | Pause |

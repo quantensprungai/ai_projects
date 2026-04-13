@@ -1,5 +1,5 @@
 <!-- Reality Block
-last_update: 2026-01-13
+last_update: 2026-03-17
 status: draft
 scope:
   summary: "RustDesk Betrieb & Troubleshooting (Homelab)."
@@ -41,4 +41,19 @@ cat /opt/rustdesk/data/id_ed25519.pub
 
 Wenn dein Router NAT‑Loopback blockiert, kann ein lokales DNS/Hosts Mapping helfen.
 
+## Neuer Laptop / neues Gerät ins Setup integrieren
+
+Der RustDesk‑Relay läuft auf **VM101 (management)** und ist unter der **Tailscale‑IP `100.124.9.7`** erreichbar. Diese Adresse ist **nur aus dem Tailnet** erreichbar – nicht aus dem normalen Internet oder über die FritzBox.
+
+**Ursache „kann nicht mit dem Netzwerk verbinden“:** Wenn du auf dem neuen Laptop nur RustDesk installiert und Relay `100.124.9.7` + Port `21115` + Key eingetragen hast, aber **Tailscale auf dem Laptop nicht installiert bzw. nicht im gleichen Tailnet** bist, kann der Laptop diese IP nicht erreichen. **Die FritzBox ist dabei in der Regel nicht schuld** – der Traffic soll ja über Tailscale laufen, nicht über deinen Router.
+
+**Vorgehen:**
+
+1. **Tailscale auf dem neuen Laptop installieren** (gleicher Tailscale‑Account wie VM101/VM105).
+   - Windows: https://tailscale.com/download/windows  
+   - Nach dem Login erscheint der Laptop im Admin‑Panel und bekommt eine `100.x.x.x` Adresse.
+2. **Verbindung prüfen:** `tailscale ping 100.124.9.7` (oder von Windows aus: „Tailscale“ im Startmenü → Status prüfen).
+3. **RustDesk** auf dem Laptop: ID/Relay `100.124.9.7`, Port `21115`, Key wie auf VM101 (`cat /opt/rustdesk/data/id_ed25519.pub`). Danach sollte die Verbindung zum Relay klappen.
+
+**Fazit:** Zuerst Tailscale auf dem neuen Gerät, dann RustDesk‑Relay. Ohne Tailscale ist `100.124.9.7` für den Laptop nicht erreichbar.
 

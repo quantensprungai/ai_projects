@@ -582,6 +582,10 @@ mkdir ~/.npm-global
 npm config set prefix '~/.npm-global'
 ```
 
+### RustDesk – Neuer Laptop / neues Gerät
+
+Damit ein neuer Laptop (oder anderes Gerät) den RustDesk‑Relay unter `100.124.9.7` nutzen kann, muss das Gerät **im gleichen Tailscale‑Tailnet** sein. Ohne Tailscale auf dem neuen Gerät ist die Adresse nicht erreichbar (nicht die FritzBox schuld). Schrittfolge: **`infrastructure/remote_access/rustdesk.md`** → Abschnitt „Neuer Laptop / neues Gerät“.
+
 ### RustDesk – Keypair / NAT Debug
 
 **Key anzeigen:**

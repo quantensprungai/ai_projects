@@ -17,6 +17,7 @@
 | Welche Theorien stecken dahinter? | `reference/inspirations.md` |
 | Story, UX, Zukunftsvision? | `reference/vision_and_story.md` |
 | Layer-Schemas, Descriptor-Spec? | `reference/schema_and_descriptor_specs.md` |
+| Phase 1 Engine-Integration pro System? | `reference/engine_integration_playbook.md` |
 | Struktur vs. Deskriptor vs. Seed, Kit-first, Ebenen? | `reference/structure_descriptor_seed.md` |
 | HD-Kit: Was steht in bodygraph-data/constants/hdkit? | `reference/hd_kit_structure_extraction.md` |
 | S5 E2E-Runbook (PDF → MinerU → LLM)? | `reference/s5_runbook.md` |
@@ -24,7 +25,7 @@
 
 ## Verwandte Orte
 
-- **Code:** `code/hd_saas_app/` → wird zu `code/inner_compass_app/`
+- **Code:** `code/inner_compass_app/` (Makerkit 3.1.3)
 - **Infrastruktur:** `infrastructure/spark/` (Worker, MinerU, LLM)
 - **Globale Meta:** `projects/_meta/`
 
@@ -34,7 +35,8 @@
 projects/inner_compass/
 ├── cursor/                 ← Cursor liest primär hier (max. 6–8 aktive Docs, siehe Doku-Regel)
 ├── reference/              ← Kontext: PRD, Entscheidungen, Ideen, Runbooks, Struktur-Specs
-├── system_descriptors/     ← 10 JSON-Dateien (HD, BaZi, Astro, ...)
+├── system_descriptors/     ← JSON-Deskriptoren pro System (u. a. HD, BaZi, Ziwei, Astro, …)
+├── system_structure/       ← Kataloge / Strukturbäume (z. B. ziwei_catalog_v0.json)
 ├── transfer/               ← Schema, Prompts (Import/Export-Specs)
 ├── 99_archive/             ← Alles aus hd_saas/ (nicht löschen, nicht referenzieren)
 └── README.md               ← Diese Datei

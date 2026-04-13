@@ -17,5 +17,5 @@ Hier liegen **Code-Repositories** (jeweils als eigenes Git-Repo), getrennt von d
 
 | Repo | Projekt | Docs |
 |------|---------|------|
-| `hd_saas_app/` (→ `inner_compass_app/`) | Inner Compass | `../../projects/inner_compass/` |
+| `inner_compass_app/` | Inner Compass | `../../projects/inner_compass/` |
 | `annas-archive-toolkit/` | Anna's Archive | `../../projects/annas_archive_toolkit/` |

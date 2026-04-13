@@ -22,20 +22,24 @@ Millennial/Gen-Z, spiritual-curious, bereits mit mindestens einem System in Ber�
 - **Eigenes Wording:** Drei Sprachebenen machen Weisheit alter Traditionen zugänglich ohne zu verflachen.
 - **Mandala als Signatur:** Visuell einzigartiger Fingerabdruck, sofort teilbar auf Social Media.
 
-## 4. Die 10 Lebensbereiche
+## 4. Die 12 Lebensbereiche
+
+> Revidiert 2026-03-31: Von 10→12 erweitert (siehe ergebnis_modelle.md §20d-rev).
 
 | # | Bereich | Kernfrage | Systemquellen |
 |---|---------|-----------|---------------|
 | 1 | Selbst & Identität | Wer bin ich im Kern? | HD: Typ+Autorität, BaZi: Day Stem, Astro: Sonne+ASC |
 | 2 | Liebe & Partnerschaft | Wie liebe ich? | HD: Composite, BaZi: Spouse Palace, Astro: Venus+7.Haus |
-| 3 | Sexualität & Intimität | Wie verbinde ich mich körperlich? | HD: Sakral+Intimität, BaZi: Peach Blossom, Astro: Mars+8.Haus |
-| 4 | Beziehungen & Community | Freundschaften, Zugehörigkeit | HD: Profil+soziale Kanäle, BaZi: Friends, Astro: 11.Haus |
+| 3 | Sexualität & Intimität | Wie verbinde ich mich körperlich? | HD: Sakral+Intimität, BaZi: Peach Blossom, Astro: 8.Haus (Intimität) |
+| 4 | Beziehungen & Community | Wie gestalte ich Zugehörigkeit? | HD: Profil+soziale Kanäle, BaZi: Friends, Astro: 11.Haus |
 | 5 | Beruf & Berufung | Was ist meine Arbeit? | HD: Profil+Kreuz, BaZi: Month Pillar, Astro: MC+10.Haus |
 | 6 | Familie & Zuhause | Wie gestalte ich Heimat? | HD: Environment, BaZi: Year Pillar, Astro: Mond+4.Haus |
 | 7 | Gesundheit & Körper | Was braucht mein Körper? | HD: PHS+Zentren, BaZi: Element-Balance, Astro: 6.Haus |
-| 8 | Geld & Ressourcen | Wie verdiene ich? | HD: Manifestation, BaZi: Wealth Element, Astro: 2.+8.Haus |
+| 8 | Geld & Ressourcen | Wie verdiene ich? | HD: Manifestation, BaZi: Wealth Element, Astro: 2.Haus |
 | 9 | Kreativität & Ausdruck | Was will durch mich? | HD: Kehlzentrum, BaZi: Output, Astro: 5.Haus |
-| 10 | Sinn & Spiritualität | Was ist das größere Bild? | HD: Kreuz, BaZi: Noblemen, Astro: 9.+12.Haus, Maya: Kin |
+| 10 | Sinn & Spiritualität | Was ist das größere Bild? | HD: Kreuz, BaZi: Noblemen, Astro: 9.Haus, Maya: Kin |
+| 11 | Austausch & Lernen 🆕 | Wie teile und verstehe ich? | Astro: 3.Haus, Jyotish: 3. Bhava, Ziwei: 兄弟宫 |
+| 12 | Wandlung & Erneuerung 🆕 | Was muss loslassen, damit Neues kommt? | Astro: 8.+12.Haus, Jyotish: 8.+12. Bhava |
 
 ## 5. Die fünf Datenschichten
 

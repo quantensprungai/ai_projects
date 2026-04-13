@@ -1,0 +1,87 @@
+{
+  "system_id": "ziwei",
+  "system_name": "Ziwei Doushu (Purple Star Astrology)",
+  "canonical_prefix": "ziwei.",
+  "input_format": "datetime",
+  "calendar_basis": "lunar_solar",
+  "element_types": [
+    "palace",
+    "star",
+    "frame",
+    "mutagen",
+    "brightness",
+    "horoscope_band"
+  ],
+  "identifier_rules": {
+    "palace": "iztro_locale_key — soulPalace, spousePalace, … (see engines.md §15.3)",
+    "star": "iztro_locale_key — ziweiMaj, tianjiMaj, …",
+    "frame": "five_elements_class_label",
+    "mutagen": "lu|quan|ke|ji",
+    "brightness": "wang|de|miao|ping|xian|bu"
+  },
+  "canonical_id_rules": {
+    "format": "ziwei.{element_type}.{element_id}",
+    "examples": [
+      "ziwei.palace.soulPalace",
+      "ziwei.palace.spousePalace",
+      "ziwei.star.ziweiMaj",
+      "ziwei.star.tianjiMaj"
+    ]
+  },
+  "term_mapping_rules": {
+    "schools": ["iztro_default", "zhongzhou", "plugin_configurable"],
+    "normalization": "iztro_internal_key",
+    "allow_unknown_terms": true
+  },
+  "kg_rules": {
+    "allowed_relation_types": [
+      "part_of",
+      "belongs_to",
+      "depends_on",
+      "amplifies",
+      "clashes_with",
+      "maps_to",
+      "flies_to"
+    ],
+    "node_types": [
+      "Palace",
+      "Major_Star",
+      "Minor_Star",
+      "Adjective_Star",
+      "Five_Elements_Frame",
+      "Mutagen"
+    ]
+  },
+  "dynamics_rules": {
+    "has_dynamics": true,
+    "dynamic_types": [
+      "decadal",
+      "annual",
+      "monthly",
+      "daily",
+      "hourly"
+    ],
+    "temporal_alignment": [
+      "decadal_cycle",
+      "annual_cycle",
+      "monthly_cycle",
+      "daily_cycle",
+      "hourly_cycle"
+    ]
+  },
+  "synthesis_rules": {
+    "default_style": "technical",
+    "allowed_styles": ["technical", "natural", "coaching"],
+    "wording_tone": "präzise, traditionell, optional mehrsprachig (zh)",
+    "language_defaults": ["de", "en", "zh"]
+  },
+  "interaction_rules": {
+    "supports_interactions": true,
+    "interaction_entities": ["palace", "star", "mutagen"]
+  },
+  "body_mechanics_support": false,
+  "hidden_expectations_support": false,
+  "relationship_dynamics_support": true,
+  "environment_fate_support": true,
+  "documentation_ref": "cursor/engines.md §15"
+}

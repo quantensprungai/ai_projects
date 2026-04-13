@@ -208,3 +208,89 @@ Kein Bias-Risiko: Jedes System baut eigene Wissensbasis auf. Cross-System-Mappin
 - **Default:** Qwen3-32B (multilingual, JSON/Structured Output, Apache-2.0)
 - **Alternative:** DeepSeek R1 8B (abliterated, weniger Filter)
 - Model-Wechsel: `IC_LLM_URL` Port/Modell ändern
+
+## 10. Neue Batch-Jobs (aus Gesamtinventur v0.5)
+
+Ergänzen die bestehende Pipeline um IC-spezifische Extraktion. Alle laufen als Worker-Jobs auf Spark.
+
+### tag_ic_metadata (Priorität: hoch)
+- **Input:** sys_interpretations (bestehende)
+- **Engine:** LLM
+- **Prompt:** "Ordne diese Interpretation den IC-Prozess-Dimensionen zu: ic_step (1–9), ic_depth (1–4), ic_brunnen_layer (1–4), ic_leiter_stufe (1–5), ic_grammatik, ic_register."
+- **Output:** `ic_tags`-Objekt im Interpretations-Payload (→ contracts.md §10)
+- **Abhängigkeit:** contracts.md §10 muss im Worker implementiert sein
+- **Wann:** Nach synthesize_node, vor Content-Delivery
+
+### extract_pattern_traps (Priorität: hoch)
+- **Input:** sys_interpretations aus 2+ Systemen × gleiche Domäne
+- **Engine:** LLM + deterministische Kombinatorik
+- **Methode:**
+  1. Alle Interpretationen pro Domäne sammeln (system-übergreifend)
+  2. Shadow-Dimensionen + Traps aus verschiedenen Systemen kreuzen
+  3. LLM: "Welche kombinatorische Falle entsteht wenn [HD shadow] + [BaZi clash] + [EG fixierung] zusammentreffen?"
+- **Output:** sys_dynamics (dynamic_type='trap', payload mit pattern_trap-Struktur)
+- **Abhängigkeit:** Cross-System-Mappings (P4) verbessern die Qualität, aber erste Traps auch ohne möglich
+
+### extract_reflexion_questions (Priorität: hoch)
+- **Input:** sys_interpretations (pro Element)
+- **Engine:** LLM
+- **Prompt:** "Formuliere eine offene, einladende Reflexionsfrage für dieses Element. Ton: nicht direktiv, neugierig. Format: 'Was passiert wenn...?' / 'Wo in deinem Leben...?' / 'Wie fühlt sich ... an?'"
+- **Output:** `ic_tags.ic_reflexion_frage` im Interpretations-Payload
+- **Qualitätsregel:** Fragen folgen dem IC-Prinzip "Kein neuer Guru" (P1)
+
+### extract_experiments (Priorität: mittel)
+- **Input:** sys_interpretations × process.trap × process.gift_activation
+- **Engine:** LLM
+- **Prompt:** "Entwirf ein konkretes 7-Tage-Experiment für dieses Element. Format: Was tun? Wie beobachten? Woran merke ich etwas?"
+- **Output:** `ic_tags.ic_experiment_seed` + erweitertes `process.experiment_seed`
+- **Qualitätsregel:** Experimente sind Einladungen, keine Anweisungen (P1 + P4)
+
+## 11. Echtzeit-Pipeline (NEU — nicht Batch)
+
+Separate Services neben dem bestehenden Batch-Worker. Laufen als eigene Prozesse.
+
+### Transit-Service
+- **Was:** Berechnet aktuelle Planetenpositionen und leitet daraus aktive Tore/Aspekte ab
+- **Engine:** pyswisseph (Echtzeit) → gleiche Logik wie Chart-Berechnung, aber für JETZT
+- **Cache:** 15-Minuten-TTL (Planetenpositionen ändern sich langsam)
+- **Output:** Aktive HD-Tore, aktive Astro-Aspekte, BaZi-Tages-/Monatspillar, Maya Wavespell-Tag
+- **Wo:** JETZT-Space + ZEIT-Space
+- **Technisch:** Python-Service auf Spark oder Edge Function auf Supabase
+
+### Overlay-Service
+- **Was:** Kombiniert statischen User-Chart × aktuelle Transite × KG-Interpretationen
+- **Engine:** LLM (on-demand) oder Template-basiert (für häufige Kombinationen)
+- **Input:** user_charts (statisch) + Transit-Service Output + sys_kg_nodes Lookup
+- **Output:** Personalisierter Overlay-Text (→ XVI.1 in Gesamtinventur: 3 Text-Modi)
+- **Beispiel:** "Die Sonne steht heute in Tor 41. Das aktiviert DEINEN Kanal 41-30 — das Thema Neuanfang ist für DICH gerade besonders lebendig."
+- **Cache:** Pro User × Transit-Kombination, 1 Stunde TTL
+
+### Konvergenz-Service
+- **Was:** Erkennt wenn 3+ Systeme gleichzeitig auf dieselbe Domäne zeigen
+- **Engine:** Deterministisch (Cross-System-Edges + aktive Transite + User-Chart)
+- **Methode:**
+  1. Aktive Chart-Elemente des Users → KG-Lookup → life_domain Tags
+  2. Aktive Transite → KG-Lookup → life_domain Tags
+  3. Zählen: Welche Domäne hat 3+ aktive Elemente aus verschiedenen Systemen?
+- **Output:** Top 1–3 Konvergenz-Highlights für JETZT-Space
+- **Cache:** Pro User, 15 Min TTL (an Transit-Service gekoppelt)
+
+## 12. NLP-Pipeline (NEU — ab v2)
+
+### Narrativ-Analyse
+- **Trigger:** User beantwortet offene Frage (Onboarding oder Reflexion)
+- **Input:** Freitext (1–5 Sätze)
+- **Engine:** LLM
+- **Output:**
+  - EG-Cluster-Hypothese (Bauch/Kopf/Herz + Subtyp-Tendenz)
+  - Aktuelle Phase-Schätzung (1–7)
+  - Emotionaler Zustand (reguliert / aktiviert / erstarrt)
+  - Thematische Domäne (welcher Lebensbereich steht im Fokus)
+- **Ziel:** Ergänzt Chart-basierte Ableitung, validiert oder korrigiert EG-Bridge
+
+### Stimmen-Erkennung (v3)
+- **Trigger:** User schreibt Reflexionstext in WERKSTATT
+- **Input:** Freitext (fortlaufend)
+- **Engine:** LLM
+- **Output:** "Welcher innere Teil spricht gerade?" (Kritiker, Macher, Kind, Helfer, ...)
+- **Feedback:** Sanfte Benennung im UI ("Du schreibst gerade sehr streng über dich. Kennst du diese Stimme?")
