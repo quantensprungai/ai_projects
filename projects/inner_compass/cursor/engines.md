@@ -835,7 +835,11 @@ Pro Chart werden **12 Palast-Nodes** plus **distinct Stern-Instanzen** (nach izt
 | `bazi.jiazi.*`                        | `bazi.jiazi.geng_wu`           | 六十甲子 (Katalog; Engine nutzt weiter `bazi.pillar.*.<pair>`) |
 | `bazi.twelve_state.*`                 | `bazi.twelve_state.changsheng` | 十二长生 (Katalog-Vokabular)                                   |
 | `bazi.xun.head.*`                     | `bazi.xun.head.jia_zi`         | 旬首-Referenz (6 × 甲子 … 甲寅)                                  |
+| `bazi.shensha.yima.*`                 | `bazi.shensha.yima.year.shen`  | 驿马-Ziel支 pro Säule (`getShensha().horses`)                   |
+| `bazi.shensha.kongwang.*`             | `bazi.shensha.kongwang.day.yin_mao` | 旬空两地支 pro Säule                                     |
+| `bazi.shensha.tianyi.*`               | `bazi.shensha.tianyi.year.chou_wei` | 天乙贵人 阳贵/阴贵 支 |
+| `bazi.shensha.wangxiang.*`           | `bazi.shensha.wangxiang.mu.wang` | 月令 旺相休囚死 je 五行 (`seasonPower`) |
 
-Katalog **`shensha_aux`:** Tabellen 驿马 / 天乙贵人 / 旺相休囚死 (Spiegel `@yhjs/bazi`), schema ≥ 1.2 — noch ohne eigene `bazi.shensha.*`-Nodes bis das Produkt sie braucht.
+Katalog **`shensha_aux`:** dieselbe Logik tabellarisch (schema ≥ 1.2); **`nodes[]`** spiegelt Chart-**神煞** aus `Bazi.getShensha()`.
 
-**Schritt 1–3:** wie Playbook — `extract:bazi-catalog`, `build:bazi-structure`, `validateBaziNodesAgainstCatalog` (prüft u. a. Pillar-/Luck-Paare gegen `sixty_jiazi`).
+**Schritt 1–3:** wie Playbook — `extract:bazi-catalog`, `build:bazi-structure`, `validateBaziNodesAgainstCatalog` (Pillar/Luck, `bazi.shensha.*`).
