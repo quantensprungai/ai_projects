@@ -1,0 +1,275 @@
+{
+  "meta": {
+    "step": 2,
+    "version": "0.1.0",
+    "description": "Jyotish D1 structure: levels + deterministic edges (rulership, exaltation, debilitation). Chart placements graha->rashi are runtime.",
+    "catalog_ref": "jyotish_catalog_v0.json",
+    "source": "pyjhora",
+    "generated_at": "2026-04-14T00:00:00.000Z"
+  },
+  "levels": [
+    {
+      "id": "lagna",
+      "label_en": "Ascendant",
+      "label_sa": "Lagna",
+      "description": "Birth ascendant — the rashi rising on the eastern horizon at birth time. Anchors the bhava system.",
+      "kit_refs": ["pyjhora rasi_chart: pid == 'L'"]
+    },
+    {
+      "id": "graha",
+      "label_en": "Planets",
+      "label_sa": "Graha",
+      "description": "9 Navagrahas (Surya..Ketu) + 3 outer planets (Uranus, Neptune, Pluto when _INCLUDE_URANUS_TO_PLUTO). Each has a rashi placement in D1.",
+      "kit_refs": ["pyjhora rasi_chart: pid 0..11", "catalog.grahas"]
+    },
+    {
+      "id": "rashi",
+      "label_en": "Zodiac Signs",
+      "label_sa": "Rāśi",
+      "description": "12 sidereal signs (Mesha..Meena). Each has a ruling graha. Grahas and Lagna occupy exactly one rashi in D1.",
+      "kit_refs": ["catalog.rashis"]
+    }
+  ],
+  "edges": [
+    {
+      "from": "jyotish.rasi.mesha",
+      "to": "jyotish.graha.mangala",
+      "relation_type": "ruled_by",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: rashi lordship"
+    },
+    {
+      "from": "jyotish.rasi.vrishabha",
+      "to": "jyotish.graha.shukra",
+      "relation_type": "ruled_by",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: rashi lordship"
+    },
+    {
+      "from": "jyotish.rasi.mithuna",
+      "to": "jyotish.graha.budha",
+      "relation_type": "ruled_by",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: rashi lordship"
+    },
+    {
+      "from": "jyotish.rasi.karka",
+      "to": "jyotish.graha.chandra",
+      "relation_type": "ruled_by",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: rashi lordship"
+    },
+    {
+      "from": "jyotish.rasi.simha",
+      "to": "jyotish.graha.surya",
+      "relation_type": "ruled_by",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: rashi lordship"
+    },
+    {
+      "from": "jyotish.rasi.kanya",
+      "to": "jyotish.graha.budha",
+      "relation_type": "ruled_by",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: rashi lordship"
+    },
+    {
+      "from": "jyotish.rasi.tula",
+      "to": "jyotish.graha.shukra",
+      "relation_type": "ruled_by",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: rashi lordship"
+    },
+    {
+      "from": "jyotish.rasi.vrischika",
+      "to": "jyotish.graha.mangala",
+      "relation_type": "ruled_by",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: rashi lordship"
+    },
+    {
+      "from": "jyotish.rasi.dhanu",
+      "to": "jyotish.graha.guru",
+      "relation_type": "ruled_by",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: rashi lordship"
+    },
+    {
+      "from": "jyotish.rasi.makara",
+      "to": "jyotish.graha.shani",
+      "relation_type": "ruled_by",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: rashi lordship"
+    },
+    {
+      "from": "jyotish.rasi.kumbha",
+      "to": "jyotish.graha.shani",
+      "relation_type": "ruled_by",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: rashi lordship"
+    },
+    {
+      "from": "jyotish.rasi.meena",
+      "to": "jyotish.graha.guru",
+      "relation_type": "ruled_by",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: rashi lordship"
+    },
+    {
+      "from": "jyotish.graha.surya",
+      "to": "jyotish.rasi.mesha",
+      "relation_type": "exalted_in",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: graha exaltation"
+    },
+    {
+      "from": "jyotish.graha.chandra",
+      "to": "jyotish.rasi.vrishabha",
+      "relation_type": "exalted_in",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: graha exaltation"
+    },
+    {
+      "from": "jyotish.graha.mangala",
+      "to": "jyotish.rasi.makara",
+      "relation_type": "exalted_in",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: graha exaltation"
+    },
+    {
+      "from": "jyotish.graha.budha",
+      "to": "jyotish.rasi.kanya",
+      "relation_type": "exalted_in",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: graha exaltation"
+    },
+    {
+      "from": "jyotish.graha.guru",
+      "to": "jyotish.rasi.karka",
+      "relation_type": "exalted_in",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: graha exaltation"
+    },
+    {
+      "from": "jyotish.graha.shukra",
+      "to": "jyotish.rasi.meena",
+      "relation_type": "exalted_in",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: graha exaltation"
+    },
+    {
+      "from": "jyotish.graha.shani",
+      "to": "jyotish.rasi.tula",
+      "relation_type": "exalted_in",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: graha exaltation"
+    },
+    {
+      "from": "jyotish.graha.rahu",
+      "to": "jyotish.rasi.vrishabha",
+      "relation_type": "exalted_in",
+      "scope": "intra_system",
+      "evidence_class": "B",
+      "source": "Parashara (tradition varies): Rahu exaltation"
+    },
+    {
+      "from": "jyotish.graha.ketu",
+      "to": "jyotish.rasi.vrischika",
+      "relation_type": "exalted_in",
+      "scope": "intra_system",
+      "evidence_class": "B",
+      "source": "Parashara (tradition varies): Ketu exaltation"
+    },
+    {
+      "from": "jyotish.graha.surya",
+      "to": "jyotish.rasi.tula",
+      "relation_type": "debilitated_in",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: graha debilitation"
+    },
+    {
+      "from": "jyotish.graha.chandra",
+      "to": "jyotish.rasi.vrischika",
+      "relation_type": "debilitated_in",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: graha debilitation"
+    },
+    {
+      "from": "jyotish.graha.mangala",
+      "to": "jyotish.rasi.karka",
+      "relation_type": "debilitated_in",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: graha debilitation"
+    },
+    {
+      "from": "jyotish.graha.budha",
+      "to": "jyotish.rasi.meena",
+      "relation_type": "debilitated_in",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: graha debilitation"
+    },
+    {
+      "from": "jyotish.graha.guru",
+      "to": "jyotish.rasi.makara",
+      "relation_type": "debilitated_in",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: graha debilitation"
+    },
+    {
+      "from": "jyotish.graha.shukra",
+      "to": "jyotish.rasi.kanya",
+      "relation_type": "debilitated_in",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: graha debilitation"
+    },
+    {
+      "from": "jyotish.graha.shani",
+      "to": "jyotish.rasi.mesha",
+      "relation_type": "debilitated_in",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Parashara: graha debilitation"
+    },
+    {
+      "from": "jyotish.graha.rahu",
+      "to": "jyotish.rasi.vrischika",
+      "relation_type": "debilitated_in",
+      "scope": "intra_system",
+      "evidence_class": "B",
+      "source": "Parashara (tradition varies): Rahu debilitation"
+    },
+    {
+      "from": "jyotish.graha.ketu",
+      "to": "jyotish.rasi.vrishabha",
+      "relation_type": "debilitated_in",
+      "scope": "intra_system",
+      "evidence_class": "B",
+      "source": "Parashara (tradition varies): Ketu debilitation"
+    }
+  ]
+}

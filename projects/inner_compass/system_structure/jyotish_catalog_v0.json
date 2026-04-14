@@ -1,0 +1,245 @@
+{
+  "meta": {
+    "step": 1,
+    "schema_version": "1.0.0",
+    "description": "Jyotish D1 (Rasi) K1/K2 inventory: 9 Navagrahas + 3 outer planets (PyJHora default), 12 Rashis, Lagna. Not a chart instance.",
+    "source": "pyjhora",
+    "pyjhora_config": "_INCLUDE_URANUS_TO_PLUTO = True (upstream default)",
+    "generated_at": "2026-04-14T00:00:00.000Z"
+  },
+  "grahas": [
+    {
+      "index": 0,
+      "key": "surya",
+      "label_sa": "Sūrya",
+      "label_en": "Sun",
+      "category": "navagraha",
+      "canonical_id": "jyotish.graha.surya"
+    },
+    {
+      "index": 1,
+      "key": "chandra",
+      "label_sa": "Chandra",
+      "label_en": "Moon",
+      "category": "navagraha",
+      "canonical_id": "jyotish.graha.chandra"
+    },
+    {
+      "index": 2,
+      "key": "mangala",
+      "label_sa": "Maṅgala",
+      "label_en": "Mars",
+      "category": "navagraha",
+      "canonical_id": "jyotish.graha.mangala"
+    },
+    {
+      "index": 3,
+      "key": "budha",
+      "label_sa": "Budha",
+      "label_en": "Mercury",
+      "category": "navagraha",
+      "canonical_id": "jyotish.graha.budha"
+    },
+    {
+      "index": 4,
+      "key": "guru",
+      "label_sa": "Guru",
+      "label_en": "Jupiter",
+      "category": "navagraha",
+      "canonical_id": "jyotish.graha.guru"
+    },
+    {
+      "index": 5,
+      "key": "shukra",
+      "label_sa": "Śukra",
+      "label_en": "Venus",
+      "category": "navagraha",
+      "canonical_id": "jyotish.graha.shukra"
+    },
+    {
+      "index": 6,
+      "key": "shani",
+      "label_sa": "Śani",
+      "label_en": "Saturn",
+      "category": "navagraha",
+      "canonical_id": "jyotish.graha.shani"
+    },
+    {
+      "index": 7,
+      "key": "rahu",
+      "label_sa": "Rāhu",
+      "label_en": "North Node",
+      "category": "navagraha",
+      "canonical_id": "jyotish.graha.rahu"
+    },
+    {
+      "index": 8,
+      "key": "ketu",
+      "label_sa": "Ketu",
+      "label_en": "South Node",
+      "category": "navagraha",
+      "canonical_id": "jyotish.graha.ketu"
+    },
+    {
+      "index": 9,
+      "key": "uranus",
+      "label_sa": "Uranus",
+      "label_en": "Uranus",
+      "category": "outer_planet",
+      "canonical_id": "jyotish.graha.uranus"
+    },
+    {
+      "index": 10,
+      "key": "neptune",
+      "label_sa": "Neptune",
+      "label_en": "Neptune",
+      "category": "outer_planet",
+      "canonical_id": "jyotish.graha.neptune"
+    },
+    {
+      "index": 11,
+      "key": "pluto",
+      "label_sa": "Pluto",
+      "label_en": "Pluto",
+      "category": "outer_planet",
+      "canonical_id": "jyotish.graha.pluto"
+    }
+  ],
+  "rashis": [
+    {
+      "index": 0,
+      "key": "mesha",
+      "label_sa": "Meṣa",
+      "label_en": "Aries",
+      "ruler": "mangala",
+      "canonical_id": "jyotish.rasi.mesha"
+    },
+    {
+      "index": 1,
+      "key": "vrishabha",
+      "label_sa": "Vṛṣabha",
+      "label_en": "Taurus",
+      "ruler": "shukra",
+      "canonical_id": "jyotish.rasi.vrishabha"
+    },
+    {
+      "index": 2,
+      "key": "mithuna",
+      "label_sa": "Mithuna",
+      "label_en": "Gemini",
+      "ruler": "budha",
+      "canonical_id": "jyotish.rasi.mithuna"
+    },
+    {
+      "index": 3,
+      "key": "karka",
+      "label_sa": "Karka",
+      "label_en": "Cancer",
+      "ruler": "chandra",
+      "canonical_id": "jyotish.rasi.karka"
+    },
+    {
+      "index": 4,
+      "key": "simha",
+      "label_sa": "Siṃha",
+      "label_en": "Leo",
+      "ruler": "surya",
+      "canonical_id": "jyotish.rasi.simha"
+    },
+    {
+      "index": 5,
+      "key": "kanya",
+      "label_sa": "Kanyā",
+      "label_en": "Virgo",
+      "ruler": "budha",
+      "canonical_id": "jyotish.rasi.kanya"
+    },
+    {
+      "index": 6,
+      "key": "tula",
+      "label_sa": "Tulā",
+      "label_en": "Libra",
+      "ruler": "shukra",
+      "canonical_id": "jyotish.rasi.tula"
+    },
+    {
+      "index": 7,
+      "key": "vrischika",
+      "label_sa": "Vṛścika",
+      "label_en": "Scorpio",
+      "ruler": "mangala",
+      "canonical_id": "jyotish.rasi.vrischika"
+    },
+    {
+      "index": 8,
+      "key": "dhanu",
+      "label_sa": "Dhanu",
+      "label_en": "Sagittarius",
+      "ruler": "guru",
+      "canonical_id": "jyotish.rasi.dhanu"
+    },
+    {
+      "index": 9,
+      "key": "makara",
+      "label_sa": "Makara",
+      "label_en": "Capricorn",
+      "ruler": "shani",
+      "canonical_id": "jyotish.rasi.makara"
+    },
+    {
+      "index": 10,
+      "key": "kumbha",
+      "label_sa": "Kumbha",
+      "label_en": "Aquarius",
+      "ruler": "shani",
+      "canonical_id": "jyotish.rasi.kumbha"
+    },
+    {
+      "index": 11,
+      "key": "meena",
+      "label_sa": "Mīna",
+      "label_en": "Pisces",
+      "ruler": "guru",
+      "canonical_id": "jyotish.rasi.meena"
+    }
+  ],
+  "lagna": {
+    "key": "lagna",
+    "label_sa": "Lagna",
+    "label_en": "Ascendant",
+    "canonical_id": "jyotish.lagna"
+  },
+  "graha_dignities": {
+    "exaltation": {
+      "surya": "mesha",
+      "chandra": "vrishabha",
+      "mangala": "makara",
+      "budha": "kanya",
+      "guru": "karka",
+      "shukra": "meena",
+      "shani": "tula",
+      "rahu": "vrishabha",
+      "ketu": "vrischika"
+    },
+    "debilitation": {
+      "surya": "tula",
+      "chandra": "vrischika",
+      "mangala": "karka",
+      "budha": "meena",
+      "guru": "makara",
+      "shukra": "kanya",
+      "shani": "mesha",
+      "rahu": "vrischika",
+      "ketu": "vrishabha"
+    },
+    "own_sign": {
+      "surya": ["simha"],
+      "chandra": ["karka"],
+      "mangala": ["mesha", "vrischika"],
+      "budha": ["mithuna", "kanya"],
+      "guru": ["dhanu", "meena"],
+      "shukra": ["vrishabha", "tula"],
+      "shani": ["makara", "kumbha"]
+    }
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "meta": {
+    "step": 2,
+    "version": "0.1.0",
+    "description": "HD structure: levels + deterministic edges (type->strategy, gate->center, gate_pair->channel). Chart placements are runtime.",
+    "catalog_ref": "hd_catalog_v0.json",
+    "source": "geodetheseeker/human-design-py",
+    "generated_at": "2026-04-14T00:00:00.000Z"
+  },
+  "levels": [
+    {
+      "id": "type",
+      "label_en": "Type",
+      "description": "5 energy types: Generator, Manifesting Generator, Projector, Manifestor, Reflector. Determined by defined motors and throat connection.",
+      "kit_refs": ["geodetheseeker: result.type"]
+    },
+    {
+      "id": "authority",
+      "label_en": "Inner Authority",
+      "description": "Decision-making strategy based on defined centers hierarchy.",
+      "kit_refs": ["geodetheseeker: result.authority"]
+    },
+    {
+      "id": "profile",
+      "label_en": "Profile",
+      "description": "12 profiles (6 lines of personality Sun x design Sun). Defines life theme and role.",
+      "kit_refs": ["geodetheseeker: result.profile"]
+    },
+    {
+      "id": "center",
+      "label_en": "Centers",
+      "description": "9 energy centers (Head, Ajna, Throat, G, Heart, Spleen, Solar Plexus, Sacral, Root). Defined or open.",
+      "kit_refs": ["geodetheseeker: result.defined_centers, result.open_centers"]
+    },
+    {
+      "id": "gate",
+      "label_en": "Gates",
+      "description": "64 gates (I Ching hexagram lines mapped to the bodygraph). Each gate belongs to exactly one center.",
+      "kit_refs": ["geodetheseeker: result.personality_gates, result.design_gates"]
+    },
+    {
+      "id": "line",
+      "label_en": "Lines",
+      "description": "6 lines per gate (384 total). Personality and design planetary positions determine gate.line activation.",
+      "kit_refs": ["geodetheseeker: gate.line"]
+    },
+    {
+      "id": "channel",
+      "label_en": "Channels",
+      "description": "36 channels connecting two gates across centers. A channel is active when both its gates are activated.",
+      "kit_refs": ["derived from active gates"]
+    }
+  ],
+  "edges": [
+    {
+      "from": "hd.type.generator",
+      "to": "hd.strategy.wait_to_respond",
+      "relation_type": "has_strategy",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Ra Uru Hu: HD type mechanics"
+    },
+    {
+      "from": "hd.type.manifesting_generator",
+      "to": "hd.strategy.wait_to_respond",
+      "relation_type": "has_strategy",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Ra Uru Hu: HD type mechanics"
+    },
+    {
+      "from": "hd.type.projector",
+      "to": "hd.strategy.wait_for_invitation",
+      "relation_type": "has_strategy",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Ra Uru Hu: HD type mechanics"
+    },
+    {
+      "from": "hd.type.manifestor",
+      "to": "hd.strategy.inform",
+      "relation_type": "has_strategy",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Ra Uru Hu: HD type mechanics"
+    },
+    {
+      "from": "hd.type.reflector",
+      "to": "hd.strategy.wait_lunar_cycle",
+      "relation_type": "has_strategy",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Ra Uru Hu: HD type mechanics"
+    },
+    {
+      "from": "hd.type.generator",
+      "to": "hd.not_self_theme.frustration",
+      "relation_type": "has_not_self",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Ra Uru Hu: HD type mechanics"
+    },
+    {
+      "from": "hd.type.manifesting_generator",
+      "to": "hd.not_self_theme.frustration",
+      "relation_type": "has_not_self",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Ra Uru Hu: HD type mechanics"
+    },
+    {
+      "from": "hd.type.projector",
+      "to": "hd.not_self_theme.bitterness",
+      "relation_type": "has_not_self",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Ra Uru Hu: HD type mechanics"
+    },
+    {
+      "from": "hd.type.manifestor",
+      "to": "hd.not_self_theme.anger",
+      "relation_type": "has_not_self",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Ra Uru Hu: HD type mechanics"
+    },
+    {
+      "from": "hd.type.reflector",
+      "to": "hd.not_self_theme.disappointment",
+      "relation_type": "has_not_self",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Ra Uru Hu: HD type mechanics"
+    },
+    {
+      "from": "hd.type.generator",
+      "to": "hd.signature.satisfaction",
+      "relation_type": "has_signature",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Ra Uru Hu: HD type mechanics"
+    },
+    {
+      "from": "hd.type.manifesting_generator",
+      "to": "hd.signature.satisfaction",
+      "relation_type": "has_signature",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Ra Uru Hu: HD type mechanics"
+    },
+    {
+      "from": "hd.type.projector",
+      "to": "hd.signature.success",
+      "relation_type": "has_signature",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Ra Uru Hu: HD type mechanics"
+    },
+    {
+      "from": "hd.type.manifestor",
+      "to": "hd.signature.peace",
+      "relation_type": "has_signature",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Ra Uru Hu: HD type mechanics"
+    },
+    {
+      "from": "hd.type.reflector",
+      "to": "hd.signature.surprise",
+      "relation_type": "has_signature",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Ra Uru Hu: HD type mechanics"
+    }
+  ]
+}
