@@ -1,8 +1,8 @@
 # Inner Compass — Status & Nächste Schritte
 
-> **Stand:** 2026-04-10 | Bei jedem Meilenstein aktualisieren!
+> **Stand:** 2026-04-13 | Bei jedem Meilenstein aktualisieren!
 >
-> **Wo wir sind:** Phase 0 erledigt. Phase 1 — Ziwei (iztro) und BaZi (@yhjs) mit Contract/IDs; **Jyotish:** Python-Microservice `services/jyotish/` mit D1 (PyJHora), Docker-Deps inkl. `pytz`/`geocoder`/`geopy` (siehe README dort). Nächster Schritt: App-Anbindung + ggf. weitere Vargas.
+> **Wo wir sind:** Phase 0 erledigt. Phase 1 — Ziwei (iztro) und BaZi (@yhjs) mit Contract/IDs; **Jyotish:** Microservice `services/jyotish/` mit D1 (PyJHora), Docker-E2E verifiziert (`placeholder: false`, 13 Einträge in `raw.bodies`). Nächster Schritt: App-Anbindung + Playbook (Katalog/Struktur/Tests) + ggf. weitere Vargas.
 
 ## Was EXISTIERT und FUNKTIONIERT
 
@@ -15,8 +15,9 @@
 ### Jyotish Microservice (Code-Repo) — Phase 1a ✅
 - Pfad: `code/inner_compass_app/services/jyotish/` — FastAPI, `POST /calculate` mit `BirthData` wie `@ic/engines`
 - **D1 (Rāśi):** PyJHora `rasi_chart` (Swiss Ephemeris via `pyswisseph`)
-- **Docker:** `python:3.12-slim` + `build-essential` (Build `pyswisseph`); `requirements.txt` enthält u. a. explizit **`pytz`**, **`geocoder`**, **`geopy`** — PyJHora listet nicht alle Laufzeit-Imports als pip-Dependencies; ohne diese Module bricht die Berechnung mit ImportError ab
-- **Noch offen:** Aufruf aus Next.js (Env-URL), KG-Struktur/Deskriptor-Jyotish wie bei Ziwei/BaZi, weitere Charts (D9, Dasha, …)
+- **Docker:** `python:3.12-slim` + `build-essential` (Build `pyswisseph`); `requirements.txt` enthält u. a. explizit **`pytz`**, **`geocoder`**, **`geopy`**, **`timezonefinder`**, **`python-dateutil`** — PyJHora listet nicht alle Laufzeit-Imports als pip-Dependencies; ohne diese Module bricht die Berechnung mit ImportError ab
+- **E2E (2026-04-13):** Image bauen, Container starten, nach ~25 s `GET /health` + `POST /calculate` (Test: Berlin 1990-01-15 12:30) → `raw.placeholder: false`, `raw.bodies`: 13 Einträge, `raw.chart: D1`, `nodes` mit `jyotish.lagna` / `jyotish.rasi.*` / `jyotish.graha.*`
+- **Noch offen:** Aufruf aus Next.js (Env-URL), Playbook-Artefakte (`jyotish_catalog_v0.json`, …) wie Ziwei/BaZi, weitere Charts (D9, Dasha, …)
 
 ### Philosophische Konsolidierung ✅ (Z-Dokumente)
 - Z1 Gesamtwerk v0.5, Z2 User-Journey v0.1, Z3 Modell-Referenz v0.4, Glossar v1.2
