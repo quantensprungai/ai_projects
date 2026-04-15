@@ -156,7 +156,7 @@ Next.js App (Makerkit)
 - Spike: @swisseph/node in Next.js API Route — funktioniert WASM auf Vercel/Serverless?
 - Spike: CircularNatalHoroscopeJS vs. @swisseph/node — Präzisionsvergleich
 - Swiss Ephemeris Lizenz: Kaufen ($600 CHF) oder AGPL-isolierter Service?
-- Kann HD komplett in TS gelöst werden (geodetheseeker-Port) oder braucht es Python?
+- ~~Kann HD komplett in TS gelöst werden?~~ → Entschieden: dturkuler (Python, GPL-3.0 isoliert in Docker)
 
 ---
 
@@ -179,7 +179,7 @@ Next.js App (Makerkit)
 
 | System                  | Empfohlener Kit                                          | Lizenz         | Sprache          | K1+K2 aus Kit? | Prio |
 | ----------------------- | -------------------------------------------------------- | -------------- | ---------------- | -------------- | ---- |
-| **Human Design**        | hdkit + geodetheseeker (Port)                            | MIT            | JS + Python(MIT) | ~60%           | 1    |
+| **Human Design**        | **dturkuler/humandesign_api** (vendored, Docker-isoliert) | GPL-3.0 isoliert | Python (FastAPI) | ~95%           | 1    |
 | **Ziwei Doushu** 🆕     | **iztro** (SylarLong)                                    | MIT ✅          | **TS**           | ~75%           | 2    |
 | **BaZi**                | **@yhjs/bazi** (primär) + alvamind (Fallback)            | MIT ✅          | **TS**           | ~65%           | 3    |
 | **Westl. Astrologie**   | CircularNatalHoroscopeJS (TS) ODER pyswisseph (Python)   | Unlicense / 💰 | TS / Python      | ~70%           | 4    |
@@ -215,14 +215,14 @@ Diese berechnen kein persönliches Chart, sondern beschreiben das Terrain über 
 
 | Kit                                | Sprache          | Lizenz     | Tiefe                                                                             | Status                          |
 | ---------------------------------- | ---------------- | ---------- | --------------------------------------------------------------------------------- | ------------------------------- |
-| **hdkit** (jdempcy)                | JS/Node          | MIT ✅      | Gate/Kanal/Typ/Profil/Authority. KEIN Tone/Color/Base. Braucht externe Ephemeris. | Geklont: `packages/engines/hd/` |
-| **geodetheseeker/human-design-py** | Python           | MIT ✅      | Komplett bis Base (Gate→Line→Color→Tone→Base). pyswisseph-basiert.                | Nicht geklont                   |
-| **MicFell/human_design_engine**    | Python           | GPL-3.0 ⚠️ | Komplett bis Base.                                                                | Lizenz-Problem                  |
-| **dturkuler/humandesign_api**      | Python (FastAPI) | GPL-3.0 ⚠️ | Komplett, REST-API fertig.                                                        | Lizenz-Problem                  |
+| **dturkuler/humandesign_api** ⭐    | Python (FastAPI) | GPL-3.0    | Komplett: alle 13 Layer + Composite + Transit + BodyGraph. Beste Tiefe.           | **AKTIV** — vendored in `services/hd/` |
+| **hdkit** (jdempcy)                | JS/Node          | MIT ✅      | Gate/Kanal/Typ/Profil/Authority. KEIN Tone/Color/Base. Braucht externe Ephemeris. | Ersetzt durch dturkuler         |
+| **geodetheseeker/human-design-py** | Python           | MIT ✅      | Komplett bis Base (Gate→Line→Color→Tone→Base). pyswisseph-basiert.                | Ersetzt durch dturkuler         |
+| **MicFell/human_design_engine**    | Python           | GPL-3.0 ⚠️ | Komplett bis Base.                                                                | Nicht verwendet                 |
 | **SharpAstrology**                 | C#               | ?          | Alternative HD-Engine.                                                            | Nicht evaluiert                 |
 
 
-**Empfehlung:** hdkit (JS, MIT) für Typ/Profil/Gates/Channels + **geodetheseeker** (Python, MIT) als Referenz/Port für die tieferen Ebenen (Color/Tone/Base). Langfristig: Custom TS-Engine mit @swisseph/node für alle 13 HD-Ebenen.
+**Entscheidung (April 2026):** dturkuler/humandesign_api als einzige HD-Engine. GPL-3.0 ist konform, da der Code nur serverseitig im Docker-Container läuft (SaaS — keine Distribution). Vendored in `services/hd/vendored/humandesign_api/`, Adapter-Layer (`hd_adapter.py`) transformiert Output in unser canonical-node Schema. K2-Daten (192 Crosses, 8 Awareness Streams) extrahiert und in `hd_catalog_v0.json` archiviert (evidence_class A).
 
 **K1–K4 Aufschlüsselung:**
 

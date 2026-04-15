@@ -1,9 +1,11 @@
 {
   "meta": {
     "step": 1,
-    "schema_version": "2.0.0",
-    "description": "Human Design K1/K2 full inventory: Types (5), Authorities (9), Profiles (12), Centers (9), Gates (64), Channels (36), Lines (6), Colors (6), Tones (6), Bases (5), Definitions (5), Variables (4 arrows), Incarnation Crosses (192). Not a chart instance.",
-    "source": "geodetheseeker/human-design-py + IC extensions (Color/Tone/Base/Variable/Cross)",
+    "schema_version": "3.0.0",
+    "description": "Human Design K1/K2 full inventory: Types (5), Authorities (9), Profiles (12), Centers (9), Gates (64), Channels (36), Lines (6), Colors (6), Tones (6), Bases (5), Definitions (5), Variables (4 arrows), Incarnation Crosses (192), Awareness Streams (8). Not a chart instance.",
+    "source": "dturkuler/humandesign_api (GPL-3.0) — K2 constants extracted and verified against MicFell/human_design_engine",
+    "evidence_class": "A",
+    "evidence_note": "All K2 data extracted directly from dturkuler hd_constants.py (v3.4.1). Variable logic (Tones of Sun+Node) confirmed independently by 2 kits (dturkuler + MicFell).",
     "generated_at": "2026-04-14T00:00:00.000Z"
   },
   "types": [
@@ -198,10 +200,10 @@
     { "num": 5, "theme": "Heretic", "canonical_id": "hd.base_def.5" }
   ],
   "variables": [
-    { "key": "digestion", "label_en": "Digestion / Diet", "position": "top_left", "source": "design_sun_color", "canonical_id": "hd.variable_def.digestion" },
-    { "key": "environment", "label_en": "Environment", "position": "top_right", "source": "design_sun_tone", "canonical_id": "hd.variable_def.environment" },
-    { "key": "perspective", "label_en": "Perspective / View", "position": "bottom_left", "source": "personality_sun_color", "canonical_id": "hd.variable_def.perspective" },
-    { "key": "motivation", "label_en": "Motivation", "position": "bottom_right", "source": "personality_sun_tone", "canonical_id": "hd.variable_def.motivation" }
+    { "key": "digestion", "label_en": "Digestion / Diet", "position": "top_left", "source": "design_sun_tone", "aspect": "Design (Brain)", "left_type": "Active", "right_type": "Passive", "canonical_id": "hd.variable_def.digestion" },
+    { "key": "environment", "label_en": "Environment", "position": "bottom_left", "source": "design_node_tone", "aspect": "Design (Body)", "left_type": "Observed", "right_type": "Observer", "canonical_id": "hd.variable_def.environment" },
+    { "key": "motivation", "label_en": "Motivation", "position": "top_right", "source": "personality_sun_tone", "aspect": "Personality (Mind)", "left_type": "Strategic", "right_type": "Receptive", "canonical_id": "hd.variable_def.motivation" },
+    { "key": "perspective", "label_en": "Perspective / View", "position": "bottom_right", "source": "personality_node_tone", "aspect": "Personality (View)", "left_type": "Focused", "right_type": "Peripheral", "canonical_id": "hd.variable_def.perspective" }
   ],
   "circuits": [
     { "key": "collective_logic", "label_en": "Collective Logic (Understanding)", "canonical_id": "hd.circuit.collective_logic" },
@@ -217,8 +219,22 @@
     { "key": "juxtaposition", "label_en": "Juxtaposition Cross", "profiles": ["4_1"] },
     { "key": "left_angle", "label_en": "Left Angle Cross", "profiles": ["5_1","5_2","6_2","6_3"] }
   ],
+  "awareness_streams": [
+    { "key": "taste", "center": "spleen", "gates": [58, 18, 48, 16], "canonical_id": "hd.awareness_stream.taste" },
+    { "key": "intuition", "center": "spleen", "gates": [38, 28, 57, 20], "canonical_id": "hd.awareness_stream.intuition" },
+    { "key": "instinct", "center": "spleen", "gates": [54, 32, 44, 26], "canonical_id": "hd.awareness_stream.instinct" },
+    { "key": "feeling", "center": "solar_plexus", "gates": [30, 55, 37, 22], "canonical_id": "hd.awareness_stream.feeling" },
+    { "key": "emotion", "center": "solar_plexus", "gates": [41, 39, 36, 6], "canonical_id": "hd.awareness_stream.emotion" },
+    { "key": "desire", "center": "solar_plexus", "gates": [49, 19, 55, 39], "canonical_id": "hd.awareness_stream.desire" },
+    { "key": "think", "center": "ajna", "gates": [64, 47, 11, 56], "canonical_id": "hd.awareness_stream.think" },
+    { "key": "understand", "center": "ajna", "gates": [63, 4, 17, 62], "canonical_id": "hd.awareness_stream.understand" }
+  ],
+  "incarnation_crosses_note": "64 entries (one per Personality Sun Gate). Each contains RAC, JC, LAC names. Total 192 unique crosses. Extracted from dturkuler CROSS_DB.",
+  "incarnation_crosses": "SEE_FILE:hd_crosses_extracted.json",
   "gates_count": 64,
   "channels_count": 36,
+  "crosses_count": 192,
+  "awareness_streams_count": 8,
   "lines_per_gate": 6,
   "colors_per_line": 6,
   "tones_per_color": 6,

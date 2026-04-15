@@ -50,4 +50,4 @@ projects/inner_compass/
 
 ## Status
 
-Pre-Launch. Pipeline funktioniert end-to-end für Human Design. Schema-Migration (`hd_*` → `sys_*`) steht an. Details: `cursor/status.md`.
+Pre-Launch. Engines: Ziwei (iztro), BaZi (@yhjs), Jyotish (PyJHora), HD (dturkuler — 13-Layer-Tiefe + Composite/Transit). Schema-Migration (`hd_*` → `sys_*`) steht an. Details: `cursor/status.md`.
