@@ -185,7 +185,7 @@ Next.js App (Makerkit)
 | **Westl. Astrologie**   | CircularNatalHoroscopeJS (TS) ODER pyswisseph (Python)   | Unlicense / 💰 | TS / Python      | ~70%           | 4    |
 | **Maya Tzolkin**        | tzolkin-calendar oder TS-Port                            | MIT            | Python/TS        | ~80%           | 5    |
 | **Jyotish**             | PyJHora (AGPL, Microservice) + VedAstro.Python (MIT, KP) | ⚠️ AGPL + MIT  | Python           | ~65%           | 6    |
-| **Gene Keys**           | Kein eigener Calc (= HD-Positionen + Lookup)             | —              | —                | ~10% (©!)      | 7    |
+| **Gene Keys**           | Shared K1 mit HD (Ephemeris), eigenes K2 (Shadow/Gift/Siddhi, Codon Rings, Sequences) | ©-geschützt    | TS (Lookup)      | ~10% (©!)      | 7    |
 | **Enneagramm**          | GitHub JSON-Strukturen                                   | Open Source    | —                | ~50%           | 8    |
 | **Numerologie**         | Eigene TS-Implementierung                                | —              | TS               | ~40%           | 9    |
 | **Nine Star Ki / Mewa** | Kein Kit nötig (~20 Zeilen Modulo-9)                     | —              | TS               | ~90%           | 10   |
@@ -237,9 +237,11 @@ Diese berechnen kein persönliches Chart, sondern beschreiben das Terrain über 
 |                          | ✅ Inkarnationskreuze (Struktur)       |                                         |                                         |
 
 
-**⚠️ Gene Keys:** Schatten/Gabe/Siddhi je Gate sind urheberrechtlich geschützt (Richard Rudd). Nur Paraphrase oder eigene Ableitung möglich.
+**⚠️ Gene Keys:** Eigenständiges System (nicht nur "HD mit anderer Sprache"). Shared K1 mit HD, eigenes K2 (Shadow/Gift/Siddhi, Codon Rings, Sequences). Inhalte ©-geschützt (Richard Rudd). Siehe §6.7.
 
-**Literatur:** Ra Uru Hu: The Definitive Book of HD | Lynda Bunnell: Dictionary of HD | Karen Curry Parker: Understanding HD
+**HD-Schulen (Jovian Archive, Quantum HD, 64Keys, Parkyn):** Gleicher K1+K2 Stammbaum, unterschiedliche K3/K4-Interpretation. Modelliert als `tradition`-Tag, nicht als separate Systeme. Siehe §6.7b.
+
+**Literatur:** Ra Uru Hu: The Definitive Book of HD | Lynda Bunnell: Dictionary of HD | Karen Curry Parker: Understanding HD | Richard Rudd: Gene Keys (©)
 
 **Ziel-Nodes:** ~~9 Center + 64 Gates + 384 Lines + 6 Colors + 6 Tones + 5 Bases + 36 Channels + 5 Types + 12 Profiles + 192 Crosses = **~~700+ Nodes**
 
@@ -400,16 +402,54 @@ Ziwei Doushu ist das technisch ausgefeilteste chinesische System — strukturell
 
 ---
 
-### 6.7 Gene Keys
+### 6.7 Gene Keys — Eigenständiges System (nicht nur "HD-Interpretation")
 
+**Wichtige Unterscheidung:** Gene Keys ist KEIN HD-Derivat mit anderer Sprache. Es teilt nur die K1-Berechnung (Ephemeris-Positionen → Gate-Zuordnung) mit HD. Darüber hinaus hat Gene Keys **eigene K2-Strukturen**, die in HD nicht existieren:
 
-| Aspekt           | Detail                                                                                                                                                                    |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Engine           | Kein eigenständiger Calculator — nutzt identische Planetenpositionen wie HD                                                                                               |
-| Methode          | pyswisseph/@swisseph/node + Lookup-Tabelle (64 Hexagramme auf 360° Zodiak)                                                                                                |
-| Output           | 64 Gene Keys × 3 Frequenzen (Shadow/Gift/Siddhi) × Sphären                                                                                                                |
-| **⚠️ Copyright** | Gene Keys Inhalte (Schatten/Gabe/Siddhi) sind urheberrechtlich geschützt (Richard Rudd). Nur Paraphrase oder eigene Ableitung. K4 = ausschließlich eigene Interpretation. |
+| Aspekt | Gene Keys | HD-Äquivalent |
+|--------|-----------|---------------|
+| **Gate-Positionen (K1)** | Identisch — selbe Ephemeris | Identisch |
+| **Shadow → Gift → Siddhi** | 64 × 3 Frequenzbänder = 192 Nodes (eigenes K2) | Gibt es nicht |
+| **Golden Path Sequences** | Activation, Venus, Pearl (eigene Berechnungslogik) | Kein Äquivalent |
+| **Codon Rings** | 21 Aminosäure-Gruppierungen (eigenes K2) | Circuits (7, anders gruppiert) |
+| **Programming Partners** | Gate-Paare (teilweise überlappend) | Channels (36, nicht identisch) |
+| **Types, Authority, Profile** | Existieren NICHT in Gene Keys | Kernkonzepte |
+| **Variable/Arrows** | Existieren NICHT in Gene Keys | 4 Pfeile |
 
+**Konsequenz für Architektur:**
+- Gene Keys bekommt eigenen `gk.*`-Prefix im Knowledge Graph
+- K1-Engine: Shared mit HD (dturkuler berechnet Gate-Positionen, GK liest dieselben)
+- K2-Katalog: Eigenständiger `gk_catalog_v0.json` (Shadow/Gift/Siddhi, Codon Rings, Sequences)
+- Cross-System-Link: `hd.gate.N ←→ gk.gate.N` (faktische 1:1-Identität auf Gate-Ebene)
+- K3/K4: ©-geschützt (Richard Rudd). Nur Paraphrase oder eigene Ableitung.
+
+| Aspekt           | Detail |
+| ---------------- | ------ |
+| Engine           | K1 shared mit HD (Ephemeris → Gate). Eigene Lookup-Logik für Sequences. |
+| Methode          | Gate-Positionen aus HD-Engine + eigene Sequence-Berechnung (Venus/Pearl/Activation) |
+| Output           | 64 Gates × 3 Frequenzen, 21 Codon Rings, 3 Sequences mit Sphären |
+| **⚠️ Copyright** | Gene Keys Inhalte sind urheberrechtlich geschützt (Richard Rudd). K3/K4 = ausschließlich Paraphrase oder eigene Interpretation. |
+
+### 6.7b HD-Schulen vs. Gene Keys — Tradition-Konzept (Entscheidung April 2026)
+
+Zwei verschiedene Kategorien:
+
+**Kategorie A: HD-Schulen (gleicher Stammbaum, nur K3/K4 unterschiedlich)**
+
+| Schule | Gründer | Was ist anders? |
+|--------|---------|-----------------|
+| Jovian Archive (Original) | Ra Uru Hu | Die Referenz — K1+K2 sind identisch bei allen |
+| Quantum HD | Karen Curry Parker | Typen umbenannt (Manifestor → "Initiator"), positivere Sprache |
+| 64Keys | Andrea Reikl-Wolf | Deutschsprachig, eigene Interpretation |
+| Chetan Parkyn | Chetan Parkyn | Vereinfacht, andere Betonung |
+
+→ **Eine Engine** berechnet alles. K3-Texte bekommen ein `tradition`-Tag.
+→ Im KG: Alles unter `hd.*`, Interpretation-Nodes mit `tradition: "jovian" | "quantum_hd" | "64keys"`
+
+**Kategorie B: Gene Keys (eigener Stammbaum)**
+
+→ Gene Keys ist ein **eigenständiges System** (`gk.*`) mit shared K1 aber eigenem K2.
+→ Verlinkt über `hd.gate.N ←→ gk.gate.N` (Cross-System-Edge, faktisch).
 
 ---
 

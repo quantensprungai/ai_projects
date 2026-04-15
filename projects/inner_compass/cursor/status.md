@@ -1,8 +1,16 @@
 # Inner Compass — Status & Nächste Schritte
 
-> **Stand:** 2026-04-13 | Bei jedem Meilenstein aktualisieren!
+> **Stand:** 2026-04-15 | Bei jedem Meilenstein aktualisieren!
 >
-> **Wo wir sind:** Phase 0 erledigt. Phase 1 — Ziwei (iztro) und BaZi (@yhjs) mit Contract/IDs; **Jyotish:** Microservice `services/jyotish/` mit D1 (PyJHora), Docker-E2E verifiziert (`placeholder: false`, 13 Einträge in `raw.bodies`). Nächster Schritt: App-Anbindung + Playbook (Katalog/Struktur/Tests) + ggf. weitere Vargas.
+> **Wo wir sind:** Phase 0 erledigt. Phase 1 — 4 von 6 Berechnungssystemen integriert:
+> - **Ziwei Doushu** (iztro): TS, Katalog + Validierung ✅
+> - **BaZi** (@yhjs): TS, Katalog + Validierung ✅
+> - **Jyotish** (PyJHora): Python-Microservice, D1+D9+Dasha+Bhavas+Yogas+16 Vargas ✅
+> - **Human Design** (dturkuler): Python-Microservice, alle 13 Layer + Composite/Transit/BodyGraph ✅
+> - **Westl. Astrologie**: Noch offen (CircularNatalHoroscopeJS)
+> - **Maya Tzolkin**: Noch offen (trivial)
+>
+> Nächster Schritt: Verbleibende Systeme (Astro, Maya, triviale), dann Phase 2 (Content-Pipeline).
 
 ## Was EXISTIERT und FUNKTIONIERT
 
@@ -41,7 +49,7 @@
 
 ```
 Phase 0: Fundament          ████████████ 100%  S1–S4 erledigt
-Phase 1: Engine Eval+Integ. █████░░░░░░░  ~25%  Ziwei+BaZi+Jyotish-D1 (Service); nächstes: Jyotish App-Anbindung / weiteres Kit
+Phase 1: Engine Eval+Integ. █████████░░░  ~70%  Ziwei+BaZi+Jyotish+HD komplett; Astro+Maya+Triviale offen
 Phase 2: Content-Pipeline   ░░░░░░░░░░░░   0%  blockiert durch Phase 1
 Phase 3: Cross-System       ░░░░░░░░░░░░   0%  → IC-Sprache entsteht hier (Datenschicht E)
 Phase 4: App                ██░░░░░░░░░░  15%  Architektur+Scope dokumentiert
@@ -95,7 +103,7 @@ Phase 4: App                ██░░░░░░░░░░  15%  Architekt
 **Noch offen (Spikes nötig):**
 - [x] Spike: iztro (Ziwei) — `@ic/engines` + `system_descriptors/ziwei.json` + `system_structure/ziwei_catalog_v0.json` + `ziwei_structure_v0.json` + Vitest-Abgleich Chart-`nodes`↔Katalog (`ziwei-catalog-validation`); Doku `engines.md` §15, `contracts.md` (`ziwei`)
 - [x] Spike: @yhjs/bazi — `@ic/engines`: `computeBaziChart`, Katalog/Struktur/Test wie Playbook (`bazi_catalog_v0.json`, `bazi_structure_v0.json`); `engines.md` §16
-- [ ] Spike: HD — geodetheseeker vs. hdkit Tiefenvergleich (Tone/Color/Base)
+- [x] Spike: HD — dturkuler/humandesign_api als Engine (alle 13 Layer, Composite, Transit, BodyGraph). GPL-3.0 Docker-isoliert.
 - [ ] Spike: CircularNatalHoroscopeJS — Präzisionsvergleich mit Swiss Ephemeris
 - [x] Spike: PyJHora als FastAPI-Microservice — `services/jyotish/` (Docker, D1); AGPL bleibt auf diesem Service isoliert; siehe `services/jyotish/README.md`
 - [ ] Swiss Ephemeris **kommerzielle** Lizenz nur nötig, wenn ihr Swiss Ephemeris **ohne** AGPL-konforme Open-Source-Kette nutzen wollt; aktuell: `pyswisseph`+PyJHora im AGPL-Service = üblicher Open-Source-Pfad (rechtlich mit eurem Anwalt finalisieren)
@@ -120,7 +128,7 @@ Reihenfolge der Systeme:
 
 | Prio | System | Kit (Empfehlung) | Lizenz | Sprache | Bekannte Issues |
 |------|--------|-----------------|--------|---------|-----------------|
-| 1 | HD | hdkit + geodetheseeker (Port) | MIT ✅ | JS+Py | hdkit: kein Tone/Color/Base. geodetheseeker: komplett, Python. |
+| 1 | HD | **dturkuler/humandesign_api** (vendored, Docker) | GPL-3.0 isoliert | Python | ✅ Komplett: 13 Layer + Composite/Transit/BodyGraph. 65 Tests grün. |
 | 2 | **Ziwei Doushu** 🆕 | **iztro** (SylarLong) | MIT ✅ | **TS** | 3.5k Stars, React-Hook, TS-nativ. Reichste chin. Tradition. |
 | 3 | BaZi | **@yhjs/bazi** (primär) + alvamind | MIT ✅ | TS | @yhjs: Luck Cycles + Nayin + Ten Gods. Umfangreicher als alvamind. |
 | 4 | Astro | **CircularNatalHoroscopeJS** (TS) + pyswisseph (Python) | Unlicense / 💰 | TS+Py | CircularNatalJS: kein Swiss-Eph-Lizenzproblem! Spike: Präzisionsvergleich. |
@@ -129,9 +137,9 @@ Reihenfolge der Systeme:
 | 7 | Gene Keys | — (= HD-Positionen + Lookup) | — | — | ©-Problem: Nur Paraphrase, keine Rudd-Zitate. |
 | 8–11 | Num, NSK/Mewa, Akan, EG | Eigene TS-Impl. / JSON | — | TS | Trivial. |
 
-**Erkenntnis:** Ziwei (iztro, TS) und BaZi (@yhjs, TS) sind die schnellsten Spike-Kandidaten — npm install, sofort Ergebnis. HD ist komplexer (hdkit limitiert, geodetheseeker = Python). Jyotish (PyJHora) braucht Python-Setup.
+**Stand (April 2026):** 4 von 6 Berechnungssystemen integriert. HD mit dturkuler (GPL-3.0, Docker-isoliert) — vollständigste Engine mit allen 13 Layern. Jyotish mit PyJHora (AGPL, Docker-isoliert) — Phase 2/3 komplett (D1+D9+Dasha+Bhavas+Yogas+16 Vargas). Ziwei + BaZi als TS in-process.
 
-**Reihenfolge-Empfehlung für Spikes:** Ziwei (iztro) → BaZi (@yhjs) → HD (hdkit + geodetheseeker-Vergleich) → Astro (CircularNatalJS) → Maya → Jyotish (PyJHora Docker).
+**Nächste Spikes:** Astro (CircularNatalJS) → Maya (trivial) → Triviale (Numerologie, NSK, Akan).
 
 ### 1.2 Erweiterter Seed
 
@@ -283,3 +291,6 @@ Vollständig: `reference/decisions.md`
 | 2026-03 | **Fresh Clone Makerkit 3.1.3** | hd_saas_app (v2.24) → inner_compass_app (v3.1.3). IC-Eigenarbeit (~2200 Zeilen) portiert/wird neu geschrieben. Engine-Struktur: npm statt Vendoring (TS), Python-Microservice für Jyotish. |
 | 2026-03 | **GitHub-Repo: inner-compass-app** | quantensprungai/inner-compass-app (privat). Upstream: makerkit/next-supabase-saas-kit-turbo. Altes Repo hd-saas-app archiviert. |
 | 2026-04 | **3 MCP-Server konfiguriert** | Makerkit Kit MCP (lokal, 56 Tools: Schema/DB/Env/Dev), Supabase MCP (Cloud), CLI MCP (optional). Cursor `.cursor/mcp.json` angelegt. KI hat direkten Zugriff auf DB-Schema, Migrations, Env, Dev-Services. |
+| 2026-04 | **dturkuler/humandesign_api als HD-Engine** | GPL-3.0 vendored in Docker (SaaS-konform). Ersetzt hdkit+geodetheseeker. Alle 13 Layer + Composite/Transit/BodyGraph. K2-Daten extrahiert (192 Crosses, 8 Awareness Streams, evidence A). |
+| 2026-04 | **Gene Keys als eigenständiges System** | GK ist NICHT "HD mit anderer Sprache". Shared K1 (Ephemeris), eigenes K2 (Shadow/Gift/Siddhi, Codon Rings, Sequences). Im KG: `gk.*` Prefix, Cross-Link über `hd.gate.N ←→ gk.gate.N`. |
+| 2026-04 | **HD-Schulen als Tradition-Tag** | Jovian Archive, Quantum HD, 64Keys, Parkyn teilen K1+K2. Unterschiede nur in K3/K4 (Interpretation). Modelliert als `tradition`-Tag auf Interpretation-Nodes, nicht als separate Systeme. |

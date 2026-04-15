@@ -105,8 +105,8 @@ PHASE 4: META-KNOTEN
 | PDF-Parsing | MinerU (Open Source, GPU auf Spark) |
 | LLM-Inferenz | SGLang/vLLM auf Spark, OpenAI-kompatible API |
 | Worker | Python systemd-Services auf Spark, via Supabase service_role |
-| Chart-Engines (TS) | hdkit (JS/MIT), alvamind (TS/MIT), @swisseph/node (AGPL/Komm.) |
-| Chart-Engines (Python) | VedAstro.Python (MIT), jyotishganit (MIT), pyswisseph (AGPL/Komm.), tzolkin-calendar (MIT) |
+| Chart-Engines (TS) | iztro (Ziwei/MIT), @yhjs/bazi (BaZi/MIT), CircularNatalHoroscopeJS (Astro/Unlicense) |
+| Chart-Engines (Python) | dturkuler/humandesign_api (HD/GPL-3.0 isoliert), PyJHora (Jyotish/AGPL isoliert), pyswisseph |
 | Embeddings | text-embedding-3-large oder lokales Modell, in pgvector |
 | VPN | Tailscale (Spark ↔ Supabase ↔ Dev) |
 
