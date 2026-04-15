@@ -21,6 +21,18 @@
     { "key": "inform", "label_en": "Inform", "for_types": ["manifestor"], "canonical_id": "hd.strategy.inform" },
     { "key": "wait_lunar_cycle", "label_en": "Wait a Lunar Cycle", "for_types": ["reflector"], "canonical_id": "hd.strategy.wait_lunar_cycle" }
   ],
+  "not_self_themes": [
+    { "key": "frustration", "label_en": "Frustration", "for_types": ["generator", "manifesting_generator"], "canonical_id": "hd.not_self_theme.frustration" },
+    { "key": "bitterness", "label_en": "Bitterness", "for_types": ["projector"], "canonical_id": "hd.not_self_theme.bitterness" },
+    { "key": "anger", "label_en": "Anger", "for_types": ["manifestor"], "canonical_id": "hd.not_self_theme.anger" },
+    { "key": "disappointment", "label_en": "Disappointment", "for_types": ["reflector"], "canonical_id": "hd.not_self_theme.disappointment" }
+  ],
+  "signatures": [
+    { "key": "satisfaction", "label_en": "Satisfaction", "for_types": ["generator", "manifesting_generator"], "canonical_id": "hd.signature.satisfaction" },
+    { "key": "success", "label_en": "Success", "for_types": ["projector"], "canonical_id": "hd.signature.success" },
+    { "key": "peace", "label_en": "Peace", "for_types": ["manifestor"], "canonical_id": "hd.signature.peace" },
+    { "key": "surprise", "label_en": "Surprise", "for_types": ["reflector"], "canonical_id": "hd.signature.surprise" }
+  ],
   "authorities": [
     { "key": "emotional", "label_en": "Emotional Authority", "canonical_id": "hd.authority.emotional" },
     { "key": "sacral", "label_en": "Sacral Authority", "canonical_id": "hd.authority.sacral" },

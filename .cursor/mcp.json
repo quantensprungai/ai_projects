@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "makerkit": {
+      "command": "node",
+      "args": [
+        "C:\\Users\\Admin105\\ai_projects\\code\\inner_compass_app\\packages\\mcp-server\\build\\index.cjs"
+      ],
+      "env": {
+        "DATABASE_URL": "postgresql://postgres:postgres@127.0.0.1:54322/postgres",
+        "MAKERKIT_PROJECT_ROOT": "C:\\Users\\Admin105\\ai_projects\\code\\inner_compass_app"
+      }
+    }
+  }
+}
