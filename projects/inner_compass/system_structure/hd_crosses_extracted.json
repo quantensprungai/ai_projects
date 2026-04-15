@@ -1,0 +1,450 @@
+[
+  {
+    "personality_sun_gate": 13,
+    "quarter": "initiation",
+    "rac": "The Right Angle Cross of the Sphinx (1)",
+    "jc": "The Juxtaposition Cross of Listening",
+    "lac": "The Left Angle Cross of Masks (1)"
+  },
+  {
+    "personality_sun_gate": 49,
+    "quarter": "initiation",
+    "rac": "The Right Angle Cross of Explanation (1)",
+    "jc": "The Juxtaposition Cross of Principles",
+    "lac": "The Left Angle Cross of Revolution (1)"
+  },
+  {
+    "personality_sun_gate": 30,
+    "quarter": "initiation",
+    "rac": "The Right Angle Cross of Contagion (1)",
+    "jc": "The Juxtaposition Cross of Fates",
+    "lac": "The Left Angle Cross of Industry (1)"
+  },
+  {
+    "personality_sun_gate": 55,
+    "quarter": "initiation",
+    "rac": "The Right Angle Cross of the Sleeping Phoenix (1)",
+    "jc": "The Juxtaposition Cross of Moods",
+    "lac": "The Left Angle Cross of Spirit (1)"
+  },
+  {
+    "personality_sun_gate": 37,
+    "quarter": "initiation",
+    "rac": "The Right Angle Cross of Planning (1)",
+    "jc": "The Juxtaposition Cross of Bargains",
+    "lac": "The Left Angle Cross of Migration (1)"
+  },
+  {
+    "personality_sun_gate": 63,
+    "quarter": "initiation",
+    "rac": "The Right Angle Cross of Consciousness (1)",
+    "jc": "The Juxtaposition Cross of Doubts",
+    "lac": "The Left Angle Cross of Dominion (1)"
+  },
+  {
+    "personality_sun_gate": 22,
+    "quarter": "initiation",
+    "rac": "The Right Angle Cross of Rulership (1)",
+    "jc": "The Juxtaposition Cross of Grace",
+    "lac": "The Left Angle Cross of Informing (1)"
+  },
+  {
+    "personality_sun_gate": 36,
+    "quarter": "initiation",
+    "rac": "The Right Angle Cross of the Eden (1)",
+    "jc": "The Juxtaposition Cross of Crisis",
+    "lac": "The Left Angle Cross of the Plane (1)"
+  },
+  {
+    "personality_sun_gate": 25,
+    "quarter": "initiation",
+    "rac": "The Right Angle Cross of the Vessel of Love (1)",
+    "jc": "The Juxtaposition Cross of Innocence",
+    "lac": "The Left Angle Cross of Healing (1)"
+  },
+  {
+    "personality_sun_gate": 17,
+    "quarter": "initiation",
+    "rac": "The Right Angle Cross of Service (1)",
+    "jc": "The Juxtaposition Cross of Opinions",
+    "lac": "The Left Angle Cross of Upheaval (1)"
+  },
+  {
+    "personality_sun_gate": 21,
+    "quarter": "initiation",
+    "rac": "The Right Angle Cross of Tension (1)",
+    "jc": "The Juxtaposition Cross of Control",
+    "lac": "The Left Angle Cross of Endeavor (1)"
+  },
+  {
+    "personality_sun_gate": 51,
+    "quarter": "initiation",
+    "rac": "The Right Angle Cross of Penetration (1)",
+    "jc": "The Juxtaposition Cross of Shock",
+    "lac": "The Left Angle Cross of the Clarion (1)"
+  },
+  {
+    "personality_sun_gate": 42,
+    "quarter": "initiation",
+    "rac": "The Right Angle Cross of the Maya (1)",
+    "jc": "The Juxtaposition Cross of Completion",
+    "lac": "The Left Angle Cross of Limitation (1)"
+  },
+  {
+    "personality_sun_gate": 3,
+    "quarter": "initiation",
+    "rac": "The Right Angle Cross of Laws (1)",
+    "jc": "The Juxtaposition Cross of Mutation",
+    "lac": "The Left Angle Cross of Wishes (1)"
+  },
+  {
+    "personality_sun_gate": 27,
+    "quarter": "initiation",
+    "rac": "The Right Angle Cross of the Unexpected (1)",
+    "jc": "The Juxtaposition Cross of Caring",
+    "lac": "The Left Angle Cross of Alignment (1)"
+  },
+  {
+    "personality_sun_gate": 24,
+    "quarter": "initiation",
+    "rac": "The Right Angle Cross of the Four Ways (1)",
+    "jc": "The Juxtaposition Cross of Rationalization",
+    "lac": "The Left Angle Cross of Incarnation (1)"
+  },
+  {
+    "personality_sun_gate": 2,
+    "quarter": "civilization",
+    "rac": "The Right Angle Cross of the Sphinx (2)",
+    "jc": "The Juxtaposition Cross of the Driver",
+    "lac": "The Left Angle Cross of Defiance (1)"
+  },
+  {
+    "personality_sun_gate": 23,
+    "quarter": "civilization",
+    "rac": "The Right Angle Cross of Explanation (2)",
+    "jc": "The Juxtaposition Cross of Assimilation",
+    "lac": "The Left Angle Cross of Dedication (1)"
+  },
+  {
+    "personality_sun_gate": 8,
+    "quarter": "civilization",
+    "rac": "The Right Angle Cross of Contagion (2)",
+    "jc": "The Juxtaposition Cross of Contribution",
+    "lac": "The Left Angle Cross of Uncertainty (1)"
+  },
+  {
+    "personality_sun_gate": 20,
+    "quarter": "civilization",
+    "rac": "The Right Angle Cross of the Sleeping Phoenix (2)",
+    "jc": "The Juxtaposition Cross of the Now",
+    "lac": "The Left Angle Cross of Duality (1)"
+  },
+  {
+    "personality_sun_gate": 16,
+    "quarter": "civilization",
+    "rac": "The Right Angle Cross of Planning (2)",
+    "jc": "The Juxtaposition Cross of Experimentation",
+    "lac": "The Left Angle Cross of Identification (1)"
+  },
+  {
+    "personality_sun_gate": 35,
+    "quarter": "civilization",
+    "rac": "The Right Angle Cross of Consciousness (2)",
+    "jc": "The Juxtaposition Cross of Experience",
+    "lac": "The Left Angle Cross of Separation (1)"
+  },
+  {
+    "personality_sun_gate": 45,
+    "quarter": "civilization",
+    "rac": "The Right Angle Cross of Rulership (2)",
+    "jc": "The Juxtaposition Cross of Possession",
+    "lac": "The Left Angle Cross of Confrontation (1)"
+  },
+  {
+    "personality_sun_gate": 12,
+    "quarter": "civilization",
+    "rac": "The Right Angle Cross of the Eden (2)",
+    "jc": "The Juxtaposition Cross of Articulation",
+    "lac": "The Left Angle Cross of Education (1)"
+  },
+  {
+    "personality_sun_gate": 15,
+    "quarter": "civilization",
+    "rac": "The Right Angle Cross of the Vessel of Love (2)",
+    "jc": "The Juxtaposition Cross of Extremes",
+    "lac": "The Left Angle Cross of Prevention (1)"
+  },
+  {
+    "personality_sun_gate": 52,
+    "quarter": "civilization",
+    "rac": "The Right Angle Cross of Service (2)",
+    "jc": "The Juxtaposition Cross of Stillness",
+    "lac": "The Left Angle Cross of Demands (1)"
+  },
+  {
+    "personality_sun_gate": 39,
+    "quarter": "civilization",
+    "rac": "The Right Angle Cross of Tension (2)",
+    "jc": "The Juxtaposition Cross of Provocation",
+    "lac": "The Left Angle Cross of Individualism (1)"
+  },
+  {
+    "personality_sun_gate": 53,
+    "quarter": "civilization",
+    "rac": "The Right Angle Cross of Penetration (2)",
+    "jc": "The Juxtaposition Cross of Beginnings",
+    "lac": "The Left Angle Cross of Cycles (1)"
+  },
+  {
+    "personality_sun_gate": 62,
+    "quarter": "civilization",
+    "rac": "The Right Angle Cross of the Maya (2)",
+    "jc": "The Juxtaposition Cross of Detail",
+    "lac": "The Left Angle Cross of Obscuration (1)"
+  },
+  {
+    "personality_sun_gate": 56,
+    "quarter": "civilization",
+    "rac": "The Right Angle Cross of Laws (2)",
+    "jc": "The Juxtaposition Cross of Stimulation",
+    "lac": "The Left Angle Cross of Distraction (1)"
+  },
+  {
+    "personality_sun_gate": 31,
+    "quarter": "civilization",
+    "rac": "The Right Angle Cross of the Unexpected (2)",
+    "jc": "The Juxtaposition Cross of Influence",
+    "lac": "The Left Angle Cross of the Alpha (1)"
+  },
+  {
+    "personality_sun_gate": 33,
+    "quarter": "civilization",
+    "rac": "The Right Angle Cross of the Four Ways (2)",
+    "jc": "The Juxtaposition Cross of Retreat",
+    "lac": "The Left Angle Cross of Refinement (1)"
+  },
+  {
+    "personality_sun_gate": 7,
+    "quarter": "duality",
+    "rac": "The Right Angle Cross of the Sphinx (3)",
+    "jc": "The Juxtaposition Cross of Interaction",
+    "lac": "The Left Angle Cross of Masks (2)"
+  },
+  {
+    "personality_sun_gate": 4,
+    "quarter": "duality",
+    "rac": "The Right Angle Cross of Explanation (3)",
+    "jc": "The Juxtaposition Cross of Formulation",
+    "lac": "The Left Angle Cross of Revolution (2)"
+  },
+  {
+    "personality_sun_gate": 29,
+    "quarter": "duality",
+    "rac": "The Right Angle Cross of Contagion (3)",
+    "jc": "The Juxtaposition Cross of Commitment",
+    "lac": "The Left Angle Cross of Industry (2)"
+  },
+  {
+    "personality_sun_gate": 59,
+    "quarter": "duality",
+    "rac": "The Right Angle Cross of the Sleeping Phoenix (3)",
+    "jc": "The Juxtaposition Cross of Strategy",
+    "lac": "The Left Angle Cross of Spirit (2)"
+  },
+  {
+    "personality_sun_gate": 40,
+    "quarter": "duality",
+    "rac": "The Right Angle Cross of Planning (3)",
+    "jc": "The Juxtaposition Cross of Denial",
+    "lac": "The Left Angle Cross of Migration (2)"
+  },
+  {
+    "personality_sun_gate": 64,
+    "quarter": "duality",
+    "rac": "The Right Angle Cross of Consciousness (3)",
+    "jc": "The Juxtaposition Cross of Confusion",
+    "lac": "The Left Angle Cross of Dominion (2)"
+  },
+  {
+    "personality_sun_gate": 47,
+    "quarter": "duality",
+    "rac": "The Right Angle Cross of Rulership (3)",
+    "jc": "The Juxtaposition Cross of Oppression",
+    "lac": "The Left Angle Cross of Informing (2)"
+  },
+  {
+    "personality_sun_gate": 6,
+    "quarter": "duality",
+    "rac": "The Right Angle Cross of the Eden (3)",
+    "jc": "The Juxtaposition Cross of Conflict",
+    "lac": "The Left Angle Cross of the Plane (2)"
+  },
+  {
+    "personality_sun_gate": 46,
+    "quarter": "duality",
+    "rac": "The Right Angle Cross of the Vessel of Love (3)",
+    "jc": "The Juxtaposition Cross of Serendipity",
+    "lac": "The Left Angle Cross of Healing (2)"
+  },
+  {
+    "personality_sun_gate": 18,
+    "quarter": "duality",
+    "rac": "The Right Angle Cross of Service (3)",
+    "jc": "The Juxtaposition Cross of Correction",
+    "lac": "The Left Angle Cross of Upheaval (2)"
+  },
+  {
+    "personality_sun_gate": 48,
+    "quarter": "duality",
+    "rac": "The Right Angle Cross of Tension (3)",
+    "jc": "The Juxtaposition Cross of Depth",
+    "lac": "The Left Angle Cross of Endeavor (2)"
+  },
+  {
+    "personality_sun_gate": 57,
+    "quarter": "duality",
+    "rac": "The Right Angle Cross of Penetration (3)",
+    "jc": "The Juxtaposition Cross of Intuition",
+    "lac": "The Left Angle Cross of the Clarion (2)"
+  },
+  {
+    "personality_sun_gate": 32,
+    "quarter": "duality",
+    "rac": "The Right Angle Cross of the Maya (3)",
+    "jc": "The Juxtaposition Cross of Conservation",
+    "lac": "The Left Angle Cross of Limitation (2)"
+  },
+  {
+    "personality_sun_gate": 50,
+    "quarter": "duality",
+    "rac": "The Right Angle Cross of Laws (3)",
+    "jc": "The Juxtaposition Cross of Values",
+    "lac": "The Left Angle Cross of Wishes (2)"
+  },
+  {
+    "personality_sun_gate": 28,
+    "quarter": "duality",
+    "rac": "The Right Angle Cross of the Unexpected (3)",
+    "jc": "The Juxtaposition Cross of Risks",
+    "lac": "The Left Angle Cross of Alignment (2)"
+  },
+  {
+    "personality_sun_gate": 44,
+    "quarter": "duality",
+    "rac": "The Right Angle Cross of the Four Ways (3)",
+    "jc": "The Juxtaposition Cross of Alertness",
+    "lac": "The Left Angle Cross of Incarnation (2)"
+  },
+  {
+    "personality_sun_gate": 1,
+    "quarter": "mutation",
+    "rac": "The Right Angle Cross of the Sphinx (4)",
+    "jc": "The Juxtaposition Cross of Self-Expression",
+    "lac": "The Left Angle Cross of Defiance (2)"
+  },
+  {
+    "personality_sun_gate": 43,
+    "quarter": "mutation",
+    "rac": "The Right Angle Cross of Explanation (4)",
+    "jc": "The Juxtaposition Cross of Insight",
+    "lac": "The Left Angle Cross of Dedication (2)"
+  },
+  {
+    "personality_sun_gate": 14,
+    "quarter": "mutation",
+    "rac": "The Right Angle Cross of Contagion (4)",
+    "jc": "The Juxtaposition Cross of Empowering",
+    "lac": "The Left Angle Cross of Uncertainty (2)"
+  },
+  {
+    "personality_sun_gate": 34,
+    "quarter": "mutation",
+    "rac": "The Right Angle Cross of the Sleeping Phoenix (4)",
+    "jc": "The Juxtaposition Cross of Power",
+    "lac": "The Left Angle Cross of Duality (2)"
+  },
+  {
+    "personality_sun_gate": 9,
+    "quarter": "mutation",
+    "rac": "The Right Angle Cross of Planning (4)",
+    "jc": "The Juxtaposition Cross of Focus",
+    "lac": "The Left Angle Cross of Identification (2)"
+  },
+  {
+    "personality_sun_gate": 5,
+    "quarter": "mutation",
+    "rac": "The Right Angle Cross of Consciousness (4)",
+    "jc": "The Juxtaposition Cross of Habits",
+    "lac": "The Left Angle Cross of Separation (2)"
+  },
+  {
+    "personality_sun_gate": 26,
+    "quarter": "mutation",
+    "rac": "The Right Angle Cross of Rulership (4)",
+    "jc": "The Juxtaposition Cross of the Trickster",
+    "lac": "The Left Angle Cross of Control (2)"
+  },
+  {
+    "personality_sun_gate": 11,
+    "quarter": "mutation",
+    "rac": "The Right Angle Cross of the Eden (4)",
+    "jc": "The Juxtaposition Cross of Ideas",
+    "lac": "The Left Angle Cross of Education (2)"
+  },
+  {
+    "personality_sun_gate": 10,
+    "quarter": "mutation",
+    "rac": "The Right Angle Cross of the Vessel of Love (4)",
+    "jc": "The Juxtaposition Cross of Behavior",
+    "lac": "The Left Angle Cross of Prevention (2)"
+  },
+  {
+    "personality_sun_gate": 58,
+    "quarter": "mutation",
+    "rac": "The Right Angle Cross of Service (4)",
+    "jc": "The Juxtaposition Cross of Vitality",
+    "lac": "The Left Angle Cross of Demands (2)"
+  },
+  {
+    "personality_sun_gate": 38,
+    "quarter": "mutation",
+    "rac": "The Right Angle Cross of Tension (4)",
+    "jc": "The Juxtaposition Cross of Opposition",
+    "lac": "The Left Angle Cross of Individualism (2)"
+  },
+  {
+    "personality_sun_gate": 54,
+    "quarter": "mutation",
+    "rac": "The Right Angle Cross of Penetration (4)",
+    "jc": "The Juxtaposition Cross of Ambition",
+    "lac": "The Left Angle Cross of Cycles (2)"
+  },
+  {
+    "personality_sun_gate": 61,
+    "quarter": "mutation",
+    "rac": "The Right Angle Cross of the Maya (4)",
+    "jc": "The Juxtaposition Cross of Thinking",
+    "lac": "The Left Angle Cross of Obscuration (2)"
+  },
+  {
+    "personality_sun_gate": 60,
+    "quarter": "mutation",
+    "rac": "The Right Angle Cross of Laws (4)",
+    "jc": "The Juxtaposition Cross of Limitation",
+    "lac": "The Left Angle Cross of Distraction (2)"
+  },
+  {
+    "personality_sun_gate": 41,
+    "quarter": "mutation",
+    "rac": "The Right Angle Cross of the Unexpected (4)",
+    "jc": "The Juxtaposition Cross of Fantasy",
+    "lac": "The Left Angle Cross of the Alpha (2)"
+  },
+  {
+    "personality_sun_gate": 19,
+    "quarter": "mutation",
+    "rac": "The Right Angle Cross of the Four Ways (4)",
+    "jc": "The Juxtaposition Cross of Need",
+    "lac": "The Left Angle Cross of Refinement (2)"
+  }
+]
