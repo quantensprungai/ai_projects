@@ -106,11 +106,22 @@ Erweiterung von 10→12 (2026-03): §20d-Revision in ergebnis_modelle.md — "Ko
 ## 4. System-Enums
 
 ```
-system_id: 'hd' | 'bazi' | 'astro' | 'jyotish' | 'mayan_tzolkin' | 
-           'genekeys' | 'numerology' | 'nine_star_ki' | 'akan' | 'ziwei' | 'meta'
+-- Berechnungssysteme (system_role = 'calculation'):
+system_id: 'hd' | 'bazi' | 'astro' | 'jyotish' | 'mayan_tzolkin' |
+           'genekeys' | 'numerology' | 'nine_star_ki' | 'akan' | 'ziwei'
+
+-- Struktursysteme (system_role = 'structural'):
+system_id: 'i_ching' | 'kabbalah' | 'chakra' | 'enneagram'
+
+-- Meta-Ebene:
+system_id: 'meta'
 ```
 
 `meta` = system-übergreifende Meta-Knoten (Schicht E).
+
+`i_ching` — **nicht** `iching` (einheitliche Schreibweise mit Unterstrich). Faktische 1:1-Verbindung zu `hd.gate.N` und `gk.gate.N`.
+
+**Enneagramm-Schulen:** Analog zu HD-Schulen — `tradition`-Tag auf K3/K4-Nodes. Schulen-spezifische K2-Erweiterungen (Tritypes: Chestnut, Levels of Development: Riso-Hudson) als separates Array mit `school`-Feld im Catalog.
 
 ## 5. Edge-Enums
 

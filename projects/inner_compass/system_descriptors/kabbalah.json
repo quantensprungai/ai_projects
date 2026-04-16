@@ -1,0 +1,62 @@
+{
+  "system_id": "kabbalah",
+  "system_name": "Kabbala (Baum des Lebens)",
+  "system_role": "structural",
+  "canonical_prefix": "kab.",
+  "input_format": "none",
+  "calendar_basis": "none",
+  "element_types": [
+    "sephira",
+    "path",
+    "world",
+    "pillar"
+  ],
+  "identifier_rules": {
+    "sephira": "1-10 (Kether bis Malkuth) or slug",
+    "path": "11-32 (22 Pfade zwischen Sephiroth, entsprechen 22 hebräischen Buchstaben)",
+    "world": "atziluth | beriah | yetzirah | assiah",
+    "pillar": "severity | middle | mercy"
+  },
+  "canonical_id_rules": {
+    "format": "kab.{element_type}.{element_id}",
+    "examples": [
+      "kab.sephira.tiferet",
+      "kab.sephira.6",
+      "kab.path.19",
+      "kab.world.atziluth",
+      "kab.pillar.middle"
+    ]
+  },
+  "cross_system_links": {
+    "hd": "kab.sephira.* ↔ hd.center.* (interpretative Verbindung, Ra Uru Hu's Zuordnung — nicht faktisch 1:1; HD hat 9 Zentren, Kabbala 10 Sephiroth)",
+    "i_ching": "Liber 777 (Crowley/Golden Dawn) stellt Korrespondenzen zwischen Hexagrammen und Pfaden her — interpretativ, nicht faktisch"
+  },
+  "term_mapping_rules": {
+    "schools": ["lurianic", "zohar", "hermetic_golden_dawn", "thelema_crowley", "modern_western"],
+    "normalization": "lowercase_underscore",
+    "note": "Hebräische Namen universell. Westliche Interpretationen (Golden Dawn, Thelema) fügen Planeten/Tarot-Zuordnungen hinzu — K3, nicht K2."
+  },
+  "kg_rules": {
+    "allowed_relation_types": [
+      "connects_to",
+      "part_of_pillar",
+      "part_of_world",
+      "above",
+      "below",
+      "maps_to"
+    ],
+    "node_types": ["Sephira", "Path", "World", "Pillar"]
+  },
+  "dynamics_rules": {
+    "has_dynamics": true,
+    "dynamic_types": ["lightning_path", "middle_pillar_ascent"],
+    "note": "Blitzpfad (Abstieg der Schöpfung) und Mittelweg-Aufstieg als Transformations-Dynamiken."
+  },
+  "synthesis_rules": {
+    "default_style": "poetic",
+    "wording_tone": "mystisch, symbolisch, tiefgründig",
+    "allowed_styles": ["poetic", "natural", "spiritual"],
+    "language_defaults": ["de", "en", "he"]
+  },
+  "documentation_ref": "engines.md §13, §14"
+}

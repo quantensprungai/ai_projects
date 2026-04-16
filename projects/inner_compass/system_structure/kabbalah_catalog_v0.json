@@ -1,0 +1,165 @@
+{
+  "meta": {
+    "schema_version": "1.0.0",
+    "system_id": "kabbalah",
+    "system_role": "structural",
+    "description": "Kabbala K2-Katalog: 10 Sephiroth, 22 Pfade (32 Wege), 4 Welten, 3 Säulen. Hebräische Namen K2 (universell). Planeten/Tarot/HD-Zuordnungen K3 (schulabhängig, tradition-Tag nötig).",
+    "source": "Klassische Kabbala (Sefer Yetzirah, Zohar). Ergänzungen: Hermetisch-westliche Tradition (Golden Dawn) für Pfad-Zuordnungen.",
+    "evidence_class": "A",
+    "evidence_note": "Hebräische Namen und Nummerierung K2. Planetare/astrologische Zuordnungen und HD-Mapping K3 (Golden-Dawn-Tradition, nicht ursprünglich jüdisch).",
+    "generated_at": "2026-04-15T00:00:00.000Z",
+    "hd_cross_link_note": "Ra Uru Hu hat HD-Zentren auf Sephiroth gemapped. Verbindung ist interpretativ, nicht faktisch — HD hat 9 Zentren, Kabbala 10 Sephiroth."
+  },
+  "pillars": [
+    { "key": "mercy", "label_en": "Pillar of Mercy", "label_de": "Säule der Gnade", "side": "right", "sephiroth": [2, 4, 7], "canonical_id": "kab.pillar.mercy" },
+    { "key": "middle", "label_en": "Middle Pillar", "label_de": "Mittelsäule", "side": "center", "sephiroth": [1, 6, 9, 10], "canonical_id": "kab.pillar.middle" },
+    { "key": "severity", "label_en": "Pillar of Severity", "label_de": "Säule der Strenge", "side": "left", "sephiroth": [3, 5, 8], "canonical_id": "kab.pillar.severity" }
+  ],
+  "worlds": [
+    { "key": "atziluth", "num": 1, "label_en": "Atziluth — World of Emanation", "label_de": "Azilut — Welt der Emanation", "level": "divine", "sephirah": 1, "canonical_id": "kab.world.atziluth" },
+    { "key": "beriah", "num": 2, "label_en": "Beriah — World of Creation", "label_de": "Beria — Welt der Schöpfung", "level": "archangelic", "sephirah_range": "2-3", "canonical_id": "kab.world.beriah" },
+    { "key": "yetzirah", "num": 3, "label_en": "Yetzirah — World of Formation", "label_de": "Jezira — Welt der Formgebung", "level": "angelic", "sephirah_range": "4-9", "canonical_id": "kab.world.yetzirah" },
+    { "key": "assiah", "num": 4, "label_en": "Assiah — World of Action", "label_de": "Assija — Welt der Tat", "level": "material", "sephirah": 10, "canonical_id": "kab.world.assiah" }
+  ],
+  "sephiroth": [
+    {
+      "num": 1, "key": "kether",
+      "hebrew": "כֶּתֶר",
+      "label_en": "Kether — Crown",
+      "label_de": "Kether — Krone",
+      "pillar": "middle",
+      "planet_golden_dawn": "primum_mobile",
+      "hd_center_map": null,
+      "hd_note": "Kether hat kein direktes HD-Äquivalent; oberhalb des HD-Kopfzentrums",
+      "canonical_id": "kab.sephira.kether"
+    },
+    {
+      "num": 2, "key": "chokmah",
+      "hebrew": "חָכְמָה",
+      "label_en": "Chokmah — Wisdom",
+      "label_de": "Chokma — Weisheit",
+      "pillar": "mercy",
+      "planet_golden_dawn": "zodiac",
+      "hd_center_map": "head",
+      "hd_mapping_confidence": "low",
+      "canonical_id": "kab.sephira.chokmah"
+    },
+    {
+      "num": 3, "key": "binah",
+      "hebrew": "בִּינָה",
+      "label_en": "Binah — Understanding",
+      "label_de": "Bina — Verständnis",
+      "pillar": "severity",
+      "planet_golden_dawn": "saturn",
+      "hd_center_map": "ajna",
+      "hd_mapping_confidence": "low",
+      "canonical_id": "kab.sephira.binah"
+    },
+    {
+      "num": 4, "key": "chesed",
+      "hebrew": "חֶסֶד",
+      "label_en": "Chesed — Mercy / Loving-Kindness",
+      "label_de": "Chesed — Güte / Barmherzigkeit",
+      "pillar": "mercy",
+      "planet_golden_dawn": "jupiter",
+      "hd_center_map": "g",
+      "hd_mapping_confidence": "low",
+      "canonical_id": "kab.sephira.chesed"
+    },
+    {
+      "num": 5, "key": "geburah",
+      "hebrew": "גְּבוּרָה",
+      "label_en": "Geburah — Strength / Severity",
+      "label_de": "Gewura — Kraft / Strenge",
+      "pillar": "severity",
+      "planet_golden_dawn": "mars",
+      "hd_center_map": "heart",
+      "hd_mapping_confidence": "low",
+      "canonical_id": "kab.sephira.geburah"
+    },
+    {
+      "num": 6, "key": "tiferet",
+      "hebrew": "תִּפְאֶרֶת",
+      "label_en": "Tiferet — Beauty / Harmony",
+      "label_de": "Tiferet — Schönheit / Harmonie",
+      "pillar": "middle",
+      "planet_golden_dawn": "sun",
+      "hd_center_map": "g",
+      "hd_mapping_confidence": "medium",
+      "hd_note": "G-Zentrum (Identität/Liebe/Richtung) hat die stärkste konzeptionelle Nähe zu Tiferet",
+      "canonical_id": "kab.sephira.tiferet"
+    },
+    {
+      "num": 7, "key": "netzach",
+      "hebrew": "נֶצַח",
+      "label_en": "Netzach — Victory / Eternity",
+      "label_de": "Nezach — Sieg / Ewigkeit",
+      "pillar": "mercy",
+      "planet_golden_dawn": "venus",
+      "hd_center_map": "spleen",
+      "hd_mapping_confidence": "low",
+      "canonical_id": "kab.sephira.netzach"
+    },
+    {
+      "num": 8, "key": "hod",
+      "hebrew": "הוֹד",
+      "label_en": "Hod — Splendor",
+      "label_de": "Hod — Pracht",
+      "pillar": "severity",
+      "planet_golden_dawn": "mercury",
+      "hd_center_map": "throat",
+      "hd_mapping_confidence": "low",
+      "canonical_id": "kab.sephira.hod"
+    },
+    {
+      "num": 9, "key": "yesod",
+      "hebrew": "יְסוֹד",
+      "label_en": "Yesod — Foundation",
+      "label_de": "Jesod — Fundament",
+      "pillar": "middle",
+      "planet_golden_dawn": "moon",
+      "hd_center_map": "sacral",
+      "hd_mapping_confidence": "medium",
+      "canonical_id": "kab.sephira.yesod"
+    },
+    {
+      "num": 10, "key": "malkuth",
+      "hebrew": "מַלְכוּת",
+      "label_en": "Malkuth — Kingdom",
+      "label_de": "Malkut — Königreich",
+      "pillar": "middle",
+      "planet_golden_dawn": "earth",
+      "hd_center_map": "root",
+      "hd_mapping_confidence": "medium",
+      "canonical_id": "kab.sephira.malkuth"
+    }
+  ],
+  "paths": [
+    { "num": 11, "connects": [1, 2], "hebrew_letter": "Aleph", "tarot_golden_dawn": "The Fool", "element": "air", "canonical_id": "kab.path.11" },
+    { "num": 12, "connects": [1, 3], "hebrew_letter": "Beth", "tarot_golden_dawn": "The Magician", "planet": "mercury", "canonical_id": "kab.path.12" },
+    { "num": 13, "connects": [1, 6], "hebrew_letter": "Gimel", "tarot_golden_dawn": "The High Priestess", "planet": "moon", "canonical_id": "kab.path.13" },
+    { "num": 14, "connects": [2, 3], "hebrew_letter": "Daleth", "tarot_golden_dawn": "The Empress", "planet": "venus", "canonical_id": "kab.path.14" },
+    { "num": 15, "connects": [2, 6], "hebrew_letter": "Heh", "tarot_golden_dawn": "The Emperor", "zodiac": "aries", "canonical_id": "kab.path.15" },
+    { "num": 16, "connects": [2, 4], "hebrew_letter": "Vav", "tarot_golden_dawn": "The Hierophant", "zodiac": "taurus", "canonical_id": "kab.path.16" },
+    { "num": 17, "connects": [3, 6], "hebrew_letter": "Zayin", "tarot_golden_dawn": "The Lovers", "zodiac": "gemini", "canonical_id": "kab.path.17" },
+    { "num": 18, "connects": [3, 5], "hebrew_letter": "Cheth", "tarot_golden_dawn": "The Chariot", "zodiac": "cancer", "canonical_id": "kab.path.18" },
+    { "num": 19, "connects": [4, 5], "hebrew_letter": "Teth", "tarot_golden_dawn": "Strength", "zodiac": "leo", "canonical_id": "kab.path.19" },
+    { "num": 20, "connects": [4, 6], "hebrew_letter": "Yod", "tarot_golden_dawn": "The Hermit", "zodiac": "virgo", "canonical_id": "kab.path.20" },
+    { "num": 21, "connects": [4, 7], "hebrew_letter": "Kaph", "tarot_golden_dawn": "Wheel of Fortune", "planet": "jupiter", "canonical_id": "kab.path.21" },
+    { "num": 22, "connects": [5, 6], "hebrew_letter": "Lamed", "tarot_golden_dawn": "Justice", "zodiac": "libra", "canonical_id": "kab.path.22" },
+    { "num": 23, "connects": [5, 8], "hebrew_letter": "Mem", "tarot_golden_dawn": "The Hanged Man", "element": "water", "canonical_id": "kab.path.23" },
+    { "num": 24, "connects": [6, 7], "hebrew_letter": "Nun", "tarot_golden_dawn": "Death", "zodiac": "scorpio", "canonical_id": "kab.path.24" },
+    { "num": 25, "connects": [6, 9], "hebrew_letter": "Samekh", "tarot_golden_dawn": "Temperance", "zodiac": "sagittarius", "canonical_id": "kab.path.25" },
+    { "num": 26, "connects": [6, 8], "hebrew_letter": "Ayin", "tarot_golden_dawn": "The Devil", "zodiac": "capricorn", "canonical_id": "kab.path.26" },
+    { "num": 27, "connects": [7, 8], "hebrew_letter": "Peh", "tarot_golden_dawn": "The Tower", "planet": "mars", "canonical_id": "kab.path.27" },
+    { "num": 28, "connects": [7, 9], "hebrew_letter": "Tzaddi", "tarot_golden_dawn": "The Star", "zodiac": "aquarius", "canonical_id": "kab.path.28" },
+    { "num": 29, "connects": [7, 10], "hebrew_letter": "Qoph", "tarot_golden_dawn": "The Moon", "zodiac": "pisces", "canonical_id": "kab.path.29" },
+    { "num": 30, "connects": [8, 9], "hebrew_letter": "Resh", "tarot_golden_dawn": "The Sun", "planet": "sun", "canonical_id": "kab.path.30" },
+    { "num": 31, "connects": [8, 10], "hebrew_letter": "Shin", "tarot_golden_dawn": "Judgement", "element": "fire", "canonical_id": "kab.path.31" },
+    { "num": 32, "connects": [9, 10], "hebrew_letter": "Tav", "tarot_golden_dawn": "The World", "planet": "saturn", "canonical_id": "kab.path.32" }
+  ],
+  "sephiroth_count": 10,
+  "paths_count": 22,
+  "worlds_count": 4,
+  "pillars_count": 3
+}

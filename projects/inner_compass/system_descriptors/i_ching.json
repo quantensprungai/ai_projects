@@ -1,0 +1,65 @@
+{
+  "system_id": "i_ching",
+  "system_name": "I Ging (I Ching / Yijing)",
+  "system_role": "structural",
+  "canonical_prefix": "i_ching.",
+  "input_format": "none",
+  "calendar_basis": "none",
+  "element_types": [
+    "hexagram",
+    "trigram",
+    "line"
+  ],
+  "identifier_rules": {
+    "hexagram": "1-64 (King Wen sequence)",
+    "trigram": "1-8 (heaven, earth, thunder, water, mountain, wind, fire, lake)",
+    "line": "{hexagram_num}.{line_num} (1-6 per hexagram)"
+  },
+  "canonical_id_rules": {
+    "format": "i_ching.{element_type}.{element_id}",
+    "examples": [
+      "i_ching.hex.34",
+      "i_ching.trigram.thunder",
+      "i_ching.line.34.1"
+    ]
+  },
+  "cross_system_links": {
+    "hd": "hd.gate.N ↔ i_ching.hex.N (faktische 1:1-Identität, King Wen Nummerierung)",
+    "genekeys": "gk.gate.N ↔ i_ching.hex.N (abgeleitet von HD)"
+  },
+  "historical_layers": [
+    { "layer": 1, "era": "~1200 BCE", "label": "Zhou Yi (Orakel-Ursprung, König Wen + Herzog von Zhou)" },
+    { "layer": 2, "era": "~500 BCE", "label": "Ten Wings (Konfuzianische Kommentare, Xici Zhuan)" },
+    { "layer": 3, "era": "~200 BCE – 1000 CE", "label": "Klassische Kommentare (Wang Bi, Zhu Xi)" },
+    { "layer": 4, "era": "1882", "label": "Wilhelm/Baynes (westliche Übersetzung, Deutsche Erstausgabe 1924)" },
+    { "layer": 5, "era": "1987", "label": "Ra Uru Hu: Gates auf Zodiak-Grad gemapped (HD-Integration)" },
+    { "layer": 6, "era": "2002", "label": "Richard Rudd: Gene Keys (Shadow/Gift/Siddhi pro Hexagramm)" }
+  ],
+  "term_mapping_rules": {
+    "schools": ["zhou_yi", "confucian", "taoist", "wilhelm_baynes", "blofeld", "huang"],
+    "normalization": "lowercase_underscore",
+    "note": "Hexagramm-Namen unterscheiden sich stark zwischen Übersetzungen. K2-Struktur (64 Hex, 8 Trigr., 384 Linien) ist universell; K3/K4-Namen sind schulspezifisch."
+  },
+  "kg_rules": {
+    "allowed_relation_types": [
+      "composed_of",
+      "upper_trigram",
+      "lower_trigram",
+      "changes_to",
+      "maps_to"
+    ],
+    "node_types": ["Hexagram", "Trigram", "Line"]
+  },
+  "dynamics_rules": {
+    "has_dynamics": true,
+    "dynamic_types": ["hexagram_transformation", "moving_lines"],
+    "note": "Wechselnde Linien (moving lines) erzeugen Transformations-Hexagramm. Relevant für Tages-/Transit-Bezug."
+  },
+  "synthesis_rules": {
+    "default_style": "poetic",
+    "wording_tone": "tiefgründig, symbolisch, Wandel-orientiert",
+    "allowed_styles": ["poetic", "natural", "technical"],
+    "language_defaults": ["de", "en", "zh"]
+  },
+  "documentation_ref": "engines.md §13"
+}

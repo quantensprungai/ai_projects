@@ -1,0 +1,55 @@
+{
+  "system_id": "chakra",
+  "system_name": "Chakra System",
+  "system_role": "structural",
+  "canonical_prefix": "chakra.",
+  "input_format": "none",
+  "calendar_basis": "none",
+  "element_types": [
+    "chakra",
+    "nadi"
+  ],
+  "identifier_rules": {
+    "chakra": "1-7 (root to crown) or slug (root, sacral, solar_plexus, heart, throat, third_eye, crown)",
+    "nadi": "ida | pingala | sushumna"
+  },
+  "canonical_id_rules": {
+    "format": "chakra.{element_type}.{element_id}",
+    "examples": [
+      "chakra.chakra.heart",
+      "chakra.chakra.4",
+      "chakra.nadi.ida"
+    ]
+  },
+  "cross_system_links": {
+    "hd": "chakra.chakra.* ↔ hd.center.* (interpretative Verbindung, nicht faktisch 1:1 — Ra Uru Hu hat HD-Zentren auf Chakren gemapped, aber mit Modifikationen: HD hat 9 Zentren, klassisches System 7)",
+    "jyotish": "chakra.chakra.* als Körper-Referenz für Jyotish Graha-Wirkungen (interpretativ)"
+  },
+  "term_mapping_rules": {
+    "schools": ["classical_indian", "yogic_tantra", "tibetan", "western_new_age", "ra_uru_hu"],
+    "normalization": "lowercase_underscore",
+    "note": "Sanskrit-Namen universell. Westliche Namen (Root/Crown etc.) und Farb-Zuordnungen variieren je Tradition. HD-Zentren-Mapping (Ra) hat 9 Zentren — Kopf + Ajna über Sahasrara hinaus."
+  },
+  "kg_rules": {
+    "allowed_relation_types": [
+      "above",
+      "below",
+      "flows_through",
+      "governs",
+      "maps_to"
+    ],
+    "node_types": ["Chakra", "Nadi"]
+  },
+  "dynamics_rules": {
+    "has_dynamics": true,
+    "dynamic_types": ["kundalini_flow", "chakra_activation"],
+    "note": "Kundalini-Aufstieg als Dynamik-Modell. Relevant für Brunnen-/Leiter-Metapher in IC."
+  },
+  "synthesis_rules": {
+    "default_style": "natural",
+    "wording_tone": "körperbezogen, energetisch, transformativ",
+    "allowed_styles": ["natural", "poetic", "coaching"],
+    "language_defaults": ["de", "en", "sa"]
+  },
+  "documentation_ref": "engines.md §13, §14"
+}

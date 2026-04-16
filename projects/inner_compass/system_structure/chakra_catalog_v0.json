@@ -1,0 +1,162 @@
+{
+  "meta": {
+    "schema_version": "1.0.0",
+    "system_id": "chakra",
+    "system_role": "structural",
+    "description": "Chakra-System K2-Katalog: 7 Hauptchakren + 3 Nadis. Sanskrit-Namen K2 (universell). Farben, Planeten-Zuordnungen, HD-Mapping interpretativ (K3). Cross-Links zu HD-Zentren und Jyotish.",
+    "source": "Klassisches yogisches System (Sat-Cakra-Nirupana, 16. Jhd.). Namen und Nummer universell; Zuordnungen schulabhängig.",
+    "evidence_class": "A",
+    "evidence_note": "Sanskrit-Namen und Nummerierung K2 (universell). Farben/Planeten/HD-Mapping K3 (schulabhängig, tradition-Tag nötig).",
+    "generated_at": "2026-04-15T00:00:00.000Z",
+    "hd_cross_link_note": "HD hat 9 Zentren, klassisches System 7. Ra Uru Hu hat Chakren auf HD-Zentren gemapped — Kopf+Ajna als Erweiterung. Mapping ist interpretativ, nicht K1."
+  },
+  "chakras": [
+    {
+      "num": 1,
+      "key": "root",
+      "sanskrit": "Mūlādhāra",
+      "label_en": "Root Chakra",
+      "label_de": "Wurzelchakra",
+      "location": "base_of_spine",
+      "element": "earth",
+      "color_classical": "red",
+      "seed_mantra": "LAM",
+      "hd_center_map": "root",
+      "hd_mapping_confidence": "high",
+      "jyotish_graha": "saturn",
+      "canonical_id": "chakra.chakra.root"
+    },
+    {
+      "num": 2,
+      "key": "sacral",
+      "sanskrit": "Svādhiṣṭhāna",
+      "label_en": "Sacral Chakra",
+      "label_de": "Sakralchakra",
+      "location": "lower_abdomen",
+      "element": "water",
+      "color_classical": "orange",
+      "seed_mantra": "VAM",
+      "hd_center_map": "sacral",
+      "hd_mapping_confidence": "high",
+      "jyotish_graha": "moon",
+      "canonical_id": "chakra.chakra.sacral"
+    },
+    {
+      "num": 3,
+      "key": "solar_plexus",
+      "sanskrit": "Maṇipūra",
+      "label_en": "Solar Plexus Chakra",
+      "label_de": "Solarplexuschakra",
+      "location": "solar_plexus",
+      "element": "fire",
+      "color_classical": "yellow",
+      "seed_mantra": "RAM",
+      "hd_center_map": "solar_plexus",
+      "hd_mapping_confidence": "high",
+      "jyotish_graha": "mars",
+      "canonical_id": "chakra.chakra.solar_plexus"
+    },
+    {
+      "num": 4,
+      "key": "heart",
+      "sanskrit": "Anāhata",
+      "label_en": "Heart Chakra",
+      "label_de": "Herzchakra",
+      "location": "heart_center",
+      "element": "air",
+      "color_classical": "green",
+      "seed_mantra": "YAM",
+      "hd_center_map": "heart",
+      "hd_mapping_confidence": "medium",
+      "hd_note": "HD hat zwei Herz-nahe Zentren: Herzchakra ↔ Herz/Ego-Zentrum (Willenskraft) + G-Zentrum (Identität). Nicht 1:1.",
+      "jyotish_graha": "venus",
+      "canonical_id": "chakra.chakra.heart"
+    },
+    {
+      "num": 5,
+      "key": "throat",
+      "sanskrit": "Viśuddha",
+      "label_en": "Throat Chakra",
+      "label_de": "Kehlkopfchakra",
+      "location": "throat",
+      "element": "space_akasha",
+      "color_classical": "blue",
+      "seed_mantra": "HAM",
+      "hd_center_map": "throat",
+      "hd_mapping_confidence": "high",
+      "jyotish_graha": "mercury",
+      "canonical_id": "chakra.chakra.throat"
+    },
+    {
+      "num": 6,
+      "key": "third_eye",
+      "sanskrit": "Ājñā",
+      "label_en": "Third Eye Chakra",
+      "label_de": "Stirnchakra",
+      "location": "forehead",
+      "element": "light",
+      "color_classical": "indigo",
+      "seed_mantra": "OM",
+      "hd_center_map": "ajna",
+      "hd_mapping_confidence": "high",
+      "jyotish_graha": "jupiter",
+      "canonical_id": "chakra.chakra.third_eye"
+    },
+    {
+      "num": 7,
+      "key": "crown",
+      "sanskrit": "Sahasrāra",
+      "label_en": "Crown Chakra",
+      "label_de": "Kronenchakra",
+      "location": "top_of_head",
+      "element": "consciousness",
+      "color_classical": "violet_white",
+      "seed_mantra": "silence",
+      "hd_center_map": "head",
+      "hd_mapping_confidence": "medium",
+      "hd_note": "HD trennt Krone (Head = Inspiration/Druck) und Ajna (Konzeptualisierung). Im klassischen System ist Sahasrara über dem Ajna.",
+      "jyotish_graha": "sun",
+      "canonical_id": "chakra.chakra.crown"
+    }
+  ],
+  "nadis": [
+    {
+      "key": "ida",
+      "label_en": "Ida Nadi",
+      "label_de": "Ida-Nadi",
+      "polarity": "lunar_feminine",
+      "side": "left",
+      "note": "Mondkanal, kühlend, links aufsteigend",
+      "canonical_id": "chakra.nadi.ida"
+    },
+    {
+      "key": "pingala",
+      "label_en": "Pingala Nadi",
+      "label_de": "Pingala-Nadi",
+      "polarity": "solar_masculine",
+      "side": "right",
+      "note": "Sonnenkanal, wärmend, rechts aufsteigend",
+      "canonical_id": "chakra.nadi.pingala"
+    },
+    {
+      "key": "sushumna",
+      "label_en": "Sushumna Nadi",
+      "label_de": "Sushumna-Nadi",
+      "polarity": "central",
+      "side": "center",
+      "note": "Zentralkanal entlang der Wirbelsäule; Kundalini-Pfad",
+      "canonical_id": "chakra.nadi.sushumna"
+    }
+  ],
+  "hd_mapping_table": [
+    { "chakra": "root", "hd_center": "root", "confidence": "high" },
+    { "chakra": "sacral", "hd_center": "sacral", "confidence": "high" },
+    { "chakra": "solar_plexus", "hd_center": "solar_plexus", "confidence": "high" },
+    { "chakra": "heart", "hd_center": "heart", "confidence": "medium", "note": "HD hat zusätzlich G-Zentrum" },
+    { "chakra": "throat", "hd_center": "throat", "confidence": "high" },
+    { "chakra": "third_eye", "hd_center": "ajna", "confidence": "high" },
+    { "chakra": "crown", "hd_center": "head", "confidence": "medium", "note": "HD hat Head+Ajna als separate Zentren über Sahasrara" }
+  ],
+  "chakras_count": 7,
+  "nadis_count": 3
+}

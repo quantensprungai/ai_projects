@@ -1,0 +1,252 @@
+{
+  "meta": {
+    "schema_version": "1.0.0",
+    "system_id": "enneagram",
+    "system_role": "structural",
+    "description": "Enneagramm K2-Katalog: 9 Typen, 3 Triaden, 8 Wings, 2 Pfeile/Typ (18 Pfeile), 3 Instinkte (9 Subtypes), 9 Passionen + Tugenden. Schulen-spezifische Erweiterungen: Tritypes (Chestnut), Levels of Development (Riso-Hudson). EG-Brücke: HD offene Zentren → Triade (K2-Regel).",
+    "source": "Universelle Struktur (Ichazo/Naranjo als Basis). Typ-Namen: Riso-Hudson als Referenz-K3. Passionen/Tugenden universell.",
+    "evidence_class": "B",
+    "evidence_note": "K2-Struktur (9 Typen, Triaden, Pfeile, Instinkte, Passionen/Tugenden) schul-übergreifend anerkannt. Tritypes (Chestnut/Fauvre) und Levels of Development (Riso-Hudson) schulspezifische K2-Erweiterungen. Typ-Namen K3 (schulabhängig). EG-Brücke (HD→Triade) K2-Regel aus ic_gesamtinventur §III.5.",
+    "generated_at": "2026-04-15T00:00:00.000Z",
+    "schools_note": "Schulen: Ichazo (Ursprung), Naranjo (Psychologie + 27 Subtypes), Riso-Hudson (RHETI + Levels of Development), Palmer (Aufmerksamkeitsstrukturen), Maitri (Soul Qualities), Chestnut (27 Subtypes + Tritypes). Tradition-Tag auf K3/K4-Nodes."
+  },
+  "triads": [
+    {
+      "key": "gut",
+      "label_en": "Gut / Body / Instinctive Triad",
+      "label_de": "Bauchzentrum / Körper-Triade",
+      "core_emotion": "anger",
+      "types": [8, 9, 1],
+      "hd_center_map": ["sacral", "solar_plexus"],
+      "hd_bridge_note": "Offenes Sakral- oder Emotionalzentrum → Bauch-Triade-Hypothese (EG-Brücke §III.5)",
+      "canonical_id": "enn.triad.gut"
+    },
+    {
+      "key": "heart",
+      "label_en": "Heart / Feeling Triad",
+      "label_de": "Herzzentrrum / Gefühls-Triade",
+      "core_emotion": "shame",
+      "types": [2, 3, 4],
+      "hd_center_map": ["heart", "g"],
+      "hd_bridge_note": "Offenes Herz- oder G-Zentrum → Herz-Triade-Hypothese (EG-Brücke §III.5)",
+      "canonical_id": "enn.triad.heart"
+    },
+    {
+      "key": "head",
+      "label_en": "Head / Thinking Triad",
+      "label_de": "Kopfzentrum / Denk-Triade",
+      "core_emotion": "fear",
+      "types": [5, 6, 7],
+      "hd_center_map": ["head", "ajna"],
+      "hd_bridge_note": "Offenes Kopf- oder Ajna-Zentrum → Kopf-Triade-Hypothese (EG-Brücke §III.5)",
+      "canonical_id": "enn.triad.head"
+    }
+  ],
+  "hd_eg_bridge": {
+    "description": "3-Schritt-Ableitung HD offene Zentren → EG-Triade → EG-Typ-Hypothese. Nicht Assessment, sondern Chart-basiert. Evidenzklasse C (Forschungshypothese, ic_gesamtinventur §III.5, z3_modell_referenz A5).",
+    "steps": [
+      "Schritt 1: HD offene Zentren identifizieren (automatisch aus Chart)",
+      "Schritt 2: Triade zuordnen (Mapping-Tabelle oben)",
+      "Schritt 3: Typ-Hypothese durch situative Reflexionsfrage verfeinern"
+    ],
+    "mapping": [
+      { "hd_center": "sacral", "triad": "gut", "confidence": "medium" },
+      { "hd_center": "solar_plexus", "triad": "gut", "confidence": "medium" },
+      { "hd_center": "heart", "triad": "heart", "confidence": "medium" },
+      { "hd_center": "g", "triad": "heart", "confidence": "medium" },
+      { "hd_center": "head", "triad": "head", "confidence": "medium" },
+      { "hd_center": "ajna", "triad": "head", "confidence": "medium" }
+    ],
+    "evidence_class": "C",
+    "note": "Forschungshypothese. Zu validieren in Pilot N≈30. Nicht für direkte Diagnose nutzen ohne User-Bestätigung."
+  },
+  "types": [
+    {
+      "num": 1, "key": "perfectionist",
+      "label_en_riso_hudson": "The Reformer",
+      "label_en_palmer": "The Perfectionist",
+      "label_de": "Der Perfektionist / Reformer",
+      "triad": "gut",
+      "passion": "anger",
+      "virtue": "serenity",
+      "fixation": "resentment",
+      "holy_idea": "perfection",
+      "wing_a": 9, "wing_b": 2,
+      "integration_arrow": 7,
+      "disintegration_arrow": 4,
+      "instinct_subtypes": ["sp_1", "sx_1", "so_1"],
+      "canonical_id": "enn.type.1"
+    },
+    {
+      "num": 2, "key": "helper",
+      "label_en_riso_hudson": "The Helper",
+      "label_en_palmer": "The Giver",
+      "label_de": "Der Helfer",
+      "triad": "heart",
+      "passion": "pride",
+      "virtue": "humility",
+      "fixation": "flattery",
+      "holy_idea": "will",
+      "wing_a": 1, "wing_b": 3,
+      "integration_arrow": 4,
+      "disintegration_arrow": 8,
+      "instinct_subtypes": ["sp_2", "sx_2", "so_2"],
+      "canonical_id": "enn.type.2"
+    },
+    {
+      "num": 3, "key": "achiever",
+      "label_en_riso_hudson": "The Achiever",
+      "label_en_palmer": "The Performer",
+      "label_de": "Der Erfolgsmensch / Performer",
+      "triad": "heart",
+      "passion": "deceit",
+      "virtue": "authenticity",
+      "fixation": "vanity",
+      "holy_idea": "hope",
+      "wing_a": 2, "wing_b": 4,
+      "integration_arrow": 6,
+      "disintegration_arrow": 9,
+      "instinct_subtypes": ["sp_3", "sx_3", "so_3"],
+      "canonical_id": "enn.type.3"
+    },
+    {
+      "num": 4, "key": "individualist",
+      "label_en_riso_hudson": "The Individualist",
+      "label_en_palmer": "The Romantic",
+      "label_de": "Der Individualist / Romantiker",
+      "triad": "heart",
+      "passion": "envy",
+      "virtue": "equanimity",
+      "fixation": "melancholy",
+      "holy_idea": "origin",
+      "wing_a": 3, "wing_b": 5,
+      "integration_arrow": 1,
+      "disintegration_arrow": 2,
+      "instinct_subtypes": ["sp_4", "sx_4", "so_4"],
+      "canonical_id": "enn.type.4"
+    },
+    {
+      "num": 5, "key": "investigator",
+      "label_en_riso_hudson": "The Investigator",
+      "label_en_palmer": "The Observer",
+      "label_de": "Der Beobachter / Forscher",
+      "triad": "head",
+      "passion": "avarice",
+      "virtue": "non_attachment",
+      "fixation": "stinginess",
+      "holy_idea": "omniscience",
+      "wing_a": 4, "wing_b": 6,
+      "integration_arrow": 8,
+      "disintegration_arrow": 7,
+      "instinct_subtypes": ["sp_5", "sx_5", "so_5"],
+      "canonical_id": "enn.type.5"
+    },
+    {
+      "num": 6, "key": "loyalist",
+      "label_en_riso_hudson": "The Loyalist",
+      "label_en_palmer": "The Trooper",
+      "label_de": "Der Loyalist / Skeptiker",
+      "triad": "head",
+      "passion": "fear",
+      "virtue": "courage",
+      "fixation": "cowardice",
+      "holy_idea": "faith",
+      "wing_a": 5, "wing_b": 7,
+      "integration_arrow": 9,
+      "disintegration_arrow": 3,
+      "instinct_subtypes": ["sp_6", "sx_6", "so_6"],
+      "canonical_id": "enn.type.6"
+    },
+    {
+      "num": 7, "key": "enthusiast",
+      "label_en_riso_hudson": "The Enthusiast",
+      "label_en_palmer": "The Epicure",
+      "label_de": "Der Enthusiast / Epikureer",
+      "triad": "head",
+      "passion": "gluttony",
+      "virtue": "sobriety",
+      "fixation": "planning",
+      "holy_idea": "work",
+      "wing_a": 6, "wing_b": 8,
+      "integration_arrow": 5,
+      "disintegration_arrow": 1,
+      "instinct_subtypes": ["sp_7", "sx_7", "so_7"],
+      "canonical_id": "enn.type.7"
+    },
+    {
+      "num": 8, "key": "challenger",
+      "label_en_riso_hudson": "The Challenger",
+      "label_en_palmer": "The Boss",
+      "label_de": "Der Herausforderer / Chef",
+      "triad": "gut",
+      "passion": "lust",
+      "virtue": "innocence",
+      "fixation": "vengeance",
+      "holy_idea": "truth",
+      "wing_a": 7, "wing_b": 9,
+      "integration_arrow": 2,
+      "disintegration_arrow": 5,
+      "instinct_subtypes": ["sp_8", "sx_8", "so_8"],
+      "canonical_id": "enn.type.8"
+    },
+    {
+      "num": 9, "key": "peacemaker",
+      "label_en_riso_hudson": "The Peacemaker",
+      "label_en_palmer": "The Mediator",
+      "label_de": "Der Vermittler / Friedensstifter",
+      "triad": "gut",
+      "passion": "sloth",
+      "virtue": "action",
+      "fixation": "indolence",
+      "holy_idea": "love",
+      "wing_a": 8, "wing_b": 1,
+      "integration_arrow": 3,
+      "disintegration_arrow": 6,
+      "instinct_subtypes": ["sp_9", "sx_9", "so_9"],
+      "canonical_id": "enn.type.9"
+    }
+  ],
+  "instincts": [
+    { "key": "sp", "label_en": "Self-Preservation", "label_de": "Selbsterhaltung", "canonical_id": "enn.instinct.sp" },
+    { "key": "sx", "label_en": "Sexual / One-to-One", "label_de": "Sexuell / Paarverbindung", "canonical_id": "enn.instinct.sx" },
+    { "key": "so", "label_en": "Social", "label_de": "Sozial", "canonical_id": "enn.instinct.so" }
+  ],
+  "wings": [
+    { "key": "1w9", "canonical_id": "enn.wing.1w9" }, { "key": "1w2", "canonical_id": "enn.wing.1w2" },
+    { "key": "2w1", "canonical_id": "enn.wing.2w1" }, { "key": "2w3", "canonical_id": "enn.wing.2w3" },
+    { "key": "3w2", "canonical_id": "enn.wing.3w2" }, { "key": "3w4", "canonical_id": "enn.wing.3w4" },
+    { "key": "4w3", "canonical_id": "enn.wing.4w3" }, { "key": "4w5", "canonical_id": "enn.wing.4w5" },
+    { "key": "5w4", "canonical_id": "enn.wing.5w4" }, { "key": "5w6", "canonical_id": "enn.wing.5w6" },
+    { "key": "6w5", "canonical_id": "enn.wing.6w5" }, { "key": "6w7", "canonical_id": "enn.wing.6w7" },
+    { "key": "7w6", "canonical_id": "enn.wing.7w6" }, { "key": "7w8", "canonical_id": "enn.wing.7w8" },
+    { "key": "8w7", "canonical_id": "enn.wing.8w7" }, { "key": "8w9", "canonical_id": "enn.wing.8w9" },
+    { "key": "9w8", "canonical_id": "enn.wing.9w8" }, { "key": "9w1", "canonical_id": "enn.wing.9w1" }
+  ],
+  "school_extensions": {
+    "tritypes_chestnut": {
+      "school": "chestnut_fauvre",
+      "description": "27 Tritype-Kombinationen (1 Typ pro Triade). Jeder Mensch hat einen dominanten Typ pro Kopf/Herz/Bauch-Zentrum. Hierarchisch gestackt.",
+      "evidence_class": "C",
+      "note": "Nicht universell anerkannt — Chestnut/Fauvre-spezifisch. Als optionale K2-Erweiterung modelliert.",
+      "examples": ["enn.tritype.548", "enn.tritype.271", "enn.tritype.936"]
+    },
+    "levels_of_development_riso_hudson": {
+      "school": "riso_hudson",
+      "description": "9 Entwicklungsebenen pro Typ (1=höchste Integration, 9=tiefste Desintegration). Riso-Hudson-spezifisch.",
+      "evidence_class": "C",
+      "note": "Nicht universell anerkannt — Riso-Hudson-spezifisch. Als optionale K2-Erweiterung modelliert.",
+      "levels_per_type": 9,
+      "total_nodes": 81
+    },
+    "soul_qualities_maitri": {
+      "school": "maitri",
+      "description": "Essentielle Seelen-Qualität pro Typ (Essenz, die hinter der Fixierung liegt). Sandra Maitri / Hameed Ali.",
+      "evidence_class": "C",
+      "note": "Spirituelle Erweiterung, nicht universell. K3/K4-Inhalt."
+    }
+  },
+  "types_count": 9,
+  "triads_count": 3,
+  "wings_count": 18,
+  "instincts_count": 3
+}
