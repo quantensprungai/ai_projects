@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "schema_version": "1.0.0",
+    "system_id": "luoshu",
+    "system_role": "structural",
+    "description": "Luoshu (洛書) K2-Katalog: 3×3 Magisches Quadrat mit 9 Positionen/Sternen. Mathematische Basis von Nine Star Ki und Feng Shui Ba Gua. Jede Position hat Nummer (1-9), Trigram, Richtung, Wu Xing Element.",
+    "source": "Klassische chinesische Kosmologie. Das Luoshu-Muster ist universell und mathematisch eindeutig (Zeilensumme = 15).",
+    "evidence_class": "A",
+    "generated_at": "2026-04-15T00:00:00.000Z",
+    "cross_system_links": {
+      "nine_star_ki": "Luoshu-Positionen 1-9 = die 9 Ki-Sterne (jeder Mensch hat eine Hauptposition)",
+      "i_ching": "Luoshu-Positionen ↔ i_ching.trigram.* (Ba Gua auf Luoshu gemappt)",
+      "wu_xing": "Luoshu-Positionen ↔ wx.element.* (jede Position hat ein Wu Xing Element)"
+    },
+    "magic_square": {
+      "layout": [
+        [4, 9, 2],
+        [3, 5, 7],
+        [8, 1, 6]
+      ],
+      "row_sums": [15, 15, 15],
+      "col_sums": [15, 15, 15],
+      "diag_sums": [15, 15]
+    }
+  },
+  "positions": [
+    {
+      "num": 1,
+      "label_en": "White Water Star",
+      "label_de": "Weißer Wasserstern",
+      "chinese": "一白水星",
+      "direction": "north",
+      "trigram": "water",
+      "wx_element": "water",
+      "color": "white",
+      "season": "winter",
+      "nsk_note": "In NSK: Nummer 1 = Wasser-Typ. Qualitäten: flexibel, intuitiv, kommunikativ",
+      "canonical_id": "luoshu.position.1"
+    },
+    {
+      "num": 2,
+      "label_en": "Black Earth Star",
+      "label_de": "Schwarzer Erdstern",
+      "chinese": "二黒土星",
+      "direction": "southwest",
+      "trigram": "earth",
+      "wx_element": "earth",
+      "color": "black",
+      "nsk_note": "NSK 2 = Erde-Typ. Qualitäten: fürsorglich, geduldig, beharrlich",
+      "canonical_id": "luoshu.position.2"
+    },
+    {
+      "num": 3,
+      "label_en": "Jade Wood Star",
+      "label_de": "Jadegrüner Holzstern",
+      "chinese": "三碧木星",
+      "direction": "east",
+      "trigram": "thunder",
+      "wx_element": "wood",
+      "color": "jade_green",
+      "nsk_note": "NSK 3 = Holz-Typ. Qualitäten: dynamisch, ehrgeizig, direkt",
+      "canonical_id": "luoshu.position.3"
+    },
+    {
+      "num": 4,
+      "label_en": "Green Wood Star",
+      "label_de": "Grüner Holzstern",
+      "chinese": "四緑木星",
+      "direction": "southeast",
+      "trigram": "wind",
+      "wx_element": "wood",
+      "color": "green",
+      "nsk_note": "NSK 4 = Holz-Typ. Qualitäten: kreativ, kommunikativ, wandelbar",
+      "canonical_id": "luoshu.position.4"
+    },
+    {
+      "num": 5,
+      "label_en": "Yellow Earth Star",
+      "label_de": "Gelber Erdstern",
+      "chinese": "五黄土星",
+      "direction": "center",
+      "trigram": null,
+      "wx_element": "earth",
+      "color": "yellow",
+      "nsk_note": "NSK 5 = Zentrum/Erde-Typ. Kein Trigram (Zentrum). Qualitäten: machtvoll, einflussreich, zentral",
+      "canonical_id": "luoshu.position.5"
+    },
+    {
+      "num": 6,
+      "label_en": "White Metal Star",
+      "label_de": "Weißer Metallstern",
+      "chinese": "六白金星",
+      "direction": "northwest",
+      "trigram": "heaven",
+      "wx_element": "metal",
+      "color": "white",
+      "nsk_note": "NSK 6 = Metall-Typ. Qualitäten: führend, verantwortungsbewusst, prinzipientreu",
+      "canonical_id": "luoshu.position.6"
+    },
+    {
+      "num": 7,
+      "label_en": "Red Metal Star",
+      "label_de": "Roter Metallstern",
+      "chinese": "七赤金星",
+      "direction": "west",
+      "trigram": "lake",
+      "wx_element": "metal",
+      "color": "red",
+      "nsk_note": "NSK 7 = Metall-Typ. Qualitäten: charmant, redegewandt, gesellig",
+      "canonical_id": "luoshu.position.7"
+    },
+    {
+      "num": 8,
+      "label_en": "White Earth Star",
+      "label_de": "Weißer Erdstern",
+      "chinese": "八白土星",
+      "direction": "northeast",
+      "trigram": "mountain",
+      "wx_element": "earth",
+      "color": "white",
+      "nsk_note": "NSK 8 = Erde-Typ. Qualitäten: beständig, zuverlässig, praktisch",
+      "canonical_id": "luoshu.position.8"
+    },
+    {
+      "num": 9,
+      "label_en": "Purple Fire Star",
+      "label_de": "Purpurner Feuerstern",
+      "chinese": "九紫火星",
+      "direction": "south",
+      "trigram": "fire",
+      "wx_element": "fire",
+      "color": "purple",
+      "nsk_note": "NSK 9 = Feuer-Typ. Qualitäten: charismatisch, leidenschaftlich, intuitiv",
+      "canonical_id": "luoshu.position.9"
+    }
+  ],
+  "positions_count": 9,
+  "nsk_note": "In Nine Star Ki: Hauptstern (年命) aus Geburtsjahr, Monatsstern (月命) aus Geburtsmonat, Tagesstern (日命) aus Geburtstag. Bewegung der Sterne durch Luoshu-Positionen bestimmt Jahres-/Monatsenergien und günstige/ungünstige Richtungen."
+}
