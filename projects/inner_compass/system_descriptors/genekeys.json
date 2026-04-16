@@ -1,33 +1,46 @@
 {
   "system_id": "genekeys",
   "system_name": "Gene Keys",
+  "system_role": "lookup_calculation",
+  "system_role_note": "Hybrid: K1 geteilt mit HD (Ephemeris → Gate-Positionen). K2 eigenständig (Shadow/Gift/Siddhi-Struktur, Codon Rings, Sequences). Kein Geburtschart-Algorithmus — verwendet HD-Gates als Input für Sequenz-Berechnung.",
   "canonical_prefix": "gk.",
   "input_format": "human_design_gates",
   "calendar_basis": "none",
   "element_types": [
-    "gene_key",
-    "sequence_step",
+    "key",
     "shadow",
     "gift",
     "siddhi",
-    "programming_partner"
+    "codon_ring",
+    "sequence"
   ],
   "identifier_rules": {
-    "gene_key": "1-64",
-    "sequence_step": "activation|venus|pearl"
+    "key": "1-64 (identisch mit HD Gate / I Ching Hexagramm)",
+    "shadow": "1-64",
+    "gift": "1-64",
+    "siddhi": "1-64",
+    "codon_ring": "slug (z.B. fire, water, light, ...)",
+    "sequence": "activation | venus | pearl"
   },
+  "copyright_note": "Shadow/Gift/Siddhi-NAMEN sind K3/K4 und © Richard Rudd / Gene Keys Publishing. Nur Struktur (Nummerierung, Programming Partners, Codon Ring Zugehörigkeit, Sequenz-Positionen) ist K2 und kann aus Quellen extrahiert werden.",
   "canonical_id_rules": {
     "format": "gk.{element_type}.{element_id}",
     "examples": [
-      "gk.gene_key.22",
+      "gk.key.22",
       "gk.shadow.22",
       "gk.gift.22",
       "gk.siddhi.22",
-      "gk.sequence_step.activation.purpose"
+      "gk.codon_ring.fire",
+      "gk.sequence.activation"
     ]
   },
+  "cross_system_links": {
+    "hd": "gk.key.N ↔ hd.gate.N (faktisch 1:1 — gleiche Nummerierung, gleiche Ephemeris-Positionen)",
+    "i_ching": "gk.key.N ↔ i_ching.hex.N (faktisch 1:1 — GK ist Rudd's Reinterpretation der I Ching-Hexagramme via HD)"
+  },
+  "schools_note": "Es gibt nur eine Schule: Richard Rudd (Gene Keys Publishing). Keine alternativen Schulen die das GK-System anders interpretieren. HD-Schulen (Quantum HD, 64Keys etc.) sind KEINE GK-Schulen — sie gehören zum separaten HD-System.",
   "term_mapping_rules": {
-    "schools": ["classic_gk", "rudd"],
+    "schools": ["rudd"],
     "normalization": "lower"
   },
   "kg_rules": {
