@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "schema_version": "1.0.0",
+    "system_id": "pancha_bhuta",
+    "system_role": "structural",
+    "description": "Panchamahabhuta (पञ्चमहाभूत) K2-Katalog: 5 Große Elemente der vedischen Kosmologie. Basis von Jyotish, Ayurveda, Yoga, Chakras. Verschieden von Wu Xing (chinesisch) und Westlichen 4 Elementen.",
+    "source": "Vedische Kosmologie (Samkhya-Philosophie, Taittriya Upanishad). K2 universell.",
+    "evidence_class": "A",
+    "cross_system_links": {
+      "jyotish": "pancha_bhuta.element.* → jyotish.graha.* (Planeten haben Elementzuordnungen)",
+      "chakra": "pancha_bhuta.element.* → chakra.chakra.* (Chakren haben Elementzuordnungen)",
+      "i_ching": "pancha_bhuta.element.* ↔ wu_xing.element.* (semantisch ähnlich, nicht identisch — Phase 3 Mapping)"
+    },
+    "generated_at": "2026-04-15T00:00:00.000Z"
+  },
+  "elements": [
+    {
+      "key": "akasha",
+      "sanskrit": "आकाश (Ākāśa)",
+      "label_en": "Ether / Space",
+      "label_de": "Äther / Raum",
+      "tanmatra": "sound",
+      "sense_organ": "ear",
+      "action_organ": "vocal_cords",
+      "dosha": "vata",
+      "chakra": "throat",
+      "jyotish_planet": "jupiter",
+      "canonical_id": "pancha_bhuta.element.akasha"
+    },
+    {
+      "key": "vayu",
+      "sanskrit": "वायु (Vāyu)",
+      "label_en": "Air / Wind",
+      "label_de": "Luft / Wind",
+      "tanmatra": "touch",
+      "sense_organ": "skin",
+      "action_organ": "hands",
+      "dosha": "vata",
+      "chakra": "heart",
+      "jyotish_planet": "saturn",
+      "canonical_id": "pancha_bhuta.element.vayu"
+    },
+    {
+      "key": "agni",
+      "sanskrit": "अग्नि (Agni)",
+      "label_en": "Fire",
+      "label_de": "Feuer",
+      "tanmatra": "sight",
+      "sense_organ": "eye",
+      "action_organ": "feet",
+      "dosha": "pitta",
+      "chakra": "solar_plexus",
+      "jyotish_planet": "mars",
+      "canonical_id": "pancha_bhuta.element.agni"
+    },
+    {
+      "key": "jala",
+      "sanskrit": "जल (Jala)",
+      "label_en": "Water",
+      "label_de": "Wasser",
+      "tanmatra": "taste",
+      "sense_organ": "tongue",
+      "action_organ": "reproductive_organs",
+      "dosha": "kapha",
+      "chakra": "sacral",
+      "jyotish_planet": "moon",
+      "canonical_id": "pancha_bhuta.element.jala"
+    },
+    {
+      "key": "prithvi",
+      "sanskrit": "पृथ्वी (Pṛthvī)",
+      "label_en": "Earth",
+      "label_de": "Erde",
+      "tanmatra": "smell",
+      "sense_organ": "nose",
+      "action_organ": "anus",
+      "dosha": "kapha",
+      "chakra": "root",
+      "jyotish_planet": "mercury",
+      "canonical_id": "pancha_bhuta.element.prithvi"
+    }
+  ],
+  "triguna": [
+    { "key": "sattva", "label_en": "Sattva — Purity / Clarity", "label_de": "Sattva — Reinheit / Klarheit", "quality": "illuminating, harmonious", "canonical_id": "pancha_bhuta.guna.sattva" },
+    { "key": "rajas", "label_en": "Rajas — Activity / Passion", "label_de": "Rajas — Aktivität / Leidenschaft", "quality": "stimulating, restless", "canonical_id": "pancha_bhuta.guna.rajas" },
+    { "key": "tamas", "label_en": "Tamas — Inertia / Darkness", "label_de": "Tamas — Trägheit / Dunkelheit", "quality": "stabilizing, heavy, obscuring", "canonical_id": "pancha_bhuta.guna.tamas" }
+  ],
+  "triguna_note": "Triguna (3 Qualitäten) sind das zweite Fundament der Samkhya-Philosophie. Jede Substanz und jedes Wesen hat alle 3 Gunas in unterschiedlichem Verhältnis. Relevant für Jyotish (Nakshatra-Gunas), Ayurveda, Yoga.",
+  "elements_count": 5,
+  "guna_count": 3
+}

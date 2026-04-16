@@ -1,0 +1,28 @@
+{
+  "system_id": "wu_xing",
+  "system_name": "Wu Xing (五行 — Fünf Wandlungsphasen)",
+  "system_role": "structural",
+  "canonical_prefix": "wx.",
+  "input_format": "none",
+  "calendar_basis": "none",
+  "element_types": ["element", "cycle", "direction", "season"],
+  "identifier_rules": {
+    "element": "wood | fire | earth | metal | water",
+    "cycle": "generating | controlling | weakening",
+    "direction": "east | south | center | west | north",
+    "season": "spring | summer | late_summer | autumn | winter"
+  },
+  "canonical_id_rules": {
+    "format": "wx.{element_type}.{element_id}",
+    "examples": ["wx.element.wood", "wx.element.fire", "wx.cycle.generating"]
+  },
+  "cross_system_links": {
+    "bazi": "wx.element.* → bazi.stem.* / bazi.branch.* (jeder Stamm/Zweig hat ein Wu Xing Element)",
+    "ziwei": "wx.element.* → ziwei.star.* (Sterne haben Elemente)",
+    "nine_star_ki": "wx.element.* → nine_star_ki.star.* (9 Sterne haben Wu Xing Elemente)",
+    "i_ching": "wx.element.* → i_ching.trigram.* (Trigramme haben Elemente)",
+    "chakra": "wx.element.* ↔ chakra.chakra.* (interpretative Verbindung, nicht 1:1)"
+  },
+  "note": "Wu Xing ≠ Westliche 4 Elemente ≠ Panchamahabhuta. Drei verschiedene Struktursysteme, die empirisch durch Embeddings verglichen werden (Phase 3).",
+  "documentation_ref": "engines.md §13"
+}

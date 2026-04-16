@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "schema_version": "1.0.0",
+    "system_id": "western_elements",
+    "system_role": "structural",
+    "description": "Westliche 4 Elemente K2-Katalog: Feuer, Erde, Luft, Wasser (+ Quintessenz/Äther). Basis der westlichen Astrologie, Tarot, Kabbala (Golden Dawn-Tradition), westlichen Esoterik. Verschieden von Wu Xing und Panchamahabhuta.",
+    "source": "Klassische griechische Elementenlehre (Empedokles, Aristoteles). Weitergegeben durch hermetische Tradition.",
+    "evidence_class": "A",
+    "cross_system_links": {
+      "astro": "western_elements.element.* → astro.sign.* (jedes Zeichen hat ein Element: Aries/Leo/Sagittarius=fire etc.)",
+      "kabbalah": "western_elements.element.* → kab.path.* (Golden-Dawn-Tradition: Pfade haben Elemente)",
+      "tarot": "western_elements.element.* → tarot suit assignments (Kelche=Wasser, Schwerter=Luft, Stäbe=Feuer, Münzen=Erde)"
+    },
+    "generated_at": "2026-04-15T00:00:00.000Z"
+  },
+  "elements": [
+    {
+      "key": "fire",
+      "label_en": "Fire",
+      "label_de": "Feuer",
+      "quality_hot": true,
+      "quality_dry": true,
+      "temperament": "choleric",
+      "season": "summer",
+      "direction": "south",
+      "astro_signs": ["aries", "leo", "sagittarius"],
+      "astro_modality": ["cardinal", "fixed", "mutable"],
+      "tarot_suit": "wands",
+      "jungian": "intuition",
+      "canonical_id": "we.element.fire"
+    },
+    {
+      "key": "earth",
+      "label_en": "Earth",
+      "label_de": "Erde",
+      "quality_hot": false,
+      "quality_dry": true,
+      "temperament": "melancholic",
+      "season": "winter",
+      "direction": "north",
+      "astro_signs": ["taurus", "virgo", "capricorn"],
+      "astro_modality": ["fixed", "mutable", "cardinal"],
+      "tarot_suit": "pentacles",
+      "jungian": "sensation",
+      "canonical_id": "we.element.earth"
+    },
+    {
+      "key": "air",
+      "label_en": "Air",
+      "label_de": "Luft",
+      "quality_hot": true,
+      "quality_dry": false,
+      "temperament": "sanguine",
+      "season": "spring",
+      "direction": "east",
+      "astro_signs": ["gemini", "libra", "aquarius"],
+      "astro_modality": ["mutable", "cardinal", "fixed"],
+      "tarot_suit": "swords",
+      "jungian": "thinking",
+      "canonical_id": "we.element.air"
+    },
+    {
+      "key": "water",
+      "label_en": "Water",
+      "label_de": "Wasser",
+      "quality_hot": false,
+      "quality_dry": false,
+      "temperament": "phlegmatic",
+      "season": "autumn",
+      "direction": "west",
+      "astro_signs": ["cancer", "scorpio", "pisces"],
+      "astro_modality": ["cardinal", "fixed", "mutable"],
+      "tarot_suit": "cups",
+      "jungian": "feeling",
+      "canonical_id": "we.element.water"
+    },
+    {
+      "key": "quintessence",
+      "label_en": "Quintessence / Aether",
+      "label_de": "Quintessenz / Äther",
+      "note": "5. Element der aristotelischen Tradition. Himmlische Sphäre, unveränderlich. In westlicher Esoterik: Spirit / Geist. Ähnlich Akasha im vedischen System, aber nicht identisch.",
+      "canonical_id": "we.element.quintessence"
+    }
+  ],
+  "modalities": [
+    { "key": "cardinal", "label_en": "Cardinal", "label_de": "Kardinal", "quality": "initiating, dynamic", "astro_signs": ["aries", "cancer", "libra", "capricorn"], "canonical_id": "we.modality.cardinal" },
+    { "key": "fixed",    "label_en": "Fixed",    "label_de": "Fix",      "quality": "sustaining, stable",  "astro_signs": ["taurus", "leo", "scorpio", "aquarius"],  "canonical_id": "we.modality.fixed" },
+    { "key": "mutable",  "label_en": "Mutable",  "label_de": "Mutable",  "quality": "adapting, flexible",  "astro_signs": ["gemini", "virgo", "sagittarius", "pisces"], "canonical_id": "we.modality.mutable" }
+  ],
+  "elements_count": 4,
+  "modalities_count": 3,
+  "canonical_prefix": "we."
+}

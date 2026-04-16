@@ -1,0 +1,18 @@
+{
+  "system_id": "western_elements",
+  "system_name": "Westliche 4 Elemente (Feuer / Erde / Luft / Wasser)",
+  "system_role": "structural",
+  "canonical_prefix": "we.",
+  "element_types": ["element", "modality"],
+  "canonical_id_rules": {
+    "format": "we.{element_type}.{key}",
+    "examples": ["we.element.fire", "we.modality.cardinal"]
+  },
+  "cross_system_links": {
+    "astro": "Jedes Tierkreiszeichen hat ein Element und eine Modalität",
+    "kabbalah": "Golden-Dawn-Tradition: Pfade und Sephiroth haben Elementzuordnungen",
+    "tarot": "Vier Suits = vier Elemente"
+  },
+  "note": "≠ Wu Xing (5 Elemente, Chinesisch) ≠ Panchamahabhuta (5 Elemente, Vedisch). Drei verschiedene Systeme die Phase 3 empirisch vergleicht.",
+  "documentation_ref": "engines.md §13"
+}

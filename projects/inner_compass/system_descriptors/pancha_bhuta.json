@@ -1,0 +1,17 @@
+{
+  "system_id": "pancha_bhuta",
+  "system_name": "Panchamahabhuta + Triguna (Vedische Elemente & Qualitäten)",
+  "system_role": "structural",
+  "canonical_prefix": "pancha_bhuta.",
+  "element_types": ["element", "guna"],
+  "canonical_id_rules": {
+    "format": "pancha_bhuta.{element_type}.{key}",
+    "examples": ["pancha_bhuta.element.agni", "pancha_bhuta.guna.sattva"]
+  },
+  "cross_system_links": {
+    "jyotish": "Graha und Nakshatra haben Panchamahabhuta und Triguna Zuordnungen",
+    "chakra": "Chakren haben Bhuta-Elemente",
+    "wu_xing": "Semantisch verwandt, nicht strukturell identisch"
+  },
+  "documentation_ref": "engines.md §13"
+}
