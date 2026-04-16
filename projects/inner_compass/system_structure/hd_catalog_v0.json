@@ -1,69 +1,81 @@
 {
   "meta": {
     "step": 1,
-    "schema_version": "3.0.0",
-    "description": "Human Design K1/K2 full inventory: Types (5), Authorities (9), Profiles (12), Centers (9), Gates (64), Channels (36), Lines (6), Colors (6), Tones (6), Bases (5), Definitions (5), Variables (4 arrows), Incarnation Crosses (192), Awareness Streams (8). Not a chart instance.",
+    "schema_version": "3.1.0",
+    "description": "Human Design K1/K2 full inventory: Types (5), Authorities (9), Profiles (12), Centers (9), Gates (64), Channels (36), Lines (6), Colors (6), Tones (6), Bases (5), Definitions (5), Variables (4 arrows / PHS subsystem), Incarnation Crosses (192), Awareness Streams (8). Subsystem-Tags auf allen Nodes. Not a chart instance.",
     "source": "dturkuler/humandesign_api (GPL-3.0) — K2 constants extracted and verified against MicFell/human_design_engine",
     "evidence_class": "A",
-    "evidence_note": "All K2 data extracted directly from dturkuler hd_constants.py (v3.4.1). Variable logic (Tones of Sun+Node) confirmed independently by 2 kits (dturkuler + MicFell).",
-    "generated_at": "2026-04-14T00:00:00.000Z"
+    "evidence_note": "All K2 data extracted directly from dturkuler hd_constants.py (v3.4.1). TYPE_DETAILS_MAP (strategy/signature/not_self/aura) from dturkuler. Variable logic (Tones of Sun+Node) confirmed independently by 2 kits. MG not_self corrected to 'Frustration & Anger' per dturkuler.",
+    "generated_at": "2026-04-15T00:00:00.000Z"
   },
+  "hd_subsystems": [
+    { "key": "bodygraph", "label_en": "BodyGraph (Main System)", "description": "Types, Centers, Gates, Channels, Profile, Authority, Definition, Incarnation Cross, Strategy, Signature, Not-Self, Aura", "phase1_priority": "required" },
+    { "key": "phs", "label_en": "PHS — Primary Health System", "description": "4 Variables / Arrows: Digestion, Environment, Motivation, Perspective. Calculated from Tones of Sun+Node.", "phase1_priority": "required" },
+    { "key": "rave_psychology", "label_en": "Rave Psychology", "description": "Conditioning, Not-Self patterns, Open Centers as conditioning fields", "phase1_priority": "required" },
+    { "key": "rave_cosmology", "label_en": "Rave Cosmology", "description": "Origin story, Neutrino Ocean, Ra's cosmological framework. K4-Kontext.", "phase1_priority": "context_only" },
+    { "key": "dream_rave", "label_en": "DreamRave", "description": "3-Center Night design (Head, Ajna, Solar Plexus) + 15 Dream Gates. Vendored in dturkuler.", "phase1_priority": "optional" },
+    { "key": "bg5", "label_en": "BG5 Business & Organizations", "description": "HD adapted for business/organizational contexts", "phase1_priority": "optional" },
+    { "key": "penta", "label_en": "Penta / WA (Groups)", "description": "Group dynamics: Penta (5-person), WA (2-5 people), larger groups. Composite-ähnlich.", "phase1_priority": "optional" },
+    { "key": "rave_sociology", "label_en": "Rave Sociology", "description": "HD applied to society and collective", "phase1_priority": "optional" },
+    { "key": "design_of_forms", "label_en": "Design of Forms", "description": "HD at cellular / organic level", "phase1_priority": "optional" }
+  ],
   "types": [
-    { "key": "generator", "label_en": "Generator", "canonical_id": "hd.type.generator" },
-    { "key": "manifesting_generator", "label_en": "Manifesting Generator", "canonical_id": "hd.type.manifesting_generator" },
-    { "key": "projector", "label_en": "Projector", "canonical_id": "hd.type.projector" },
-    { "key": "manifestor", "label_en": "Manifestor", "canonical_id": "hd.type.manifestor" },
-    { "key": "reflector", "label_en": "Reflector", "canonical_id": "hd.type.reflector" }
+    { "key": "generator", "label_en": "Generator", "aura": "Open & Enveloping", "subsystem": "bodygraph", "canonical_id": "hd.type.generator" },
+    { "key": "manifesting_generator", "label_en": "Manifesting Generator", "aura": "Open & Enveloping", "subsystem": "bodygraph", "canonical_id": "hd.type.manifesting_generator" },
+    { "key": "projector", "label_en": "Projector", "aura": "Focused & Absorbing", "subsystem": "bodygraph", "canonical_id": "hd.type.projector" },
+    { "key": "manifestor", "label_en": "Manifestor", "aura": "Closed & Repelling", "subsystem": "bodygraph", "canonical_id": "hd.type.manifestor" },
+    { "key": "reflector", "label_en": "Reflector", "aura": "Sampling & Resistant", "subsystem": "bodygraph", "canonical_id": "hd.type.reflector" }
   ],
   "strategies": [
-    { "key": "wait_to_respond", "label_en": "Wait to Respond", "for_types": ["generator", "manifesting_generator"], "canonical_id": "hd.strategy.wait_to_respond" },
-    { "key": "wait_for_invitation", "label_en": "Wait for the Invitation", "for_types": ["projector"], "canonical_id": "hd.strategy.wait_for_invitation" },
-    { "key": "inform", "label_en": "Inform", "for_types": ["manifestor"], "canonical_id": "hd.strategy.inform" },
-    { "key": "wait_lunar_cycle", "label_en": "Wait a Lunar Cycle", "for_types": ["reflector"], "canonical_id": "hd.strategy.wait_lunar_cycle" }
+    { "key": "wait_to_respond", "label_en": "Wait to Respond", "for_types": ["generator", "manifesting_generator"], "subsystem": "bodygraph", "canonical_id": "hd.strategy.wait_to_respond" },
+    { "key": "wait_for_invitation", "label_en": "Wait for the Invitation", "for_types": ["projector"], "subsystem": "bodygraph", "canonical_id": "hd.strategy.wait_for_invitation" },
+    { "key": "inform", "label_en": "Inform", "for_types": ["manifestor"], "subsystem": "bodygraph", "canonical_id": "hd.strategy.inform" },
+    { "key": "wait_lunar_cycle", "label_en": "Wait a Lunar Cycle", "for_types": ["reflector"], "subsystem": "bodygraph", "canonical_id": "hd.strategy.wait_lunar_cycle" }
   ],
   "not_self_themes": [
-    { "key": "frustration", "label_en": "Frustration", "for_types": ["generator", "manifesting_generator"], "canonical_id": "hd.not_self_theme.frustration" },
-    { "key": "bitterness", "label_en": "Bitterness", "for_types": ["projector"], "canonical_id": "hd.not_self_theme.bitterness" },
-    { "key": "anger", "label_en": "Anger", "for_types": ["manifestor"], "canonical_id": "hd.not_self_theme.anger" },
-    { "key": "disappointment", "label_en": "Disappointment", "for_types": ["reflector"], "canonical_id": "hd.not_self_theme.disappointment" }
+    { "key": "frustration", "label_en": "Frustration", "for_types": ["generator"], "subsystem": "bodygraph", "canonical_id": "hd.not_self_theme.frustration" },
+    { "key": "frustration_and_anger", "label_en": "Frustration & Anger", "for_types": ["manifesting_generator"], "subsystem": "bodygraph", "canonical_id": "hd.not_self_theme.frustration_and_anger" },
+    { "key": "bitterness", "label_en": "Bitterness", "for_types": ["projector"], "subsystem": "bodygraph", "canonical_id": "hd.not_self_theme.bitterness" },
+    { "key": "anger", "label_en": "Anger", "for_types": ["manifestor"], "subsystem": "bodygraph", "canonical_id": "hd.not_self_theme.anger" },
+    { "key": "disappointment", "label_en": "Disappointment", "for_types": ["reflector"], "subsystem": "bodygraph", "canonical_id": "hd.not_self_theme.disappointment" }
   ],
   "signatures": [
-    { "key": "satisfaction", "label_en": "Satisfaction", "for_types": ["generator", "manifesting_generator"], "canonical_id": "hd.signature.satisfaction" },
-    { "key": "success", "label_en": "Success", "for_types": ["projector"], "canonical_id": "hd.signature.success" },
-    { "key": "peace", "label_en": "Peace", "for_types": ["manifestor"], "canonical_id": "hd.signature.peace" },
-    { "key": "surprise", "label_en": "Surprise", "for_types": ["reflector"], "canonical_id": "hd.signature.surprise" }
+    { "key": "satisfaction", "label_en": "Satisfaction", "for_types": ["generator", "manifesting_generator"], "subsystem": "bodygraph", "canonical_id": "hd.signature.satisfaction" },
+    { "key": "success", "label_en": "Success", "for_types": ["projector"], "subsystem": "bodygraph", "canonical_id": "hd.signature.success" },
+    { "key": "peace", "label_en": "Peace", "for_types": ["manifestor"], "subsystem": "bodygraph", "canonical_id": "hd.signature.peace" },
+    { "key": "surprise", "label_en": "Surprise", "for_types": ["reflector"], "subsystem": "bodygraph", "canonical_id": "hd.signature.surprise" }
   ],
   "authorities": [
-    { "key": "emotional", "label_en": "Emotional Authority", "canonical_id": "hd.authority.emotional" },
-    { "key": "sacral", "label_en": "Sacral Authority", "canonical_id": "hd.authority.sacral" },
-    { "key": "splenic", "label_en": "Splenic Authority", "canonical_id": "hd.authority.splenic" },
-    { "key": "ego_manifested", "label_en": "Ego Authority (Manifested)", "canonical_id": "hd.authority.ego_manifested" },
-    { "key": "ego_projected", "label_en": "Ego Authority (Projected)", "canonical_id": "hd.authority.ego_projected" },
-    { "key": "self_projected", "label_en": "Self-Projected Authority", "canonical_id": "hd.authority.self_projected" },
-    { "key": "mental", "label_en": "Mental Authority", "canonical_id": "hd.authority.mental" },
-    { "key": "lunar", "label_en": "Lunar Authority", "canonical_id": "hd.authority.lunar" },
-    { "key": "none", "label_en": "No Authority", "canonical_id": "hd.authority.none" }
+    { "key": "emotional", "label_en": "Emotional Authority", "subsystem": "bodygraph", "canonical_id": "hd.authority.emotional" },
+    { "key": "sacral", "label_en": "Sacral Authority", "subsystem": "bodygraph", "canonical_id": "hd.authority.sacral" },
+    { "key": "splenic", "label_en": "Splenic Authority", "subsystem": "bodygraph", "canonical_id": "hd.authority.splenic" },
+    { "key": "ego_manifested", "label_en": "Ego Authority (Manifested)", "subsystem": "bodygraph", "canonical_id": "hd.authority.ego_manifested" },
+    { "key": "ego_projected", "label_en": "Ego Authority (Projected)", "subsystem": "bodygraph", "canonical_id": "hd.authority.ego_projected" },
+    { "key": "self_projected", "label_en": "Self-Projected Authority", "subsystem": "bodygraph", "canonical_id": "hd.authority.self_projected" },
+    { "key": "mental", "label_en": "Mental Authority", "subsystem": "bodygraph", "canonical_id": "hd.authority.mental" },
+    { "key": "lunar", "label_en": "Lunar Authority", "subsystem": "bodygraph", "canonical_id": "hd.authority.lunar" },
+    { "key": "none", "label_en": "No Authority", "subsystem": "bodygraph", "canonical_id": "hd.authority.none" }
   ],
   "profiles": [
-    { "key": "1_3", "label_en": "1/3", "line_p": 1, "line_d": 3, "cross_type": "right_angle", "canonical_id": "hd.profile.1_3" },
-    { "key": "1_4", "label_en": "1/4", "line_p": 1, "line_d": 4, "cross_type": "right_angle", "canonical_id": "hd.profile.1_4" },
-    { "key": "2_4", "label_en": "2/4", "line_p": 2, "line_d": 4, "cross_type": "right_angle", "canonical_id": "hd.profile.2_4" },
-    { "key": "2_5", "label_en": "2/5", "line_p": 2, "line_d": 5, "cross_type": "right_angle", "canonical_id": "hd.profile.2_5" },
-    { "key": "3_5", "label_en": "3/5", "line_p": 3, "line_d": 5, "cross_type": "right_angle", "canonical_id": "hd.profile.3_5" },
-    { "key": "3_6", "label_en": "3/6", "line_p": 3, "line_d": 6, "cross_type": "right_angle", "canonical_id": "hd.profile.3_6" },
-    { "key": "4_6", "label_en": "4/6", "line_p": 4, "line_d": 6, "cross_type": "right_angle", "canonical_id": "hd.profile.4_6" },
-    { "key": "4_1", "label_en": "4/1", "line_p": 4, "line_d": 1, "cross_type": "juxtaposition", "canonical_id": "hd.profile.4_1" },
-    { "key": "5_1", "label_en": "5/1", "line_p": 5, "line_d": 1, "cross_type": "left_angle", "canonical_id": "hd.profile.5_1" },
-    { "key": "5_2", "label_en": "5/2", "line_p": 5, "line_d": 2, "cross_type": "left_angle", "canonical_id": "hd.profile.5_2" },
-    { "key": "6_2", "label_en": "6/2", "line_p": 6, "line_d": 2, "cross_type": "left_angle", "canonical_id": "hd.profile.6_2" },
-    { "key": "6_3", "label_en": "6/3", "line_p": 6, "line_d": 3, "cross_type": "left_angle", "canonical_id": "hd.profile.6_3" }
+    { "key": "1_3", "label_en": "1/3", "line_p": 1, "line_d": 3, "cross_type": "right_angle", "subsystem": "bodygraph", "canonical_id": "hd.profile.1_3" },
+    { "key": "1_4", "label_en": "1/4", "line_p": 1, "line_d": 4, "cross_type": "right_angle", "subsystem": "bodygraph", "canonical_id": "hd.profile.1_4" },
+    { "key": "2_4", "label_en": "2/4", "line_p": 2, "line_d": 4, "cross_type": "right_angle", "subsystem": "bodygraph", "canonical_id": "hd.profile.2_4" },
+    { "key": "2_5", "label_en": "2/5", "line_p": 2, "line_d": 5, "cross_type": "right_angle", "subsystem": "bodygraph", "canonical_id": "hd.profile.2_5" },
+    { "key": "3_5", "label_en": "3/5", "line_p": 3, "line_d": 5, "cross_type": "right_angle", "subsystem": "bodygraph", "canonical_id": "hd.profile.3_5" },
+    { "key": "3_6", "label_en": "3/6", "line_p": 3, "line_d": 6, "cross_type": "right_angle", "subsystem": "bodygraph", "canonical_id": "hd.profile.3_6" },
+    { "key": "4_6", "label_en": "4/6", "line_p": 4, "line_d": 6, "cross_type": "right_angle", "subsystem": "bodygraph", "canonical_id": "hd.profile.4_6" },
+    { "key": "4_1", "label_en": "4/1", "line_p": 4, "line_d": 1, "cross_type": "juxtaposition", "subsystem": "bodygraph", "canonical_id": "hd.profile.4_1" },
+    { "key": "5_1", "label_en": "5/1", "line_p": 5, "line_d": 1, "cross_type": "left_angle", "subsystem": "bodygraph", "canonical_id": "hd.profile.5_1" },
+    { "key": "5_2", "label_en": "5/2", "line_p": 5, "line_d": 2, "cross_type": "left_angle", "subsystem": "bodygraph", "canonical_id": "hd.profile.5_2" },
+    { "key": "6_2", "label_en": "6/2", "line_p": 6, "line_d": 2, "cross_type": "left_angle", "subsystem": "bodygraph", "canonical_id": "hd.profile.6_2" },
+    { "key": "6_3", "label_en": "6/3", "line_p": 6, "line_d": 3, "cross_type": "left_angle", "subsystem": "bodygraph", "canonical_id": "hd.profile.6_3" }
   ],
   "definitions": [
-    { "key": "none", "label_en": "No Definition", "canonical_id": "hd.definition.none" },
-    { "key": "single", "label_en": "Single Definition", "canonical_id": "hd.definition.single" },
-    { "key": "split", "label_en": "Split Definition", "canonical_id": "hd.definition.split" },
-    { "key": "triple_split", "label_en": "Triple Split", "canonical_id": "hd.definition.triple_split" },
-    { "key": "quadruple_split", "label_en": "Quadruple Split", "canonical_id": "hd.definition.quadruple_split" }
+    { "key": "none", "label_en": "No Definition", "subsystem": "bodygraph", "canonical_id": "hd.definition.none" },
+    { "key": "single", "label_en": "Single Definition", "subsystem": "bodygraph", "canonical_id": "hd.definition.single" },
+    { "key": "split", "label_en": "Split Definition", "subsystem": "bodygraph", "canonical_id": "hd.definition.split" },
+    { "key": "triple_split", "label_en": "Triple Split", "subsystem": "bodygraph", "canonical_id": "hd.definition.triple_split" },
+    { "key": "quadruple_split", "label_en": "Quadruple Split", "subsystem": "bodygraph", "canonical_id": "hd.definition.quadruple_split" }
   ],
   "centers": [
     { "key": "head", "label_en": "Head Center", "theme": "Inspiration & Mental Pressure", "motor": false, "awareness": false, "canonical_id": "hd.center.head" },
@@ -212,10 +224,10 @@
     { "num": 5, "theme": "Heretic", "canonical_id": "hd.base_def.5" }
   ],
   "variables": [
-    { "key": "digestion", "label_en": "Digestion / Diet", "position": "top_left", "source": "design_sun_tone", "aspect": "Design (Brain)", "left_type": "Active", "right_type": "Passive", "canonical_id": "hd.variable_def.digestion" },
-    { "key": "environment", "label_en": "Environment", "position": "bottom_left", "source": "design_node_tone", "aspect": "Design (Body)", "left_type": "Observed", "right_type": "Observer", "canonical_id": "hd.variable_def.environment" },
-    { "key": "motivation", "label_en": "Motivation", "position": "top_right", "source": "personality_sun_tone", "aspect": "Personality (Mind)", "left_type": "Strategic", "right_type": "Receptive", "canonical_id": "hd.variable_def.motivation" },
-    { "key": "perspective", "label_en": "Perspective / View", "position": "bottom_right", "source": "personality_node_tone", "aspect": "Personality (View)", "left_type": "Focused", "right_type": "Peripheral", "canonical_id": "hd.variable_def.perspective" }
+    { "key": "digestion", "label_en": "Digestion / Diet", "position": "top_left", "source": "design_sun_tone", "aspect": "Design (Brain)", "left_type": "Active", "right_type": "Passive", "subsystem": "phs", "canonical_id": "hd.variable_def.digestion" },
+    { "key": "environment", "label_en": "Environment", "position": "bottom_left", "source": "design_node_tone", "aspect": "Design (Body)", "left_type": "Observed", "right_type": "Observer", "subsystem": "phs", "canonical_id": "hd.variable_def.environment" },
+    { "key": "motivation", "label_en": "Motivation", "position": "top_right", "source": "personality_sun_tone", "aspect": "Personality (Mind)", "left_type": "Strategic", "right_type": "Receptive", "subsystem": "phs", "canonical_id": "hd.variable_def.motivation" },
+    { "key": "perspective", "label_en": "Perspective / View", "position": "bottom_right", "source": "personality_node_tone", "aspect": "Personality (View)", "left_type": "Focused", "right_type": "Peripheral", "subsystem": "phs", "canonical_id": "hd.variable_def.perspective" }
   ],
   "circuits": [
     { "key": "collective_logic", "label_en": "Collective Logic (Understanding)", "canonical_id": "hd.circuit.collective_logic" },
