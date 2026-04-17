@@ -1,5 +1,5 @@
 <!-- Reality Block
-last_update: 2026-01-27
+last_update: 2026-04-16
 status: draft
 scope:
   summary: "Bot Platform (Clawdbot): Zielbild, Struktur und Verlinkungen ins Multi‑System (VM102/Spark/HA)."
@@ -24,6 +24,7 @@ Dieses Projekt beschreibt, **wie wir Clawdbot als Bot-Framework** in unserem Mul
 ## Quick Links (Source of Truth)
 
 - **Hosting (VM102 / Docker Host)**: `infrastructure/docker/vm102_docker_host.md`
+- **Hermes Pilot parallel zu Clawdbot (VM102)**: `infrastructure/docker/HERMES_PILOT_VM102_RUNBOOK.md`
 - **Tailscale Zugriff/HTTPS Patterns**: `infrastructure/tailscale/README.md`
 - **Spark OpenAI‑kompatible Endpoints**: `infrastructure/spark/inference_endpoints.md`
 - **Home Assistant Runtime (CT110)**: `infrastructure/proxmox/01_setup/1_proxmox-komplettsetup.md` (CT110 Abschnitt)
