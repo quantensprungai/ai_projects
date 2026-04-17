@@ -338,6 +338,19 @@ python3 /tmp/update_clawdbot_flora_config.py
 systemctl --user restart clawdbot-gateway-personal.service
 ```
 
+**Flora: Claude Sonnet 4.6 (Anthropic API) statt lokalem Spark-Default:**
+
+- Voraussetzung: Anthropic API-Key (z. B. `openclaw onboard --anthropic-api-key "$ANTHROPIC_API_KEY"` auf VM102, oder Key in der systemd-Umgebung des Gateways). Pro-Agent-Auth beachten — bei Fehlern `openclaw models status`.
+- Skript setzt nur für Agent `flora` in `agents.list` das Modell `anthropic/claude-sonnet-4-5` (Clawdbot ≤2026.1.x kennt `…-4-6` oft noch nicht → „unknown model“); andere Agents bleiben bei `agents.defaults.model` (typisch Spark). Nach Gateway-Update ggf. auf `…-4-6` wechselbar.
+
+```bash
+scp infrastructure/docker/update_clawdbot_flora_sonnet.py user@docker-apps:/tmp/
+python3 /tmp/update_clawdbot_flora_sonnet.py
+systemctl --user restart clawdbot-gateway-personal.service
+```
+
+Zurück auf den gemeinsamen Default (ohne flora-spezifisches Modell): `python3 /tmp/update_clawdbot_flora_sonnet.py --clear`
+
 **Cron-Jobs (Pflanze der Woche, Jahreszeitenimpuls):**
 ```bash
 scp infrastructure/docker/setup_flora_cron.py user@docker-apps:/tmp/

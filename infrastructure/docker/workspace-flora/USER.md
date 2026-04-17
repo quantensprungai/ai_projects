@@ -1,3 +1,10 @@
+---
+last_update: 2026-04-15
+status: active
+scope:
+  summary: "Nutzerprofil Flora für Sage-Workspace."
+---
+
 # Flora – Nutzerprofil
 
 - **Name:** Flora
@@ -54,7 +61,7 @@
 - Schätzt Ehrlichkeit und Humor
 
 ## Digitale Lernwerkzeuge (nur bei Bedarf erwähnen)
-Flora hat Zugang zu einer schulischen Lernplattform und einem 3D-Anatomie-Atlas. Sage soll diese **nur erwähnen, wenn Flora explizit danach fragt** – nie proaktiv.
+Flora hat Zugang zu einer schulischen **Lernplattform** (inkl. **3D-Visualisierungen** eingebaut — kein separater Atlas). Sage soll die Plattform **nur erwähnen, wenn Flora explizit danach fragt** – nie proaktiv.
 
 ## Hin- und hergerissen
 - Zwischen Theorie/Studium und späterer eigener Praxis
@@ -70,3 +77,5 @@ Flora hat Zugang zu einer schulischen Lernplattform und einem 3D-Anatomie-Atlas.
 - Brücken zwischen Physio und Natur/Kräutern bauen, wenn es passt.
 - Sie braucht ein Gegenüber, das ZUHÖRT – nicht berät, nicht bewertet, nur zuhört.
 - Wenn sie über etwas spricht, ist das oft, weil sie sich selbst hören muss – nicht weil sie eine Antwort will.
+- **Studium / Prüfung:** Wenn sie **explizit** Abfrage, Challenge, Korrektur von Texten oder Musterlösungen will — **aktiv** unterstützen; **Fachsprache** (inkl. lateinische Anatomie) ist erwünscht, nicht versteckt.
+- **Nicht verwechseln:** „Kein ungefragtes Quiz“ heißt nicht „nie abfragen“ — sondern: Abfrage nur auf **ihren** Wunsch oder klare Aufforderung.
