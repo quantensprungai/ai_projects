@@ -1,0 +1,256 @@
+{
+  "_meta": {
+    "version": "0.1.0",
+    "created": "2026-04-17",
+    "system_id": "ziwei",
+    "catalog_cross_ref": "projects/inner_compass/system_structure/ziwei_catalog_v0.json",
+    "engine_note": "iztro — 12 Paläste (+身宫), 14 Hauptsterne, Nebensterne, 四化, Zeitreihen (大限/流年). Tu Vi (VN) = Locale-Variante, gleiches system_id.",
+    "status": "initial_literature_seed",
+    "scope": "紫微斗数 (Zi Wei Dou Shu) nur; nicht BaZi/Jyotish/westl. Astro. Schulen (中州/飞星/三合) als Tags, nicht vermischen mit BaZi-Registry.",
+    "excluded_systems": "BaZi, Jyotish, westliche Astro, Gene Keys.",
+    "purpose": "Ground-Truth-Quellen-Inventar für entity-first Beschaffung und K3/K4-Extraktion. Registry = Quellen.",
+    "target_path": "code/annas-archive-toolkit/projects/ziwei_content/entity_registry.json",
+    "schema": {
+      "werk_kategorie": {
+        "A": "Lehr-/Regelwerke: Stern-Palast-Logik, Aufstellungsregeln, Schul-Technik — K3-Hauptquelle",
+        "B": "Deutungswerke: Palast-/Stern-Bedeutungen, Lebensbereiche — K4-Hauptquelle",
+        "C": "Einführungen, Kurse, Übungsbände — K3+K4",
+        "D": "Geschichte, Schulvergleich, Methodenkritik — K4-Kontext"
+      },
+      "subsystem": {
+        "_comment": "Nur diese Schlüssel — Mapping zu iztro/ziwei_catalog (Paläste, Sterne, 四化, Zeiträume).",
+        "natal_core": "命盘/身宫, 排盘, 安星 (Grundaufbau)",
+        "palaces": "十二宫 + 身宫 — Bedeutungen und Kombinationen",
+        "major_stars": "十四主星 (紫微星系/天府星系)",
+        "minor_stars": "辅星、杂曜、神煞类 (iztro minor/adjective)",
+        "sihua_mutagen": "四化 (禄权科忌), 生年四化, 自化 (K3-schwer)",
+        "brightness": "庙旺利陷 / brightness (Sternstärke)",
+        "decadal_luck": "大限, 运限",
+        "annual_luck": "流年, 流月 (wenn Werksschwerpunkt)",
+        "stem_branch": "天干地支与紫微排盘 (五虎遁/五鼠遁 — teils K2 im Kit)",
+        "school_flying_star": "飞星派 Technik",
+        "school_san_he": "三合派 / 传统星系派",
+        "school_zhongzhou": "中州派等 (王亭之系)",
+        "interpretation": "Allgemeine Deutung ohne enge Schulbindung",
+        "regional_tuvi": "越式紫微 Tu Vi (iztro vi-VN) — nur wenn Buch explizit",
+        "meta": "Geschichte, Schulvergleich"
+      },
+      "anna_archive_likely": "true = Buch oft in Sammlungen; zh-TW/zh-CN dominieren"
+    }
+  },
+
+  "schools": {
+    "zhongzhou": "中州派 — u. a. 王亭之, strukturierte Lehrreihen",
+    "san_he": "三合 / klassische Stern-Palast-Schule",
+    "flying_star": "飞星派 — andere Betonung der 飞宫/飞星",
+    "modern_primer": "Moderne Einführungen (中/英), oft schulübergreifend",
+    "tuvi_vietnam": "Tu Vi — vietnamesische Ausprägung (Locale iztro)"
+  },
+
+  "semantic_aliases": {
+    "_comment": "Suchcluster — vermeidet nur zi wei ohne Kontext",
+    "ziwei": ["紫微斗数", "Zi Wei Dou Shu", "purple star astrology", "purple star astrology chinese"],
+    "palaces": ["命宫", "十二宫 紫微"],
+    "sihua": ["四化", "化禄", "化权", "化科", "化忌"],
+    "decadal": ["大限 紫微", "运限 斗数"]
+  },
+
+  "authors": [
+
+    {
+      "entity_type": "author",
+      "id": "auth_wang_tingzhi",
+      "name": "王亭之",
+      "aliases": ["Wang Tingzhi"],
+      "language": ["zh-TW", "zh-HK"],
+      "school_affiliation": ["zhongzhou"],
+      "role": "teacher_publisher",
+      "thematic_coverage": ["palaces", "major_stars", "minor_stars", "sihua_mutagen", "school_zhongzhou", "interpretation"],
+      "anna_archive_search_queries": [
+        "王亭之 紫微斗數",
+        "中州派紫微斗數 王亭之",
+        "王亭之 斗數宣微"
+      ],
+      "known_works": [
+        {
+          "title": "中州派紫微斗數（系列讲义 / 入门与进阶类）",
+          "year": null,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["school_zhongzhou", "palaces", "major_stars", "minor_stars", "sihua_mutagen", "interpretation"],
+          "languages": ["zh-TW"],
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Konkrete Bandtitel je nach Fundstelle in Metadaten nachpflegen."
+        }
+      ],
+      "gaps": ["Einzelbände mit exaktem Verlag/Jahr ergänzen"],
+      "notes": "Hongkong/中州 — oft als Referenz für strukturierte Ziwei-Lehrpfade genannt."
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_quanxue_zhaizhu",
+      "name": "劝学斋主",
+      "aliases": ["Quan Xue Zhai Zhu"],
+      "language": ["zh-TW"],
+      "school_affiliation": ["san_he", "modern_primer"],
+      "role": "author",
+      "thematic_coverage": ["natal_core", "palaces", "major_stars", "interpretation"],
+      "anna_archive_search_queries": [
+        "劝学斋主 紫微斗数",
+        "劝学斋主 斗数"
+      ],
+      "known_works": [
+        {
+          "title": "紫微斗数系列（入门/进阶，常见台湾版）",
+          "year": null,
+          "format": "book",
+          "werk_kategorie": "C",
+          "subsystem": ["natal_core", "palaces", "major_stars", "interpretation"],
+          "languages": ["zh-TW"],
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "Konkrete Bandtitel bei Fund verifizieren."
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_lu_binzhao",
+      "name": "陆斌兆",
+      "aliases": ["陸斌兆", "Lu Binzhao"],
+      "language": ["zh-CN"],
+      "school_affiliation": ["san_he"],
+      "role": "classical_teacher",
+      "thematic_coverage": ["natal_core", "major_stars", "palaces", "decadal_luck"],
+      "anna_archive_search_queries": [
+        "陆斌兆 紫微斗数",
+        "紫微斗数讲义 陆斌兆"
+      ],
+      "known_works": [
+        {
+          "title": "紫微斗数讲义（陆斌兆系，常见大陆翻印本）",
+          "year": null,
+          "format": "book",
+          "werk_kategorie": "C",
+          "subsystem": ["natal_core", "major_stars", "palaces", "decadal_luck", "interpretation"],
+          "languages": ["zh-CN"],
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "Häufig zitierte Lehrtradition; Editionen variieren."
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_xu_zengfu",
+      "name": "徐曾生",
+      "aliases": [],
+      "language": ["zh-TW"],
+      "school_affiliation": ["flying_star"],
+      "role": "teacher",
+      "thematic_coverage": ["school_flying_star", "palaces", "sihua_mutagen", "natal_core"],
+      "anna_archive_search_queries": [
+        "徐曾生 紫微斗数",
+        "紫微斗数 飞星 徐曾生"
+      ],
+      "known_works": [
+        {
+          "title": "飞星派紫微斗数（系载， je nach Band）",
+          "year": null,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["school_flying_star", "palaces", "sihua_mutagen", "natal_core"],
+          "languages": ["zh-TW"],
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "飞星-Schwerpunkt — K3 für Schul-Unterschiede zu 三合."
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_english_bridge",
+      "name": "Various English primers",
+      "aliases": ["Zi Wei Dou Shu English"],
+      "language": ["en"],
+      "school_affiliation": ["modern_primer"],
+      "role": "bridge",
+      "thematic_coverage": ["interpretation", "palaces", "major_stars", "natal_core"],
+      "anna_archive_search_queries": [
+        "Zi Wei Dou Shu complete guide",
+        "Purple Star Astrology English",
+        "Chinese astrology Zi Wei book English"
+      ],
+      "known_works": [
+        {
+          "title": "Zi Wei Dou Shu — English introductory texts (various authors)",
+          "year": null,
+          "format": "book",
+          "werk_kategorie": "C",
+          "subsystem": ["interpretation", "palaces", "major_stars", "natal_core"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "low",
+          "notes": "Weniger Kanon — für UI-Begriffe/Übersetzung; konkrete Titel bei Fund substituieren."
+        }
+      ],
+      "gaps": ["Durch echte Autorennamen ersetzen sobald Editionen bekannt"]
+    }
+
+  ],
+
+  "download_priority_order": {
+    "_comment": "Klassische/中州-Lehrpfade zuerst, dann Schul-Alternativen, dann englische Brücken.",
+    "phase_1a_canonical_k3": [
+      "auth_wang_tingzhi: 中州派紫微斗數",
+      "auth_lu_binzhao: 紫微斗数讲义"
+    ],
+    "phase_1b_comprehensive_k3k4": [
+      "auth_xu_zengfu: 飞星派紫微斗数",
+      "auth_quanxue_zhaizhu: 紫微斗数系列"
+    ],
+    "phase_1c_schools_comparison": [
+      "auth_lu_binzhao: 紫微斗数讲义",
+      "auth_xu_zengfu: 飞星派紫微斗数"
+    ],
+    "phase_1d_meta_english": [
+      "auth_english_bridge: Zi Wei Dou Shu"
+    ]
+  },
+
+  "non_author_works": {
+    "_comment": "Klassische Sammelbezeichnungen / ohne klaren Einzelautor.",
+    "works": [
+      {
+        "title": "紫微斗数全书（传统汇本，多版本）",
+        "format": "book",
+        "werk_kategorie": "A",
+        "subsystem": ["natal_core", "palaces", "major_stars", "minor_stars", "interpretation", "meta"],
+        "anna_archive_search_queries": [
+          "紫微斗数全书",
+          "紫微斗数 全书 古籍"
+        ],
+        "anna_archive_likely": true,
+        "priority": "high",
+        "notes": "Edition/Verlag prüfen — oft verschiedene Zusammenstellungen."
+      },
+      {
+        "title": "紫微斗数精成（等常见大陆汇编本）",
+        "format": "book",
+        "werk_kategorie": "C",
+        "subsystem": ["palaces", "major_stars", "interpretation"],
+        "anna_archive_search_queries": ["紫微斗数精成"],
+        "anna_archive_likely": true,
+        "priority": "medium"
+      }
+    ]
+  }
+}

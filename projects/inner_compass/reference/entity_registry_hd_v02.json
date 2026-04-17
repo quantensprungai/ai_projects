@@ -1,0 +1,1386 @@
+{
+  "_meta": {
+    "version": "0.2.0",
+    "created": "2026-04-15",
+    "status": "reconstructed_from_consolidation_docs",
+    "source": "01mar_chat9_chunk1-4.md + HD_Werklandschaft_Sessions_1-5 + Reddit_Knowledge_List",
+    "original": "entity_registry_hd_v01.json (6KB, 8 Autoren, 2026-03-02) — Chat-Artefakt, nicht committed",
+    "purpose": "Ground-Truth-Liste für Entity-first Anna's Archive Downloads. Ersetzt Keyword-Suche (topics.txt). Eliminiert 85% Noise.",
+    "target_path": "code/annas-archive-toolkit/projects/hd_content/entity_registry.json",
+    "schema": {
+      "werk_kategorie": {
+        "A": "Primärquellen/Kanon: Kosmologie, Mechanik, Regelwerk — K3-Hauptquelle",
+        "B": "Anwendungswerke: Profile, Beziehungen, Themen, Lebensbereiche — K4-Hauptquelle",
+        "C": "Lehrwerke: Curricula, Interpretationsanleitungen, Schulungsunterlagen — K3+K4",
+        "D": "Meta-Werke: Kritik, Vergleich, Entstehung — K4-Kontext"
+      },
+      "subsystem": {
+        "bodygraph": "Kern-BodyGraph: Typen, Zentren, Kanäle, Tore, Linien",
+        "phs": "Primary Health System: Variablen, 4 Pfeile, Ernährung, Umgebung",
+        "rave_psychology": "Konditionierung, Nicht-Selbst, Transformation",
+        "cosmology": "Kosmologie, 2027, Global Cycles, Rave History",
+        "relationships": "Beziehungen, Komposite, Partnerschaft",
+        "penta": "Gruppen (2-5 Personen), Familie",
+        "bg5": "Business, Karriere, Gruppen bis 16",
+        "dreamrave": "Bewusstsein im Schlaf, Träume",
+        "general": "System-übergreifend, Einführung"
+      },
+      "anna_archive_likely": "true = als PDF/Buch wahrscheinlich auf Anna's Archive; false = nur als Audio/Video/Kurs"
+    }
+  },
+
+  "schools": {
+    "klassisch_ihds": "Klassisches HD / IHDS (Ra, Bunnell, Parkyn, Dickson) — Ra-nah, authoritative",
+    "quantum_hd": "Quantum Human Design (Karen Curry Parker) — eigene Terminologie, breites Publikum",
+    "beyond_hd": "Beyond Human Design (Haspel-Portner) — Wissenschaft, Psychologie, Reiki",
+    "gene_keys": "Gene Keys (Richard Rudd) — eigenständiges System aus HD/I Ching, Shadow/Gift/Siddhi",
+    "wisdom_keepers": "Wisdom Keepers (Rosy Aronson) — Jungianische Archetypenlehre",
+    "ecocentric_hd": "Ecocentric HD (Jamie Palmer) — Business + Umwelt",
+    "hd_os": "HD.OS (Wyndstorm Sage) — Gates als Oracle-System",
+    "dreamrave_school": "DreamRave (Ra → Haspel-Portner) — Schlaf-Bewusstsein"
+  },
+
+  "semantic_aliases": {
+    "_comment": "Suchalias-Cluster für Nischen-Begriffe ohne 'human design' im Titel",
+    "pfeile": ["variables", "arrows", "PHS", "determination", "motivation", "perspective", "environment"],
+    "projektor": ["projector", "projector type", "empowered projector", "projector empowerment"],
+    "generator": ["generator type", "sacral response", "manifesting generator"],
+    "manifestor": ["manifestor type", "manifestation", "initiate"],
+    "reflektor": ["reflector type", "lunar cycle", "barometer"],
+    "penta": ["penta group", "family penta", "group mechanics"],
+    "inkarnationskreuz": ["incarnation cross", "cross of planning", "cross of life"],
+    "autorität": ["authority", "inner authority", "emotional authority", "sacral authority"],
+    "konditionierung": ["conditioning", "not-self", "deconditioning"],
+    "kosmologie": ["rave cosmology", "2027", "global cycles", "mutation"]
+  },
+
+  "authors": [
+
+    {
+      "entity_type": "author",
+      "id": "auth_ra_uru_hu",
+      "name": "Ra Uru Hu",
+      "aliases": ["Alan Robert Krakower", "Robert Allan Krakower", "Robert Krakower"],
+      "language": ["en", "fr", "it", "es", "de"],
+      "school_affiliation": ["klassisch_ihds"],
+      "platform_affiliation": "jovianarchive.com",
+      "role": "founder",
+      "goodreads_ratings_total": 438,
+      "known_works_count_total": "300+ (Bücher + Kurse 1987-2011)",
+      "known_works_count_books": 35,
+      "thematic_coverage": ["bodygraph", "phs", "rave_psychology", "cosmology", "relationships", "penta", "bg5", "dreamrave"],
+      "anna_archive_search_queries": [
+        "Ra Uru Hu",
+        "Rave I'Ching",
+        "Rave Cosmology",
+        "Human Design System Ra",
+        "Jovian Archive"
+      ],
+      "known_works": [
+
+        {
+          "title": "The Rave I'Ching",
+          "year": 1992,
+          "pages": 65,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Erstes Referenzwerk zu den 64 Hexagrammen als HD-Tore. Kernquelle für K3-Regelwerk."
+        },
+        {
+          "title": "The Human Design System (Black Book)",
+          "year": 1991,
+          "pages": 126,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["general"],
+          "languages": ["en"],
+          "isbn": "1466480793",
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Erste HD-Publikation überhaupt. Grundlagen + fortgeschrittene Themen."
+        },
+        {
+          "title": "From the Book of Letters (White Book)",
+          "year": 1995,
+          "pages": 288,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["general"],
+          "languages": ["en"],
+          "isbn": "1467954837",
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Zweite Publikation, München 1995. Philosophische Tiefe."
+        },
+        {
+          "title": "The Nine Centres and their Gates",
+          "year": 1997,
+          "pages": 175,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Detaillierte Beschreibung aller 9 Zentren und ihrer Gates. Kern für K3."
+        },
+        {
+          "title": "Keynotes: Circuits, Channels and Gates",
+          "year": 1999,
+          "pages": 47,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Kompakte K3-Regeln zu Schaltkreisen, Kanälen und Toren."
+        },
+        {
+          "title": "Channels by Type 1: Creative Channels",
+          "year": 1999,
+          "pages": 258,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "258 Seiten zu den Kreativen Kanälen. K3+K4 Primärquelle."
+        },
+        {
+          "title": "Channels by Type 2: Manifesting/Generating Channels",
+          "year": 1999,
+          "pages": 208,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "high"
+        },
+        {
+          "title": "Channels by Type 3: Projected Channels",
+          "year": 1999,
+          "pages": 205,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "high"
+        },
+        {
+          "title": "Channels by Type 4: Transit Program",
+          "year": 1999,
+          "pages": 124,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "high"
+        },
+        {
+          "title": "The Rave Encyclopedia (ABC Course)",
+          "year": 2000,
+          "pages": 129,
+          "format": "book",
+          "werk_kategorie": "C",
+          "subsystem": ["general"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "Compiler: Theresa Blanding. Einführungskurs-Kompendium."
+        },
+        {
+          "title": "The Global Incarnation Index",
+          "year": 2000,
+          "pages": 258,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "isbn": "1468001477",
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "192 Inkarnationskreuze. Notwendig für vollständige K4-Abdeckung."
+        },
+        {
+          "title": "Rave BodyGraph Circuitry",
+          "year": 2000,
+          "pages": 119,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "isbn": "1470018705",
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Schaltkreise und ihre Bedeutungen. K2+K3."
+        },
+        {
+          "title": "The Complete Rave I'Ching",
+          "year": 2001,
+          "pages": 133,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "isbn": "1463639457",
+          "goodreads_ratings": 19,
+          "goodreads_avg": 3.95,
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Positionen, Tore, Themen, Kreuze, Linien, Kommentare."
+        },
+        {
+          "title": "Rave I'Ching Line Companion",
+          "year": 2002,
+          "pages": 542,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "isbn": "1463746563",
+          "goodreads_ratings": 12,
+          "goodreads_avg": 4.75,
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "542 Seiten Kommentar zu allen 384 Linien. Tiefste K4-Quelle für Gates/Lines."
+        },
+        {
+          "title": "Profile and Type Reference Book",
+          "year": 2000,
+          "pages": 131,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "isbn": "1470018632",
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "48 Profil/Typ-Kombinationen."
+        },
+        {
+          "title": "Generator Book",
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "isbn": "1466476990",
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "Generator und Emotionaler Generator (inkl. Manifesting Generator). Sakral-Gates und Kanäle."
+        },
+        {
+          "title": "Love Book: Connectivity, Relationships, Love & Life",
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["relationships"],
+          "languages": ["en"],
+          "isbn": "1463745273",
+          "anna_archive_likely": true,
+          "priority": "medium"
+        },
+        {
+          "title": "Sexuality Manual",
+          "year": 1997,
+          "pages": 179,
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["relationships"],
+          "languages": ["en"],
+          "isbn": "1470018667",
+          "anna_archive_likely": true,
+          "priority": "medium"
+        },
+        {
+          "title": "Line Resonance",
+          "format": "booklet",
+          "pages": 25,
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "isbn": "1463737939",
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "Grundlegende Erklärung der Hexagramm-Struktur und Linien-Werte."
+        },
+        {
+          "title": "Many Faces of Fear",
+          "format": "booklet",
+          "pages": 25,
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "20 Bewusstseinstore (Milz, Ajna, Solar Plexus) und ihre Angst-Qualitäten. K3."
+        },
+        {
+          "title": "Roads and Tunnels",
+          "format": "booklet",
+          "pages": 20,
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "isbn": "1463741804",
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "Bewusste (schwarz) und unbewusste (rot) Gates im Chart."
+        },
+        {
+          "title": "The Differentiation Lectures",
+          "year": 2008,
+          "pages": 53,
+          "format": "ebook",
+          "werk_kategorie": "A",
+          "subsystem": ["phs", "general"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "KOSTENLOS auf HDA. PHS, Umgebung, Perspektive, Motivation."
+        },
+        {
+          "title": "The Life Force: Channels",
+          "year": 2008,
+          "format": "ebook",
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "Transkript von 11 Vorlesungen zu den Kanälen als Quanten-Ausdruck der Gates."
+        },
+        {
+          "title": "Design Humain: La Science de la Différenciation",
+          "year": 2022,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["general"],
+          "languages": ["fr"],
+          "isbn": "0578310112",
+          "anna_archive_likely": true,
+          "priority": "low",
+          "notes": "Französische Ausgabe von Science of Differentiation."
+        },
+        {
+          "title": "Il Proiettore: Vivi il tuo Successo",
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["bodygraph"],
+          "languages": ["it"],
+          "anna_archive_likely": true,
+          "priority": "low",
+          "notes": "Italienische Ausgabe. IT hat vollständiges Ra-Curriculum."
+        }
+      ],
+      "audio_courses_not_downloadable": [
+        "Rave Cosmology I-IX (2005-2008, ~100 Stunden je Teil)",
+        "Substructure of a Line: 6 Colors / 6 Tones / 5 Bases (2000)",
+        "The Commentaries: The 384 Lines (1998, 36h55m)",
+        "Incarnation Crosses Courses (2003, 164 Stunden)",
+        "16 Variables (2009, 13h06m)"
+      ],
+      "unique_topics": ["Ra-Kanon", "Substruktur (Color/Tone/Base)", "Kosmologie", "DreamRave", "BG5", "OC16/WA"],
+      "gaps": [],
+      "notes": "Bücher auf HDA (humandesignamerica.com) haben keine ISBNs hinterlegt für ältere Auflagen. Audio-Kurse (v/V) sind NICHT auf Anna's Archive. Nur Bücher (..) downloadbar."
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_lynda_bunnell",
+      "name": "Lynda Bunnell",
+      "aliases": [],
+      "language": ["en", "fr", "es"],
+      "school_affiliation": ["klassisch_ihds"],
+      "platform_affiliation": "ihdschool.com",
+      "role": "ihds_director",
+      "goodreads_ratings_total": 356,
+      "known_works_count_books": 8,
+      "thematic_coverage": ["general", "bodygraph"],
+      "anna_archive_search_queries": [
+        "Lynda Bunnell",
+        "Science of Differentiation Human Design",
+        "Living Your Design Bunnell"
+      ],
+      "known_works": [
+        {
+          "title": "Human Design: The Definitive Book of Human Design, The Science of Differentiation",
+          "year": 2011,
+          "coauthor": "Ra Uru Hu",
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["general"],
+          "languages": ["en", "fr", "es"],
+          "isbn": "9780615552149",
+          "goodreads_ratings": 304,
+          "goodreads_avg": 4.45,
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Umfassendstes Einzel-Buch zum HD-System. K3+K4. Ra-autorisiert."
+        },
+        {
+          "title": "Living Your Design Student Manual",
+          "format": "course_manual",
+          "werk_kategorie": "C",
+          "subsystem": ["general"],
+          "languages": ["en"],
+          "goodreads_ratings": 10,
+          "goodreads_avg": 4.40,
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "Offizielles IHDS-Einstiegskurs-Manual. LYD = erste Zertifizierungsstufe."
+        },
+        {
+          "title": "Human Design, Rave I'Ching Card Deck",
+          "format": "card_deck",
+          "werk_kategorie": "B",
+          "subsystem": ["bodygraph"],
+          "languages": ["en", "fr"],
+          "goodreads_ratings": 9,
+          "goodreads_avg": 4.78,
+          "anna_archive_likely": false,
+          "priority": "low",
+          "notes": "Kartenset, kein PDF."
+        },
+        {
+          "title": "Diseño humano: El revolucionario sistema de autoconocimiento",
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["general"],
+          "languages": ["es"],
+          "goodreads_ratings": 13,
+          "goodreads_avg": 4.54,
+          "anna_archive_likely": true,
+          "priority": "low"
+        }
+      ],
+      "thematic_coverage": ["general", "bodygraph"],
+      "unique_topics": ["Ra-autorisierte Synthese", "IHDS-Lehrpfad"],
+      "gaps": ["Color/Tone/Base", "Kosmologie", "Spezialthemen"],
+      "notes": "Ra-autorisiert. Science of Differentiation = meistempfohlenes Einzel-Buch."
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_chetan_parkyn",
+      "name": "Chetan Parkyn",
+      "aliases": [],
+      "coauthors": ["Carola Eastwood"],
+      "language": ["en", "de", "nl", "ru", "ja", "zh", "ko", "it", "fr", "tr"],
+      "school_affiliation": ["klassisch_ihds"],
+      "platform_affiliation": null,
+      "role": "secondary",
+      "goodreads_ratings_total": 1109,
+      "known_works_count_books": 10,
+      "thematic_coverage": ["general", "bodygraph"],
+      "anna_archive_search_queries": [
+        "Chetan Parkyn",
+        "Chetan Parkyn Human Design",
+        "Book of Lines Parkyn",
+        "Book of Destinies Parkyn"
+      ],
+      "known_works": [
+        {
+          "title": "Human Design: Discover the Person You Were Born to Be",
+          "year": 2009,
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["general"],
+          "languages": ["en", "de", "nl", "ru", "ja", "zh", "ko", "it", "fr", "tr"],
+          "goodreads_ratings": 937,
+          "goodreads_avg": 4.17,
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Meistgeratetes Einführungsbuch. Viele Sprachen = gut für Mehrsprachigkeit im KG."
+        },
+        {
+          "title": "The Book of Destinies: Discover the Life You Were Born to Live",
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "goodreads_ratings": 112,
+          "goodreads_avg": 3.97,
+          "anna_archive_likely": true,
+          "priority": "medium"
+        },
+        {
+          "title": "The Book of Lines: A 21st Century View of the I Ching",
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["bodygraph"],
+          "languages": ["en", "de"],
+          "goodreads_ratings": 53,
+          "goodreads_avg": 4.30,
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "HD-Linien durch I Ching-Linse. Wichtig für Ur-System-Vergleich."
+        },
+        {
+          "title": "Human Design: Entdecke die Person, die Du wirklich bist",
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["general"],
+          "languages": ["de"],
+          "translator": "Anna Bahlinger",
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "Deutsche Übersetzung. Für DE-Perspektive im KG."
+        }
+      ],
+      "unique_topics": ["Brücke HD↔I Ching (Book of Lines)", "breiteste Sprach-Verfügbarkeit"],
+      "gaps": ["Kosmologie", "PHS/Variablen", "Substruktur"],
+      "notes": "Carola Eastwood fast immer Ko-Autorin. Leonie Hardeman übersetzt ihn ins NL."
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_karen_curry_parker",
+      "name": "Karen Curry Parker",
+      "aliases": ["Karen Curry"],
+      "language": ["en", "de", "es"],
+      "school_affiliation": ["quantum_hd"],
+      "platform_affiliation": "quantumhumandesign.com",
+      "role": "school_founder",
+      "goodreads_ratings_total": 1207,
+      "known_works_count_books": 30,
+      "thematic_coverage": ["general", "bodygraph"],
+      "anna_archive_search_queries": [
+        "Karen Curry Parker",
+        "Karen Curry Human Design",
+        "Quantum Human Design",
+        "Understanding Human Design"
+      ],
+      "known_works": [
+        {
+          "title": "Understanding Human Design: The New Science of Astrology",
+          "year": 2013,
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["general"],
+          "languages": ["en", "es"],
+          "goodreads_ratings": 745,
+          "goodreads_avg": 4.23,
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Meistgeratetes KCP-Buch. Zugängliche Quantum-HD-Sprache. Vergleich mit Ra-Terminologie für K4."
+        },
+        {
+          "title": "The Encyclopedia of Quantum Human Design",
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["general"],
+          "languages": ["en", "bg"],
+          "goodreads_ratings": 17,
+          "goodreads_avg": 4.82,
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Vollständiges Quantum-HD-Lexikon. Alle Elemente in KCP-Terminologie — wichtig für Schul-Vergleich."
+        },
+        {
+          "title": "Abundance by Design",
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["general"],
+          "languages": ["en"],
+          "goodreads_ratings": 72,
+          "goodreads_avg": 3.99,
+          "anna_archive_likely": true,
+          "priority": "low"
+        },
+        {
+          "title": "Human Design Activation Guide",
+          "format": "book",
+          "werk_kategorie": "C",
+          "subsystem": ["general"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "low"
+        },
+        {
+          "title": "Human Design – einfach erklärt: Entschlüssle deinen Lebensplan",
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["general"],
+          "languages": ["de"],
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "DE-Ausgabe. Quantum-HD-Terminologie auf Deutsch."
+        }
+      ],
+      "unique_topics": ["Quantum-HD-Terminologie (Alternativbegriffe zu Ra)", "Evolution Guides (Jahresplaner 2019-2026)", "größte lebende HD-Schule"],
+      "gaps": ["Substruktur (Color/Tone/Base)", "Kosmologie", "technische Tiefe"],
+      "notes": "Wichtig für Schul-Vergleich: KCP verwendet andere Terminologie als Ra (z.B. 'Quantum Gate' statt 'Gate'). Für derive_from/reframes-Edges relevant."
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_jenna_zoe",
+      "name": "Jenna Zoë",
+      "aliases": ["Jenna Zoe"],
+      "language": ["en", "es", "nl"],
+      "school_affiliation": ["klassisch_ihds"],
+      "platform_affiliation": "myhumandesign.com",
+      "role": "secondary",
+      "publisher": "Hay House",
+      "goodreads_ratings_total": 920,
+      "known_works_count_books": 2,
+      "anna_archive_search_queries": [
+        "Jenna Zoe Human Design",
+        "Jenna Zoë",
+        "Human Design Revolutionary System"
+      ],
+      "known_works": [
+        {
+          "title": "Human Design: The Revolutionary System That Shows You Who You Came Here to Be",
+          "year": 2023,
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["general"],
+          "languages": ["en", "es", "nl"],
+          "goodreads_ratings": 818,
+          "goodreads_avg": 4.14,
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Hay House 2023. Zugänglichstes modernes Einführungsbuch. Breites Publikum."
+        },
+        {
+          "title": "Diseño humano esencial",
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["general"],
+          "languages": ["es"],
+          "anna_archive_likely": true,
+          "priority": "low"
+        }
+      ],
+      "unique_topics": ["Modernste Zugangsmöglichkeit", "Hay House — größter spiritueller Verlag"],
+      "gaps": ["Technische Tiefe", "Substruktur", "Kosmologie"],
+      "notes": "Leonie Hardeman übersetzt ins NL."
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_uljana_daitche",
+      "name": "Uljana Daitche",
+      "aliases": [],
+      "language": ["de"],
+      "school_affiliation": ["klassisch_ihds"],
+      "platform_affiliation": null,
+      "publisher": "KDP Selfpublishing (wahrscheinlich)",
+      "role": "secondary_de",
+      "goodreads_ratings_total": 7,
+      "known_works_count_books": 26,
+      "thematic_coverage": ["bodygraph", "phs", "rave_psychology", "cosmology", "relationships"],
+      "anna_archive_search_queries": [
+        "Uljana Daitche",
+        "Daitche Human Design",
+        "Daitche Variablen",
+        "Daitche Inkarnationskreuze"
+      ],
+      "known_works": [
+        {
+          "title": "Grundlagen des Human Designs: das große Handbuch",
+          "format": "book",
+          "werk_kategorie": "C",
+          "subsystem": ["general"],
+          "languages": ["de"],
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Haupteinführungswerk auf Deutsch. K3+K4 Basis."
+        },
+        {
+          "title": "Die 384 Linien der 64 Tore: das große Human Design Handbuch",
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "languages": ["de"],
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Umfassendstes DE-Werk zu allen 384 Linien. Tiefe K4-Quelle."
+        },
+        {
+          "title": "Kanäle, Ströme & Schaltkreise: im Human Design",
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "languages": ["de"],
+          "anna_archive_likely": true,
+          "priority": "high"
+        },
+        {
+          "title": "Variablen im Human Design: Teil 1 — Die Pfeile",
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["phs"],
+          "languages": ["de"],
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Tiefste DE-Abdeckung von PHS/Pfeile. Teil 1 von 3."
+        },
+        {
+          "title": "Variablen im Human Design: Teil 2 — PHS, Determination, Ernährung, Umgebung",
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["phs"],
+          "languages": ["de"],
+          "anna_archive_likely": true,
+          "priority": "high"
+        },
+        {
+          "title": "Variablen im Human Design: Teil 3 — Rave Psychologie, Perspektive, Motivation",
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["phs", "rave_psychology"],
+          "languages": ["de"],
+          "anna_archive_likely": true,
+          "priority": "high"
+        },
+        {
+          "title": "Das Buch der 192 Inkarnationskreuze: im Human Design",
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "languages": ["de"],
+          "anna_archive_likely": true,
+          "priority": "medium"
+        },
+        {
+          "title": "Mondknotenkonstellationen im Human Design: die 32 Kombinationen nach Ra Uru Hu",
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "languages": ["de"],
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "Explizit 'nach Ra Uru Hu' — Ra-nah positioniert. Mondknoten-K3."
+        },
+        {
+          "title": "Human Design - Beziehungen",
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["relationships"],
+          "languages": ["de"],
+          "anna_archive_likely": true,
+          "priority": "medium"
+        },
+        {
+          "title": "Der Liebescode: die 10 Tore der Liebe im Human Design",
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["relationships"],
+          "languages": ["de"],
+          "anna_archive_likely": true,
+          "priority": "medium"
+        },
+        {
+          "title": "Tore der Sexualität",
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["relationships"],
+          "languages": ["de"],
+          "anna_archive_likely": true,
+          "priority": "medium"
+        },
+        {
+          "title": "Human Design in der Schwangerschaft — die 10 Phasen der Entstehung",
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["bodygraph"],
+          "languages": ["de"],
+          "anna_archive_likely": true,
+          "priority": "low",
+          "notes": "UNIKAT auf DE-Markt. Pränatale Prägung. Keine andere DE-Autorin hat das."
+        },
+        {
+          "title": "2027: Human Design und das Ende der alten Welt",
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["cosmology"],
+          "languages": ["de"],
+          "anna_archive_likely": true,
+          "priority": "low"
+        },
+        {
+          "title": "Impulse für die 384 Linien im Human Design",
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["bodygraph"],
+          "languages": ["de"],
+          "anna_archive_likely": true,
+          "priority": "medium"
+        }
+      ],
+      "unique_topics": ["Tiefste DE-Abdeckung von PHS/Variablen", "Schwangerschaft/Prägung (Alleinstellung)", "alle 384 Linien auf DE"],
+      "gaps": ["Profile (kein separates Profilbuch)", "DreamRave", "Rave ABC"],
+      "notes": "Produktivste DE-HD-Autorin. 26 Werke. Ra-nah. Wichtig für DE-Perspektive im KG und Schul-Vergleich."
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_richard_rudd",
+      "name": "Richard Rudd",
+      "aliases": [],
+      "language": ["en", "de", "fr", "it", "ar", "tr", "sv"],
+      "school_affiliation": ["gene_keys"],
+      "platform_affiliation": "genekeys.com",
+      "role": "school_founder",
+      "goodreads_ratings_total": 2284,
+      "known_works_count_books": 17,
+      "thematic_coverage": ["bodygraph"],
+      "anna_archive_search_queries": [
+        "Richard Rudd",
+        "Gene Keys",
+        "Richard Rudd Human Design",
+        "Gene Keys Richard Rudd"
+      ],
+      "known_works": [
+        {
+          "title": "The Gene Keys: Embracing Your Higher Purpose",
+          "year": 2009,
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["general"],
+          "languages": ["en", "de", "fr", "it", "ar", "tr", "sv"],
+          "goodreads_ratings": 1026,
+          "goodreads_avg": 4.52,
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Hauptwerk. Shadow/Gift/Siddhi für alle 64 Schlüssel = 64 I Ching Hexagramme = 64 HD Gates. Wichtig für Schicht-Vergleich."
+        },
+        {
+          "title": "Human Design: The Revelation",
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["general"],
+          "languages": ["en"],
+          "goodreads_ratings": 50,
+          "goodreads_avg": 4.54,
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Rudd's Einführung in HD-Mechanik. Vergleichsperspektive."
+        },
+        {
+          "title": "Human Design: Circuitry — The Complete Guide to Circuits, Channels and Gates",
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "goodreads_ratings": 42,
+          "goodreads_avg": 4.86,
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "4.86★ — höchstbewertetes HD-Buch auf Goodreads. Schaltkreise/Kanäle/Gates komplett."
+        },
+        {
+          "title": "Genius: A Guide to your Activation Sequence (Golden Path Book 1)",
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["general"],
+          "languages": ["en", "it"],
+          "goodreads_ratings": 328,
+          "goodreads_avg": 4.73,
+          "anna_archive_likely": true,
+          "priority": "medium"
+        },
+        {
+          "title": "Opening Doors with Gene Keys: An Introduction to the Human Design System",
+          "format": "book",
+          "werk_kategorie": "D",
+          "subsystem": ["general"],
+          "languages": ["en"],
+          "goodreads_ratings": 4,
+          "goodreads_avg": 4.50,
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "Explizite HD→Gene Keys Brücke. Wichtig für derived_from-Edges."
+        },
+        {
+          "title": "The Art of Contemplation",
+          "format": "book",
+          "werk_kategorie": "D",
+          "subsystem": ["general"],
+          "languages": ["en", "fr", "it", "tr", "sv"],
+          "goodreads_ratings": 358,
+          "goodreads_avg": 4.54,
+          "anna_archive_likely": true,
+          "priority": "low"
+        },
+        {
+          "title": "Körper, Geist und Gene",
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["general"],
+          "languages": ["de"],
+          "anna_archive_likely": true,
+          "priority": "low",
+          "notes": "Deutsche Gene Keys Ausgabe."
+        }
+      ],
+      "unique_topics": ["Shadow/Gift/Siddhi-Modell (Entwicklungsrichtung)", "Gene Keys als eigenständiges System aus HD+I Ching", "höchste Goodreads-Ratings im HD-Bereich"],
+      "gaps": ["PHS/Variablen", "Kosmologie", "technische Tiefe"],
+      "notes": "Gene Keys ist KEIN HD — es ist ein abgeleitetes eigenständiges System. Trotzdem für derived_from/reframes-Edges fundamental. Die HD Circuitry (4.86★) ist das bestbewertete HD-Buch überhaupt."
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_peter_schoeber",
+      "name": "Peter Schoeber",
+      "aliases": ["Peter Schöber"],
+      "language": ["de", "en", "ru"],
+      "school_affiliation": ["klassisch_ihds"],
+      "platform_affiliation": "64keys.com",
+      "role": "secondary_de",
+      "goodreads_ratings_total": 26,
+      "known_works_count_books": 1,
+      "anna_archive_search_queries": [
+        "Peter Schoeber",
+        "Peter Schöber",
+        "Human Design System Centres Schoeber",
+        "64keys Human Design"
+      ],
+      "known_works": [
+        {
+          "title": "Das Human Design System – Die Zentren",
+          "year": 2014,
+          "pages": 360,
+          "format": "book",
+          "werk_kategorie": "C",
+          "subsystem": ["bodygraph"],
+          "languages": ["de", "en", "ru"],
+          "goodreads_ratings_de": 1,
+          "goodreads_ratings_en": 26,
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "Erstes ausführliches HD-Buch überhaupt laut Autor. 360 Seiten. Alle 9 Zentren inkl. Konditionierung."
+        },
+        {
+          "title": "Human Design System – The Centres",
+          "year": 2013,
+          "format": "book",
+          "werk_kategorie": "C",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "goodreads_ratings": 26,
+          "goodreads_avg": 4.46,
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "Englische Ausgabe desselben Werks."
+        }
+      ],
+      "unique_topics": ["Einziger DE-HD-Autor mit eigener Chart-Plattform (64keys.com)", "DE+EN+RU = breiteste Sprachabdeckung unter DE-Autoren"],
+      "gaps": ["Tore/Kanäle/Linien", "PHS", "Profile"],
+      "notes": "Plattform 64keys.com bietet Free Chart Service. Bücher sind wahrscheinlich auf Anna's Archive."
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_eleanor_haspel_portner",
+      "name": "Eleanor Haspel-Portner",
+      "aliases": [],
+      "coauthors": ["Marvin Portner"],
+      "language": ["en"],
+      "school_affiliation": ["beyond_hd"],
+      "platform_affiliation": null,
+      "role": "secondary",
+      "goodreads_ratings_total": 18,
+      "known_works_count_books": 11,
+      "anna_archive_search_queries": [
+        "Eleanor Haspel-Portner",
+        "Beyond Human Design",
+        "Human Design Health Haspel",
+        "Triple Design Matrix DreamRave"
+      ],
+      "known_works": [
+        {
+          "title": "Human Design & Health: A Practitioner's Guide to the Basics",
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "coauthor": "Ra Uru Hu, Marvin Portner",
+          "isbn": "1931053227",
+          "goodreads_ratings": 2,
+          "goodreads_avg": 4.0,
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "Ko-Autor Ra Uru Hu. HD + Gesundheit. 45.000 Fallstudien."
+        },
+        {
+          "title": "The Triple Design Matrix: The DreamRave Design System",
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["dreamrave"],
+          "languages": ["en"],
+          "coauthor": "Marvin Portner",
+          "isbn": "1931053189",
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "DreamRave als eigenständiges System."
+        },
+        {
+          "title": "Beyond Human Design: Turbocharge Your Practice with Integrated Channels",
+          "format": "book",
+          "werk_kategorie": "D",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "low"
+        }
+      ],
+      "unique_topics": ["Beyond HD (Wissenschaft+Psychologie+Reiki)", "DreamRave Ko-Autorin", "Ko-Autorin mit Ra Uru Hu"],
+      "gaps": [],
+      "notes": "Einzige Ko-Autorin die direkt mit Ra publiziert hat."
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_robin_winn",
+      "name": "Robin Winn",
+      "aliases": ["Robin Winn MFT"],
+      "language": ["en"],
+      "school_affiliation": ["quantum_hd"],
+      "platform_affiliation": null,
+      "role": "secondary",
+      "narrator": "Michael Moxham (alle 3 Hörbücher)",
+      "foreword_by": ["Karen Curry Parker", "Deborah Sudarsky"],
+      "goodreads_ratings_total": 310,
+      "known_works_count_books": 4,
+      "anna_archive_search_queries": [
+        "Robin Winn Human Design",
+        "Understanding Clients Human Design",
+        "Understanding Centers Human Design"
+      ],
+      "known_works": [
+        {
+          "title": "Understanding Your Clients Through Human Design",
+          "format": "book",
+          "werk_kategorie": "C",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "goodreads_ratings": 150,
+          "goodreads_avg": 4.24,
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "HD als therapeutisches Werkzeug. Therapeuten/Coach-Perspektive."
+        },
+        {
+          "title": "Understanding the Centers in Human Design",
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "goodreads_ratings": 83,
+          "goodreads_avg": 4.59,
+          "anna_archive_likely": true,
+          "priority": "medium"
+        },
+        {
+          "title": "Understanding the Profiles in Human Design",
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "goodreads_ratings": 70,
+          "goodreads_avg": 4.46,
+          "anna_archive_likely": true,
+          "priority": "medium"
+        }
+      ],
+      "unique_topics": ["HD aus therapeutischer/facilitator Perspektive", "Facilitator's Guide Serie"],
+      "notes": "Alle 3 Bücher auch als Hörbuch (Michael Moxham)."
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_zeno_dickson",
+      "name": "Zeno Dickson",
+      "aliases": [],
+      "language": ["en"],
+      "school_affiliation": ["klassisch_ihds"],
+      "illustrator": "Chaitanyo Taschler",
+      "known_works_count_books": 1,
+      "anna_archive_search_queries": [
+        "Zeno Dickson Human Design",
+        "Human Design Revealed Dickson"
+      ],
+      "known_works": [
+        {
+          "title": "Human Design Revealed: The Definitive Manual and Complete Reference",
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["general"],
+          "languages": ["en"],
+          "goodreads_ratings": 9,
+          "goodreads_avg": 4.22,
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "Illustriert von Chaitanyo. 'The Definitive Manual' — umfassendes Referenzwerk."
+        }
+      ],
+      "unique_topics": ["Vollständigstes Referenzwerk nach Ra+Bunnell"],
+      "notes": "Chaitanyo = Illustrator hier UND Ephemeriden-Autor."
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_chaitanyo",
+      "name": "Chaitanyo",
+      "aliases": ["Chaitanyo Taschler"],
+      "language": ["en"],
+      "school_affiliation": ["klassisch_ihds"],
+      "role": "technical_specialist",
+      "known_works_count_books": 12,
+      "anna_archive_search_queries": [
+        "Chaitanyo Ephemeris",
+        "Zen Human Design Ephemeris",
+        "Chiron Ephemeris Human Design"
+      ],
+      "known_works": [
+        {
+          "title": "Chiron Ephemeris for the Human Design System 1901-2150",
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "low",
+          "notes": "Technisches Referenzwerk. Planetenpositionen sekundengenau."
+        },
+        {
+          "title": "Zen Human Design Ephemeris 1951-1975",
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["bodygraph"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "low",
+          "notes": "Einer von 12 Ephemeriden-Bänden (Abdeckung ~1700-2200)."
+        }
+      ],
+      "unique_topics": ["Einziger HD-Ephemeriden-Spezialist", "sekundengenaue Planetenpositionen"],
+      "notes": "Auch Illustrator bei Zeno Dickson. Zentrale Netzwerkfigur."
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_steve_rhodes",
+      "name": "Steve Rhodes",
+      "aliases": [],
+      "language": ["en", "de", "fr", "es", "nl"],
+      "school_affiliation": ["klassisch_ihds"],
+      "role": "secondary_meta",
+      "goodreads_ratings_total": 78,
+      "known_works_count_books": 7,
+      "anna_archive_search_queries": [
+        "Steve Rhodes Human Design",
+        "Prophecy Ra Uru Hu Rhodes",
+        "Bhan Tugh Rhodes"
+      ],
+      "known_works": [
+        {
+          "title": "The Prophecy of Ra Uru Hu",
+          "year": 2015,
+          "format": "book",
+          "werk_kategorie": "D",
+          "subsystem": ["general"],
+          "languages": ["en", "de", "fr", "es", "nl"],
+          "goodreads_ratings": 29,
+          "goodreads_avg": 4.07,
+          "anna_archive_likely": true,
+          "priority": "low",
+          "notes": "Biografie/Dokumentation über Ra. Meta-Werk."
+        },
+        {
+          "title": "Bhan Tugh",
+          "year": 2014,
+          "format": "book",
+          "werk_kategorie": "D",
+          "subsystem": ["cosmology"],
+          "languages": ["en"],
+          "goodreads_ratings": 13,
+          "goodreads_avg": 4.85,
+          "anna_archive_likely": true,
+          "priority": "low",
+          "notes": "Kosmologisches Werk, benannt nach Ra's Konzept."
+        },
+        {
+          "title": "Human Design: How to Read a Graph",
+          "format": "book",
+          "werk_kategorie": "C",
+          "subsystem": ["general"],
+          "languages": ["en"],
+          "goodreads_ratings": 7,
+          "goodreads_avg": 4.86,
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "Praktische Chart-Leseanleitung. K3 (Interpretations-Reihenfolge)."
+        }
+      ],
+      "unique_topics": ["Meta-Perspektive auf Ra und HD", "breiteste Übersetzungs-Verfügbarkeit unter Sekundärautoren"],
+      "notes": "Einziger Sekundärautor in 5 Sprachen."
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_emma_dunwoody",
+      "name": "Emma Dunwoody",
+      "aliases": [],
+      "language": ["en", "de"],
+      "school_affiliation": ["klassisch_ihds"],
+      "publisher": "Rider/Penguin",
+      "translator_de": "Claudia Callies",
+      "known_works_count_books": 1,
+      "anna_archive_search_queries": [
+        "Emma Dunwoody Human Design",
+        "Human Design Made Simple Dunwoody"
+      ],
+      "known_works": [
+        {
+          "title": "Human Design Made Simple: Unlock Your Strengths & Discover Your True Purpose",
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["general"],
+          "languages": ["en", "de"],
+          "goodreads_ratings": 30,
+          "goodreads_avg": 3.83,
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "Rider/Penguin = erster bestätigter Major-Publisher im HD-Bereich."
+        },
+        {
+          "title": "Human Design leicht gemacht",
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["general"],
+          "languages": ["de"],
+          "translator": "Claudia Callies",
+          "anna_archive_likely": true,
+          "priority": "low"
+        }
+      ],
+      "unique_topics": ["Major Publisher (Rider/Penguin)", "zugänglich für Mainstream-Publikum"],
+      "notes": "Schreibt Foreword für Brynja Magnusson."
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_erin_claire_jones",
+      "name": "Erin Claire Jones",
+      "aliases": [],
+      "language": ["en"],
+      "school_affiliation": ["klassisch_ihds"],
+      "platform_affiliation": "erinclairejones.com",
+      "role": "secondary",
+      "goodreads_ratings_total": 247,
+      "known_works_count_books": 1,
+      "anna_archive_search_queries": [
+        "Erin Claire Jones Human Design",
+        "How Do You Choose Human Design"
+      ],
+      "known_works": [
+        {
+          "title": "How Do You Choose?: A Human Design Guide to Work, Love and Life",
+          "year": 2024,
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["general"],
+          "languages": ["en"],
+          "goodreads_ratings": 247,
+          "goodreads_avg": 3.96,
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "Fokus Entscheidungsfindung. Moderne Perspektive. 160 Länder Reichweite."
+        }
+      ],
+      "unique_topics": ["Entscheidungsfindung durch HD-Linse", "Global (160 Länder)"]
+    }
+
+  ],
+
+  "download_priority_order": {
+    "_comment": "Empfohlene Reihenfolge für Anna's Archive Downloads — Phase 1 HD",
+    "phase_1a_canonical_k3": [
+      "auth_ra_uru_hu: Keynotes (Circuits, Channels, Gates)",
+      "auth_ra_uru_hu: Channels by Type 1-4 (4 Bücher)",
+      "auth_ra_uru_hu: The Rave I'Ching",
+      "auth_ra_uru_hu: Complete Rave I'Ching",
+      "auth_ra_uru_hu: Rave I'Ching Line Companion (542pp)",
+      "auth_ra_uru_hu: Rave BodyGraph Circuitry",
+      "auth_ra_uru_hu: The Nine Centres and their Gates"
+    ],
+    "phase_1b_comprehensive_k3k4": [
+      "auth_lynda_bunnell: Science of Differentiation",
+      "auth_richard_rudd: Human Design Circuitry (4.86★)",
+      "auth_richard_rudd: Human Design The Revelation",
+      "auth_uljana_daitche: Die 384 Linien der 64 Tore (DE)",
+      "auth_uljana_daitche: Variablen Teil 1-3 (DE, PHS)",
+      "auth_ra_uru_hu: Generator Book",
+      "auth_ra_uru_hu: Line Resonance / Many Faces of Fear / Roads and Tunnels"
+    ],
+    "phase_1c_schools_comparison": [
+      "auth_karen_curry_parker: Encyclopedia of Quantum Human Design",
+      "auth_karen_curry_parker: Understanding Human Design",
+      "auth_chetan_parkyn: Human Design Discover (multi-language)",
+      "auth_chetan_parkyn: Book of Lines (HD+I Ching Brücke)",
+      "auth_richard_rudd: The Gene Keys",
+      "auth_jenna_zoe: Human Design Revolutionary System"
+    ],
+    "phase_1d_teaching_methods": [
+      "auth_lynda_bunnell: Living Your Design Student Manual",
+      "auth_robin_winn: Understanding Your Clients",
+      "auth_robin_winn: Understanding the Centers",
+      "auth_steve_rhodes: Human Design How to Read a Graph",
+      "auth_peter_schoeber: Human Design System The Centres"
+    ]
+  },
+
+  "non_author_works": {
+    "_comment": "HDA Webstore Course Manuals — Ra-Schule, kein einzelner Autorenname",
+    "works": [
+      {
+        "title": "Living Your Design Student Manual",
+        "publisher": "IHDS/HDA",
+        "format": "course_manual",
+        "werk_kategorie": "C",
+        "subsystem": ["general"],
+        "anna_archive_search_queries": ["Living Your Design Student Manual", "LYD manual IHDS"],
+        "anna_archive_likely": true,
+        "priority": "medium"
+      },
+      {
+        "title": "Rave ABCs Student Manual",
+        "publisher": "IHDS/HDA",
+        "format": "course_manual",
+        "werk_kategorie": "C",
+        "subsystem": ["general"],
+        "anna_archive_likely": true,
+        "priority": "medium"
+      },
+      {
+        "title": "Rave Cartography Student Manual V1",
+        "publisher": "IHDS/HDA",
+        "format": "course_manual",
+        "werk_kategorie": "C",
+        "subsystem": ["bodygraph"],
+        "anna_archive_likely": true,
+        "priority": "medium"
+      },
+      {
+        "title": "PTL1 Teacher Manual",
+        "publisher": "IHDS/HDA",
+        "format": "course_manual",
+        "werk_kategorie": "C",
+        "subsystem": ["general"],
+        "anna_archive_likely": true,
+        "priority": "low",
+        "notes": "Analyst-Ausbildung Jahr 1. K3-Regeln für professionelle Interpretation."
+      }
+    ]
+  }
+}

@@ -1,0 +1,620 @@
+{
+  "_meta": {
+    "version": "0.1.0",
+    "created": "2026-04-16",
+    "system_id": "astro",
+    "status": "initial_literature_seed",
+    "scope": "Nur westliche (typisch tropische) Geburtsastrologie in Staffel-1-Reichweite: natal, Häuser, Aspekte, Dignitäten, Punkte, prognostische Grundlagen, Synastry nach Bedarf. Geozentrisch; Häusersystem als Rechenkonfiguration (Engine), nicht als Kultur-Parallelstrang.",
+    "excluded_systems": "Jyotish (eigene Registry + Pipeline). Gene Keys / I Ching (eigene Registries). Keine Vermischung in dieser Download-Liste.",
+    "purpose": "Ground-Truth-Quellen-Inventar für entity-first Anna's Archive Beschaffung und spätere K3/K4-Extraktion (MinerU + LLM). Ersetzt breite Keyword-Suche. Registry = Quellen; keine Bücher als KG-Knoten.",
+    "target_path": "code/annas-archive-toolkit/projects/astro_content/entity_registry.json",
+    "schema": {
+      "werk_kategorie": {
+        "A": "Primärquellen/Kanon: Kosmologie, Mechanik, Regelwerk — K3-Hauptquelle",
+        "B": "Anwendungswerke: Deutung in Lebensbereichen, Psychologie, Fallbeispiele — K4-Hauptquelle",
+        "C": "Lehrwerke: Curricula, Technik-Anleitungen, Cookbooks — K3+K4",
+        "D": "Meta-Werke: Geschichte, Schulenvergleich, Methodologie, Kritik — K4-Kontext"
+      },
+      "subsystem": {
+        "_comment": "Nur diese Schlüssel in known_works[].subsystem und thematic_coverage — Abdeckung für Coverage-Matrix; keine 1:1-Spiegelung der Rechen-Engine (K1/K2).",
+        "natal_core": "Grundchart: Planeten, Zeichen, Häuser, Achsen, Retrograd",
+        "houses": "Hausbedeutungen, Winkelhäuser, Hausqualität, Lebensthemen",
+        "aspects": "Major/Minor-Aspekte, Orbs, anwendend/separierend",
+        "dignities": "Herrschaft, Exaltation, Fall, Detriment, Dispositoren, Rezeption",
+        "sect_tradition": "Tag-/Nachtchart, Sect, traditionelle Techniken",
+        "points_lots": "Chiron, Knoten, Lilith, arabische Lose u. ä.",
+        "predictive": "Transite, Progressionen, Solar Return, Zeittechniken",
+        "synastry": "Beziehungsastrologie, Komposite (wenn Werksschwerpunkt)",
+        "fixed_stars": "Fixsterne (nur bei Buchschwerpunkt)",
+        "asteroids": "Kleinplaneten (nur bei Buchschwerpunkt)",
+        "psychological": "Psychologische / humanistische Deutungsschicht",
+        "modern": "Uranus/Neptun/Pluto-Schwerpunkt, moderne Deutungskonventionen",
+        "traditional": "Traditional / mittelalterlich / hellenistisch (inhaltlich)",
+        "techniques": "Haus-Systeme, Orbs, spezielle Regeln, Cookbook-Technik",
+        "meta": "Geschichte, Schulenvergleich, Kritik, Methodologie (Subsystem-Tag; nicht mit werk_kategorie D verwechseln)"
+      },
+      "anna_archive_likely": "true = als PDF/Buch häufig in Sammlungen; false = eher nur Print/Verlag/Kurs"
+    }
+  },
+
+  "schools": {
+    "hellenistic_revival": "Wiederbelebung hellenistischer Techniken (Whole Sign, Lots, Sect, Zeit-Lords) — Brennan, George, etc.",
+    "medieval_european": "Europäische mittelalterliche / Renaissance-Astrologie (Übersetzungen, Lilly-Nachfolge)",
+    "psychological_humanistic": "Psychologische / humanistische Astrologie (Greene, Sasportas, Liz Greene school)",
+    "modern_cookbook": "Praxisorientierte Standardlehrbücher (Planet in Zeichen/Haus, Aspekte)",
+    "evolutionary": "Evolutionäre / spirituelle Strömung (Forrest-Greene-Umfeld — klar von klassischer Technik trennen)",
+    "uranian": "Uranische / Hamburg-Schule (optional, Nische — weniger Staffel-1-Kern)",
+    "financial_specialized": "Finanz-Spezialastrologie (optional, Nische)",
+    "western_traditional": "Westliche traditionelle / klassische Astrologie (europäisch-hellenistisch-mittelalterlich, nicht Jyotish)"
+  },
+
+  "semantic_aliases": {
+    "_comment": "Suchcluster für Titel ohne Wort 'astrology' oder für deutsch/englisch gemischte Suche",
+    "ascendant": ["rising sign", "ASC", "Aszendent", "horoskopische Achse"],
+    "houses": ["house system", "domification", "Häuser", "Winkelhäuser"],
+    "aspects": ["major aspects", "minor aspects", "Orbs", "applying separating"],
+    "dignities": ["rulership", "exaltation", "detriment", "fall", "reception", "dispositor"],
+    "lots": ["arabic parts", "Part of Fortune", "Lose", "hermetic lots"],
+    "synastry": ["relationship astrology", "composite chart", "Partnerhoroskop"],
+    "progressions": ["secondary progressions", "solar arc", "directed"],
+    "transits": ["transiting planets", "Durchgänge"],
+    "traditional": ["traditional astrology", "classical astrology", "hellenistic"],
+    "psychological": ["humanistic astrology", "archetypal astrology"]
+  },
+
+  "authors": [
+
+    {
+      "entity_type": "author",
+      "id": "auth_william_lilly",
+      "name": "William Lilly",
+      "aliases": ["Lilly"],
+      "language": ["en", "la"],
+      "school_affiliation": ["medieval_european"],
+      "role": "historical_canonical",
+      "known_works_count_books": 2,
+      "thematic_coverage": ["natal_core", "houses", "aspects", "dignities", "predictive", "techniques", "traditional"],
+      "anna_archive_search_queries": [
+        "William Lilly Christian Astrology",
+        "Lilly Christian Astrology 1647",
+        "William Lilly Merlini Anglici Ephemeris"
+      ],
+      "known_works": [
+        {
+          "title": "Christian Astrology",
+          "year": 1647,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["natal_core", "houses", "aspects", "dignities", "predictive", "techniques", "traditional"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Grundpfeiler europäischer Praxis-Astrologie; historische Sprache — K3-Regelwerk + historischer Kontext (K4 nur sekundär)."
+        }
+      ],
+      "gaps": ["Moderne Editionen/Übersetzungen separat taggen wenn gefunden"],
+      "notes": "Primärquelle für traditionelle Technik; nicht mit tropischer Moderndeutung verwechseln."
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_dane_rudhyar",
+      "name": "Dane Rudhyar",
+      "aliases": ["Rudhyar"],
+      "language": ["en", "fr"],
+      "school_affiliation": ["modern_cookbook", "psychological_humanistic"],
+      "role": "influencer",
+      "thematic_coverage": ["natal_core", "psychological", "modern", "meta"],
+      "anna_archive_search_queries": [
+        "Dane Rudhyar Astrology",
+        "Dane Rudhyar Lunation Cycle",
+        "The Astrology of Personality Rudhyar"
+      ],
+      "known_works": [
+        {
+          "title": "The Astrology of Personality",
+          "year": 1936,
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["natal_core", "psychological", "modern", "meta"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "medium"
+        },
+        {
+          "title": "An Astrological Mandala: The Cycle of Transformations and Its 360 Symbolic Phases",
+          "year": 1973,
+          "format": "book",
+          "werk_kategorie": "C",
+          "subsystem": ["natal_core", "psychological", "techniques"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "Sabian-Symbolik — K4-schwer; Regelteil begrenzt."
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_stephen_arroyo",
+      "name": "Stephen Arroyo",
+      "aliases": ["Arroyo"],
+      "language": ["en", "de"],
+      "school_affiliation": ["psychological_humanistic", "modern_cookbook"],
+      "role": "popularizer",
+      "thematic_coverage": ["natal_core", "houses", "aspects", "psychological", "modern"],
+      "anna_archive_search_queries": [
+        "Stephen Arroyo Astrology Karma and Transformation",
+        "Stephen Arroyo Chart Interpretation Handbook",
+        "Stephen Arroyo Person to Person Astrology"
+      ],
+      "known_works": [
+        {
+          "title": "Astrology, Karma & Transformation: The Inner Dimensions of the Birth Chart",
+          "year": 1978,
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["natal_core", "psychological", "modern"],
+          "languages": ["en", "de"],
+          "anna_archive_likely": true,
+          "priority": "high"
+        },
+        {
+          "title": "Chart Interpretation Handbook: Guidelines for Understanding the Essentials of the Birth Chart",
+          "year": 1989,
+          "format": "book",
+          "werk_kategorie": "C",
+          "subsystem": ["natal_core", "houses", "aspects", "techniques"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "high"
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_liz_greene",
+      "name": "Liz Greene",
+      "aliases": ["Greene"],
+      "language": ["en", "de"],
+      "school_affiliation": ["psychological_humanistic"],
+      "role": "influencer",
+      "thematic_coverage": ["natal_core", "psychological", "houses", "meta"],
+      "anna_archive_search_queries": [
+        "Liz Greene Relating Astrology",
+        "Liz Greene Saturn",
+        "Liz Greene Astrology"
+      ],
+      "known_works": [
+        {
+          "title": "Saturn: A New Look at an Old Devil",
+          "year": 1976,
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["natal_core", "psychological", "modern"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "high"
+        },
+        {
+          "title": "Relating: An Astrological Guide to Living with Others on a Small Planet",
+          "year": 1978,
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["synastry", "psychological", "natal_core"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "high"
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_howard_sasportas",
+      "name": "Howard Sasportas",
+      "aliases": ["Sasportas"],
+      "language": ["en", "de"],
+      "school_affiliation": ["psychological_humanistic"],
+      "role": "influencer",
+      "thematic_coverage": ["houses", "psychological", "natal_core"],
+      "anna_archive_search_queries": [
+        "Howard Sasportas Twelve Houses",
+        "Sasportas Astrology"
+      ],
+      "known_works": [
+        {
+          "title": "The Twelve Houses",
+          "year": 1985,
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["houses", "psychological", "natal_core"],
+          "languages": ["en", "de"],
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Standard K4 zu Häusern in psychologischer Ausrichtung."
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_sue_tompkins",
+      "name": "Sue Tompkins",
+      "aliases": ["Tompkins"],
+      "language": ["en"],
+      "school_affiliation": ["modern_cookbook"],
+      "role": "teacher",
+      "thematic_coverage": ["aspects", "natal_core", "techniques"],
+      "anna_archive_search_queries": [
+        "Sue Tompkins Aspects in Astrology",
+        "Tompkins Astrology"
+      ],
+      "known_works": [
+        {
+          "title": "Aspects in Astrology: A Guide to Understanding Planetary Relationships in the Horoscope",
+          "year": 1989,
+          "format": "book",
+          "werk_kategorie": "C",
+          "subsystem": ["aspects", "natal_core", "techniques"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "high"
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_robert_hand",
+      "name": "Robert Hand",
+      "aliases": ["R. Hand"],
+      "language": ["en"],
+      "school_affiliation": ["modern_cookbook", "hellenistic_revival"],
+      "role": "scholar_practitioner",
+      "thematic_coverage": ["natal_core", "aspects", "predictive", "techniques", "traditional", "meta"],
+      "anna_archive_search_queries": [
+        "Robert Hand Planets in Transit",
+        "Robert Hand Horoscope Symbols",
+        "Robert Hand Essays on Astrology"
+      ],
+      "known_works": [
+        {
+          "title": "Planets in Transit: Life Cycles for Living",
+          "year": 1976,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["predictive", "natal_core", "techniques"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Referenz für Transit-Logik (K3-lastig im Regelteil)."
+        },
+        {
+          "title": "Horoscope Symbols",
+          "year": 1981,
+          "format": "book",
+          "werk_kategorie": "C",
+          "subsystem": ["natal_core", "techniques", "meta"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "high"
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_chris_brennan",
+      "name": "Chris Brennan",
+      "aliases": ["Brennan"],
+      "language": ["en"],
+      "school_affiliation": ["hellenistic_revival"],
+      "role": "teacher",
+      "thematic_coverage": ["natal_core", "dignities", "sect_tradition", "predictive", "traditional", "techniques", "meta"],
+      "anna_archive_search_queries": [
+        "Chris Brennan Hellenistic Astrology",
+        "Chris Brennan Astrology Podcast book"
+      ],
+      "known_works": [
+        {
+          "title": "Hellenistic Astrology: The Study of Fate and Fortune",
+          "year": 2017,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["traditional", "dignities", "sect_tradition", "natal_core", "techniques", "meta"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Moderne Kanonisierung hellenistischer Regeln — zentrale K3-Quelle für traditional-Strang."
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_demetra_george",
+      "name": "Demetra George",
+      "aliases": ["George"],
+      "language": ["en"],
+      "school_affiliation": ["hellenistic_revival"],
+      "role": "teacher",
+      "thematic_coverage": ["points_lots", "sect_tradition", "dignities", "traditional", "natal_core"],
+      "anna_archive_search_queries": [
+        "Demetra George Astrology and the Authentic Self",
+        "Demetra George Ancient Astrology"
+      ],
+      "known_works": [
+        {
+          "title": "Astrology and the Authentic Self: Integrating Traditional and Modern Astrology to Uncover the Essence of the Birth Chart",
+          "year": 2008,
+          "format": "book",
+          "werk_kategorie": "C",
+          "subsystem": ["natal_core", "traditional", "modern", "techniques"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "high"
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_deborah_houlding",
+      "name": "Deborah Houlding",
+      "aliases": ["Houlding"],
+      "language": ["en"],
+      "school_affiliation": ["western_traditional", "modern_cookbook"],
+      "role": "scholar",
+      "thematic_coverage": ["houses", "traditional", "techniques", "meta"],
+      "anna_archive_search_queries": [
+        "Deborah Houlding Houses Temples of the Sky",
+        "Skyscript Houlding"
+      ],
+      "known_works": [
+        {
+          "title": "The Houses: Temples of the Sky",
+          "year": 1996,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["houses", "traditional", "techniques", "meta"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Hausdeutung und historische Hauskonzepte — stark K3 für Haus-Themenblock."
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_austin_coppock",
+      "name": "Austin Coppock",
+      "aliases": ["Coppock"],
+      "language": ["en"],
+      "school_affiliation": ["western_traditional", "hellenistic_revival"],
+      "role": "author",
+      "thematic_coverage": ["natal_core", "traditional", "techniques"],
+      "anna_archive_search_queries": [
+        "Austin Coppock 36 Faces",
+        "Coppock decans"
+      ],
+      "known_works": [
+        {
+          "title": "36 Faces: The History, Astrology and Magic of the Decans",
+          "year": 2014,
+          "format": "book",
+          "werk_kategorie": "C",
+          "subsystem": ["natal_core", "traditional", "techniques"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "medium"
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_richard_tarnas",
+      "name": "Richard Tarnas",
+      "aliases": ["Tarnas"],
+      "language": ["en", "de"],
+      "school_affiliation": ["psychological_humanistic", "modern_cookbook"],
+      "role": "scholar",
+      "thematic_coverage": ["meta", "psychological", "modern", "predictive"],
+      "anna_archive_search_queries": [
+        "Richard Tarnas Cosmos and Psyche",
+        "Passion of the Western Mind Tarnas"
+      ],
+      "known_works": [
+        {
+          "title": "Cosmos and Psyche: Intimations of a New World View",
+          "year": 2006,
+          "format": "book",
+          "werk_kategorie": "D",
+          "subsystem": ["meta", "psychological", "modern"],
+          "languages": ["en", "de"],
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "Meta/K4-schwer; weniger technisches K3 — spätere Phase oder ergänzende Quelle."
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_marc_edmund_jones",
+      "name": "Marc Edmund Jones",
+      "aliases": ["M.E. Jones", "Jones Sabian"],
+      "language": ["en"],
+      "school_affiliation": ["modern_cookbook"],
+      "role": "historical_influencer",
+      "thematic_coverage": ["natal_core", "techniques", "meta"],
+      "anna_archive_search_queries": [
+        "Marc Edmund Jones Sabian Symbols",
+        "Jones Astrology How and Why"
+      ],
+      "known_works": [
+        {
+          "title": "The Sabian Symbols in Astrology",
+          "year": 1953,
+          "format": "book",
+          "werk_kategorie": "C",
+          "subsystem": ["natal_core", "techniques"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "low",
+          "notes": "Symbol-K4; Regelteil begrenzt."
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_benjamin_dykes",
+      "name": "Benjamin N. Dykes",
+      "aliases": ["Dykes"],
+      "language": ["en"],
+      "school_affiliation": ["medieval_european", "western_traditional"],
+      "role": "translator_scholar",
+      "thematic_coverage": ["traditional", "dignities", "predictive", "techniques", "meta"],
+      "anna_archive_search_queries": [
+        "Benjamin Dykes Works of Sahl",
+        "Dykes medieval astrology translation"
+      ],
+      "known_works": [
+        {
+          "title": "Works of Sahl & Masha'allah",
+          "year": 2008,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["traditional", "predictive", "techniques", "dignities"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "Übersetzungen mittelalterlicher Regelwerke — K3 für traditional-Strang."
+        }
+      ],
+      "gaps": ["Konkrete Editionstitel je nach Anna's-Eintrag verifizieren"]
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_alan_leo",
+      "name": "Alan Leo",
+      "aliases": ["Leo"],
+      "language": ["en"],
+      "school_affiliation": ["modern_cookbook"],
+      "role": "historical_popularizer",
+      "thematic_coverage": ["natal_core", "meta", "psychological"],
+      "anna_archive_search_queries": [
+        "Alan Leo Astrology for All",
+        "Alan Leo How to Judge a Nativity"
+      ],
+      "known_works": [
+        {
+          "title": "How to Judge a Nativity",
+          "year": 1908,
+          "format": "book",
+          "werk_kategorie": "C",
+          "subsystem": ["natal_core", "techniques", "meta"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "low",
+          "notes": "Historisch; Sprache veraltet — K4-Kontext / Geschichte."
+        }
+      ],
+      "gaps": []
+    }
+
+  ],
+
+  "download_priority_order": {
+    "_comment": "Empfohlene Phasen — westliche Astro K3 zuerst (Regelwerke, Technik), dann K4-Breite und Meta.",
+    "phase_1a_canonical_k3": [
+      "auth_william_lilly: Christian Astrology",
+      "auth_chris_brennan: Hellenistic Astrology",
+      "auth_robert_hand: Planets in Transit",
+      "auth_deborah_houlding: The Houses Temples of the Sky",
+      "auth_benjamin_dykes: Works of Sahl & Masha'allah"
+    ],
+    "phase_1b_comprehensive_k3k4": [
+      "auth_sue_tompkins: Aspects in Astrology",
+      "auth_stephen_arroyo: Chart Interpretation Handbook",
+      "auth_stephen_arroyo: Astrology Karma and Transformation",
+      "auth_robert_hand: Horoscope Symbols",
+      "auth_demetra_george: Astrology and the Authentic Self"
+    ],
+    "phase_1c_schools_comparison": [
+      "auth_liz_greene: Saturn",
+      "auth_liz_greene: Relating",
+      "auth_howard_sasportas: The Twelve Houses",
+      "auth_dane_rudhyar: The Astrology of Personality",
+      "auth_austin_coppock: 36 Faces"
+    ],
+    "phase_1d_teaching_methods_meta": [
+      "auth_richard_tarnas: Cosmos and Psyche",
+      "auth_marc_edmund_jones: Sabian Symbols",
+      "auth_alan_leo: How to Judge a Nativity",
+      "auth_dane_rudhyar: An Astrological Mandala"
+    ]
+  },
+
+  "non_author_works": {
+    "_comment": "Übersetzungen, Ephemeriden, Sammelwerke ohne klaren Einzelautor — separat suchen.",
+    "works": [
+      {
+        "title": "Tetrabiblos (Claudius Ptolemy) — diverse Übersetzungen",
+        "format": "book",
+        "werk_kategorie": "A",
+        "subsystem": ["traditional", "natal_core", "dignities", "meta"],
+        "anna_archive_search_queries": [
+          "Ptolemy Tetrabiblos Robbins",
+          "Tetrabiblos translation astrology"
+        ],
+        "anna_archive_likely": true,
+        "priority": "medium",
+        "notes": "Fundamentaltext; sprachlich je nach Edition. Nicht mit Jyotish-Brhat Parasara Hora Shastra vermischen."
+      },
+      {
+        "title": "Anthology (Vettius Valens) — Dykes/Riley Übersetzungen",
+        "format": "book",
+        "werk_kategorie": "A",
+        "subsystem": ["traditional", "predictive", "techniques", "natal_core"],
+        "anna_archive_search_queries": [
+          "Vettius Valens Anthology Dykes",
+          "Valens astrology translation"
+        ],
+        "anna_archive_likely": true,
+        "priority": "medium"
+      },
+      {
+        "title": "American Ephemeris / Raphael's Ephemeris (Jahrgang)",
+        "format": "reference",
+        "werk_kategorie": "A",
+        "subsystem": ["natal_core", "predictive", "techniques"],
+        "anna_archive_search_queries": [
+          "Raphael ephemeris",
+          "American ephemeris astrology"
+        ],
+        "anna_archive_likely": true,
+        "priority": "low",
+        "notes": "Referenztabellen — weniger Interpretation; für Engine meist redundant, für historische Arbeit evtl. nützlich."
+      }
+    ]
+  }
+}

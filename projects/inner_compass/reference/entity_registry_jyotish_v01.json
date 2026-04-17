@@ -1,0 +1,328 @@
+{
+  "_meta": {
+    "version": "0.1.0",
+    "created": "2026-04-17",
+    "system_id": "jyotish",
+    "catalog_cross_ref": "projects/inner_compass/system_structure/jyotish_catalog_v0.json",
+    "engine_note": "PyJHora (Parashari-lastig); 12 Grahas inkl. Uranus/Neptune/Pluto optional. Keine westliche tropische Astro-Registry vermischen.",
+    "status": "initial_literature_seed",
+    "scope": "Vedische/Jyotish-Astrologie (Parashari als Kern). Literatur für K3/K4 und Schul-Kontext; K1/K2 aus Engine+Katalog.",
+    "excluded_systems": "Westliche Astro (eigene Registry). BaZi/Ziwei (chinesische Systeme). Gene Keys.",
+    "purpose": "Ground-Truth-Quellen-Inventar für entity-first Beschaffung (Anna's Archive) und spätere K3/K4-Extraktion. Registry = Quellen, keine KG-Knoten.",
+    "target_path": "code/annas-archive-toolkit/projects/jyotish_content/entity_registry.json",
+    "schema": {
+      "werk_kategorie": {
+        "A": "Primärquellen/Kanon: śāstra, Regelwerk, śloka-basierte Technik — K3-Hauptquelle",
+        "B": "Anwendungswerke: Deutung, Fallbeispiele, Lebensbereiche — K4-Hauptquelle",
+        "C": "Lehrwerke: Kurse, moderne Didaxe, Übersichten — K3+K4",
+        "D": "Meta: Geschichte, Schulvergleich, Methodologie — K4-Kontext"
+      },
+      "subsystem": {
+        "_comment": "Nur diese Schlüssel in known_works[].subsystem / thematic_coverage — Mapping zu jyotish_catalog_v0 (Graha, Rāśi, Nakṣatra, Bhāva, Varga, Daśā, Yoga).",
+        "natal_core": "Lagna, D1/Rāśi-Chart, Grundaufbau",
+        "graha": "Navagraha + Außenplaneten: Natur, Śubh/Aśubh, Kraft",
+        "rashi": "12 Rāśi, Herrschaft, Exaltation/Debilitation",
+        "nakshatra": "27 Nakṣatra, Pada, Vimśottari-Start",
+        "bhava": "12 Bhāva, Kendra/Trikona, Bhāva-Karaka",
+        "vargas": "Śoḍaśa Varga / divisional charts (D9, D10, …)",
+        "dasha": "Vimśottari, Antardaśā, Pratyantardaśā (weitere Daśā-Systeme als Tag)",
+        "yogas": "Rāja Yoga, Dhana Yoga, technische Kombinationen",
+        "aspects_drishti": "Dr̥ṣṭi, Konjunktion, Aspekte",
+        "remedial_upaya": "Mantra, Stein, Spenden, Vrata (K4-Anwendung, oft getrennt von reinem Regelwerk)",
+        "parashari_traditional": "Parāśari-Hauptstrang (BPHS-Ökosystem)",
+        "jaimini": "Jaimini-Sūtra / Chara-Kāraka (nur wenn ihr Schul-Track plant)",
+        "kp": "Krishnamurti Paddhati (eigene Regeln; Engine-Parität prüfen)",
+        "muhurta": "Wahlzeiten (optional)",
+        "meta": "Geschichte, Vergleich Schulen, Übersetzungsfragen"
+      },
+      "anna_archive_likely": "true = Buch/PDF in Sammlungen üblich"
+    }
+  },
+
+  "schools": {
+    "parashari_classical": "Parāśari — BPHS-Tradition, Standard-Lehrpfad",
+    "modern_western_vedic": "Moderne westliche Vedische-Astrologie-Lehrbücher (englisch, didaktisch)",
+    "remedial_shastra": "Upāya / remedial literature",
+    "jaimini_lineage": "Jaimini — separater Algorithmus- und Textstrang",
+    "kp_lineage": "KP — Sub-Lord-Logik, andere Häuser/Ayanāṃśa-Praxis"
+  },
+
+  "semantic_aliases": {
+    "_comment": "Suchcluster — vermeidet reines Keyword vedische astrology",
+    "bphs": ["Brihat Parashara Hora", "Brihat Parasara Hora", "Parashara Hora Shastra"],
+    "vimshottari": ["Vimshottari dasha", "Vimsottari", "Mahadasha"],
+    "navamsa": ["D9", "Navamsa chart"],
+    "rashi": ["Rasi chart", "D1 chart", "Vedic natal"],
+    "nakshatra": ["lunar mansion", "nakshatras vedic"]
+  },
+
+  "authors": [
+
+    {
+      "entity_type": "author",
+      "id": "auth_parasara_tradition",
+      "name": "Maharishi Parashara (trad.)",
+      "aliases": ["Parāśara", "Parasara"],
+      "language": ["sa", "en"],
+      "school_affiliation": ["parashari_classical"],
+      "role": "canonical_text",
+      "thematic_coverage": ["parashari_traditional", "natal_core", "graha", "rashi", "bhava", "vargas", "dasha", "yogas"],
+      "anna_archive_search_queries": [
+        "Brihat Parashara Hora Shastra Santhanam",
+        "Brihat Parasara Hora Sastra English",
+        "BPHS Parashara translation"
+      ],
+      "known_works": [
+        {
+          "title": "Brihat Parashara Hora Shastra (BPHS) — English translation (e.g. R. Santhanam ed.)",
+          "year": null,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["parashari_traditional", "graha", "rashi", "bhava", "vargas", "dasha", "yogas", "natal_core"],
+          "languages": ["en", "sa"],
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Zentraler Regel-Korpus; Kapitel zu Grahas, Bhāvas, Vargas, Daśā, Yogas — deckt jyotish_catalog_v0-Breite ab."
+        }
+      ],
+      "gaps": ["Edition/Übersetzer in Metadaten verifizieren"],
+      "notes": "Attribution traditionell; immer konkrete Übersetzung taggen."
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_mantreswara",
+      "name": "Mantreswara",
+      "aliases": [],
+      "language": ["sa", "en"],
+      "school_affiliation": ["parashari_classical"],
+      "role": "classical",
+      "thematic_coverage": ["graha", "rashi", "bhava", "yogas", "dasha"],
+      "anna_archive_search_queries": [
+        "Phaladeepika Mantreswara",
+        "Phaladeepika translation astrology"
+      ],
+      "known_works": [
+        {
+          "title": "Phaladeepika",
+          "year": null,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["graha", "rashi", "bhava", "yogas", "dasha", "aspects_drishti"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "high"
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_kalyana_varma",
+      "name": "Kalyāṇa Varma",
+      "aliases": ["Kalyana Varma"],
+      "language": ["sa", "en"],
+      "school_affiliation": ["parashari_classical"],
+      "role": "classical",
+      "thematic_coverage": ["natal_core", "graha", "yogas", "bhava"],
+      "anna_archive_search_queries": [
+        "Saravali Kalyana Varma",
+        "Sārāvalī translation vedic astrology"
+      ],
+      "known_works": [
+        {
+          "title": "Sārāvalī (Saravali)",
+          "year": null,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["natal_core", "graha", "yogas", "bhava"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "high"
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_varahamihira",
+      "name": "Varāhamihira",
+      "aliases": ["Varahamihira"],
+      "language": ["sa", "en"],
+      "school_affiliation": ["parashari_classical"],
+      "role": "classical",
+      "thematic_coverage": ["natal_core", "graha", "rashi", "nakshatra"],
+      "anna_archive_search_queries": [
+        "Brihat Jataka Varahamihira",
+        "Brihat Jataka translation Ernst"
+      ],
+      "known_works": [
+        {
+          "title": "Brihat Jataka",
+          "year": null,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["natal_core", "graha", "rashi", "nakshatra", "meta"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "Klassisch; teils andere Schicht als BPHS — K4+Kontext."
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_ernst_wilhelm",
+      "name": "Ernst Wilhelm",
+      "aliases": [],
+      "language": ["en"],
+      "school_affiliation": ["modern_western_vedic"],
+      "role": "teacher",
+      "thematic_coverage": ["graha", "nakshatra", "vargas", "dasha", "parashari_traditional"],
+      "anna_archive_search_queries": [
+        "Ernst Wilhelm astrology",
+        "Ernst Wilhelm Graha Sutras",
+        "Ernst Wilhelm vedic"
+      ],
+      "known_works": [
+        {
+          "title": "Graha Sutras",
+          "year": 2006,
+          "format": "book",
+          "werk_kategorie": "C",
+          "subsystem": ["graha", "nakshatra", "parashari_traditional"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Moderne systematische Planeten-/Nakṣatra-Deutung — stark K4, teils K3-Regeln."
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_james_braha",
+      "name": "James T. Braha",
+      "aliases": ["Braha"],
+      "language": ["en"],
+      "school_affiliation": ["modern_western_vedic"],
+      "role": "teacher",
+      "thematic_coverage": ["natal_core", "graha", "rashi", "bhava", "dasha"],
+      "anna_archive_search_queries": [
+        "James Braha Ancient Hindu Astrology",
+        "James Braha vedic"
+      ],
+      "known_works": [
+        {
+          "title": "Ancient Hindu Astrology for the Modern Western Astrologer",
+          "year": 1986,
+          "format": "book",
+          "werk_kategorie": "C",
+          "subsystem": ["natal_core", "graha", "rashi", "bhava", "dasha"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "high"
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_hart_defouw",
+      "name": "Hart de Fouw",
+      "aliases": [],
+      "language": ["en"],
+      "school_affiliation": ["modern_western_vedic"],
+      "role": "teacher",
+      "thematic_coverage": ["natal_core", "graha", "bhava", "nakshatra", "remedial_upaya"],
+      "anna_archive_search_queries": [
+        "Light on Life Hart de Fouw",
+        "Light on Life Svoboda vedic astrology"
+      ],
+      "known_works": [
+        {
+          "title": "Light on Life: An Introduction to the Astrology of India (with Robert E. Svoboda)",
+          "year": 1996,
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["natal_core", "graha", "bhava", "nakshatra", "remedial_upaya"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "Breites Einstiegs-K4; gut für UI-Sprache und Kontext."
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_b_v_raman",
+      "name": "B. V. Raman",
+      "aliases": ["Bangalore Venkata Raman"],
+      "language": ["en"],
+      "school_affiliation": ["parashari_classical", "modern_western_vedic"],
+      "role": "publisher_teacher",
+      "thematic_coverage": ["natal_core", "graha", "bhava", "vargas", "dasha", "yogas"],
+      "anna_archive_search_queries": [
+        "BV Raman How to Judge Horoscope",
+        "B V Raman astrology"
+      ],
+      "known_works": [
+        {
+          "title": "How to Judge a Horoscope (Vol. 1–2)",
+          "year": null,
+          "format": "book",
+          "werk_kategorie": "C",
+          "subsystem": ["natal_core", "graha", "bhava", "vargas", "dasha", "yogas"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "medium"
+        }
+      ],
+      "gaps": []
+    }
+
+  ],
+
+  "download_priority_order": {
+    "_comment": "K3-Kanon zuerst (śāstra/Übersetzungen), dann moderne Lehrbücher (K3+K4).",
+    "phase_1a_canonical_k3": [
+      "auth_parasara_tradition: Brihat Parashara Hora Shastra",
+      "auth_mantreswara: Phaladeepika",
+      "auth_kalyana_varma: Sārāvalī"
+    ],
+    "phase_1b_comprehensive_k3k4": [
+      "auth_ernst_wilhelm: Graha Sutras",
+      "auth_james_braha: Ancient Hindu Astrology",
+      "auth_hart_defouw: Light on Life"
+    ],
+    "phase_1c_secondary_classical": [
+      "auth_varahamihira: Brihat Jataka",
+      "auth_b_v_raman: How to Judge"
+    ],
+    "phase_1d_specialized_schools_optional": []
+  },
+
+  "non_author_works": {
+    "_comment": "Sammel-/Serienwerke ohne einen 'Autor' im Registry-Sinn.",
+    "works": [
+      {
+        "title": "Indian Ephemeris / Raphael-style Jyotish ephemeris (Jahr)",
+        "format": "reference",
+        "werk_kategorie": "A",
+        "subsystem": ["natal_core"],
+        "anna_archive_search_queries": ["vedic ephemeris", "Indian ephemeris astrology"],
+        "anna_archive_likely": true,
+        "priority": "low",
+        "notes": "Meist K1-redundant wenn Engine da; nur für historische Abgleiche."
+      }
+    ]
+  }
+}

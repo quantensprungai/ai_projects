@@ -1,0 +1,293 @@
+{
+  "_meta": {
+    "version": "0.1.0",
+    "created": "2026-04-17",
+    "system_id": "bazi",
+    "catalog_cross_ref": "projects/inner_compass/system_structure/bazi_catalog_v0.json",
+    "engine_note": "@yhjs/bazi + @yhjs/bagua — 十天干/十二地支/六十甲子/纳音/十神/神煞等; 大运流年为运行时逻辑。",
+    "status": "initial_literature_seed",
+    "scope": "四柱八字 / BaZi / Ziping 子平术 — nicht Ziwei, nicht Jyotish. 盲派 vs 书房派 als Schul-Tags.",
+    "excluded_systems": "Ziwei, Jyotish, westliche Astro.",
+    "purpose": "Ground-Truth-Quellen-Inventar für entity-first Beschaffung und K3/K4-Extraktion.",
+    "target_path": "code/annas-archive-toolkit/projects/bazi_content/entity_registry.json",
+    "schema": {
+      "werk_kategorie": {
+        "A": "Klassiker/注疏: 子平、滴天髓、三命通会等 — Regeln与格局 — K3-Hauptquelle",
+        "B": "Deutungs- und Anwendungswerke: 日主、十神、人生事象 — K4-Hauptquelle",
+        "C": "现代教材、讲义、案例集 — K3+K4",
+        "D": "流派史、方法论、比较 — K4-Kontext"
+      },
+      "subsystem": {
+        "_comment": "Nur diese Schlüssel — Anbindung an bazi_catalog (干支、甲子、十神、纳音、神煞、大运等).",
+        "pillars_four": "四柱、排盘",
+        "stems_branches": "天干地支",
+        "sixty_jiazi": "六十甲子",
+        "ten_gods": "十神",
+        "nayin": "纳音",
+        "strength_useful": "日主强弱、用神、忌神",
+        "patterns_geju": "格局（正官格、从格等）",
+        "luck_dayun": "大运",
+        "liunian": "流年",
+        "liuyue": "流月",
+        "shensha": "神煞",
+        "wuxing": "五行生克制化",
+        "yin_yang": "阴阳",
+        "classical_ziping": "子平术主脉",
+        "blind_school": "盲派（若专书）",
+        "modern_primer": "现代入门/商业出版",
+        "meta": "史论、流派比较"
+      },
+      "anna_archive_likely": "true = 中文/英文 BaZi-Bücher häufig"
+    }
+  },
+
+  "schools": {
+    "classical_ziping": "子平正统、书房派",
+    "blind_school": "盲派八字",
+    "modern_malaysia": "新马港台现代教材（如 Joey Yap 系）",
+    "prc_popular": "大陆流行命理读本"
+  },
+
+  "semantic_aliases": {
+    "_comment": "Suchcluster",
+    "bazi": ["八字", "四柱", "four pillars", "four pillars of destiny", "8 characters"],
+    "ziping": ["子平", "子平术", "Ziping"],
+    "ten_gods": ["十神", "比肩 劫财"],
+    "dayun": ["大运", "大運"],
+    "liunian": ["流年"]
+  },
+
+  "authors": [
+
+    {
+      "entity_type": "author",
+      "id": "auth_shen_xiaozhan",
+      "name": "沈孝瞻",
+      "aliases": ["Shen Xiaozhan", "沈孝瞻"],
+      "language": ["zh-CN", "zh-TW"],
+      "school_affiliation": ["classical_ziping"],
+      "role": "classical",
+      "thematic_coverage": ["patterns_geju", "strength_useful", "ten_gods", "classical_ziping", "pillars_four"],
+      "anna_archive_search_queries": [
+        "沈孝瞻 子平真诠",
+        "子平真诠 沈孝瞻",
+        "Ziping Zhen Quan Chinese"
+      ],
+      "known_works": [
+        {
+          "title": "子平真诠",
+          "year": null,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["patterns_geju", "strength_useful", "ten_gods", "classical_ziping", "pillars_four"],
+          "languages": ["zh-CN"],
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "子平核心文本之一；多版本注本。"
+        }
+      ],
+      "gaps": ["具体校注本（徐乐吾等）单独可拆条"],
+      "notes": "常与徐乐吾评注本一起出现。"
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_ren_tieqiao",
+      "name": "任铁樵",
+      "aliases": ["Ren Tieqiao"],
+      "language": ["zh-CN"],
+      "school_affiliation": ["classical_ziping"],
+      "role": "commentator",
+      "thematic_coverage": ["wuxing", "strength_useful", "patterns_geju", "ten_gods"],
+      "anna_archive_search_queries": [
+        "任铁樵 滴天髓",
+        "滴天髓阐微 任铁樵"
+      ],
+      "known_works": [
+        {
+          "title": "滴天髓阐微",
+          "year": null,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["wuxing", "strength_useful", "patterns_geju", "ten_gods", "classical_ziping"],
+          "languages": ["zh-CN"],
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "对《滴天髓》的阐发 — K3/K4 权重高。"
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_wan_minying",
+      "name": "万民英",
+      "aliases": ["Wan Minying"],
+      "language": ["zh-CN"],
+      "school_affiliation": ["classical_ziping"],
+      "role": "classical",
+      "thematic_coverage": ["pillars_four", "ten_gods", "nayin", "shensha", "luck_dayun", "meta"],
+      "anna_archive_search_queries": [
+        "万民英 三命通会",
+        "三命通会 万民英"
+      ],
+      "known_works": [
+        {
+          "title": "三命通会",
+          "year": null,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["pillars_four", "ten_gods", "nayin", "shensha", "luck_dayun", "meta"],
+          "languages": ["zh-CN"],
+          "anna_archive_likely": true,
+          "priority": "high",
+          "notes": "大型类书 — 检索宜分卷/主题。"
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_xu_lewu",
+      "name": "徐乐吾",
+      "aliases": ["Xu Lewu", "徐乐吾"],
+      "language": ["zh-CN"],
+      "school_affiliation": ["classical_ziping"],
+      "role": "commentator",
+      "thematic_coverage": ["patterns_geju", "ten_gods", "strength_useful", "classical_ziping"],
+      "anna_archive_search_queries": [
+        "徐乐吾 子平真诠",
+        "徐乐吾 滴天髓",
+        "徐乐吾 命理"
+      ],
+      "known_works": [
+        {
+          "title": "子平真诠评注（等徐氏注疏本）",
+          "year": null,
+          "format": "book",
+          "werk_kategorie": "A",
+          "subsystem": ["patterns_geju", "ten_gods", "strength_useful", "classical_ziping"],
+          "languages": ["zh-CN"],
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "与沈孝瞻原著合刊常见 — 检索时核对版本。"
+        }
+      ],
+      "gaps": []
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_joey_yap",
+      "name": "Joey Yap",
+      "aliases": [],
+      "language": ["en", "zh"],
+      "school_affiliation": ["modern_malaysia"],
+      "role": "popularizer",
+      "thematic_coverage": ["pillars_four", "ten_gods", "luck_dayun", "liunian", "modern_primer"],
+      "anna_archive_search_queries": [
+        "Joey Yap BaZi",
+        "Joey Yap Four Pillars",
+        "Joey Yap Chinese Metaphysics"
+      ],
+      "known_works": [
+        {
+          "title": "BaZi / Four Pillars — Thriving series & chart books (various titles)",
+          "year": null,
+          "format": "book",
+          "werk_kategorie": "C",
+          "subsystem": ["pillars_four", "ten_gods", "luck_dayun", "liunian", "modern_primer"],
+          "languages": ["en"],
+          "anna_archive_likely": true,
+          "priority": "medium",
+          "notes": "英文市场桥接；具体书名随版次替换。"
+        }
+      ],
+      "gaps": ["©-Hinweis bei späterer Extraktion beachten"]
+    },
+
+    {
+      "entity_type": "author",
+      "id": "auth_wei_qianli",
+      "name": "韦千里",
+      "aliases": ["Wei Qianli"],
+      "language": ["zh-CN"],
+      "school_affiliation": ["classical_ziping", "prc_popular"],
+      "role": "historical_practitioner",
+      "thematic_coverage": ["pillars_four", "ten_gods", "patterns_geju"],
+      "anna_archive_search_queries": [
+        "韦千里 八字",
+        "韦千里 命理",
+        "千里命稿"
+      ],
+      "known_works": [
+        {
+          "title": "千里命稿（及韦氏相关集子）",
+          "year": null,
+          "format": "book",
+          "werk_kategorie": "B",
+          "subsystem": ["pillars_four", "ten_gods", "patterns_geju"],
+          "languages": ["zh-CN"],
+          "anna_archive_likely": true,
+          "priority": "low",
+          "notes": "民国案例风格 — K4 叙事强。"
+        }
+      ],
+      "gaps": []
+    }
+
+  ],
+
+  "download_priority_order": {
+    "_comment": "Klassiker zuerst， dann注疏与现代教材。",
+    "phase_1a_canonical_k3": [
+      "auth_shen_xiaozhan: 子平真诠",
+      "auth_ren_tieqiao: 滴天髓阐微",
+      "auth_wan_minying: 三命通会"
+    ],
+    "phase_1b_commentaries": [
+      "auth_xu_lewu: 子平真诠评注"
+    ],
+    "phase_1c_modern": [
+      "auth_joey_yap: BaZi",
+      "auth_wei_qianli: 千里命稿"
+    ],
+    "phase_1d_meta": []
+  },
+
+  "non_author_works": {
+    "_comment": "汇编本与传统佚名/托名类书。",
+    "works": [
+      {
+        "title": "渊海子平",
+        "format": "book",
+        "werk_kategorie": "A",
+        "subsystem": ["classical_ziping", "patterns_geju", "ten_gods", "pillars_four"],
+        "anna_archive_search_queries": ["渊海子平", "淵海子平"],
+        "anna_archive_likely": true,
+        "priority": "high"
+      },
+      {
+        "title": "穷通宝鉴",
+        "format": "book",
+        "werk_kategorie": "A",
+        "subsystem": ["wuxing", "strength_useful", "patterns_geju"],
+        "anna_archive_search_queries": ["穷通宝鉴", "窮通寶鑑"],
+        "anna_archive_likely": true,
+        "priority": "medium",
+        "notes": "调候派重要 — 与纯子平格局书并列阅读。"
+      },
+      {
+        "title": "滴天髓（原文短册，非任铁樵阐微）",
+        "format": "book",
+        "werk_kategorie": "A",
+        "subsystem": ["wuxing", "classical_ziping"],
+        "anna_archive_search_queries": ["滴天髓 原文", "滴天髓 古本"],
+        "anna_archive_likely": true,
+        "priority": "low"
+      }
+    ]
+  }
+}
