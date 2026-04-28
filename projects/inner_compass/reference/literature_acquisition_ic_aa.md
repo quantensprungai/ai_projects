@@ -1,5 +1,5 @@
 ---
-last_update: 2026-04-22
+last_update: 2026-04-28
 status: draft
 scope:
   summary: "End-to-End: pro system_id Literatur recherchieren, AA (50/Tag) beschaffen, Metadaten + PDF-Brücke nach IC (sys_*)."
@@ -73,7 +73,7 @@ Das ist genau das **Lieferobjekt** aus dem **Literatur-Prompt** (Curriculum-Tabe
 **Umsetzung (sinnvolle Reihenfolge):**
 
 1. **Doku (dieser Abschnitt)** — gemeinsames Zielbild; kein neues Parallel-Dok nötig.
-2. **Toolkit (Pilot):** `code/annas-archive-toolkit/scripts/collect_metadata_work_queue.py` — Schleife über **`known_works`**, pro Werk enge Query(s), Ausgabe **`work_acquisition_log.csv`** + `work_queue_summary.json` unter `output/<profil>/work_queue/`. Aufruf wie `simple_collector` mit **`AAT_CONFIG`** (Profil-JSON). Optionen: `--max-works N`, `--only-priority high`, `--resume`, `--skip-unlikely`.
+2. **Toolkit (Pilot):** `code/annas-archive-toolkit/scripts/collect_metadata_work_queue.py` — Schleife über **`known_works`**, pro Werk enge Query(s), Ausgabe **`work_acquisition_log.csv`** + `work_queue_summary.json` unter `output/<profil>/work_queue/`. Aufruf wie `simple_collector` mit **`AAT_CONFIG`** (Profil-JSON). Optionen: `--max-works N`, `--only-priority high`, `--resume`, `--skip-unlikely`, **`--aa-search-order`** (Standard **`free_text_first`**: Freitext-`q=` vor `lgrsnf_topic:` — weniger Überschneidung zwischen Zielwerken).
 3. **Queue/Download:** `export_assets` / `build_acquire_queue` an **Werk-IDs** anbinden oder Mapping-Tabelle pflegen.
 4. **Reconciliation:** heuristische CSV-Abgleiche nur noch **unterstützend**, nicht als SoT für „gefunden“.
 
