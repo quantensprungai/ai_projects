@@ -28,13 +28,13 @@ MinerU und LLM teilen sich die GPU auf Spark. Deshalb:
 ## Phase 0: Vorbereitung
 
 ### 1. Supabase bereit
-- Lokal: `pnpm run supabase:web:start` (von code/hd_saas_app)
-- Windows Health-Check-Problem: `pnpm exec supabase start --ignore-health-check` (in apps/web)
+- Lokal: `pnpm run supabase:web:start` aus **`code/inner_compass_app`** (Root des Makerkit-Monorepos; ggf. `pnpm`-Filter laut App-README)
+- Windows Health-Check-Problem: `pnpm exec supabase start --ignore-health-check` (im jeweiligen `apps/web`-Paket)
 - Oder: Cloud-Supabase mit Migration + Seed
 
 ### 2. Strukturgraph seeden (falls noch nicht)
 ```bash
-cd code/hd_saas_app/apps/web
+cd code/inner_compass_app/apps/web
 python scripts/ic_seed_structure.py
 ```
 
@@ -46,10 +46,17 @@ python scripts/ic_seed_structure.py
 
 **Option A — Anna's Archive Pipeline (VM102, empfohlen):**
 
-Code-Sync (einmalig): `hd_saas_uploader.py` mit `--sys-mode` muss auf VM102 sein.
+Code-Sync: `hd_saas_uploader.py` mit **`--sys-mode`** auf VM102 halten (Repo liegt typischerweise auf **VM105**, VM102 per **SCP** — kein GitHub-Key auf 102 nötig).
+
+```powershell
+# Von VM105/Windows (Repo-Root ai_projects), Host z. B. docker-apps:
+powershell -ExecutionPolicy Bypass -File infrastructure/spark/sync_aa_uploader_to_vm102.ps1
+```
+
+Manuell analog:
+
 ```bash
-# Von VM105/Windows:
-scp code/annas-archive-toolkit/src/hd_saas_uploader.py user@<VM102_IP>:~/annas-archive-toolkit/src/
+scp code/annas-archive-toolkit/src/hd_saas_uploader.py user@<VM102_HOST>:~/annas-archive-toolkit/src/
 ```
 
 ```bash
@@ -69,6 +76,8 @@ export AAT_CONFIG=projects/hd_content/config.json
 python3 src/hd_saas_uploader.py --upload-pdfs output/hd_content/downloads/fast_download --max-pdfs 1 --sys-mode
 ```
 → PDF landet in sys_uploads_raw, sys_sources, sys_ingestion_jobs (extract_text queued).
+
+**Hinweis (VM102 + Git, Ist/Soll):** Siehe [aa_ic_toolkit_alignment.md](aa_ic_toolkit_alignment.md) — privates Repo: HTTPS-`git clone` auf VM102 ohne Credentials scheitert; empfohlen ist **SSH + Deploy Key** oder bis dahin **scp vom VM105-Clone**.
 
 **Option B — Supabase Studio (lokal):**
 1. Studio öffnen: http://127.0.0.1:54323
@@ -101,9 +110,10 @@ insert into public.sys_ingestion_jobs (
 );
 ```
 
-**Option C — ic_s5_upload.py (wenn PDF lokal vorhanden):**
+**Option C — lokales Upload-Skript (wenn im IC-Repo vorhanden):**
 ```bash
-cd code/hd_saas_app/apps/web/scripts
+cd code/inner_compass_app/apps/web/scripts
+# Falls vorhanden, z. B. ic_s5_upload.py — sonst Option A oder B nutzen
 python ic_s5_upload.py C:\pfad\zu\hd_buch.pdf --title "Die lustigen Zweibeiner"
 ```
 

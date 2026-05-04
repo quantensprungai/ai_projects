@@ -1,16 +1,26 @@
+<!--
+Reality Block
+last_update: 2026-04-16
+scope: IC Projektstatus (Phasen 0–4), Chart-Engines, Content-Akquise, Ur-Systeme, Gene Keys, Konvergenz/Meta-KG
+in_scope: Stand, nächste Schritte, Systemliste, Anna's Archive entity-first, Klarstellung HD-Schulen vs. GK, Konvergenz personenbezogen vs. strukturell
+out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_compass_app AGENTS.md
+-->
+
 # Inner Compass — Status & Nächste Schritte
 
-> **Stand:** 2026-04-15 | Bei jedem Meilenstein aktualisieren!
+> **Stand:** 2026-04-16 | Bei jedem Meilenstein aktualisieren!
 >
-> **Wo wir sind:** Phase 0 erledigt. Phase 1 — 4 von 6 Berechnungssystemen integriert:
+> **Wo wir sind:** Phase 0 erledigt. Phase 1 — **Chart-Engines Staffel 1:** fünf Kerne + **Maya Tzolkin, Nine Star Ki, Numerologie, Akan** in `@ic/engines` + API-Routen + Kataloge v0 ✅
 > - **Ziwei Doushu** (iztro): TS, Katalog + Validierung ✅
 > - **BaZi** (@yhjs): TS, Katalog + Validierung ✅
 > - **Jyotish** (PyJHora): Python-Microservice, D1+D9+Dasha+Bhavas+Yogas+16 Vargas ✅
 > - **Human Design** (dturkuler): Python-Microservice, alle 13 Layer + Composite/Transit/BodyGraph ✅
-> - **Westl. Astrologie**: Noch offen (CircularNatalHoroscopeJS)
-> - **Maya Tzolkin**: Noch offen (trivial)
+> - **Westl. Astrologie** (**celestine**, MIT): TS in `@ic/engines`, `computeAstroChart` + `astro_catalog_v0.json` + Validierung ✅ *(alter Planename „CircularNatalHoroscopeJS“ — im Code: celestine; optional: Präzisions-/Ephemeris-Abgleich als Spike offen)*
+> - **Maya Tzolkin** (`mayan_tzolkin`): **v1** `ic_maya_tzolkin_v1` — GMT 584283 + Dreamspell-Slugs; **lokales Zivildatum** aus Instant (`utcMillisForWallTimeInZone`); Vitest **Step 3** vs. `mayan_tzolkin_catalog_v0.json` ✅
+> - **Nine Star Ki**: K1/K2 **v1** (`ic_nine_star_ki_v1`) — Honmei + Getsumei + **energetic**; feste Sonnenmonats-Schnitte; Vitest **Step 3** Katalog-Regeln ✅ — `reference/decisions.md` **2026-04-16**
+> - **Numerologie / Akan**: Engines + Kataloge + `POST /api/.../calculate` ✅ *(Playbook-Validierung optional)*
 >
-> Nächster Schritt: Verbleibende Systeme (Astro, Maya, triviale), dann Phase 2 (Content-Pipeline).
+> **Nächste Reihenfolge:** (1) **Katalog-Validierung** für **Numerologie** + **Akan** optional nachziehen. (2) **UI** Chart-Ansichten. Parallel: **Literatur/Anna's**; **Ur-Systeme**; Phase 2. — *Hinweis:* `cursor/architecture.md` §5–6 Topologie = `@ic/engines` + HD/Jyotish-Services.
 
 ## Was EXISTIERT und FUNKTIONIERT
 
@@ -18,14 +28,14 @@
 - Makerkit-App (Next.js + Supabase): Auth, Accounts, UI-Shell
 - Spark GPU-Server: MinerU (PDF-Parsing), SGLang/vLLM (LLM-Inferenz)
 - Tailscale VPN: Spark ↔ Supabase ↔ Dev
-- System-Deskriptoren: 10 JSON-Dateien (HD, BaZi, Astro, Jyotish, Maya, Gene Keys, Enneagram, Numerology, Nine Star Ki, Akan)
+- **System-Deskriptoren:** `projects/inner_compass/system_descriptors/*.json` — u. a. HD, BaZi, Ziwei, Astro, Jyotish, Maya, Gene Keys, Enneagram, Numerology, Nine Star Ki, Akan **plus** Ur-/Struktur-Systeme (**`i_ching.json`**, **`kabbalah.json`**, **`chakra.json`**, `wu_xing`, `pancha_bhuta`, `western_elements`, …). Deskriptor ≠ fertige Engine ≠ Literatur-Registry.
 
 ### Jyotish Microservice (Code-Repo) — Phase 1a ✅
 - Pfad: `code/inner_compass_app/services/jyotish/` — FastAPI, `POST /calculate` mit `BirthData` wie `@ic/engines`
 - **D1 (Rāśi):** PyJHora `rasi_chart` (Swiss Ephemeris via `pyswisseph`)
 - **Docker:** `python:3.12-slim` + `build-essential` (Build `pyswisseph`); `requirements.txt` enthält u. a. explizit **`pytz`**, **`geocoder`**, **`geopy`**, **`timezonefinder`**, **`python-dateutil`** — PyJHora listet nicht alle Laufzeit-Imports als pip-Dependencies; ohne diese Module bricht die Berechnung mit ImportError ab
 - **E2E (2026-04-13):** Image bauen, Container starten, nach ~25 s `GET /health` + `POST /calculate` (Test: Berlin 1990-01-15 12:30) → `raw.placeholder: false`, `raw.bodies`: 13 Einträge, `raw.chart: D1`, `nodes` mit `jyotish.lagna` / `jyotish.rasi.*` / `jyotish.graha.*`
-- **Noch offen:** Aufruf aus Next.js (Env-URL), Playbook-Artefakte (`jyotish_catalog_v0.json`, …) wie Ziwei/BaZi, weitere Charts (D9, Dasha, …)
+- **Next.js (Chart-API, `apps/web/app/api/`):** `hd` · `jyotish` (Env-URLs) · `ziwei` · `bazi` · `astro` · **`maya-tzolkin`** · **`nine-star-ki`** · **`numerology`** · **`akan`** (letztere in-process; Numerologie optional `full_name`; Akan `gender`). **Noch offen:** UI/Chart-Seiten. Artefakte unter `projects/inner_compass/system_structure/` (siehe Playbook).
 
 ### Philosophische Konsolidierung ✅ (Z-Dokumente)
 - Z1 Gesamtwerk v0.5, Z2 User-Journey v0.1, Z3 Modell-Referenz v0.4, Glossar v1.2
@@ -40,16 +50,49 @@
 
 ### Content-Akquise (Anna's Archive Toolkit)
 - Pipeline-Architektur: Solide (Topics → Scraping → metadata.json → assets.jsonl → Download → Upload)
-- Datenqualität: ~85% Noise bei HD-Keywords (Lösung: Zwei-Gate-Filtering, siehe pipeline.md §8)
+- Datenqualität: ~85% Noise bei **reinen Keywords** (Lösung: **entity-first** + Zwei-Gate-Filtering, siehe pipeline.md §8)
+- **`simple_collector.py`:** Profil `query_mode: entity_registry` lädt `projects/<profile_id>/entity_registry.json` (Suchstrings aus `download_priority_order` + Autoren-Queries + `non_author_works`). **`AAT_TOPICS`** überschreibt; sonst Fallback `topics.txt`.
+- **Aktive / angelegte Entity-Registries (Starter bis v0.2):** `hd_content`, `astro_content`, `jyotish_content`, `ziwei_content`, `bazi_content` — Referenzkopien zusätzlich unter `projects/inner_compass/reference/entity_registry_*_v0x.json`. **Primärsprache der Suche:** je System **lokal** (zh/sa/…), Englisch nur als Brücke wo sinnvoll.
+- **„Werklandschaft“:** HD hat die **tiefste** manuelle Inventur (`entity_registry_hd_v02.json` + Konsolidierungsdocs). Andere Systeme nutzen **dieselbe Methode** (Subsystem-Tags, Phasen, Schulen) — **nicht** zwingend denselben Recherche-Umfang; Tiefe nach Extraktions-Priorität nachziehen.
 - hd_saas_uploader.py: `--sys-mode` für PDF-Upload (sys_sources, sys_ingestion_jobs, sys_uploads_raw) — S5 nutzbar
 - Bestehende DB-Daten: Nur Stubs, werden NICHT migriert (Clean Data Restart)
 - assets.jsonl in scratch/: Falsch platziert, werden bei Clean Restart neu generiert
+
+### Ur-Systeme (I Ging, Kabbala, Chakren, …) — Deskriptor vs. Katalog vs. Literatur
+- **Schichtung (sauber):** `system_descriptors/*.json` = **Vertrag** (element_types, Regeln, Lebensbereich-Zuordnung, `system_role`). `system_structure/*_catalog_v0.json` = **K1/K2-Inventar**, wo Kit oder Extraktion es hergibt. **K3/K4** = Literatur-Pipeline (MinerU+LLM, `entity_registry` pro `system_id`) — gleiches Muster für alle Systeme inkl. Ur-Systemen.
+- **Vorhanden:** Deskriptoren u. a. `i_ching.json`, `kabbalah.json`, `chakra.json` (+ Element-Raster `wu_xing`, `pancha_bhuta`, …) + teils **Kataloge** unter `system_structure/`. Architektonisch **eigene `system_id`**, nicht „Anhang von HD“.
+- **Struktur-Systeme** ohne Geburts-Chart-Engine: oft **zuerst** Deskriptor + Literatur (K2-Regeln aus Texttradition möglich); Evidenzklassen **B/C** wie überall, sobald extrahiert.
+- **K3+K4 / Anna's:** **eigene** `entity_registry_*` / Profil pro Ur-System — **nicht** in die HD-Registry mischen.
+- **Gene Keys:** **keine** separate Chart-Engine wie HD; **K1** Gate-Lage über **dieselbe** HD-Ephemeris-Anbindung, **K2** eigenes `gk.*` (`gk_catalog_v0.json`). **Literatur / Anna's:** **wie alle anderen Systeme** — eigenes Toolkit-Profil (`genekeys_content`) + `entity_registry` nachziehen; **keine** abweichende Sonder-Policy in dieser Doku. **HD-Schulen** (Jovian, Quantum HD, …): **ein** `hd.*`-Stammbaum, Unterschiede über **`tradition`/`werk_kategorie`**, keine eigenen Engines.
+
+### Deskriptor ↔ Katalog v0 (Ist-Stand)
+
+| `system_id` (Deskriptor-Datei) | `system_structure/*_catalog_v0.json` |
+| ------------------------------ | ------------------------------------- |
+| `hd.json` | `hd_catalog_v0.json` |
+| `ziwei.json` | `ziwei_catalog_v0.json` |
+| `bazi.json` | `bazi_catalog_v0.json` |
+| `astro.json` | `astro_catalog_v0.json` |
+| `jyotish.json` | `jyotish_catalog_v0.json` |
+| `genekeys.json` | `gk_catalog_v0.json` |
+| `enneagram.json` | `enneagram_catalog_v0.json` |
+| `i_ching.json` | `i_ching_catalog_v0.json` |
+| `kabbalah.json` | `kabbalah_catalog_v0.json` |
+| `chakra.json` | `chakra_catalog_v0.json` |
+| `wu_xing.json` | `wu_xing_catalog_v0.json` |
+| `pancha_bhuta.json` | `pancha_bhuta_catalog_v0.json` |
+| `western_elements.json` | `western_elements_catalog_v0.json` |
+| `mayan_tzolkin.json` | `mayan_tzolkin_catalog_v0.json` |
+| `numerology.json` | `numerology_catalog_v0.json` |
+| `nine_star_ki.json` | `nine_star_ki_catalog_v0.json` |
+| `akan.json` | `akan_catalog_v0.json` |
+| — | `luoshu_catalog_v0.json` *(Hilfs-/Raster-Katalog; kein eigener Deskriptor in `system_descriptors/` v0)* |
 
 ## Gesamtprozess (5 Phasen)
 
 ```
 Phase 0: Fundament          ████████████ 100%  S1–S4 erledigt
-Phase 1: Engine Eval+Integ. █████████░░░  ~70%  Ziwei+BaZi+Jyotish+HD komplett; Astro+Maya+Triviale offen
+Phase 1: Engine Eval+Integ. ███████████░  ~95%  alle geplanten Chart-Engines inkl. Maya+NSK+Numerologie+Akan; Feintuning/Validierung/UI offen; Ur-Systeme ≠ Chart-Engines
 Phase 2: Content-Pipeline   ░░░░░░░░░░░░   0%  blockiert durch Phase 1
 Phase 3: Cross-System       ░░░░░░░░░░░░   0%  → IC-Sprache entsteht hier (Datenschicht E)
 Phase 4: App                ██░░░░░░░░░░  15%  Architektur+Scope dokumentiert
@@ -96,7 +139,7 @@ Phase 4: App                ██░░░░░░░░░░  15%  Architekt
 ### 1.0 Architekturentscheidung ✅ (Planung)
 
 **Entschieden:** Hybrid TS-first (→ engines.md §4)
-- TS in Next.js: HD, Ziwei (iztro), BaZi (@yhjs), Astro (CircularNatalHoroscopeJS), Maya, Triviale
+- TS in Next.js: HD-Client, Ziwei (iztro), BaZi (@yhjs), **Astro (celestine)**, Maya, Triviale
 - Python-Microservice (FastAPI, Docker): Jyotish (PyJHora AGPL isoliert + VedAstro.Python MIT für KP)
 - Kein Spark für Engines (Spark = nur GPU)
 
@@ -104,13 +147,13 @@ Phase 4: App                ██░░░░░░░░░░  15%  Architekt
 - [x] Spike: iztro (Ziwei) — `@ic/engines` + `system_descriptors/ziwei.json` + `system_structure/ziwei_catalog_v0.json` + `ziwei_structure_v0.json` + Vitest-Abgleich Chart-`nodes`↔Katalog (`ziwei-catalog-validation`); Doku `engines.md` §15, `contracts.md` (`ziwei`)
 - [x] Spike: @yhjs/bazi — `@ic/engines`: `computeBaziChart`, Katalog/Struktur/Test wie Playbook (`bazi_catalog_v0.json`, `bazi_structure_v0.json`); `engines.md` §16
 - [x] Spike: HD — dturkuler/humandesign_api als Engine (alle 13 Layer, Composite, Transit, BodyGraph). GPL-3.0 Docker-isoliert.
-- [ ] Spike: CircularNatalHoroscopeJS — Präzisionsvergleich mit Swiss Ephemeris
+- [x] Spike: **Westl. Astro** — **celestine** in `@ic/engines` (`computeAstroChart`, Katalog `projects/inner_compass/system_structure/astro_catalog_v0.json`, Tests). Optional offen: Präzisions-/Ephemeris-Abgleich vs. Referenz (Swiss o. ä.), falls Produkt es braucht.
 - [x] Spike: PyJHora als FastAPI-Microservice — `services/jyotish/` (Docker, D1); AGPL bleibt auf diesem Service isoliert; siehe `services/jyotish/README.md`
 - [ ] Swiss Ephemeris **kommerzielle** Lizenz nur nötig, wenn ihr Swiss Ephemeris **ohne** AGPL-konforme Open-Source-Kette nutzen wollt; aktuell: `pyswisseph`+PyJHora im AGPL-Service = üblicher Open-Source-Pfad (rechtlich mit eurem Anwalt finalisieren)
 - Code-Repo: `code/inner_compass_app/` (Makerkit 3.1.3, frischer Clone 2026-03-31)
 - TS-Engines: `packages/engines/` (@ic/engines, npm-basiert)
 - Python-Service: `services/jyotish/` (PyJHora + jyotishganit + VedAstro, Docker)
-- ⚠️ Noch zu installieren: CircularNatalHoroscopeJS, hdkit (iztro ✅, @yhjs/bazi ✅)
+- ⚠️ Noch zu installieren / priorisieren: **Maya**-Kit, triviale Systeme (iztro ✅, @yhjs/bazi ✅, **celestine** ✅)
 - → Details: engines.md §4 (Architektur) + §5 (Kit-Kandidaten) + §8 (Prüf-Checkliste)
 
 ### 1.1 Pro System: Spike → Bewerten → Entscheiden → Integrieren
@@ -131,15 +174,15 @@ Reihenfolge der Systeme:
 | 1 | HD | **dturkuler/humandesign_api** (vendored, Docker) | GPL-3.0 isoliert | Python | ✅ Komplett: 13 Layer + Composite/Transit/BodyGraph. 65 Tests grün. |
 | 2 | **Ziwei Doushu** 🆕 | **iztro** (SylarLong) | MIT ✅ | **TS** | 3.5k Stars, React-Hook, TS-nativ. Reichste chin. Tradition. |
 | 3 | BaZi | **@yhjs/bazi** (primär) + alvamind | MIT ✅ | TS | @yhjs: Luck Cycles + Nayin + Ten Gods. Umfangreicher als alvamind. |
-| 4 | Astro | **CircularNatalHoroscopeJS** (TS) + pyswisseph (Python) | Unlicense / 💰 | TS+Py | CircularNatalJS: kein Swiss-Eph-Lizenzproblem! Spike: Präzisionsvergleich. |
+| 4 | Astro | **celestine** (TS, in `@ic/engines`) | MIT | TS | Implementiert. Optional: Präzisionsvergleich mit Referenz-Ephemeris. |
 | 5 | Maya | tzolkin-calendar | MIT ✅ | Python | Komplett (einfachstes System). |
 | 6 | Jyotish | **PyJHora** (AGPL, isoliert) + VedAstro.Python (MIT, KP) | ⚠️ AGPL + MIT | Python | PyJHora als isolierter Microservice (AGPL-Code open-sourced). Max. K1/K2-Tiefe. |
-| 7 | Gene Keys | — (= HD-Positionen + Lookup) | — | — | ©-Problem: Nur Paraphrase, keine Rudd-Zitate. |
+| 7 | Gene Keys | **Kein** separates Chart-Engine-Paket wie HD: **K1** geteilt (Gate-Lage), **K2** eigen (`gk.*`) | — | TS (Lookup + HD-Client) | Literatur-Pipeline wie übrige `system_id` (`genekeys_content` / `entity_registry` noch anzulegen). |
 | 8–11 | Num, NSK/Mewa, Akan, EG | Eigene TS-Impl. / JSON | — | TS | Trivial. |
 
-**Stand (April 2026):** 4 von 6 Berechnungssystemen integriert. HD mit dturkuler (GPL-3.0, Docker-isoliert) — vollständigste Engine mit allen 13 Layern. Jyotish mit PyJHora (AGPL, Docker-isoliert) — Phase 2/3 komplett (D1+D9+Dasha+Bhavas+Yogas+16 Vargas). Ziwei + BaZi als TS in-process.
+**Stand (April 2026):** Chart-Engines: **HD** (Python), **Jyotish** (Python), **Ziwei + BaZi + Astro** (TS), plus in `@ic/engines`: **Maya Tzolkin**, **Nine Star Ki (v1)**, **Numerologie**, **Akan** — siehe Abschnitt „Wo wir sind“ oben. **Ur-Systeme** (I Ging, Kabbala, Chakren): Deskriptoren (+ teils Kataloge), **Literatur-Pipeline** wie oben noch zu eröffnen.
 
-**Nächste Spikes:** Astro (CircularNatalJS) → Maya (trivial) → Triviale (Numerologie, NSK, Akan).
+**Nächste Spikes / Backlog:** Trivial-Engines K1/K2 weiter schärfen (Maya/Numerologie/Akan: Validierung + Feintuning) → optional Astro-Präzision → **Ur-Systeme:** je `system_id` Registry + MinerU-Pfad.
 
 ### 1.2 Erweiterter Seed
 
@@ -161,9 +204,10 @@ Reihenfolge der Systeme:
 
 ### S6 — Anna's Archive Pipeline
 - [x] hd_saas_uploader.py: `--sys-mode`
+- [x] **Entity-first:** `entity_registry.json` pro Profil (`hd`, `astro`, `jyotish`, `ziwei`, `bazi`) + `simple_collector`-Anbindung (Toolkit `code/annas-archive-toolkit/`)
 - [ ] Gate 1: LLM-Vorklassifikation
-- [ ] Metadata-Collection + Download + Upload für alle Systeme
-- → Kann teilweise parallel zu S5 laufen
+- [ ] Metadata-Collection + Download + Upload **flächendeckend** (inkl. Ur-Systeme, Gene Keys, HD bereits anstoßbar)
+- → Kann teilweise parallel zu S5 laufen; **HD-Downloads** nach `download_priority_order` sind sinnvoll sobald VPN/VM102 bereit
 
 ### S7 — Cloud-Deployment
 - [ ] Cloud-Supabase + Worker auf Spark + E2E-Test
@@ -280,17 +324,23 @@ Vollständig: `reference/decisions.md`
 | 2026-02 | Strukturbäume aus Deskriptoren, nicht PDFs | Struktur ist deterministisch, PDFs liefern nur Interpretationen |
 | 2026-04 | Engine-Integration VOR Pipeline | Vollständige Strukturbäume nötig, bevor Pipeline sinnvoll extrahieren kann |
 | 2026-04 | cursor/ = Z4 | Kein separates Architecture-Enddokument — cursor/ Dateien sind die technische Doku |
-| 2026-04 | Hybrid TS-first Engine-Architektur (Empfehlung) | TS für HD/BaZi/Maya/triviale in Next.js; Python-Microservice nur für Jyotish+Astro. Kein Spark für Engines. |
+| 2026-04 | Hybrid TS-first Engine-Architektur | TS in `@ic/engines` für Ziwei/BaZi/Astro (+ später Maya/trivial); **HD + Jyotish** als **HTTP-Microservices** (`services/hd`, `services/jyotish`). Kein Spark für Engines. |
+| 2026-04 | `architecture.md` §5–6 = Laufzeit-Wahrheit | Topologie-Tabelle und ASCII: `iztro` / `@yhjs/bazi` / `celestine` + getrennte Python-Services; kein veraltetes hdkit/alvamind/VedAstro-Western im App-Pfad. |
 | 2026-04 | PyJHora (AGPL) als isolierter Microservice BEHALTEN | Max. K1/K2-Tiefe. Code wird open-sourced, App bleibt privat. VedAstro.Python (MIT) als KP-Ergänzung. |
 | 2026-04 | node-jhora ist NICHT open source | Proprietäre "Source Available"-Lizenz mit Royalty. In Vordiskussion fälschlicherweise als OS empfohlen. |
 | 2026-04 | K1–K4 Datenkategorien + Evidenzklassen | Aus IC_System_Pruef_Framework.docx integriert. Bestimmt Datenherkunft + Vertrauenswürdigkeit. |
 | 2026-04 | Ziwei Doushu (iztro) als neues System | TS-nativ, MIT, 3.5k Stars. Ergänzt BaZi fundamental (Mond- vs. Sonnenkalender). |
 | 2026-04 | @yhjs/bazi ersetzt alvamind als primärer BaZi-Kit | MIT, TS, Luck Cycles + Nayin + Ten Gods. Umfangreicher. |
-| 2026-04 | CircularNatalHoroscopeJS für Westl. Astro | Unlicense, TS, KEIN Swiss-Eph — eliminiert Lizenzproblem für Basis-Astrologie. |
+| 2026-04 | **celestine** für Westl. Astro in `@ic/engines` | MIT, TS — im Status bis 2026-04-17 als implementiert geführt (alter Arbeitstitel: CircularNatalHoroscopeJS). |
 | 2026-04 | Zwei System-Rollen: calculation + structural | I Ging, Kabbalah, Chakras als reguläre Systeme (nicht hierarchisch). IC-Sprache emergiert aus Konvergenz-Klumpen (Datenschicht E). |
 | 2026-03 | **Fresh Clone Makerkit 3.1.3** | hd_saas_app (v2.24) → inner_compass_app (v3.1.3). IC-Eigenarbeit (~2200 Zeilen) portiert/wird neu geschrieben. Engine-Struktur: npm statt Vendoring (TS), Python-Microservice für Jyotish. |
 | 2026-03 | **GitHub-Repo: inner-compass-app** | quantensprungai/inner-compass-app (privat). Upstream: makerkit/next-supabase-saas-kit-turbo. Altes Repo hd-saas-app archiviert. |
 | 2026-04 | **3 MCP-Server konfiguriert** | Makerkit Kit MCP (lokal, 56 Tools: Schema/DB/Env/Dev), Supabase MCP (Cloud), CLI MCP (optional). Cursor `.cursor/mcp.json` angelegt. KI hat direkten Zugriff auf DB-Schema, Migrations, Env, Dev-Services. |
 | 2026-04 | **dturkuler/humandesign_api als HD-Engine** | GPL-3.0 vendored in Docker (SaaS-konform). Ersetzt hdkit+geodetheseeker. Alle 13 Layer + Composite/Transit/BodyGraph. K2-Daten extrahiert (192 Crosses, 8 Awareness Streams, evidence A). |
 | 2026-04 | **Gene Keys als eigenständiges System** | GK ist NICHT "HD mit anderer Sprache". Shared K1 (Ephemeris), eigenes K2 (Shadow/Gift/Siddhi, Codon Rings, Sequences). Im KG: `gk.*` Prefix, Cross-Link über `hd.gate.N ←→ gk.gate.N`. |
+| 2026-04 | **Gene Keys: Literatur wie alle Systeme** | Keine gesonderte Copyright-/Paraphrase-Policy in Projekt-Doku; Beschaffung + Extraktion + Evidenzklassen wie bei HD/Astro/etc.; eigenes Anna's-Profil + `entity_registry` nach Bedarf. |
 | 2026-04 | **HD-Schulen als Tradition-Tag** | Jovian Archive, Quantum HD, 64Keys, Parkyn teilen K1+K2. Unterschiede nur in K3/K4 (Interpretation). Modelliert als `tradition`-Tag auf Interpretation-Nodes, nicht als separate Systeme. |
+| 2026-04 | **Konvergenz: Person + strukturell; v0 Rechenbasis** | Klumpen/Meta: (1) personengebunden über Chart-Überschneidung, (2) personen-unabhängig über Cross-Edges/Embeddings zwischen Ur-/Element-KGs. Klein-Systeme v0: eine K1/K2-Konvention, eher moderne dokumentierbare Linie wo sinnvoll; Tradition über K3/K4 + Linsen. Volltext: `reference/decisions.md` 2026-04-19. |
+| 2026-04 | **Phase-1 triviale Systeme: Schulwahl + Engines** | Maya GMT+Dreamspell-Slugs; NSK japanisch Li Chun 4.2.; Numerologie Pythagoreisch; Akan Wochentagstabelle. `@ic/engines` + Kataloge + Next-API. Volltext: `reference/decisions.md` 2026-04-20. |
+| 2026-04 | **Nine Star Ki K1/K2 v1** | Tabellen-Honmei (+Overrides, 1986→1984), Monatsmuster statt Differenzformel, energetic (81er), feste Sonnenmonats-Schnitte, Vitest Step 3. `reference/decisions.md` 2026-04-16. |
+| 2026-04 | **Maya Tzolkin v1 + Step 3** | Lokales Zivil-Datum aus `utcMillisForWallTimeInZone`; `ic_maya_tzolkin_v1`; Vitest vs. `mayan_tzolkin_catalog_v0.json`. `reference/decisions.md` 2026-04-16. |

@@ -4,6 +4,75 @@
 
 ---
 
+## 2026-04-16: Nine Star Ki — K1/K2 v1 (Tabellen, Sonnenmonate, energetischer Stern)
+
+**Decision:** `@ic/engines` **Nine Star Ki** auf **v1** gehoben: **Honmei** weiter aus **Ki-Jahr** (lokaler **4. Feb.**-Grenze) mit **Jahres-Stern-Overrides** wo die einfache Ziffernregel von Standardtabellen abweicht; **Sonderfall** Geburt **Gregorianisch 1986** mit **Ki-Jahr 1985** → Honmei-Basisjahr **1984** (übliche Sonoda/Tabellenkorrektur). **Getsumei** nicht mehr über `wrap9(Honmei − Monatsindex)`, sondern über **12×9-Monatsmuster** (inkl. Anomalie Hauptstern 5 Okt–Dez). **Dritter Stern (energetic / 81er-Tabelle)** aus **(Honmei, Getsumei)**. **Sonnenmonate** als **12 feste Monat/Tag-Schnitte** (Li Chun 4. Feb. … Kleine Kälte 6. Jan.), **ohne** exakte Solar-Term-Uhrzeit.
+
+**Rationale:** Die alte Differenzformel für den Monatsstern ist **fachlich nicht** deckungsgleich mit gängigen japanischen NSK-Tabellen (z. B. Hauptstern 5); K1/K2 sollen **stabil** und **gegen Lehrmittel prüfbar** sein. Tabellen sind klein und deterministisch.
+
+**Klarstellung — HD-Minuten vs. NSK-Sonnenterme:** Human Design nutzt den Geburts**moment** (Ephemeris, Minuten-relevant für Gates/Profil usw.) — dafür ist **präzise lokale Wandzeit + Zone** nötig. Die **Jieqi**-Grenzen (Li Chun, Jing Zhe, …) für Nine Star Ki fallen astronomisch jedes Jahr auf eine **andere Uhrzeit** (nicht automatisch Mitternacht lokaler Zivilzeit). NSK **v1** arbeitet deshalb mit **festen Kalender-Schnitten** (4. Feb., 6. Mrz., …) — eine dokumentierte **K1-Approximation**. Das ist **kein** „einfach dieselbe Swiss-Ephemeris wie HD aufmachen“: man müsste explizit **Solar-Term-Module** (oder Ephemeris-Queries) pro Jahr/Zone fahren → **v2+** / `tradition`. HD-Zeitfelder **kann** die App überall sammeln; sie **ersetzen** ohne diese Zusatzlogik **nicht** die NSK-Term-Uhren.
+
+**Consequences:** Chart-Nodes inkl. `nsk.energetic_star.{1–9}`; Vitest **Step 3** (`nine-star-ki-catalog-validation.test.ts`); Katalog-Meta `schema_version` 1.0.1. Optional später: exakte Li-Chun-Zeit pro Zeitzone → v2 / `tradition`.
+
+---
+
+## 2026-04-16: Maya Tzolkin — v1 (lokales Zivildatum aus aufgelöstem Instant)
+
+**Decision:** Engine **`ic_maya_tzolkin_v1`**: Der **Tzolkin-Tag (Kin)** bezieht sich auf das **lokale Zivilkalenderdatum** in `birth.timezone`, abgeleitet aus dem mit **`utcMillisForWallTimeInZone`** aufgelösten UTC-Instant (gleiche Pipeline wie HD/BaZi). **Ein Kin pro lokalem Ziviltag**; kein Haab/Long Count in v1.
+
+**Rationale:** Konsistente Nutzung von Datum, Uhrzeit und IANA-Zone; vermeidet stillschweigende Abweichungen, falls Eingaben und Zone formal zusammenpassen sollen; für typische Geburtsurkunden-Eingaben identisch zum bisherigen reinen `YYYY-MM-DD`-Parse.
+
+**Consequences:** `raw.gregorian_date` = aufgelöstes `YYYY-MM-DD`; Vitest **Step 3** `maya-tzolkin-catalog-validation.test.ts` (Nodes + Konsistenz zur `kins`-Zeile im Katalog); `mayan_tzolkin_catalog_v0.json` Meta `schema_version` 1.0.1.
+
+---
+
+## 2026-04-20: Phase-1 „triviale“ Systeme — v0-Schulwahl (Maya, NSK, Numerologie, Akan)
+
+**Decision:**
+
+| `system_id` | v0 Berechnungsbasis (K1/K2) | K3/K4 / später |
+|-------------|------------------------------|----------------|
+| **mayan_tzolkin** | **260-Tage-Tzolkʼin** mit **GMT-Korrelation** (JDN-Anker **584283** = klassischer „0.0.0.0.0“-Tag); Siegel-**Slugs** wie im Deskriptor (**Dreamspell-/Arguelles-Namen**: `red_dragon` … `yellow_sun`), weil `canonical_id` darauf ausgelegt ist — explizit **nicht** identisch mit rein akademischer „Imix/Ik“-Benennung in der UI. Wellen/Castle: **Dreamspell-Raster** (13er-Wavespell, 5×52 Burgen). | „traditional_mayan“ / andere Correlations nur als **zweiter Pfad** / `tradition`. |
+| **nine_star_ki** | **Japanisches Nine Star Ki** (Sonoda-Linie). **Ausführung K1/K2:** siehe **2026-04-16** (Engine `ic_nine_star_ki_v1`: Overrides + ggf. 1986→1984, **Monatsmuster**, **energetischer Stern**, feste **Sonnenmonats-Schnitte**). Die Zeile unten beschrieb die **frühere v0-Näherung** (nur noch historisch). | Exakte Li-Chun-Uhrzeit / weitere Schulen → v2+ / `tradition`. |
+| **numerology** | **Pythagoreische** Buchstaben-Zuordnung (1–9-Zyklus); **Life Path** aus Geburtsdatum; optional **Destiny / Soul Urge / Personality**, wenn `full_name` mitgegeben wird. **Chaldeisch / Kabbalah** → später / andere `tradition`. | Meisterzahlen 11/22/33 wie üblich; Karmic Debt aus Teilstrings → v0 minimal oder v1. |
+| **akan** | **Ghanaische Krada-Namenslogik** nach **Wochentag der Geburt** (Wandzeit in `birth.timezone`); Zuordnung **Sonntag=Kwasi/Akosua** … **Samstag=Kwame/Amma** (weit verbreitete Standardtabelle). **Obosom / Adaduanan** → v1 (Literatur-K2). | Varianten `akan_calendar` / `adaduanan` später. |
+
+**Rationale:** Eine klare v0-Linie pro System für **stabile** `canonical_id`s und Konvergenz; transparenzfreundlich für Nutzer:innen; Literatur- und Schulbreite bleibt an K3/K4 und Linsen.
+
+**Consequences:** `@ic/engines` + minimale `*_catalog_v0.json`; UI-Copy „IC v0 rechnet …“; Tests gegen feste Referenzdaten wo möglich.
+
+---
+
+## 2026-04-19: Konvergenz (Person vs. strukturell); v0 „modern“ vs. „traditionell“; Einzel-Linsen
+
+**Decision:**
+
+1. **Zwei gleichberechtigte Wege zu „Klumpen“ / Meta-Einheit im KG:**  
+   - **Personengebunden:** Dieselbe Person liefert für mehrere `system_id` aktivierte Teilgraphen; Konvergenz entsteht aus **Überschneidung und Kanten** zwischen den **personbezogenen** Chart-Knoten (starker App-Anker, intuitive UX).  
+   - **Personen-unabhängig (strukturell):** Ur-/Grundsysteme und Element-Raster (I Ging, Kabbalah, Chakren, Wu Xing, Pancha Bhuta, westliche Elemente, …) bilden **ohne Geburtsereignis** eigene **Struktur-KGs**; **Klumpen** entstehen über **Cross-System-Kanten** (`maps_to`, `cross_system`), **Embeddings + LLM-Review** und später Meta-Knoten (Datenschicht E) — also **Ontologie-Konvergenz**, nicht nur „gleicher Geburtstag“.
+
+2. **Beides zusammen:** Strukturelle Klumpen **können und sollen** schon in v0 vorbereitet werden (Deskriptoren, Kataloge, erste Kanten); **personengebundene** Konvergenz nutzt dieselbe Kanten-Infrastruktur, sobald Charts existieren.
+
+3. **v0 bei rechenbaren „kleineren“ Systemen (Maya Tzolkin, Nine Star Ki, Numerologie, Akan, …):** Pro `system_id` **genau eine** K1/K2-Berechnungskonvention (eine Correlation / eine Tabellenlogik), damit **Knoten stabil** und **Vergleiche** zwischen Systemen **interpretierbar** bleiben. **Priorität v0:** **gut dokumentierbar + implementierbar + für die erwartete App-Zielgruppe nachvollziehbar** — das tendiert bei **Tzolkin** oft zur **modernen, explizit benannten Linie** (z. B. **Dreamspell / Arguelles**), bei **NSK/Numerologie** zu **einer** klar benannten Schul- bzw. Tabellenvariante (jeweils in Doku/Copy genannt). **„Traditionell“** in v0 primär über **K3/K4** (Literatur, `tradition`, `werk_kategorie`) und **Linsen**, **nicht** als zweiter paralleler Rechenmotor ohne UI-Klarstellung.
+
+4. **Nutzer:innen, die ein System einzeln sehen wollen:** **System-Linsen** bleiben zentral; die v0-Rechenwahl ist **transparenter technischer Default** („IC rechnet v0 so und so“), **kein** Anspruch auf die einzig gültige spirituelle Linie. Roadmap: zweite Rechenvariante / zweite Correlation nur mit **eigenem Scope** (Lens oder `tradition`-Parameter), nicht als stiller Mix.
+
+**Rationale:** Schnittmengen- und Meta-Analysen brauchen **stabile** strukturelle Identitäten; parallele Schulen ohne Modell würden den Graphen **zersplittern**. Strukturelle Klumpen liefern **Wissen über Muster** unabhängig von Geburtsdaten. Modern-vs-traditionell ist bei **K1/K2** eine **Produkt- und Lieferentscheidung**; bei **K3/K4** bleibt Raum für **traditionelle** Tiefe und Mehrstimmigkeit.
+
+**Consequences:** Engines + Kataloge: ein Pfad, Tests, kurze Nutzer:innen-sichtbare Erklärung; KG- und Pipeline-Arbeit an Ur-/Element-Systemen parallel zu Chart-Engines; spätere Schul-Erweiterungen explizit scoped (Doku + Schema), nicht implizit.
+
+---
+
+## 2026-04-18: Gene Keys — Literatur wie alle anderen Systeme
+
+**Decision:** Gene Keys erhält **keine** gesonderte Copyright-/Paraphrase-Policy in den technischen Projekt-Dokumenten. Literaturbeschaffung, Chunking und Extraktion (K3/K4) laufen über dieselbe Pipeline- und Profil-Logik wie bei allen anderen `system_id` (inkl. Quellenprofil / `entity_registry` nach Bedarf).
+
+**Rationale:** Phase-1-Playbook und Datenmodell sind systemagnostisch; Sonder-Doku würde nur Verwirrung erzeugen und suggerieren, dass GK technisch anders behandelt wird — tut es nicht (`gk.*` bleibt eigenständiges Präfix, shared K1 mit HD).
+
+**Consequences:** `cursor/status.md` und `cursor/engines.md` ohne GK-Sonder-Copyright-Abschnitte; rechtliche Fragen pro Verlag/Lizenz bleiben außerhalb der Engine-Doku, wie bei jedem System.
+
+---
+
 ## 2026-02-16: Dokumentations-Architektur (Zweischicht)
 
 **Decision:** Cursor-Docs (6 Dateien, < 300 Zeilen, rein technisch) getrennt von Reference-Docs (PRD, Entscheidungen, Ideen, Inspirationen).

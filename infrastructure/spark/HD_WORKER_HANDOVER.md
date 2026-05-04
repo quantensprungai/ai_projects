@@ -1,8 +1,26 @@
+<!-- Reality Block
+last_update: 2026-04-20
+status: stable
+scope:
+  summary: "Spark-Worker, MinerU, VM102-PDF-Vorprozess; inkl. Inner-Compass-sys_*-Hinweis."
+  in_scope:
+    - worker ops and mineru workaround
+    - vm102 annas archive upload bridge
+    - ic vs legacy naming note
+  out_of_scope:
+    - ic app ui
+notes:
+  - "Abschnitte mit hd_*-Tabellennamen sind HD-SaaS-Historie; IC nutzt sys_* (s5_runbook, aa_ic_toolkit_alignment)."
+-->
+
 # HD Worker – Übergabe (Spark)
 
 ## Kontext / Zweck
 Ziel ist eine robuste PDF-Pipeline für RAG/LLM: Upload → Extraktion → Chunking → Interpretation.  
 Der Worker läuft auf Spark (GPU), Supabase ist Control Plane.
+
+### Inner Compass (`sys_*`) — gleiche Pipeline, andere Tabellen
+Für **Inner Compass** sind die Schritte dieselben (MinerU, Worker-Loop), die **Postgres-Objekte** heißen aber **`sys_*`** (z. B. `sys_source_chunks`, `sys_interpretations`, `sys_ingestion_jobs`). PDF-Upload von VM102: `hd_saas_uploader.py` mit **`--sys-mode`** → `sys_uploads_raw` / `sys_sources` / `sys_ingestion_jobs`. Worker-Code: **`code/inner_compass_app/apps/web/scripts/ic_worker.py`**. Runbook: **`projects/inner_compass/reference/s5_runbook.md`**, Alignment: **`projects/inner_compass/reference/aa_ic_toolkit_alignment.md`**. Deploy Uploader 105→102: **`infrastructure/spark/sync_aa_uploader_to_vm102.ps1`**. — Abschnitte unten mit **`hd_*`**-Namen beschreiben die **ältere HD-SaaS**-Benennung; für IC jeweils das **`sys_*`**-Äquivalent verwenden.
 
 ## Aktueller Stand (Feb 2026)
 - Worker ist auf Spark eingerichtet (systemd, venv, `.env`).  
@@ -102,7 +120,7 @@ Das Script **`hd_saas_uploader.py`** (im Anna's-Archive-Toolkit-Repo) lädt dies
 
 **Für den MinerU-CLI-Test („no .md“-Diagnose):**
 - **Option A:** Eine PDF von VM102 nach Spark kopieren (z. B. aus `output/hd_content/downloads/fast_download/...` oder `/downloads_hd/_SORTED`), dann auf Spark: `mineru -p <datei>.pdf -o /tmp/mineru_test -b hybrid-auto-engine --device cuda`.
-- **Option B:** Auf Spark die gleiche PDF aus Supabase laden (bucket/path aus einem fehlgeschlagenen Job in `hd_ingestion_jobs.debug`), dann MinerU wie oben. Siehe `hd_worker_ops.md` (Job Debug) für das Download-Snippet.
+- **Option B:** Auf Spark die gleiche PDF aus Supabase laden (bucket/path aus dem Job-Debug, z. B. **`sys_ingestion_jobs.debug`** unter Inner Compass; Legacy HD-SaaS: `hd_ingestion_jobs.debug`), dann MinerU wie oben. Siehe `hd_worker_ops.md` (Job Debug) für das Download-Snippet.
 - **Option C:** PDF von Windows (z. B. `C:\Users\Admin105\Downloads\bazi_pdfs\81\...`) per SCP auf Spark kopieren, dann MinerU-CLI – siehe Runbook unten.
 
 ### MinerU CLI-Test Runbook (PDF von Windows → Spark)
@@ -144,7 +162,8 @@ find /tmp/mineru_test_cpu -name "*.md"
 Doku Vorprozess: `code/annas-archive-toolkit/docs/HD_SAAS_UPLOAD.md`, `code/annas-archive-toolkit/docs/setup/HD_DOWNLOAD_PIPELINE.md`.
 
 ## Wichtige Dateien
-- Worker: `code/hd_saas_app/apps/web/scripts/hd_worker_mvp.py`  
+- Worker **Inner Compass:** `code/inner_compass_app/apps/web/scripts/ic_worker.py`  
+- Worker **Legacy HD-SaaS:** `code/hd_saas_app/apps/web/scripts/hd_worker_mvp.py` (nur noch falls alter Stack)  
 - Ops: `infrastructure/spark/hd_worker_ops.md`  
 - Pipeline-Plan: `infrastructure/spark/pdf_extraction_options.md`
 

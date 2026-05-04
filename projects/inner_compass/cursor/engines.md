@@ -121,7 +121,7 @@ Next.js App (Makerkit)
   │     ├── HD: hdkit (JS) + @swisseph/node für Berechnung
   │     ├── Ziwei Doushu: iztro (TS, MIT) ← NEU!
   │     ├── BaZi: @yhjs/bazi (TS, MIT)
-  │     ├── Westl. Astro: CircularNatalHoroscopeJS (Unlicense, kein Swiss-Eph!)
+  │     ├── Westl. Astro: **celestine** (MIT, in `@ic/engines`)
   │     ├── Maya: Eigene TS-Implementierung (~50 Zeilen)
   │     ├── Numerologie / Nine Star Ki / Akan: Trivial (TS)
   │
@@ -140,7 +140,7 @@ Next.js App (Makerkit)
 | Python-Microservice nur für Jyotish (max. Tiefe via PyJHora)           | PyJHora AGPL → Microservice-Code open-sourced |
 | Kein Spark für Engines (Spark = nur GPU/LLM)                           |                                               |
 | Ziwei Doushu (iztro) + BaZi (@yhjs) nativ in TS                        |                                               |
-| Westl. Astro: CircularNatalHoroscopeJS (kein Swiss-Eph-Lizenzproblem!) |                                               |
+| Westl. Astro: **celestine** (MIT, in `@ic/engines`)                     |                                               |
 
 
 **Warum kein Spark für Engines?** Spark ist für GPU-intensive Tasks (MinerU, LLM-Inferenz). Chart-Berechnungen sind CPU-leicht (~10ms) und gehören nicht auf einen GPU-Server.
@@ -154,7 +154,7 @@ Next.js App (Makerkit)
 - Spike: iztro in Next.js — Ziwei Doushu Basis-Chart generieren, K1/K2-Tiefe prüfen
 - Spike: PyJHora als isolierter FastAPI-Microservice (Docker, AGPL-konform)
 - Spike: @swisseph/node in Next.js API Route — funktioniert WASM auf Vercel/Serverless?
-- Spike: CircularNatalHoroscopeJS vs. @swisseph/node — Präzisionsvergleich
+- Spike (optional): **celestine** vs. @swisseph/node / Referenz-Ephemeris — Präzisionsvergleich
 - Swiss Ephemeris Lizenz: Kaufen ($600 CHF) oder AGPL-isolierter Service?
 - ~~Kann HD komplett in TS gelöst werden?~~ → Entschieden: dturkuler (Python, GPL-3.0 isoliert in Docker)
 
@@ -182,10 +182,10 @@ Next.js App (Makerkit)
 | **Human Design**        | **dturkuler/humandesign_api** (vendored, Docker-isoliert) | GPL-3.0 isoliert | Python (FastAPI) | ~95%           | 1    |
 | **Ziwei Doushu** 🆕     | **iztro** (SylarLong)                                    | MIT ✅          | **TS**           | ~75%           | 2    |
 | **BaZi**                | **@yhjs/bazi** (primär) + alvamind (Fallback)            | MIT ✅          | **TS**           | ~65%           | 3    |
-| **Westl. Astrologie**   | CircularNatalHoroscopeJS (TS) ODER pyswisseph (Python)   | Unlicense / 💰 | TS / Python      | ~70%           | 4    |
+| **Westl. Astrologie**   | **celestine** (TS, `@ic/engines`) ggf. + pyswisseph (Python) | MIT / 💰       | TS / Python      | ~70%           | 4    |
 | **Maya Tzolkin**        | tzolkin-calendar oder TS-Port                            | MIT            | Python/TS        | ~80%           | 5    |
 | **Jyotish**             | PyJHora (AGPL, Microservice) + VedAstro.Python (MIT, KP) | ⚠️ AGPL + MIT  | Python           | ~65%           | 6    |
-| **Gene Keys**           | Shared K1 mit HD (Ephemeris), eigenes K2 (Shadow/Gift/Siddhi, Codon Rings, Sequences) | ©-geschützt    | TS (Lookup)      | ~10% (©!)      | 7    |
+| **Gene Keys**           | Shared K1 mit HD (Ephemeris), eigenes K2 (Shadow/Gift/Siddhi, Codon Rings, Sequences) | —              | TS (Lookup)      | ~50%           | 7    |
 | **Enneagramm**          | GitHub JSON-Strukturen                                   | Open Source    | —                | ~50%           | 8    |
 | **Numerologie**         | Eigene TS-Implementierung                                | —              | TS               | ~40%           | 9    |
 | **Nine Star Ki / Mewa** | Kein Kit nötig (~20 Zeilen Modulo-9)                     | —              | TS               | ~90%           | 10   |
@@ -203,6 +203,7 @@ Diese berechnen kein persönliches Chart, sondern beschreiben das Terrain über 
 | **Kabbalah** | 10 Sephiroth + 22 Pfade = 32   | HD (Zentren, behauptete Verbindung) | Manuell + Literatur |
 | **Chakras**  | 7 (oder 9) Zentren             | HD (Zentren), Jyotish, Yoga         | Manuell + Literatur |
 
+**Schichtung (Deskriptor ↔ Katalog ↔ Literatur):** `system_descriptors/{system}.json` fasst **Contracts** zusammen (`element_types`, Regeln, `system_role`). `system_structure/{system}_catalog_v0.json` materialisiert **K1/K2**, sobald Kit oder Extraktion das hergibt. **Struktur-Systeme** haben oft **keine** Geburts-Chart-Engine wie BaZi — K2 kann aus **Tradition + Literatur** kommen und wird nach Extraktion mit Evidenzklassen **B/C** geführt wie überall. **K3/K4** laufen für **alle** `system_id` über dieselbe Literatur-Pipeline (`entity_registry` + MinerU + LLM), ohne Sonderfall pro „Ur-System“.
 
 ---
 
@@ -237,11 +238,11 @@ Diese berechnen kein persönliches Chart, sondern beschreiben das Terrain über 
 |                          | ✅ Inkarnationskreuze (Struktur)       |                                         |                                         |
 
 
-**⚠️ Gene Keys:** Eigenständiges System (nicht nur "HD mit anderer Sprache"). Shared K1 mit HD, eigenes K2 (Shadow/Gift/Siddhi, Codon Rings, Sequences). Inhalte ©-geschützt (Richard Rudd). Siehe §6.7.
+**Gene Keys (Verweis):** Eigenständiges System — siehe §6.7. Literaturbeschaffung und Extraktion **wie bei allen anderen Systemen** (eigenes Profil / `entity_registry`).
 
 **HD-Schulen (Jovian Archive, Quantum HD, 64Keys, Parkyn):** Gleicher K1+K2 Stammbaum, unterschiedliche K3/K4-Interpretation. Modelliert als `tradition`-Tag, nicht als separate Systeme. Siehe §6.7b.
 
-**Literatur:** Ra Uru Hu: The Definitive Book of HD | Lynda Bunnell: Dictionary of HD | Karen Curry Parker: Understanding HD | Richard Rudd: Gene Keys (©)
+**Literatur (Beispiele HD-Kontext):** Ra Uru Hu, Lynda Bunnell, Karen Curry Parker u. a.; Gene-Keys-Quellen **gleiche Pipeline** wie andere `system_id`.
 
 **Ziel-Nodes:** ~~9 Center + 64 Gates + 384 Lines + 6 Colors + 6 Tones + 5 Bases + 36 Channels + 5 Types + 12 Profiles + 192 Crosses = **~~700+ Nodes**
 
@@ -302,21 +303,23 @@ In der App: Tab/Dropdown für System-Wechsel mit denselben Geburtsdaten.
 
 ### 6.3 Westliche Astrologie
 
-**Kit-Kandidaten:**
+**Aktiv in `@ic/engines`:** **celestine** (MIT, TS) — `computeAstroChart`, `astro_catalog_v0.json`, Validierung.
+
+**Weitere Kit-Kandidaten (Alternativen / Ergänzung):**
 
 
-| Kit                             | Sprache | Lizenz        | Umfang                                                  | Bemerkung                                                          |
-| ------------------------------- | ------- | ------------- | ------------------------------------------------------- | ------------------------------------------------------------------ |
-| **CircularNatalHoroscopeJS** 🆕 | ES6/TS  | Unlicense ✅   | Tropical+Sidereal, 7 Häusersysteme, Aspekte, Retrograde | KEIN Swiss-Eph — eigene Berechnung. 354 Stars. Kein Lizenzproblem! |
-| **@nrweb/astro-calc** 🆕        | TS      | MIT ✅         | Planeten, Häuser, Aspekte, Arab. Lots, Scoring          | NUTZT Swiss Ephemeris → AGPL/Komm. Lizenzfrage bleibt.             |
-| **pyswisseph**                  | Python  | 💰 AGPL/Komm. | Industriestandard, höchste Präzision                    | Swiss Ephemeris Wrapper. $600 CHF für kommerziell.                 |
-| **immanuel**                    | Python  | MIT ✅         | Natal, Solar Returns, Progressions, Composites          | Baut auf pyswisseph auf.                                           |
-| **Kerykeion**                   | Python  | AGPL ⚠️       | Gut dokumentiert, aktiv (602 Stars)                     | AGPL = SaaS-Problem                                                |
-| **@swisseph/node**              | Node.js | 💰 AGPL/Komm. | Swiss Ephemeris für Node.js, WASM                       | Höchste Präzision in TS                                            |
-| **flatlib**                     | Python  | MIT ✅         | Basis-Astrologie                                        | Älter, weniger aktiv                                               |
+| Kit                      | Sprache | Lizenz        | Umfang                                                  | Bemerkung                                                          |
+| ------------------------ | ------- | ------------- | ------------------------------------------------------- | ------------------------------------------------------------------ |
+| **celestine** ⭐          | TS      | MIT ✅         | Tropisch, Häuser, Aspekte, Lots u. a. (siehe Code-Paket) | **In Produktion** in `packages/engines/src/astro.ts`               |
+| **@nrweb/astro-calc**    | TS      | MIT ✅         | Planeten, Häuser, Aspekte, Arab. Lots, Scoring          | Nutzt Swiss Ephemeris → Lizenzpfad prüfen                         |
+| **pyswisseph**           | Python  | 💰 AGPL/Komm. | Industriestandard, höchste Präzision                    | Swiss Ephemeris Wrapper. Kommerziell: Astrodienst-Konditionen     |
+| **immanuel**             | Python  | MIT ✅         | Natal, Solar Returns, Progressions, Composites          | Baut auf pyswisseph auf.                                           |
+| **Kerykeion**            | Python  | AGPL ⚠️       | Gut dokumentiert, aktiv                                 | AGPL = SaaS-Abwägung                                               |
+| **@swisseph/node**       | Node.js | 💰 AGPL/Komm. | Swiss Ephemeris für Node.js, WASM                       | Höchste Präzision in TS                                            |
+| **flatlib**              | Python  | MIT ✅         | Basis-Astrologie                                        | Älter, weniger aktiv                                               |
 
 
-**Empfehlung:** **CircularNatalHoroscopeJS** (Unlicense, TS-nativ, kein Swiss-Eph) als TS-first-Lösung für Next.js. Für höchste Präzision (Forschungsgrad): pyswisseph + immanuel im Python-Microservice. Spike nötig: Präzisionsvergleich CircularNatalHoroscopeJS vs. Swiss Ephemeris.
+**Empfehlung:** **celestine** als TS-first-Lösung in Next.js (`@ic/engines`). Optional: Präzisions-Spike **celestine vs.** Referenz (z. B. Swiss/pyswisseph), falls das Produkt es verlangt; ggf. ergänzender Python-Microservice mit pyswisseph+immanuel.
 
 **K1–K4 Aufschlüsselung:** Analog zu Jyotish — Kits liefern K1+K2 (Positionen, Aspekte, Häuser), K3+K4 aus Literatur.
 
@@ -350,7 +353,7 @@ In der App: Tab/Dropdown für System-Wechsel mit denselben Geburtsdaten.
 | **tzolkin-calendar** | Python  | MIT ✅  | 20 Seals, 13 Tones, 260 Kin, Wavespells |
 
 
-Einfachstes System. Kit sollte vollständig sein. Alternative: Triviale TS-Implementierung (~50 Zeilen).
+Einfachstes System. **Ist:** `@ic/engines` **`ic_maya_tzolkin_v1`** (GMT 584283, Dreamspell-Slug-Reihenfolge, lokales Zivil-Datum aus Instant), Katalog `mayan_tzolkin_catalog_v0.json`, Vitest **Step 3** (`maya-tzolkin-catalog-validation.test.ts`). Optional: **tzolkin-calendar** (Python/MIT) nur falls Referenz-Port gewünscht.
 
 **Ziel-Nodes:** 20 Seals + 13 Tones + 260 Kin + 20 Wavespells + 5 Earth Families = **~320 Nodes**
 
@@ -421,14 +424,14 @@ Ziwei Doushu ist das technisch ausgefeilteste chinesische System — strukturell
 - K1-Engine: Shared mit HD (dturkuler berechnet Gate-Positionen, GK liest dieselben)
 - K2-Katalog: Eigenständiger `gk_catalog_v0.json` (Shadow/Gift/Siddhi, Codon Rings, Sequences)
 - Cross-System-Link: `hd.gate.N ←→ gk.gate.N` (faktische 1:1-Identität auf Gate-Ebene)
-- K3/K4: ©-geschützt (Richard Rudd). Nur Paraphrase oder eigene Ableitung.
+- **K3/K4:** dieselbe Literatur-Pipeline wie für jedes andere `system_id` (PDF → MinerU → LLM; `entity_registry` / Anna's-Profil `genekeys_content` bei Bedarf; Evidenzklassen A–D nach Quellenlage).
 
 | Aspekt           | Detail |
 | ---------------- | ------ |
 | Engine           | K1 shared mit HD (Ephemeris → Gate). Eigene Lookup-Logik für Sequences. |
 | Methode          | Gate-Positionen aus HD-Engine + eigene Sequence-Berechnung (Venus/Pearl/Activation) |
 | Output           | 64 Gates × 3 Frequenzen, 21 Codon Rings, 3 Sequences mit Sphären |
-| **⚠️ Copyright** | Gene Keys Inhalte sind urheberrechtlich geschützt (Richard Rudd). K3/K4 = ausschließlich Paraphrase oder eigene Interpretation. |
+| **Literatur**    | Wie alle Systeme: Quellen inventarisieren, extrahieren, belegen — keine Sonder-Workflows in dieser Doku. |
 
 ### 6.7b HD-Schulen vs. Gene Keys — Tradition-Konzept (Entscheidung April 2026)
 
@@ -490,10 +493,10 @@ Zwei verschiedene Kategorien:
 Triviale Systeme. Kein Kit nötig.
 
 
-| System        | Berechnung                | Aufwand       |
-| ------------- | ------------------------- | ------------- |
-| Nine Star Ki  | Modulo-9-Berechnung       | ~20 Zeilen TS |
-| Akan Day Name | Wochentag → 1 von 7 Names | ~5 Zeilen TS  |
+| System        | Berechnung                                                                 | Aufwand          |
+| ------------- | -------------------------------------------------------------------------- | ---------------- |
+| Nine Star Ki  | Ki-Jahr + Overrides; 12 Sonnenmonats-Schnitte; Monatsmuster + 81er energetic | TS (`ic_nine_star_ki_v1`) |
+| Akan Day Name | Wochentag → 1 von 7 Names                                                | ~5 Zeilen TS     |
 
 
 ---
@@ -565,7 +568,7 @@ Engines berechnen parallel:
   ├→ hdkit/@swisseph   → HD-Chart       (TS, Next.js)
   ├→ iztro             → Ziwei-Chart    (TS, Next.js) ← NEU
   ├→ @yhjs/bazi        → BaZi-Chart     (TS, Next.js)
-  ├→ CircularNatalJS   → Astro-Chart    (TS, Next.js)
+  ├→ celestine          → Astro-Chart    (TS, Next.js)
   ├→ PyJHora           → Jyotish-Chart  (Python, Microservice)
   ├→ tzolkin-calendar  → Maya-Kin       (Python oder TS)
   └→ eigene Logik      → Num, NSK, Akan (TS, Next.js)
@@ -608,7 +611,7 @@ code/inner_compass_app/
       hd/           ← hdkit (JS/Node, MIT)
       ziwei/        ← iztro (TS, MIT) ← NEU
       bazi/         ← @yhjs/bazi (TS, MIT) — alvamind als Fallback
-      astro/        ← CircularNatalHoroscopeJS (Unlicense) + pyswisseph (AGPL/Komm.)
+      astro/        ← celestine (MIT) in `packages/engines` — optional pyswisseph (AGPL/Komm.) für Referenz
       maya/         ← tzolkin-calendar (Python, MIT)
       jyotish/      ← PyJHora (AGPL, isolierter Microservice) + VedAstro.Python (MIT, KP)
 ```
@@ -636,7 +639,7 @@ code/inner_compass_app/
 | **HD**       | Centers, Gates, Channels, Profile. hdkit: `bodygraph-data.js`, `constants.js` | structure.centers, structure.channels                      | 1    |
 | **Ziwei** 🆕 | 14 Hauptsterne, 30+ Nebensterne, 12 Paläste, Mutagene. iztro: `src/data/`     | structure.stars, structure.palaces                         | 2    |
 | **BaZi**     | Stems, Branches, Jiazi, Ten Gods, Nayin, Luck Cycles. @yhjs/bazi: TS-Types    | structure.stems, structure.branches, structure.luck_cycles | 3    |
-| **Astro**    | Planeten, Zeichen, Häuser, Rulerships. CircularNatalJS + pyswisseph           | structure.planets, structure.signs                         | 4    |
+| **Astro**    | Planeten, Zeichen, Häuser, Rulerships. **celestine** (+ optional pyswisseph)   | structure.planets, structure.signs                         | 4    |
 | **Maya**     | 20 Seals, 13 Tones, Kin-Mapping. tzolkin-calendar: Kalender-Logik             | structure.seals, structure.tones                           | 5    |
 | **Jyotish**  | Nakshatras, Grahas, Rashis, Bhavas, Dasha-Systeme. PyJHora + VedAstro         | Komplexeste Extraktion                                     | 6    |
 
@@ -660,7 +663,7 @@ Für Chart-Darstellung in der App (KARTE-Space):
 | ----------------------------------- | --------------------------------------- | ----------- | ---------------------------------------------- |
 | Jyotish-Charts (North/South Indian) | jyotichart (SVG), astrochartjs          | Python / JS | North Indian (Diamant), South Indian (Quadrat) |
 | Ziwei Doushu Astrolabe              | iztro-hook (React), Custom SVG          | TS          | 12-Paläste-Gitter mit Sternen                  |
-| Western Astro Wheel                 | CircularNatalHoroscopeJS, astrochart.js | JS          | Radix-Chart                                    |
+| Western Astro Wheel                 | **celestine** (`@ic/engines`), astrochart.js | TS/JS       | Radix-Chart                                    |
 | HD BodyGraph                        | hdkit Sample-App, Custom SVG            | JS          | Eigenentwicklung wahrscheinlich                |
 | BaZi Pillars                        | Custom HTML/CSS                         | TS          | Einfach (4 Säulen)                             |
 | Maya Kin                            | Custom HTML/CSS                         | TS          | Einfach (Seal + Ton)                           |

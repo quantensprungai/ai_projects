@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "schema_version": "1.0.0",
+    "system_id": "akan",
+    "system_role": "calculation",
+    "description": "K2 v0: Krada + weibliche Seelenname nach Wochentag (Standardtabelle); Obosom v1.",
+    "source": "IC engines akan.ts",
+    "evidence_class": "B",
+    "generated_at": "2026-04-20T00:00:00.000Z"
+  },
+  "weekday_rows": [
+    { "iso_weekday": 1, "weekday_en": "monday", "krada": "kwadwo", "soul_name_male": "kwadwo", "soul_name_female": "adwoa" },
+    { "iso_weekday": 2, "weekday_en": "tuesday", "krada": "kwabena", "soul_name_male": "kwabena", "soul_name_female": "abena" },
+    { "iso_weekday": 3, "weekday_en": "wednesday", "krada": "kwaku", "soul_name_male": "kwaku", "soul_name_female": "akua" },
+    { "iso_weekday": 4, "weekday_en": "thursday", "krada": "yaw", "soul_name_male": "yaw", "soul_name_female": "yaa" },
+    { "iso_weekday": 5, "weekday_en": "friday", "krada": "kofi", "soul_name_male": "kofi", "soul_name_female": "afua" },
+    { "iso_weekday": 6, "weekday_en": "saturday", "krada": "kwame", "soul_name_male": "kwame", "soul_name_female": "amma" },
+    { "iso_weekday": 7, "weekday_en": "sunday", "krada": "kwasi", "soul_name_male": "kwasi", "soul_name_female": "akosua" }
+  ]
+}

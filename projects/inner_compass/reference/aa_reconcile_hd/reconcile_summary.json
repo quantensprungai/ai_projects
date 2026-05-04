@@ -1,0 +1,13 @@
+{
+  "metadata_file": "C:\\Users\\Admin105\\ai_projects\\code\\annas-archive-toolkit\\output\\hd_content\\metadata_vm102.json",
+  "registry_file": "C:\\Users\\Admin105\\ai_projects\\projects\\inner_compass\\reference\\entity_registry_hd_v02.json",
+  "out_dir": "C:\\Users\\Admin105\\ai_projects\\projects\\inner_compass\\reference\\aa_reconcile_hd",
+  "rows_in_metadata": 3585,
+  "unique_md5": 1994,
+  "landscape_count": 1944,
+  "noise_count": 50,
+  "noise_ratio_unique": 0.0251,
+  "registry_works_total": 82,
+  "registry_works_found_candidate": 55,
+  "search_terms_in_metadata": 73
+}

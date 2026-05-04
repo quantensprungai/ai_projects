@@ -1,0 +1,930 @@
+{
+  "meta": {
+    "step": 2,
+    "version": "0.1.0",
+    "description": "Western tropical astro structure: zodiac ring, rulerships, house ring, angle axes, planetary joys, essential dignities, cross-system element links. Placements/aspects are runtime edges (K1); this file is static K2 scaffold.",
+    "catalog_ref": "astro_catalog_v0.json",
+    "source": "IC catalog + classical rulerships/joys/dignities",
+    "generated_at": "2026-04-17T10:08:06.963Z"
+  },
+  "levels": [
+    {
+      "id": "angles",
+      "label_en": "Chart axes",
+      "label_de": "Achsen",
+      "description": "ASC, DSC, MC, IC anchor the local space frame; houses stem from time/location via engine.",
+      "kit_refs": [
+        "celestine Chart",
+        "catalog.angles"
+      ]
+    },
+    {
+      "id": "houses",
+      "label_en": "Houses",
+      "label_de": "Häuser",
+      "description": "Twelve sectors (Placidus or chosen system); angular/succedent/cadent qualities in catalog.",
+      "kit_refs": [
+        "celestine cusps",
+        "catalog.houses"
+      ]
+    },
+    {
+      "id": "signs",
+      "label_en": "Signs",
+      "label_de": "Zeichen",
+      "description": "Tropical zodiac; modality, polarity, rulerships; element links to western_elements.",
+      "kit_refs": [
+        "catalog.signs"
+      ]
+    },
+    {
+      "id": "bodies",
+      "label_en": "Bodies & points",
+      "label_de": "Himmelskörper",
+      "description": "Planets, luminaries, lunar node, Lilith, Arabic parts — placement + aspect emitters.",
+      "kit_refs": [
+        "celestine bodies",
+        "catalog.bodies"
+      ]
+    },
+    {
+      "id": "aspect_types",
+      "label_en": "Aspect types",
+      "label_de": "Aspekttypen",
+      "description": "Major/minor/Kepler angles; engine normalizes celestine string → canonical aspect_type.",
+      "kit_refs": [
+        "catalog.aspect_types"
+      ]
+    },
+    {
+      "id": "dignity",
+      "label_en": "Essential dignity",
+      "label_de": "Würde",
+      "description": "Domicile, exaltation, detriment, fall per planet×sign; traditional + modern outer planets.",
+      "kit_refs": [
+        "catalog.dignity_matrix"
+      ]
+    },
+    {
+      "id": "sect",
+      "label_en": "Sect",
+      "label_de": "Sekte",
+      "description": "Day vs night chart from Sun above/below horizon; conditions some traditional rules.",
+      "kit_refs": [
+        "catalog.sect",
+        "celestine isDaytime"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "astro.sign.aries",
+      "to": "astro.sign.taurus",
+      "relation_type": "next_in_tropical_zodiac",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "tropical sign order"
+    },
+    {
+      "from": "astro.sign.taurus",
+      "to": "astro.sign.gemini",
+      "relation_type": "next_in_tropical_zodiac",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "tropical sign order"
+    },
+    {
+      "from": "astro.sign.gemini",
+      "to": "astro.sign.cancer",
+      "relation_type": "next_in_tropical_zodiac",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "tropical sign order"
+    },
+    {
+      "from": "astro.sign.cancer",
+      "to": "astro.sign.leo",
+      "relation_type": "next_in_tropical_zodiac",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "tropical sign order"
+    },
+    {
+      "from": "astro.sign.leo",
+      "to": "astro.sign.virgo",
+      "relation_type": "next_in_tropical_zodiac",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "tropical sign order"
+    },
+    {
+      "from": "astro.sign.virgo",
+      "to": "astro.sign.libra",
+      "relation_type": "next_in_tropical_zodiac",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "tropical sign order"
+    },
+    {
+      "from": "astro.sign.libra",
+      "to": "astro.sign.scorpio",
+      "relation_type": "next_in_tropical_zodiac",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "tropical sign order"
+    },
+    {
+      "from": "astro.sign.scorpio",
+      "to": "astro.sign.sagittarius",
+      "relation_type": "next_in_tropical_zodiac",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "tropical sign order"
+    },
+    {
+      "from": "astro.sign.sagittarius",
+      "to": "astro.sign.capricorn",
+      "relation_type": "next_in_tropical_zodiac",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "tropical sign order"
+    },
+    {
+      "from": "astro.sign.capricorn",
+      "to": "astro.sign.aquarius",
+      "relation_type": "next_in_tropical_zodiac",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "tropical sign order"
+    },
+    {
+      "from": "astro.sign.aquarius",
+      "to": "astro.sign.pisces",
+      "relation_type": "next_in_tropical_zodiac",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "tropical sign order"
+    },
+    {
+      "from": "astro.sign.pisces",
+      "to": "astro.sign.aries",
+      "relation_type": "next_in_tropical_zodiac",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "tropical sign order"
+    },
+    {
+      "from": "astro.sign.aries",
+      "to": "astro.planet.mars",
+      "relation_type": "ruled_by_traditional",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "classical domicile rulership"
+    },
+    {
+      "from": "astro.sign.aries",
+      "to": "we.element.fire",
+      "relation_type": "maps_to_element",
+      "scope": "cross_system",
+      "evidence_class": "A",
+      "source": "western_elements ↔ astro.sign (catalog)"
+    },
+    {
+      "from": "astro.sign.taurus",
+      "to": "astro.planet.venus",
+      "relation_type": "ruled_by_traditional",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "classical domicile rulership"
+    },
+    {
+      "from": "astro.sign.taurus",
+      "to": "we.element.earth",
+      "relation_type": "maps_to_element",
+      "scope": "cross_system",
+      "evidence_class": "A",
+      "source": "western_elements ↔ astro.sign (catalog)"
+    },
+    {
+      "from": "astro.sign.gemini",
+      "to": "astro.planet.mercury",
+      "relation_type": "ruled_by_traditional",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "classical domicile rulership"
+    },
+    {
+      "from": "astro.sign.gemini",
+      "to": "we.element.air",
+      "relation_type": "maps_to_element",
+      "scope": "cross_system",
+      "evidence_class": "A",
+      "source": "western_elements ↔ astro.sign (catalog)"
+    },
+    {
+      "from": "astro.sign.cancer",
+      "to": "astro.planet.moon",
+      "relation_type": "ruled_by_traditional",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "classical domicile rulership"
+    },
+    {
+      "from": "astro.sign.cancer",
+      "to": "we.element.water",
+      "relation_type": "maps_to_element",
+      "scope": "cross_system",
+      "evidence_class": "A",
+      "source": "western_elements ↔ astro.sign (catalog)"
+    },
+    {
+      "from": "astro.sign.leo",
+      "to": "astro.planet.sun",
+      "relation_type": "ruled_by_traditional",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "classical domicile rulership"
+    },
+    {
+      "from": "astro.sign.leo",
+      "to": "we.element.fire",
+      "relation_type": "maps_to_element",
+      "scope": "cross_system",
+      "evidence_class": "A",
+      "source": "western_elements ↔ astro.sign (catalog)"
+    },
+    {
+      "from": "astro.sign.virgo",
+      "to": "astro.planet.mercury",
+      "relation_type": "ruled_by_traditional",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "classical domicile rulership"
+    },
+    {
+      "from": "astro.sign.virgo",
+      "to": "we.element.earth",
+      "relation_type": "maps_to_element",
+      "scope": "cross_system",
+      "evidence_class": "A",
+      "source": "western_elements ↔ astro.sign (catalog)"
+    },
+    {
+      "from": "astro.sign.libra",
+      "to": "astro.planet.venus",
+      "relation_type": "ruled_by_traditional",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "classical domicile rulership"
+    },
+    {
+      "from": "astro.sign.libra",
+      "to": "we.element.air",
+      "relation_type": "maps_to_element",
+      "scope": "cross_system",
+      "evidence_class": "A",
+      "source": "western_elements ↔ astro.sign (catalog)"
+    },
+    {
+      "from": "astro.sign.scorpio",
+      "to": "astro.planet.mars",
+      "relation_type": "ruled_by_traditional",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "classical domicile rulership"
+    },
+    {
+      "from": "astro.sign.scorpio",
+      "to": "astro.planet.pluto",
+      "relation_type": "ruled_by_modern",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "modern outer-planet co-rulership"
+    },
+    {
+      "from": "astro.sign.scorpio",
+      "to": "we.element.water",
+      "relation_type": "maps_to_element",
+      "scope": "cross_system",
+      "evidence_class": "A",
+      "source": "western_elements ↔ astro.sign (catalog)"
+    },
+    {
+      "from": "astro.sign.sagittarius",
+      "to": "astro.planet.jupiter",
+      "relation_type": "ruled_by_traditional",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "classical domicile rulership"
+    },
+    {
+      "from": "astro.sign.sagittarius",
+      "to": "we.element.fire",
+      "relation_type": "maps_to_element",
+      "scope": "cross_system",
+      "evidence_class": "A",
+      "source": "western_elements ↔ astro.sign (catalog)"
+    },
+    {
+      "from": "astro.sign.capricorn",
+      "to": "astro.planet.saturn",
+      "relation_type": "ruled_by_traditional",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "classical domicile rulership"
+    },
+    {
+      "from": "astro.sign.capricorn",
+      "to": "we.element.earth",
+      "relation_type": "maps_to_element",
+      "scope": "cross_system",
+      "evidence_class": "A",
+      "source": "western_elements ↔ astro.sign (catalog)"
+    },
+    {
+      "from": "astro.sign.aquarius",
+      "to": "astro.planet.saturn",
+      "relation_type": "ruled_by_traditional",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "classical domicile rulership"
+    },
+    {
+      "from": "astro.sign.aquarius",
+      "to": "astro.planet.uranus",
+      "relation_type": "ruled_by_modern",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "modern outer-planet co-rulership"
+    },
+    {
+      "from": "astro.sign.aquarius",
+      "to": "we.element.air",
+      "relation_type": "maps_to_element",
+      "scope": "cross_system",
+      "evidence_class": "A",
+      "source": "western_elements ↔ astro.sign (catalog)"
+    },
+    {
+      "from": "astro.sign.pisces",
+      "to": "astro.planet.jupiter",
+      "relation_type": "ruled_by_traditional",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "classical domicile rulership"
+    },
+    {
+      "from": "astro.sign.pisces",
+      "to": "astro.planet.neptune",
+      "relation_type": "ruled_by_modern",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "modern outer-planet co-rulership"
+    },
+    {
+      "from": "astro.sign.pisces",
+      "to": "we.element.water",
+      "relation_type": "maps_to_element",
+      "scope": "cross_system",
+      "evidence_class": "A",
+      "source": "western_elements ↔ astro.sign (catalog)"
+    },
+    {
+      "from": "astro.house.1",
+      "to": "astro.house.2",
+      "relation_type": "next_in_house_numbering",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "1–12 house index ring; cusp geometry is engine output (any house system)"
+    },
+    {
+      "from": "astro.house.2",
+      "to": "astro.house.3",
+      "relation_type": "next_in_house_numbering",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "1–12 house index ring; cusp geometry is engine output (any house system)"
+    },
+    {
+      "from": "astro.house.3",
+      "to": "astro.house.4",
+      "relation_type": "next_in_house_numbering",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "1–12 house index ring; cusp geometry is engine output (any house system)"
+    },
+    {
+      "from": "astro.house.4",
+      "to": "astro.house.5",
+      "relation_type": "next_in_house_numbering",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "1–12 house index ring; cusp geometry is engine output (any house system)"
+    },
+    {
+      "from": "astro.house.5",
+      "to": "astro.house.6",
+      "relation_type": "next_in_house_numbering",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "1–12 house index ring; cusp geometry is engine output (any house system)"
+    },
+    {
+      "from": "astro.house.6",
+      "to": "astro.house.7",
+      "relation_type": "next_in_house_numbering",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "1–12 house index ring; cusp geometry is engine output (any house system)"
+    },
+    {
+      "from": "astro.house.7",
+      "to": "astro.house.8",
+      "relation_type": "next_in_house_numbering",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "1–12 house index ring; cusp geometry is engine output (any house system)"
+    },
+    {
+      "from": "astro.house.8",
+      "to": "astro.house.9",
+      "relation_type": "next_in_house_numbering",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "1–12 house index ring; cusp geometry is engine output (any house system)"
+    },
+    {
+      "from": "astro.house.9",
+      "to": "astro.house.10",
+      "relation_type": "next_in_house_numbering",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "1–12 house index ring; cusp geometry is engine output (any house system)"
+    },
+    {
+      "from": "astro.house.10",
+      "to": "astro.house.11",
+      "relation_type": "next_in_house_numbering",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "1–12 house index ring; cusp geometry is engine output (any house system)"
+    },
+    {
+      "from": "astro.house.11",
+      "to": "astro.house.12",
+      "relation_type": "next_in_house_numbering",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "1–12 house index ring; cusp geometry is engine output (any house system)"
+    },
+    {
+      "from": "astro.house.12",
+      "to": "astro.house.1",
+      "relation_type": "next_in_house_numbering",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "1–12 house index ring; cusp geometry is engine output (any house system)"
+    },
+    {
+      "from": "astro.angle.ascendant",
+      "to": "astro.angle.descendant",
+      "relation_type": "opposes",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "axis pair"
+    },
+    {
+      "from": "astro.angle.midheaven",
+      "to": "astro.angle.imum_coeli",
+      "relation_type": "opposes",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "axis pair"
+    },
+    {
+      "from": "astro.planet.saturn",
+      "to": "astro.house.12",
+      "relation_type": "house_of_joy",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Hellenistic planetary joys"
+    },
+    {
+      "from": "astro.planet.jupiter",
+      "to": "astro.house.11",
+      "relation_type": "house_of_joy",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Hellenistic planetary joys"
+    },
+    {
+      "from": "astro.planet.mars",
+      "to": "astro.house.6",
+      "relation_type": "house_of_joy",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Hellenistic planetary joys"
+    },
+    {
+      "from": "astro.planet.sun",
+      "to": "astro.house.9",
+      "relation_type": "house_of_joy",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Hellenistic planetary joys"
+    },
+    {
+      "from": "astro.planet.venus",
+      "to": "astro.house.5",
+      "relation_type": "house_of_joy",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Hellenistic planetary joys"
+    },
+    {
+      "from": "astro.planet.mercury",
+      "to": "astro.house.1",
+      "relation_type": "house_of_joy",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Hellenistic planetary joys"
+    },
+    {
+      "from": "astro.planet.moon",
+      "to": "astro.house.3",
+      "relation_type": "house_of_joy",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "source": "Hellenistic planetary joys"
+    },
+    {
+      "from": "astro.planet.sun",
+      "to": "astro.sign.leo",
+      "relation_type": "dignity_domicile",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.sun",
+      "to": "astro.sign.aries",
+      "relation_type": "dignity_exaltation",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.sun",
+      "to": "astro.sign.aquarius",
+      "relation_type": "dignity_detriment",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.sun",
+      "to": "astro.sign.libra",
+      "relation_type": "dignity_fall",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.moon",
+      "to": "astro.sign.cancer",
+      "relation_type": "dignity_domicile",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.moon",
+      "to": "astro.sign.taurus",
+      "relation_type": "dignity_exaltation",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.moon",
+      "to": "astro.sign.capricorn",
+      "relation_type": "dignity_detriment",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.moon",
+      "to": "astro.sign.scorpio",
+      "relation_type": "dignity_fall",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.mercury",
+      "to": "astro.sign.gemini",
+      "relation_type": "dignity_domicile",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.mercury",
+      "to": "astro.sign.virgo",
+      "relation_type": "dignity_domicile",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.mercury",
+      "to": "astro.sign.sagittarius",
+      "relation_type": "dignity_detriment",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.mercury",
+      "to": "astro.sign.pisces",
+      "relation_type": "dignity_detriment",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.mercury",
+      "to": "astro.sign.pisces",
+      "relation_type": "dignity_fall",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.venus",
+      "to": "astro.sign.taurus",
+      "relation_type": "dignity_domicile",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.venus",
+      "to": "astro.sign.libra",
+      "relation_type": "dignity_domicile",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.venus",
+      "to": "astro.sign.pisces",
+      "relation_type": "dignity_exaltation",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.venus",
+      "to": "astro.sign.scorpio",
+      "relation_type": "dignity_detriment",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.venus",
+      "to": "astro.sign.aries",
+      "relation_type": "dignity_detriment",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.venus",
+      "to": "astro.sign.virgo",
+      "relation_type": "dignity_fall",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.mars",
+      "to": "astro.sign.aries",
+      "relation_type": "dignity_domicile",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.mars",
+      "to": "astro.sign.scorpio",
+      "relation_type": "dignity_domicile",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.mars",
+      "to": "astro.sign.capricorn",
+      "relation_type": "dignity_exaltation",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.mars",
+      "to": "astro.sign.libra",
+      "relation_type": "dignity_detriment",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.mars",
+      "to": "astro.sign.taurus",
+      "relation_type": "dignity_detriment",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.mars",
+      "to": "astro.sign.cancer",
+      "relation_type": "dignity_fall",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.jupiter",
+      "to": "astro.sign.sagittarius",
+      "relation_type": "dignity_domicile",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.jupiter",
+      "to": "astro.sign.pisces",
+      "relation_type": "dignity_domicile",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.jupiter",
+      "to": "astro.sign.cancer",
+      "relation_type": "dignity_exaltation",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.jupiter",
+      "to": "astro.sign.gemini",
+      "relation_type": "dignity_detriment",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.jupiter",
+      "to": "astro.sign.virgo",
+      "relation_type": "dignity_detriment",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.jupiter",
+      "to": "astro.sign.capricorn",
+      "relation_type": "dignity_fall",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.saturn",
+      "to": "astro.sign.capricorn",
+      "relation_type": "dignity_domicile",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.saturn",
+      "to": "astro.sign.aquarius",
+      "relation_type": "dignity_domicile",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.saturn",
+      "to": "astro.sign.libra",
+      "relation_type": "dignity_exaltation",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.saturn",
+      "to": "astro.sign.cancer",
+      "relation_type": "dignity_detriment",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.saturn",
+      "to": "astro.sign.leo",
+      "relation_type": "dignity_detriment",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.saturn",
+      "to": "astro.sign.aries",
+      "relation_type": "dignity_fall",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "traditional",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.uranus",
+      "to": "astro.sign.aquarius",
+      "relation_type": "dignity_domicile",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "modern",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.neptune",
+      "to": "astro.sign.pisces",
+      "relation_type": "dignity_domicile",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "modern",
+      "source": "essential dignities table (catalog)"
+    },
+    {
+      "from": "astro.planet.pluto",
+      "to": "astro.sign.scorpio",
+      "relation_type": "dignity_domicile",
+      "scope": "intra_system",
+      "evidence_class": "A",
+      "school": "modern",
+      "source": "essential dignities table (catalog)"
+    }
+  ],
+  "counts": {
+    "levels": 7,
+    "edges": 100
+  },
+  "notes": [
+    "Synastry, progressions, and per-chart placements are not duplicated here — they are validated in Step 3 (engine nodes ↔ catalog).",
+    "House system geometry (cusps) is engine output; the house ring here is index semantics only.",
+    "Chiron / nodes / Lilith / parts have dignity rows only where present in catalog matrix."
+  ]
+}

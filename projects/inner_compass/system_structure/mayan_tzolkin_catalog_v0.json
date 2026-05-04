@@ -1,0 +1,1993 @@
+{
+  "meta": {
+    "schema_version": "1.0.1",
+    "system_id": "mayan_tzolkin",
+    "system_role": "calculation",
+    "description": "K2: 260 kin mesh GMT 584283 + Dreamspell seal slugs; Engine ic_maya_tzolkin_v1 (lokales Zivil-Datum aus aufgelöstem Instant).",
+    "source": "IC engines maya-tzolkin.ts",
+    "evidence_class": "A",
+    "generated_at": "2026-04-16T00:00:00.000Z",
+    "correlation": "GMT_584283",
+    "naming": "dreamspell_seal_slugs",
+    "engine": "ic_maya_tzolkin_v1",
+    "day_anchor": "local_civil_date_from_resolved_instant"
+  },
+  "solar_seals": [
+    {
+      "num": 1,
+      "slug": "red_dragon",
+      "canonical_id": "tzol.solar_seal.red_dragon"
+    },
+    {
+      "num": 2,
+      "slug": "white_wind",
+      "canonical_id": "tzol.solar_seal.white_wind"
+    },
+    {
+      "num": 3,
+      "slug": "blue_night",
+      "canonical_id": "tzol.solar_seal.blue_night"
+    },
+    {
+      "num": 4,
+      "slug": "yellow_seed",
+      "canonical_id": "tzol.solar_seal.yellow_seed"
+    },
+    {
+      "num": 5,
+      "slug": "red_serpent",
+      "canonical_id": "tzol.solar_seal.red_serpent"
+    },
+    {
+      "num": 6,
+      "slug": "white_worldbridger",
+      "canonical_id": "tzol.solar_seal.white_worldbridger"
+    },
+    {
+      "num": 7,
+      "slug": "blue_hand",
+      "canonical_id": "tzol.solar_seal.blue_hand"
+    },
+    {
+      "num": 8,
+      "slug": "yellow_star",
+      "canonical_id": "tzol.solar_seal.yellow_star"
+    },
+    {
+      "num": 9,
+      "slug": "red_moon",
+      "canonical_id": "tzol.solar_seal.red_moon"
+    },
+    {
+      "num": 10,
+      "slug": "white_dog",
+      "canonical_id": "tzol.solar_seal.white_dog"
+    },
+    {
+      "num": 11,
+      "slug": "blue_monkey",
+      "canonical_id": "tzol.solar_seal.blue_monkey"
+    },
+    {
+      "num": 12,
+      "slug": "yellow_human",
+      "canonical_id": "tzol.solar_seal.yellow_human"
+    },
+    {
+      "num": 13,
+      "slug": "red_skywalker",
+      "canonical_id": "tzol.solar_seal.red_skywalker"
+    },
+    {
+      "num": 14,
+      "slug": "white_wizard",
+      "canonical_id": "tzol.solar_seal.white_wizard"
+    },
+    {
+      "num": 15,
+      "slug": "blue_eagle",
+      "canonical_id": "tzol.solar_seal.blue_eagle"
+    },
+    {
+      "num": 16,
+      "slug": "yellow_warrior",
+      "canonical_id": "tzol.solar_seal.yellow_warrior"
+    },
+    {
+      "num": 17,
+      "slug": "red_earth",
+      "canonical_id": "tzol.solar_seal.red_earth"
+    },
+    {
+      "num": 18,
+      "slug": "white_mirror",
+      "canonical_id": "tzol.solar_seal.white_mirror"
+    },
+    {
+      "num": 19,
+      "slug": "blue_storm",
+      "canonical_id": "tzol.solar_seal.blue_storm"
+    },
+    {
+      "num": 20,
+      "slug": "yellow_sun",
+      "canonical_id": "tzol.solar_seal.yellow_sun"
+    }
+  ],
+  "tones": [
+    {
+      "num": 1,
+      "canonical_id": "tzol.tone.1"
+    },
+    {
+      "num": 2,
+      "canonical_id": "tzol.tone.2"
+    },
+    {
+      "num": 3,
+      "canonical_id": "tzol.tone.3"
+    },
+    {
+      "num": 4,
+      "canonical_id": "tzol.tone.4"
+    },
+    {
+      "num": 5,
+      "canonical_id": "tzol.tone.5"
+    },
+    {
+      "num": 6,
+      "canonical_id": "tzol.tone.6"
+    },
+    {
+      "num": 7,
+      "canonical_id": "tzol.tone.7"
+    },
+    {
+      "num": 8,
+      "canonical_id": "tzol.tone.8"
+    },
+    {
+      "num": 9,
+      "canonical_id": "tzol.tone.9"
+    },
+    {
+      "num": 10,
+      "canonical_id": "tzol.tone.10"
+    },
+    {
+      "num": 11,
+      "canonical_id": "tzol.tone.11"
+    },
+    {
+      "num": 12,
+      "canonical_id": "tzol.tone.12"
+    },
+    {
+      "num": 13,
+      "canonical_id": "tzol.tone.13"
+    }
+  ],
+  "kins": [
+    {
+      "kin": 1,
+      "tone": 1,
+      "solar_seal_slug": "red_dragon",
+      "wavespell": 1,
+      "castle": 1
+    },
+    {
+      "kin": 2,
+      "tone": 2,
+      "solar_seal_slug": "white_wind",
+      "wavespell": 1,
+      "castle": 1
+    },
+    {
+      "kin": 3,
+      "tone": 3,
+      "solar_seal_slug": "blue_night",
+      "wavespell": 1,
+      "castle": 1
+    },
+    {
+      "kin": 4,
+      "tone": 4,
+      "solar_seal_slug": "yellow_seed",
+      "wavespell": 1,
+      "castle": 1
+    },
+    {
+      "kin": 5,
+      "tone": 5,
+      "solar_seal_slug": "red_serpent",
+      "wavespell": 1,
+      "castle": 1
+    },
+    {
+      "kin": 6,
+      "tone": 6,
+      "solar_seal_slug": "white_worldbridger",
+      "wavespell": 1,
+      "castle": 1
+    },
+    {
+      "kin": 7,
+      "tone": 7,
+      "solar_seal_slug": "blue_hand",
+      "wavespell": 1,
+      "castle": 1
+    },
+    {
+      "kin": 8,
+      "tone": 8,
+      "solar_seal_slug": "yellow_star",
+      "wavespell": 1,
+      "castle": 1
+    },
+    {
+      "kin": 9,
+      "tone": 9,
+      "solar_seal_slug": "red_moon",
+      "wavespell": 1,
+      "castle": 1
+    },
+    {
+      "kin": 10,
+      "tone": 10,
+      "solar_seal_slug": "white_dog",
+      "wavespell": 1,
+      "castle": 1
+    },
+    {
+      "kin": 11,
+      "tone": 11,
+      "solar_seal_slug": "blue_monkey",
+      "wavespell": 1,
+      "castle": 1
+    },
+    {
+      "kin": 12,
+      "tone": 12,
+      "solar_seal_slug": "yellow_human",
+      "wavespell": 1,
+      "castle": 1
+    },
+    {
+      "kin": 13,
+      "tone": 13,
+      "solar_seal_slug": "red_skywalker",
+      "wavespell": 1,
+      "castle": 1
+    },
+    {
+      "kin": 14,
+      "tone": 1,
+      "solar_seal_slug": "white_wizard",
+      "wavespell": 2,
+      "castle": 1
+    },
+    {
+      "kin": 15,
+      "tone": 2,
+      "solar_seal_slug": "blue_eagle",
+      "wavespell": 2,
+      "castle": 1
+    },
+    {
+      "kin": 16,
+      "tone": 3,
+      "solar_seal_slug": "yellow_warrior",
+      "wavespell": 2,
+      "castle": 1
+    },
+    {
+      "kin": 17,
+      "tone": 4,
+      "solar_seal_slug": "red_earth",
+      "wavespell": 2,
+      "castle": 1
+    },
+    {
+      "kin": 18,
+      "tone": 5,
+      "solar_seal_slug": "white_mirror",
+      "wavespell": 2,
+      "castle": 1
+    },
+    {
+      "kin": 19,
+      "tone": 6,
+      "solar_seal_slug": "blue_storm",
+      "wavespell": 2,
+      "castle": 1
+    },
+    {
+      "kin": 20,
+      "tone": 7,
+      "solar_seal_slug": "yellow_sun",
+      "wavespell": 2,
+      "castle": 1
+    },
+    {
+      "kin": 21,
+      "tone": 8,
+      "solar_seal_slug": "red_dragon",
+      "wavespell": 2,
+      "castle": 1
+    },
+    {
+      "kin": 22,
+      "tone": 9,
+      "solar_seal_slug": "white_wind",
+      "wavespell": 2,
+      "castle": 1
+    },
+    {
+      "kin": 23,
+      "tone": 10,
+      "solar_seal_slug": "blue_night",
+      "wavespell": 2,
+      "castle": 1
+    },
+    {
+      "kin": 24,
+      "tone": 11,
+      "solar_seal_slug": "yellow_seed",
+      "wavespell": 2,
+      "castle": 1
+    },
+    {
+      "kin": 25,
+      "tone": 12,
+      "solar_seal_slug": "red_serpent",
+      "wavespell": 2,
+      "castle": 1
+    },
+    {
+      "kin": 26,
+      "tone": 13,
+      "solar_seal_slug": "white_worldbridger",
+      "wavespell": 2,
+      "castle": 1
+    },
+    {
+      "kin": 27,
+      "tone": 1,
+      "solar_seal_slug": "blue_hand",
+      "wavespell": 3,
+      "castle": 1
+    },
+    {
+      "kin": 28,
+      "tone": 2,
+      "solar_seal_slug": "yellow_star",
+      "wavespell": 3,
+      "castle": 1
+    },
+    {
+      "kin": 29,
+      "tone": 3,
+      "solar_seal_slug": "red_moon",
+      "wavespell": 3,
+      "castle": 1
+    },
+    {
+      "kin": 30,
+      "tone": 4,
+      "solar_seal_slug": "white_dog",
+      "wavespell": 3,
+      "castle": 1
+    },
+    {
+      "kin": 31,
+      "tone": 5,
+      "solar_seal_slug": "blue_monkey",
+      "wavespell": 3,
+      "castle": 1
+    },
+    {
+      "kin": 32,
+      "tone": 6,
+      "solar_seal_slug": "yellow_human",
+      "wavespell": 3,
+      "castle": 1
+    },
+    {
+      "kin": 33,
+      "tone": 7,
+      "solar_seal_slug": "red_skywalker",
+      "wavespell": 3,
+      "castle": 1
+    },
+    {
+      "kin": 34,
+      "tone": 8,
+      "solar_seal_slug": "white_wizard",
+      "wavespell": 3,
+      "castle": 1
+    },
+    {
+      "kin": 35,
+      "tone": 9,
+      "solar_seal_slug": "blue_eagle",
+      "wavespell": 3,
+      "castle": 1
+    },
+    {
+      "kin": 36,
+      "tone": 10,
+      "solar_seal_slug": "yellow_warrior",
+      "wavespell": 3,
+      "castle": 1
+    },
+    {
+      "kin": 37,
+      "tone": 11,
+      "solar_seal_slug": "red_earth",
+      "wavespell": 3,
+      "castle": 1
+    },
+    {
+      "kin": 38,
+      "tone": 12,
+      "solar_seal_slug": "white_mirror",
+      "wavespell": 3,
+      "castle": 1
+    },
+    {
+      "kin": 39,
+      "tone": 13,
+      "solar_seal_slug": "blue_storm",
+      "wavespell": 3,
+      "castle": 1
+    },
+    {
+      "kin": 40,
+      "tone": 1,
+      "solar_seal_slug": "yellow_sun",
+      "wavespell": 4,
+      "castle": 1
+    },
+    {
+      "kin": 41,
+      "tone": 2,
+      "solar_seal_slug": "red_dragon",
+      "wavespell": 4,
+      "castle": 1
+    },
+    {
+      "kin": 42,
+      "tone": 3,
+      "solar_seal_slug": "white_wind",
+      "wavespell": 4,
+      "castle": 1
+    },
+    {
+      "kin": 43,
+      "tone": 4,
+      "solar_seal_slug": "blue_night",
+      "wavespell": 4,
+      "castle": 1
+    },
+    {
+      "kin": 44,
+      "tone": 5,
+      "solar_seal_slug": "yellow_seed",
+      "wavespell": 4,
+      "castle": 1
+    },
+    {
+      "kin": 45,
+      "tone": 6,
+      "solar_seal_slug": "red_serpent",
+      "wavespell": 4,
+      "castle": 1
+    },
+    {
+      "kin": 46,
+      "tone": 7,
+      "solar_seal_slug": "white_worldbridger",
+      "wavespell": 4,
+      "castle": 1
+    },
+    {
+      "kin": 47,
+      "tone": 8,
+      "solar_seal_slug": "blue_hand",
+      "wavespell": 4,
+      "castle": 1
+    },
+    {
+      "kin": 48,
+      "tone": 9,
+      "solar_seal_slug": "yellow_star",
+      "wavespell": 4,
+      "castle": 1
+    },
+    {
+      "kin": 49,
+      "tone": 10,
+      "solar_seal_slug": "red_moon",
+      "wavespell": 4,
+      "castle": 1
+    },
+    {
+      "kin": 50,
+      "tone": 11,
+      "solar_seal_slug": "white_dog",
+      "wavespell": 4,
+      "castle": 1
+    },
+    {
+      "kin": 51,
+      "tone": 12,
+      "solar_seal_slug": "blue_monkey",
+      "wavespell": 4,
+      "castle": 1
+    },
+    {
+      "kin": 52,
+      "tone": 13,
+      "solar_seal_slug": "yellow_human",
+      "wavespell": 4,
+      "castle": 1
+    },
+    {
+      "kin": 53,
+      "tone": 1,
+      "solar_seal_slug": "red_skywalker",
+      "wavespell": 5,
+      "castle": 2
+    },
+    {
+      "kin": 54,
+      "tone": 2,
+      "solar_seal_slug": "white_wizard",
+      "wavespell": 5,
+      "castle": 2
+    },
+    {
+      "kin": 55,
+      "tone": 3,
+      "solar_seal_slug": "blue_eagle",
+      "wavespell": 5,
+      "castle": 2
+    },
+    {
+      "kin": 56,
+      "tone": 4,
+      "solar_seal_slug": "yellow_warrior",
+      "wavespell": 5,
+      "castle": 2
+    },
+    {
+      "kin": 57,
+      "tone": 5,
+      "solar_seal_slug": "red_earth",
+      "wavespell": 5,
+      "castle": 2
+    },
+    {
+      "kin": 58,
+      "tone": 6,
+      "solar_seal_slug": "white_mirror",
+      "wavespell": 5,
+      "castle": 2
+    },
+    {
+      "kin": 59,
+      "tone": 7,
+      "solar_seal_slug": "blue_storm",
+      "wavespell": 5,
+      "castle": 2
+    },
+    {
+      "kin": 60,
+      "tone": 8,
+      "solar_seal_slug": "yellow_sun",
+      "wavespell": 5,
+      "castle": 2
+    },
+    {
+      "kin": 61,
+      "tone": 9,
+      "solar_seal_slug": "red_dragon",
+      "wavespell": 5,
+      "castle": 2
+    },
+    {
+      "kin": 62,
+      "tone": 10,
+      "solar_seal_slug": "white_wind",
+      "wavespell": 5,
+      "castle": 2
+    },
+    {
+      "kin": 63,
+      "tone": 11,
+      "solar_seal_slug": "blue_night",
+      "wavespell": 5,
+      "castle": 2
+    },
+    {
+      "kin": 64,
+      "tone": 12,
+      "solar_seal_slug": "yellow_seed",
+      "wavespell": 5,
+      "castle": 2
+    },
+    {
+      "kin": 65,
+      "tone": 13,
+      "solar_seal_slug": "red_serpent",
+      "wavespell": 5,
+      "castle": 2
+    },
+    {
+      "kin": 66,
+      "tone": 1,
+      "solar_seal_slug": "white_worldbridger",
+      "wavespell": 6,
+      "castle": 2
+    },
+    {
+      "kin": 67,
+      "tone": 2,
+      "solar_seal_slug": "blue_hand",
+      "wavespell": 6,
+      "castle": 2
+    },
+    {
+      "kin": 68,
+      "tone": 3,
+      "solar_seal_slug": "yellow_star",
+      "wavespell": 6,
+      "castle": 2
+    },
+    {
+      "kin": 69,
+      "tone": 4,
+      "solar_seal_slug": "red_moon",
+      "wavespell": 6,
+      "castle": 2
+    },
+    {
+      "kin": 70,
+      "tone": 5,
+      "solar_seal_slug": "white_dog",
+      "wavespell": 6,
+      "castle": 2
+    },
+    {
+      "kin": 71,
+      "tone": 6,
+      "solar_seal_slug": "blue_monkey",
+      "wavespell": 6,
+      "castle": 2
+    },
+    {
+      "kin": 72,
+      "tone": 7,
+      "solar_seal_slug": "yellow_human",
+      "wavespell": 6,
+      "castle": 2
+    },
+    {
+      "kin": 73,
+      "tone": 8,
+      "solar_seal_slug": "red_skywalker",
+      "wavespell": 6,
+      "castle": 2
+    },
+    {
+      "kin": 74,
+      "tone": 9,
+      "solar_seal_slug": "white_wizard",
+      "wavespell": 6,
+      "castle": 2
+    },
+    {
+      "kin": 75,
+      "tone": 10,
+      "solar_seal_slug": "blue_eagle",
+      "wavespell": 6,
+      "castle": 2
+    },
+    {
+      "kin": 76,
+      "tone": 11,
+      "solar_seal_slug": "yellow_warrior",
+      "wavespell": 6,
+      "castle": 2
+    },
+    {
+      "kin": 77,
+      "tone": 12,
+      "solar_seal_slug": "red_earth",
+      "wavespell": 6,
+      "castle": 2
+    },
+    {
+      "kin": 78,
+      "tone": 13,
+      "solar_seal_slug": "white_mirror",
+      "wavespell": 6,
+      "castle": 2
+    },
+    {
+      "kin": 79,
+      "tone": 1,
+      "solar_seal_slug": "blue_storm",
+      "wavespell": 7,
+      "castle": 2
+    },
+    {
+      "kin": 80,
+      "tone": 2,
+      "solar_seal_slug": "yellow_sun",
+      "wavespell": 7,
+      "castle": 2
+    },
+    {
+      "kin": 81,
+      "tone": 3,
+      "solar_seal_slug": "red_dragon",
+      "wavespell": 7,
+      "castle": 2
+    },
+    {
+      "kin": 82,
+      "tone": 4,
+      "solar_seal_slug": "white_wind",
+      "wavespell": 7,
+      "castle": 2
+    },
+    {
+      "kin": 83,
+      "tone": 5,
+      "solar_seal_slug": "blue_night",
+      "wavespell": 7,
+      "castle": 2
+    },
+    {
+      "kin": 84,
+      "tone": 6,
+      "solar_seal_slug": "yellow_seed",
+      "wavespell": 7,
+      "castle": 2
+    },
+    {
+      "kin": 85,
+      "tone": 7,
+      "solar_seal_slug": "red_serpent",
+      "wavespell": 7,
+      "castle": 2
+    },
+    {
+      "kin": 86,
+      "tone": 8,
+      "solar_seal_slug": "white_worldbridger",
+      "wavespell": 7,
+      "castle": 2
+    },
+    {
+      "kin": 87,
+      "tone": 9,
+      "solar_seal_slug": "blue_hand",
+      "wavespell": 7,
+      "castle": 2
+    },
+    {
+      "kin": 88,
+      "tone": 10,
+      "solar_seal_slug": "yellow_star",
+      "wavespell": 7,
+      "castle": 2
+    },
+    {
+      "kin": 89,
+      "tone": 11,
+      "solar_seal_slug": "red_moon",
+      "wavespell": 7,
+      "castle": 2
+    },
+    {
+      "kin": 90,
+      "tone": 12,
+      "solar_seal_slug": "white_dog",
+      "wavespell": 7,
+      "castle": 2
+    },
+    {
+      "kin": 91,
+      "tone": 13,
+      "solar_seal_slug": "blue_monkey",
+      "wavespell": 7,
+      "castle": 2
+    },
+    {
+      "kin": 92,
+      "tone": 1,
+      "solar_seal_slug": "yellow_human",
+      "wavespell": 8,
+      "castle": 2
+    },
+    {
+      "kin": 93,
+      "tone": 2,
+      "solar_seal_slug": "red_skywalker",
+      "wavespell": 8,
+      "castle": 2
+    },
+    {
+      "kin": 94,
+      "tone": 3,
+      "solar_seal_slug": "white_wizard",
+      "wavespell": 8,
+      "castle": 2
+    },
+    {
+      "kin": 95,
+      "tone": 4,
+      "solar_seal_slug": "blue_eagle",
+      "wavespell": 8,
+      "castle": 2
+    },
+    {
+      "kin": 96,
+      "tone": 5,
+      "solar_seal_slug": "yellow_warrior",
+      "wavespell": 8,
+      "castle": 2
+    },
+    {
+      "kin": 97,
+      "tone": 6,
+      "solar_seal_slug": "red_earth",
+      "wavespell": 8,
+      "castle": 2
+    },
+    {
+      "kin": 98,
+      "tone": 7,
+      "solar_seal_slug": "white_mirror",
+      "wavespell": 8,
+      "castle": 2
+    },
+    {
+      "kin": 99,
+      "tone": 8,
+      "solar_seal_slug": "blue_storm",
+      "wavespell": 8,
+      "castle": 2
+    },
+    {
+      "kin": 100,
+      "tone": 9,
+      "solar_seal_slug": "yellow_sun",
+      "wavespell": 8,
+      "castle": 2
+    },
+    {
+      "kin": 101,
+      "tone": 10,
+      "solar_seal_slug": "red_dragon",
+      "wavespell": 8,
+      "castle": 2
+    },
+    {
+      "kin": 102,
+      "tone": 11,
+      "solar_seal_slug": "white_wind",
+      "wavespell": 8,
+      "castle": 2
+    },
+    {
+      "kin": 103,
+      "tone": 12,
+      "solar_seal_slug": "blue_night",
+      "wavespell": 8,
+      "castle": 2
+    },
+    {
+      "kin": 104,
+      "tone": 13,
+      "solar_seal_slug": "yellow_seed",
+      "wavespell": 8,
+      "castle": 2
+    },
+    {
+      "kin": 105,
+      "tone": 1,
+      "solar_seal_slug": "red_serpent",
+      "wavespell": 9,
+      "castle": 3
+    },
+    {
+      "kin": 106,
+      "tone": 2,
+      "solar_seal_slug": "white_worldbridger",
+      "wavespell": 9,
+      "castle": 3
+    },
+    {
+      "kin": 107,
+      "tone": 3,
+      "solar_seal_slug": "blue_hand",
+      "wavespell": 9,
+      "castle": 3
+    },
+    {
+      "kin": 108,
+      "tone": 4,
+      "solar_seal_slug": "yellow_star",
+      "wavespell": 9,
+      "castle": 3
+    },
+    {
+      "kin": 109,
+      "tone": 5,
+      "solar_seal_slug": "red_moon",
+      "wavespell": 9,
+      "castle": 3
+    },
+    {
+      "kin": 110,
+      "tone": 6,
+      "solar_seal_slug": "white_dog",
+      "wavespell": 9,
+      "castle": 3
+    },
+    {
+      "kin": 111,
+      "tone": 7,
+      "solar_seal_slug": "blue_monkey",
+      "wavespell": 9,
+      "castle": 3
+    },
+    {
+      "kin": 112,
+      "tone": 8,
+      "solar_seal_slug": "yellow_human",
+      "wavespell": 9,
+      "castle": 3
+    },
+    {
+      "kin": 113,
+      "tone": 9,
+      "solar_seal_slug": "red_skywalker",
+      "wavespell": 9,
+      "castle": 3
+    },
+    {
+      "kin": 114,
+      "tone": 10,
+      "solar_seal_slug": "white_wizard",
+      "wavespell": 9,
+      "castle": 3
+    },
+    {
+      "kin": 115,
+      "tone": 11,
+      "solar_seal_slug": "blue_eagle",
+      "wavespell": 9,
+      "castle": 3
+    },
+    {
+      "kin": 116,
+      "tone": 12,
+      "solar_seal_slug": "yellow_warrior",
+      "wavespell": 9,
+      "castle": 3
+    },
+    {
+      "kin": 117,
+      "tone": 13,
+      "solar_seal_slug": "red_earth",
+      "wavespell": 9,
+      "castle": 3
+    },
+    {
+      "kin": 118,
+      "tone": 1,
+      "solar_seal_slug": "white_mirror",
+      "wavespell": 10,
+      "castle": 3
+    },
+    {
+      "kin": 119,
+      "tone": 2,
+      "solar_seal_slug": "blue_storm",
+      "wavespell": 10,
+      "castle": 3
+    },
+    {
+      "kin": 120,
+      "tone": 3,
+      "solar_seal_slug": "yellow_sun",
+      "wavespell": 10,
+      "castle": 3
+    },
+    {
+      "kin": 121,
+      "tone": 4,
+      "solar_seal_slug": "red_dragon",
+      "wavespell": 10,
+      "castle": 3
+    },
+    {
+      "kin": 122,
+      "tone": 5,
+      "solar_seal_slug": "white_wind",
+      "wavespell": 10,
+      "castle": 3
+    },
+    {
+      "kin": 123,
+      "tone": 6,
+      "solar_seal_slug": "blue_night",
+      "wavespell": 10,
+      "castle": 3
+    },
+    {
+      "kin": 124,
+      "tone": 7,
+      "solar_seal_slug": "yellow_seed",
+      "wavespell": 10,
+      "castle": 3
+    },
+    {
+      "kin": 125,
+      "tone": 8,
+      "solar_seal_slug": "red_serpent",
+      "wavespell": 10,
+      "castle": 3
+    },
+    {
+      "kin": 126,
+      "tone": 9,
+      "solar_seal_slug": "white_worldbridger",
+      "wavespell": 10,
+      "castle": 3
+    },
+    {
+      "kin": 127,
+      "tone": 10,
+      "solar_seal_slug": "blue_hand",
+      "wavespell": 10,
+      "castle": 3
+    },
+    {
+      "kin": 128,
+      "tone": 11,
+      "solar_seal_slug": "yellow_star",
+      "wavespell": 10,
+      "castle": 3
+    },
+    {
+      "kin": 129,
+      "tone": 12,
+      "solar_seal_slug": "red_moon",
+      "wavespell": 10,
+      "castle": 3
+    },
+    {
+      "kin": 130,
+      "tone": 13,
+      "solar_seal_slug": "white_dog",
+      "wavespell": 10,
+      "castle": 3
+    },
+    {
+      "kin": 131,
+      "tone": 1,
+      "solar_seal_slug": "blue_monkey",
+      "wavespell": 11,
+      "castle": 3
+    },
+    {
+      "kin": 132,
+      "tone": 2,
+      "solar_seal_slug": "yellow_human",
+      "wavespell": 11,
+      "castle": 3
+    },
+    {
+      "kin": 133,
+      "tone": 3,
+      "solar_seal_slug": "red_skywalker",
+      "wavespell": 11,
+      "castle": 3
+    },
+    {
+      "kin": 134,
+      "tone": 4,
+      "solar_seal_slug": "white_wizard",
+      "wavespell": 11,
+      "castle": 3
+    },
+    {
+      "kin": 135,
+      "tone": 5,
+      "solar_seal_slug": "blue_eagle",
+      "wavespell": 11,
+      "castle": 3
+    },
+    {
+      "kin": 136,
+      "tone": 6,
+      "solar_seal_slug": "yellow_warrior",
+      "wavespell": 11,
+      "castle": 3
+    },
+    {
+      "kin": 137,
+      "tone": 7,
+      "solar_seal_slug": "red_earth",
+      "wavespell": 11,
+      "castle": 3
+    },
+    {
+      "kin": 138,
+      "tone": 8,
+      "solar_seal_slug": "white_mirror",
+      "wavespell": 11,
+      "castle": 3
+    },
+    {
+      "kin": 139,
+      "tone": 9,
+      "solar_seal_slug": "blue_storm",
+      "wavespell": 11,
+      "castle": 3
+    },
+    {
+      "kin": 140,
+      "tone": 10,
+      "solar_seal_slug": "yellow_sun",
+      "wavespell": 11,
+      "castle": 3
+    },
+    {
+      "kin": 141,
+      "tone": 11,
+      "solar_seal_slug": "red_dragon",
+      "wavespell": 11,
+      "castle": 3
+    },
+    {
+      "kin": 142,
+      "tone": 12,
+      "solar_seal_slug": "white_wind",
+      "wavespell": 11,
+      "castle": 3
+    },
+    {
+      "kin": 143,
+      "tone": 13,
+      "solar_seal_slug": "blue_night",
+      "wavespell": 11,
+      "castle": 3
+    },
+    {
+      "kin": 144,
+      "tone": 1,
+      "solar_seal_slug": "yellow_seed",
+      "wavespell": 12,
+      "castle": 3
+    },
+    {
+      "kin": 145,
+      "tone": 2,
+      "solar_seal_slug": "red_serpent",
+      "wavespell": 12,
+      "castle": 3
+    },
+    {
+      "kin": 146,
+      "tone": 3,
+      "solar_seal_slug": "white_worldbridger",
+      "wavespell": 12,
+      "castle": 3
+    },
+    {
+      "kin": 147,
+      "tone": 4,
+      "solar_seal_slug": "blue_hand",
+      "wavespell": 12,
+      "castle": 3
+    },
+    {
+      "kin": 148,
+      "tone": 5,
+      "solar_seal_slug": "yellow_star",
+      "wavespell": 12,
+      "castle": 3
+    },
+    {
+      "kin": 149,
+      "tone": 6,
+      "solar_seal_slug": "red_moon",
+      "wavespell": 12,
+      "castle": 3
+    },
+    {
+      "kin": 150,
+      "tone": 7,
+      "solar_seal_slug": "white_dog",
+      "wavespell": 12,
+      "castle": 3
+    },
+    {
+      "kin": 151,
+      "tone": 8,
+      "solar_seal_slug": "blue_monkey",
+      "wavespell": 12,
+      "castle": 3
+    },
+    {
+      "kin": 152,
+      "tone": 9,
+      "solar_seal_slug": "yellow_human",
+      "wavespell": 12,
+      "castle": 3
+    },
+    {
+      "kin": 153,
+      "tone": 10,
+      "solar_seal_slug": "red_skywalker",
+      "wavespell": 12,
+      "castle": 3
+    },
+    {
+      "kin": 154,
+      "tone": 11,
+      "solar_seal_slug": "white_wizard",
+      "wavespell": 12,
+      "castle": 3
+    },
+    {
+      "kin": 155,
+      "tone": 12,
+      "solar_seal_slug": "blue_eagle",
+      "wavespell": 12,
+      "castle": 3
+    },
+    {
+      "kin": 156,
+      "tone": 13,
+      "solar_seal_slug": "yellow_warrior",
+      "wavespell": 12,
+      "castle": 3
+    },
+    {
+      "kin": 157,
+      "tone": 1,
+      "solar_seal_slug": "red_earth",
+      "wavespell": 13,
+      "castle": 4
+    },
+    {
+      "kin": 158,
+      "tone": 2,
+      "solar_seal_slug": "white_mirror",
+      "wavespell": 13,
+      "castle": 4
+    },
+    {
+      "kin": 159,
+      "tone": 3,
+      "solar_seal_slug": "blue_storm",
+      "wavespell": 13,
+      "castle": 4
+    },
+    {
+      "kin": 160,
+      "tone": 4,
+      "solar_seal_slug": "yellow_sun",
+      "wavespell": 13,
+      "castle": 4
+    },
+    {
+      "kin": 161,
+      "tone": 5,
+      "solar_seal_slug": "red_dragon",
+      "wavespell": 13,
+      "castle": 4
+    },
+    {
+      "kin": 162,
+      "tone": 6,
+      "solar_seal_slug": "white_wind",
+      "wavespell": 13,
+      "castle": 4
+    },
+    {
+      "kin": 163,
+      "tone": 7,
+      "solar_seal_slug": "blue_night",
+      "wavespell": 13,
+      "castle": 4
+    },
+    {
+      "kin": 164,
+      "tone": 8,
+      "solar_seal_slug": "yellow_seed",
+      "wavespell": 13,
+      "castle": 4
+    },
+    {
+      "kin": 165,
+      "tone": 9,
+      "solar_seal_slug": "red_serpent",
+      "wavespell": 13,
+      "castle": 4
+    },
+    {
+      "kin": 166,
+      "tone": 10,
+      "solar_seal_slug": "white_worldbridger",
+      "wavespell": 13,
+      "castle": 4
+    },
+    {
+      "kin": 167,
+      "tone": 11,
+      "solar_seal_slug": "blue_hand",
+      "wavespell": 13,
+      "castle": 4
+    },
+    {
+      "kin": 168,
+      "tone": 12,
+      "solar_seal_slug": "yellow_star",
+      "wavespell": 13,
+      "castle": 4
+    },
+    {
+      "kin": 169,
+      "tone": 13,
+      "solar_seal_slug": "red_moon",
+      "wavespell": 13,
+      "castle": 4
+    },
+    {
+      "kin": 170,
+      "tone": 1,
+      "solar_seal_slug": "white_dog",
+      "wavespell": 14,
+      "castle": 4
+    },
+    {
+      "kin": 171,
+      "tone": 2,
+      "solar_seal_slug": "blue_monkey",
+      "wavespell": 14,
+      "castle": 4
+    },
+    {
+      "kin": 172,
+      "tone": 3,
+      "solar_seal_slug": "yellow_human",
+      "wavespell": 14,
+      "castle": 4
+    },
+    {
+      "kin": 173,
+      "tone": 4,
+      "solar_seal_slug": "red_skywalker",
+      "wavespell": 14,
+      "castle": 4
+    },
+    {
+      "kin": 174,
+      "tone": 5,
+      "solar_seal_slug": "white_wizard",
+      "wavespell": 14,
+      "castle": 4
+    },
+    {
+      "kin": 175,
+      "tone": 6,
+      "solar_seal_slug": "blue_eagle",
+      "wavespell": 14,
+      "castle": 4
+    },
+    {
+      "kin": 176,
+      "tone": 7,
+      "solar_seal_slug": "yellow_warrior",
+      "wavespell": 14,
+      "castle": 4
+    },
+    {
+      "kin": 177,
+      "tone": 8,
+      "solar_seal_slug": "red_earth",
+      "wavespell": 14,
+      "castle": 4
+    },
+    {
+      "kin": 178,
+      "tone": 9,
+      "solar_seal_slug": "white_mirror",
+      "wavespell": 14,
+      "castle": 4
+    },
+    {
+      "kin": 179,
+      "tone": 10,
+      "solar_seal_slug": "blue_storm",
+      "wavespell": 14,
+      "castle": 4
+    },
+    {
+      "kin": 180,
+      "tone": 11,
+      "solar_seal_slug": "yellow_sun",
+      "wavespell": 14,
+      "castle": 4
+    },
+    {
+      "kin": 181,
+      "tone": 12,
+      "solar_seal_slug": "red_dragon",
+      "wavespell": 14,
+      "castle": 4
+    },
+    {
+      "kin": 182,
+      "tone": 13,
+      "solar_seal_slug": "white_wind",
+      "wavespell": 14,
+      "castle": 4
+    },
+    {
+      "kin": 183,
+      "tone": 1,
+      "solar_seal_slug": "blue_night",
+      "wavespell": 15,
+      "castle": 4
+    },
+    {
+      "kin": 184,
+      "tone": 2,
+      "solar_seal_slug": "yellow_seed",
+      "wavespell": 15,
+      "castle": 4
+    },
+    {
+      "kin": 185,
+      "tone": 3,
+      "solar_seal_slug": "red_serpent",
+      "wavespell": 15,
+      "castle": 4
+    },
+    {
+      "kin": 186,
+      "tone": 4,
+      "solar_seal_slug": "white_worldbridger",
+      "wavespell": 15,
+      "castle": 4
+    },
+    {
+      "kin": 187,
+      "tone": 5,
+      "solar_seal_slug": "blue_hand",
+      "wavespell": 15,
+      "castle": 4
+    },
+    {
+      "kin": 188,
+      "tone": 6,
+      "solar_seal_slug": "yellow_star",
+      "wavespell": 15,
+      "castle": 4
+    },
+    {
+      "kin": 189,
+      "tone": 7,
+      "solar_seal_slug": "red_moon",
+      "wavespell": 15,
+      "castle": 4
+    },
+    {
+      "kin": 190,
+      "tone": 8,
+      "solar_seal_slug": "white_dog",
+      "wavespell": 15,
+      "castle": 4
+    },
+    {
+      "kin": 191,
+      "tone": 9,
+      "solar_seal_slug": "blue_monkey",
+      "wavespell": 15,
+      "castle": 4
+    },
+    {
+      "kin": 192,
+      "tone": 10,
+      "solar_seal_slug": "yellow_human",
+      "wavespell": 15,
+      "castle": 4
+    },
+    {
+      "kin": 193,
+      "tone": 11,
+      "solar_seal_slug": "red_skywalker",
+      "wavespell": 15,
+      "castle": 4
+    },
+    {
+      "kin": 194,
+      "tone": 12,
+      "solar_seal_slug": "white_wizard",
+      "wavespell": 15,
+      "castle": 4
+    },
+    {
+      "kin": 195,
+      "tone": 13,
+      "solar_seal_slug": "blue_eagle",
+      "wavespell": 15,
+      "castle": 4
+    },
+    {
+      "kin": 196,
+      "tone": 1,
+      "solar_seal_slug": "yellow_warrior",
+      "wavespell": 16,
+      "castle": 4
+    },
+    {
+      "kin": 197,
+      "tone": 2,
+      "solar_seal_slug": "red_earth",
+      "wavespell": 16,
+      "castle": 4
+    },
+    {
+      "kin": 198,
+      "tone": 3,
+      "solar_seal_slug": "white_mirror",
+      "wavespell": 16,
+      "castle": 4
+    },
+    {
+      "kin": 199,
+      "tone": 4,
+      "solar_seal_slug": "blue_storm",
+      "wavespell": 16,
+      "castle": 4
+    },
+    {
+      "kin": 200,
+      "tone": 5,
+      "solar_seal_slug": "yellow_sun",
+      "wavespell": 16,
+      "castle": 4
+    },
+    {
+      "kin": 201,
+      "tone": 6,
+      "solar_seal_slug": "red_dragon",
+      "wavespell": 16,
+      "castle": 4
+    },
+    {
+      "kin": 202,
+      "tone": 7,
+      "solar_seal_slug": "white_wind",
+      "wavespell": 16,
+      "castle": 4
+    },
+    {
+      "kin": 203,
+      "tone": 8,
+      "solar_seal_slug": "blue_night",
+      "wavespell": 16,
+      "castle": 4
+    },
+    {
+      "kin": 204,
+      "tone": 9,
+      "solar_seal_slug": "yellow_seed",
+      "wavespell": 16,
+      "castle": 4
+    },
+    {
+      "kin": 205,
+      "tone": 10,
+      "solar_seal_slug": "red_serpent",
+      "wavespell": 16,
+      "castle": 4
+    },
+    {
+      "kin": 206,
+      "tone": 11,
+      "solar_seal_slug": "white_worldbridger",
+      "wavespell": 16,
+      "castle": 4
+    },
+    {
+      "kin": 207,
+      "tone": 12,
+      "solar_seal_slug": "blue_hand",
+      "wavespell": 16,
+      "castle": 4
+    },
+    {
+      "kin": 208,
+      "tone": 13,
+      "solar_seal_slug": "yellow_star",
+      "wavespell": 16,
+      "castle": 4
+    },
+    {
+      "kin": 209,
+      "tone": 1,
+      "solar_seal_slug": "red_moon",
+      "wavespell": 17,
+      "castle": 5
+    },
+    {
+      "kin": 210,
+      "tone": 2,
+      "solar_seal_slug": "white_dog",
+      "wavespell": 17,
+      "castle": 5
+    },
+    {
+      "kin": 211,
+      "tone": 3,
+      "solar_seal_slug": "blue_monkey",
+      "wavespell": 17,
+      "castle": 5
+    },
+    {
+      "kin": 212,
+      "tone": 4,
+      "solar_seal_slug": "yellow_human",
+      "wavespell": 17,
+      "castle": 5
+    },
+    {
+      "kin": 213,
+      "tone": 5,
+      "solar_seal_slug": "red_skywalker",
+      "wavespell": 17,
+      "castle": 5
+    },
+    {
+      "kin": 214,
+      "tone": 6,
+      "solar_seal_slug": "white_wizard",
+      "wavespell": 17,
+      "castle": 5
+    },
+    {
+      "kin": 215,
+      "tone": 7,
+      "solar_seal_slug": "blue_eagle",
+      "wavespell": 17,
+      "castle": 5
+    },
+    {
+      "kin": 216,
+      "tone": 8,
+      "solar_seal_slug": "yellow_warrior",
+      "wavespell": 17,
+      "castle": 5
+    },
+    {
+      "kin": 217,
+      "tone": 9,
+      "solar_seal_slug": "red_earth",
+      "wavespell": 17,
+      "castle": 5
+    },
+    {
+      "kin": 218,
+      "tone": 10,
+      "solar_seal_slug": "white_mirror",
+      "wavespell": 17,
+      "castle": 5
+    },
+    {
+      "kin": 219,
+      "tone": 11,
+      "solar_seal_slug": "blue_storm",
+      "wavespell": 17,
+      "castle": 5
+    },
+    {
+      "kin": 220,
+      "tone": 12,
+      "solar_seal_slug": "yellow_sun",
+      "wavespell": 17,
+      "castle": 5
+    },
+    {
+      "kin": 221,
+      "tone": 13,
+      "solar_seal_slug": "red_dragon",
+      "wavespell": 17,
+      "castle": 5
+    },
+    {
+      "kin": 222,
+      "tone": 1,
+      "solar_seal_slug": "white_wind",
+      "wavespell": 18,
+      "castle": 5
+    },
+    {
+      "kin": 223,
+      "tone": 2,
+      "solar_seal_slug": "blue_night",
+      "wavespell": 18,
+      "castle": 5
+    },
+    {
+      "kin": 224,
+      "tone": 3,
+      "solar_seal_slug": "yellow_seed",
+      "wavespell": 18,
+      "castle": 5
+    },
+    {
+      "kin": 225,
+      "tone": 4,
+      "solar_seal_slug": "red_serpent",
+      "wavespell": 18,
+      "castle": 5
+    },
+    {
+      "kin": 226,
+      "tone": 5,
+      "solar_seal_slug": "white_worldbridger",
+      "wavespell": 18,
+      "castle": 5
+    },
+    {
+      "kin": 227,
+      "tone": 6,
+      "solar_seal_slug": "blue_hand",
+      "wavespell": 18,
+      "castle": 5
+    },
+    {
+      "kin": 228,
+      "tone": 7,
+      "solar_seal_slug": "yellow_star",
+      "wavespell": 18,
+      "castle": 5
+    },
+    {
+      "kin": 229,
+      "tone": 8,
+      "solar_seal_slug": "red_moon",
+      "wavespell": 18,
+      "castle": 5
+    },
+    {
+      "kin": 230,
+      "tone": 9,
+      "solar_seal_slug": "white_dog",
+      "wavespell": 18,
+      "castle": 5
+    },
+    {
+      "kin": 231,
+      "tone": 10,
+      "solar_seal_slug": "blue_monkey",
+      "wavespell": 18,
+      "castle": 5
+    },
+    {
+      "kin": 232,
+      "tone": 11,
+      "solar_seal_slug": "yellow_human",
+      "wavespell": 18,
+      "castle": 5
+    },
+    {
+      "kin": 233,
+      "tone": 12,
+      "solar_seal_slug": "red_skywalker",
+      "wavespell": 18,
+      "castle": 5
+    },
+    {
+      "kin": 234,
+      "tone": 13,
+      "solar_seal_slug": "white_wizard",
+      "wavespell": 18,
+      "castle": 5
+    },
+    {
+      "kin": 235,
+      "tone": 1,
+      "solar_seal_slug": "blue_eagle",
+      "wavespell": 19,
+      "castle": 5
+    },
+    {
+      "kin": 236,
+      "tone": 2,
+      "solar_seal_slug": "yellow_warrior",
+      "wavespell": 19,
+      "castle": 5
+    },
+    {
+      "kin": 237,
+      "tone": 3,
+      "solar_seal_slug": "red_earth",
+      "wavespell": 19,
+      "castle": 5
+    },
+    {
+      "kin": 238,
+      "tone": 4,
+      "solar_seal_slug": "white_mirror",
+      "wavespell": 19,
+      "castle": 5
+    },
+    {
+      "kin": 239,
+      "tone": 5,
+      "solar_seal_slug": "blue_storm",
+      "wavespell": 19,
+      "castle": 5
+    },
+    {
+      "kin": 240,
+      "tone": 6,
+      "solar_seal_slug": "yellow_sun",
+      "wavespell": 19,
+      "castle": 5
+    },
+    {
+      "kin": 241,
+      "tone": 7,
+      "solar_seal_slug": "red_dragon",
+      "wavespell": 19,
+      "castle": 5
+    },
+    {
+      "kin": 242,
+      "tone": 8,
+      "solar_seal_slug": "white_wind",
+      "wavespell": 19,
+      "castle": 5
+    },
+    {
+      "kin": 243,
+      "tone": 9,
+      "solar_seal_slug": "blue_night",
+      "wavespell": 19,
+      "castle": 5
+    },
+    {
+      "kin": 244,
+      "tone": 10,
+      "solar_seal_slug": "yellow_seed",
+      "wavespell": 19,
+      "castle": 5
+    },
+    {
+      "kin": 245,
+      "tone": 11,
+      "solar_seal_slug": "red_serpent",
+      "wavespell": 19,
+      "castle": 5
+    },
+    {
+      "kin": 246,
+      "tone": 12,
+      "solar_seal_slug": "white_worldbridger",
+      "wavespell": 19,
+      "castle": 5
+    },
+    {
+      "kin": 247,
+      "tone": 13,
+      "solar_seal_slug": "blue_hand",
+      "wavespell": 19,
+      "castle": 5
+    },
+    {
+      "kin": 248,
+      "tone": 1,
+      "solar_seal_slug": "yellow_star",
+      "wavespell": 20,
+      "castle": 5
+    },
+    {
+      "kin": 249,
+      "tone": 2,
+      "solar_seal_slug": "red_moon",
+      "wavespell": 20,
+      "castle": 5
+    },
+    {
+      "kin": 250,
+      "tone": 3,
+      "solar_seal_slug": "white_dog",
+      "wavespell": 20,
+      "castle": 5
+    },
+    {
+      "kin": 251,
+      "tone": 4,
+      "solar_seal_slug": "blue_monkey",
+      "wavespell": 20,
+      "castle": 5
+    },
+    {
+      "kin": 252,
+      "tone": 5,
+      "solar_seal_slug": "yellow_human",
+      "wavespell": 20,
+      "castle": 5
+    },
+    {
+      "kin": 253,
+      "tone": 6,
+      "solar_seal_slug": "red_skywalker",
+      "wavespell": 20,
+      "castle": 5
+    },
+    {
+      "kin": 254,
+      "tone": 7,
+      "solar_seal_slug": "white_wizard",
+      "wavespell": 20,
+      "castle": 5
+    },
+    {
+      "kin": 255,
+      "tone": 8,
+      "solar_seal_slug": "blue_eagle",
+      "wavespell": 20,
+      "castle": 5
+    },
+    {
+      "kin": 256,
+      "tone": 9,
+      "solar_seal_slug": "yellow_warrior",
+      "wavespell": 20,
+      "castle": 5
+    },
+    {
+      "kin": 257,
+      "tone": 10,
+      "solar_seal_slug": "red_earth",
+      "wavespell": 20,
+      "castle": 5
+    },
+    {
+      "kin": 258,
+      "tone": 11,
+      "solar_seal_slug": "white_mirror",
+      "wavespell": 20,
+      "castle": 5
+    },
+    {
+      "kin": 259,
+      "tone": 12,
+      "solar_seal_slug": "blue_storm",
+      "wavespell": 20,
+      "castle": 5
+    },
+    {
+      "kin": 260,
+      "tone": 13,
+      "solar_seal_slug": "yellow_sun",
+      "wavespell": 20,
+      "castle": 5
+    }
+  ]
+}

@@ -22,7 +22,7 @@ Phase 1 = Engine Evaluation Sprint:
   - Kits: packages/engines/{hd,ziwei,bazi,astro,maya,jyotish}/
   - NEU: Ziwei Doushu (iztro, MIT, TS-nativ, 3.5k Stars) als chinesisches Hauptsystem
   - NEU: @yhjs/bazi (MIT, TS) ersetzt alvamind (Luck Cycles + Nayin)
-  - NEU: CircularNatalHoroscopeJS (Unlicense, TS, kein Swiss-Eph)
+  - NEU: Westl. Astro: **celestine** (MIT, TS in `packages/engines`)
   - Jyotish: PyJHora (AGPL) als isolierter Microservice BEHALTEN (max. K1/K2-Tiefe)
   - Architektur: Hybrid TS-first (TS in Next.js + Python-Microservice NUR für Jyotish)
   - Kein Spark für Engines (Spark = nur GPU: MinerU, LLM)
@@ -30,7 +30,7 @@ Phase 1 = Engine Evaluation Sprint:
   - Evidenzklassen: A (math. sicher) → D (hypothetisch)
   - Zwei System-Rollen: 'calculation' (Engines) + 'structural' (I Ging, Kabbalah, Chakras)
   - IC-Sprache entsteht aus Konvergenz-Klumpen (Datenschicht E / Meta-Knoten)
-  - Spike-Reihenfolge (aktuell): Ziwei → BaZi → HD → Astro → Maya → Jyotish
+  - Staffel Phase 1 (Ist): Ziwei → BaZi → Jyotish → HD → Astro → Maya Tzolkin (**v1** + Step 3) → Nine Star Ki (**v1** + Step 3) → Numerologie → Akan (Engines + API-Routen + v0-Kataloge)
   - Ziel: Engines sauber integriert + vollständige Strukturbäume statt 832er-Skeleton
 
 Dokumenten-Landkarte:
@@ -75,7 +75,7 @@ Wichtige Entscheidungen:
 - PyJHora (AGPL): BEHALTEN als isolierter Microservice (Code open-sourced, App privat)
 - Ziwei Doushu: iztro (MIT, TS) — größter Kit-Fund
 - BaZi: @yhjs/bazi (MIT, TS) ersetzt alvamind
-- Westl. Astro: CircularNatalHoroscopeJS (Unlicense, kein Swiss-Eph-Problem)
+- Westl. Astro: **celestine** (MIT, in `@ic/engines`)
 - node-jhora: PROPRIETÄR, NICHT nutzbar (trotz GitHub)
 - IC-Sprache: emergiert aus Konvergenz-Klumpen im KG, NICHT vorausgesetzte Hierarchie (architecture.md §15)
 ```

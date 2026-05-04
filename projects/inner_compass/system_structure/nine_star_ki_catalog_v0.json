@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "schema_version": "1.0.1",
+    "system_id": "nine_star_ki",
+    "system_role": "calculation",
+    "description": "K2: Sterne 1–9 für Honmei (principal), Getsumei (character/month), energetic (81er-Tabelle) + Later-Heaven-Elemente; Engine ic_nine_star_ki_v1.",
+    "source": "IC engines nine-star-ki.ts; NSK-Monatsmuster + 81-Kombinationen (Lo Shu); Elementgruppierung üblicher Lehrmittel",
+    "evidence_class": "B",
+    "generated_at": "2026-04-16T00:00:00.000Z",
+    "engine": "ic_nine_star_ki_v1",
+    "ki_year_boundary": "feb_4_local_calendar",
+    "solar_months": "twelve_segments_fixed_md",
+    "cross_system_links": {
+      "luoshu": "Sternnummern 1–9 ↔ Luoshu-Positionen (siehe luoshu_catalog_v0.json)"
+    }
+  },
+  "stars": [
+    { "num": 1, "element": "water", "canonical_id": "nsk.principal_star.1" },
+    { "num": 2, "element": "earth", "canonical_id": "nsk.principal_star.2" },
+    { "num": 3, "element": "tree", "canonical_id": "nsk.principal_star.3" },
+    { "num": 4, "element": "tree", "canonical_id": "nsk.principal_star.4" },
+    { "num": 5, "element": "earth", "canonical_id": "nsk.principal_star.5" },
+    { "num": 6, "element": "metal", "canonical_id": "nsk.principal_star.6" },
+    { "num": 7, "element": "metal", "canonical_id": "nsk.principal_star.7" },
+    { "num": 8, "element": "earth", "canonical_id": "nsk.principal_star.8" },
+    { "num": 9, "element": "fire", "canonical_id": "nsk.principal_star.9" }
+  ]
+}

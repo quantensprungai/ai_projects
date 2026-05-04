@@ -105,7 +105,7 @@ PHASE 4: META-KNOTEN
 | PDF-Parsing | MinerU (Open Source, GPU auf Spark) |
 | LLM-Inferenz | SGLang/vLLM auf Spark, OpenAI-kompatible API |
 | Worker | Python systemd-Services auf Spark, via Supabase service_role |
-| Chart-Engines (TS) | iztro (Ziwei/MIT), @yhjs/bazi (BaZi/MIT), CircularNatalHoroscopeJS (Astro/Unlicense) |
+| Chart-Engines (TS) | iztro (Ziwei/MIT), @yhjs/bazi (BaZi/MIT), **celestine** (Westl. Astro/MIT, `packages/engines`) |
 | Chart-Engines (Python) | dturkuler/humandesign_api (HD/GPL-3.0 isoliert), PyJHora (Jyotish/AGPL isoliert), pyswisseph |
 | Embeddings | text-embedding-3-large oder lokales Modell, in pgvector |
 | VPN | Tailscale (Spark ↔ Supabase ↔ Dev) |
@@ -122,12 +122,11 @@ PHASE 4: META-KNOTEN
         ↕ Tailscale VPN ↕
 [Dev Machine / Vercel / App-Host]
 ├── Next.js App (Makerkit)
-│     ├── TS-Engines: hdkit, alvamind, @swisseph/node
-│     └── API Routes: HD, BaZi, Maya, Numerologie, NSK, Akan
-├── Python Microservice (Docker, FastAPI)
-│     ├── VedAstro.Python / jyotishganit → Jyotish
-│     ├── pyswisseph + immanuel → Westl. Astrologie
-│     └── Transit-Service (aktuelle Positionen)
+│     ├── `@ic/engines` (TS, in-process): `iztro` (Ziwei), `@yhjs/bazi` (BaZi), `celestine` (westl. Astro)
+│     └── API / Server: Chart-Endpunkte rufen Engines auf; HD + Jyotish per HTTP (siehe unten)
+├── Python-Microservices (Docker, FastAPI — je eigener Container, Lizenz-Isolation)
+│     ├── `services/hd/` → Human Design (`dturkuler/humandesign_api` + `pyswisseph`), Env `HD_SERVICE_URL`
+│     └── `services/jyotish/` → Jyotish (PyJHora + `pyswisseph`), Env `JYOTISH_SERVICE_URL`
 ├── Supabase Local (Dev)
 └── ai_projects/ (Docs+Infra)
 ```
@@ -156,13 +155,13 @@ Einzige multilinguale Schicht ist die letzte (Synthesis Wordings). KG bleibt spr
 | **Coverage-Matrix** (coverage_matrix_v01.csv) | `projects/inner_compass/reference/` oder `meta/` | Nein | Planung/Vollständigkeits-Check. Kein Runtime-Bedarf. |
 | **Projektplan / IC_Projektplan** | `projects/inner_compass/reference/` | Nein | Doku. |
 | **KG-Schema, Extraction Prompts** (IC_KG_Node_Edge_Schema, IC_Extraction_Prompts) | `projects/inner_compass/transfer/` | Nein | Specs für Implementierung; Code orientiert sich daran, speichert sie nicht. |
-| **Chart-Engine-Kits** (hdkit, alvamind, pyswisseph, tzolkin-calendar, PyJHora, …) | — | **Ja, im Code-Repo** | Geklonte OSS-Kits leben unter `code/inner_compass_app/packages/engines/<system>/`. Werden für (1) Struktur-Parsing (Phase 0) und (2) Laufzeit-Berechnung (User-Charts) genutzt. Details: [engines.md §6](engines.md#6-wo-die-kits-wohnen--teil-des-app-repos). |
+| **Chart-Engine-Kits & Services** (`iztro`, `@yhjs/bazi`, `celestine`; HD-/Jyotish-Microservices mit `humandesign_api`, PyJHora, `pyswisseph`) | — | **Ja, im Code-Repo** | TS-Paket `packages/engines/` (npm-Abhängigkeiten + Validierung); Python unter `services/hd/` und `services/jyotish/` (HTTP, keine Chart-Engines im Spark-Worker). Für (1) Struktur/Katalog-Validierung und (2) Laufzeit-Berechnung. Details: [engines.md §6](engines.md#6-wo-die-kits-wohnen--teil-des-app-repos). |
 
 **Konkret für das Code-Repo (inner_compass_app):**
 
 - **Falls Seed-Script/Worker im Monorepo-Kontext laufen** (z.B. von ai_projects-Root): Pfad auf Deskriptoren = `projects/inner_compass/system_descriptors/` (relativ zum Workspace-Root). Keine Kopie nötig.
 - **Falls App-Repo allein deployed wird** (ohne projects/): Deskriptoren in den Code kopieren, z.B. `apps/web/data/system_descriptors/` oder `packages/ic-data/descriptors/`. In README oder Doku festhalten: „Source of Truth: projects/inner_compass/system_descriptors/; bei Änderungen dort in den Code syncen.“
-- **Engine-Kits:** Immer im App-Repo unter `packages/engines/<system>/` (geklont oder Submodule). Kein separates Repo — ein Clone = Struktur-Parser + Laufzeit-Engines.
+- **Engines:** TS in `packages/engines/` (ein Paket `@ic/engines`, mehrere System-Module unter `src/`). Python-Microservices in `services/hd/` und `services/jyotish/` (vendored/cloned deps dort dokumentiert). Kein separates Engine-Repo.
 
 **Neue Planungs-Artefakte** (Taxonomie, Coverage-Matrix, Projektplan): immer unter `projects/inner_compass/` anlegen (reference/ oder eigener Ordner `meta/`), **nicht** ins Code-Repo legen.
 

@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "schema_version": "1.0.0",
+    "system_id": "numerology",
+    "system_role": "calculation",
+    "description": "K2 v0: Pythagoreische Basiszahlen 1–9 für Life Path / Destiny / Soul Urge / Personality; Meisterzahlen 11/22/33 in Engine-Reduktion.",
+    "source": "IC engines numerology.ts",
+    "evidence_class": "B",
+    "generated_at": "2026-04-20T00:00:00.000Z",
+    "school_v0": "pythagorean"
+  },
+  "numbers": [
+    { "value": 1, "canonical_ids": ["num.life_path.1", "num.destiny.1", "num.soul_urge.1", "num.personality.1"] },
+    { "value": 2, "canonical_ids": ["num.life_path.2", "num.destiny.2", "num.soul_urge.2", "num.personality.2"] },
+    { "value": 3, "canonical_ids": ["num.life_path.3", "num.destiny.3", "num.soul_urge.3", "num.personality.3"] },
+    { "value": 4, "canonical_ids": ["num.life_path.4", "num.destiny.4", "num.soul_urge.4", "num.personality.4"] },
+    { "value": 5, "canonical_ids": ["num.life_path.5", "num.destiny.5", "num.soul_urge.5", "num.personality.5"] },
+    { "value": 6, "canonical_ids": ["num.life_path.6", "num.destiny.6", "num.soul_urge.6", "num.personality.6"] },
+    { "value": 7, "canonical_ids": ["num.life_path.7", "num.destiny.7", "num.soul_urge.7", "num.personality.7"] },
+    { "value": 8, "canonical_ids": ["num.life_path.8", "num.destiny.8", "num.soul_urge.8", "num.personality.8"] },
+    { "value": 9, "canonical_ids": ["num.life_path.9", "num.destiny.9", "num.soul_urge.9", "num.personality.9"] },
+    { "value": 11, "canonical_ids": ["num.life_path.11", "num.destiny.11", "num.soul_urge.11", "num.personality.11"] },
+    { "value": 22, "canonical_ids": ["num.life_path.22", "num.destiny.22", "num.soul_urge.22", "num.personality.22"] },
+    { "value": 33, "canonical_ids": ["num.life_path.33", "num.destiny.33", "num.soul_urge.33", "num.personality.33"] }
+  ]
+}
