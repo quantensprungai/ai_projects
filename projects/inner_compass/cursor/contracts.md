@@ -278,3 +278,42 @@ relationship_chart_type:
   branch_compare = BaZi Day-Branch-Vergleich
   kin_compare    = Maya Kin-Vergleich
 ```
+
+## 13. Chart-Compute-Metadaten (`compute_profile`)
+
+**Prinzip:** Für **Human Design** bleibt `system_id` **immer** `hd`. Tropical-, Sidereal- oder Hybrid-Berechnungen sind **kein** separates Rechensystem im Enum §4 — sie unterscheiden sich in der **astronomischen Konvention** und im **Engine-Lauf**, nicht in der Bedeutungs-Ontologie (`hd.gate.*` bleibt dieselbe ID-Familie).
+
+**Empfohlenes Feld** am **Chart-Snapshot**, Request-Payload oder serialisiertem Engine-Ergebnis (nebengeordnet zu Geburtsdaten):
+
+```json
+{
+  "compute_profile": {
+    "hd": {
+      "zodiac_mode": "tropical_ra_standard | sidereal | hybrid_design_tropical_personality_sidereal",
+      "sidereal": {
+        "ayanamsha": "lahiri | raman | krishnamurti | yukteshwar | fagan_bradley | custom | null",
+        "custom_degrees": "number | null"
+      },
+      "backend": {
+        "ephemeris": "swiss_ephemeris",
+        "engine_impl": "dturkuler_humandesign_api",
+        "engine_impl_version": "string | null"
+      }
+    }
+  }
+}
+```
+
+**Semantik:**
+
+| `zodiac_mode` | Anzeigename (UI, IC) | Bedeutung (IC) |
+|---------------|------------------------|----------------|
+| `tropical_ra_standard` | **Klassisches HD (tropical)** o. ä. | Default / Jovian-kompatibel: tropischer Tierkreis, gleiche Gate-Ableitung wie gängige Ra-/IHDS-Software (Referenz für Produktvergleiche). |
+| `sidereal` | **Sidereal HD** (+ gewähltes Ayanamsha im Untertitel) | Sämtliche für HD genutzten Planetenlangen sidereal (inkl. gewählter Ayanamsha); gleiche Longitude→Gate-Pipeline wie tropical, andere Eingabelangen. |
+| `hybrid_design_tropical_personality_sidereal` | **EarthStar Human Design** | IC-Hybrid: Design-Zeitpunkt / rote Seite tropical; Persönlichkeit / schwarze Seite sidereal — **nur** mit dokumentierter Engine-Version; Evidenz oft Klasse C/D (siehe `engines.md` §3). Produkt-/Doku-Name festgelegt in `reference/hd_compute_profiles_kg_and_roadmap.md`. |
+
+Anzeigenamen sind **keine** neuen `system_id`-Werte; sie dienen **Labels, Hilfetexten und Consent** — technisch maßgeblich bleibt `zodiac_mode`.
+
+**Vergleichbarkeit:** Composite, Synastry und „gleicher Mensch“ nur innerhalb **desselben** `compute_profile.hd`-Blocks — gemischte Modi nicht stillschweigend vergleichen.
+
+**Canonical IDs:** Unverändert `hd.gate.N`, `hd.type.*`, … — mehrere Modi erzeugen **unterschiedliche aktivierte Teilmengen** auf derselben Ontologie, keine neuen `system_id`-Werte.

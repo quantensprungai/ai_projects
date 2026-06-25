@@ -20,6 +20,7 @@
 | Phase 1 Engine-Integration pro System? | `reference/engine_integration_playbook.md` |
 | Struktur vs. Deskriptor vs. Seed, Kit-first, Ebenen? | `reference/structure_descriptor_seed.md` |
 | HD-Kit: Was steht in bodygraph-data/constants/hdkit? | `reference/hd_kit_structure_extraction.md` |
+| HD Tropical/Sidereal/Hybrid, KG, Roadmap | `reference/hd_compute_profiles_kg_and_roadmap.md` |
 | S5 E2E-Runbook (PDF → MinerU → LLM)? | `reference/s5_runbook.md` |
 | Reference nach Phasen gruppiert (Struktur/Pipeline/Produkt)? | `reference/README.md` |
 

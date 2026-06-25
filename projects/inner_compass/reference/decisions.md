@@ -4,6 +4,50 @@
 
 ---
 
+## 2026-05-07: Ur-Systeme — `kabbalah`-Split, `chakra` ein Pfad, I-Ging-AA-Auswahl (Wilhelm/Baynes + Legge)
+
+**Decision:**
+
+1. **`kabbalah`:** Zwei **`system_id`s**: **`kabbalah_jewish`** (klassisch / Sefer Yetzirah-Linie, Scholem/Idel, ggf. Zohar-Auszüge) und **`kabbalah_hermetic`** (Golden Dawn, Fortune, Regardie u. ä.). Crosswalk-Kanten nur explizit (`has_analogue`, …).
+
+2. **`chakra`:** **Ein** `system_id` **`chakra`**; Trennung klassisch vs. westlich über **`tradition`** + **`model`** (z. B. `tantra_classical`, `western_synthesis`), kein zweites `system_id` bis sich ein Pilot gegen beweist.
+
+3. **I Ging — welche AA-Treffer für IC `text_line: wilhelm_baynes` (engl. P0):**  
+   - **Primär (vollständige Bollingen-Ausgabe, Text + Material + Kommentare / Ten Wings je nach Auflage):** Princeton UP, **Wilhelm → Baynes** (Cary F.), **3rd ed. ca. 1967–1971**, **eine** große PDF-Datei mit bibliographisch klarem Umfang (ca. **700+ Seiten**). In der Trefferliste: z. B. **`The I ching; or, Book of changes_123862961`** oder **`_123768270`** (zlib, Princeton, lxii+740 S.) **oder** **`nexusstc/.../f53e2237935cf72214e6a2bcb0ad5b95.pdf`** (~23 MB) — **vor Download** Dateigröße/Beschreibung mit „3 books“, „commentaries“, „Ten Wings“ abgleichen.  
+   - **Alternativ robust:** `ia/ichingorbookofc00wilh.pdf` (Routledge & Kegan Paul **1950**, sehr ausführliches Inhaltsverzeichnis im Snippet) — wenn die Datei vollständig und gut OCR-tauglich ist.  
+   - **E-Book statt PDF:** Princeton-**EPUB** 1967/1971 (z. B. `069109750X_The.epub` oder `nexusstc/.../29ee70af8c8770cd40a81c385d1c85df.epub`) — für Lesen ok; **MinerU/Pipeline** bevorzugt oft **PDF**.  
+   - **Nicht** als K2-Primäranker: **Pocket**-Ausgaben, **stark gekürzte** Scans, **„Gary F. Baynes“**-Tippfehler-Metadaten (unsauber), Dateien **unter 1 MB** mit vollem Titel (meist Fragment), **chenjin5**/fragliche **MOBI/EPUB** mit ❌-Hinweis, **DJVU** (nur wenn ihr bewusst konvertiert).
+
+4. **I Ging — Zusatzwerk (K3, nicht Ersatz des Orakeltexts):** **`Understanding the I Ching: The Wilhelm Lectures on the Book of Changes`** (Hellmut + Richard, Princeton **1995** o. ä.) — z. B. zlib **`119130701`** oder **`119118554`** oder **`d7ccdfc52e41f03909ad6b37e83ee89a`**; **getrennt** speichern und mit `component: secondary_commentary` taggen.
+
+5. **I Ging — `text_line: legge` (P1):** **Dover**-Reprint *Sacred Books of the East* XVI, z. B. **`The I ching_123761840.pdf`** (1963, ~27 MB) **oder** die Chai-ed. **University Books 1964** (`I ching; Book of changes_121162061`) — **nicht** Treffer, bei denen der Metadatenblock eindeutig **Tao Te Ching** / falsches Werk ist.
+
+6. **Spanisch** (`Yi king : libro de las mutaciones`, Mexico 1999): **optional** zweite Datei für **`language: es`** + `text_line: wilhelm_spanish` — nur wenn ihr spanische K3/K4 im KG wollt; **nicht** statt der englischen Bollingen-Basis.
+
+**Rationale:** K2-Anker muss **eindeutig reproduzierbar** und **vollständig** (Hexagramme + traditionelle Schichten) sein; Dubletten und Schrott-Treffer verwässern Provenance. Split Kabbalah war in `ontology_policy.md` begründet; Chakra bleibt ein Graph bis zur Evidenz des Gegenteils.
+
+**Consequences:** `entity_registry_iching_v01.json` (o. ä.) mit `known_works`-Einträgen inkl. **AA-MD5** nach verifiziertem Download; `literature_canon_by_scope.md` §6.1 um **„gewählte Referenzdatei“** ergänzen sobald MD5 feststeht; Toolkit/VM-Profil `iching_content` später analog HD.
+
+---
+
+**Decision:** Der Rechenmodus `hybrid_design_tropical_personality_sidereal` (`compute_profile.hd`, `cursor/contracts.md` §13) heißt in **UI und Doku** **EarthStar Human Design**. Technische Keys und `system_id: 'hd'` unverändert; Anzeigename in §13-Tabelle.
+
+**Rationale:** Verständlicher, markenfähiger Name innerhalb von IC; klare Abgrenzung zu Jovian-„offiziell“; API bleibt stabil über Enum.
+
+**Consequences:** Copy, Consent-Banner für Erstnutzung, Hilfetexte; Side-by-Side- und Dropdown-Spezifikation in `reference/hd_compute_profiles_kg_and_roadmap.md` §6.1.
+
+---
+
+## 2026-05-06: Human Design — Rechenmodi ohne neues `system_id` (`compute_profile`)
+
+**Decision:** Unterschiedliche astronomische Konventionen für HD (**tropical Ra/Jovian-Standard**, **sidereal**, **Hybrid Design/Persönlichkeit**) werden **nicht** als extra `system_id` modelliert. Stattdessen bleibt **`system_id: 'hd'`**; der Modus steckt in **`compute_profile.hd`** (siehe **`cursor/contracts.md` §13**): `zodiac_mode`, optional `sidereal.ayanamsha`, `backend` (Swiss Ephemeris + Engine-Paket/Version).
+
+**Rationale:** Canonical IDs (`hd.gate.N`, …) sind **eine** Ontologie; mehrere Modi ändern **aktivierte Teilmengen**, nicht die Bedeutungs-Adressierung. So bleiben KG-Seed und Literatur an **denselben** Knoten hängbar; Vergleichbarkeit von Charts ist über **`compute_profile`** explizit und API-neutral.
+
+**Consequences:** Chart-Snapshots und Engine-Requests müssen **`compute_profile`** persistieren; UI und Vergleiche (Composite etc.) nur **innerhalb desselben Profils**. Detailplan und K1–K4-Einordnung: **`reference/hd_compute_profiles_kg_and_roadmap.md`**.
+
+---
+
 ## 2026-04-16: Nine Star Ki — K1/K2 v1 (Tabellen, Sonnenmonate, energetischer Stern)
 
 **Decision:** `@ic/engines` **Nine Star Ki** auf **v1** gehoben: **Honmei** weiter aus **Ki-Jahr** (lokaler **4. Feb.**-Grenze) mit **Jahres-Stern-Overrides** wo die einfache Ziffernregel von Standardtabellen abweicht; **Sonderfall** Geburt **Gregorianisch 1986** mit **Ki-Jahr 1985** → Honmei-Basisjahr **1984** (übliche Sonoda/Tabellenkorrektur). **Getsumei** nicht mehr über `wrap9(Honmei − Monatsindex)`, sondern über **12×9-Monatsmuster** (inkl. Anomalie Hauptstern 5 Okt–Dez). **Dritter Stern (energetic / 81er-Tabelle)** aus **(Honmei, Getsumei)**. **Sonnenmonate** als **12 feste Monat/Tag-Schnitte** (Li Chun 4. Feb. … Kleine Kälte 6. Jan.), **ohne** exakte Solar-Term-Uhrzeit.

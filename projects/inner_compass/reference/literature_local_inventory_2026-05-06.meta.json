@@ -1,0 +1,17 @@
+{
+  "source_root": "C:\\Users\\Admin105\\Downloads\\Literatur",
+  "inventory_csv": "literature_local_inventory_2026-05-06.csv",
+  "generated": "2026-05-06",
+  "file_counts_by_bucket": {
+    "ra_root": 52,
+    "andere": 16,
+    "archiv": 4
+  },
+  "total_files": 72,
+  "notes": [
+    "Zählung aus CSV; maßgeblich ist literature_local_inventory_2026-05-06.csv.",
+    "Rudd (Gene Keys) in diesem Ordner absichtlich leer — noch zu beschaffen.",
+    "Spalte md5_annas: erstes 32-hex-Vorkommen im Dateinamen (meist AA-MD5).",
+    "Titel/Autor aus ' -- '-Split des Dateinamens; bei Abweichungen manuell korrigieren."
+  ]
+}

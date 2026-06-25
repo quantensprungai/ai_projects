@@ -24,7 +24,7 @@ Phase 1 = Engine Evaluation Sprint:
   - NEU: @yhjs/bazi (MIT, TS) ersetzt alvamind (Luck Cycles + Nayin)
   - NEU: Westl. Astro: **celestine** (MIT, TS in `packages/engines`)
   - Jyotish: PyJHora (AGPL) als isolierter Microservice BEHALTEN (max. K1/K2-Tiefe)
-  - Architektur: Hybrid TS-first (TS in Next.js + Python-Microservice NUR für Jyotish)
+  - Architektur: Hybrid TS-first (TS in Next.js + Python-Microservices für HD + Jyotish)
   - Kein Spark für Engines (Spark = nur GPU: MinerU, LLM)
   - K1–K4 Framework: K1+K2 aus Kits (~40%), K3+K4 aus Literatur-PDFs (~60%)
   - Evidenzklassen: A (math. sicher) → D (hypothetisch)
@@ -32,6 +32,7 @@ Phase 1 = Engine Evaluation Sprint:
   - IC-Sprache entsteht aus Konvergenz-Klumpen (Datenschicht E / Meta-Knoten)
   - Staffel Phase 1 (Ist): Ziwei → BaZi → Jyotish → HD → Astro → Maya Tzolkin (**v1** + Step 3) → Nine Star Ki (**v1** + Step 3) → Numerologie → Akan (Engines + API-Routen + v0-Kataloge)
   - Ziel: Engines sauber integriert + vollständige Strukturbäume statt 832er-Skeleton
+  - HD: Swiss Ephemeris (pyswisseph) im Python-Service aktiv = **tropical Standard**. Sidereal/Hybrid = contracts §13 + Roadmap-Doku, **Implementierung optional**.
 
 Dokumenten-Landkarte:
   Philosophisch:  consolidation/z1 (Gesamtwerk v0.5), z3 (Modelle v0.4), Glossar v1.2
@@ -60,6 +61,23 @@ MCP-Tools (KI nutzt diese automatisch):
 
 ---
 
+## Human Design — Rechenmodi (tropical / sidereal / hybrid)
+
+```
+Kurz:
+- system_id bleibt immer `hd` — Unterschiede stecken in compute_profile.hd (cursor/contracts.md §13).
+- Swiss Ephemeris ist im HD-Service SCHON angebunden (pyswisseph im vendored dturkuler); Standardmodus = tropical (Jovian-kompatibel).
+- Sidereal-Flag + Ayanamsha sowie Hybrid (Design tropisch / Persönlichkeit sidereal) sind SPEC + Roadmap, NICHT implementiert.
+  → reference/hd_compute_profiles_kg_and_roadmap.md · decisions.md 2026-05-06
+
+Wenn ihr das BAUEN wollt — Startreihenfolge:
+1) Governance: Default-Ayanamsha (wenn sidereal), Verhalten des Design-Datums (−88°) bei full sidereal festlegen.
+2) API: BirthData + compute_profile.hd in services/hd (FastAPI) und @ic/engines hd-client-Typen spiegeln.
+3) Engine: vendored humandesign_api …/core.py — calc_ut mit Sidereal-Mode parametrisieren ODER zwei Läufe + Merge (Hybrid).
+4) Tests: feste Geburtszeit → erwartete Gates (Regression gegen Jovian tropical bleibt Pflicht-Fixture).
+5) App: Chart-Snapshot persistiert compute_profile; UI-Label; keine stillen Cross-Modus-Vergleiche.
+```
+
 ## Wenn der Chat über ENGINES geht
 
 ```
@@ -69,7 +87,9 @@ Zusätzlich lesen:
 - code/inner_compass_app/services/jyotish/README.md (Python-Microservice, AGPL-isoliert)
 - kern/IC_System_Pruef_Framework.docx (Originalquelle K1-K4 + Evidenzklassen)
 - reference/hd_kit_structure_extraction.md (HD-Kit-Analyse, was fehlt)
+- **EarthStar Human Design** = IC-Produktname für Hybrid (`hybrid_design_tropical_personality_sidereal`); UI-Spez Stufe 1/2 → `reference/hd_compute_profiles_kg_and_roadmap.md` §6.1
 - reference/structure_descriptor_seed.md (Deskriptor vs. Seed vs. Structure Klarstellung)
+- cursor/contracts.md §13 (compute_profile für hd)
 
 Wichtige Entscheidungen:
 - PyJHora (AGPL): BEHALTEN als isolierter Microservice (Code open-sourced, App privat)
@@ -85,7 +105,7 @@ Wichtige Entscheidungen:
 ```
 Zusätzlich lesen:
 - cursor/architecture.md (Schema, Datenschichten, Tech Stack, §12-14 NEU, §15 KG-Übereinanderlegen & IC-Sprache NEU)
-- cursor/contracts.md (Dimensions-Contract, Payloads, Enums, §10-12 NEU)
+- cursor/contracts.md (Dimensions-Contract, Payloads, Enums, §10-13 NEU)
 - reference/structure_descriptor_seed.md (Deskriptor vs. Seed vs. Structure)
 ```
 

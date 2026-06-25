@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-04-16
+last_update: 2026-05-06
 scope: IC Projektstatus (Phasen 0–4), Chart-Engines, Content-Akquise, Ur-Systeme, Gene Keys, Konvergenz/Meta-KG
 in_scope: Stand, nächste Schritte, Systemliste, Anna's Archive entity-first, Klarstellung HD-Schulen vs. GK, Konvergenz personenbezogen vs. strukturell
 out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_compass_app AGENTS.md
@@ -8,13 +8,13 @@ out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_c
 
 # Inner Compass — Status & Nächste Schritte
 
-> **Stand:** 2026-04-16 | Bei jedem Meilenstein aktualisieren!
+> **Stand:** 2026-05-06 | Bei jedem Meilenstein aktualisieren!
 >
 > **Wo wir sind:** Phase 0 erledigt. Phase 1 — **Chart-Engines Staffel 1:** fünf Kerne + **Maya Tzolkin, Nine Star Ki, Numerologie, Akan** in `@ic/engines` + API-Routen + Kataloge v0 ✅
 > - **Ziwei Doushu** (iztro): TS, Katalog + Validierung ✅
 > - **BaZi** (@yhjs): TS, Katalog + Validierung ✅
 > - **Jyotish** (PyJHora): Python-Microservice, D1+D9+Dasha+Bhavas+Yogas+16 Vargas ✅
-> - **Human Design** (dturkuler): Python-Microservice, alle 13 Layer + Composite/Transit/BodyGraph ✅
+> - **Human Design** (dturkuler): Python-Microservice, alle 13 Layer + Composite/Transit/BodyGraph ✅ — **Ephemeris:** Swiss Ephemeris via **pyswisseph**, Modus **tropical** (Standard). **Sidereal / Hybrid** (`compute_profile`, contracts §13): spezifiziert in `reference/hd_compute_profiles_kg_and_roadmap.md`, **Code noch nicht** — optional später.
 > - **Westl. Astrologie** (**celestine**, MIT): TS in `@ic/engines`, `computeAstroChart` + `astro_catalog_v0.json` + Validierung ✅ *(alter Planename „CircularNatalHoroscopeJS“ — im Code: celestine; optional: Präzisions-/Ephemeris-Abgleich als Spike offen)*
 > - **Maya Tzolkin** (`mayan_tzolkin`): **v1** `ic_maya_tzolkin_v1` — GMT 584283 + Dreamspell-Slugs; **lokales Zivildatum** aus Instant (`utcMillisForWallTimeInZone`); Vitest **Step 3** vs. `mayan_tzolkin_catalog_v0.json` ✅
 > - **Nine Star Ki**: K1/K2 **v1** (`ic_nine_star_ki_v1`) — Honmei + Getsumei + **energetic**; feste Sonnenmonats-Schnitte; Vitest **Step 3** Katalog-Regeln ✅ — `reference/decisions.md` **2026-04-16**

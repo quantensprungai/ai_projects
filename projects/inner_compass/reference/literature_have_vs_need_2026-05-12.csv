@@ -1,0 +1,19 @@
+system_id,dateien_im_ordner,kanon_kern_kurz,habe_vs_bedarf,nächste_aktion
+hd,90,Ra + HD-Schulen,vorhanden,Kanon P0/P1 aus entity_registry_hd abgleichen; Dubletten optional zusammenführen.
+genekeys,14,Rudd Golden Path,vorhanden,Fehlende Rudd-Bände (Venus/Pearl) laut Registry prüfen.
+i_ching,8,Wilhelm/Legge/Shaughnessy + Brücken,teilweise,Parkyn Book of Lines + Karcher optional suchen; feste Referenzlinie in decisions.md verifizieren.
+kabbalah_jewish,24,Sefer Yetzirah/Kaplan/Zohar,vorhanden,kabbalah_hermetic separat — nicht vermischen.
+kabbalah_hermetic,0,Fortune Regardie Golden Dawn,fehlt,Mindestens Mystical Qabalah + Regardie/GD-Material beschaffen.
+chakra,11,Serpent Power + Wheels of Life,teilweise,Judith Wheels of Life gezielt prüfen; Iyengar optional laut Kanon.
+pancha_bhuta,6,Samkhya Caraka Sushruta,vorhanden,Ausgaben/Übersetzungslinie gegen Kanon prüfen.
+wu_xing,4,Neijing + Kaptchuk,teilweise,Kaptchuk Web That Has No Weaver prüfen; Neijing-Auswahl festlegen.
+western_elements,3,Antike + hellenist. Astro,teilweise,Valens/Dorotheus-Anker laut Kanon konkret benennen.
+jyotish,4,Parashara / Brihat,vorhanden,Tiefe vs. Registry entity_registry_jyotish — Lücken gezielt.
+bazi,29,Schulanker,vorhanden,Mit entity_registry_bazi — unnötige Dubletten markieren.
+ziwei,0,Schulanker,fehlt,Ordner ziwei anlegen + Kernwerke laut Registry beschaffen.
+astro,6,Referenzlinie,vorhanden,Mit entity_registry_astro — klassische vs. moderne Lücke prüfen.
+mayan_tzolkin,0,GMT/Kin,fehlt,Literatur/Quellen für Tzolkin-Kanon beschaffen (Deskriptor vorhanden).
+nine_star_ki,0,Standardlinie,fehlt,Japanische NSK-Referenz beschaffen.
+numerology,0,Grundwerke,fehlt,Kernwerk Pythagoreisch wählen + beschaffen.
+akan,0,Grundquellen,fehlt,Akan-Grundtexte beschaffen.
+enneagram,0,Naranjo/Palmer/Hudson,fehlt,Enneagram-Kernkanon 2–5 Werke festlegen + beschaffen.

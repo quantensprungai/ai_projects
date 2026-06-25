@@ -1,5 +1,3 @@
-
-
 # Inner Compass — Chart Engines & System-Prüf-Framework
 
 > Welche Engine berechnet was, welche Daten kommen woher, wie prüfen wir jedes System.
@@ -134,13 +132,13 @@ Next.js App (Makerkit)
 ```
 
 
-| Pro                                                                    | Contra                                        |
-| ---------------------------------------------------------------------- | --------------------------------------------- |
-| Meiste Engines direkt in Next.js (HD, Ziwei, BaZi, Astro, Maya)        | Zwei Laufzeiten                               |
-| Python-Microservice nur für Jyotish (max. Tiefe via PyJHora)           | PyJHora AGPL → Microservice-Code open-sourced |
-| Kein Spark für Engines (Spark = nur GPU/LLM)                           |                                               |
-| Ziwei Doushu (iztro) + BaZi (@yhjs) nativ in TS                        |                                               |
-| Westl. Astro: **celestine** (MIT, in `@ic/engines`)                     |                                               |
+| Pro                                                             | Contra                                        |
+| --------------------------------------------------------------- | --------------------------------------------- |
+| Meiste Engines direkt in Next.js (HD, Ziwei, BaZi, Astro, Maya) | Zwei Laufzeiten                               |
+| Python-Microservice nur für Jyotish (max. Tiefe via PyJHora)    | PyJHora AGPL → Microservice-Code open-sourced |
+| Kein Spark für Engines (Spark = nur GPU/LLM)                    |                                               |
+| Ziwei Doushu (iztro) + BaZi (@yhjs) nativ in TS                 |                                               |
+| Westl. Astro: **celestine** (MIT, in `@ic/engines`)             |                                               |
 
 
 **Warum kein Spark für Engines?** Spark ist für GPU-intensive Tasks (MinerU, LLM-Inferenz). Chart-Berechnungen sind CPU-leicht (~10ms) und gehören nicht auf einen GPU-Server.
@@ -177,19 +175,19 @@ Next.js App (Makerkit)
 ### Gesamtübersicht — Berechnungssysteme (system_role = 'calculation')
 
 
-| System                  | Empfohlener Kit                                          | Lizenz         | Sprache          | K1+K2 aus Kit? | Prio |
-| ----------------------- | -------------------------------------------------------- | -------------- | ---------------- | -------------- | ---- |
-| **Human Design**        | **dturkuler/humandesign_api** (vendored, Docker-isoliert) | GPL-3.0 isoliert | Python (FastAPI) | ~95%           | 1    |
-| **Ziwei Doushu** 🆕     | **iztro** (SylarLong)                                    | MIT ✅          | **TS**           | ~75%           | 2    |
-| **BaZi**                | **@yhjs/bazi** (primär) + alvamind (Fallback)            | MIT ✅          | **TS**           | ~65%           | 3    |
-| **Westl. Astrologie**   | **celestine** (TS, `@ic/engines`) ggf. + pyswisseph (Python) | MIT / 💰       | TS / Python      | ~70%           | 4    |
-| **Maya Tzolkin**        | tzolkin-calendar oder TS-Port                            | MIT            | Python/TS        | ~80%           | 5    |
-| **Jyotish**             | PyJHora (AGPL, Microservice) + VedAstro.Python (MIT, KP) | ⚠️ AGPL + MIT  | Python           | ~65%           | 6    |
-| **Gene Keys**           | Shared K1 mit HD (Ephemeris), eigenes K2 (Shadow/Gift/Siddhi, Codon Rings, Sequences) | —              | TS (Lookup)      | ~50%           | 7    |
-| **Enneagramm**          | GitHub JSON-Strukturen                                   | Open Source    | —                | ~50%           | 8    |
-| **Numerologie**         | Eigene TS-Implementierung                                | —              | TS               | ~40%           | 9    |
-| **Nine Star Ki / Mewa** | Kein Kit nötig (~20 Zeilen Modulo-9)                     | —              | TS               | ~90%           | 10   |
-| **Akan Day Name**       | Kein Kit nötig (~5 Zeilen Wochentag)                     | —              | TS               | ~95%           | 11   |
+| System                  | Empfohlener Kit                                                                       | Lizenz           | Sprache          | K1+K2 aus Kit? | Prio |
+| ----------------------- | ------------------------------------------------------------------------------------- | ---------------- | ---------------- | -------------- | ---- |
+| **Human Design**        | **dturkuler/humandesign_api** (vendored, Docker-isoliert)                             | GPL-3.0 isoliert | Python (FastAPI) | ~95%           | 1    |
+| **Ziwei Doushu** 🆕     | **iztro** (SylarLong)                                                                 | MIT ✅            | **TS**           | ~75%           | 2    |
+| **BaZi**                | **@yhjs/bazi** (primär) + alvamind (Fallback)                                         | MIT ✅            | **TS**           | ~65%           | 3    |
+| **Westl. Astrologie**   | **celestine** (TS, `@ic/engines`) ggf. + pyswisseph (Python)                          | MIT / 💰         | TS / Python      | ~70%           | 4    |
+| **Maya Tzolkin**        | tzolkin-calendar oder TS-Port                                                         | MIT              | Python/TS        | ~80%           | 5    |
+| **Jyotish**             | PyJHora (AGPL, Microservice) + VedAstro.Python (MIT, KP)                              | ⚠️ AGPL + MIT    | Python           | ~65%           | 6    |
+| **Gene Keys**           | Shared K1 mit HD (Ephemeris), eigenes K2 (Shadow/Gift/Siddhi, Codon Rings, Sequences) | —                | TS (Lookup)      | ~50%           | 7    |
+| **Enneagramm**          | GitHub JSON-Strukturen                                                                | Open Source      | —                | ~50%           | 8    |
+| **Numerologie**         | Eigene TS-Implementierung                                                             | —                | TS               | ~40%           | 9    |
+| **Nine Star Ki / Mewa** | Kein Kit nötig (~20 Zeilen Modulo-9)                                                  | —                | TS               | ~90%           | 10   |
+| **Akan Day Name**       | Kein Kit nötig (~5 Zeilen Wochentag)                                                  | —                | TS               | ~95%           | 11   |
 
 
 ### Struktursysteme (system_role = 'structural') — keine Engine, nur KG
@@ -203,6 +201,7 @@ Diese berechnen kein persönliches Chart, sondern beschreiben das Terrain über 
 | **Kabbalah** | 10 Sephiroth + 22 Pfade = 32   | HD (Zentren, behauptete Verbindung) | Manuell + Literatur |
 | **Chakras**  | 7 (oder 9) Zentren             | HD (Zentren), Jyotish, Yoga         | Manuell + Literatur |
 
+
 **Schichtung (Deskriptor ↔ Katalog ↔ Literatur):** `system_descriptors/{system}.json` fasst **Contracts** zusammen (`element_types`, Regeln, `system_role`). `system_structure/{system}_catalog_v0.json` materialisiert **K1/K2**, sobald Kit oder Extraktion das hergibt. **Struktur-Systeme** haben oft **keine** Geburts-Chart-Engine wie BaZi — K2 kann aus **Tradition + Literatur** kommen und wird nach Extraktion mit Evidenzklassen **B/C** geführt wie überall. **K3/K4** laufen für **alle** `system_id` über dieselbe Literatur-Pipeline (`entity_registry` + MinerU + LLM), ohne Sonderfall pro „Ur-System“.
 
 ---
@@ -214,13 +213,13 @@ Diese berechnen kein persönliches Chart, sondern beschreiben das Terrain über 
 **Kit-Kandidaten:**
 
 
-| Kit                                | Sprache          | Lizenz     | Tiefe                                                                             | Status                          |
-| ---------------------------------- | ---------------- | ---------- | --------------------------------------------------------------------------------- | ------------------------------- |
+| Kit                                | Sprache          | Lizenz     | Tiefe                                                                             | Status                                 |
+| ---------------------------------- | ---------------- | ---------- | --------------------------------------------------------------------------------- | -------------------------------------- |
 | **dturkuler/humandesign_api** ⭐    | Python (FastAPI) | GPL-3.0    | Komplett: alle 13 Layer + Composite + Transit + BodyGraph. Beste Tiefe.           | **AKTIV** — vendored in `services/hd/` |
-| **hdkit** (jdempcy)                | JS/Node          | MIT ✅      | Gate/Kanal/Typ/Profil/Authority. KEIN Tone/Color/Base. Braucht externe Ephemeris. | Ersetzt durch dturkuler         |
-| **geodetheseeker/human-design-py** | Python           | MIT ✅      | Komplett bis Base (Gate→Line→Color→Tone→Base). pyswisseph-basiert.                | Ersetzt durch dturkuler         |
-| **MicFell/human_design_engine**    | Python           | GPL-3.0 ⚠️ | Komplett bis Base.                                                                | Nicht verwendet                 |
-| **SharpAstrology**                 | C#               | ?          | Alternative HD-Engine.                                                            | Nicht evaluiert                 |
+| **hdkit** (jdempcy)                | JS/Node          | MIT ✅      | Gate/Kanal/Typ/Profil/Authority. KEIN Tone/Color/Base. Braucht externe Ephemeris. | Ersetzt durch dturkuler                |
+| **geodetheseeker/human-design-py** | Python           | MIT ✅      | Komplett bis Base (Gate→Line→Color→Tone→Base). pyswisseph-basiert.                | Ersetzt durch dturkuler                |
+| **MicFell/human_design_engine**    | Python           | GPL-3.0 ⚠️ | Komplett bis Base.                                                                | Nicht verwendet                        |
+| **SharpAstrology**                 | C#               | ?          | Alternative HD-Engine.                                                            | Nicht evaluiert                        |
 
 
 **Entscheidung (April 2026):** dturkuler/humandesign_api als einzige HD-Engine. GPL-3.0 ist konform, da der Code nur serverseitig im Docker-Container läuft (SaaS — keine Distribution). Vendored in `services/hd/vendored/humandesign_api/`, Adapter-Layer (`hd_adapter.py`) transformiert Output in unser canonical-node Schema. K2-Daten (192 Crosses, 8 Awareness Streams) extrahiert und in `hd_catalog_v0.json` archiviert (evidence_class A).
@@ -308,15 +307,15 @@ In der App: Tab/Dropdown für System-Wechsel mit denselben Geburtsdaten.
 **Weitere Kit-Kandidaten (Alternativen / Ergänzung):**
 
 
-| Kit                      | Sprache | Lizenz        | Umfang                                                  | Bemerkung                                                          |
-| ------------------------ | ------- | ------------- | ------------------------------------------------------- | ------------------------------------------------------------------ |
-| **celestine** ⭐          | TS      | MIT ✅         | Tropisch, Häuser, Aspekte, Lots u. a. (siehe Code-Paket) | **In Produktion** in `packages/engines/src/astro.ts`               |
-| **@nrweb/astro-calc**    | TS      | MIT ✅         | Planeten, Häuser, Aspekte, Arab. Lots, Scoring          | Nutzt Swiss Ephemeris → Lizenzpfad prüfen                         |
-| **pyswisseph**           | Python  | 💰 AGPL/Komm. | Industriestandard, höchste Präzision                    | Swiss Ephemeris Wrapper. Kommerziell: Astrodienst-Konditionen     |
-| **immanuel**             | Python  | MIT ✅         | Natal, Solar Returns, Progressions, Composites          | Baut auf pyswisseph auf.                                           |
-| **Kerykeion**            | Python  | AGPL ⚠️       | Gut dokumentiert, aktiv                                 | AGPL = SaaS-Abwägung                                               |
-| **@swisseph/node**       | Node.js | 💰 AGPL/Komm. | Swiss Ephemeris für Node.js, WASM                       | Höchste Präzision in TS                                            |
-| **flatlib**              | Python  | MIT ✅         | Basis-Astrologie                                        | Älter, weniger aktiv                                               |
+| Kit                   | Sprache | Lizenz        | Umfang                                                   | Bemerkung                                                     |
+| --------------------- | ------- | ------------- | -------------------------------------------------------- | ------------------------------------------------------------- |
+| **celestine** ⭐       | TS      | MIT ✅         | Tropisch, Häuser, Aspekte, Lots u. a. (siehe Code-Paket) | **In Produktion** in `packages/engines/src/astro.ts`          |
+| **@nrweb/astro-calc** | TS      | MIT ✅         | Planeten, Häuser, Aspekte, Arab. Lots, Scoring           | Nutzt Swiss Ephemeris → Lizenzpfad prüfen                     |
+| **pyswisseph**        | Python  | 💰 AGPL/Komm. | Industriestandard, höchste Präzision                     | Swiss Ephemeris Wrapper. Kommerziell: Astrodienst-Konditionen |
+| **immanuel**          | Python  | MIT ✅         | Natal, Solar Returns, Progressions, Composites           | Baut auf pyswisseph auf.                                      |
+| **Kerykeion**         | Python  | AGPL ⚠️       | Gut dokumentiert, aktiv                                  | AGPL = SaaS-Abwägung                                          |
+| **@swisseph/node**    | Node.js | 💰 AGPL/Komm. | Swiss Ephemeris für Node.js, WASM                        | Höchste Präzision in TS                                       |
+| **flatlib**           | Python  | MIT ✅         | Basis-Astrologie                                         | Älter, weniger aktiv                                          |
 
 
 **Empfehlung:** **celestine** als TS-first-Lösung in Next.js (`@ic/engines`). Optional: Präzisions-Spike **celestine vs.** Referenz (z. B. Swiss/pyswisseph), falls das Produkt es verlangt; ggf. ergänzender Python-Microservice mit pyswisseph+immanuel.
@@ -353,7 +352,7 @@ In der App: Tab/Dropdown für System-Wechsel mit denselben Geburtsdaten.
 | **tzolkin-calendar** | Python  | MIT ✅  | 20 Seals, 13 Tones, 260 Kin, Wavespells |
 
 
-Einfachstes System. **Ist:** `@ic/engines` **`ic_maya_tzolkin_v1`** (GMT 584283, Dreamspell-Slug-Reihenfolge, lokales Zivil-Datum aus Instant), Katalog `mayan_tzolkin_catalog_v0.json`, Vitest **Step 3** (`maya-tzolkin-catalog-validation.test.ts`). Optional: **tzolkin-calendar** (Python/MIT) nur falls Referenz-Port gewünscht.
+Einfachstes System. **Ist:** `@ic/engines` `**ic_maya_tzolkin_v1`** (GMT 584283, Dreamspell-Slug-Reihenfolge, lokales Zivil-Datum aus Instant), Katalog `mayan_tzolkin_catalog_v0.json`, Vitest **Step 3** (`maya-tzolkin-catalog-validation.test.ts`). Optional: **tzolkin-calendar** (Python/MIT) nur falls Referenz-Port gewünscht.
 
 **Ziel-Nodes:** 20 Seals + 13 Tones + 260 Kin + 20 Wavespells + 5 Earth Families = **~320 Nodes**
 
@@ -409,29 +408,34 @@ Ziwei Doushu ist das technisch ausgefeilteste chinesische System — strukturell
 
 **Wichtige Unterscheidung:** Gene Keys ist KEIN HD-Derivat mit anderer Sprache. Es teilt nur die K1-Berechnung (Ephemeris-Positionen → Gate-Zuordnung) mit HD. Darüber hinaus hat Gene Keys **eigene K2-Strukturen**, die in HD nicht existieren:
 
-| Aspekt | Gene Keys | HD-Äquivalent |
-|--------|-----------|---------------|
-| **Gate-Positionen (K1)** | Identisch — selbe Ephemeris | Identisch |
-| **Shadow → Gift → Siddhi** | 64 × 3 Frequenzbänder = 192 Nodes (eigenes K2) | Gibt es nicht |
-| **Golden Path Sequences** | Activation, Venus, Pearl (eigene Berechnungslogik) | Kein Äquivalent |
-| **Codon Rings** | 21 Aminosäure-Gruppierungen (eigenes K2) | Circuits (7, anders gruppiert) |
-| **Programming Partners** | Gate-Paare (teilweise überlappend) | Channels (36, nicht identisch) |
-| **Types, Authority, Profile** | Existieren NICHT in Gene Keys | Kernkonzepte |
-| **Variable/Arrows** | Existieren NICHT in Gene Keys | 4 Pfeile |
+
+| Aspekt                        | Gene Keys                                          | HD-Äquivalent                  |
+| ----------------------------- | -------------------------------------------------- | ------------------------------ |
+| **Gate-Positionen (K1)**      | Identisch — selbe Ephemeris                        | Identisch                      |
+| **Shadow → Gift → Siddhi**    | 64 × 3 Frequenzbänder = 192 Nodes (eigenes K2)     | Gibt es nicht                  |
+| **Golden Path Sequences**     | Activation, Venus, Pearl (eigene Berechnungslogik) | Kein Äquivalent                |
+| **Codon Rings**               | 21 Aminosäure-Gruppierungen (eigenes K2)           | Circuits (7, anders gruppiert) |
+| **Programming Partners**      | Gate-Paare (teilweise überlappend)                 | Channels (36, nicht identisch) |
+| **Types, Authority, Profile** | Existieren NICHT in Gene Keys                      | Kernkonzepte                   |
+| **Variable/Arrows**           | Existieren NICHT in Gene Keys                      | 4 Pfeile                       |
+
 
 **Konsequenz für Architektur:**
-- Gene Keys bekommt eigenen `gk.*`-Prefix im Knowledge Graph
+
+- Gene Keys bekommt eigenen `gk.`*-Prefix im Knowledge Graph
 - K1-Engine: Shared mit HD (dturkuler berechnet Gate-Positionen, GK liest dieselben)
 - K2-Katalog: Eigenständiger `gk_catalog_v0.json` (Shadow/Gift/Siddhi, Codon Rings, Sequences)
 - Cross-System-Link: `hd.gate.N ←→ gk.gate.N` (faktische 1:1-Identität auf Gate-Ebene)
 - **K3/K4:** dieselbe Literatur-Pipeline wie für jedes andere `system_id` (PDF → MinerU → LLM; `entity_registry` / Anna's-Profil `genekeys_content` bei Bedarf; Evidenzklassen A–D nach Quellenlage).
 
-| Aspekt           | Detail |
-| ---------------- | ------ |
-| Engine           | K1 shared mit HD (Ephemeris → Gate). Eigene Lookup-Logik für Sequences. |
-| Methode          | Gate-Positionen aus HD-Engine + eigene Sequence-Berechnung (Venus/Pearl/Activation) |
-| Output           | 64 Gates × 3 Frequenzen, 21 Codon Rings, 3 Sequences mit Sphären |
-| **Literatur**    | Wie alle Systeme: Quellen inventarisieren, extrahieren, belegen — keine Sonder-Workflows in dieser Doku. |
+
+| Aspekt        | Detail                                                                                                   |
+| ------------- | -------------------------------------------------------------------------------------------------------- |
+| Engine        | K1 shared mit HD (Ephemeris → Gate). Eigene Lookup-Logik für Sequences.                                  |
+| Methode       | Gate-Positionen aus HD-Engine + eigene Sequence-Berechnung (Venus/Pearl/Activation)                      |
+| Output        | 64 Gates × 3 Frequenzen, 21 Codon Rings, 3 Sequences mit Sphären                                         |
+| **Literatur** | Wie alle Systeme: Quellen inventarisieren, extrahieren, belegen — keine Sonder-Workflows in dieser Doku. |
+
 
 ### 6.7b HD-Schulen vs. Gene Keys — Tradition-Konzept (Entscheidung April 2026)
 
@@ -439,19 +443,21 @@ Zwei verschiedene Kategorien:
 
 **Kategorie A: HD-Schulen (gleicher Stammbaum, nur K3/K4 unterschiedlich)**
 
-| Schule | Gründer | Was ist anders? |
-|--------|---------|-----------------|
-| Jovian Archive (Original) | Ra Uru Hu | Die Referenz — K1+K2 sind identisch bei allen |
-| Quantum HD | Karen Curry Parker | Typen umbenannt (Manifestor → "Initiator"), positivere Sprache |
-| 64Keys | Andrea Reikl-Wolf | Deutschsprachig, eigene Interpretation |
-| Chetan Parkyn | Chetan Parkyn | Vereinfacht, andere Betonung |
+
+| Schule                    | Gründer            | Was ist anders?                                                |
+| ------------------------- | ------------------ | -------------------------------------------------------------- |
+| Jovian Archive (Original) | Ra Uru Hu          | Die Referenz — K1+K2 sind identisch bei allen                  |
+| Quantum HD                | Karen Curry Parker | Typen umbenannt (Manifestor → "Initiator"), positivere Sprache |
+| 64Keys                    | Andrea Reikl-Wolf  | Deutschsprachig, eigene Interpretation                         |
+| Chetan Parkyn             | Chetan Parkyn      | Vereinfacht, andere Betonung                                   |
+
 
 → **Eine Engine** berechnet alles. K3-Texte bekommen ein `tradition`-Tag.
-→ Im KG: Alles unter `hd.*`, Interpretation-Nodes mit `tradition: "jovian" | "quantum_hd" | "64keys"`
+→ Im KG: Alles unter `hd.`*, Interpretation-Nodes mit `tradition: "jovian" | "quantum_hd" | "64keys"`
 
 **Kategorie B: Gene Keys (eigener Stammbaum)**
 
-→ Gene Keys ist ein **eigenständiges System** (`gk.*`) mit shared K1 aber eigenem K2.
+→ Gene Keys ist ein **eigenständiges System** (`gk.`*) mit shared K1 aber eigenem K2.
 → Verlinkt über `hd.gate.N ←→ gk.gate.N` (Cross-System-Edge, faktisch).
 
 ---
@@ -493,10 +499,10 @@ Zwei verschiedene Kategorien:
 Triviale Systeme. Kein Kit nötig.
 
 
-| System        | Berechnung                                                                 | Aufwand          |
-| ------------- | -------------------------------------------------------------------------- | ---------------- |
+| System        | Berechnung                                                                   | Aufwand                   |
+| ------------- | ---------------------------------------------------------------------------- | ------------------------- |
 | Nine Star Ki  | Ki-Jahr + Overrides; 12 Sonnenmonats-Schnitte; Monatsmuster + 81er energetic | TS (`ic_nine_star_ki_v1`) |
-| Akan Day Name | Wochentag → 1 von 7 Names                                                | ~5 Zeilen TS     |
+| Akan Day Name | Wochentag → 1 von 7 Names                                                    | ~5 Zeilen TS              |
 
 
 ---
@@ -639,7 +645,7 @@ code/inner_compass_app/
 | **HD**       | Centers, Gates, Channels, Profile. hdkit: `bodygraph-data.js`, `constants.js` | structure.centers, structure.channels                      | 1    |
 | **Ziwei** 🆕 | 14 Hauptsterne, 30+ Nebensterne, 12 Paläste, Mutagene. iztro: `src/data/`     | structure.stars, structure.palaces                         | 2    |
 | **BaZi**     | Stems, Branches, Jiazi, Ten Gods, Nayin, Luck Cycles. @yhjs/bazi: TS-Types    | structure.stems, structure.branches, structure.luck_cycles | 3    |
-| **Astro**    | Planeten, Zeichen, Häuser, Rulerships. **celestine** (+ optional pyswisseph)   | structure.planets, structure.signs                         | 4    |
+| **Astro**    | Planeten, Zeichen, Häuser, Rulerships. **celestine** (+ optional pyswisseph)  | structure.planets, structure.signs                         | 4    |
 | **Maya**     | 20 Seals, 13 Tones, Kin-Mapping. tzolkin-calendar: Kalender-Logik             | structure.seals, structure.tones                           | 5    |
 | **Jyotish**  | Nakshatras, Grahas, Rashis, Bhavas, Dasha-Systeme. PyJHora + VedAstro         | Komplexeste Extraktion                                     | 6    |
 
@@ -659,14 +665,14 @@ code/inner_compass_app/
 Für Chart-Darstellung in der App (KARTE-Space):
 
 
-| Einsatz                             | Kandidaten                              | Sprache     | Bemerkung                                      |
-| ----------------------------------- | --------------------------------------- | ----------- | ---------------------------------------------- |
-| Jyotish-Charts (North/South Indian) | jyotichart (SVG), astrochartjs          | Python / JS | North Indian (Diamant), South Indian (Quadrat) |
-| Ziwei Doushu Astrolabe              | iztro-hook (React), Custom SVG          | TS          | 12-Paläste-Gitter mit Sternen                  |
+| Einsatz                             | Kandidaten                                   | Sprache     | Bemerkung                                      |
+| ----------------------------------- | -------------------------------------------- | ----------- | ---------------------------------------------- |
+| Jyotish-Charts (North/South Indian) | jyotichart (SVG), astrochartjs               | Python / JS | North Indian (Diamant), South Indian (Quadrat) |
+| Ziwei Doushu Astrolabe              | iztro-hook (React), Custom SVG               | TS          | 12-Paläste-Gitter mit Sternen                  |
 | Western Astro Wheel                 | **celestine** (`@ic/engines`), astrochart.js | TS/JS       | Radix-Chart                                    |
-| HD BodyGraph                        | hdkit Sample-App, Custom SVG            | JS          | Eigenentwicklung wahrscheinlich                |
-| BaZi Pillars                        | Custom HTML/CSS                         | TS          | Einfach (4 Säulen)                             |
-| Maya Kin                            | Custom HTML/CSS                         | TS          | Einfach (Seal + Ton)                           |
+| HD BodyGraph                        | hdkit Sample-App, Custom SVG                 | JS          | Eigenentwicklung wahrscheinlich                |
+| BaZi Pillars                        | Custom HTML/CSS                              | TS          | Einfach (4 Säulen)                             |
+| Maya Kin                            | Custom HTML/CSS                              | TS          | Einfach (Seal + Ton)                           |
 
 
 → Details: architecture.md §14 (Chart-Visualisierungen)
@@ -840,9 +846,9 @@ Format: `{system}.{element_type}.{element_id}` (siehe contracts.md §9).
 
 Pro Chart werden **12 Palast-Nodes** plus **distinct Stern-Instanzen** (nach iztro-Key dedupliziert) in `nodes[]` geführt. Andere Ausgabe-Sprachen: Fallback `ziwei.palace.idx_<n>` bzw. `ziwei.star.h_<hash>` bis Locale-Mapping erweitert wird.
 
-**Schritt 1 (Katalog):** `ziwei_catalog_v0.json` — iztro: Locales + `STARS_INFO` + Konstanten + **`heavenlyStems` / `earthlyBranches`** (阴阳五行、冲、命主身主、天干四化、提示文本等), `schema_version` ≥ 1.1. Script: `extract:ziwei-catalog`. *Hinweis:* `stars_info` nur bei Teilmenge der Sterne.
+**Schritt 1 (Katalog):** `ziwei_catalog_v0.json` — iztro: Locales + `STARS_INFO` + Konstanten + `**heavenlyStems` / `earthlyBranches`** (阴阳五行、冲、命主身主、天干四化、提示文本等), `schema_version` ≥ 1.1. Script: `extract:ziwei-catalog`. *Hinweis:* `stars_info` nur bei Teilmenge der Sterne.
 
-**Schritt 2 (Struktur v0):** `ziwei_structure_v0.json` — **6 Ebenen**, **statische Kanten** inkl. Palast-Ring, 五虎遁/五鼠遁, **干冲/支冲**, **命主/身主 → Stern**, **stem_mutagen_**\* (禄权科忌), **`life_domain_map`**. Script: `build:ziwei-structure`. Stern→Palast: Laufzeit.
+**Schritt 2 (Struktur v0):** `ziwei_structure_v0.json` — **6 Ebenen**, **statische Kanten** inkl. Palast-Ring, 五虎遁/五鼠遁, **干冲/支冲**, **命主/身主 → Stern**, **stem_mutagen_** (禄权科忌), `**life_domain_map*`*. Script: `build:ziwei-structure`. Stern→Palast: Laufzeit.
 
 **Schritt 3 (Abgleich Engine ↔ Katalog):** `validateZiweiNodesAgainstCatalog` in `@ic/engines` — jeder Eintrag in `computeZiweiChart().nodes` muss ein bekannter Palast-/Stern-Key aus `ziwei_catalog_v0.json` sein, oder ein dokumentierter Fallback (`idx_*` Palast, `h_*` Stern-Hash bei nicht-zh-CN-Labels). Test: `ziwei-catalog-validation.test.ts` (läuft in `pnpm --filter @ic/engines run test:unit`).
 
@@ -852,7 +858,7 @@ Pro Chart werden **12 Palast-Nodes** plus **distinct Stern-Instanzen** (nach izt
 
 ## 16. BaZi (Four Pillars) — @yhjs/bazi + @yhjs/bagua (Phase 1 gleiches Muster wie Ziwei)
 
-> Code: `computeBaziRaw` / `computeBaziChart`, `buildBaziCanonicalNodes`, Vitest `bazi-*`. Katalog: `bazi_catalog_v0.json` — **@yhjs/bagua** (60甲子等) + **`shensha_aux`** (Spiegel `@yhjs/bazi`, schema ≥ 1.2). `extract:bazi-catalog`.
+> Code: `computeBaziRaw` / `computeBaziChart`, `buildBaziCanonicalNodes`, Vitest `bazi-*`. Katalog: `bazi_catalog_v0.json` — **@yhjs/bagua** (60甲子等) + `**shensha_aux`** (Spiegel `@yhjs/bazi`, schema ≥ 1.2). `extract:bazi-catalog`.
 
 ### 16.1 Bewertung — Entscheidung **Keep** (Spike)
 
@@ -867,22 +873,23 @@ Pro Chart werden **12 Palast-Nodes** plus **distinct Stern-Instanzen** (nach izt
 ### 16.2 Canonical IDs (Auszug)
 
 
-| Präfix                                | Beispiel                       | Bedeutung                                                  |
-| ------------------------------------- | ------------------------------ | ---------------------------------------------------------- |
-| `bazi.stem.`*                         | `bazi.stem.geng`               | 天干 (Slug pinyin)                                           |
-| `bazi.branch.*`                       | `bazi.branch.wu`               | 地支                                                         |
-| `bazi.pillar.{year|month|day|hour}.*` | `bazi.pillar.year.geng_wu`     | Säulen-Ganzheiten                                          |
-| `bazi.day_master.*`                   | `bazi.day_master.geng`         | 日主                                                         |
-| `bazi.ten_god.*`                      | `bazi.ten_god.shishen`         | 十神                                                         |
-| `bazi.luck_pillar.*`                  | `bazi.luck_pillar.gui_wei`     | 大运柱 (erste 8 步 im Node-Set)                                |
-| `bazi.jiazi.*`                        | `bazi.jiazi.geng_wu`           | 六十甲子 (Katalog; Engine nutzt weiter `bazi.pillar.*.<pair>`) |
-| `bazi.twelve_state.*`                 | `bazi.twelve_state.changsheng` | 十二长生 (Katalog-Vokabular)                                   |
-| `bazi.xun.head.*`                     | `bazi.xun.head.jia_zi`         | 旬首-Referenz (6 × 甲子 … 甲寅)                                  |
-| `bazi.shensha.yima.*`                 | `bazi.shensha.yima.year.shen`  | 驿马-Ziel支 pro Säule (`getShensha().horses`)                   |
-| `bazi.shensha.kongwang.*`             | `bazi.shensha.kongwang.day.yin_mao` | 旬空两地支 pro Säule                                     |
-| `bazi.shensha.tianyi.*`               | `bazi.shensha.tianyi.year.chou_wei` | 天乙贵人 阳贵/阴贵 支 |
-| `bazi.shensha.wangxiang.*`           | `bazi.shensha.wangxiang.mu.wang` | 月令 旺相休囚死 je 五行 (`seasonPower`) |
+| Präfix                     | Beispiel                            | Bedeutung                                                  |
+| -------------------------- | ----------------------------------- | ---------------------------------------------------------- |
+| `bazi.stem.`*              | `bazi.stem.geng`                    | 天干 (Slug pinyin)                                           |
+| `bazi.branch.`*            | `bazi.branch.wu`                    | 地支                                                         |
+| `bazi.pillar.{year         | month                               | day                                                        |
+| `bazi.day_master.*`        | `bazi.day_master.geng`              | 日主                                                         |
+| `bazi.ten_god.*`           | `bazi.ten_god.shishen`              | 十神                                                         |
+| `bazi.luck_pillar.*`       | `bazi.luck_pillar.gui_wei`          | 大运柱 (erste 8 步 im Node-Set)                                |
+| `bazi.jiazi.*`             | `bazi.jiazi.geng_wu`                | 六十甲子 (Katalog; Engine nutzt weiter `bazi.pillar.*.<pair>`) |
+| `bazi.twelve_state.*`      | `bazi.twelve_state.changsheng`      | 十二长生 (Katalog-Vokabular)                                   |
+| `bazi.xun.head.*`          | `bazi.xun.head.jia_zi`              | 旬首-Referenz (6 × 甲子 … 甲寅)                                  |
+| `bazi.shensha.yima.*`      | `bazi.shensha.yima.year.shen`       | 驿马-Ziel支 pro Säule (`getShensha().horses`)                 |
+| `bazi.shensha.kongwang.*`  | `bazi.shensha.kongwang.day.yin_mao` | 旬空两地支 pro Säule                                            |
+| `bazi.shensha.tianyi.*`    | `bazi.shensha.tianyi.year.chou_wei` | 天乙贵人 阳贵/阴贵 支                                               |
+| `bazi.shensha.wangxiang.*` | `bazi.shensha.wangxiang.mu.wang`    | 月令 旺相休囚死 je 五行 (`seasonPower`)                             |
 
-Katalog **`shensha_aux`:** dieselbe Logik tabellarisch (schema ≥ 1.2); **`nodes[]`** spiegelt Chart-**神煞** aus `Bazi.getShensha()`.
 
-**Schritt 1–3:** wie Playbook — `extract:bazi-catalog`, `build:bazi-structure`, `validateBaziNodesAgainstCatalog` (Pillar/Luck, `bazi.shensha.*`).
+Katalog `**shensha_aux`:** dieselbe Logik tabellarisch (schema ≥ 1.2); `**nodes[]`** spiegelt Chart-**神煞** aus `Bazi.getShensha()`.
+
+**Schritt 1–3:** wie Playbook — `extract:bazi-catalog`, `build:bazi-structure`, `validateBaziNodesAgainstCatalog` (Pillar/Luck, `bazi.shensha.`*).
