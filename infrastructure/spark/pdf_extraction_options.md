@@ -24,10 +24,11 @@ Für **Hybrid-PDFs** (teils Text, teils Scan) wurde empfohlen, kein reines OCR z
 | **MinerU 2.5** | Auto Text vs. Scan, direkte Extraktion + OCR nur für Scans, VLM für Tabellen/Formeln, 109 Sprachen, CUDA, Markdown/JSON für RAG | `pip install mineru[core]` + ggf. `mineru[vlm]`, PyTorch/CUDA |
 | **Docling** | Hybrid Text+OCR, Backends: EasyOCR/Tesseract/RapidOCR, stark bei Tabellen, LangChain/LlamaIndex | Eigenes Setup |
 | **Marker** | Surya-basiert, `--force_ocr`, 90+ Sprachen, Markdown+JSON, CUDA | Eigenes Setup |
+| **Unlimited-OCR** | 3B-BF16-VLM/OCR, MIT-Lizenz, Long-horizon/Multi-Page Parsing, Transformers/SGLang-Beispiele | **Spike only**; eigenes venv unter `scripts/ocr/`, Vergleich gegen MinerU nötig |
 
 **DGX Spark:** 128 GB Unified Memory, GB10 Grace Blackwell, ARM – gut für VLM-basierte Ansätze (z. B. MinerU mit VLM-Backend).
 
-**Empfehlung der Analyse:** **MinerU 2.5** als erste Wahl (Hybrid-Backend, ein Tool für Text + OCR + komplexe Layouts).
+**Empfehlung der Analyse:** **MinerU 2.5** als erste Wahl (Hybrid-Backend, ein Tool für Text + OCR + komplexe Layouts). **Unlimited-OCR** ist seit 2026-06 ein interessanter Spark-Spike, aber kein MinerU-Ersatz ohne Benchmark.
 
 ---
 
@@ -47,6 +48,13 @@ Für **Hybrid-PDFs** (teils Text, teils Scan) wurde empfohlen, kein reines OCR z
 3. **Env:** `HD_MINERU_BACKEND=hybrid` (Standard), `HD_MINERU_DEVICE=cuda`; für VLM: Backend `vlm-transformers` (höhere Hardware-Anforderungen).
 
 **Zusammenfassung:** MinerU ist im Worker als **optionaler Pfad** für `extract_text` (PDF) umgesetzt. Mit `HD_USE_MINERU=true` und installiertem MinerU auf Spark: ein Tool für Text + OCR + Layout, bessere Basis für RAG/Chunking. Ohne MinerU: weiter PyMuPDF + EasyOCR (extract_text_ocr).
+
+### Unlimited-OCR Spike (2026-06)
+
+- **Ort:** Spark, nicht VM105/VM102.
+- **Scripts:** `infrastructure/spark/scripts/ocr/`.
+- **IC-Runbook:** `projects/inner_compass/reference/unlimited_ocr_spike_runbook.md`.
+- **Einsatz:** repräsentative PDFs gegen MinerU vergleichen; erst danach ggf. `IC_OCR_ENGINE=mineru|unlimited_ocr` im Worker planen.
 
 ---
 

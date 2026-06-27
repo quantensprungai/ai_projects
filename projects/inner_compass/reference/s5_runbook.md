@@ -145,6 +145,16 @@ export IC_WORKER_JOB_TYPES=extract_text
 - Worker enqueued classify_domain
 - Wenn "No queued jobs" für extract_text: Phase 1 fertig, Worker stoppen
 
+### Optionaler OCR-Spike: Unlimited-OCR
+
+MinerU bleibt der produktive `extract_text`-Default. Wenn OCR-Qualität bei
+schwierigen PDFs geprüft werden soll, Unlimited-OCR **separat** auf Spark gegen
+dieselben PDFs testen:
+
+- Runbook: [unlimited_ocr_spike_runbook.md](unlimited_ocr_spike_runbook.md)
+- Skripte: `infrastructure/spark/scripts/ocr/`
+- Nicht auf VM105/VM102 ausführen; nur Spark hat die passende GPU-Rolle.
+
 ---
 
 ## Phase 2: LLM (MinerU kann weg)

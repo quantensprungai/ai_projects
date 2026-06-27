@@ -24,6 +24,7 @@ Jobs in `[Klammern]` sind noch nicht implementiert.
 - **Engine:** MinerU (GPU auf Spark, heading-aware)
 - **Output:** sys_source_chunks (saubere Textblöcke, ~500-1000 Tokens)
 - **Status:** ✅ Produktiv
+- **Spike:** `baidu/Unlimited-OCR` wird als alternatives OCR-Backend auf Spark getestet, ersetzt MinerU aber nicht ohne Benchmark. Runbook: `reference/unlimited_ocr_spike_runbook.md`.
 
 ### classify_domain
 - **Input:** sys_source_chunk
@@ -203,6 +204,8 @@ Kein Bias-Risiko: Jedes System baut eigene Wissensbasis auf. Cross-System-Mappin
 | 2 — Wissens-Extraktion | AN | Filter entfernen | classify, term_mapping, interpretations, text2kg, synthesis mit LLM. |
 
 → Vollständiger Ablauf: `reference/s5_runbook.md`
+
+**OCR-Backend-Spikes:** Neue OCR-Modelle (z. B. Unlimited-OCR) werden zuerst als separate Spark-Spikes gegen MinerU verglichen. Produktiv bleibt `extract_text` MinerU-basiert, bis ein Backend-Schalter (`IC_OCR_ENGINE=mineru|...`) bewusst implementiert ist.
 
 ### LLM-Modell (aktuell)
 - **Default:** Qwen3-32B (multilingual, JSON/Structured Output, Apache-2.0)
