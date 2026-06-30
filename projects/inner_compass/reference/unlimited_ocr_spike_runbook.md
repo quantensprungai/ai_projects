@@ -1,5 +1,5 @@
 ---
-last_update: 2026-06-25
+last_update: 2026-06-29
 status: draft
 scope:
   summary: "Spike-Runbook fuer baidu/Unlimited-OCR als moegliches OCR-Backend neben MinerU."
@@ -68,6 +68,27 @@ Mindestens diese Dokumenttypen testen:
 | Jyotish | Sanskrit/Diakritika + astrologische Tabellen |
 | Kabbalah | Hebraeische Begriffe, gemischte Umschrift |
 | Schlechter Scan | OCR-Robustheit |
+
+## Erster A/B-Lauf (2026-06-29)
+
+**Dokument:** Ra Uru Hu — *Complete Rave I'Ching*, erste 20 Seiten.
+
+| Engine | Laufzeit | Ergebnis |
+|---|---:|---|
+| Unlimited-OCR | 271.5 s | Mehr Rohtext, schlechtere Struktur, OCR-Typo `GRATE` |
+| MinerU | 234.5 s | Besseres Markdown/Headings, Index als Text, weniger Artefakte |
+
+**Entscheidung:** MinerU bleibt Default fuer digital-born HD-PDFs.  
+Details: `ocr_ab_complete_rave_iching_20p.md`
+
+### Zweiter A/B-Lauf (2026-06-29)
+
+**BaZi:** 三命通会 上 (20 Seiten) — MinerU schneller, extrahiert Fachinhalt; Unlimited-OCR scheitert an klassischen Layout-Seiten.
+
+**Scan:** Brihat Parasara Hora Sastra 1 (20 Seiten) — MinerU 4× schneller; Unlimited-OCR halluziniert „too blurry“-Spam auf Koerpertext.
+
+**Gesamt:** Spike abgeschlossen — **MinerU bleibt einziges produktives Backend**.  
+Details: `ocr_ab_bazi_scan_20p.md`
 
 ## Bewertung
 

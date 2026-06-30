@@ -32,5 +32,15 @@ python infrastructure/spark/scripts/ocr/unlimited_ocr_pdf_spike.py \
   --output-dir ~/ocr_spikes/unlimited_ocr/sample
 ```
 
-Compare the result against the same PDF processed by MinerU before changing the
+MinerU spike (same interface):
+
+```bash
+source ~/srv/hd-worker/.venv/bin/activate
+python infrastructure/spark/scripts/ocr/mineru_pdf_spike.py \
+  --pdf /path/to/sample.pdf \
+  --output-dir ~/ocr_spikes/mineru/sample \
+  --max-pages 20
+```
+
+Compare the result against the same PDF processed by Unlimited-OCR before changing the
 worker.
