@@ -1,0 +1,15 @@
+curriculum_id,system_id,priority,target_author,target_title,aa_search_query,k3_k4,aa_coverage_status,notes
+hd.ra.rave_cosmology_iv,hd,high,Ra Uru Hu,Rave Cosmology IV,Ra Uru Hu Rave Cosmology IV,both,not_found,
+hd.ra.rave_cosmology_v,hd,high,Ra Uru Hu,Rave Cosmology V,Ra Uru Hu Rave Cosmology V,both,not_found,
+hd.ra.rave_cosmology_vi,hd,high,Ra Uru Hu,Rave Cosmology VI,Ra Uru Hu Rave Cosmology VI,both,not_found,
+hd.ra.rave_cosmology_vii,hd,high,Ra Uru Hu,Rave Cosmology VII,Ra Uru Hu Rave Cosmology VII,both,not_found,
+kab.jewish.zohar,kabbalah_jewish,high,Various,"The Zohar (English translation, e.g. Soncino or Matt)",Zohar English translation,K4,found,Matt Pritzker Vol 1+2 on disk.
+kab.jewish.meditation_kaplan,kabbalah_jewish,high,Aryeh Kaplan,Meditation and Kabbalah,Aryeh Kaplan Meditation and Kabbalah,K3,found,
+chakra.judith.eastern_body,chakra,medium,Anodea Judith,"Eastern Body, Western Mind",Anodea Judith Eastern Body Western Mind,K4,found,
+i_ching.parkyn.book_of_lines,i_ching,medium,Chetan Parkyn,The Book of Lines,Chetan Parkyn Book of Lines Human Design,K3,found,
+ziwei.wang_tingzhi.zhongzhou,ziwei,high,王亭之,中州派紫微斗數 (系列),王亭之 紫微斗數,both,found,13 files in ziwei/.
+enneagram.naranjo.character,enneagram,high,Claudio Naranjo,Character and Neurosis,Claudio Naranjo Character and Neurosis,K4,found,
+enneagram.palmer.enneagram,enneagram,medium,Helen Palmer,The Enneagram,Helen Palmer Enneagram,K4,found,1988 edition.
+numerology.pythagorean.core,numerology,medium,Various,Pythagorean numerology reference (e.g. Decoz or classic),Pythagorean numerology handbook,K3,found,
+mayan.tzolkin.gmt,mayan_tzolkin,medium,Various,Tzolkin / Dreamspell reference (GMT or Argüelles),Tzolkin calendar Jose Arguelles,K3,found,Mayan Factor; GMT line optional.
+nine_star_ki.core,nine_star_ki,low,Various,Nine Star Ki standard reference,Nine Star Ki astrology,K3,found,Kushi 1991 + Sachs Complete Guide on disk.

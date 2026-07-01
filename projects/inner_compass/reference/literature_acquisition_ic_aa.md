@@ -266,10 +266,12 @@ bash scripts/run_daily_downloads.sh 3 false
 
 - [aa_ic_toolkit_alignment.md](aa_ic_toolkit_alignment.md) — Daily 50 ↔ IC, VM105→102, `--sys-mode`
 - [literature_aa_coverage_gaps.md](literature_aa_coverage_gaps.md) — AA nicht vollständig: Lücken-Log & Reconciliation
-- `literature_download_matrix_2026-05-07.csv` — Werkinventar aus lokalem Downloadpfad mit `system_id`/Rollen-Mapping
-- `literature_system_coverage_2026-05-07.csv` — Coverage pro `system_id` (abgedeckt/fehlt) relativ zum Kanon
-- `literature_extraction_pass_plan_2026-05-07.csv` — werkgenauer Extraktionsfahrplan (separate K2/K3/K4-Pässe pro Werk)
-- `literature_have_vs_need_2026-05-12.csv` — **Habe vs. Bedarf** pro `system_id` (Dateizahl aus Download-Ordner + Kanon-Stichwort + nächste Aktion)
+- `literature_local_inventory_2026-06-30.csv` (+ `.meta.json`) — **aktueller Bestand** (Nextcloud `Literatur/`, 171 Dateien)
+- `literature_download_matrix_2026-06-30.csv` — Werkinventar mit `system_id`/Rollen-Mapping
+- `literature_extraction_pass_plan_2026-06-30.csv` — werkgenauer Extraktionsfahrplan (K2/K3/K4-Pässe; **68 P0**)
+- `literature_have_vs_need_2026-06-30.csv` — **Habe vs. Bedarf** pro `system_id`
+- `literature_aa_need_2026-06-30.csv` — **14 Lücken** für manuelle AA-Suche (curriculum_id + Suchquery)
+- *(Legacy Mai)* `literature_*_2026-05-*.csv` — VM-Downloads-Snapshot, nicht mehr SoT
 - [s5_runbook.md](s5_runbook.md) — E2E technisch
 - [engines.md](../cursor/engines.md) — K1–K4
 - [pipeline.md](../cursor/pipeline.md) — Jobs nach Upload

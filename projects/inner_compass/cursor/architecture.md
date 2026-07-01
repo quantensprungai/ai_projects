@@ -96,6 +96,8 @@ PHASE 4: META-KNOTEN
     → sys_kg_nodes (system=meta)
 ```
 
+> ⚠️ **Vor Implementierung von Phase 3 lesen:** `reference/cross_system_mapping_methodology_review.md` — Cosine-Similarity auf `canonical_description` (Phase 2) als primäres Auswahlkriterium ist methodisch unzureichend (Sprachähnlichkeit ≠ Referenzidentität; Validierungs-LLM auf demselben Text = zirkulär/Rubber-Stamp). Enthält konkrete Fixes (Korrespondenz-Klassen `definitional`/`structural`/`thematic`, Schema-Erweiterung `sys_kg_edges` um `correspondence_type`/`evidence_basis`).
+
 ## 5. Tech Stack
 
 | Komponente | Technologie |

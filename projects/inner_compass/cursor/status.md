@@ -217,6 +217,8 @@ Reihenfolge der Systeme:
 ## Phase 3: Cross-System + IC-Sprache (nach Phase 2)
 
 > **Hier entsteht die IC-Sprache.** Netze übereinanderlegen → Klumpen finden → eigene Konzepte destillieren.
+>
+> ⚠️ **Vor Start lesen:** `reference/cross_system_mapping_methodology_review.md` (2026-07-01) — die dokumentierte Methodik (Embedding-Cosine-Similarity auf `canonical_description` als primäres Auswahlkriterium) hat einen methodischen Konstruktionsfehler, kein reines Human-Review-Problem. Offener Review, muss vor Implementierung entschieden werden (→ ggf. `decisions.md`).
 
 - [ ] Embeddings generieren (text-embedding-3-large oder lokal)
 - [ ] Strukturelle Cross-Edges anlegen (HD Gate = I Ging Hex, faktisch)
