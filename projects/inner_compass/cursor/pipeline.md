@@ -47,17 +47,21 @@ Jobs in `[Klammern]` sind noch nicht implementiert.
 - **Status:** ✅ Produktiv, aber Aufspaltung geplant (siehe Abschnitt 3)
 
 ### text2kg
-- **Input:** sys_interpretations
+- **Input:** sys_interpretations + sys_source_chunks.metadata (Chunk-Profil)
 - **Engine:** Deterministisch
-- **Output:** sys_kg_nodes (Upsert per canonical_id)
-- **Logik:** Interpretation → Node. Aktuell NUR Nodes, keine echten Edges.
-- **Status:** ✅ Produktiv, aber Edges fehlen
+- **Output:** sys_kg_nodes — **PATCH bestehender Seed-Nodes**, keine Duplikate
+- **Logik:** Interpretation → canonical_id auflösen → existierenden Node verlinken (metadata: `interpretation_ids`, `chunk_ids`). Nur wenn keine Seed-Zuordnung möglich: Fallback `{system}.{element_type}.{element_id}` (asset_chunk).
+- **Auflösungs-Priorität:** (1) sys_term_mapping (2) Chunk-Metadata `gate_number` → `hd.gate.{N}` (HD-first, erweiterbar) (3) Metadata `canonical_id` oder `{element_type}+{element_id}` (4) asset_chunk-Fallback
+- **Wichtig:** Seed-Graph (K1/K2) existiert **vor** PDFs — text2kg **reichert an**, erzeugt keine parallelen Gate-Nodes. Siehe `reference/structure_descriptor_seed.md`.
+- **Status:** ✅ Fix 2026-07-01 (Gate-Linking via Chunk-Metadata)
 
 ### synthesize_node
-- **Input:** Alle sys_interpretations für einen Node
+- **Input:** sys_kg_nodes mit `interpretation_ids` in metadata (priorisiert vor leeren Seed-Nodes)
 - **Engine:** LLM
 - **Output:** sys_kg_nodes.canonical_description + sys_synthesis_wordings (Styles)
-- **Status:** ✅ Produktiv
+- **Status:** ✅ S5b validiert 2026-07-03 — 64/64 `hd.gate.*` Wortings (Complete Rave I'Ching)
+- **Job-Debug:** `only_canonical_ids` / `only_node_keys` — Single-Gate-Rerun (z. B. Gate 63)
+- **Worker:** `_parse_llm_json` repariert ungültige LLM-Escapes; Spark-Start via `spark_s5b_synth.sh` + `.env.vm105`
 
 ## 3. Geplante Aufspaltung: extract_interpretations → 4 Jobs
 
@@ -148,6 +152,20 @@ for ch_id, ch_data in descriptor["structure"]["channels"].items():
 
 Der Graph existiert BEVOR die erste PDF verarbeitet wird.
 PDFs REICHERN die Nodes AN (Interpretationen), sie ERZEUGEN sie nicht.
+
+### K1/K2 vs. K4 — klare Trennung
+
+| Schicht | Quelle | Was | Beispiel HD |
+|---------|--------|-----|-------------|
+| **K1** | Engine/Kit | Berechnete Werte | Gate-Aktivierung im Chart |
+| **K2** | Engine + Seed | Strukturbaum (Nodes/Edges) | `hd.gate.34`, `hd.center.sacral`, 36 Channels |
+| **K4** | Literatur-PDFs | Text-Interpretationen | Ra I'Ching pro Gate — `sys_interpretations` |
+
+- **Seed (`ic_seed_structure.py`):** schreibt K2-Skeleton in `sys_kg_nodes` / `sys_kg_edges` — **pro System in Wellen**, nicht alle 14 Systeme auf einmal. Aktuell: Minimal-Skeleton in DB; Ziel: Seed liest `system_structure/*` (HD zuerst).
+- **69k-Regel:** ~69.120 berechenbare HD-Positionen sind **K1/Chart**, keine Struktur-Nodes. Vollständigkeit K2 = atomare Layer (inkl. 17 PHS, 192 Crosses), nicht 69k Einzelknoten.
+- **text2kg:** verknüpft K4-Interpretationen mit **bestehenden** K2-Nodes (PATCH metadata), nicht mit `hd.asset_chunk.{source}:{index}`.
+- **synthesize_node:** LLM-Synthese für UI (`sys_synthesis_wordings`); Roh-Interpretationen bleiben in `sys_interpretations` für Phase 3.
+- **Cross-System (Phase 3):** `extract_cross_mappings` / `sys_kg_edges` maps_to — Synthese-Wortlaut für UI, Roh-Interps für tiefe Analyse. Review: `reference/cross_system_mapping*.md`.
 
 ## 7. Worker-Architektur
 

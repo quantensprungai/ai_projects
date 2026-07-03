@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-05-06
+last_update: 2026-07-03
 scope: IC Projektstatus (Phasen 0–4), Chart-Engines, Content-Akquise, Ur-Systeme, Gene Keys, Konvergenz/Meta-KG
 in_scope: Stand, nächste Schritte, Systemliste, Anna's Archive entity-first, Klarstellung HD-Schulen vs. GK, Konvergenz personenbezogen vs. strukturell
 out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_compass_app AGENTS.md
@@ -8,7 +8,7 @@ out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_c
 
 # Inner Compass — Status & Nächste Schritte
 
-> **Stand:** 2026-05-06 | Bei jedem Meilenstein aktualisieren!
+> **Stand:** 2026-07-03 | Bei jedem Meilenstein aktualisieren!
 >
 > **Wo wir sind:** Phase 0 erledigt. Phase 1 — **Chart-Engines Staffel 1:** fünf Kerne + **Maya Tzolkin, Nine Star Ki, Numerologie, Akan** in `@ic/engines` + API-Routen + Kataloge v0 ✅
 > - **Ziwei Doushu** (iztro): TS, Katalog + Validierung ✅
@@ -21,6 +21,8 @@ out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_c
 > - **Numerologie / Akan**: Engines + Kataloge + `POST /api/.../calculate` ✅ *(Playbook-Validierung optional)*
 >
 > **Nächste Reihenfolge:** (1) **Katalog-Validierung** für **Numerologie** + **Akan** optional nachziehen. (2) **UI** Chart-Ansichten. Parallel: **Literatur/Anna's**; **Ur-Systeme**; Phase 2. — *Hinweis:* `cursor/architecture.md` §5–6 Topologie = `@ic/engines` + HD/Jyotish-Services.
+>
+> **Roter Faden (Masterplan):** S5-Test → System-Wellen → Phase 3 (nach 2 Review-Entscheidungen) → MVP → Voll — kanonisch in `cursor/handover.md` (Kontext-Block, „ROTER FADEN"). **UX-Design für Phase 4:** `reference/ux_konzept_2026-07.md`.
 
 ## Was EXISTIERT und FUNKTIONIERT
 
@@ -91,12 +93,14 @@ out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_c
 ## Gesamtprozess (5 Phasen)
 
 ```
-Phase 0: Fundament          ████████████ 100%  S1–S4 erledigt
-Phase 1: Engine Eval+Integ. ███████████░  ~95%  alle geplanten Chart-Engines inkl. Maya+NSK+Numerologie+Akan; Feintuning/Validierung/UI offen; Ur-Systeme ≠ Chart-Engines
-Phase 2: Content-Pipeline   ░░░░░░░░░░░░   0%  blockiert durch Phase 1
+Phase 0: Fundament          ████████████ 100%  Infrastruktur (Schema sys_*, Worker, Minimal-K2-Seed)
+Phase 1: Engine Eval+Integ. ███████████░  ~95%  Chart-Engines + Kataloge v0; **offen:** Seed ↔ system_structure/*
+Phase 2: Content-Pipeline   ██████░░░░░░  ~50%  S5a ✅ · S5b ✅ (64/64 Gates, Complete Rave I'Ching)
 Phase 3: Cross-System       ░░░░░░░░░░░░   0%  → IC-Sprache entsteht hier (Datenschicht E)
 Phase 4: App                ██░░░░░░░░░░  15%  Architektur+Scope dokumentiert
 ```
+
+**Phase 0 = 100 %** bezieht sich auf **Infrastruktur**, nicht auf vollständige 13-Layer-Strukturbäume in der DB. Vollständiger K2-Seed ist **Phase-1-Nachzug** (Daten in `system_structure/` teils schon da).
 
 ---
 
@@ -121,10 +125,20 @@ Phase 4: App                ██░░░░░░░░░░  15%  Architekt
 - Supabase start + Schema ok + Worker dry-run ok
 - Hinweis: `supabase start --ignore-health-check` auf Windows
 
-### S4 — Seed-Script + Strukturbäume ✅
-- 832 Nodes + 698 Edges (10 Systeme, HD: 526 Nodes)
+### S4 — Seed-Script + Strukturbäume ✅ (Minimal-Skeleton)
+
+- 832 Nodes + 698 Edges (10 Systeme, HD: **759 Nodes** nach JSON-Erweiterung 2026-07-02, vorher 526)
 - Idempotent, Cross-System (Gene Keys → HD Gates)
-- **Aber:** Nur Basis-Skeletons — vollständige Bäume fehlen (→ Phase 1)
+- **Klarstellung:** Das ist ein **Minimal-K2-Skeleton** für Pipeline-Tests — **nicht** der vollständige 13-Layer-Baum. `hd_structure_v0.json` + `hd_crosses_extracted.json` sind weiter als der DB-Seed.
+- **Nächster Schritt:** ~~`ic_seed_structure.py` liest `system_structure/*` (HD zuerst: +17 PHS, +192 Crosses, +4 Variables)~~ ✅ **2026-07-02:** HD-Seed liest `hd_catalog_v0.json`, `hd_structure_v0.json`, `hd_crosses_extracted.json` — siehe `reference/deep_structure_plan.md`
+
+### Schema-Naming ✅ (2026-01 Clean Restart)
+
+- Tabellen: **`sys_*`** (nicht `hd_*`) — Meta-System für alle Quellsysteme
+- Spalte `system`: `'hd'`, `'bazi'`, … — Quellsystem-ID
+- Canonical IDs: `hd.gate.34` — **`hd.` = System-Namespace**, nicht Tabellenname
+- Helper-Schema Postgres: **`ic`** (ersetzt `hd`)
+- Entscheidung: `reference/decisions.md` §2026-01
 
 </details>
 
@@ -186,7 +200,18 @@ Reihenfolge der Systeme:
 
 ### 1.2 Erweiterter Seed
 
-- [ ] ic_seed_structure.py aktualisieren — vollständige Bäume statt 832-Node-Skeleton
+- [x] ic_seed_structure.py — HD aus `system_structure/*` (**2026-07-02:** +233 Nodes, +115 Edges: PHS, Variables, Crosses, Strategy/NotSelf/Signature, Catalog-Circuits)
+- [ ] ic_seed_structure.py — übrige Systeme aus `system_structure/*` (nicht nur hardcoded Skeleton)
+
+### HD: 69.120 vs. Struktur-Vollständigkeit
+
+| Konzept | Anzahl | Im KG als Node? |
+|---------|--------|-----------------|
+| Berechenbare Positionen (Gate×Line×Color×Tone×Base) | ~69.120 | **Nein** — Chart-Ergebnis (K1), Property auf Chart |
+| Atomare Struktur-Nodes (Gates, Lines, PHS, Crosses, …) | ~700–780 | **Ja** — K2-Seed |
+| PHS (Color/Tone/Base) | 17 global | **Ja** — „Color 3“ bedeutet überall dasselbe |
+
+Mit vollständigem atomarem Seed können **alle** Kombinationen interpretiert werden, ohne 69k Nodes. Siehe `reference/hd_structure_13_layers_and_engines.md` §2.
 - [ ] Deskriptoren erweitern (structure-Block pro System)
 - [ ] Konsistenz-Check: Kit-Struktur vs. Deskriptor element_types vs. geseedete Nodes
 - → Backlog: `reference/deep_structure_plan.md` (Ziel-Node-Zahlen pro System)
@@ -195,12 +220,15 @@ Reihenfolge der Systeme:
 
 ## Phase 2: Content-Pipeline (nach Phase 1)
 
-### S5 — HD E2E-Validierung
-- [x] PDF-Upload (VM102 → sys_uploads_raw, sys_sources, sys_ingestion_jobs)
-- [ ] extract_text → classify_domain → extract_interpretations → text2kg → synthesize_node
-- [ ] Prüfen: canonical_ids matchen auf vollständigen Strukturbaum (aus Phase 1)
-- → Voraussetzung: Phase 1 (HD) + Spark GPU-Server
-- → Runbook: `reference/s5_runbook.md`
+### S5 — HD E2E-Validierung ✅ (S5a 2026-07-02 · S5b 2026-07-03)
+
+- [x] PDF-Upload (VM105, `--sys-mode`)
+- [x] **S5a:** extract_text + Gate-Chunk-Profil (~47 Gates erster Lauf), text2kg → `hd.gate.{N}`, synthesize
+- [x] **S5b:** `ic_chunk_profiles.py` (`rave_iching_gates`) → 65 Chunks / 64 unique Gates (MinerU pipeline)
+- [x] Phase 2 LLM + text2kg + synthesize für Complete Rave I'Ching — **64/64** echte Gate-Wortings
+- [x] Verifikation: Gate-Nodes mit `interpretation_ids`, Synthesis ohne `[DRY-RUN]`-Stubs
+- **Skripte:** `ic_s5b_rerun.py`, `spark_s5b_extract.sh`, `spark_s5b_synth.sh`, `ic_s5b_gate63_synthesis.py`
+- → Runbook: `reference/s5_runbook.md` · Handover: `cursor/handover.md` §S5
 
 ### S6 — Anna's Archive Pipeline
 - [x] hd_saas_uploader.py: `--sys-mode`
@@ -219,6 +247,8 @@ Reihenfolge der Systeme:
 > **Hier entsteht die IC-Sprache.** Netze übereinanderlegen → Klumpen finden → eigene Konzepte destillieren.
 >
 > ⚠️ **Vor Start lesen:** `reference/cross_system_mapping_methodology_review.md` (2026-07-01) — die dokumentierte Methodik (Embedding-Cosine-Similarity auf `canonical_description` als primäres Auswahlkriterium) hat einen methodischen Konstruktionsfehler, kein reines Human-Review-Problem. Offener Review, muss vor Implementierung entschieden werden (→ ggf. `decisions.md`).
+>
+> ⚠️ **Ebenfalls vor Start:** `reference/gesamtbetrachtung_review_2026-07.md` (2026-07-02) — Gesamtkonzept-Review. Für Phase 3 relevant: **System-Genealogie fehlt als Daten** (Z1 §4.2 verlangt Konvergenz-Gewichtung nach Verwandtschaft — Konvergenz-Service hat das nicht) und **`contradicts`-Edges werden von keinem Job erzeugt** (Widerspruchs-Protokoll Z1 §5.2 ohne Pipeline). Priorisierte Folge-Aufgaben in §8 dort.
 
 - [ ] Embeddings generieren (text-embedding-3-large oder lokal)
 - [ ] Strukturelle Cross-Edges anlegen (HD Gate = I Ging Hex, faktisch)
