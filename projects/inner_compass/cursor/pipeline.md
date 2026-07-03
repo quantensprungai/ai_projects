@@ -21,9 +21,9 @@ Jobs in `[Klammern]` sind noch nicht implementiert.
 
 ### extract_text
 - **Input:** PDF in sys_sources (Storage-Referenz)
-- **Engine:** MinerU (GPU auf Spark, heading-aware)
+- **Engine:** MinerU (GPU auf Spark, heading-aware); S5b: `IC_MINERU_BACKEND=pipeline`, `IC_CHUNK_PROFILE=rave_iching_gates`
 - **Output:** sys_source_chunks (saubere Textblöcke, ~500-1000 Tokens)
-- **Status:** ✅ Produktiv
+- **Status:** ✅ S5b: 65 Chunks / 64 unique Gates (Complete Rave I'Ching, 2026-07-03)
 - **Spike (abgeschlossen 2026-06-29):** `baidu/Unlimited-OCR` auf HD/BaZi/Scan getestet — MinerU in allen drei Faellen besser. Kein Backend-Wechsel. Runbook: `reference/unlimited_ocr_spike_runbook.md`; Ergebnisse: `reference/ocr_ab_*.md`.
 
 ### classify_domain
