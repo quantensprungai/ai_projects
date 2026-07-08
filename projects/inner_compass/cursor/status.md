@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-07-03
+last_update: 2026-07-08
 scope: IC Projektstatus (Phasen 0–4), Chart-Engines, Content-Akquise, Ur-Systeme, Gene Keys, Konvergenz/Meta-KG
 in_scope: Stand, nächste Schritte, Systemliste, Anna's Archive entity-first, Klarstellung HD-Schulen vs. GK, Konvergenz personenbezogen vs. strukturell
 out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_compass_app AGENTS.md
@@ -95,7 +95,7 @@ out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_c
 ```
 Phase 0: Fundament          ████████████ 100%  Infrastruktur (Schema sys_*, Worker, Minimal-K2-Seed)
 Phase 1: Engine Eval+Integ. ███████████░  ~95%  Chart-Engines + Kataloge v0; **offen:** Seed ↔ system_structure/*
-Phase 2: Content-Pipeline   ██████░░░░░░  ~50%  S5a ✅ · S5b ✅ (64/64 Gates, Complete Rave I'Ching)
+Phase 2: Content-Pipeline   ████████░░░░  ~65%  S5a ✅ · S5b ✅ · S5c ✅ · S6 Life Force ✅ 36/36 Channels
 Phase 3: Cross-System       ░░░░░░░░░░░░   0%  → IC-Sprache entsteht hier (Datenschicht E)
 Phase 4: App                ██░░░░░░░░░░  15%  Architektur+Scope dokumentiert
 ```
@@ -229,6 +229,16 @@ Mit vollständigem atomarem Seed können **alle** Kombinationen interpretiert we
 - [x] Verifikation: Gate-Nodes mit `interpretation_ids`, Synthesis ohne `[DRY-RUN]`-Stubs
 - **Skripte:** `ic_s5b_rerun.py`, `spark_s5b_extract.sh`, `spark_s5b_synth.sh`, `ic_s5b_gate63_synthesis.py`
 - → Runbook: `reference/s5_runbook.md` · Handover: `cursor/handover.md` §S5
+
+### S5c — Gene Keys 64 Ways ✅
+- [x] GK linking + synthesis 64/64 — produktive K4 behalten
+
+### S6 — Life Force (HD Channels) ✅ (2026-07-08)
+- [x] Source `2a9272bc-…` — 175 Chunks, `elements`-Rerun, Channel-Migration, text_relink
+- [x] **36/36** Kanon-Channels linked+syn (`ic_s6_channel_report.py`)
+- [x] Orphan Reverse-/Bogus-Nodes bereinigt (`ic_s6_orphan_channel_cleanup.py`)
+- [x] Worker-Learnings dokumentiert: `reference/s6_pipeline_learnings.md` (lokal vs. Spark, 1000-Limit, CRLF)
+- **Skripte:** `ic_elements_rerun.py`, `ic_s6_channel_*`, `spark_s6_phase2.sh`, `spark_s6_synth_only.sh`
 
 ### S6 — Anna's Archive Pipeline
 - [x] hd_saas_uploader.py: `--sys-mode`

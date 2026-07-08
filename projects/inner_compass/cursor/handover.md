@@ -27,7 +27,7 @@ ROTER FADEN (Masterplan — wo wir im Prozess stehen, Stand 2026-07-03 ~22:40):
   4. ⏳ MVP "Die Vier Spiegel" (Phase 4): Onboarding + Mandala + Handbuch T1–2 + Share
      → UX-Design: reference/ux_konzept_2026-07.md (v1 vorhanden, vor Umsetzung reviewen)
   5. ⏳ VOLL: WERKSTATT + ZEIT komplett + Staffel 2–3 + Resonanz-Feedback-Loop
-  Aktueller Punkt: **Schritt 2 (HD-System-Welle / nächstes Werk)**. S5a+S5b abgeschlossen.
+  Aktueller Punkt: **Schritt 2 (HD-System-Welle)** — S6 *Life Force — The Channels* ✅ **36/36** (2026-07-08). Nächstes: **S5d BaZi**. Learnings: `cursor/reference/s6_pipeline_learnings.md`
   → cursor/status.md ist die Live-Wahrheit; diesen Block bei Meilensteinen aktualisieren.
 
 Phase 1 = Engine Evaluation Sprint:

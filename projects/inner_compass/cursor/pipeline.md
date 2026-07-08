@@ -47,21 +47,23 @@ Jobs in `[Klammern]` sind noch nicht implementiert.
 - **Status:** ✅ Produktiv, aber Aufspaltung geplant (siehe Abschnitt 3)
 
 ### text2kg
-- **Input:** sys_interpretations + sys_source_chunks.metadata (Chunk-Profil)
+- **Input:** sys_interpretations **für die Job-Source** (via `chunk_id`-Batches) + sys_source_chunks.metadata (Chunk-Profil)
 - **Engine:** Deterministisch
 - **Output:** sys_kg_nodes — **PATCH bestehender Seed-Nodes**, keine Duplikate
 - **Logik:** Interpretation → canonical_id auflösen → existierenden Node verlinken (metadata: `interpretation_ids`, `chunk_ids`). Nur wenn keine Seed-Zuordnung möglich: Fallback `{system}.{element_type}.{element_id}` (asset_chunk).
-- **Auflösungs-Priorität:** (1) sys_term_mapping (2) Chunk-Metadata `gate_number` → `hd.gate.{N}` (HD-first, erweiterbar) (3) Metadata `canonical_id` oder `{element_type}+{element_id}` (4) asset_chunk-Fallback
+- **Auflösungs-Priorität:** (1) sys_term_mapping (2) Chunk-Metadata `gate_number` → `hd.gate.{N}` (3) **`payload.elements[]`** + Multi-Link (4) HD Channel-Heuristik via **`ic_hd_channel_lookup`** (Katalog-Reihenfolge, z. B. `20_34` nicht `34_20`) (5) asset_chunk-Fallback
+- **HD Channels:** Gate-Paare immer über `hd_catalog_v0.json` normalisieren — siehe `reference/s6_pipeline_learnings.md`
 - **Wichtig:** Seed-Graph (K1/K2) existiert **vor** PDFs — text2kg **reichert an**, erzeugt keine parallelen Gate-Nodes. Siehe `reference/structure_descriptor_seed.md`.
 - **Status:** ✅ Fix 2026-07-01 (Gate-Linking via Chunk-Metadata)
 
 ### synthesize_node
 - **Input:** sys_kg_nodes mit `interpretation_ids` in metadata (priorisiert vor leeren Seed-Nodes)
-- **Engine:** LLM
+- **Engine:** LLM (**nur Spark** — nicht parallel lokal auf Windows)
 - **Output:** sys_kg_nodes.canonical_description + sys_synthesis_wordings (Styles)
-- **Status:** ✅ S5b validiert 2026-07-03 — 64/64 `hd.gate.*` Wortings (Complete Rave I'Ching)
-- **Job-Debug:** `only_canonical_ids` / `only_node_keys` — Single-Gate-Rerun (z. B. Gate 63)
-- **Worker:** `_parse_llm_json` repariert ungültige LLM-Escapes; Spark-Start via `spark_s5b_synth.sh` + `.env.vm105`
+- **Status:** ✅ S5b 64/64 Gates · ✅ S6 36/36 Channels (Life Force, 2026-07-08)
+- **Job-Debug:** `only_canonical_ids` / `only_node_keys` — gezielter Rerun (paginierter Node-Fetch ab 2026-07-07)
+- **Worker:** `_parse_llm_json` repariert ungültige LLM-Escapes; Spark: `spark_s6_synth_only.sh` / `spark_s5b_synth.sh` + `.env.vm105`
+- **Betrieb:** Siehe `reference/s6_pipeline_learnings.md` § Worker-Failures (1000-Limit, lokale Worker, CRLF)
 
 ## 3. Geplante Aufspaltung: extract_interpretations → 4 Jobs
 
