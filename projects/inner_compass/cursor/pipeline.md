@@ -60,7 +60,7 @@ Jobs in `[Klammern]` sind noch nicht implementiert.
 - **Input:** sys_kg_nodes mit `interpretation_ids` in metadata (priorisiert vor leeren Seed-Nodes)
 - **Engine:** LLM (**nur Spark** — nicht parallel lokal auf Windows)
 - **Output:** sys_kg_nodes.canonical_description + sys_synthesis_wordings (Styles)
-- **Status:** ✅ S5b 64/64 Gates · ✅ S6 36/36 Channels (Life Force, 2026-07-08)
+- **Status:** ✅ S5b 64/64 Gates · ✅ S6 36/36 Channels · ✅ **S5d** Joey Yap BaZi (420 Chunks, 226 linkable nodes, synthesis complete 2026-07-10)
 - **Job-Debug:** `only_canonical_ids` / `only_node_keys` — gezielter Rerun (paginierter Node-Fetch ab 2026-07-07)
 - **Worker:** `_parse_llm_json` repariert ungültige LLM-Escapes; Spark: `spark_s6_synth_only.sh` / `spark_s5b_synth.sh` + `.env.vm105`
 - **Betrieb:** Siehe `reference/s6_pipeline_learnings.md` § Worker-Failures (1000-Limit, lokale Worker, CRLF)
