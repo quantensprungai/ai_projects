@@ -95,7 +95,7 @@ out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_c
 ```
 Phase 0: Fundament          ████████████ 100%  Infrastruktur (Schema sys_*, Worker, Minimal-K2-Seed)
 Phase 1: Engine Eval+Integ. ███████████░  ~95%  Chart-Engines + Kataloge v0; **offen:** Seed ↔ system_structure/*
-Phase 2: Content-Pipeline   █████████░░░  ~75%  S5a ✅ · S5b ✅ · S5c ✅ · **S5d BaZi ✅** · S6 ✅ 36/36 Channels
+Phase 2: Content-Pipeline   ████████░░░░  ~70%  S5a ✅ · S5b ✅ · S5c ✅ · S5d Mechanik ✅ / QA ⚠️ · S6 ✅ 36/36
 Phase 3: Cross-System       ░░░░░░░░░░░░   0%  → IC-Sprache entsteht hier (Datenschicht E)
 Phase 4: App                ██░░░░░░░░░░  15%  Architektur+Scope dokumentiert
 ```
@@ -201,7 +201,7 @@ Reihenfolge der Systeme:
 ### 1.2 Erweiterter Seed
 
 - [x] ic_seed_structure.py — HD aus `system_structure/*` (**2026-07-02:** +233 Nodes, +115 Edges: PHS, Variables, Crosses, Strategy/NotSelf/Signature, Catalog-Circuits)
-- [ ] ic_seed_structure.py — übrige Systeme aus `system_structure/*` (nicht nur hardcoded Skeleton)
+- [ ] ic_seed_structure.py — übrige Systeme aus `system_structure/*` (nicht nur hardcoded Skeleton) — **BaZi zuerst** (Blocker aus S5d-Qualitäts-Gate: ohne Seed erfindet text2kg Nodes, siehe Phase 2 / S5d)
 
 ### HD: 69.120 vs. Struktur-Vollständigkeit
 
@@ -233,11 +233,16 @@ Mit vollständigem atomarem Seed können **alle** Kombinationen interpretiert we
 ### S5c — Gene Keys 64 Ways ✅
 - [x] GK linking + synthesis 64/64 — produktive K4 behalten
 
-### S5d — BaZi (Joey Yap Destiny Code) ✅ (2026-07-10)
+### S5d — BaZi (Joey Yap Destiny Code) — Pipeline-Mechanik ✅ · Qualitäts-Gate ⚠️ (2026-07-10)
 - [x] Source `cbe86636-…` — 648p PDF, MinerU **page batches** (50), 420 Chunks
-- [x] Phase 2: 420 Interpretationen (10×40 Batch-Recovery), text2kg, synthesize
-- [x] **Stems 48/48 · Branches 51/51 · Ten Gods 127/127** (Wu 午 via `ic_s5d_bazi_branch_relink.py`)
-- [x] Learnings: `cursor/reference/s5d_pipeline_learnings.md`
+- [x] Phase 2: 420 Interpretationen (10×40 Batch-Recovery), text2kg, synthesize — **Mechanik E2E bewiesen**
+- [x] Wu 午 via `ic_s5d_bazi_branch_relink.py` · Learnings: `cursor/reference/s5d_pipeline_learnings.md`
+- ⚠️ **Qualitäts-Gate (Node-Inventur 2026-07-10, `ic_s5d_bazi_node_inventory.py`):**
+  - **460 bazi-Nodes, Katalog-Kern wären ~37** (10 Stems, 12 Branches, 5 Elemente, 10 Ten Gods)
+  - text2kg lief **ohne K2-Seed** → freie Node-Erfindung: Typo-Namespaces (`b_azi.*`, `basi.*`, `bli.*`, `bazi.tengod.*`), 66 `asset_chunk`-Fallbacks, 120 Ten-God-Extras, Duplikat-Slugs (`jiecai` vs. `rob_wealth` vs. `7_killings`/`7killings`), sogar `fengshui.*` unter `system='bazi'`
+  - Synthesis teils **generisch** (z. B. `bazi.stem.jia`: 105 Interps → allgemeiner BaZi-Text ohne Jia-Spezifik)
+  - **Sauber + wertvoll:** 420 Chunks + 420 Interpretationen (K3-Rohmaterial) — Problem liegt nur in Node-Zuordnung + Synthese
+- **Konsequenz (nächster Schritt):** BaZi-K2-Seed aus `bazi_catalog_v0.json` → text2kg **strict mode** (nur Whitelist-Keys, keine Node-Erfindung) → Wildwuchs-Cleanup (analog `ic_s6_orphan_channel_cleanup.py`) → Re-Link + Re-Synthese aus bestehenden Interpretationen
 - **Skripte:** `ic_s5d_bazi_*`, `spark_s5d_extract.sh`, `spark_s5d_phase2.sh`
 
 ### S6 — Life Force (HD Channels) ✅ (2026-07-08)

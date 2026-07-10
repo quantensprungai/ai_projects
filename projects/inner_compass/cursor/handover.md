@@ -27,7 +27,13 @@ ROTER FADEN (Masterplan — wo wir im Prozess stehen, Stand 2026-07-03 ~22:40):
   4. ⏳ MVP "Die Vier Spiegel" (Phase 4): Onboarding + Mandala + Handbuch T1–2 + Share
      → UX-Design: reference/ux_konzept_2026-07.md (v1 vorhanden, vor Umsetzung reviewen)
   5. ⏳ VOLL: WERKSTATT + ZEIT komplett + Staffel 2–3 + Resonanz-Feedback-Loop
-  Aktueller Punkt: **Schritt 2 (HD-System-Welle)** — S6 *Life Force — The Channels* ✅ **36/36** (2026-07-08). Nächstes: **S5d BaZi**. Learnings: `cursor/reference/s6_pipeline_learnings.md`
+  Aktueller Punkt (2026-07-10): S6 ✅ 36/36 · **S5d BaZi: Pipeline-Mechanik ✅, Qualitäts-Gate ⚠️** —
+    text2kg lief OHNE BaZi-K2-Seed → 460 Nodes statt ~37 Katalog-Kern (Wildwuchs: Typo-Namespaces,
+    asset_chunk-Fallbacks, Ten-God-Duplikate); Synthesis teils generisch. 420 Interpretationen (K3) sind sauber.
+  NÄCHSTES (Reihenfolge fix): (a) K2-Seed BaZi aus bazi_catalog_v0.json + ic_seed_structure.py,
+    (b) text2kg strict mode (nur Seed-Keys, keine Node-Erfindung), (c) Wildwuchs-Cleanup + Re-Link/Re-Synthese,
+    (d) REGEL: keine weitere Content-Welle ohne vorherigen K2-Seed des Systems.
+  Learnings: `reference/s6_pipeline_learnings.md` + `reference/s5d_pipeline_learnings.md`
   → cursor/status.md ist die Live-Wahrheit; diesen Block bei Meilensteinen aktualisieren.
 
 Phase 1 = Engine Evaluation Sprint:
