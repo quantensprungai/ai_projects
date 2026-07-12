@@ -53,7 +53,7 @@ Jobs in `[Klammern]` sind noch nicht implementiert.
 - **Logik:** Interpretation → canonical_id auflösen → existierenden Node verlinken (metadata: `interpretation_ids`, `chunk_ids`). Nur wenn keine Seed-Zuordnung möglich: Fallback `{system}.{element_type}.{element_id}` (asset_chunk).
 - **Auflösungs-Priorität:** (1) sys_term_mapping (2) Chunk-Metadata `gate_number` → `hd.gate.{N}` (3) **`payload.elements[]`** + Multi-Link (4) HD Channel-Heuristik via **`ic_hd_channel_lookup`** (Katalog-Reihenfolge, z. B. `20_34` nicht `34_20`) (5) asset_chunk-Fallback
 - **HD Channels:** Gate-Paare immer über `hd_catalog_v0.json` normalisieren — siehe `reference/s6_pipeline_learnings.md`
-- **Wichtig:** Seed-Graph (K1/K2) existiert **vor** PDFs — text2kg **reichert an**, erzeugt keine parallelen Gate-Nodes. Siehe `reference/structure_descriptor_seed.md`.
+- **Wichtig:** Seed-Graph (K1/K2) existiert **vor** PDFs — text2kg **reichert an**, erzeugt keine parallelen Gate-Nodes. **strict mode (2026-07-10):** `IC_TEXT2KG_STRICT=true` default — kein Node-Create; BaZi zusätzlich Whitelist. Audit: `debug.text2kg_unmatched[]`. → `reference/k2_seed_scope_and_strict_text2kg.md`, `reference/structure_descriptor_seed.md`.
 - **Status:** ✅ Fix 2026-07-01 (Gate-Linking via Chunk-Metadata)
 
 ### synthesize_node

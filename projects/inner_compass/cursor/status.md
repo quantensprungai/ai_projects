@@ -233,17 +233,25 @@ Mit vollständigem atomarem Seed können **alle** Kombinationen interpretiert we
 ### S5c — Gene Keys 64 Ways ✅
 - [x] GK linking + synthesis 64/64 — produktive K4 behalten
 
-### S5d — BaZi (Joey Yap Destiny Code) — Pipeline-Mechanik ✅ · Qualitäts-Gate ⚠️ (2026-07-10)
+### S5d — BaZi (Joey Yap Destiny Code) — Pipeline-Mechanik ✅ · K2 Foundation ✅ (2026-07-11)
 - [x] Source `cbe86636-…` — 648p PDF, MinerU **page batches** (50), 420 Chunks
 - [x] Phase 2: 420 Interpretationen (10×40 Batch-Recovery), text2kg, synthesize — **Mechanik E2E bewiesen**
 - [x] Wu 午 via `ic_s5d_bazi_branch_relink.py` · Learnings: `cursor/reference/s5d_pipeline_learnings.md`
-- ⚠️ **Qualitäts-Gate (Node-Inventur 2026-07-10, `ic_s5d_bazi_node_inventory.py`):**
-  - **460 bazi-Nodes, Katalog-Kern wären ~37** (10 Stems, 12 Branches, 5 Elemente, 10 Ten Gods)
-  - text2kg lief **ohne K2-Seed** → freie Node-Erfindung: Typo-Namespaces (`b_azi.*`, `basi.*`, `bli.*`, `bazi.tengod.*`), 66 `asset_chunk`-Fallbacks, 120 Ten-God-Extras, Duplikat-Slugs (`jiecai` vs. `rob_wealth` vs. `7_killings`/`7killings`), sogar `fengshui.*` unter `system='bazi'`
-  - Synthesis teils **generisch** (z. B. `bazi.stem.jia`: 105 Interps → allgemeiner BaZi-Text ohne Jia-Spezifik)
-  - **Sauber + wertvoll:** 420 Chunks + 420 Interpretationen (K3-Rohmaterial) — Problem liegt nur in Node-Zuordnung + Synthese
-- **Konsequenz (nächster Schritt):** BaZi-K2-Seed aus `bazi_catalog_v0.json` → text2kg **strict mode** (nur Whitelist-Keys, keine Node-Erfindung) → Wildwuchs-Cleanup (analog `ic_s6_orphan_channel_cleanup.py`) → Re-Link + Re-Synthese aus bestehenden Interpretationen
-- **Skripte:** `ic_s5d_bazi_*`, `spark_s5d_extract.sh`, `spark_s5d_phase2.sh`
+- [x] **Qualitäts-Gate + Sanierung (2026-07-10):**
+  - Wildwuchs bereinigt: **460 → 37** Katalog-Kern (`ic_s5d_bazi_wildwuchs_cleanup.py`, 438 gelöscht)
+  - K2-Seed: **97 Nodes** (37 Kern + **60 Jiazi**, 140 Edges) — `ic_seed_structure.py --system bazi`
+  - Whitelist: `ic_bazi_k2_catalog.BAZI_K2_STRICT_IDS` · text2kg strict mode
+  - Re-Link: **1253 Links, 0 neue Nodes**; Re-Synthese **37/37** Kern-Nodes
+  - Ten-God-Relink: `shishen`/`pianyin`/`zhengyin` via `ic_s5d_bazi_tengod_relink.py`
+- **Nächste Welle:** Jiazi-PDF → Interpretationen auf `bazi.jiazi.*` · Playbook: `reference/k2_foundation_wave_playbook.md`
+- **Skripte:** `ic_bazi_k2_catalog.py`, `ic_s5d_bazi_*`, `spark_s5d_extract.sh`, `spark_s5d_phase2.sh`
+
+### K2 Foundation — Gesamtsanierung ✅ (2026-07-12)
+- [x] **Alle 3 aktiven Systeme sauber** (`ic_k2_state_audit.py`): 0 Wildwuchs, 0 offene Jobs, jede Interp-Node hat Synthese
+  - BaZi: 97 Nodes · 37 Synthese | HD: 777 Nodes · 114/114 | GK: 64 · 64/64
+- [x] **Re-Seed-Bug behoben:** Seed überschrieb `interpretation_ids`/`canonical_description` → Metadata-Erhalt in `ic_seed_structure.py`; Sanierung via `ic_relink_strict.py` (678 HD-Links) + `ic_restore_desc_from_wordings.py` (137 Descriptions ohne LLM)
+- [x] HD Alias-Remap (`g_center`→`g` etc., 8 remapped) · GK-Cleanup (167 asset_chunks) · 3 Zombie-Jobs geschlossen
+- **Neue Kern-Tools:** `ic_k2_state_audit.py` (Abschluss-Gate pro Welle), `ic_relink_strict.py`, `ic_restore_desc_from_wordings.py`, `ic_k2_synth_batch.py`
 
 ### S6 — Life Force (HD Channels) ✅ (2026-07-08)
 - [x] Source `2a9272bc-…` — 175 Chunks, `elements`-Rerun, Channel-Migration, text_relink

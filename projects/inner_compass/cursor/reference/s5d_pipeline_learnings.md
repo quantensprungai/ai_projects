@@ -1,8 +1,8 @@
 # S5d BaZi Pipeline — Learnings (Joey Yap Destiny Code)
 
-last_update: 2026-07-10
+last_update: 2026-07-12
 scope: S5d BaZi E2E auf VM105 + Spark
-in_scope: MinerU 648p, Phase-2-Batches, Wu-Relink, Recovery, Qualitäts-Gate/Wildwuchs
+in_scope: MinerU 648p, Phase-2-Batches, Wu-Relink, Recovery, Qualitäts-Gate/Wildwuchs, Sanierung 2026-07-12
 out_of_scope: BaZi Deep-Structure-Seed (→ deep_structure_plan.md)
 
 ## Source
@@ -52,8 +52,17 @@ out_of_scope: BaZi Deep-Structure-Seed (→ deep_structure_plan.md)
 ### Konsequenz — Regel für alle weiteren Wellen
 
 1. **Kein Content-Lauf ohne K2-Seed** des Zielsystems (`ic_seed_structure.py` aus `system_structure/*_catalog_v0.json`).
-2. **text2kg strict mode** (zu bauen): canonical_id nur gegen Seed-Whitelist auflösen; kein Match → Review-Queue statt Node-Erfindung.
-3. **BaZi-Sanierung:** Seed → Wildwuchs-Cleanup (analog `ic_s6_orphan_channel_cleanup.py`) → Re-Link aus bestehenden Interpretationen → Re-Synthese.
+2. **text2kg strict mode** (BaZi aktiv): canonical_id nur gegen Seed-Whitelist (`ic_bazi_k2_catalog.py`); kein Match → skip, keine Node-Erfindung (`IC_TEXT2KG_STRICT_BAZI=true` default).
+3. **BaZi-Sanierung (2026-07-10):** Seed 37 Nodes → Wildwuchs-Cleanup → strict Re-Link → Re-Synthese **37/37**
+4. **Global strict:** `IC_TEXT2KG_STRICT=true` (default) — kein Node-Create aus PDFs; Audit: `debug.text2kg_unmatched[]`
+5. **Skripte:** `ic_bazi_k2_catalog.py`, `ic_s5d_bazi_*`, `reference/k2_seed_scope_and_strict_text2kg.md`
+
+## Sanierung 2026-07-12 (Metadata-Wipe durch Re-Seed)
+
+- Re-Seed ohne Metadata-Erhalt → 34 Interp-Nodes hatten leere `interpretation_ids` (420 K3-Rohmaterial intakt in DB).
+- **Fix:** `ic_relink_strict.py` (1253 Links) + `ic_restore_desc_from_wordings.py` (32 Descriptions) + `ic_k2_synth_batch.py` (5 Top-Nodes neu).
+- **Abschluss:** 37/37 Kern-Nodes mit Synthese · Audit grün.
+- → Gesamt-Runbook: `reference/k2_sanierung_learnings.md`
 
 ## Skripte
 
@@ -65,7 +74,8 @@ out_of_scope: BaZi Deep-Structure-Seed (→ deep_structure_plan.md)
 | `ic_s5d_bazi_status.py` | Coverage stems/branches/ten_gods/synth |
 | `ic_s5d_bazi_recover.py` | Zombie-Jobs reset + Interpret-Batches |
 | `ic_s5d_bazi_branch_relink.py` | Fehlende Branch-Links aus Text |
-| `spark_s5d_extract_only.sh` | Spark: nur extract_text |
+| `ic_s5d_bazi_tengod_relink.py` | Fehlende Ten-God-Links (shishen/pianyin/zhengyin) |
+| `ic_s5d_bazi_synth_batch.py` | Batch-Synthese (robust, `--only-id`) |
 | `spark_s5d_phase2.sh` | Spark: LLM-Kette ohne extract |
 
 ## Betrieb

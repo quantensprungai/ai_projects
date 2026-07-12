@@ -13,7 +13,7 @@ Tech: Next.js (Makerkit 3.1.3) + Supabase + Spark (GPU, Worker, MinerU, LLM)
 Gesamtprozess (5 Phasen):
   Phase 0: Fundament          ████████████ 100%  (Schema sys_*, Worker, Minimal-K2-Seed ~832 Nodes)
   Phase 1: Engine Eval+Integ. ███████████░  ~95%  (Chart-Engines + Kataloge v0; Seed↔Structure-Sync offen)
-  Phase 2: Content-Pipeline   ██████░░░░░░  ~50%  (S5a E2E ✅ · S5b ✅ 64/64 Gates)
+  Phase 2: Content-Pipeline   ████████░░░░  ~75%  (S5a/b/c/d/S6 ✅ · K2 Foundation Wave ✅ 2026-07-12)
   Phase 3: Cross-System       ░░░░░░░░░░░░   0%
   Phase 4: App                ██░░░░░░░░░░  15%  (Architektur+Scope dokumentiert)
 
@@ -27,13 +27,14 @@ ROTER FADEN (Masterplan — wo wir im Prozess stehen, Stand 2026-07-03 ~22:40):
   4. ⏳ MVP "Die Vier Spiegel" (Phase 4): Onboarding + Mandala + Handbuch T1–2 + Share
      → UX-Design: reference/ux_konzept_2026-07.md (v1 vorhanden, vor Umsetzung reviewen)
   5. ⏳ VOLL: WERKSTATT + ZEIT komplett + Staffel 2–3 + Resonanz-Feedback-Loop
-  Aktueller Punkt (2026-07-10): S6 ✅ 36/36 · **S5d BaZi: Pipeline-Mechanik ✅, Qualitäts-Gate ⚠️** —
-    text2kg lief OHNE BaZi-K2-Seed → 460 Nodes statt ~37 Katalog-Kern (Wildwuchs: Typo-Namespaces,
-    asset_chunk-Fallbacks, Ten-God-Duplikate); Synthesis teils generisch. 420 Interpretationen (K3) sind sauber.
-  NÄCHSTES (Reihenfolge fix): (a) K2-Seed BaZi aus bazi_catalog_v0.json + ic_seed_structure.py,
-    (b) text2kg strict mode (nur Seed-Keys, keine Node-Erfindung), (c) Wildwuchs-Cleanup + Re-Link/Re-Synthese,
-    (d) REGEL: keine weitere Content-Welle ohne vorherigen K2-Seed des Systems.
-  Learnings: `reference/s6_pipeline_learnings.md` + `reference/s5d_pipeline_learnings.md`
+  Aktueller Punkt (2026-07-12): **K2 Foundation Wave abgeschlossen** — BaZi/HD/GK alle sauber
+    (ic_k2_state_audit.py: 0 Wildwuchs, 0 Jobs, Interp→Synth vollständig).
+    S5d BaZi: 97 Nodes, 37 Synthese · HD: 777 Nodes, 114/114 · GK: 64/64.
+  NÄCHSTES: Content-Welle (Referenzwerk vor Überblick, siehe k2_foundation_wave_playbook.md §Werk-Reihenfolge)
+    oder nächstes System (Astro/Ziwei) K2-Welle vor 1. PDF.
+  K2-Docs: `reference/k2_foundation_wave_playbook.md`, `reference/k2_sanierung_learnings.md`,
+    `reference/k2_seed_scope_and_strict_text2kg.md`
+  Learnings: `reference/s5d_pipeline_learnings.md`, `reference/s6_pipeline_learnings.md`
   → cursor/status.md ist die Live-Wahrheit; diesen Block bei Meilensteinen aktualisieren.
 
 Phase 1 = Engine Evaluation Sprint:
