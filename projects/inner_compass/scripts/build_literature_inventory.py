@@ -11,10 +11,10 @@ from datetime import date
 from pathlib import Path
 
 SOURCE_ROOT = Path(
-    r"C:\Users\he5013\Nextcloud\Hochschule\X. Eigenes\Human Design\App\Literatur"
+    r"C:\Users\Admin105\Downloads\Literatur"
 )
 REF_DIR = Path(__file__).resolve().parents[1] / "reference"
-DATE_TAG = "2026-06-30"
+DATE_TAG = "2026-07-18"
 MD5_RE = re.compile(r"[a-f0-9]{32}")
 
 TOP_TO_SYSTEM = {
@@ -620,9 +620,9 @@ def main() -> None:
         "aa_need_count": len(AA_NEED),
         "notes": [
             "Scan via build_literature_inventory.py + Get-ChildItem equivalent (pathlib rglob).",
-            "SoT for PDFs: Nextcloud Literatur folder on this machine.",
+            "SoT for PDFs: C:\\Users\\Admin105\\Downloads\\Literatur (transfer from other PC).",
             "archiv/ = duplicate editions — status archiv_duplikat, skip extraction.",
-            "AA gaps: literature_aa_need_2026-06-30.csv",
+            f"AA gaps: literature_aa_need_{DATE_TAG}.csv",
         ],
     }
     meta_path.write_text(json.dumps(meta, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
