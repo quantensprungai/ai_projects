@@ -27,12 +27,16 @@ ROTER FADEN (Masterplan — wo wir im Prozess stehen, Stand 2026-07-03 ~22:40):
   4. ⏳ MVP "Die Vier Spiegel" (Phase 4): Onboarding + Mandala + Handbuch T1–2 + Share
      → UX-Design: reference/ux_konzept_2026-07.md (v1 vorhanden, vor Umsetzung reviewen)
   5. ⏳ VOLL: WERKSTATT + ZEIT komplett + Staffel 2–3 + Resonanz-Feedback-Loop
-  Aktueller Punkt (2026-08-04): Content-Welle HD — Channels/Circuits ✅; **Rave I'Ching Re-Interpret ✅**
-    (Langdock gpt-5-mini + Primary-Element-Hint: 65/65 Interps, Gate-Tag 64/64, text2kg, 64/64 Gates gelinkt).
+  Aktueller Punkt (2026-08-04): Rave I'Ching Re-Interpret ✅ + Gene Keys Stubs ✅ + Synth-Selection-Fix ✅
+    + **Audit: text2kg-Auto-Synth war Root-Cause für Vollsystem-Überschreibungen** (31 unscoped Läufe
+    gefunden, u. a. 3× `hd` während der Content-Welle selbst) → **gefixt** (`IC_TEXT2KG_AUTO_SYNTH=false`
+    Default; Synth nur noch explizit pro System+Layer).
+    **Gates/Channels/Circuits-Layer neu synthetisiert** (Langdock gpt-5-mini, Selection-Fix): 64/64 + 36/36 + 9/9,
+    Stichprobe `hd.channel.20_34` jetzt korrekt (vorher Fehl-Tag).
     Stub-Unlink ✅; empirisch ~€0,41 Langdock für Pilot+Rave (~€0,004–0,006/Chunk).
-    Hybrid-Soll: Mass-Interpret=Langdock; Extract=Spark; Synth=Layer-Batches (kein Full nach jedem PDF).
-  NÄCHSTES: Gene Keys Opening Doors Stubs → Synth-Selection-Fix (`[:15]`) → Gates-Layer-Synth;
-    Centers Winn/Schoeber Phase2 strict (unscoped Synth queued — nicht blind starten).
+    Hybrid-Soll: Mass-Interpret=Langdock; Extract=Spark; Synth=Layer-Batches (kein Full nach jedem PDF) — jetzt strukturell erzwungen.
+  NÄCHSTES: Centers-Layer-Synth (Winn/Schoeber, unscoped Job bereits cancelled, Interps vorhanden);
+    optional Stichprobe/Re-Synth GeneKeys (64/64, alte Logik) + BaZi (37/97, alte Logik).
   Detail: `cursor/reference/literature_content_wave_2026-07-18.md`
   K2-Docs: `reference/k2_foundation_wave_playbook.md`, `reference/k2_sanierung_learnings.md`,
     `reference/k2_seed_scope_and_strict_text2kg.md`

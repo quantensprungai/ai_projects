@@ -1,6 +1,6 @@
 # Literatur Content-Wellen — Stand 2026-07-18
 
-last_update: 2026-08-04
+last_update: 2026-08-04 (Gates+Channels+Circuits Layer-Synth Re-Fix; text2kg Auto-Synth Root-Cause behoben)
 scope: Alle kuratierten Werke bleiben im Scope; Reihenfolge = K2-Struktur + Subsysteme, nicht Alphabet
 in_scope: Inventar-Refresh, Queue, Orientierungsprinzip, Synth-Wellen-Policy, Open Hygiene
 out_of_scope: PDF-Upload/Pipeline-Ausführung (läuft separat)
@@ -59,10 +59,10 @@ Builder: `scripts/build_content_wave_queue.py` (Feld `structure_layer` + `struct
 Entspricht `hd_catalog_v0.json` Subsysteme + `deep_structure_plan.md`:
 
 1. **Types / Design Concepts / Living Your Design** ✅
-2. **Channels** (Life Force ✅ → Channels by Type 1–4 ✅ + Layer-Synth ✅ 2026-07-23)
-3. **Circuits** (Ra: *Rave BodyGraph Circuitry* ✅ extract → text2kg → Alias-Relink → Layer-Synth 2026-07-24)
-4. **Centers** (kein Ra-Original im Inventar → Winn → Schoeber als K3/K4; **strict text2kg** wie Channels/Circuits — kein Node-Create / kein Wildwuchs; Unmatched dokumentieren)
-5. **Gates/Lines Companion** (Rave I'Ching ✅; Line-Companion-Bücher nachziehen)
+2. **Channels** (Life Force ✅ → Channels by Type 1–4 ✅ + Layer-Synth ✅ 2026-07-23, **Re-Synth mit Selection-Fix ✅ 2026-08-04**)
+3. **Circuits** (Ra: *Rave BodyGraph Circuitry* ✅ extract → text2kg → Alias-Relink → Layer-Synth 2026-07-24, **Re-Synth mit Selection-Fix ✅ 2026-08-04**)
+4. **Centers** (kein Ra-Original im Inventar → Winn → Schoeber als K3/K4; **strict text2kg** ✅ 0 Stubs; Layer-Synth **noch offen**, nächste Welle)
+5. **Gates/Lines Companion** (Rave I'Ching ✅ Re-Interpret 2026-08-04; Layer-Synth ✅ 64/64 2026-08-04; Line-Companion-Bücher nachziehen)
 6. **Profiles / Incarnation Crosses**
 7. **PHS** (Variables, Color/Tone/Base)
 8. **Rave Psychology**
@@ -88,11 +88,13 @@ Channels-Layer ist **sauber** (36/36 + Synth). Darüber hinaus offen:
 | Qwen3 Thinking-Hang bei Synth                         | `chat_template_kwargs.enable_thinking=false` in `ic_worker._call_llm`         | done                  |
 | Stub-Interps von Nodes unlinken                       | ✅ `ic_stub_interp_hygiene.py --unlink-from-nodes --apply` (100 Nodes, −136) | done                  |
 | Rave I'Ching Re-Interpret                             | ✅ Langdock + Hint: 65/65 Interps, Gate-Tag 64/64, text2kg, 64/64 Nodes      | done 2026-08-04       |
-| Gene Keys Opening Doors 18 Stubs                      | unlink done; re-interpret + Stub-Rows delete                                  | jetzt                 |
-| Synth lädt nur `interpretation_ids[:15]`              | Circuitry-Interps oft außerhalb Fenster — Selection fix offen                 | parallel              |
-| Centers Winn + Schoeber                               | Upload ✅; Phase2 partial; unscoped Synth queued — **nicht** blind starten    | parallel              |
-| Stub-Rows löschen (`--delete-stubs`)                  | Rave-Stubs durch force_reextract weg; Gene-Keys-Stubs noch in DB              | mit GK-Fix            |
-| Gates-Layer-Synth                                     | nach Selection-Fix / `only_canonical_ids`                                     | danach                |
+| Gene Keys Opening Doors 18 Stubs                      | ✅ Langdock: 18 Stub-Chunks → real; **39/39** Interps, 0 Stubs, text2kg ✅; Full-Synth cancelled | done 2026-08-04 |
+| Synth lädt nur `interpretation_ids[:15]`              | ✅ Load Default **alle** IDs; Prompt max **12** + Diversität (`ic_worker`)   | done 2026-08-04       |
+| **text2kg auto-enqueued unscoped Full-Synth**         | ✅ Root-Cause gefunden (Audit) + gefixt: Default jetzt **aus** (`IC_TEXT2KG_AUTO_SYNTH=false`); Synth nur noch explizit via Layer-Skripte | done 2026-08-04 |
+| Centers Winn + Schoeber                               | ✅ bis text2kg; unscoped Synth **cancelled**; Layer-Synth offen               | nächste Welle         |
+| Gates-Layer-Synth (Re-Synth mit Selection-Fix)        | ✅ 64/64 via Langdock, ~14,5 Min, Job `cf980fb6…`                             | done 2026-08-04       |
+| Channels-Layer-Synth (Re-Synth mit Selection-Fix)     | ✅ 36/36 via Langdock, Job `cbd6820f…` — `20_34` jetzt korrekt (Charisma, 34↔20) | done 2026-08-04 |
+| Circuits-Layer-Synth (Re-Synth mit Selection-Fix)     | ✅ 9/9 via Langdock, Job `d5d87e09…`                                          | done 2026-08-04       |
 | Profile/Lines Inhaltslücken                           | erwartet                                                                      | nach Layer-Büchern    |
 
 ### LLM-Betrieb / Kosten (empirisch 2026-08-04)
@@ -216,16 +218,47 @@ Jobs: Batch `4206ecb6` (9 IDs) + Follow-up `1f39a3a1` (nur `individual_centering
 1. Mehrfach-`spark_s5d_synth_only.sh` → kurze Multi-PID-Fenster → Job als Zombie `running`. Fix: Job resetten, **einen** Worker.
 2. Qwen3 Thinking kann einzelne Synth-Calls >10 Min streamen und `requests` Timeout umgehen. Fix: `enable_thinking=False` in `_call_llm` (deployed Spark).
 
-### Centers (Winn + Schoeber) — Stand 2026-07-24
+### Centers (Winn + Schoeber) — Stand 2026-08-04
 
 
-| Buch                             | source_id  | Extract          | Phase2            |
-| -------------------------------- | ---------- | ---------------- | ----------------- |
-| Winn *Understanding the Centers* | `c90803be` | ✅ 276 chunks     | 🔄 nosynth strict |
-| Schoeber *The Centres*           | `3a5fe2ff` | ✅ (extract done) | 🔄 nosynth strict |
+| Buch                             | source_id  | Extract      | Interpret     | text2kg | Layer-Synth                          |
+| -------------------------------- | ---------- | ------------ | ------------- | ------- | ------------------------------------ |
+| Winn *Understanding the Centers* | `c90803be` | ✅ 276 chunks | ✅ 276/276, 0 stubs | ✅      | offen (unscoped Job queued → cancel/ersetzen) |
+| Schoeber *The Centres*           | `3a5fe2ff` | ✅ 160 chunks | ✅ 160/160, 0 stubs | ✅      | offen (unscoped Job queued → cancel/ersetzen) |
 
 
-Policy: `IC_TEXT2KG_STRICT` + `IC_TEXT2KG_STRICT_HD` — kein Node-Create / kein Wildwuchs; Unmatched dokumentieren. Layer-Synth erst nach beiden text2kg.
+Center-Nodes haben bereits viele Links (z. B. Throat 138, Sacral 133). **Es fehlt nicht Phase2**, sondern nur der **scoped Centers-Layer-Synth** nach Selection-Fix. Die queued `synthesize_node`-Jobs sind Full-System (unscoped) — bewusst nicht starten.
+
+### Synth-Prozess — Review + Audit-Ergebnis (2026-08-04)
+
+Pro PDF: Extract → classify → interpret → **text2kg strict** → **kein** Full-Synth.  
+Pro Layer (Types / Channels / Circuits / Gates / Centers / …):
+
+1. Alle relevanten Bücher bis text2kg  
+2. Optional Alias/Relink / Hygiene  
+3. **Selection:** alle gelinkten Interps **laden**, dann ranken/diversifizieren → begrenzte Prompt-Menge  
+4. `synthesize_node` mit `only_canonical_ids` (Skript: `ic_synth_layer_ops.py`)  
+5. QA Stichprobe
+
+**Unscoped vs scoped (wichtig):** Nach text2kg enqueued der Worker früher **immer** `synthesize_node` **ohne** `only_canonical_ids`. Das schreibt **alle** Nodes eines Systems neu (Gates+Channels+Centers+…), nicht nur die vom aktuellen Buch betroffenen.
+
+**Ist das real passiert — Audit über alle 81 je gelaufenen `synthesize_node`-Jobs (`ic_synth_audit_all_systems.py`):**
+
+31 completed Jobs waren unscoped (Vollsystem), u. a. **3× `hd`** während der Content-Welle selbst (q1 Design Concepts 07-19, q2 How to Read a Graph 07-20, q5 Channels by Type 4 07-22) sowie mehrfach Rave, Gene Keys und 1× BaZi. D. h. **pro System reicht nicht** — jeder dieser Läufe hat mit der alten, engen Auswahl-Logik (nur `interpretation_ids[:15]`, max. 8, keine Quellen-Diversität) das *gesamte* System überschrieben. Konkret betroffen: Channels-Layer (36/36, Stand 2026-07-23) und Circuits-Layer (9/9, Stand 2026-07-24) — beide vor dem Selection-Fix entstanden.
+
+**Fix (Root-Cause, nicht nur Symptom):** `_handle_text2kg` in `ic_worker.py` enqueued den Synth-Job jetzt nur noch, wenn `IC_TEXT2KG_AUTO_SYNTH=true` explizit gesetzt ist (Default **false**). Text2KG verlinkt weiter Interpretationen an Nodes, löst aber keine automatische Synthese mehr aus. Synthese läuft ausschließlich noch explizit **pro System UND pro Layer/Element-Cluster** über `ic_synth_layer_ops.py --enqueue-layer <prefix>` bzw. `ic_k2_synth_batch.py`.
+
+**Re-Synth durchgeführt (2026-08-04, alle via Langdock/gpt-5-mini):**
+
+| Layer | Scope | Ergebnis |
+| ----- | ----- | -------- |
+| Gates | 64 `hd.gate.*` | ✅ 64/64, Job `cf980fb6…`, ~14,5 Min |
+| Channels | 36 `hd.channel.*` | ✅ 36/36, Job `cbd6820f…` — Stichprobe `20_34` jetzt korrekt (Charisma-Channel, Gate 34↔20) |
+| Circuits | 9 `hd.circuit.*` (10. = `integration`, 0 Interps, kein Synth) | ✅ 9/9, Job `d5d87e09…` |
+
+**Load vs Prompt:** DB-Load Default = **alle** gelinkten IDs (`IC_SYNTHESIS_LOAD_INTERPS=0`). Prompt bekommt davon max. **12** (`IC_SYNTHESIS_MAX_INTERPS`) — nicht weil wir Quellen ignorieren, sondern weil ein LLM-Call nicht 100+ Volltexte sinnvoll fusioniert (Qualität + Context + Kosten). Diversität sorgt, dass mehrere Bücher im Prompt landen. Später optional Map-Reduce (Cluster→Zwischenfazit→Final).
+
+**Offen:** Centers-Layer (Winn+Schoeber, unscoped Job bereits cancelled) ist die nächste logische Welle — gleiches Muster wie Gates/Channels/Circuits. GeneKeys (64/64 gedeckt) und BaZi (37/97) liefen ebenfalls einmal unscoped mit alter Logik; Stichprobe/Re-Synth optional, nicht akut (GeneKeys hat pro Node meist nur 1 Quelle → Fenster-Bug greift dort kaum).
 
 ## BaZi — Layer-Reihenfolge
 
