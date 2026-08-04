@@ -95,7 +95,11 @@ Channels-Layer ist **sauber** (36/36 + Synth). Darüber hinaus offen:
 | Channels-Layer-Synth (Re-Synth mit Selection-Fix)     | ✅ 36/36 via Langdock, Job `cbd6820f…` — `20_34` jetzt korrekt (Charisma, 34↔20) | done 2026-08-04 |
 | Circuits-Layer-Synth (Re-Synth mit Selection-Fix)     | ✅ 9/9 via Langdock, Job `d5d87e09…`                                          | done 2026-08-04       |
 | Centers-Layer-Synth (Winn+Schoeber, Selection-Fix)    | ✅ 9/9 via Langdock, Job `1a361e2c…`, ~2,5 Min                                | done 2026-08-04       |
-| Profile/Lines Inhaltslücken                           | erwartet                                                                      | nach Layer-Büchern    |
+| HD-Rest-Layer (Types/Authorities/Profiles/Lines/Definitions/PHS) | ✅ 31/31 via Langdock, Job `12312a82…`, ~6 Min                     | done 2026-08-04       |
+| **BaZi Re-Synth** (Destiny Code, war am stärksten vom alten Fenster betroffen) | ✅ 34/34 via Langdock, Job `d1a70862…`, bis zu 105 Interps/Node vorher gekappt auf 8 | done 2026-08-04 |
+| GeneKeys Re-Synth (Vollständigkeit, geringes Risiko)  | ✅ 64/64 via Langdock, Job `76e5b1d7…`, ~12 Min                               | done 2026-08-04       |
+| **Voll-Audit:** Stubs noch verlinkt? Jobs hängend?    | ✅ 0 Stub-Interps verlinkt (alle Systeme), 0 queued/running Jobs              | verifiziert 2026-08-04 |
+| Profile/Lines Inhaltslücken                           | erwartet (dünne Interp-Dichte je Line, nicht behebbar ohne mehr Bücher)       | beobachten            |
 
 ### LLM-Betrieb / Kosten (empirisch 2026-08-04)
 
@@ -258,7 +262,7 @@ Pro Layer (Types / Channels / Circuits / Gates / Centers / …):
 
 **Load vs Prompt:** DB-Load Default = **alle** gelinkten IDs (`IC_SYNTHESIS_LOAD_INTERPS=0`). Prompt bekommt davon max. **12** (`IC_SYNTHESIS_MAX_INTERPS`) — nicht weil wir Quellen ignorieren, sondern weil ein LLM-Call nicht 100+ Volltexte sinnvoll fusioniert (Qualität + Context + Kosten). Diversität sorgt, dass mehrere Bücher im Prompt landen. Später optional Map-Reduce (Cluster→Zwischenfazit→Final).
 
-**Offen:** GeneKeys (64/64 gedeckt) und BaZi (37/97) liefen ebenfalls einmal unscoped mit alter Logik; Stichprobe/Re-Synth optional, nicht akut (GeneKeys hat pro Node meist nur 1 Quelle → Fenster-Bug greift dort kaum). Damit ist die komplette Bodygraph-Kern-Struktur (Gates, Channels, Circuits, Centers) auf dem neuen Selection-Fix.
+**Update 2026-08-04, zweite Runde — alles geschlossen:** Vollständiger Coverage-Check zeigte, dass BaZi (Destiny Code) am stärksten betroffen war — 25 von 34 Nodes hatten >15 Interps, bis zu **105** (Stems/Branches/Ten-Gods), unter altem Fenster auf 8 gekappt. Zusätzlich 31 kleinere HD-Nodes (Types bis zu 29 Interps, Authorities, Profiles, Lines, Definitions, PHS) waren noch nicht mit dem Fix neu synthetisiert. Beide Wellen + GeneKeys (Vollständigkeit, geringes Risiko da max. 11 Interps/Node) sind jetzt durch. **Damit ist die komplette bisherige Content-Welle (HD-Kernstruktur + BaZi + GeneKeys) auf dem neuen Selection-Fix, und ein Voll-Audit bestätigt: 0 verlinkte Stub-Interps, 0 hängende Jobs, keine unscoped Full-System-Synths mehr möglich (strukturell durch `IC_TEXT2KG_AUTO_SYNTH=false` verhindert).**
 
 ## BaZi — Layer-Reihenfolge
 

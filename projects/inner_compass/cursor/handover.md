@@ -27,16 +27,20 @@ ROTER FADEN (Masterplan — wo wir im Prozess stehen, Stand 2026-07-03 ~22:40):
   4. ⏳ MVP "Die Vier Spiegel" (Phase 4): Onboarding + Mandala + Handbuch T1–2 + Share
      → UX-Design: reference/ux_konzept_2026-07.md (v1 vorhanden, vor Umsetzung reviewen)
   5. ⏳ VOLL: WERKSTATT + ZEIT komplett + Staffel 2–3 + Resonanz-Feedback-Loop
-  Aktueller Punkt (2026-08-04): Rave I'Ching Re-Interpret ✅ + Gene Keys Stubs ✅ + Synth-Selection-Fix ✅
-    + **Audit: text2kg-Auto-Synth war Root-Cause für Vollsystem-Überschreibungen** (31 unscoped Läufe
+  Aktueller Punkt (2026-08-04): **Content-Welle Selection-Fix + Root-Cause komplett durchgezogen — sauber.**
+    Rave I'Ching Re-Interpret ✅, Gene Keys Stubs ✅, Synth-Selection-Fix ✅.
+    **Audit: text2kg-Auto-Synth war Root-Cause für Vollsystem-Überschreibungen** (31 unscoped Läufe
     gefunden, u. a. 3× `hd` während der Content-Welle selbst) → **gefixt** (`IC_TEXT2KG_AUTO_SYNTH=false`
-    Default; Synth nur noch explizit pro System+Layer).
-    **Gates/Channels/Circuits-Layer neu synthetisiert** (Langdock gpt-5-mini, Selection-Fix): 64/64 + 36/36 + 9/9,
-    Stichprobe `hd.channel.20_34` jetzt korrekt (vorher Fehl-Tag).
-    Stub-Unlink ✅; empirisch ~€0,41 Langdock für Pilot+Rave (~€0,004–0,006/Chunk).
-    Hybrid-Soll: Mass-Interpret=Langdock; Extract=Spark; Synth=Layer-Batches (kein Full nach jedem PDF) — jetzt strukturell erzwungen.
-  NÄCHSTES: Centers-Layer-Synth (Winn/Schoeber, unscoped Job bereits cancelled, Interps vorhanden);
-    optional Stichprobe/Re-Synth GeneKeys (64/64, alte Logik) + BaZi (37/97, alte Logik).
+    Default; Synth nur noch explizit pro System+Layer, via `ic_synth_layer_ops.py --system <sys> --enqueue-layer/--enqueue-remaining`).
+    **Alle betroffenen Layer neu synthetisiert** (Langdock gpt-5-mini, Selection-Fix): HD Gates 64/64,
+    Channels 36/36 (`20_34` jetzt korrekt), Circuits 9/9, Centers 9/9, HD-Rest (Types/Authorities/
+    Profiles/Lines/Definitions/PHS) 31/31, **BaZi 34/34** (war am stärksten betroffen: bis 105
+    Interps/Node, vorher auf 8 gekappt), GeneKeys 64/64 (Vollständigkeit).
+    **Voll-Audit danach:** 0 verlinkte Stub-Interps (alle Systeme), 0 hängende Jobs. Langdock-Worker gestoppt.
+    Empirisch ~€0,41 Langdock für Pilot+Rave (~€0,004–0,006/Chunk); Synth-Wellen kosten extra, aber klein pro Node.
+    Hybrid-Soll: Mass-Interpret=Langdock; Extract=Spark; Synth=Layer-Batches — jetzt strukturell erzwungen (kein Full nach jedem PDF mehr möglich).
+  NÄCHSTES: Nächstes Buch/System für die Content-Welle auswählen (z. B. Profile/Lines-Companion-Bücher
+    zur Deckung der dünnen Line-Nodes, oder nächstes System laut Wellen-Reihenfolge in diesem Dokument).
   Detail: `cursor/reference/literature_content_wave_2026-07-18.md`
   K2-Docs: `reference/k2_foundation_wave_playbook.md`, `reference/k2_sanierung_learnings.md`,
     `reference/k2_seed_scope_and_strict_text2kg.md`
