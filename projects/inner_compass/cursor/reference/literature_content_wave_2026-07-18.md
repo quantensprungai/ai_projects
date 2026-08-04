@@ -61,7 +61,7 @@ Entspricht `hd_catalog_v0.json` Subsysteme + `deep_structure_plan.md`:
 1. **Types / Design Concepts / Living Your Design** ✅
 2. **Channels** (Life Force ✅ → Channels by Type 1–4 ✅ + Layer-Synth ✅ 2026-07-23, **Re-Synth mit Selection-Fix ✅ 2026-08-04**)
 3. **Circuits** (Ra: *Rave BodyGraph Circuitry* ✅ extract → text2kg → Alias-Relink → Layer-Synth 2026-07-24, **Re-Synth mit Selection-Fix ✅ 2026-08-04**)
-4. **Centers** (kein Ra-Original im Inventar → Winn → Schoeber als K3/K4; **strict text2kg** ✅ 0 Stubs; Layer-Synth **noch offen**, nächste Welle)
+4. **Centers** (kein Ra-Original im Inventar → Winn → Schoeber als K3/K4; **strict text2kg** ✅ 0 Stubs; Layer-Synth ✅ 9/9 2026-08-04)
 5. **Gates/Lines Companion** (Rave I'Ching ✅ Re-Interpret 2026-08-04; Layer-Synth ✅ 64/64 2026-08-04; Line-Companion-Bücher nachziehen)
 6. **Profiles / Incarnation Crosses**
 7. **PHS** (Variables, Color/Tone/Base)
@@ -91,10 +91,10 @@ Channels-Layer ist **sauber** (36/36 + Synth). Darüber hinaus offen:
 | Gene Keys Opening Doors 18 Stubs                      | ✅ Langdock: 18 Stub-Chunks → real; **39/39** Interps, 0 Stubs, text2kg ✅; Full-Synth cancelled | done 2026-08-04 |
 | Synth lädt nur `interpretation_ids[:15]`              | ✅ Load Default **alle** IDs; Prompt max **12** + Diversität (`ic_worker`)   | done 2026-08-04       |
 | **text2kg auto-enqueued unscoped Full-Synth**         | ✅ Root-Cause gefunden (Audit) + gefixt: Default jetzt **aus** (`IC_TEXT2KG_AUTO_SYNTH=false`); Synth nur noch explizit via Layer-Skripte | done 2026-08-04 |
-| Centers Winn + Schoeber                               | ✅ bis text2kg; unscoped Synth **cancelled**; Layer-Synth offen               | nächste Welle         |
 | Gates-Layer-Synth (Re-Synth mit Selection-Fix)        | ✅ 64/64 via Langdock, ~14,5 Min, Job `cf980fb6…`                             | done 2026-08-04       |
 | Channels-Layer-Synth (Re-Synth mit Selection-Fix)     | ✅ 36/36 via Langdock, Job `cbd6820f…` — `20_34` jetzt korrekt (Charisma, 34↔20) | done 2026-08-04 |
 | Circuits-Layer-Synth (Re-Synth mit Selection-Fix)     | ✅ 9/9 via Langdock, Job `d5d87e09…`                                          | done 2026-08-04       |
+| Centers-Layer-Synth (Winn+Schoeber, Selection-Fix)    | ✅ 9/9 via Langdock, Job `1a361e2c…`, ~2,5 Min                                | done 2026-08-04       |
 | Profile/Lines Inhaltslücken                           | erwartet                                                                      | nach Layer-Büchern    |
 
 ### LLM-Betrieb / Kosten (empirisch 2026-08-04)
@@ -218,16 +218,16 @@ Jobs: Batch `4206ecb6` (9 IDs) + Follow-up `1f39a3a1` (nur `individual_centering
 1. Mehrfach-`spark_s5d_synth_only.sh` → kurze Multi-PID-Fenster → Job als Zombie `running`. Fix: Job resetten, **einen** Worker.
 2. Qwen3 Thinking kann einzelne Synth-Calls >10 Min streamen und `requests` Timeout umgehen. Fix: `enable_thinking=False` in `_call_llm` (deployed Spark).
 
-### Centers (Winn + Schoeber) — Stand 2026-08-04
+### Centers (Winn + Schoeber) — Stand 2026-08-04 ✅ Layer-Synth done
 
 
 | Buch                             | source_id  | Extract      | Interpret     | text2kg | Layer-Synth                          |
 | -------------------------------- | ---------- | ------------ | ------------- | ------- | ------------------------------------ |
-| Winn *Understanding the Centers* | `c90803be` | ✅ 276 chunks | ✅ 276/276, 0 stubs | ✅      | offen (unscoped Job queued → cancel/ersetzen) |
-| Schoeber *The Centres*           | `3a5fe2ff` | ✅ 160 chunks | ✅ 160/160, 0 stubs | ✅      | offen (unscoped Job queued → cancel/ersetzen) |
+| Winn *Understanding the Centers* | `c90803be` | ✅ 276 chunks | ✅ 276/276, 0 stubs | ✅      | ✅ scoped, Job `1a361e2c…` |
+| Schoeber *The Centres*           | `3a5fe2ff` | ✅ 160 chunks | ✅ 160/160, 0 stubs | ✅      | ✅ scoped, Job `1a361e2c…` |
 
 
-Center-Nodes haben bereits viele Links (z. B. Throat 138, Sacral 133). **Es fehlt nicht Phase2**, sondern nur der **scoped Centers-Layer-Synth** nach Selection-Fix. Die queued `synthesize_node`-Jobs sind Full-System (unscoped) — bewusst nicht starten.
+Center-Nodes haben bereits viele Links (z. B. Throat 138, Sacral 133). **Es fehlt nicht Phase2**, sondern nur der **scoped Centers-Layer-Synth** nach Selection-Fix. Die queued `synthesize_node`-Jobs sind Full-System (unscoped) — Selection-Fix hat hier den größten Hebel. 9/9 Nodes fertig via Langdock in ~2,5 Min, Job `1a361e2c…`, `completed`.
 
 ### Synth-Prozess — Review + Audit-Ergebnis (2026-08-04)
 
@@ -258,7 +258,7 @@ Pro Layer (Types / Channels / Circuits / Gates / Centers / …):
 
 **Load vs Prompt:** DB-Load Default = **alle** gelinkten IDs (`IC_SYNTHESIS_LOAD_INTERPS=0`). Prompt bekommt davon max. **12** (`IC_SYNTHESIS_MAX_INTERPS`) — nicht weil wir Quellen ignorieren, sondern weil ein LLM-Call nicht 100+ Volltexte sinnvoll fusioniert (Qualität + Context + Kosten). Diversität sorgt, dass mehrere Bücher im Prompt landen. Später optional Map-Reduce (Cluster→Zwischenfazit→Final).
 
-**Offen:** Centers-Layer (Winn+Schoeber, unscoped Job bereits cancelled) ist die nächste logische Welle — gleiches Muster wie Gates/Channels/Circuits. GeneKeys (64/64 gedeckt) und BaZi (37/97) liefen ebenfalls einmal unscoped mit alter Logik; Stichprobe/Re-Synth optional, nicht akut (GeneKeys hat pro Node meist nur 1 Quelle → Fenster-Bug greift dort kaum).
+**Offen:** GeneKeys (64/64 gedeckt) und BaZi (37/97) liefen ebenfalls einmal unscoped mit alter Logik; Stichprobe/Re-Synth optional, nicht akut (GeneKeys hat pro Node meist nur 1 Quelle → Fenster-Bug greift dort kaum). Damit ist die komplette Bodygraph-Kern-Struktur (Gates, Channels, Circuits, Centers) auf dem neuen Selection-Fix.
 
 ## BaZi — Layer-Reihenfolge
 
