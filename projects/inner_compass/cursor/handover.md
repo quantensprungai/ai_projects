@@ -27,11 +27,13 @@ ROTER FADEN (Masterplan — wo wir im Prozess stehen, Stand 2026-07-03 ~22:40):
   4. ⏳ MVP "Die Vier Spiegel" (Phase 4): Onboarding + Mandala + Handbuch T1–2 + Share
      → UX-Design: reference/ux_konzept_2026-07.md (v1 vorhanden, vor Umsetzung reviewen)
   5. ⏳ VOLL: WERKSTATT + ZEIT komplett + Staffel 2–3 + Resonanz-Feedback-Loop
-  Aktueller Punkt (2026-07-12): **K2 Foundation Wave abgeschlossen** — BaZi/HD/GK alle sauber
-    (ic_k2_state_audit.py: 0 Wildwuchs, 0 Jobs, Interp→Synth vollständig).
-    S5d BaZi: 97 Nodes, 37 Synthese · HD: 777 Nodes, 114/114 · GK: 64/64.
-  NÄCHSTES: Content-Welle (Referenzwerk vor Überblick, siehe k2_foundation_wave_playbook.md §Werk-Reihenfolge)
-    oder nächstes System (Astro/Ziwei) K2-Welle vor 1. PDF.
+  Aktueller Punkt (2026-08-04): Content-Welle HD — Channels/Circuits ✅; **Rave I'Ching Re-Interpret ✅**
+    (Langdock gpt-5-mini + Primary-Element-Hint: 65/65 Interps, Gate-Tag 64/64, text2kg, 64/64 Gates gelinkt).
+    Stub-Unlink ✅; empirisch ~€0,41 Langdock für Pilot+Rave (~€0,004–0,006/Chunk).
+    Hybrid-Soll: Mass-Interpret=Langdock; Extract=Spark; Synth=Layer-Batches (kein Full nach jedem PDF).
+  NÄCHSTES: Gene Keys Opening Doors Stubs → Synth-Selection-Fix (`[:15]`) → Gates-Layer-Synth;
+    Centers Winn/Schoeber Phase2 strict (unscoped Synth queued — nicht blind starten).
+  Detail: `cursor/reference/literature_content_wave_2026-07-18.md`
   K2-Docs: `reference/k2_foundation_wave_playbook.md`, `reference/k2_sanierung_learnings.md`,
     `reference/k2_seed_scope_and_strict_text2kg.md`
   Learnings: `reference/s5d_pipeline_learnings.md`, `reference/s6_pipeline_learnings.md`

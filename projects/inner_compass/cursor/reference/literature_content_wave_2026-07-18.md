@@ -1,61 +1,256 @@
 # Literatur Content-Wellen — Stand 2026-07-18
 
-last_update: 2026-07-18
-scope: Alle kuratierten Werke bleiben im Scope; Wellen = Verarbeitungsreihenfolge, kein Aussortieren
-in_scope: Inventar-Refresh, Queue, Wave-Definition
-out_of_scope: PDF-Upload/Pipeline-Ausführung (nächster Schritt)
+last_update: 2026-08-04
+scope: Alle kuratierten Werke bleiben im Scope; Reihenfolge = K2-Struktur + Subsysteme, nicht Alphabet
+in_scope: Inventar-Refresh, Queue, Orientierungsprinzip, Synth-Wellen-Policy, Open Hygiene
+out_of_scope: PDF-Upload/Pipeline-Ausführung (läuft separat)
 
-## Klärung: Warum Wellen, wenn alles rausgesucht wurde?
+## Orientierung — woran sich die Reihenfolge hält
 
-Die Werke wurden bewusst kuratiert (`entity_registry_*`, Ordner `K2`/`K3`/`K4`, Download-Matrix).  
-**Nichts wird gestrichen.** Wellen bedeuten nur:
 
-> Wir verarbeiten **alle** `status=ok`-Werke — aber **nacheinander**, in einer Reihenfolge, die Synthese-Qualität maximiert (Referenz vor Überblick vor Spezial).
+| Orientierung                                             | Nutzen für Literatur-Pipeline?                                                 |
+| -------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| **K1** (Chart zur Laufzeit)                              | **Nein** — Pillars/Gates einer Person sind kein Werk-Curriculum                |
+| **K2 Katalog-Layer**                                     | **Ja** — Types → Centers → Gates → Channels → Profiles → PHS → …               |
+| **Subsystem-Priorität** (`hd_catalog` `phase1_priority`) | **Ja** — `required` bodygraph/PHS vor `optional` DreamRave/BG5/Cosmology       |
+| **Registry `download_priority_order`**                   | **Ja, sekundär** — war für AA-Downloads; deckt sich grob mit Kanon vor Schulen |
+| **Alphabet / Dateiname**                                 | **Nein** — nur Zufallsreihenfolge                                              |
 
-Das ist kein „nur einen Teil nutzen“, sondern **Queue-Management** gegen den BaZi-Fehler (Überblickswerk ohne Cap → generische Synthese).
 
-## Inventar-Refresh (dieser Rechner)
+**Kurz:** Werke füttern **K3/K4 auf K2-Nodes**. Deshalb folgen wir der **K2-Abhängigkeit**, nicht K1 und nicht dem Dateinamen.
 
-| | Juni (anderer PC) | Juli (dieser PC) |
-|--|-------------------|------------------|
-| Quelle | `he5013\Nextcloud\…\Literatur` | `C:\Users\Admin105\Downloads\Literatur` |
-| Dateien | 216 | **219** |
-| `status=ok` | 208 | **208** |
-| P0 (K2+K3+K4 yes) | 81 | **74** |
+## Alle Werke bleiben
 
-CSVs: `projects/inner_compass/reference/literature_*_2026-07-18.csv`  
-Queue: `literature_content_wave_queue_2026-07-18.csv`  
-Skript: `scripts/build_literature_inventory.py`, `scripts/build_content_wave_queue.py`
+208 `status=ok` — nichts aussortieren. Wellen = Queue-Reihenfolge.
 
-## Queue-Überblick (208 ok-Werke)
 
-| Wave | Bedeutung | Anzahl | Status |
-|------|-----------|--------|--------|
-| **0** | Bereits in S5/S6 verarbeitet | **5** | done |
-| **1** | `K2_ref` / Struktur-Referenz | **141** | queued |
-| **3** | `K3_deutung` (Deutung/Regeln) | **36** | queued |
-| **4** | `K4_deutung` (Bedeutungstiefe) | **26** | queued |
+| Wave | Bedeutung                 | ~Anzahl |
+| ---- | ------------------------- | ------- |
+| 0    | Bereits S5/S6             | 5       |
+| 1    | Core-Struktur (Layer ≤25) | ~45     |
+| 2    | Mid/PHS (Layer ≤45)       | ~32     |
+| 3    | Schulen / modern / Rest   | ~126    |
 
-Wave 2 (`K2+K3`-Ordner) ist auf Disk in die Rollen K2_ref/K3 eingeflossen — keine eigene Restmenge.
 
-### Wave 0 — done (nicht nochmal Full-Pipeline)
+Queue: `reference/literature_content_wave_queue_2026-07-18.csv`  
+Builder: `scripts/build_content_wave_queue.py` (Feld `structure_layer` + `structure_layer_name`)
 
-- HD: Complete Rave I'Ching · Life Force (Channels)
-- Gene Keys: 64 Ways · Opening Doors
-- BaZi: Destiny Code Combined (Joey Yap)
+## Synth-Policy (Content-Welle) — verbindlich ab 2026-07-22
 
-### Wave 1 zuerst — aktive Systeme (Auszug der Logik)
+`synthesize_node` ist **pro System** (`system_id=hd|bazi|…`), aber innerhalb des Systems **alle Nodes mit `interpretation_ids`** — nicht nur das aktuelle Buch.
 
-System-Priorität in der Queue: `hd → bazi → genekeys → ziwei → astro → jyotish → …`
 
-Pro Werk unverändert: Seed/strict ok → Upload → Pipeline → `ic_k2_state_audit.py` → nächstes Werk.
+| Regel                                                          | Warum                                                                                                  |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| Pro PDF: Extract → classify → interpret → **text2kg (strict)** | Interps + Links skalieren linear                                                                       |
+| **Kein** Full-`synthesize_node` nach jedem PDF                 | Laufzeit wächst mit allen gelinkten Nodes des Systems (~200 HD-Werke wären sonst unpraktikabel)        |
+| Synth in **Wellen**                                            | Nach Layer (Types / Channels / Centers / …) oder gezielt `only_canonical_ids` / `ic_k2_synth_batch.py` |
+| Roh-Interps bleiben in DB                                      | Synth kann jederzeit nachziehen; Qualität ≠ „sofort nach jedem Buch“                                   |
 
-## AA-Lücken (14, unverändert)
 
-Siehe `literature_aa_need_2026-07-18.csv` (u. a. Rave Cosmology IV–VII). Das blockiert die Content-Welle nicht — nur die betroffenen Curriculum-IDs.
+**GPU:** Phase 1 (`extract_text` / MinerU) und Phase 2 (LLM) nicht parallel. Werke mit nur `extract` queued warten, bis LLM-Synth-Welle fertig ist — das ist ok (z. B. Channels by Type 1).
 
-## Nächster Schritt
+**Zombies:** Jobs auf `running` ohne Worker-Fortschritt (oft Spark↔Supabase-Timeout) → failed resetten + einen Synth-Job neu enqueuen. Status-Ping/Automation später sinnvoll; kein Blocker für die Policy.
 
-1. Queue ab Wave 1 abarbeiten (alle 203 queued — kein Cherry-Pick außer Reihenfolge).
-2. Optional: pro System Batch von 5–10 parallel vorbereiten, aber Audit-Gate nach jedem Werk/Batch.
-3. Branches pushen (siehe Chat).
+**GPU-Mutex:** MinerU-Extract und SGLang-LLM **nicht parallel** — LLM stoppen (`~/ai/scripts/serve/sglang_stop_all.sh`), Extract, danach LLM wieder starten + Phase2. Sonst MinerU → „produced no .md“ (VRAM voll).
+
+## HD — Layer-Reihenfolge (Bodygraph zuerst)
+
+Entspricht `hd_catalog_v0.json` Subsysteme + `deep_structure_plan.md`:
+
+1. **Types / Design Concepts / Living Your Design** ✅
+2. **Channels** (Life Force ✅ → Channels by Type 1–4 ✅ + Layer-Synth ✅ 2026-07-23)
+3. **Circuits** (Ra: *Rave BodyGraph Circuitry* ✅ extract → text2kg → Alias-Relink → Layer-Synth 2026-07-24)
+4. **Centers** (kein Ra-Original im Inventar → Winn → Schoeber als K3/K4; **strict text2kg** wie Channels/Circuits — kein Node-Create / kein Wildwuchs; Unmatched dokumentieren)
+5. **Gates/Lines Companion** (Rave I'Ching ✅; Line-Companion-Bücher nachziehen)
+6. **Profiles / Incarnation Crosses**
+7. **PHS** (Variables, Color/Tone/Base)
+8. **Rave Psychology**
+9. **Schulen** (Quantum, Parkyn, …) — `tradition`-Tags
+10. **Optional:** DreamRave, BG5, Design of Forms, Cosmology
+
+**Reihenfolge ist Leitplanke, kein Dogma:** Ra-`K2_ref` vor Schulen. Deshalb Circuits (Ra) vor Winn-Centers, auch wenn die Queue-CSV Centers numerisch früher listet.
+
+## Open Hygiene (Nacharbeit) — Stand 2026-08-04
+
+Channels-Layer ist **sauber** (36/36 + Synth). Darüber hinaus offen:
+
+
+| Item                                                  | Status                                                                        | Wann                  |
+| ----------------------------------------------------- | ----------------------------------------------------------------------------- | --------------------- |
+| Reverse-Channel-Dupes (10)                            | ✅ gemerged + gelöscht                                                         | done                  |
+| Invalid Channels (`1_2`, `5_1`→Profil, `6_3`→Line, …) | ✅ remapped/unlinked                                                           | done                  |
+| Catalog-Guard Gates/Channels/Lines                    | ✅ `ic_hd_k2_catalog.py` + Worker kein Fake-Channel                            | done                  |
+| Gate-Wildwuchs `66/67/69` + Fake-Lines (`28_38`…)     | ✅ remapped/gelöscht (`ic_hd_gate_line_hygiene.py`)                            | done                  |
+| Circuitry text2kg unmatched (35)                      | Aliase + Relink; Residual dokumentiert (unten)                                | done                  |
+| Circuitry Alias-Relink + Circuits-Synth               | Relink ✅; Layer-Synth ✅ 9/9 (ohne `integration`)                              | done                  |
+| Circuitry Residual-Wildwuchs (nicht aliasbar)         | Fake-Channels / `asset_chunk.*` / malformed Gate-Lines — strict leave         | later optional        |
+| Qwen3 Thinking-Hang bei Synth                         | `chat_template_kwargs.enable_thinking=false` in `ic_worker._call_llm`         | done                  |
+| Stub-Interps von Nodes unlinken                       | ✅ `ic_stub_interp_hygiene.py --unlink-from-nodes --apply` (100 Nodes, −136) | done                  |
+| Rave I'Ching Re-Interpret                             | ✅ Langdock + Hint: 65/65 Interps, Gate-Tag 64/64, text2kg, 64/64 Nodes      | done 2026-08-04       |
+| Gene Keys Opening Doors 18 Stubs                      | unlink done; re-interpret + Stub-Rows delete                                  | jetzt                 |
+| Synth lädt nur `interpretation_ids[:15]`              | Circuitry-Interps oft außerhalb Fenster — Selection fix offen                 | parallel              |
+| Centers Winn + Schoeber                               | Upload ✅; Phase2 partial; unscoped Synth queued — **nicht** blind starten    | parallel              |
+| Stub-Rows löschen (`--delete-stubs`)                  | Rave-Stubs durch force_reextract weg; Gene-Keys-Stubs noch in DB              | mit GK-Fix            |
+| Gates-Layer-Synth                                     | nach Selection-Fix / `only_canonical_ids`                                     | danach                |
+| Profile/Lines Inhaltslücken                           | erwartet                                                                      | nach Layer-Büchern    |
+
+### LLM-Betrieb / Kosten (empirisch 2026-08-04)
+
+**Langdock-Konto:** ~**€0,41** für A/B-Piloten + Retries + Rave-Full (65 Chunks `gpt-5-mini`, Base `https://api.langdock.com/openai/eu/v1`).
+
+Grobe Ableitung (konservativ, inkl. Pilot-Overhead):
+
+| Größe | Schätzung |
+| ----- | --------- |
+| pro Interpret-Chunk (`gpt-5-mini`) | ~**€0,004–0,006** |
+| Rave 65 Chunks allein | ~€0,25–0,35 |
+| 10 000 Chunks Mass-Interpret | ~**€40–60** |
+| 20 000 Chunks | ~**€80–120** |
+| Synth (Layer, stärkeres Modell) | extra — nicht in den €0,41 |
+
+→ Frühere Mid-Schätzung (~€55–60 Full-Wave Interpret-lastig) bleibt plausibel; Synth/QA separat.
+
+**Hybrid (Soll):** Mass-Interpret → Langdock `gpt-5-mini`; Extract/MinerU → Spark GPU; Synth-Wellen → Spark/Qwen *oder* später stärkeres Langdock-Modell. Unscoped Full-`synthesize_node` nach jedem Buch weiter **vermeiden**.
+
+### Rave A/B + Full Re-Interpret
+
+Skripte: `ic_rave_ab_interpret.py`, `ic_stub_interp_hygiene.py`, `start_rave_langdock_worker.py` / `restart_rave_langdock_reinterp.py`  
+Source: `3c7c0a7b-9dd1-41b1-ac47-c0cd26dedbe5`
+
+1. Offline A/B Spark vs Langdock (JSONL, kein DB-Write)  
+2. Primary-Element-Hint → Retest 5/5 beide  
+3. Worker `force_reextract` via Langdock → text2kg strict  
+4. Unscoped Synth nach text2kg **cancelled**
+
+**Ergebnis:** 65/65 Interps, 0 Stubs, Gate-Tag 64/64, alle 64 `hd.gate.*` mit Rave-Interp gelinkt.
+
+### Primary-Element-Hint — Status
+
+**Bereits im Worker** (`ic_worker._primary_element_hint_from_chunk_meta`): nutzt vorhandene Chunk-Metadata.
+
+| Metadata | Hint |
+| -------- | ---- |
+| `canonical_id` | Primär-Entity soft-anchorn |
+| `element_type` + `element_id` | dito |
+| `gate_number` | HD `hd.gate.N` / Gene Keys `gk.gene_key.N` |
+| nichts (Narrativ) | kein Hint — LLM liest Text |
+
+**Kein zweites Hint-System nötig.** Offen bleibt nur Extract-seitig: Chunk-Profile sollen Primär-Entity in Metadata schreiben, wo sie sie kennen (wie `rave_iching_gates`). text2kg löst dieselben Felder schon als Fallback.
+
+
+**Guard-Scope:** Nicht nur Channels — Gates nur 1–64, Channels nur Katalog-36 (inkl. Reverse-Normalize), Lines nur `gate∈1..64` ∧ `line∈1..6`. Centers/Types/Profiles/Circuits ohnehin Katalog+Alias.
+
+### Circuitry unmatched detail (source `88ed9448`, text2kg 2026-07-24)
+
+**Pass 1** (`b562dfbc`): 35 Interps nicht gelinkt (Strict; kein Node-Create).
+
+
+| Reason                   | n   | Beispiele                                        |
+| ------------------------ | --- | ------------------------------------------------ |
+| `not_in_hd_k2_whitelist` | 27  | siehe Taxonomy unten                             |
+| `unresolved`             | 8   | meist. `asset_chunk` Element-Refs ohne Canonical |
+
+
+**Aliase** (in `ic_hd_k2_catalog.py`, deployed Spark):
+
+
+| Roh / LLM-ID                                    | → Canonical                               |
+| ----------------------------------------------- | ----------------------------------------- |
+| `hd.circuit.understanding`                      | `hd.circuit.collective_logic`             |
+| `hd.circuit.sensing`                            | `hd.circuit.collective_abstract`          |
+| `hd.circuit_group.individual/collective/tribal` | `hd.circuit.individual/collective/tribal` |
+| `hd.circuit.centering` / `hd.center.centering`  | `hd.circuit.individual_centering`         |
+
+
+**Pass 2 Relink** (`bbae61d0`): completed; Coverage danach u. a. `collective_logic` 3 Interps, `collective_abstract` 2 (vorher 0). Worker-Log Pass-2: ~344 linked, ~23 unmatched residual.
+
+**Residual-Taxonomy (nicht aliasbar — bewusst unmatched / später Hygiene):**
+
+
+| Klasse                  | IDs                                                                          | Aktion                                          |
+| ----------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------- |
+| Fake-Channels           | `hd.channel.3_6_0`, `4_2_5_3`, `50_20`, `9_20`, `understanding_circuit`      | leave (Catalog-Guard)                           |
+| LLM-Chunk-IDs           | `hd.asset_chunk.88ed9448_*` + unresolved `asset_chunk`                       | leave                                           |
+| Malformed Gate/Line     | `hd.gate.31_7`, `hd.gate.54.4`, `hd.gate.59_line.1..3`, bare `hd.line.4/5/6` | optional später remap (31-7→Channel; 54.4→Line) |
+| Alias-Klasse (erledigt) | `understanding` / `sensing` / `circuit_group.*` / `centering`                | via Alias                                       |
+
+
+**Interp-Dichte nach Relink (dünn):** viele Circuit-Nodes nur 1–3 Interps — Buch streut Labels stark; Layer-Synth trotzdem für alle Nodes **mit** Interps. `hd.circuit.integration` = 0 Interps → nicht im Synth-Scope.
+
+**Layer-Synth Ergebnis (2026-07-24):**
+
+
+| Canonical                         | Interps | synth_chars (ca.)       |
+| --------------------------------- | ------- | ----------------------- |
+| `hd.circuit.collective`           | 1       | ~289                    |
+| `hd.circuit.collective_abstract`  | 2       | ~609                    |
+| `hd.circuit.collective_logic`     | 3       | ~541                    |
+| `hd.circuit.individual`           | 1       | ~361                    |
+| `hd.circuit.individual_centering` | 2       | ~325                    |
+| `hd.circuit.individual_knowing`   | 1       | ~393                    |
+| `hd.circuit.tribal`               | 1       | ~396                    |
+| `hd.circuit.tribal_defense`       | 2       | ~469                    |
+| `hd.circuit.tribal_ego`           | 1       | ~432                    |
+| `hd.circuit.integration`          | 0       | stub (~11) — kein Synth |
+
+
+Jobs: Batch `4206ecb6` (9 IDs) + Follow-up `1f39a3a1` (nur `individual_centering` nach Hang).
+
+**Wichtig — Buchinhalt ≠ nur Circuits:** TOC ist überwiegend Channel-Kapitel (Integration + Knowing/Centering/Understanding/Sensing/Ego/Defense). Audit 2026-07-24 (`source 88ed9448`, 100 Interps):
+
+
+| Namespace      | Nodes mit Circuitry-Interps | Bemerkung                                              |
+| -------------- | --------------------------- | ------------------------------------------------------ |
+| `hd.channel.*` | **36/36**                   | voll integriert via text2kg (z. B. `20_34` 13 Interps) |
+| `hd.gate.*`    | 61                          | Nebenlinks aus Channel-Text                            |
+| `hd.circuit.*` | 9                           | dünn (1–3) — Circuit-Kapitel kurz                      |
+| `hd.center.*`  | 8                           | Nebenlinks                                             |
+| orphan Interps | 5                           | Residual/strict                                        |
+
+
+→ Channels wurden **nicht außen vor gelassen**. Circuit-Layer-Synth hat nur `hd.circuit.`* neu geschrieben; Channel-**Wortings** stammen noch aus Life-Force/Channels-by-Type (Interps aus Circuitry hängen schon an den Nodes, Re-Synth optional).
+
+**Ops-Notes 2026-07-24:**
+
+1. Mehrfach-`spark_s5d_synth_only.sh` → kurze Multi-PID-Fenster → Job als Zombie `running`. Fix: Job resetten, **einen** Worker.
+2. Qwen3 Thinking kann einzelne Synth-Calls >10 Min streamen und `requests` Timeout umgehen. Fix: `enable_thinking=False` in `_call_llm` (deployed Spark).
+
+### Centers (Winn + Schoeber) — Stand 2026-07-24
+
+
+| Buch                             | source_id  | Extract          | Phase2            |
+| -------------------------------- | ---------- | ---------------- | ----------------- |
+| Winn *Understanding the Centers* | `c90803be` | ✅ 276 chunks     | 🔄 nosynth strict |
+| Schoeber *The Centres*           | `3a5fe2ff` | ✅ (extract done) | 🔄 nosynth strict |
+
+
+Policy: `IC_TEXT2KG_STRICT` + `IC_TEXT2KG_STRICT_HD` — kein Node-Create / kein Wildwuchs; Unmatched dokumentieren. Layer-Synth erst nach beiden text2kg.
+
+## BaZi — Layer-Reihenfolge
+
+Registry `phase_1a` Klassiker zuerst (nicht Destiny Code zuerst):
+
+1. **Klassiker** 子平真诠 / 滴天髓 / 三命通会 / 渊海子平
+2. **Ten Gods** (Power of X …)
+3. **Stems/Branches/Jiazi/Nayin**
+4. **Structures / Yong Shen**
+5. **Da Yun / Timing**
+6. **Moderne Überblicke** (Destiny Code ✅ schon gelaufen)
+
+## Andere Systeme (gleiche Logik)
+
+
+| System     | Struktur-Leitplanke                                              |
+| ---------- | ---------------------------------------------------------------- |
+| Gene Keys  | Keys/Spectrum → Golden Path → Codon Rings → HD-Brücke            |
+| Astro      | Klassik (Ptolemy/Dorotheus) → Tradition (Lilly/Demetra) → Modern |
+| Ziwei      | Sterne/Paläste → Klassiker → Modern                              |
+| Jyotish    | Graha/Rashi → Nakshatra → Dasha/Yoga                             |
+| Ur-Systeme | `literature_canon_by_scope.md` P0 K2_ref vor K3                  |
+
+
+## Inventar
+
+Quelle: `C:\Users\Admin105\Downloads\Literatur` (219 Dateien)  
+CSVs: `literature_*_2026-07-18.csv`
