@@ -1,6 +1,19 @@
 # Literatur Content-Wellen — Stand 2026-07-18
 
-last_update: 2026-08-04 (Gates+Channels+Circuits Layer-Synth Re-Fix; text2kg Auto-Synth Root-Cause behoben)
+last_update: 2026-08-04 (Gates+Channels+Circuits Layer-Synth Re-Fix; text2kg Auto-Synth Root-Cause behoben; Inventar-Audit + Start Profiles-Layer)
+
+### Inventar-Realitätscheck (2026-08-04)
+
+Insgesamt nur **16 Quellen** je hochgeladen (Account-weit). Tatsächlicher Fortschritt gegen die Queue-CSV (`literature_content_wave_queue_2026-07-18.csv`, 68 HD / 49 BaZi / 9 GeneKeys / 0 für alle 14 übrigen Systeme):
+
+| System | Bücher verarbeitet | Anmerkung |
+| --- | --- | --- |
+| HD | 11/68 (16%) | nur Bodygraph-Kern (Types/Channels/Circuits/Centers/Gates); Profiles/PHS/Psychology/Schulen/Optional = 0 |
+| BaZi | 1/49 (2%) | nur *Destiny Code* (moderne Übersicht) — **Klassiker (子平真诠/滴天髓/三命通会/渊海子平) laut Plan zuerst fällig, aber noch nicht angefasst** |
+| GeneKeys | 2/9 (22%) | nur Opening Doors + 64 Ways; Golden-Path/Bridge-Bücher offen |
+| 14 weitere Systeme (Astro, Ziwei, Jyotish, Chakra, Enneagram, I Ging, Numerologie, Wu Xing, Kabbalah ×2, Maya Tzolkin, Akan, Pancha Bhuta, Western Elements, Nine Star Ki) | 0/… (0%) | komplett unberührt |
+
+**Entscheidung 2026-08-04:** Nächster Schritt = HD-Profiles-Layer (Punkt 6 der Reihenfolge) statt neues System, da direkteste Lücke zum aktuellen Stand.
 scope: Alle kuratierten Werke bleiben im Scope; Reihenfolge = K2-Struktur + Subsysteme, nicht Alphabet
 in_scope: Inventar-Refresh, Queue, Orientierungsprinzip, Synth-Wellen-Policy, Open Hygiene
 out_of_scope: PDF-Upload/Pipeline-Ausführung (läuft separat)
@@ -62,8 +75,8 @@ Entspricht `hd_catalog_v0.json` Subsysteme + `deep_structure_plan.md`:
 2. **Channels** (Life Force ✅ → Channels by Type 1–4 ✅ + Layer-Synth ✅ 2026-07-23, **Re-Synth mit Selection-Fix ✅ 2026-08-04**)
 3. **Circuits** (Ra: *Rave BodyGraph Circuitry* ✅ extract → text2kg → Alias-Relink → Layer-Synth 2026-07-24, **Re-Synth mit Selection-Fix ✅ 2026-08-04**)
 4. **Centers** (kein Ra-Original im Inventar → Winn → Schoeber als K3/K4; **strict text2kg** ✅ 0 Stubs; Layer-Synth ✅ 9/9 2026-08-04)
-5. **Gates/Lines Companion** (Rave I'Ching ✅ Re-Interpret 2026-08-04; Layer-Synth ✅ 64/64 2026-08-04; Line-Companion-Bücher nachziehen)
-6. **Profiles / Incarnation Crosses**
+5. **Gates/Lines Companion** (Rave I'Ching ✅ Re-Interpret 2026-08-04; Layer-Synth ✅ 64/64 2026-08-04; ~~Line-Companion-Bücher nachziehen~~ **korrigiert 2026-08-04: kein separates Line-Companion-Buch im Inventar** — Line-Dichte bleibt dünn bis weitere Bücher covern)
+6. **Profiles / Incarnation Crosses** 🔄 **in Arbeit seit 2026-08-04**: 3 Bücher hochgeladen (Incarnation Crosses by Profile 15,7 MB/1440 Chunks, Incarnation Cross Clinic 2,1 MB/38 Chunks, Understanding the Profiles [Winn] 1,8 MB/149 Chunks) — Pipeline extract→classify→term_mapping→interpret(Langdock)→text2kg läuft (`start_hd_profiles_worker.py`, Job-ID `langdock-hd-profiles`); Layer-Synth folgt danach separat via `ic_synth_layer_ops.py --prepare-layer profile --system hd`.
 7. **PHS** (Variables, Color/Tone/Base)
 8. **Rave Psychology**
 9. **Schulen** (Quantum, Parkyn, …) — `tradition`-Tags
