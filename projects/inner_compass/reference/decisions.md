@@ -20,7 +20,9 @@
 
 **Rationale:** Vermeidet doppelte Kosten (die Daten sind größtenteils schon extrahiert), vermeidet kombinatorische Explosion durch Precompute, bleibt konsistent mit dem bestehenden Architektur-Prinzip "Struktur deterministisch billig, Bedeutungs-Nuance vom LLM zur Laufzeit" (architecture.md §7, §13).
 
-**Consequences:** (1) Backfill-Script `ic_kg_edges_backfill_from_interactions.py` (TODO, nicht Teil dieser Welle) für Alt-Bestand. (2) `architecture.md` Datenschicht C/D-Zeile + §13 Overlay-Service um diesen Stand ergänzen. (3) Content-Wave-Extraktion bleibt unverändert (Feld wird bereits mitgeschrieben) — kein Rerun nötig.
+**Consequences:** (1) Backfill-Script `ic_kg_edges_backfill_from_interactions.py` (2) `architecture.md` Datenschicht C/D-Zeile + §13 Overlay-Service um diesen Stand ergänzen. (3) Content-Wave-Extraktion bleibt unverändert (Feld wird bereits mitgeschrieben) — kein Rerun nötig.
+
+**Update 2026-08-05, ausgeführt:** Backfill gelaufen (4463 Interpretationen, 1140 Nodes). Ergebnis: **12.998 neue Edges** (`amplifies`=5481, `depends_on`=4319, `clashes_with`=3198), alle `review_status=candidate` (unterscheidbar von den 3417 `approved` Seed-Edges). `edge_scope`: 16412 `intra_system`, **3 `cross_system`** — die ersten Cross-System-Kanten überhaupt (Datenschicht D war vorher bei 0). Nicht auflösbar waren ~5200 referenzierte canonical_ids je Richtung (Bücher/Systeme ohne vollständigen Node-Katalog, z. B. dünne BaZi/GeneKeys-Abdeckung) — Script ist idempotent re-runnable, holt bei künftigen Content-Wellen automatisch mehr Treffer. `sys_dynamics` (Prozesse/Zyklen) bleibt separat offen — kein äquivalentes Feld im aktuellen Payload-Schema, eigene Betrachtung falls relevant.
 
 ---
 
