@@ -7,12 +7,14 @@
 ```
 A: Rohmechanik       ✅ implementiert    sys_kg_nodes (Strukturbäume)
 B: Bedeutungen       ✅ implementiert    sys_interpretations (LLM-extrahiert)
-C: Dynamiken         ⚠️ Feld ungenutzt  sys_interpretations.payload.interactions (64% befüllt, 0 downstream genutzt); sys_dynamics = 0 Zeilen
-D: Cross-System      ❌ FEHLT (kritisch) sys_kg_edges (maps_to, cross_system = 0 von 3417 Edges)
+C: Dynamiken         ⚠️ teilweise bereit  Pro-Element: sys_interpretations.payload.{interactions (64% befüllt, jetzt in sys_kg_edges gebackfillt), process.{trap,gift_activation,experiment_seed} (100% befüllt, noch ungenutzt)}; Kombinatorisch (2+Systeme×Domäne): sys_dynamics = 0 Zeilen (braucht neuen LLM-Job extract_pattern_traps, kein Backfill möglich)
+D: Cross-System      ⚠️ erste Kanten (Nebenprodukt) sys_kg_edges: 3 cross_system-Kanten aus beiläufiger Ko-Erwähnung in Fließtext (nicht die geplante maps_to-Mapping-Phase, die noch 0% ist, siehe reference/cross_system_mapping_methodology_review.md)
 E: Meta-Knoten       ❌ FEHLT           sys_kg_nodes (system=meta)
 ```
 
 > **Update 2026-08-05:** `extract_relationships`/`extract_processes` (Phase 1, unten) wurden nie gebaut. Stattdessen steckt Intra-System-Beziehungswissen bereits unstrukturiert in `sys_interpretations.payload.{elements[], interactions}` — `text2kg` verlinkt darüber schon heute eine Interpretation an mehrere Nodes. Plan: Backfill statt Neu-Extraktion, Kombinationsbedeutung per Read-Time-Retrieval im Overlay-Service (§13) statt Precompute. Details: `reference/decisions.md` → "2026-08-05: Element-Verbindungen".
+>
+> **Update 2026-08-05 (2):** Backfill ausgeführt (12.998 Kanten, davon 3 cross_system — Ko-Erwähnung im Fließtext, kein geprüftes `maps_to`). Zusätzlich geprüft: `payload.process.{trap,gift_activation,experiment_seed}` ist bereits zu 100% befüllt (pro-Element-Ebene, deckt `extract_process_patterns` ab) — kein Backfill nötig, einfach ungenutzt bis Read-Time-Retrieval/Werkstatt gebaut wird. Die `sys_dynamics`-Tabelle selbst (kombinatorische Traps über 2+ Systeme×Domäne, oder Phase-Zyklen) bleibt davon unberührt offen — das ist kein Backfill-Fall, sondern ein neuer, kostenpflichtiger LLM-Job (`extract_pattern_traps`), bewusst zurückgestellt bis Content Wave weiter fortgeschritten ist (bessere Qualität mit mehr Systemabdeckung pro Domäne).
 
 Ohne D+E = Multi-App. Mit D+E = Meta-System.
 

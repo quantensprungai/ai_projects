@@ -27,7 +27,15 @@ ROTER FADEN (Masterplan — wo wir im Prozess stehen, Stand 2026-07-03 ~22:40):
   4. ⏳ MVP "Die Vier Spiegel" (Phase 4): Onboarding + Mandala + Handbuch T1–2 + Share
      → UX-Design: reference/ux_konzept_2026-07.md (v1 vorhanden, vor Umsetzung reviewen)
   5. ⏳ VOLL: WERKSTATT + ZEIT komplett + Staffel 2–3 + Resonanz-Feedback-Loop
-  Aktueller Punkt (2026-08-04): **Content-Welle Selection-Fix + Root-Cause komplett durchgezogen — sauber.**
+  Aktueller Punkt (2026-08-05): **KG-Edges-Backfill ausgeführt (12.998 Edges aus payload.interactions, 3 cross_system)
+    + sys_dynamics/cross_system-Doku korrigiert** (siehe decisions.md 2026-08-05, architecture.md Datenschicht C/D).
+    Wichtig: `payload.process.{trap,gift_activation,experiment_seed}` ist bereits 100% befüllt (keine Backfill-Aktion
+    nötig, nur noch ungenutzt) — analog zu `interactions`. `sys_dynamics`-Tabelle (kombinatorische Traps,
+    Phase-Zyklen) und Overlay-Service-Read-Time-Retrieval bewusst zurückgestellt bis Content Wave weiter ist bzw.
+    ein echter Aufrufer (Onboarding/Chart-Persistenz) existiert. HD-Profiles-Content-Welle (Incarnation Crosses by
+    Profile, Understanding the Profiles, Incarnation Cross Clinic + 4 weitere Cross/Gates-Line-Bücher) läuft
+    parallel via Langdock-Worker (`start_hd_profiles_worker.py`).
+  Vorheriger Punkt (2026-08-04): **Content-Welle Selection-Fix + Root-Cause komplett durchgezogen — sauber.**
     Rave I'Ching Re-Interpret ✅, Gene Keys Stubs ✅, Synth-Selection-Fix ✅.
     **Audit: text2kg-Auto-Synth war Root-Cause für Vollsystem-Überschreibungen** (31 unscoped Läufe
     gefunden, u. a. 3× `hd` während der Content-Welle selbst) → **gefixt** (`IC_TEXT2KG_AUTO_SYNTH=false`
@@ -39,8 +47,10 @@ ROTER FADEN (Masterplan — wo wir im Prozess stehen, Stand 2026-07-03 ~22:40):
     **Voll-Audit danach:** 0 verlinkte Stub-Interps (alle Systeme), 0 hängende Jobs. Langdock-Worker gestoppt.
     Empirisch ~€0,41 Langdock für Pilot+Rave (~€0,004–0,006/Chunk); Synth-Wellen kosten extra, aber klein pro Node.
     Hybrid-Soll: Mass-Interpret=Langdock; Extract=Spark; Synth=Layer-Batches — jetzt strukturell erzwungen (kein Full nach jedem PDF mehr möglich).
-  NÄCHSTES: Nächstes Buch/System für die Content-Welle auswählen (z. B. Profile/Lines-Companion-Bücher
-    zur Deckung der dünnen Line-Nodes, oder nächstes System laut Wellen-Reihenfolge in diesem Dokument).
+  NÄCHSTES: HD-Profiles-Welle fertig laufen lassen + Scoped Layer-Synth für Profiles/Crosses, dann Hygiene-Check.
+    Danach: weitere HD-Bücher laut Wellen-Reihenfolge ODER BaZi-Klassiker priorisieren (Nutzerentscheidung offen).
+    Zurückgestellt (bewusst, siehe decisions.md 2026-08-05): `extract_pattern_traps` (→ sys_dynamics) und
+    Read-Time-Retrieval-Spike im Overlay-Service — beide erst wenn Content Wave weiter fortgeschritten ist.
   Detail: `cursor/reference/literature_content_wave_2026-07-18.md`
   K2-Docs: `reference/k2_foundation_wave_playbook.md`, `reference/k2_sanierung_learnings.md`,
     `reference/k2_seed_scope_and_strict_text2kg.md`
