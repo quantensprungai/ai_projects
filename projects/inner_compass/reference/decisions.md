@@ -4,6 +4,26 @@
 
 ---
 
+## 2026-08-05: Element-Verbindungen — Backfill statt neuer Extraktion, Read-Time-Retrieval statt Precompute
+
+**Kontext:** Ursprünglicher Plan (Decision "4-stufige Extraktion", 2026-02) sah `extract_relationships` (→ `sys_kg_edges` intra_system) + `extract_processes` (→ `sys_dynamics`) als eigene Jobs pro Chunk vor. Beide wurden **nie gebaut** — `ic_worker.py` hat nur 6 Handler (`extract_text, classify_domain, extract_term_mapping, extract_interpretations, text2kg, synthesize_node`). DB-Audit 2026-08-05: `sys_dynamics` = 0 Zeilen, `sys_interactions` = 1 Zeile, `sys_kg_edges` = 3417 Edges, aber 100 % `intra_system`/strukturell (aus Katalog-Seed), 0 `cross_system`.
+
+**Überraschender Fund:** `sys_interpretations.payload` enthält bereits seit der ursprünglichen Prompt-Definition zwei Felder, die genau das leisten, wonach wir suchten — nur nie downstream genutzt:
+- `elements[]` — alle im Chunk explizit genannten Entitäten (nicht nur die Haupt-Entität); `text2kg` verlinkt darüber **bereits heute** eine Interpretation an **mehrere** Nodes gleichzeitig (`_resolve_canonical_ids_from_interp`).
+- `interactions.{amplifies, depends_on, clashes_with}` — vom LLM bereits typisiert extrahiert. Stichprobe (n=300, aktuelle Langdock-Läufe): **64 % nicht-leer**, 427 `amplifies`-, 269 `depends_on`-, 80 `clashes_with`-Referenzen mit sinnvollem Inhalt (z. B. `hd.gate.1 amplifies [hd.gate.2, hd.center.G]`).
+
+**Decision:**
+1. **Kein neuer Extraktions-Pass.** Statt `extract_relationships` neu zu bauen: bestehendes `interactions`-Feld aus bereits vorhandenen Interpretationen per **Backfill-Script** in `sys_kg_edges` (edge_scope=`intra_system`, edge_type=amplifies/depends_on/clashes_with, evidence=chunk/interpretation_id) übertragen. Kosten: 0 neue LLM-Calls für Alt-Bestand; nur für neue Bücher fällt es sowieso als Nebenprodukt der laufenden `extract_interpretations`-Jobs an.
+2. **Keine feinere Vorab-Klassifikation der Erwähnungsart nötig** (kein `mentions_other_elements` mit Sub-Typ). Die drei bestehenden Typen (amplifies/depends_on/clashes_with) reichen als Exact-Match-Vorfilter; die eigentliche Nuance liest das LLM zur Lesezeit direkt aus dem zitierten Fließtext (`evidence.quotes`), nicht aus einem vorab kodierten Label.
+3. **Kombinationsbedeutung wird NICHT vorab für alle Chart-Kombinationen berechnet** (kombinatorisch unmöglich: 64 Gates × 12 Profile × 9 Center × …). Stattdessen: **Read-Time-Retrieval im geplanten Overlay-Service** (architecture.md §13, "LLM on-demand") — bei Bedarf (Onboarding Top-3, oder Nutzer öffnet eine Domäne/einen Chart-Bereich) werden (a) direkte `sys_kg_edges`-Treffer zwischen den aktiven Nodes eines Charts UND (b) Embedding-Suche über `sys_interpretations` mit den aktiven `canonical_id`s als Filter kombiniert, als Kontext an ein LLM gegeben, das die personalisierte Kombinations-Aussage schreibt — gecacht wie die anderen Echtzeit-Services (Konvergenz-Service: 15-Min-Muster als Vorbild, hier eher "einmalig pro Personen-Kombination" da statisch, kein Transit).
+4. Dieser Overlay-Retrieval-Mechanismus existiert noch **nicht** als Code — nur als Konzept hier festgehalten. Bauen erst, wenn Chart-Engine-Service + `user_charts` so weit sind, dass es einen echten Aufrufer gibt (nicht Teil der aktuellen Content-Wave).
+
+**Rationale:** Vermeidet doppelte Kosten (die Daten sind größtenteils schon extrahiert), vermeidet kombinatorische Explosion durch Precompute, bleibt konsistent mit dem bestehenden Architektur-Prinzip "Struktur deterministisch billig, Bedeutungs-Nuance vom LLM zur Laufzeit" (architecture.md §7, §13).
+
+**Consequences:** (1) Backfill-Script `ic_kg_edges_backfill_from_interactions.py` (TODO, nicht Teil dieser Welle) für Alt-Bestand. (2) `architecture.md` Datenschicht C/D-Zeile + §13 Overlay-Service um diesen Stand ergänzen. (3) Content-Wave-Extraktion bleibt unverändert (Feld wird bereits mitgeschrieben) — kein Rerun nötig.
+
+---
+
 ## 2026-05-07: Ur-Systeme — `kabbalah`-Split, `chakra` ein Pfad, I-Ging-AA-Auswahl (Wilhelm/Baynes + Legge)
 
 **Decision:**
@@ -324,6 +344,8 @@
 **Rationale:** 832 Nodes (HD: 526, alle 10 Systeme) reichen vollständig für S5-Validierung. Wenn vor der Pipeline-Validierung 15-20h Daten kuratiert werden, blockiert das den kritischen Pfad. Falls S5 Contract-Anpassungen erfordert, müssten kuratierte Daten ggf. nochmal angefasst werden.
 
 **Consequences:** S5 startet sofort mit bestehendem Graph. Fehlende Nodes werden erst nachgezogen wenn die Pipeline sie tatsächlich vermisst. Vollständiger Backlog in `reference/deep_structure_plan.md`. HD-Vertiefung (Crosses, PHS, Partners) nach S7 in P1.
+
+**Klarstellung (2026-07-01):** Die Entscheidung betrifft **Sprint-Timing**, nicht die Architektur. Atomare K2-Nodes (17 PHS, 192 Crosses, …) **sollen** geseedet werden — Quelle ist `system_structure/*` + Engine, **nicht** PDF. ~69.120 berechnete Positionen werden **nicht** als Nodes modelliert (Chart-K1). Phase 0 „100 %“ = Infrastruktur; vollständiger K2-Seed = offener Phase-1-Punkt.
 
 ---
 

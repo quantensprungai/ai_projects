@@ -7,10 +7,12 @@
 ```
 A: Rohmechanik       ✅ implementiert    sys_kg_nodes (Strukturbäume)
 B: Bedeutungen       ✅ implementiert    sys_interpretations (LLM-extrahiert)
-C: Dynamiken         ⚠️ Schema da       sys_dynamics + process-Feld
-D: Cross-System      ❌ FEHLT (kritisch) sys_kg_edges (maps_to, cross_system)
+C: Dynamiken         ⚠️ Feld ungenutzt  sys_interpretations.payload.interactions (64% befüllt, 0 downstream genutzt); sys_dynamics = 0 Zeilen
+D: Cross-System      ❌ FEHLT (kritisch) sys_kg_edges (maps_to, cross_system = 0 von 3417 Edges)
 E: Meta-Knoten       ❌ FEHLT           sys_kg_nodes (system=meta)
 ```
+
+> **Update 2026-08-05:** `extract_relationships`/`extract_processes` (Phase 1, unten) wurden nie gebaut. Stattdessen steckt Intra-System-Beziehungswissen bereits unstrukturiert in `sys_interpretations.payload.{elements[], interactions}` — `text2kg` verlinkt darüber schon heute eine Interpretation an mehrere Nodes. Plan: Backfill statt Neu-Extraktion, Kombinationsbedeutung per Read-Time-Retrieval im Overlay-Service (§13) statt Precompute. Details: `reference/decisions.md` → "2026-08-05: Element-Verbindungen".
 
 Ohne D+E = Multi-App. Mit D+E = Meta-System.
 
@@ -332,7 +334,7 @@ PDF-Pipeline auf Spark               Chart-Engine-Service
 | Chart-Engine (HD, BaZi, Maya, Num, NSK, Akan) | Next.js API Routes | TS-Engines laufen direkt in Node |
 | Chart-Engine (Jyotish, Astro) | Python Microservice (FastAPI, Docker) | VedAstro.Python / pyswisseph brauchen Python. NICHT auf Spark. |
 | Transit-Service | Python Microservice | pyswisseph, 15-Min-Cache |
-| Overlay-Service | Spark (LLM) | Braucht LLM-Zugang |
+| Overlay-Service | Spark (LLM) | Braucht LLM-Zugang; Retrieval: `sys_kg_edges` (direkte Treffer zwischen aktiven Nodes) + Embedding-Suche über `sys_interpretations` gefiltert auf aktive `canonical_id`s → Kontext für LLM-Kombinationstext. Noch nicht gebaut (Stand 2026-08-05). |
 | Konvergenz-Service | Supabase Edge oder Next.js | Deterministisch, SQL-basiert |
 | Flow-Engine | Next.js API Routes | State-Management, kein LLM nötig |
 | NLP-Service | Spark (LLM) | Braucht LLM-Zugang |
