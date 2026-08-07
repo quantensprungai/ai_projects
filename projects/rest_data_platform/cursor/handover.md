@@ -16,14 +16,14 @@ Workspace: ai-projects Root — Doku + Code + Infra zusammen (NICHT nur projects
 Stand (2026-08-07):
   - Doku: projects/rest_data_platform/ (Scope, Architektur, Roadmap, IMC-Referenz-SQL)
   - Code: code/astra-imc-platform/ → git@github.com:quantensprungai/astra-imc-platform.git
-  - Schema: IMC v1 + v1.2 + MaStR-Match-Tabellen (imc_mastr_*)
-  - ETL: A+-Raw-Ingest + transform_4c_windfarm + MaStR-DE-Matching-Skelett (DB-Port 54330)
-  - Slice-1 UI: Team-Account `/home/[account]/assets` Working Board (KPI + Filter + Tabelle + Detail + CSV)
+  - Schema: IMC v1 + v1.2 + MaStR-Match-Tabellen (imc_mastr_*) + imc_turbines
+  - ETL: A+-Raw-Ingest + transform_4c_windfarm + MaStR-DE-Matching + Unit-Transform
+  - Slice-1 UI: `/home/[account]/assets` Working Board (KPI + Filter + leichte OSM-Karte + Tabelle + Detail + CSV)
   - Spec: projects/rest_data_platform/cursor/ui_slice1_working_board.md
-  - MaStR: XML-Ingest + Matching live; ~33 DE-Parks accepted/applied; Einheiten-Ebene (imc_turbines) für Alpha Ventus
-  - Spec: projects/rest_data_platform/cursor/ui_slice1_working_board.md
+  - MaStR: ~33 DE-Parks accepted/applied; Einheiten für accepted Parks lokal (~1593)
   - MaStR: projects/rest_data_platform/cursor/mastr_matching_de.md
-  - Supabase Cloud: Ref `pfprwudrfkugvzpjyrvj` — Cloud-Push ggf. noch offen
+  - Meta-Docs-Branch: docs/rest-data-platform-mastr-etl (gepusht) — PR manuell (gh fehlt lokal)
+  - Supabase Cloud: Ref `pfprwudrfkugvzpjyrvj` — db push braucht `supabase login` / SUPABASE_ACCESS_TOKEN
   - Lokal: Docker Desktop nötig für `pnpm supabase:web:*`
 
 Zielbild MVP (5–12 Wochen):
@@ -48,10 +48,10 @@ Dann je nach Aufgabe:
   - Kit-Spiegel: infrastructure/next-supabase-turbo/
 
 Nächster sinnvoller Schritt (Implementierung):
-  1. Demo Alpha Ventus (Park-Spanne + 12 SEE-Einheiten) verifizieren
-  2. Optional: MaStR-Einheiten für weitere accepted DE-Parks (`transform_mastr_turbines_farm.py`)
-  3. Optional: Commit/Push der Turbine-Ebene; Cloud db push
-  4. BOM/AAS erst mit Partner-Feldliste — nicht vor Ebene-3-Stabilisierung
+  1. Cloud: `projects/rest_data_platform/scripts/push_supabase_cloud.ps1` (Login + db push)
+  2. Assets-Karte lokal prüfen (Germany-Filter, makerkit)
+  3. Optional Quelle #3 (Häfen/Vessels oder ERA5/Natura) — dünn
+  4. BOM/AAS erst mit Partner-Feldliste
   5. Upload erst bei Partner-CSV-Bedarf
 
 Git-Regeln:

@@ -40,7 +40,8 @@ Get-Content ..\..\projects\rest_data_platform\scripts\etl\curate_alpha_ventus.sq
    - Default **Germany** + Status **Aktiv (ohne Cancelled)**
    - KPI: Parks / MW / In Betrieb · unter Bau
    - Banner **Pilot: Alpha Ventus**
-5. **Alpha Ventus öffnen** (Banner oder Zeile)
+   - **Park-Karte** (OSM, gefilterte DE-Parks; Pilot grün)
+5. **Alpha Ventus öffnen** (Banner, Karten-Popup oder Zeile)
 6. Detail: Status In Betrieb, Foundation **Tripod**, MaStR-Park + Inbetriebnahme, Turbinen-Modelle, **Tabelle AV01–AV12 mit SEE-Nummern**
 7. Zurück → **CSV exportieren**
 
