@@ -16,17 +16,15 @@ Workspace: ai-projects Root — Doku + Code + Infra zusammen (NICHT nur projects
 Stand (2026-08-07):
   - Doku: projects/rest_data_platform/ (Scope, Architektur, Roadmap, IMC-Referenz-SQL)
   - Code: code/astra-imc-platform/ → git@github.com:quantensprungai/astra-imc-platform.git
-  - Schema: IMC v1 + v1.2 + MaStR-Match-Tabellen (imc_mastr_*) + imc_turbines
-  - ETL: A+-Raw-Ingest + transform_4c_windfarm + MaStR-DE-Matching + Unit-Transform
-  - Slice-1 UI: `/home/[account]/assets` Working Board (KPI + Filter + OSM-Karte + Natura-Toggle + Tabelle + Detail + CSV)
-  - Spec: projects/rest_data_platform/cursor/ui_slice1_working_board.md
-  - MaStR: ~33 DE-Parks accepted/applied; Einheiten für accepted Parks lokal (~1593)
-  - Natura: BfN marin FFH/SPA → imc_protected_areas (~101); Overlay + Detail-Nähe
-  - Spec: projects/rest_data_platform/cursor/natura_overlay_de.md
-  - MaStR: projects/rest_data_platform/cursor/mastr_matching_de.md
-  - Meta-Docs-Branch: docs/rest-data-platform-mastr-etl (gepusht) — PR manuell (gh fehlt lokal)
-  - Supabase Cloud: Ref `pfprwudrfkugvzpjyrvj` — db push braucht `supabase login` / SUPABASE_ACCESS_TOKEN
-  - Lokal: Docker Desktop nötig für `pnpm supabase:web:*`
+  - Schema: IMC v1 + v1.2 + MaStR + imc_turbines + imc_protected_areas
+  - ETL: 4C + MaStR-DE + Units + BfN marine Schutzgebiete (alle Layer)
+  - Slice-1 UI: Assets Working Board (KPI, Filter, OSM-Karte, Schutzgebiete-Toggle, sortierbare Tabelle, Detail, CSV)
+  - Specs: cursor/ui_slice1_working_board.md · cursor/mastr_matching_de.md · cursor/natura_overlay_de.md
+  - MaStR: ~33 DE-Parks accepted/applied; ~1593 Einheiten lokal
+  - Schutzgebiete: ~205 (FFH/SPA/NSG/LSG/NLP/NRP/BR); Overlay + Detail-Nähe
+  - Meta-Branch: docs/rest-data-platform-mastr-etl
+  - Supabase Cloud: Ref `pfprwudrfkugvzpjyrvj` — db push + Natura-Ingest noch offen
+  - Lokal: Docker Desktop für `pnpm supabase:web:*`
 
 Zielbild MVP (5–12 Wochen):
   Login/Rollen, Offshore-Asset-Register (DE/Nordsee-Default), minimaler Export.
@@ -50,9 +48,9 @@ Dann je nach Aufgabe:
   - Kit-Spiegel: infrastructure/next-supabase-turbo/
 
 Nächster sinnvoller Schritt (Implementierung):
-  1. Natura-Overlay lokal auf Assets prüfen (Toggle + Alpha Ventus Detail-Distanz)
-  2. Cloud: `projects/rest_data_platform/scripts/push_supabase_cloud.ps1` (Login + db push) inkl. Natura-Migration
-  3. Code-Repo Commits pushen (Map + Natura) auf Wunsch
+  1. Cloud db push (Migrationen) + `ingest_natura_bfn.py --replace` gegen Cloud
+  2. Optional dünn: Emden/Häfen-Seed (imc_ports) ODER ERA5 Alpha-Ventus
+  3. Demo-Runbook einmal durchspielen (makerkit / Assets)
   4. BOM/AAS erst mit Partner-Feldliste
   5. Upload erst bei Partner-CSV-Bedarf
 
