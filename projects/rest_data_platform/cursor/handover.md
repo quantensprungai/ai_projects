@@ -18,9 +18,11 @@ Stand (2026-08-07):
   - Code: code/astra-imc-platform/ → git@github.com:quantensprungai/astra-imc-platform.git
   - Schema: IMC v1 + v1.2 + MaStR-Match-Tabellen (imc_mastr_*) + imc_turbines
   - ETL: A+-Raw-Ingest + transform_4c_windfarm + MaStR-DE-Matching + Unit-Transform
-  - Slice-1 UI: `/home/[account]/assets` Working Board (KPI + Filter + leichte OSM-Karte + Tabelle + Detail + CSV)
+  - Slice-1 UI: `/home/[account]/assets` Working Board (KPI + Filter + OSM-Karte + Natura-Toggle + Tabelle + Detail + CSV)
   - Spec: projects/rest_data_platform/cursor/ui_slice1_working_board.md
   - MaStR: ~33 DE-Parks accepted/applied; Einheiten für accepted Parks lokal (~1593)
+  - Natura: BfN marin FFH/SPA → imc_protected_areas (~101); Overlay + Detail-Nähe
+  - Spec: projects/rest_data_platform/cursor/natura_overlay_de.md
   - MaStR: projects/rest_data_platform/cursor/mastr_matching_de.md
   - Meta-Docs-Branch: docs/rest-data-platform-mastr-etl (gepusht) — PR manuell (gh fehlt lokal)
   - Supabase Cloud: Ref `pfprwudrfkugvzpjyrvj` — db push braucht `supabase login` / SUPABASE_ACCESS_TOKEN
@@ -48,9 +50,9 @@ Dann je nach Aufgabe:
   - Kit-Spiegel: infrastructure/next-supabase-turbo/
 
 Nächster sinnvoller Schritt (Implementierung):
-  1. Cloud: `projects/rest_data_platform/scripts/push_supabase_cloud.ps1` (Login + db push)
-  2. Assets-Karte lokal prüfen (Germany-Filter, makerkit)
-  3. Optional Quelle #3 (Häfen/Vessels oder ERA5/Natura) — dünn
+  1. Natura-Overlay lokal auf Assets prüfen (Toggle + Alpha Ventus Detail-Distanz)
+  2. Cloud: `projects/rest_data_platform/scripts/push_supabase_cloud.ps1` (Login + db push) inkl. Natura-Migration
+  3. Code-Repo Commits pushen (Map + Natura) auf Wunsch
   4. BOM/AAS erst mit Partner-Feldliste
   5. Upload erst bei Partner-CSV-Bedarf
 

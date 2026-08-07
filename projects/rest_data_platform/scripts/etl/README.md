@@ -142,6 +142,15 @@ python apply_mastr_matches.py
 
 Fixture bleibt für Smoke-Tests: `fixtures/mastr_units_offshore_sample.csv`.
 
+## Natura 2000 (BfN marin)
+
+```powershell
+python ingest_natura_bfn.py --replace
+```
+
+Lädt FFH + SPA aus dem BfN-WFS `schutzgebiet_marin` nach `imc_protected_areas`.
+Siehe `../../cursor/natura_overlay_de.md`.
+
 ## Nächste Skripte (Backlog)
 
 - `ingest_era5.py` — CDS-API → v2-Tabellen (oder Raw-Mirror)
