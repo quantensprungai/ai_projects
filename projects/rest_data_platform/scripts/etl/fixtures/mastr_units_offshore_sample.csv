@@ -1,0 +1,17 @@
+EinheitMastrNummer,NameWindpark,Anzeige-Name der Einheit,Bruttoleistung,Inbetriebnahmedatum,Breitengrad,Laengengrad,Energieträger,Lage
+SEE900000000001,Alpha Ventus,Alpha Ventus WEA 01,5000,2010-04-01,54.0083,6.5983,Wind,Windenergieanlage auf See
+SEE900000000002,Alpha Ventus,Alpha Ventus WEA 02,5000,2010-04-01,54.0100,6.6010,Wind,Windenergieanlage auf See
+SEE900000000003,Alpha Ventus,Alpha Ventus WEA 03,5000,2010-04-15,54.0120,6.6050,Wind,Windenergieanlage auf See
+SEE900000000004,Alpha Ventus,Alpha Ventus WEA 04,5000,2010-04-15,54.0140,6.5980,Wind,Windenergieanlage auf See
+SEE900000000005,Alpha Ventus,Alpha Ventus WEA 05,5000,2010-05-01,54.0080,6.6100,Wind,Windenergieanlage auf See
+SEE900000000006,Alpha Ventus,Alpha Ventus WEA 06,5000,2010-05-01,54.0060,6.6030,Wind,Windenergieanlage auf See
+SEE900000000007,Alpha Ventus,Alpha Ventus WEA 07,5000,2010-05-15,54.0110,6.5950,Wind,Windenergieanlage auf See
+SEE900000000008,Alpha Ventus,Alpha Ventus WEA 08,5000,2010-05-15,54.0150,6.6070,Wind,Windenergieanlage auf See
+SEE900000000009,Alpha Ventus,Alpha Ventus WEA 09,5000,2010-06-01,54.0090,6.5920,Wind,Windenergieanlage auf See
+SEE900000000010,Alpha Ventus,Alpha Ventus WEA 10,5000,2010-06-01,54.0130,6.6120,Wind,Windenergieanlage auf See
+SEE900000000011,Alpha Ventus,Alpha Ventus WEA 11,5000,2010-06-15,54.0070,6.6060,Wind,Windenergieanlage auf See
+SEE900000000012,Alpha Ventus,Alpha Ventus WEA 12,5000,2010-06-15,54.0160,6.5990,Wind,Windenergieanlage auf See
+SEE900000000101,Borkum Riffgrund 1,Borkum Riffgrund 1 WEA 01,4000,2015-02-01,53.9660,6.4920,Wind,Windenergieanlage auf See
+SEE900000000102,Borkum Riffgrund 1,Borkum Riffgrund 1 WEA 02,4000,2015-02-01,53.9700,6.5000,Wind,Windenergieanlage auf See
+SEE900000000201,Gode Wind 1,Gode Wind 1 WEA 01,6000,2016-06-01,54.0500,7.0300,Wind,Windenergieanlage auf See
+SEE900000000202,Gode Wind 1,Gode Wind 1 WEA 02,6000,2016-06-01,54.0550,7.0400,Wind,Windenergieanlage auf See
