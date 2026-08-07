@@ -83,4 +83,5 @@ Aufräumen Trianel-Ambiguität: `cleanup_mastr_trianel.sql`
 | `imc_mastr_park_agg` | MaStR-WEA zu Parknamen summiert |
 | `imc_mastr_farm_matches` | Vorschläge / Accept / Reject |
 
-Apply schreibt nur: `aliases` (`MaStRPark:` + max. 1 `MaStR:SEE…`) und `full_commissioning` wenn leer.
+Apply schreibt nur: `aliases` (`MaStRPark:`) und `full_commissioning` wenn leer.  
+Einheiten (`SEE…`) liegen in `imc_turbines` (Pilot: Alpha Ventus).

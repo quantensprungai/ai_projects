@@ -41,13 +41,13 @@ Get-Content ..\..\projects\rest_data_platform\scripts\etl\curate_alpha_ventus.sq
    - KPI: Parks / MW / In Betrieb · unter Bau
    - Banner **Pilot: Alpha Ventus**
 5. **Alpha Ventus öffnen** (Banner oder Zeile)
-6. Detail: Status In Betrieb, Foundation **Tripod**, Kuratierungsnotiz, **MaStR-Park / Inbetriebnahme**, **Turbine Areva M5000 + Senvion 5M**, Lat/Lon, Quelle 4C
+6. Detail: Status In Betrieb, Foundation **Tripod**, MaStR-Park + Inbetriebnahme, Turbinen-Modelle, **Tabelle AV01–AV12 mit SEE-Nummern**
 7. Zurück → **CSV exportieren**
 
 ## Drei Sätze fürs Publikum
 
 1. *Das ist unser Stage-A Working Board — kein 4C-Klon, Fokus Ostfriesland/Nordsee.*  
-2. *Alpha Ventus ist der Vertical-Slice-Pilot: kuratiert, MaStR-angereichert, Turbinenmodelle verknüpft.*  
+2. *Alpha Ventus ist der Vertical-Slice-Pilot: kuratiert, MaStR-Einheiten AV01–AV12, Turbinenmodelle verknüpft.*  
 3. *Upload und DPP kommen später; heute: Register + Enrichment + Export.*
 
 ## Falls leer

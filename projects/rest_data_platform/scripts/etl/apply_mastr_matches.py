@@ -23,7 +23,8 @@ load_dotenv()
 
 
 def clean_aliases(aliases: list[str] | None, park_name: str, sample_ids: list[str] | None) -> list[str]:
-    """Keep non-MaStR aliases; replace MaStR* clutter with park + one unit id."""
+    """Keep non-MaStR aliases; only MaStRPark on farm header (SEE units → imc_turbines)."""
+    del sample_ids  # unused — unit IDs belong on imc_turbines, not farm aliases
     kept: list[str] = []
     for alias in aliases or []:
         text = str(alias)
@@ -32,10 +33,6 @@ def clean_aliases(aliases: list[str] | None, park_name: str, sample_ids: list[st
         if text not in kept:
             kept.append(text)
     kept.append(f"MaStRPark:{park_name}")
-    if sample_ids:
-        unit_tag = f"MaStR:{sample_ids[0]}"
-        if unit_tag not in kept:
-            kept.append(unit_tag)
     return kept
 
 

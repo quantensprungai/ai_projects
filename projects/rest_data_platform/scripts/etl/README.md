@@ -75,6 +75,9 @@ Turbine-Minimal (Alpha Ventus / DE01):
 
 ```powershell
 python transform_4c_turbine_alpha_ventus.py
+python transform_mastr_turbines_farm.py --ext-windfarm-id DE01
+# alle accepted DE-Matches:
+python transform_mastr_turbines_farm.py --all-accepted
 ```
 
 `transform_4c_windfarm.py` normalisiert leere Excel-Zellen zu `NULL` und kappt numerische Ausreißer auf die aktuellen v1-Spaltenlimits, statt den MVP-Transform zu blockieren.

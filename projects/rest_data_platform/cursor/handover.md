@@ -20,7 +20,7 @@ Stand (2026-08-07):
   - ETL: A+-Raw-Ingest + transform_4c_windfarm + MaStR-DE-Matching-Skelett (DB-Port 54330)
   - Slice-1 UI: Team-Account `/home/[account]/assets` Working Board (KPI + Filter + Tabelle + Detail + CSV)
   - Spec: projects/rest_data_platform/cursor/ui_slice1_working_board.md
-  - MaStR: XML-Ingest + Matching live; ~33 DE-Parks accepted/applied; Doku erklärt Scoring/Accept/Apply
+  - MaStR: XML-Ingest + Matching live; ~33 DE-Parks accepted/applied; Einheiten-Ebene (imc_turbines) für Alpha Ventus
   - Spec: projects/rest_data_platform/cursor/ui_slice1_working_board.md
   - MaStR: projects/rest_data_platform/cursor/mastr_matching_de.md
   - Supabase Cloud: Ref `pfprwudrfkugvzpjyrvj` — Cloud-Push ggf. noch offen
@@ -48,9 +48,11 @@ Dann je nach Aufgabe:
   - Kit-Spiegel: infrastructure/next-supabase-turbo/
 
 Nächster sinnvoller Schritt (Implementierung):
-  1. Demo: Assets → Alpha Ventus — MaStR + Turbine-Felder auf Detailseite prüfen
-  2. Optional: Cloud db push / weitere DE-Turbines
-  3. Upload erst bei Partner-CSV-Bedarf
+  1. Demo Alpha Ventus (Park-Spanne + 12 SEE-Einheiten) verifizieren
+  2. Optional: MaStR-Einheiten für weitere accepted DE-Parks (`transform_mastr_turbines_farm.py`)
+  3. Optional: Commit/Push der Turbine-Ebene; Cloud db push
+  4. BOM/AAS erst mit Partner-Feldliste — nicht vor Ebene-3-Stabilisierung
+  5. Upload erst bei Partner-CSV-Bedarf
 
 Git-Regeln:
   - Meta-Repo (ai-projects): nur Doku/Infra committen
