@@ -22,13 +22,13 @@ notes:
 **Kein 4C-GIS-Nachbau.** Eine Kontext-Schicht:
 
 - Parks bleiben **Punkte** (Lifecycle-Farben)
-- Natura = halbtransparente **Polygone** (Toggle)
+- Schutzgebiete = halbtransparente **Polygone** (Toggle)
 - Detail: nächstes Gebiet + Distanz / Überlapp
 
 ## Quelle
 
 - BfN WFS `schutzgebiet_marin`
-- Layer: FFH + Vogelschutzgebiete (SPA)
+- Layer: **FFH, SPA, NSG, LSG, Nationalparke, Naturparke, Biosphärenreservate**
 - `source_id`: `a1000001-0002-4001-8001-000000000013`
 
 ## Lokal laden
@@ -43,8 +43,9 @@ python ingest_natura_bfn.py --replace
 
 ## UI
 
-- Assets-Karte: Checkbox „Natura 2000 (BfN marin)“
+- Assets-Karte: Checkbox „Schutzgebiete (BfN marin)“
 - Asset-Detail: Feld „Nächstes Schutzgebiet“
+- Tabelle: Spalten sortierbar (`?sort=` / `&dir=`)
 
 ## Bewusst nicht
 

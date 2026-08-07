@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
-Ingest BfN marine Schutzgebiete (Natura 2000 FFH + SPA) into imc_protected_areas.
+Ingest BfN marine Schutzgebiete into imc_protected_areas.
 
 Quelle: https://geodienste.bfn.de/ogc/wfs/schutzgebiet_marin (GEOJSON)
+Layer: FFH, SPA, NSG, LSG, Nationalparke, Naturparke, Biosphärenreservate.
 Kein Planungsprodukt — Kontext-Layer für Assets-Karte + Farm-Nähe.
 """
 
@@ -14,25 +15,26 @@ import sys
 import urllib.parse
 import urllib.request
 from datetime import date
+from pathlib import Path
 
 import psycopg
 from dotenv import load_dotenv
 
 from config import SOURCE_NATURA2000, get_database_url
 
+load_dotenv(Path(__file__).resolve().parent / ".env")
 load_dotenv()
 
 WFS_BASE = "https://geodienste.bfn.de/ogc/wfs/schutzgebiet_marin"
 
 LAYERS = (
-    (
-        "bfn_sch_Schutzgebiet_marin:Fauna_Flora_Habitat_Gebiete",
-        "FFH",
-    ),
-    (
-        "bfn_sch_Schutzgebiet_marin:Vogelschutzgebiete",
-        "SPA",
-    ),
+    ("bfn_sch_Schutzgebiet_marin:Fauna_Flora_Habitat_Gebiete", "FFH"),
+    ("bfn_sch_Schutzgebiet_marin:Vogelschutzgebiete", "SPA"),
+    ("bfn_sch_Schutzgebiet_marin:Naturschutzgebiete", "NSG"),
+    ("bfn_sch_Schutzgebiet_marin:Landschaftsschutzgebiete", "LSG"),
+    ("bfn_sch_Schutzgebiet_marin:Nationalparke", "NLP"),
+    ("bfn_sch_Schutzgebiet_marin:Naturparke", "NRP"),
+    ("bfn_sch_Schutzgebiet_marin:Biosphaerenreservate", "BR"),
 )
 
 # ~200 m at mid-latitudes — enough for map overlay, not cadastral precision
@@ -52,7 +54,7 @@ def fetch_layer(type_name: str) -> dict:
     with urllib.request.urlopen(url, timeout=180) as resp:
         payload = json.loads(resp.read().decode("utf-8"))
     features = payload.get("features") or []
-    print(f"  → {len(features)} features")
+    print(f"  -> {len(features)} features")
     return payload
 
 
