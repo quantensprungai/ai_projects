@@ -1,5 +1,5 @@
 <!-- Reality Block
-last_update: 2026-03-27
+last_update: 2026-08-17
 status: draft
 scope:
   summary: "ReST Data Platform ASTRA WP 5.2 – Doku: Zielbild, Scope, Naming, Stack (Next.js + Supabase); Code: quantensprungai/astra-imc-platform."
@@ -34,9 +34,13 @@ notes: []
 - `01_spec/imc_rls_policy_patterns.md`: IMC RLS/Grant-Muster (Team-Accounts / `has_role_on_account`)
 - `03_roadmap/phase_a_timeline_2026_2028.md`: Phase A Roadmap (bis 31.08.2028) + Übergabepunkt
 - `03_roadmap/technical_next_steps.md`: Technisch: erster Schritt und folgende (Reihenfolge)
+- `03_roadmap/makerkit_update_process.md`: Stückweiser Makerkit-Upstream-Update-Prozess (Stage A)
+- `03_roadmap/makerkit_update_run_2026_08_24.md`: Update-Run 2026-08-24 (Triage + erster Security-Backport)
 - `03_roadmap/imc_data_implementation_leitfaden.md`: IMC Word-Vorgehensplan einordnen + 4C-Sourcing-Strategie + Schema-Drift-Hinweise
 - `03_roadmap/imc_app_bootstrap.md`: Start bei Null — Repo klonen, lokales Supabase, IMC-Schema + RLS einbinden
 - `04_communication/stakeholders_and_comms.md`: Stakeholder + Kommunikationslogik
+- `04_communication/team_stand_plan_2026_08.md`: Stand + Plan + Team-Session (Eisberg vor UI)
+- `04_communication/ASTRA_IMC_Team_Stand_2026_08.pptx`: Folien dazu (Quellen, Schema-Visualizer, Plan)
 - `04_communication/status_update_template.md`: 1‑seitiges Status Update Template
 - `04_communication/meeting_playbook_data_requirements.md`: Moderationsleitfaden fuer Daten-/Anforderungsmeeting
 - `99_archive/keep2_sanitized_notes.md`: sanitisierte Langnotizen (ohne Kontaktdaten)

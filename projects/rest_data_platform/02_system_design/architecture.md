@@ -23,13 +23,13 @@ Mit minimalem Team eine **nutzbare Vertical-Slice-Plattform** in **WP 5.2** (ReS
 
 Die Plattform ist bewusst **Backbone zuerst**: robust, erweiterbar, aber ohne Produktversprechen fuer Stage B/C.
 
-## Positionierung: Was ReST jetzt ist (und nicht ist)
+## Positionierung: ReST in Stage A
 ReST ist in Stage A:
 - Integrations- und Datenbasis (Supabase + Next.js),
 - gemeinsamer Einstiegspunkt fuer Module mit klaren Interfaces,
 - Demonstrator fuer Entscheidungsunterstuetzung (Kosten/Zeit/CO2 auf Proxy-Niveau).
 
-ReST ist in Stage A nicht:
+In Stage A noch nicht adressiert:
 - vollwertige Betriebsplattform fuer alle Stakeholder,
 - Ersatz fuer AnyLogic/SimaPro,
 - Industrie-Datenbeschaffer (OEM/NDA),
@@ -74,7 +74,7 @@ ReST ist in Stage A nicht:
 - BPM/Orchestrierung (Camunda oder AG2) als Connector-Service
 - Echtzeitnahe AIS-/Wetterintegration mit laufenden Betriebskosten
 
-## Code-Repository (Abgrenzung)
+## Code-Repository (Projektzuordnung)
 - **Eigene App, eigenes Repo:** `quantensprungai/astra-imc-platform` (lizenzierte Next.js/Supabase-Turbo-Basis), **kein** Bestandteil von `code/hd_saas_app` (Inner Compass).
 - **Gemeinsam** mit Inner Compass: nur **Muster** (Migrations, RLS, Client-Patterns) — keine gemeinsame Produkt-Datenbank.
 - **Kanonisches SQL (Domain v1):** [`reference/imc/IMC_Schema_v1.sql`](../reference/imc/IMC_Schema_v1.sql) — alles in **`public`** für PostgREST/RLS wie in der Anwendungsbasis üblich. Nach den **Baseline-Migrationen** der Vorlage als **eigene Migration** einspielen; RLS/Policies setzen.
