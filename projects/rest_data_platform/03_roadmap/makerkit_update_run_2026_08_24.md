@@ -186,6 +186,26 @@ Stichprobe nach Dump (COUNT): `imc_wind_farms` 3606 · `imc_era5_weather_windows
 - Nächster sicherer Schritt im Branch: die drei fehlenden Security-Migrationen (ohne erneutes Privilege-Duplikat) anwenden + Auth/Team Smoke — **erst danach** Next/`#512` Code
 - `#512` selbst bringt **keine** neuen `supabase/migrations` (laut Commit-Dateien)
 
+### Security-Migrationen angewendet (Branch, 2026-08-24)
+
+Lokal auf `chore/makerkit-v4-cache` angewendet + History repaired:
+
+| Version | Status |
+|---|---|
+| `20260529130000` MFA + verify_nonce + invitations column SELECT | applied |
+| `20260615000000` GRANT get_nonce_status → service_role | applied |
+| `20260707120000` Column-UPDATE, MFA-RLS sweep, storage account_image split | applied |
+| `20260811000000` residual privileges | **nicht** übernommen (bereits `20260824100000`) |
+
+Verifikation:
+- Daten unverändert: 3606 Farms / 1858 ERA5 / 240 Accounts
+- `accounts` UPDATE für `authenticated` nur noch `name, slug, picture_url, public_data`
+- `service_role` hat EXECUTE auf `get_nonce_status`
+- MFA restrictive Policies + `account_image_*` Policies vorhanden
+- `migration up`: Local database is up to date
+- Auth E2E (`tests/authentication/auth.spec.ts`, workers=1): **8 passed**
+- Commit: auf Branch gepusht
+
 ## Welle D — Mobile Sidebar `#510` (2026-08-24)
 
 - Quelle: `d8872c5b` (`#510`)
