@@ -18,7 +18,7 @@ notes: []
 
 - Branch: `main`
 - Remotes: `origin` (astra-imc-platform), `upstream` (makerkit)
-- Divergenz `main...upstream/main`: **11 / 1103** (lokal / upstream)
+- Divergenz `main...upstream/main`: **12 / 1103** (lokal / upstream; Stand nach Push `a0592b93`)
 
 ## Heute direkt übernommen
 
@@ -87,17 +87,47 @@ notes: []
 - Validierung: `pnpm --filter web-e2e test -- tests/team-accounts/team-accounts.spec.ts --workers=1` → **11 passed**
 - Hinweis: unter hoher Parallelität (`workers>=4`) bleibt der nested Dropdown noch empfindlich
 
+## Welle B — Schema/Docs/Agent-Tooling (in Arbeit, uncommitted)
+
+### Security-Schema-Sync (`#517` / `d58f6b27` Rest)
+
+- `apps/web/supabase/schemas/00-privileges.sql` — Default-Privilege-Stripping
+- Schema `02`–`11`: `anon` in `REVOKE ALL … FROM`
+- `12-one-time-tokens.sql`: `REVOKE ALL ON public.nonces FROM anon, authenticated, service_role`
+- `07-invitations.sql`: `GRANT USAGE ON SEQUENCE invitations_id_seq TO authenticated, service_role`
+- `apps/web/supabase/AGENTS.md` — Privilege-Guidance (lokal: Migration `20260824100000`)
+- `apps/web/supabase/tests/database/privileges.test.sql`
+  - Katalog-Assertions + behavioral `TRUNCATE`-Denial
+  - Anpassung: `SET ROLE authenticated` statt `makerkit.authenticate_as` (lokales Setup ohne dbdev-`tests`-Schema)
+- Verifikation: `supabase db test` → **privileges.test.sql ok**
+- Live-DB: `USAGE` auf `invitations_id_seq` an Schema angeglichen (`anon` revoked)
+
+### `#519` / `#520` Rest
+
+- `.github/workflows/unit-tests.yml`
+- `packages/mcp-server/src/lib/__tests__/process-utils.test.ts` (zusätzliche Windows-Arg-Tests)
+- Hinweis: MCP-Package hat vorbestehende Unit-/Typfehler; process-utils: 22/23 ok (1 Port-Listener-Flake unter Windows)
+
+### Agent-Tooling (`dbfc8b82`)
+
+- `.agents/` Skills + MCP-Config
+- Docs: `docs/installation/ai-agents.mdoc`, `mcp.mdoc`
+- `.claude/agents/code-quality-reviewer.md`
+
+### Verifikation dieser Welle
+
+- `pnpm --filter web typecheck` → ok
+- `privileges.test.sql` → ok
+- Commit/Push: **noch offen** (explizit anfordern)
+
 ## Kandidaten Nächste Welle
 
-### Welle A (niedriges Risiko)
+### Niedriges Risiko (weiter selektiv)
 
-1. Restliche Teile aus `f85ce120` (`#519`) — nur nach Einzelprüfung  
-   Relevanz: teilweise marketing-/team-account-nah, aber nicht alles für unseren Fork sinnvoll (z. B. Passkeys-Datei lokal nicht vorhanden).
-2. Begleitende Tests zu `48233d9d` (`#520`)  
-   Relevanz: sinnvoll, sobald MCP-Package lokal wieder sauber typisiert/testbar ist.
-3. Security-Migration lokal gegen Supabase anwenden und smoke-testen.
+1. Weitere kleine Upstream-Fixes nach Triage (kein Full-Rebase).
+2. MCP-Package-Hygiene separat (Types/`@types/node`/ESM), bevor weitere MCP-Backports.
 
-### Welle B (bewusst später)
+### Bewusst später
 
 1. `91abe428` (`#512`) — V4 Cache/PPR/Instant Navigation  
    Höheres Framework-/Render-Risiko, eigenes Zeitfenster nötig.
@@ -108,9 +138,10 @@ notes: []
 
 1. ~~Security-Migration lokal gegen Supabase laufen lassen.~~ **erledigt**
 2. Smoke-Test remote/prod analog planen, wenn Staging existiert.
-3. Rest von Welle A selektiv weiter backporten (fileweise, kein Full-Rebase).
+3. ~~Rest Welle A / Security-Schema + Agent-Tooling backporten.~~ **lokal fertig, Commit ausstehend**
 4. Team-Accounts-E2E bei CI/lokal mit `--workers=1` (oder serial) fahren, bis Dropdown robuster ist.
 5. ~~Pending ältere IMC-Migrationen (`20260814140000`, `20260817140000`) in der History reparieren~~ **erledigt**
+6. Nach Commit: zurück zu Produkt (ERA5 DE-Batch / AAS) **oder** nächste Low-Risk-Upstream-Fixes.
 
 ## IMC-Migration History Repair (2026-08-24)
 
