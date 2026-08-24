@@ -204,7 +204,28 @@ Verifikation:
 - MFA restrictive Policies + `account_image_*` Policies vorhanden
 - `migration up`: Local database is up to date
 - Auth E2E (`tests/authentication/auth.spec.ts`, workers=1): **8 passed**
-- Commit: auf Branch gepusht
+- Commit: `07e5d35e`
+
+### Deps + `#512` Cache/PPR (Branch, 2026-08-24)
+
+| Commit | Inhalt |
+|---|---|
+| `0eff1e86` | Catalog: Next **16.3.0**, React **19.2.8** |
+| `4bda5829` | Makerkit V4 `#512` (cacheComponents + partialPrefetching, ~119 files) |
+
+Erhalten (ASTRA):
+- Proxy-Matcher ohne bare-`assets`-Exclude
+- Teams-only Redirect → `accountAssets`
+- Mobile Sidebar Trigger / `PageMobileNavigation`
+- Keine Passkeys
+
+Verifikation nach Dev-Server-Restart:
+- `/` und `/auth/sign-in` → 200
+- Auth E2E: **8 passed**
+- Team-Accounts E2E (`workers=1`): **11 passed**
+- Typecheck: web, ui, auth, accounts, team-accounts ok
+
+Hinweis: Branch ist **nicht** byte-identisch mit `upstream/main` (Expo/Passkeys/weitere Deps bewusst draußen), aber Stage-A-kritischer Makerkit-Stand inkl. V4 Cache/PPR ist erreicht.
 
 ## Welle D — Mobile Sidebar `#510` (2026-08-24)
 
