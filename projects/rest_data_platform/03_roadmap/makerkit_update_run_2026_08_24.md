@@ -178,7 +178,7 @@ Nächster großer Schritt bis „aktuell“: **eigenes Upgrade-Fenster** (Deps +
 2. Smoke-Test remote/prod analog planen, wenn Staging existiert.
 3. ~~Rest Welle A / Security-Schema + Agent-Tooling backporten.~~ **committed + pushed (`c657a30f`)**
 4. ~~Welle C Low-Risk Bugfixes.~~ **committed + pushed (`6816097f`)**
-5. ~~Welle D Mobile Sidebar `#510`.~~ **lokal fertig → Commit/Push**
+5. ~~Welle D Mobile Sidebar `#510`.~~ **committed + pushed (`562052d0`)**
 6. Team-Accounts-E2E bei CI/lokal mit `--workers=1` (oder serial) fahren, bis Dropdown robuster ist.
 7. ~~Pending ältere IMC-Migrationen reparieren~~ **erledigt**
 8. Produkt (ERA5 DE-Batch / AAS) — Makerkit-Hygiene Stage A abgeschlossen.
