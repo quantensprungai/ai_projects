@@ -142,29 +142,46 @@ notes: []
 4. **Konflikt mit ASTRA:** Team-Home → Assets-Redirect, Workspace-Switcher, Locale-Default `de`, Proxy-Matcher ohne `assets`-Exclude — alles müsste parallel neu abgesichert werden
 5. **Stage-A-Risiko:** hoher Regressionsschaden bei geringem unmittelbarem Produktnutzen; braucht eigenes Upgrade-Fenster mit Rollback
 
+## Welle D — Mobile Sidebar `#510` (2026-08-24)
+
+- Quelle: `d8872c5b` (`#510`)
+- Übernommen:
+  - `apps/web/components/mobile-sidebar-trigger.tsx`
+  - `PageWithSidebar` rendert wieder `PageMobileNavigation` (war lokal „verschluckt“)
+  - Team-/User-Sidebar- und Admin-Layouts → Logo + `MobileSidebarTrigger`
+  - `workspace-dropdown` / `sidebar-navigation`: Mobile nie als Icon-Rail behandeln
+- Bewusst **nicht** in diesem Durchgang:
+  - AGENTS.md-Streamline (`edac93ee`) — rein kosmetisch
+  - Stripe/OTP/Deps/Expo/Passkeys/`#512`
+- Verifikation: `pnpm --filter web typecheck` → ok
+
+## Makerkit-Hygiene-Status (Stage A)
+
+Selektive Near-Tip-Backports für Security/Stabilität/DX sind **durch**.  
+Nächster großer Schritt bis „aktuell“: **eigenes Upgrade-Fenster** (Deps + `#512`) — siehe `makerkit_update_process.md` (Branch + DB-Backup, keine Tabellen-Gefahr durch reinen App-Code).
+
 ## Kandidaten Nächste Welle
 
-### Niedriges Risiko (weiter selektiv)
+### Optional / bei Bedarf
 
-1. Mobile-Sidebar-Refactor `#510` (`d8872c5b`) — nur nach Layout-Smoke (berührt Team-/User-Layouts)
-2. Stripe/Billing-Fixes aus `#496` Rest — nur wenn Billing-Pfad aktiv getestet wird
-3. MCP-Package-Hygiene separat (Types/`@types/node`/ESM), bevor weitere MCP-Backports
+1. Stripe-Rest `#496`, OTP/Ownership-E2E `#507` — nur mit aktivem Billing-/Auth-Testfokus
+2. AGENTS.md streamline, Client-Logging `#495` — nice-to-have
+3. Expo / Passkeys / Turnstile-managed — nur bei Produktbedarf
 
-### Bewusst später
+### Eigenes Fenster
 
-1. `91abe428` (`#512`) — V4 Cache/PPR/Instant Navigation (eigenes Fenster)
-2. Größere Versionssprünge/Bundle-Änderungen in älteren Releases
-3. Expo / Passkeys / Turnstile-managed — nur bei klarem Produktbedarf
+1. Dependency-Bumps `#509–#514` + `91abe428` (`#512`) Cache/PPR — Branch, Backup, Migration-Review, Rollback-Plan
 
 ## Nächste Schritte (konkret)
 
 1. ~~Security-Migration lokal gegen Supabase laufen lassen.~~ **erledigt**
 2. Smoke-Test remote/prod analog planen, wenn Staging existiert.
 3. ~~Rest Welle A / Security-Schema + Agent-Tooling backporten.~~ **committed + pushed (`c657a30f`)**
-4. ~~Welle C Low-Risk Bugfixes.~~ **lokal fertig → Commit/Push**
-5. Team-Accounts-E2E bei CI/lokal mit `--workers=1` (oder serial) fahren, bis Dropdown robuster ist.
-6. ~~Pending ältere IMC-Migrationen reparieren~~ **erledigt**
-7. Nach Welle C: Produkt (ERA5 DE-Batch / AAS) **oder** `#510` Layout-Smoke.
+4. ~~Welle C Low-Risk Bugfixes.~~ **committed + pushed (`6816097f`)**
+5. ~~Welle D Mobile Sidebar `#510`.~~ **lokal fertig → Commit/Push**
+6. Team-Accounts-E2E bei CI/lokal mit `--workers=1` (oder serial) fahren, bis Dropdown robuster ist.
+7. ~~Pending ältere IMC-Migrationen reparieren~~ **erledigt**
+8. Produkt (ERA5 DE-Batch / AAS) — Makerkit-Hygiene Stage A abgeschlossen.
 
 ## IMC-Migration History Repair (2026-08-24)
 
