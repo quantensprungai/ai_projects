@@ -142,6 +142,50 @@ notes: []
 4. **Konflikt mit ASTRA:** Team-Home → Assets-Redirect, Workspace-Switcher, Locale-Default `de`, Proxy-Matcher ohne `assets`-Exclude — alles müsste parallel neu abgesichert werden
 5. **Stage-A-Risiko:** hoher Regressionsschaden bei geringem unmittelbarem Produktnutzen; braucht eigenes Upgrade-Fenster mit Rollback
 
+## Upgrade-Fenster Prep (2026-08-24) — Branch / Dump / Migration-Diff
+
+### Git
+
+- Branch: `chore/makerkit-v4-cache` (von `main` @ `562052d0`)
+- Safety-Tag: `pre-makerkit-v4` (auf Origin gepusht)
+- Dumps: gitignored unter `code/astra-imc-platform/.local-backups/`
+
+### Lokales DB-Dump
+
+| Datei | Größe | Inhalt |
+|---|---|---|
+| `.local-backups/pre-makerkit-v4-schema.sql` | ~0.18 MB | Schema |
+| `.local-backups/pre-makerkit-v4-data.sql` | ~172 MB | Data |
+
+Stichprobe nach Dump (COUNT): `imc_wind_farms` 3606 · `imc_era5_weather_windows` 1858 · `imc_turbines` 1593 · `imc_protected_areas` 205 · `accounts` 240
+
+### Cloud-Snapshot
+
+- Supabase-Projekt **IMC** (`pfprwudrfkugvzpjyrvj`): Status **INACTIVE**, keine Preview-Branches
+- Cloud-Snapshot/Branch-DB derzeit **nicht** möglich → Rollback-Basis = lokaler Dump + Git-Tag
+- Vor Prod-Apply: Projekt restore/aktivieren, dann Snapshot oder Preview-Branch nachholen
+
+### Migration-Diff (`main` vs `upstream/main`)
+
+**Shared Kit-Migrationen (10):** inhaltlich **identisch**.
+
+**Nur lokal (IMC, behalten):** `20260327120000` … `20260817140000` plus lokale Privilege-Migration `20260824100000_revoke_residual_privileges.sql`.
+
+**Nur Upstream (noch nicht lokal):**
+
+| Migration | Art | DROP TABLE / Data-Loss? | Bewertung |
+|---|---|---|---|
+| `20260529130000_restrict_mfa_billing_customers_nonces.sql` | MFA-RLS + `verify_nonce` Härte + Column-GRANT auf invitations | Nein (Policy/Function/GRANT) | **Übernehmen** im V4-Fenster; Auth/OTP-Smoke nötig |
+| `20260615000000_grant-get-nonce-status-to-service-role.sql` | `GRANT EXECUTE` get_nonce_status | Nein | **Übernehmen** (CI/Admin-OTP) |
+| `20260707120000_strengthen_schema_and_rls.sql` | Column-level UPDATE, RLS/View/`verify_nonce`, Storage-Policies | Nein (`DROP POLICY` nur storage `account_image`, ersetzt) | **Übernehmen**; Accounts/Invites/Notifications/Storage smoke |
+| `20260811000000_revoke_residual_privileges.sql` | Privilege hardening | Nein (`REVOKE … TRUNCATE` = Recht entziehen, kein `TRUNCATE TABLE`) | **Inhaltlich schon** als `20260824100000` lokal — **nicht doppelt** anwenden; Timestamp/Idempotenz prüfen |
+
+### Fazit Prep
+
+- Tabellenverlust durch diese Upstream-SQLs: **nicht zu erwarten**
+- Nächster sicherer Schritt im Branch: die drei fehlenden Security-Migrationen (ohne erneutes Privilege-Duplikat) anwenden + Auth/Team Smoke — **erst danach** Next/`#512` Code
+- `#512` selbst bringt **keine** neuen `supabase/migrations` (laut Commit-Dateien)
+
 ## Welle D — Mobile Sidebar `#510` (2026-08-24)
 
 - Quelle: `d8872c5b` (`#510`)
