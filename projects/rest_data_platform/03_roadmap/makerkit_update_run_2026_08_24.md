@@ -87,7 +87,7 @@ notes: []
 - Validierung: `pnpm --filter web-e2e test -- tests/team-accounts/team-accounts.spec.ts --workers=1` → **11 passed**
 - Hinweis: unter hoher Parallelität (`workers>=4`) bleibt der nested Dropdown noch empfindlich
 
-## Welle B — Schema/Docs/Agent-Tooling (in Arbeit, uncommitted)
+## Welle B — Schema/Docs/Agent-Tooling (committed `c657a30f`)
 
 ### Security-Schema-Sync (`#517` / `d58f6b27` Rest)
 
@@ -118,7 +118,7 @@ notes: []
 
 - `pnpm --filter web typecheck` → ok
 - `privileges.test.sql` → ok
-- Commit/Push: **noch offen** (explizit anfordern)
+- Commit/Push: **erledigt** (`c657a30f` → `origin/main`)
 
 ## Welle C — Low-Risk Bugfixes (2026-08-24)
 
