@@ -120,28 +120,51 @@ notes: []
 - `privileges.test.sql` → ok
 - Commit/Push: **noch offen** (explizit anfordern)
 
+## Welle C — Low-Risk Bugfixes (2026-08-24)
+
+- Quelle:
+  - `be16b27b` (`#488`) — Invitation-Daten via `next-intl` `useFormatter`
+  - `1a60b782` — `not-found.tsx`: `lang={locale}`, Messages auf `common` begrenzt
+  - `384ec381` (`#496`, selektiv) — `AuthHashStatusListener` + Callback-Pfad `personalAccountSettings`
+- Bewusst **nicht** übernommen:
+  - `be61b164` Proxy-Matcher mit `assets`-Exclude (würde `/home/[account]/assets` brechen)
+  - `91abe428` (`#512`) Cache/PPR (siehe unten)
+  - Expo-Ports (`#515`/`#518`), Passkeys, volle Dependency-Bumps (`#513`/`#514`)
+- Verifikation: `pnpm --filter web typecheck` → ok
+
+### Warum `#512` (Cache/PPR) weiter überspringen?
+
+`91abe428` ist kein Fix, sondern ein **Framework-Cut** (Upstream als V4.0.0):
+
+1. **Breite:** ~120 Dateien — Layouts, Marketing, Auth, Admin, Docs, E2E, Provider, Skeletons
+2. **Runtime-Schalter:** `cacheComponents: true` + Dev-Turbopack-FS-Cache; verändert Caching/Rendering/Navigation grundlegend
+3. **Versionssprung:** Upstream Next **16.3.0** vs. unser Catalog **16.2.1** — nicht isoliert cherry-pickbar
+4. **Konflikt mit ASTRA:** Team-Home → Assets-Redirect, Workspace-Switcher, Locale-Default `de`, Proxy-Matcher ohne `assets`-Exclude — alles müsste parallel neu abgesichert werden
+5. **Stage-A-Risiko:** hoher Regressionsschaden bei geringem unmittelbarem Produktnutzen; braucht eigenes Upgrade-Fenster mit Rollback
+
 ## Kandidaten Nächste Welle
 
 ### Niedriges Risiko (weiter selektiv)
 
-1. Weitere kleine Upstream-Fixes nach Triage (kein Full-Rebase).
-2. MCP-Package-Hygiene separat (Types/`@types/node`/ESM), bevor weitere MCP-Backports.
+1. Mobile-Sidebar-Refactor `#510` (`d8872c5b`) — nur nach Layout-Smoke (berührt Team-/User-Layouts)
+2. Stripe/Billing-Fixes aus `#496` Rest — nur wenn Billing-Pfad aktiv getestet wird
+3. MCP-Package-Hygiene separat (Types/`@types/node`/ESM), bevor weitere MCP-Backports
 
 ### Bewusst später
 
-1. `91abe428` (`#512`) — V4 Cache/PPR/Instant Navigation  
-   Höheres Framework-/Render-Risiko, eigenes Zeitfenster nötig.
-2. Größere Versionssprünge/Bundle-Änderungen in älteren Releases  
-   Nur mit dediziertem Upgrade-Fenster + Rollback-Plan.
+1. `91abe428` (`#512`) — V4 Cache/PPR/Instant Navigation (eigenes Fenster)
+2. Größere Versionssprünge/Bundle-Änderungen in älteren Releases
+3. Expo / Passkeys / Turnstile-managed — nur bei klarem Produktbedarf
 
 ## Nächste Schritte (konkret)
 
 1. ~~Security-Migration lokal gegen Supabase laufen lassen.~~ **erledigt**
 2. Smoke-Test remote/prod analog planen, wenn Staging existiert.
-3. ~~Rest Welle A / Security-Schema + Agent-Tooling backporten.~~ **lokal fertig, Commit ausstehend**
-4. Team-Accounts-E2E bei CI/lokal mit `--workers=1` (oder serial) fahren, bis Dropdown robuster ist.
-5. ~~Pending ältere IMC-Migrationen (`20260814140000`, `20260817140000`) in der History reparieren~~ **erledigt**
-6. Nach Commit: zurück zu Produkt (ERA5 DE-Batch / AAS) **oder** nächste Low-Risk-Upstream-Fixes.
+3. ~~Rest Welle A / Security-Schema + Agent-Tooling backporten.~~ **committed + pushed (`c657a30f`)**
+4. ~~Welle C Low-Risk Bugfixes.~~ **lokal fertig → Commit/Push**
+5. Team-Accounts-E2E bei CI/lokal mit `--workers=1` (oder serial) fahren, bis Dropdown robuster ist.
+6. ~~Pending ältere IMC-Migrationen reparieren~~ **erledigt**
+7. Nach Welle C: Produkt (ERA5 DE-Batch / AAS) **oder** `#510` Layout-Smoke.
 
 ## IMC-Migration History Repair (2026-08-24)
 
