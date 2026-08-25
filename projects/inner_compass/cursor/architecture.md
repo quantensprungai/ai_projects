@@ -16,7 +16,11 @@ E: Meta-Knoten       ❌ FEHLT           sys_kg_nodes (system=meta)
 >
 > **Update 2026-08-05 (2):** Backfill ausgeführt (12.998 Kanten, davon 3 cross_system — Ko-Erwähnung im Fließtext, kein geprüftes `maps_to`). Zusätzlich geprüft: `payload.process.{trap,gift_activation,experiment_seed}` ist bereits zu 100% befüllt (pro-Element-Ebene, deckt `extract_process_patterns` ab) — kein Backfill nötig, einfach ungenutzt bis Read-Time-Retrieval/Werkstatt gebaut wird. Die `sys_dynamics`-Tabelle selbst (kombinatorische Traps über 2+ Systeme×Domäne, oder Phase-Zyklen) bleibt davon unberührt offen — das ist kein Backfill-Fall, sondern ein neuer, kostenpflichtiger LLM-Job (`extract_pattern_traps`), bewusst zurückgestellt bis Content Wave weiter fortgeschritten ist (bessere Qualität mit mehr Systemabdeckung pro Domäne).
 
-Ohne D+E = Multi-App. Mit D+E = Meta-System.
+> **Update 2026-08-13:** Chart-UI Slice 1 live (`/home/karte/hd`). Overlay v0 = Headline-Template in Next; LLM-Kombinationstext über `IC_LLM_URL` / Langdock (nicht SGLang-Pflicht). HD-Engine läuft in `services/hd/`, nicht in-process in Next.
+>
+> **Update 2026-08-14:** Bodygraph-Rails + Polarität + Overlay-Rezept: `reference/hd_bodygraph_overlay_contract.md` §3.1 (Fixing-Facts). Overlay v0 = Typ/Strategie/Autorität + offene Center-Excerpts. Gates/Lines/abgeleitete Pole erst Overlay v1b. Lookup aller 9 `hd.center.*` unabhängig von Engine-`nodes`.
+>
+> **Update 2026-08-25:** HD KARTE Graph visuell zu (`figma_karte_contract.md` §4b). Overlay live = v1m. Variable-Pfeile am Graph + Register Körper live. Mini-Pfeile an Rails und Overlay v1n nicht blockierend.
 
 ## 2. Schema (10 Tabellen, sys_*-Präfix)
 
@@ -333,10 +337,11 @@ PDF-Pipeline auf Spark               Chart-Engine-Service
 
 | Service | Wo | Warum |
 |---------|-----|-------|
-| Chart-Engine (HD, BaZi, Maya, Num, NSK, Akan) | Next.js API Routes | TS-Engines laufen direkt in Node |
-| Chart-Engine (Jyotish, Astro) | Python Microservice (FastAPI, Docker) | VedAstro.Python / pyswisseph brauchen Python. NICHT auf Spark. |
-| Transit-Service | Python Microservice | pyswisseph, 15-Min-Cache |
-| Overlay-Service | Spark (LLM) | Braucht LLM-Zugang; Retrieval: `sys_kg_edges` (direkte Treffer zwischen aktiven Nodes) + Embedding-Suche über `sys_interpretations` gefiltert auf aktive `canonical_id`s → Kontext für LLM-Kombinationstext. Noch nicht gebaut (Stand 2026-08-05). |
+| Chart-Engine (HD) | Python Microservice `services/hd/` (Docker :8002, `HD_SERVICE_URL`) | dturkuler GPL-3.0 + pyswisseph; Next nur HTTP |
+| Chart-Engine (BaZi, Maya, Num, NSK, Akan, Ziwei, Astro/celestine) | Next.js API Routes | TS-Engines in `@ic/engines` |
+| Chart-Engine (Jyotish) | Python Microservice (FastAPI, Docker) | PyJHora AGPL + pyswisseph. NICHT auf Spark. |
+| Transit-Service | Python Microservice (HD-Service hat `/transit/daily`) | pyswisseph; App-UI noch nicht |
+| Overlay-Service | Next.js `/api/ic/hd-chart` (v0) | LLM-Combo Typ/Strategie/Autorität via Langdock. Live v1m; eng aus Admission, nicht Mini-Quota (§5.0). v1: Kanäle + Schlüssel-Gates + Polaritäts-Status. Edges+Embeddings noch nicht. Contract: `reference/hd_bodygraph_overlay_contract.md`. |
 | Konvergenz-Service | Supabase Edge oder Next.js | Deterministisch, SQL-basiert |
 | Flow-Engine | Next.js API Routes | State-Management, kein LLM nötig |
 | NLP-Service | Spark (LLM) | Braucht LLM-Zugang |

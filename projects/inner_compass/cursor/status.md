@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-07-10
+last_update: 2026-08-25
 scope: IC Projektstatus (Phasen 0–4), Chart-Engines, Content-Akquise, Ur-Systeme, Gene Keys, Konvergenz/Meta-KG
 in_scope: Stand, nächste Schritte, Systemliste, Anna's Archive entity-first, Klarstellung HD-Schulen vs. GK, Konvergenz personenbezogen vs. strukturell
 out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_compass_app AGENTS.md
@@ -8,7 +8,9 @@ out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_c
 
 # Inner Compass — Status & Nächste Schritte
 
-> **Stand:** 2026-07-03 | Bei jedem Meilenstein aktualisieren!
+> **Stand:** 2026-08-25 — Phasen 0–3 / Engines / Content bleiben hier. **HD-KARTE SoT:** `cursor/handover.md` (Copy-Paste) + Overlay-Vertrag + `figma_karte_contract.md` §4b.
+> **App (Phase 4):** HD KARTE Graph visuell zu (helle Jovian-Fills, Kanalhälften, Hanging, Variable-Chevrons, keine Gate-Chips). Overlay-LLM v1m. HD-Docker `ic-hd-service` :8002.
+> **Content (Phase 2):** **HD S0 Close-out ✅** — Canon-first Synth, link_role, ID-Strip. S0.5 Relink live. SoT: `reference/hd_layer_master_checklist_2026-08-11.md`.
 >
 > **Wo wir sind:** Phase 0 erledigt. Phase 1 — **Chart-Engines Staffel 1:** fünf Kerne + **Maya Tzolkin, Nine Star Ki, Numerologie, Akan** in `@ic/engines` + API-Routen + Kataloge v0 ✅
 > - **Ziwei Doushu** (iztro): TS, Katalog + Validierung ✅
@@ -20,9 +22,9 @@ out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_c
 > - **Nine Star Ki**: K1/K2 **v1** (`ic_nine_star_ki_v1`) — Honmei + Getsumei + **energetic**; feste Sonnenmonats-Schnitte; Vitest **Step 3** Katalog-Regeln ✅ — `reference/decisions.md` **2026-04-16**
 > - **Numerologie / Akan**: Engines + Kataloge + `POST /api/.../calculate` ✅ *(Playbook-Validierung optional)*
 >
-> **Nächste Reihenfolge:** (1) **Katalog-Validierung** für **Numerologie** + **Akan** optional nachziehen. (2) **UI** Chart-Ansichten. Parallel: **Literatur/Anna's**; **Ur-Systeme**; Phase 2. — *Hinweis:* `cursor/architecture.md` §5–6 Topologie = `@ic/engines` + HD/Jyotish-Services.
+> **Nächste Reihenfolge (jetzt):** Overlay v1n optional; Edges / sys_dynamics; Relink-Q. Graph freeze außer explizitem User-Wunsch. 64keys Blau/Orange am Zentrum nicht raten.
 >
-> **Roter Faden (Masterplan):** S5-Test → System-Wellen → Phase 3 (nach 2 Review-Entscheidungen) → MVP → Voll — kanonisch in `cursor/handover.md` (Kontext-Block, „ROTER FADEN"). **UX-Design für Phase 4:** `reference/ux_konzept_2026-07.md`.
+> **Roter Faden (Gesamtplan):** HD Close-out → System-Wellen → Phase 3 (nach 2 Reviews) → Makerkit Deps/v4 → MVP Phase 4 → Voll — kanonisch in `cursor/handover.md` § Roter Faden. Content-Nachrüst: `reference/hd_layer_master_checklist_2026-08-11.md`. Wave: `cursor/reference/literature_content_wave_2026-07-18.md`. UX: `reference/ux_konzept_2026-07.md`.
 
 ## Was EXISTIERT und FUNKTIONIERT
 
@@ -37,7 +39,7 @@ out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_c
 - **D1 (Rāśi):** PyJHora `rasi_chart` (Swiss Ephemeris via `pyswisseph`)
 - **Docker:** `python:3.12-slim` + `build-essential` (Build `pyswisseph`); `requirements.txt` enthält u. a. explizit **`pytz`**, **`geocoder`**, **`geopy`**, **`timezonefinder`**, **`python-dateutil`** — PyJHora listet nicht alle Laufzeit-Imports als pip-Dependencies; ohne diese Module bricht die Berechnung mit ImportError ab
 - **E2E (2026-04-13):** Image bauen, Container starten, nach ~25 s `GET /health` + `POST /calculate` (Test: Berlin 1990-01-15 12:30) → `raw.placeholder: false`, `raw.bodies`: 13 Einträge, `raw.chart: D1`, `nodes` mit `jyotish.lagna` / `jyotish.rasi.*` / `jyotish.graha.*`
-- **Next.js (Chart-API, `apps/web/app/api/`):** `hd` · `jyotish` (Env-URLs) · `ziwei` · `bazi` · `astro` · **`maya-tzolkin`** · **`nine-star-ki`** · **`numerology`** · **`akan`** (letztere in-process; Numerologie optional `full_name`; Akan `gender`). **Noch offen:** UI/Chart-Seiten. Artefakte unter `projects/inner_compass/system_structure/` (siehe Playbook).
+- **Next.js (Chart-API, `apps/web/app/api/`):** `hd` · `ic/hd-chart` (UI) · `jyotish` (Env-URLs) · `ziwei` · `bazi` · `astro` · **`maya-tzolkin`** · **`nine-star-ki`** · **`numerology`** · **`akan`**. **HD-UI:** `/home/karte/hd` ✅. Andere Systeme: API ohne Chart-Seite. Artefakte unter `projects/inner_compass/system_structure/` (siehe Playbook).
 
 ### Philosophische Konsolidierung ✅ (Z-Dokumente)
 - Z1 Gesamtwerk v0.5, Z2 User-Journey v0.1, Z3 Modell-Referenz v0.4, Glossar v1.2
@@ -97,7 +99,7 @@ Phase 0: Fundament          ████████████ 100%  Infrastru
 Phase 1: Engine Eval+Integ. ███████████░  ~95%  Chart-Engines + Kataloge v0; **offen:** Seed ↔ system_structure/*
 Phase 2: Content-Pipeline   ████████░░░░  ~70%  S5a ✅ · S5b ✅ · S5c ✅ · S5d Mechanik ✅ / QA ⚠️ · S6 ✅ 36/36
 Phase 3: Cross-System       ░░░░░░░░░░░░   0%  → IC-Sprache entsteht hier (Datenschicht E)
-Phase 4: App                ██░░░░░░░░░░  15%  Architektur+Scope dokumentiert
+Phase 4: App                ████░░░░░░░░  ~35%  HD KARTE Graph visuell zu; andere Spaces 0%
 ```
 
 **Phase 0 = 100 %** bezieht sich auf **Infrastruktur**, nicht auf vollständige 13-Layer-Strukturbäume in der DB. Vollständiger K2-Seed ist **Phase-1-Nachzug** (Daten in `system_structure/` teils schon da).
@@ -226,6 +228,7 @@ Mit vollständigem atomarem Seed können **alle** Kombinationen interpretiert we
 - [x] **S5a:** extract_text + Gate-Chunk-Profil (~47 Gates erster Lauf), text2kg → `hd.gate.{N}`, synthesize
 - [x] **S5b:** `ic_chunk_profiles.py` (`rave_iching_gates`) → 65 Chunks / 64 unique Gates (MinerU pipeline)
 - [x] Phase 2 LLM + text2kg + synthesize für Complete Rave I'Ching — **64/64** echte Gate-Wortings
+- [x] Gate-Lines Layer (2026-08-07): additive Line-Chunks + PDF-Refill + Relink 1:1 + Synth — **384/384** Wordings
 - [x] Verifikation: Gate-Nodes mit `interpretation_ids`, Synthesis ohne `[DRY-RUN]`-Stubs
 - **Skripte:** `ic_s5b_rerun.py`, `spark_s5b_extract.sh`, `spark_s5b_synth.sh`, `ic_s5b_gate63_synthesis.py`
 - → Runbook: `reference/s5_runbook.md` · Handover: `cursor/handover.md` §S5
@@ -401,6 +404,7 @@ Vollständig: `reference/decisions.md`
 | 2026-04 | **dturkuler/humandesign_api als HD-Engine** | GPL-3.0 vendored in Docker (SaaS-konform). Ersetzt hdkit+geodetheseeker. Alle 13 Layer + Composite/Transit/BodyGraph. K2-Daten extrahiert (192 Crosses, 8 Awareness Streams, evidence A). |
 | 2026-04 | **Gene Keys als eigenständiges System** | GK ist NICHT "HD mit anderer Sprache". Shared K1 (Ephemeris), eigenes K2 (Shadow/Gift/Siddhi, Codon Rings, Sequences). Im KG: `gk.*` Prefix, Cross-Link über `hd.gate.N ←→ gk.gate.N`. |
 | 2026-04 | **Gene Keys: Literatur wie alle Systeme** | Keine gesonderte Copyright-/Paraphrase-Policy in Projekt-Doku; Beschaffung + Extraktion + Evidenzklassen wie bei HD/Astro/etc.; eigenes Anna's-Profil + `entity_registry` nach Bedarf. |
+| 2026-08 | **HD-Gate-Stimmen konkret** | `jovian` Default; `64keys` = Blue I Ching; `cosmic_sidereal` = Cosmic Way (64 Gates sideral, keine Engine); Schoeber *Centres* = HD-Text trotz 64keys-Orbit. Kein Schul-Ingest vor `tradition`. `decisions.md` 2026-08-13. |
 | 2026-04 | **HD-Schulen als Tradition-Tag** | Jovian Archive, Quantum HD, 64Keys, Parkyn teilen K1+K2. Unterschiede nur in K3/K4 (Interpretation). Modelliert als `tradition`-Tag auf Interpretation-Nodes, nicht als separate Systeme. |
 | 2026-04 | **Konvergenz: Person + strukturell; v0 Rechenbasis** | Klumpen/Meta: (1) personengebunden über Chart-Überschneidung, (2) personen-unabhängig über Cross-Edges/Embeddings zwischen Ur-/Element-KGs. Klein-Systeme v0: eine K1/K2-Konvention, eher moderne dokumentierbare Linie wo sinnvoll; Tradition über K3/K4 + Linsen. Volltext: `reference/decisions.md` 2026-04-19. |
 | 2026-04 | **Phase-1 triviale Systeme: Schulwahl + Engines** | Maya GMT+Dreamspell-Slugs; NSK japanisch Li Chun 4.2.; Numerologie Pythagoreisch; Akan Wochentagstabelle. `@ic/engines` + Kataloge + Next-API. Volltext: `reference/decisions.md` 2026-04-20. |

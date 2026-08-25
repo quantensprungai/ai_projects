@@ -1,6 +1,16 @@
+<!--
+Reality Block
+last_update: 2026-08-25
+scope: Chat-Handover Inner Compass (Copy-Paste-Block + Themen-Anhänge)
+in_scope: aktueller Chart-Stand, Reboot, Code-Anker, Don'ts, Verweise
+out_of_scope: Implementierung; S5-Runbook-Details außer als Archiv unten
+-->
+
 # Inner Compass — Handover
 
-> Copy-Paste diesen Block am Anfang eines neuen Chat-Fensters (Cursor oder Claude).
+> **Neuer Chat:** den Block zwischen den Triple-Backticks kopieren und als **erste Nachricht** einfügen.
+> Zusätzlich reicht: „Handover + `reference/hd_bodygraph_overlay_contract.md` lesen, hier weitermachen.“
+> Darin stehen Rails, Overlay, Env, Reboot-Reihenfolge, Code-Anker und was nicht tun.
 
 ---
 
@@ -9,97 +19,169 @@
 ```
 Projekt: Inner Compass — geburtsbasiertes Meta-System (11 Quellsysteme + Basisstrukturen → 3-Schichten-KG → personalisiertes Handbuch)
 Tech: Next.js (Makerkit 3.1.3) + Supabase + Spark (GPU, Worker, MinerU, LLM)
+Code: code/inner_compass_app/   Docs: projects/inner_compass/
+SoT Chart: projects/inner_compass/reference/hd_bodygraph_overlay_contract.md
+SoT State: projects/inner_compass/reference/hd_state_contract.md
+Decision: reference/decisions.md 2026-08-17 State-Vertrag + 2026-08-14 Rails
+Layer: reference/hd_layer_master_checklist_2026-08-11.md (Delta 2026-08-17)
+Synth: cursor/reference/synthesis_canon_first.md
+Pipeline-Wörter: cursor/pipeline.md §1a
 
-Gesamtprozess (5 Phasen):
-  Phase 0: Fundament          ████████████ 100%  (Schema sys_*, Worker, Minimal-K2-Seed ~832 Nodes)
-  Phase 1: Engine Eval+Integ. ███████████░  ~95%  (Chart-Engines + Kataloge v0; Seed↔Structure-Sync offen)
-  Phase 2: Content-Pipeline   ████████░░░░  ~75%  (S5a/b/c/d/S6 ✅ · K2 Foundation Wave ✅ 2026-07-12)
-  Phase 3: Cross-System       ░░░░░░░░░░░░   0%
-  Phase 4: App                ██░░░░░░░░░░  15%  (Architektur+Scope dokumentiert)
+Gesamtprozess:
+  Phase 0 Fundament 100% · Phase 1 Engines ~95% · Phase 2 Content ~75% · Phase 3 Cross-System 0%
+  Phase 4 App ~35% — HD KARTE Graph visuell zu (ohne Gate-Chips); Overlay-LLM v1m; andere Spaces 0%
 
-ROTER FADEN (Masterplan — wo wir im Prozess stehen, Stand 2026-07-03 ~22:40):
-  1. ✅ S5a E2E-TEST done · ✅ **S5b** Complete Rave I'Ching (65 Chunks, 64 Gates, 64/64 Synthesis)
-  2. ⏳ SYSTEM-WELLEN (je System: Seed aus system_structure/* → PDFs → Pipeline → QA):
-     HD zuerst (läuft), dann Gene Keys → Astro → BaZi → Maya → … (decisions.md Wellen-Reihenfolge)
-  3. ⏳ PHASE 3 CROSS-SYSTEM — ERST nach Entscheidung zu ZWEI offenen Reviews:
-     a) reference/cross_system_mapping_methodology_review.md (Embedding-Methodik)
-     b) reference/gesamtbetrachtung_review_2026-07.md (Genealogie-Gewichtung, contradicts-Pipeline)
-  4. ⏳ MVP "Die Vier Spiegel" (Phase 4): Onboarding + Mandala + Handbuch T1–2 + Share
-     → UX-Design: reference/ux_konzept_2026-07.md (v1 vorhanden, vor Umsetzung reviewen)
-  5. ⏳ VOLL: WERKSTATT + ZEIT komplett + Staffel 2–3 + Resonanz-Feedback-Loop
-  Aktueller Punkt (2026-08-05): **KG-Edges-Backfill ausgeführt (12.998 Edges aus payload.interactions, 3 cross_system)
-    + sys_dynamics/cross_system-Doku korrigiert** (siehe decisions.md 2026-08-05, architecture.md Datenschicht C/D).
-    Wichtig: `payload.process.{trap,gift_activation,experiment_seed}` ist bereits 100% befüllt (keine Backfill-Aktion
-    nötig, nur noch ungenutzt) — analog zu `interactions`. `sys_dynamics`-Tabelle (kombinatorische Traps,
-    Phase-Zyklen) und Overlay-Service-Read-Time-Retrieval bewusst zurückgestellt bis Content Wave weiter ist bzw.
-    ein echter Aufrufer (Onboarding/Chart-Persistenz) existiert. HD-Profiles-Content-Welle (Incarnation Crosses by
-    Profile, Understanding the Profiles, Incarnation Cross Clinic + 4 weitere Cross/Gates-Line-Bücher) läuft
-    parallel via Langdock-Worker (`start_hd_profiles_worker.py`).
-  Vorheriger Punkt (2026-08-04): **Content-Welle Selection-Fix + Root-Cause komplett durchgezogen — sauber.**
-    Rave I'Ching Re-Interpret ✅, Gene Keys Stubs ✅, Synth-Selection-Fix ✅.
-    **Audit: text2kg-Auto-Synth war Root-Cause für Vollsystem-Überschreibungen** (31 unscoped Läufe
-    gefunden, u. a. 3× `hd` während der Content-Welle selbst) → **gefixt** (`IC_TEXT2KG_AUTO_SYNTH=false`
-    Default; Synth nur noch explizit pro System+Layer, via `ic_synth_layer_ops.py --system <sys> --enqueue-layer/--enqueue-remaining`).
-    **Alle betroffenen Layer neu synthetisiert** (Langdock gpt-5-mini, Selection-Fix): HD Gates 64/64,
-    Channels 36/36 (`20_34` jetzt korrekt), Circuits 9/9, Centers 9/9, HD-Rest (Types/Authorities/
-    Profiles/Lines/Definitions/PHS) 31/31, **BaZi 34/34** (war am stärksten betroffen: bis 105
-    Interps/Node, vorher auf 8 gekappt), GeneKeys 64/64 (Vollständigkeit).
-    **Voll-Audit danach:** 0 verlinkte Stub-Interps (alle Systeme), 0 hängende Jobs. Langdock-Worker gestoppt.
-    Empirisch ~€0,41 Langdock für Pilot+Rave (~€0,004–0,006/Chunk); Synth-Wellen kosten extra, aber klein pro Node.
-    Hybrid-Soll: Mass-Interpret=Langdock; Extract=Spark; Synth=Layer-Batches — jetzt strukturell erzwungen (kein Full nach jedem PDF mehr möglich).
-  NÄCHSTES: HD-Profiles-Welle fertig laufen lassen + Scoped Layer-Synth für Profiles/Crosses, dann Hygiene-Check.
-    Danach: weitere HD-Bücher laut Wellen-Reihenfolge ODER BaZi-Klassiker priorisieren (Nutzerentscheidung offen).
-    Zurückgestellt (bewusst, siehe decisions.md 2026-08-05): `extract_pattern_traps` (→ sys_dynamics) und
-    Read-Time-Retrieval-Spike im Overlay-Service — beide erst wenn Content Wave weiter fortgeschritten ist.
-  Detail: `cursor/reference/literature_content_wave_2026-07-18.md`
-  K2-Docs: `reference/k2_foundation_wave_playbook.md`, `reference/k2_sanierung_learnings.md`,
-    `reference/k2_seed_scope_and_strict_text2kg.md`
-  Learnings: `reference/s5d_pipeline_learnings.md`, `reference/s6_pipeline_learnings.md`
-  → cursor/status.md ist die Live-Wahrheit; diesen Block bei Meilensteinen aktualisieren.
+ROTER FADEN (Stand 2026-08-25; 1–17 bis 08-19, 18 = Chart-Visual):
+  1. ✅ S5 E2E + HD Bodygraph-Wellen + HD S0 Close-out
+  2. ✅ Chart-UI /home/karte/hd — Geburt → services/hd (Docker :8002) → Bodygraph + Rails + Atom-Wordings
+  3. ✅ Overlay v0 LLM — Langdock gpt-5-mini (Typ×Strategie×Autorität + offene Zentren).
+       Key nur in apps/web/.env.development.local (nicht committen). URL/Modell in .env.development
+  4. ✅ Rails — Design links (rot) / Persönlichkeit rechts. Inspector Gate+Line.
+       Line-IDs Engine hd.line.34.1 → KG hd.line.34_1
+  5. ✅ Offene Zentren-Lookup (2026-08-14) — Engine schreibt nur *definierte* Center in nodes.
+       wordingLookupIds unioniert immer alle 9 hd.center.*. Overlay bekommt Open-Center-Excerpts.
+       Inspector zeigt offen/definiert. Nach Reboot einmal neu berechnen, dann Klick auf offenes Zentrum.
+  6. ✅ 384er Exalt-Lookup AN (pdftotext). Rails = direkt Planet × Buchzeile.
+       18.3 Saturn = neither (Ra). 64keys ▼ = vermutlich Chart-Fixierung
+       (Jupiter 18.1 im selben Gate), nicht in die 384er-Tabelle übernehmen.
+       Inspector: Linien-Pole vs. diese Aktivierung. Glyphs ▲ / ▼ / Stern. R live.
+  7. ✅ Planeten-Nodes — 13 `hd.planet.*` geseedet. Split `planet_split_v1` + Relink `planet_relink_v1b`: **je 1 Träger-primary**. Mix-Reste (Mars+Jupiter, Uranus+Neptune) und Doppel-Absätze → mention. Inspector Accent-C liest essence. Overlay liest Planeten nicht (v1h).
+  8. ✅ Overlay v1a/v1b Kanäle+Kreuz; Kanal-Chips; v1c Fixing+R an Schlüssel-Lines
+  9. ✅ S0.5 Relink (primary 13 / contrast 30 / mention 14; Heart auf hd.center.heart).
+ 10. ✅ State-Vertrag 2026-08-17 + Packer P1: Inspector-Stapel nach Display-Policy; Overlay Block 2 = undefined-Center-Priorslots.
+       Overlay-Cache v1f (`user_charts.overlay`, undefined-first + Center-C quality). Profil in Satz 1. Concept-Node P2 Skript.
+ 11. ✅ S0 Defined-C Relink v2 (Qualität): Quellen **Winn + Schoeber**; PHS/andere demoted. Will Center → Heart (1 Defined-C). Identity+Will Mix nicht mehr am G. S0.5-Solarplexus: Welle/Authority = `gift` (nur defined SP); open emotional bleibt Shadow.
+       Overlay-Cache `hd_overlay_v1m`. Mechanical-Atom: Read-time-Split nach defined/undefined (kein Wipe). Sakral-Zyklus am Defined-Satz; SP Cue-Split. Heart-Tor-Inventar nicht im Center-Atom. S0.5 Hint = nur dieser Slot.
+ 12. ✅ Stream F Channel-C Relink v1c (`ic_s0_channel_facet_relink.py`): `primary` + gift/shadow an **36/36**. Logic (63/4), Brainwave (20–57), Concentration (9–52) aus Circuitry. Type-unnamed skip. Type 4 = Transit, ungelesen. Inspector: Atom + Achse A. Overlay-Cache jetzt `hd_overlay_v1m`.
+ 13. ✅ Ego-Authority + Quadruple Relink (Four Views; HA2 ohne Authority-Essays). `ic_hd_authority_definition_relink.py --only` **ohne Synth**. ego_manifested/projected/self_projected haben wieder Primaries; quadruple Four-Views-Essays.
+ 14. ✅ KARTE Register-IA (2026-08-18): Inspector = 5 Register **Zentren · Kanäle · Tore · Betriebssystem · Zusammenschau**. Default nach Berechnung = Zentren (alle 9, definierte zuerst, Akkordeon), Overlay-Absatz ist das **letzte** Register — Lookup vor LLM. Kanäle-Register listet alle definierten Kanäle + hängende Tore (aktiviert, Gegentor fehlt; deterministisch aus `chart.channels`). Chips bleiben Navigation, Register tragen den Inhalt. Trap unter dem Namen des Slots (secondary), nicht als eigene Sicht. Frequenz-Hinweis einmal pro Pane, nicht pro Zentrum. OS-Zeile mit Feldnamen (Typ/Strategie/Autorität/Profil/Definition/Kreuz) statt kontextloser Chips; Definition kommt aus `chart.nodes`, **nicht** in `headlines` (sonst Overlay-Hash-Miss). Geburtsformular klappt nach der ersten Berechnung weg (bis Onboarding steht).
+ 15. ✅ **Mapping Instanz → Def + Register „Körper"** (2026-08-18): neu `apps/web/lib/hd/hd-phs.ts` (`hd_variable_mapping_v1`): Pfeilposition = Primärschlüssel, `colorDefId/toneDefId/baseDefId`, 21 Def-IDs (`HD_PHS_DEF_CANONICAL_IDS`) immer im `wordingLookupIds`. `normalize-hd-chart.ts` reicht jetzt `color/tone/base` je Aktivierung **und** `variable` (vier Pfeile mit direction/aspect/defId) durch — beide Engine-Formen (`variable.<key>` des Adapters und `variable.arrows[]` der README) werden auf die Position gemappt.
+       DB-Stand geprüft: **6 color_def · 6 tone_def · 5 base_def · 4 variable_def, alle mit Wording**; Engine-Kombi-IDs (`hd.color.48.3.2`) haben **0 Nodes** — genau die Lücke, kein Literatur-Thema.
+       Engine-Ground-Truth (Dachau, `:8002`): `raw.variable = {digestion|environment|motivation|perspective: {value,name,aspect,def_type}, arrow_string "<<<>", short_code "PLR DLL"}`. Kurzcode/Pfeil-String = abgeleitetes Label, kein State. Register Körper zeigt vier Pfeile + PHS-Tiefe **beider Sonnen**; Tore-Register zeigt Color/Tone/Base der gewählten Aktivierung.
+       Fußnote: `services/hd/src/hd_compute.py` (Fallback ohne dturkuler) benennt Perspective/Motivation anders als der Adapter. Live-Pfad ist der Adapter; deshalb mappt die UI über die **Position**, nicht über Engine-Schlüsselnamen.
+       ⚠️ **Befund PHS-Achsen:** die 6/6/5 Def-Nodes sind nicht achsengebunden — aufgelöst in 16.
 
-Phase 1 = Engine Evaluation Sprint:
-  - Pro System: Spike → Bewerten → Integrieren → Strukturbaum extrahieren
-  - Kits: packages/engines/{hd,ziwei,bazi,astro,maya,jyotish}/
-  - NEU: Ziwei Doushu (iztro, MIT, TS-nativ, 3.5k Stars) als chinesisches Hauptsystem
-  - NEU: @yhjs/bazi (MIT, TS) ersetzt alvamind (Luck Cycles + Nayin)
-  - NEU: Westl. Astro: **celestine** (MIT, TS in `packages/engines`)
-  - Jyotish: PyJHora (AGPL) als isolierter Microservice BEHALTEN (max. K1/K2-Tiefe)
-  - Architektur: Hybrid TS-first (TS in Next.js + Python-Microservices für HD + Jyotish)
-  - Kein Spark für Engines (Spark = nur GPU: MinerU, LLM)
-  - K1–K4 Framework: K1+K2 aus Kits (~40%), K3+K4 aus Literatur-PDFs (~60%)
-  - Evidenzklassen: A (math. sicher) → D (hypothetisch)
-  - Zwei System-Rollen: 'calculation' (Engines) + 'structural' (I Ging, Kabbalah, Chakras)
-  - IC-Sprache entsteht aus Konvergenz-Klumpen (Datenschicht E / Meta-Knoten)
-  - Staffel Phase 1 (Ist): Ziwei → BaZi → Jyotish → HD → Astro → Maya Tzolkin (**v1** + Step 3) → Nine Star Ki (**v1** + Step 3) → Numerologie → Akan (Engines + API-Routen + v0-Kataloge)
-  - Ziel Phase 1 (offen): ~~Seed aus system_structure/* statt hardcoded Skeleton; HD zuerst (PHS + Crosses + Variables)~~ ✅ HD-JSON-Seed 2026-07-02; andere Systeme noch offen
-  - HD: Swiss Ephemeris (pyswisseph) im Python-Service aktiv = **tropical Standard**. Sidereal/Hybrid = contracts §13 + Roadmap-Doku, **Implementierung optional**.
+ 16. ✅ **PHS-Achsen + Viertel geseedet, Register Fakten (2026-08-19).** Befund aus 15 aufgelöst: `hd.color_def.*` ist laut `hd_catalog_v0.json` die **Motivations**-Skala (Fear…Innocence) — die UI hat sie fälschlich für alle vier Pfeile gelesen. Achsen jetzt eigenständig, Skalennamen **aus der Literatur belegt** (`ic_hd_axis_discover.py --headings --axis-names`):
+       Determination 1-6 Appetite·Taste·Thirst·Touch·Sound·Light (q2/q3, TOC „3rd Color: Thirst", „Light: 6th Color Design") · Cognition 1-6 Smell·Taste·Outer/Inner Vision·Feeling·Touch (q2/q3, „The 1st Tone: Smell"…) · Perspective 1-6 Survival·Possibility·Power·Wanting·Probability·Personal (q6-q8, „1st Color Node: Survival", „Nodal View 4: Wanting") · Motivation 1-6 Fear·Hope·Desire·Need·Guilt·Innocence (Katalog; Zahl+Name belegt für 1/2/4/6).
+       **Positionen ebenfalls aus der Literatur:** Motivation = Personality **Sun** („both 2nd Color hope for their Personality Sun/Earth", q8), Perspective = Personality **Nodes** („The Core of Seeing is in the Personality Nodes", q6), Determination/Cognition = Design **Sun**, Environment = Design **Node** (bottom_left). Pfeilrichtung kommt vom **Tone** (Katalog `variables[].source`, Adapter-Kommentar), der Achsenwert von der **Color**.
+       Seed `ic_seed_hd_axes_quarters.py` (`hd_phs_axis_quarter_v1`): 30 Achsen-Nodes + 4 `hd.quarter.*` (Themen aus q9: Purpose Fulfilled through Mind/Form/Bonding/Transformation, je 16 Gates in `metadata.gates`). Relink `ic_hd_axis_quarter_relink.py` (`axis_quarter_link_mode=axis_quarter_relink_v1`, TOC→mention, 3+ Zahlen→contrast, Primary-Cap 6): 28 Nodes, 4-6 Primaries je Node.
+       ⚠️ **`hd.environment.1-6` bewusst ohne Relink:** die sechs Ortsnamen (Caves/Markets/…) stehen **nicht** im Korpus, und q4/q5 („Lunar & Planetary Color") tragen mehrere Achsen — dort steht „6th Color: Innocence", also Motivation. Treffer „3rd Color" nahe „environment" belegt die Achse nicht. Nodes sind Struktur, Text fehlt bis eine Environment-Quelle da ist.
+       ⚠️ **`hd.color_def.*` = Legacy** (`superseded_by hd.motivation.N`): die Wordings sind selbst achsen-vermischt — `color_def.2` erklärt *Taste* (Determination), nicht *Hope*. Deshalb hat Motivation eigene Nodes statt zu erben. `hd.base_def.*`: Katalog trug fälschlich Linien-Keynotes; **nur Base 2 = Evolution** belegt (PHS q3 „The 2nd Base: Evolution"). 1/3/4/5 ohne Namen, Wordings der alten Atome nicht gewischt.
+       **`hd.line_def.1-6` existierten schon** (59-95 Interps, alle 6 mit Wording) — kein Seed nötig, nur Lookup. Register **Fakten** ist live: Persönlichkeits-Sonne-Viertel + Design-Sonne-Viertel, Verteilung mit ausgeschriebenem „Design / Persönlichkeit". Linien-Zählung 1-6 (Dachau: Mutation über Tor 14, Design-Sonne Dualität Tor 29).
+       **Wordings (Langdock gpt-5-mini, 2026-08-19):** 28/28 Nodes mit Literatur synthetisiert (4 Quarter + 6 Determination + 6 Cognition + 6 Motivation + 6 Perspective). Environment 1-6 ohne Literatur, daher kein Synth. Aufruf: `python ic_run_with_langdock.py ic_k2_synth_batch.py --system hd --only-id … --force`.
+       **Figma:** https://www.figma.com/design/6KCXRVzu39tqEjpr66hGwc — Starter **3 Seiten**. 00 Contract · 01 Tokens & Geometry · 06 Captures. Geometry v0 als Frame rechts auf 01 (`Bodygraph Geometry v0`, x=1600): 9 Zentren + 64 Tore + 36 Kanäle, `visible`/`label`/`hit_area`, Katalog-IDs. Kein Page-03 (Plan-Limit). Captures: `6:2` aktuell, `2:2` älter. Dump nicht putzen. Vertrag `cursor/reference/figma_karte_contract.md`.
+ 17. ✅ Overlay-Policy (2026-08-19): Zusammenschau ist **eng aus Produktregel** (eine Lesung, kein zweiter Inspector), nicht weil gpt-5-mini Quota/Tokens nicht reicht. v1l hat bereits 16k Completion-Cap. Constraint = Admission. Live = v1m. **v1n = Kandidat** (ein Fakten-Satz aus `hd-facts.ts`), nicht gebaut. SoT: Overlay-Vertrag §5.0. PHS-Labels höchstens später Facts, keine Overlay-Essays (§5.1).
+       ⚠️ **Environment-Hub** (Höhle / Markt / Küche / Berg / Täler / Ufer): Labels sind thick enough, Atome too thin — **nicht** in KG kopieren. `hd.environment.1-6` bleibt Struktur ohne Relink/Synth.
+ 18. ✅ **Chart-Visual (2026-08-24/25).** Geometrie live in `hd-bodygraph-geometry.ts` (Backup `cursor/reference/geometry-backup-2026-08-24/`). Wahrnehmungsregeln: `cursor/reference/figma_karte_contract.md` §4b.
+       Zentren: Jovian-Füllung wenn definiert, **hell genug für einheitliche dunkle Schrift** (Kopf/G Gold `#E0B84E`, Ajna `#6FB8A6`, Kehle/Milz/Solar/Wurzel Sand `#C4A07C`, Sakral `#E85C4A`, Herz `#E07A72`) — kein Bordeaux, keine weiße Schrift auf dunklem Fill. Undefined = opakes Background + `fill-foreground` (Dark-Theme). Design/Persönlichkeit **nicht** auf die Form — Rails + Kanalhälften. Hanging = Mitte *dieses* Pfads. Integration 10–20–34–57 = sechs Pfade (einen Tick dünner, weil Überlappung). Übrige Kanäle dicker; beide Seiten aktiv = extra dick. Selection = dickere Füllfarbe, kein Gold-Halo. Tore = Zahl ohne Chip (hue-Chips und Papier-Chips verworfen). Rails: Header fett bei Selection, Polarität|Zahl|R.
+       64keys malt Zentren XOR blau/orange, nie gestreift. Tie-Break unbelegt → nicht malen.
+       ✅ **Vier Pfeile am Graph** (2026-08-25): runder Chevron + Color mit Tone-Tiefzahl neben dem Kopf. Design links, Persönlichkeit rechts. Mapping `collectVariableMarkers`. Klick → Register Körper (Color-Achse). Die fünf PHS-Achsen in Körper sind die *Zahlen* derselben vier Ecken; Cognition teilt den oberen linken Pfeil (Tone der Design-Sonne), kein fünfter Chevron. Mini-Pfeile an Rails erst PHS-Ansicht. Overlay bleibt v1m. Chart-State nur clientseitig (HMR wirft aufs Geburtsformular zurück).
 
-Dokumenten-Landkarte:
-  Philosophisch:  consolidation/z1 (Gesamtwerk v0.5), z3 (Modelle v0.4), Glossar v1.2
-  Produktplanung: consolidation/z2 (User-Journey v0.1, veraltet), ic_gesamtinventur.md (Inventur+Scope)
-  Technisch:      cursor/{architecture, pipeline, contracts, engines, status}.md (= "Z4")
-  
-Lies zuerst: projects/inner_compass/cursor/status.md
-Dann je nach Aufgabe:
-- Engine-Integration (Phase 1 wiederholbar): reference/engine_integration_playbook.md + cursor/engines.md + packages/engines/ im Code-Repo
-- Schema/DB: cursor/architecture.md + cursor/contracts.md
-- Pipeline/Worker: cursor/pipeline.md
-- App-Architektur: cursor/architecture.md §12–14 (User-Schema, Services, 4 Spaces)
-- Scope/Inventur: consolidation/ic_gesamtinventur.md (v0.5, §XX Scope, §XXI Delta)
-- Philosophie/Modelle: consolidation/z1_gesamtwerk.md + z3_modell_referenz.md
+**Quadranten / Linien-Statistik:** Gate→Viertel aus `hd_crosses_extracted.json` (16/16/16/16). `hd.quarter.*` geseedet + gewordet (16). Generische Rollen lagen schon als `hd.line_def.1–6` vor (nicht `hd.line.1`). Register Fakten zählt, Atome bleiben generisch.
 
-Kernzahlen: 15 Dimensionen, 12 Lebensbereiche (erweitert von 10, März 2026), 5 Datenschichten, 11 Berechnungs- + 3 Struktursysteme, 4 App-Spaces.
-Schema: sys_* Tabellen (11) + user_* Tabellen (6 designed), Postgres+pgvector, jsonb Payloads.
-Code-Repo: code/inner_compass_app/ (Makerkit 3.1.3, frischer Clone 2026-03-31)
+Wörterbuch Chunk/Interp/Anhang/Synth/primary: cursor/pipeline.md §1a.
 
-MCP-Tools (KI nutzt diese automatisch):
-  Makerkit Kit MCP: packages/mcp-server/ → Schema, Migrations, DB-Ops, Env, Dev, Translations
-  Supabase MCP:     Cursor Plugin → Cloud-DB, Management API, SQL-Queries
-  CLI MCP:          npx @makerkit/cli → Plugin-Install, Upstream-Updates (optional)
-  Config:           .cursor/mcp.json (Workspace-Root)
+Aktueller Punkt: **HD-KARTE Graph freeze** (2026-08-25). Letzte Feile: leere Tubes kühles Schiefer (Light `#5F6B72` / Dark `#6A7571`), idle-Tore leichter. Keine Gate-Chips. Nächster Schritt ist nicht weiter am Graph feilen, außer der User will es.
+
+Nächstes Paket (Reihenfolge, nicht parallel):
+  KARTE) Freeze, außer expliziter User-Wunsch. Mini-Pfeile an Rails nicht in diesem Schnitt. Gate-Chips nicht noch einmal versuchen.
+  KARTE-nicht) 64keys Blau/Orange am Zentrum — erst wenn ein Chart den Mischfall belegt.
+  Overlay) v1n Fakten-Satz optional, nicht blockierend.
+  Git) Demnächst commit+push, **wenn User explizit sagt** — nicht jetzt.
+  Makerkit) v4 = eigenes späteres Paket. Bleibt in NICHT TUN.
+  C-check) Dachau neu berechnen (Overlay-Cache v1m miss): Satz 1 „3/5 Splenic Projector“; keine Center-Checkliste. Solar undefined ohne Mind-Trap.
+  Q) Relink-Qualität (kein LLM-Rewrite): Q.1 Planeten-Beispiele. Q.2 Regex über alle Atoms + Packer-Primaries. Line-Leaks `29.5`/`20.4` gepatcht. Open-SP Shadow: Manifestor-Anekdote → generic (`cf9a77db`). Kanal-Primaries dürfen Circuit-Geschwister nennen (kein Natal-Leak). Center-Atoms mix defined+undefined = bekannt, read-time split, nicht wipen.
+  D) ✅ `openCenters` → `undefinedCenters` (Code). UI-Wort „offen“ bleibt. Overlay-Hash-Key mitumbenannt (ein Cache-Miss).
+  B) Edges / sys_dynamics / tag_ic_metadata — jetzt frei, Chart-Pfeile sind durch.
+  H) Corpus-Hygiene Center (optional): Geschwister auf `mention`. Nie Massen-Classify.
+
+Nicht: Full-Re-Synth, Center-Wipe, `open` als dritte Enum, SGLang über 7973 Interps / 20877 Anhänge.
+Sources: S0.5 `37170478-…` / `cf923ac4-…`. S0 Defined: `ic_s0_center_defined_relink.py`. Channel: `ic_s0_channel_facet_relink.py` (`channel_relink_v1c`; Life Force `2a9272bc-…`). Planeten-Source `7e52cc9a-…`. Auth/Def: Four Views `c3135579-…` (HA2 `5517ac0c-…` Diagnostics, 0 Ego/Quad-Hits).
+
+NACH REBOOT (Reihenfolge):
+  1. Docker Desktop
+  2. Makerkit/Supabase (kit_dev). Login test@makerkit.dev / testingpassword
+  3. HD-Service ist NICHT in der Makerkit-Compose (GPL-Isolation) — eigener Stack:
+       cd code/inner_compass_app/services/hd
+       docker compose up -d
+     Health: http://127.0.0.1:8002/health
+     Nach einmaligem `up -d` startet Docker Desktop ihn neu (`restart: unless-stopped`).
+  4. Next aus code/inner_compass_app:
+       pnpm --filter web exec next dev --port 3000
+     Env: apps/web/.env.development + .env.development.local
+     HD_SERVICE_URL=http://127.0.0.1:8002
+     5. http://localhost:3000/home/karte/hd — einmal Chart berechnen (Overlay-Cache v1m miss). Mechanik am Center nur noch dieser State.
+
+CODE:
+  apps/web/app/[locale]/home/_components/hd-karte/
+  apps/web/lib/hd/hd-wording-lookup.ts   (immer 9 hd.center.*)
+  apps/web/lib/hd/hd-line-polarity.ts + hd-line-polarity.json
+  apps/web/lib/hd/hd-line-fixing.ts
+  apps/web/scripts/ic_hd_line_polarity_from_pdftotext.py
+  apps/web/lib/hd/normalize-hd-chart.ts
+  apps/web/lib/hd/hd-planets.ts
+  apps/web/lib/hd/hd-center-facets.ts
+  apps/web/lib/hd/hd-channel-facets.ts
+  apps/web/lib/hd/hd-overlay.ts
+  apps/web/lib/hd/hd-overlay-cache.ts
+  apps/web/lib/hd/hd-phs.ts
+  apps/web/lib/hd/hd-facts.ts
+  apps/web/lib/hd/hd-bodygraph-geometry.ts
+  apps/web/lib/hd/hd-bodygraph-path.ts
+  apps/web/lib/hd/hd-karte-palette.ts
+  cursor/reference/figma_karte_contract.md
+  apps/web/scripts/ic_s05_center_facet_relink.py
+  apps/web/scripts/ic_s0_center_defined_relink.py
+  apps/web/scripts/ic_s0_channel_facet_relink.py
+  apps/web/scripts/ic_hd_authority_definition_relink.py
+  apps/web/scripts/ic_seed_hd_planets.py
+  apps/web/scripts/ic_s0_planet_relink.py  (--tighten-carriers v1b; --demote-examples)
+  apps/web/scripts/ic_s0_planet_reinterpret.py  (planet_split_v1, nosynth)
+  apps/web/scripts/ic_start_langdock_worker.py
+  apps/web/scripts/ic_s05_open_center_concept.py
+  apps/web/app/api/ic/hd-chart/route.ts
+  services/hd/src/hd_compute.py
+
+NICHT TUN:
+  supabase db reset (KG nur lokal; Dump Desktop 2026-08-13)
+  Mandala / 4 Spaces
+  Schul-Ingest / tradition-Pipeline / Center-Wipe
+  Planet-Gewichte erfinden
+  hd.not_self_mind.* seeden
+  64keys/Gene Keys Massen-Rename
+  64keys-Blau/Orange auf Zentren raten; Streifenfüllung auf Zentren
+  Gate-Chips am Bodygraph (hue-gematcht oder Papier) — ausprobiert, verworfen
+  Figma-MCP-Reads (Quota); Geometrie nicht aus Figma flachziehen
+  open als dritten Center-State persistieren
+  Makerkit v4 in diesem Slice (eigenes späteres Paket; bleibt 3.1.3)
+  SGLang über alle Interps/Anhänge (Stream Q ist Regeln + Stichprobe, nicht 8k)
+
+KG nur lokal. HD-Schulen nicht ingest vor tradition-Feld.
 ```
 
 ---
+
+## Phase-1-Hintergrund (nicht in den Copy-Paste-Block)
+
+Engine-Staffel, Kits, K1–K4, Sidereal/Hybrid — nur lesen, wenn der Chat über Engines geht (Abschnitt unten). Kurz:
+
+- Hybrid TS-first: `@ic/engines` + Python-Microservices HD (`:8002`) und Jyotish
+- HD-Ephemeris: Swiss Ephemeris, tropical Standard. Sidereal/Hybrid = Spec, nicht gebaut
+- Schema: `sys_*` + `user_*`; Canonical IDs `{system}.{type}.{id}` z. B. `hd.gate.34`
+- MCP: Makerkit Kit MCP (lokal), Supabase MCP (Cloud), Config `.cursor/mcp.json`
+
+---
+
+## Human Design — Schulen / Gate-Stimmen (`tradition`)
+
+```
+Kurz (decisions.md 2026-08-13 + engines.md §6.7b):
+- Ein hd.*-Baum. Linsen = tradition auf K3, keine parallelen KGs.
+- jovian = S0-Default (Ra). 64keys-Gates = Blue I Ching (Ebhart). cosmic_sidereal = Cosmic Way = 64-Gate-Prosa sideral (keine Engine).
+- Schoeber-Person = 64keys-Orbit; *The Centres* = HD-geschrieben → bleibt in Center-Wordings (jovian + teacher schoeber). Kein Re-Synth.
+- Klassisches I Ging (Wilhelm/…) = i_ching.* (Ur-System), nicht HD-Schule.
+- Jetzt nicht: Schul-Ingest, tradition-Pipeline, Center-Wipe.
+```
 
 ## Human Design — Rechenmodi (tropical / sidereal / hybrid)
 
@@ -125,6 +207,7 @@ Zusätzlich lesen:
 - cursor/engines.md (K1-K4 Framework, Kit-Kandidaten mit Lizenzen, Prüf-Checkliste, Architektur)
 - code/inner_compass_app/packages/engines/README.md (TS-Engines, npm-basiert)
 - code/inner_compass_app/services/jyotish/README.md (Python-Microservice, AGPL-isoliert)
+- code/inner_compass_app/services/hd/README.md (Python-HD, GPL-isoliert, Docker :8002)
 - kern/IC_System_Pruef_Framework.docx (Originalquelle K1-K4 + Evidenzklassen)
 - reference/hd_kit_structure_extraction.md (HD-Kit-Analyse, was fehlt)
 - **EarthStar Human Design** = IC-Produktname für Hybrid (`hybrid_design_tropical_personality_sidereal`); UI-Spez Stufe 1/2 → `reference/hd_compute_profiles_kg_and_roadmap.md` §6.1
@@ -415,18 +498,10 @@ Upload-Methode · Chunk-Count · 1–2 Textbeispiele · Job-`debug` bei Fehler �
 
 ---
 
-Wenn du einen **frischen Chat** nur für die nächste konkrete Aufgabe willst, oben den **Kontext-Block** einfügen und darunter z. B.:
+Wenn du einen **frischen Chat** für die HD-Karte willst: oben den **Kontext-Block** einfügen und darunter:
 
 ```
-Aufgabe: Phase 1 — erster Engine-Spike (Ziwei / iztro)
-
-Kontext: Lokal entwickeln, Supabase MCP erst bei Cloud. Makerkit MCP: MAKERKIT_PROJECT_ROOT in .cursor/mcp.json.
-
-Bitte:
-1. pnpm --filter @ic/engines add iztro (oder workspace-konform)
-2. Minimal-Script oder kleines Test: feste Geburtsdaten → Chart-Output
-3. Kurz dokumentieren: welche Felder = K1 (Zahlen), welche = K2 (Struktur), JSON-Snippet
-
-Referenz: projects/inner_compass/cursor/status.md §Phase 1, cursor/engines.md
-Code: code/inner_compass_app/
+Handover + reference/hd_bodygraph_overlay_contract.md lesen, hier weitermachen.
 ```
+
+Nicht bei Slice 1 von vorn. Nächster Schritt: pdftotext -layout der Complete Rave I'Ching → volle 384er-Tabelle, oder S0.5.
