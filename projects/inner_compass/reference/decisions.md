@@ -1,5 +1,34 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-08-26: Dynamiken — drei Höhen, nicht nur Cross-System
+
+**Kontext:** `sys_kg_edges` „weitgehend da“ klang so, als lägen Zyklen/Fallen schon. Die KARTE (Natal-Inspector) ist eine **System-Linse**, nicht die Dynamik-Schicht. `payload.process` ist Trap/Experiment *eines* Elements. `sys_dynamics` war in der Pipeline (`extract_processes`) systemintern gedacht: Zyklen, Spektren, Wachstumspfade, Fallen über **mehrere Elemente**. Die Decision 2026-08-05 hat die Tabelle auf 2+ Systeme verengt — das ist nur die *obere* Stufe.
+
+**Decision:**
+1. **Atom-Prozess** — `payload.process` (trap / gift_activation / experiment_seed) am Einzel-Node. ~100 % befüllt, ungelesen bis Werkstatt. Kein Backfill.
+2. **System-Dynamik** — `sys_dynamics` mit `system_id` (intra): HD-interne Zyklen, Type×Center-Fallen, Life Cycles, Spektren. Tabelle 0 Zeilen. Eigene Komponente, analog zur Cross-Stufe. Job = `extract_processes` (nie gebaut), nicht Relink-Q.
+3. **Cross-Dynamik** — dieselbe Tabelle, kombinatorisch 2+ Systeme × Domäne (`extract_pattern_traps`). Später, wenn mehr Systeme Content haben.
+4. **Graph-Kanten** — `sys_kg_edges`: Struktur-Seed + Interp-Backfill intra HD **weitgehend da**; `maps_to` cross_system **nicht**. Kante ≠ Zyklus.
+
+KARTE/Overlay bleiben Lookup + eine Lesung. Dynamiken erscheinen in WERKSTATT/ZEIT (und später JETZT-Highlight), nicht als Inspector-Stopfen.
+
+**Nicht jetzt:** Dynamics-Jobs füllen; Relink-Q; Mandala.
+
+---
+## 2026-08-26: App-Spaces + Onboarding; Begleiter-Tür reserviert
+
+**Kontext:** HD-KARTE freeze. Nächster Lerngewinn = App-Rahmen, nicht Corpus. UX: 4 Spaces. Vision: später Voice-first + visuell (`vision_and_story.md` §7), Inhalte vor Chat.
+
+**Decision:**
+1. Spaces unter Makerkit `/home`: **JETZT** `/home` · **KARTE** `/home/karte` · **WERKSTATT** `/home/werkstatt` · **ZEIT** `/home/zeit`. IDs `space_*` bleiben. HD bleibt `/home/karte/hd`.
+2. Leere Shell zuerst. Kein hartes Onboarding-Gate (bestehende Test-Charts). JETZT verweist auf `/home/onboarding` wenn keine Signatur.
+3. **Zwei Türen, ein Ziel.** Formular ist live. `data-ic-entry="companion"` = visuelles Feld rechts/unten für späteren Begleiter (Sprache + Bild). Kein Chat, kein TTS, kein Avatar in diesem Slice. Formular wird nicht durch den Agenten ersetzt.
+4. Ungefähr/unbekannte Geburtszeit = später (UX-Konzept §3). Engine braucht weiter eine Uhrzeit.
+5. Bottom-Nav laut UX kommt, wenn die Shell sitzt — jetzt Makerkit-Nav mit den vier Labels.
+
+**Nicht:** Mandala-SVG, Transit-UI, Composite, Voice-Agent, Makerkit v4.
+
+---
 ## 2026-08-26: Locale — Graph, Terms, Wordings; kein Display aus term_mapping
 
 **Kontext:** KARTE-Chrome ist DE, Atomtexte EN. Frage: `sys_term_mapping` jetzt als Label-Katalog für alle Systeme füllen? Graph-Namen (Kopf, Sonne) nachziehen? Extra-DB-Spalte je Sprache?

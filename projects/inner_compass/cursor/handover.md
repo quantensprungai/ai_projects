@@ -29,7 +29,7 @@ Pipeline-Wörter: cursor/pipeline.md §1a
 
 Gesamtprozess:
   Phase 0 Fundament 100% · Phase 1 Engines ~95% · Phase 2 Content ~75% · Phase 3 Cross-System 0%
-  Phase 4 App ~35% — HD KARTE Graph visuell zu (ohne Gate-Chips); Overlay-LLM v1o; andere Spaces 0%
+  Phase 4 App ~35% — vier Spaces als leere Shell; HD KARTE Graph visuell zu; Overlay-LLM v1o
 
 ROTER FADEN (Stand 2026-08-25; 1–17 bis 08-19, 18 = Chart-Visual):
   1. ✅ S5 E2E + HD Bodygraph-Wellen + HD S0 Close-out
@@ -81,14 +81,14 @@ ROTER FADEN (Stand 2026-08-25; 1–17 bis 08-19, 18 = Chart-Visual):
 
 Wörterbuch Chunk/Interp/Anhang/Synth/primary: cursor/pipeline.md §1a.
 
-Aktueller Punkt: **HD-KARTE Graph freeze** (2026-08-26). Locale-Modell fest (Decision 2026-08-26): Chrome = next-intl später; Essays = Wording-**Zeilen**; `sys_term_mapping` = Pipeline-Alias, kein Graph-Label. **Sprache/i18n jetzt nicht bauen.** Mischung DE-Chrome / EN-Atome bewusst.
+Aktueller Punkt: **App-Shell** (2026-08-26). HD-KARTE Graph freeze bleibt. Vier Spaces als leere Rahmen: JETZT `/home` · KARTE `/home/karte` · WERKSTATT `/home/werkstatt` · ZEIT `/home/zeit`. HD = `/home/karte/hd`. Onboarding `/home/onboarding` (Formular live; Begleiter-Feld `data-ic-entry=companion` leer). Locale-Modell fest. **Sprache/i18n jetzt nicht bauen.**
 
 Nächstes Paket (Reihenfolge, nicht parallel):
-  KARTE) Freeze halten. Graph-Labels nicht nach next-intl ziehen, solange Locale-Produkt nicht startet.
-  Locale) Nicht jetzt. Vorarbeit = Decision 2026-08-26, kein term_mapping-Umbau, keine DE-Wording-Welle.
-  Overlay) v1o live. C-check Dachau wenn User Chart-Qualität will.
-  Q) Relink-Qualität (kein LLM-Rewrite) — nächster stiller HD-Schritt, wenn kein neues UI.
-  B) Edges / sys_dynamics — frei, Chart-Pfeile durch; das ist die „Verbindung“, nicht der Inspector.
+  Shell) Spaces + Onboarding füllen, sobald eine Fläche Inhalt braucht. Kein hartes Gate.
+  KARTE) Freeze halten. Graph-Labels nicht nach next-intl ziehen.
+  Locale) Nicht jetzt.
+  Dynamik) Atom-Prozess liegt; System-Dynamik (`sys_dynamics` intra) und Cross-Dynamik **nicht** jetzt. Relink-Q still, nach UI-Mix.
+  Agent) Nicht bauen. Nur das Companion-Feld freihalten.
   Git) Commit+push nur auf expliziten User-Wunsch.
   Makerkit) v4 = eigenes späteres Paket.
   KARTE-nicht) 64keys Blau/Orange am Zentrum — erst wenn ein Chart den Mischfall belegt.
@@ -131,6 +131,8 @@ CODE:
   apps/web/lib/hd/hd-bodygraph-path.ts
   apps/web/lib/hd/hd-karte-palette.ts
   cursor/reference/figma_karte_contract.md
+  apps/web/lib/ic/ic-spaces.ts
+  apps/web/app/[locale]/home/_components/ic-spaces/
   apps/web/scripts/ic_s05_center_facet_relink.py
   apps/web/scripts/ic_s0_center_defined_relink.py
   apps/web/scripts/ic_s0_channel_facet_relink.py
@@ -145,7 +147,7 @@ CODE:
 
 NICHT TUN:
   supabase db reset (KG nur lokal; Dump Desktop 2026-08-13)
-  Mandala / 4 Spaces
+  Mandala-SVG / volle Space-Inhalte (Shell ist da)
   Schul-Ingest / tradition-Pipeline / Center-Wipe
   Planet-Gewichte erfinden
   hd.not_self_mind.* seeden

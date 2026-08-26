@@ -63,9 +63,10 @@ Wissensarten (nicht alles in mention stopfen):
 | Gattung (Klasse „undefined centers“) | Concept-Node, `node_kind=concept`, z. B. `hd.concept.open_center` (P2 live; Overlay liest ihn nicht) |
 | Beziehung A→B | `interactions` / `sys_kg_edges` |
 | Werk-Einleitung | Source-Essay oder Klassen-Node, nicht 9 Center |
-| Kombination 2+ Elemente/Systeme | `sys_dynamics` (nicht Facette am Einzel-Node) |
+| Kombination 2+ Elemente (ein System) | `sys_dynamics` intra (`system_id`) — Zyklen, Spektren, Type×Center |
+| Kombination 2+ Systeme | `sys_dynamics` cross — später `extract_pattern_traps` |
 
-`sys_dynamics` (`trap` / `phase_cycle` / `growth_path` / `spectrum`) ist **eine Ebene höher** als `payload.process`: process = Falle *dieses* Centers; dynamics = Falle wenn Center × Typ × anderes System.
+`sys_dynamics` (`trap` / `phase_cycle` / `growth_path` / `spectrum`) ist **eine Ebene höher** als `payload.process`: process = Falle *dieses* Centers; dynamics = Prozess zwischen Elementen. Zuerst systemintern (HD-Zyklen), darüber Cross-System. Siehe Decision 2026-08-26 Dynamiken.
 
 ### Achse A — fest, alle Systeme, alle Elemente
 
