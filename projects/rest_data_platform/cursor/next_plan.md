@@ -2,7 +2,7 @@
 last_update: 2026-08-26
 status: active
 scope:
-  summary: "Aktiver Arbeitsplan ASTRA IMC — Grünwiese-Priorität, ohne Stage-A-Denkrahmen."
+  summary: "Aktiver Arbeitsplan ASTRA IMC — Demo-Freeze Backbone, dann Marc-Sync."
   in_scope:
     - next implementation order
     - glossary for events vs marc steps
@@ -10,8 +10,8 @@ scope:
     - full roadmap rewrite
 notes:
   - "Handover-Block in handover.md parallel aktualisieren."
-  - "2026-08-26: Vessels-UI polish; Plan auf Logistics-Struktur + CDS-Stunden + CAPEX-Portfolio umgestellt."
-  - "2026-08-26: CAPEX-Portfolio UI live (/assets/economics); CDS-Stunden AV 2024-01→2026-08 fertig (cds+hourly ~23k)."
+  - "2026-08-26: Stakeholders DE + VPI-Contracts DE + Park-UI (Akteure / Schiffseinsätze / Sim-Rollen)."
+  - "2026-08-26: CAPEX-Portfolio UI; CDS-Stunden AV; Locale Workspace-Switch."
 -->
 
 # Aktiver Plan (2026-08-26)
@@ -34,36 +34,40 @@ Plattform = **Offshore-Register + Logistik + Economics + Wetter**, aus dem Partn
 | Spur | Soll |
 |------|------|
 | Wetter | Tages- **und** Stundenreihen, Export am Park |
-| Vessels | Typenkatalog + Flotte + Day-Rates + Contracts (light) + Farm-Assignments |
+| Vessels | Typenkatalog + Flotte + Day-Rates + Contracts (light) + Sim-Rollen-Pilot |
 | Economics | am Park + Portfolio `/assets/economics` (4C reported/modelled) |
-| Partner | IA-Review Marc/Thomas parallel, blockiert nicht die Strukturarbeit |
+| Partner | IA-Review Marc/Thomas — **jetzt der Hebel**, nicht weitere ETL-Breite |
 
 ## Ist (lokal, 2026-08-26)
 
 | Baustein | Stand |
 |----------|--------|
 | ERA5 daily | 3 Parks / 1858 Tage |
-| ERA5 hourly | **AV CDS** ~23 232 h (2024-01-01→2026-08-25, `cds+hourly`); Schema/Views/UI Tag+Stunde |
-| CAPEX/OPEX/Events | in DB + am Asset-Detail |
+| ERA5 hourly | **AV CDS** ~23 232 h (2024-01-01→2026-08-25, `cds+hourly`); UI Tag+Stunde + CSV |
+| CAPEX/OPEX/Events | in DB + Asset-Detail + Portfolio `/assets/economics` |
 | Vessel-Katalog / Flotte | 8 + 2210, UI `/assets/vessels` |
-| `day_rate_eur` | Spalte da, **0 befüllt** |
-| `imc_vessel_assignments` | Tabelle da, **0 Zeilen** |
-| Vessel-Contracts | IMC-Tabelle + Pilotzeilen; VPI-Bulk (~17k) noch offen |
-| CAPEX-Portfolio | UI `/assets/economics` — KPI, Filter, Sort, CSV, Link Detail |
+| `day_rate_eur` | Katalog-Platzhalter gesetzt; Flotte/Contracts meist leer |
+| Schiffseinsätze (VPI) | DE light ~**1183** in `imc_vessel_contracts` (`vpi:{id}`); AV ~60; UI Filter |
+| Sim-Rollen (Pilot) | AV: CTV/SOV/WTIV × Phase (kuratiert, nicht aus VPI abgeleitet) |
+| Akteure | DE Supply Chain ~**3633** Links; Park-UI Kernkacheln + Anteile (Freitext-%) + Gruppen |
+| Locale / i18n | Workspace hält `/en/`; Message-Cache `cacheLife('max')` → Restart nach neuen Keys |
 
-### CDS-Stunden Alpha Ventus — Klarstellung
+### Logistik-Schichten am Park (verbindlich)
 
-**Erledigt (lokal):** CDS-Mehrjahr AV in `imc_era5_hourly`, Provenance `cds+hourly`, UI Tag/Stunde + CSV am Park.  
-**Optional danach:** DE-Tagesbatch Screener-KPI; weitere Parks stündlich nur bei Bedarf.
+| UI | Quelle | Nutzen | Nicht |
+|----|--------|--------|-------|
+| **Akteure** | 4C Supply Chain | Demo, AAS-Parties light | Marc-Sequenz / Decom-Steps |
+| **Schiffseinsätze (VPI)** | Vessel Contracts DE | Historie / Kontext | Sim-Plan, Day-Rate-Markt |
+| **Sim-Rollen (Pilot)** | kuratierte Assignments | Marc Typ×Phase Bridge | VPI-Historie ersetzen |
+
+**Nicht ableiten:** Decom-Workflow aus Akteuren oder Contracts. Marc braucht eigene Sequenz (+ Thomas BOM für LCA).
 
 ## Reihenfolge (jetzt)
 
-1. ~~Logistics-Struktur~~ — Contracts + Day-Rate + Assignments + ERA5 Tag/Stunde UI  
-2. ~~Partner-IA lesen / selbst entscheiden was geht~~ — siehe Abschnitt „IA-Selbstentscheidungen“  
-3. ~~CAPEX-Portfolio-Seite~~ — `/home/[account]/assets/economics`  
-4. ~~ERA5 Stunden CDS (echt)~~ — AV 2024-01→2026-08, `cds+hourly`  
-5. **Locale-Persistenz** — Workspace-Switch hält `/en/` (WorkspaceDropdown + Team-Home-Redirect)  
-6. Optional: ~~Stakeholders/OEM~~; ~~VPI-Contracts-Subset-ETL~~ (DE); DE-ERA5-Tagesbatch; i18n-Switcher in Team-Chrome
+1. ~~Logistics-Struktur~~ · ~~CAPEX-Portfolio~~ · ~~CDS AV Stunden~~ · ~~Stakeholders DE~~ · ~~VPI-Contracts DE~~ · ~~Park-UI-Schliff~~  
+2. **Demo-Freeze** — Stand committen; keine weiteren Light-ETLs ohne Bedarf  
+3. **Marc-Sync** — Stunden-CSV-Abnahme, Katalog-Defaults, was er wirklich braucht (Sequenz/Sim-CSV)  
+4. Optional: DE-ERA5-Tagesbatch Screener; Thomas BOM/LCA; i18n-Switcher in Team-Chrome  
 
 ## IA-Selbstentscheidungen (ohne Partner-Warten)
 
@@ -72,47 +76,29 @@ Plattform = **Offshore-Register + Logistik + Economics + Wetter**, aus dem Partn
 | Punkt | Vorschlag | Blockt CAPEX-Portfolio? |
 |-------|-----------|-------------------------|
 | Grain | **Stunde** (schon Draft) | nein |
-| Zeitraum Pilot AV | **2024-01-01 → 2026-08** (wie Tages-Serie) bis Marc widerspricht | nein für Portfolio |
+| Zeitraum Pilot AV | **2024-01-01 → 2026-08** bis Marc widerspricht | nein |
 | Vessel-Typen | **unser Katalog (8)** bleibt Default; Marc override | nein |
 | Sim-Output-Spalten | warten auf Marc | nein |
-| CDS vs Synthetic | Stunden heute **synthetic** nur Pfadtest; echter CDS-Ingest = eigener Track | nein |
+| CDS vs Synthetic | AV Stunden = **CDS echt** | nein |
 
 ### Thomas — blockt CAPEX-Portfolio nicht
 
-BOM/PCF/Toolwahl sind **LCA-Spur**. Portfolio braucht nur 4C Economics (schon in DB). Thomas-Offene bleiben für LCA/DPP.
-
-### CAPEX-Portfolio — Scope den wir allein festlegen können
-
-| In | Out (erst später) |
-|----|-------------------|
-| KPI: Parks mit reported / modelled / opex / revenue | Forecast-Kurven, Discounting |
-| Filter: Land, Lifecycle, Capacity-Band | „eigene“ Schätzungen ohne 4C |
-| Tabelle + Sort: Total CAPEX, €/MW, OPEX/yr, Mechanismus | Live-Marktpreise |
-| Drill-down Link → Asset-Detail (Breakdown schon da) | AnyLogic-Kosten |
-| Badge reported vs modelled (ⓘ) | Thomas-Massen |
-
-Datenbasis lokal: reported ~974, modelled ~17k, opex ~974, revenue ~421 (wie Handover) — Portfolio = Aggregat/UI auf genau diesen Tabellen.
+BOM/PCF/Toolwahl sind **LCA-Spur**. Portfolio braucht nur 4C Economics (schon in DB).
 
 ## Logistics — was „Struktur“ heißt (nicht Vollausbau)
 
 | Teil | Sinnvoll jetzt | Später / nicht blind |
 |------|----------------|----------------------|
 | Day-Rate UI | Spalte im Katalog + Flotte; Katalog-Seed/Override | Markt-Scraper, Live-Charter |
-| Contracts | Tabelle + Provenance + Pilot-Subset oder leere Liste | 17k Contracts blind importieren |
-| Farm-Assignments | Tabelle nutzen, Pilot AV + 2–3 Schiffe, UI-Abschnitt | Historie aller VPI-Events |
-
-**Jetzt strukturieren: ja.** Voll-ETL Contracts + dicke Day-Rate-Markt-UI: nein — erst Gerüst, dann Daten nach Quelle.
-
-## CAPEX-Seite — wann?
-
-Park-Detail hat CAPEX/OPEX/Erlöse schon. Eine **eigene CAPEX-/Portfolio-Seite** ist der nächste große UI-Block **nach** Logistics-Struktur (1) und idealerweise Stunden-Export (2) — sonst zwei dicke UI-Baustellen parallel ohne Logistik-Rückgrat.
+| Contracts | DE-Subset + UI Schiffseinsätze | 17k Contracts blind |
+| Farm-Assignments | Pilot Sim-Rollen AV | Historie aller VPI-Events als Assignments |
 
 ## Klarstellungen (kurz)
 
 - **Events ≠ Marc-Sequenz** — 4C Lifecycle vs. AnyLogic-Zerlegung  
-- **VPI** — Specs = Flotte; Contracts = separates Sheet; Assignments = unsere Verknüpfung  
-- Häfen/Natura: für Sim weiter Draft/Kai/decom-Rolle nachziehen, wenn Partner braucht  
+- **VPI** — Specs = Flotte; Contracts = Schiffseinsätze; Assignments = unsere Sim-Rollen  
+- Anteils-% bei Ownern: Freitext-Extrakt (~oft vorhanden), **kein** Cap-Table; `stake_value` oft MW/€  
 
 ## Nicht blind
 
-AnyLogic/LCA in der App · MCP-Cloud-Seed · CAPEX-Forecast-Charts ohne Bedarf · Contracts-17k ohne Mapping
+AnyLogic/LCA in der App · MCP-Cloud-Seed · CAPEX-Forecast-Charts ohne Bedarf · Contracts-17k ohne Mapping · Decom-Steps aus 4C generieren

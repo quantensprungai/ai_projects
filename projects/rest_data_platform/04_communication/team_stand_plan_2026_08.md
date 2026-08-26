@@ -95,8 +95,9 @@ Zwei Spuren parallel. Keine Spur blockiert die andere.
 1. Partner-Review IA Marc (Stunden ok? Zeitraum? Vessel-Defaults von euch oder Override?).
 2. ~~CAPEX-Portfolio UI~~ (`/assets/economics`) — reported/modelled aus 4C.
 3. ~~CDS-Stunden Alpha Ventus~~ (2024-01→2026-08, `cds+hourly` ~23k h) + Stunden-CSV am Park.
-4. Optional: DE-ERA5-Tagesbatch; Stakeholders/OEM/Grid light; VPI-Contracts light.
-5. Cloud nur mit direktem `psql`/`DATABASE_URL`, nicht MCP.
+4. ~~Stakeholders DE~~ + ~~VPI-Contracts DE light~~ (Park: Akteure / Schiffseinsätze / Sim-Rollen-Pilot).
+5. Optional: DE-ERA5-Tagesbatch Screener.
+6. Cloud nur mit direktem `psql`/`DATABASE_URL`, nicht MCP.
 
 ### Spur B — Interop / DPP-Form
 

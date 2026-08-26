@@ -20,9 +20,13 @@ Stand (2026-08-26) — Plan: projects/rest_data_platform/cursor/next_plan.md
   - Dual-Track: Postgres = SoT; AAS = Export. Marc/Thomas: CSV/View, nicht AAS.
   - Zahlen lokal: Farms 3606 · MaStR 33 accepted / 1593 Units · Natura ~205 · Häfen 118 / 677 Links
   - ERA5 daily: 3 Parks / 1858 Tage. Hourly: AV **CDS** ~23k h (2024-01→2026-08, `cds+hourly`).
-  - CAPEX/OPEX am Park + Portfolio UI `/assets/economics`. Vessel-UI: Katalog+Flotte+Contracts/Assignments Pilot.
-  - Vessels: 8 Typenkatalog + 2210 VPI-Flotte; Contracts/Assignments Pilot; day_rate Katalog-Platzhalter
-  - Locale: Workspace-Switch hält EN (`WorkspaceDropdown` + Team-Home-Redirect)
+  - CAPEX/OPEX am Park + Portfolio UI `/assets/economics`.
+  - Vessels: 8 Typenkatalog + 2210 VPI-Flotte; UI `/assets/vessels`.
+  - Park-Detail Logistik-Schichten (nicht vermischen):
+      1) Akteure — 4C Supply Chain DE (~3633 Links); Kernkacheln + Anteile aus Freitext + Gruppen
+      2) Schiffseinsätze (VPI) — DE Contracts light ~1183; Filter O&M/Install; AV ~60
+      3) Sim-Rollen (Pilot) — kuratierte Typ×Phase für Marc (nicht VPI-Historie)
+  - Locale: Workspace-Switch hält EN; i18n-Messages `use cache`+`cacheLife(max)` → nach Key-Änderungen `next dev` neu starten
   - IA Drafts: 01_spec/interface_agreement_marc_anylogic_v0.md + …_thomas_lca_v0.md
   - Präsi-Inhalt: 04_communication/team_stand_plan_2026_08.md (PPTX optional neu bauen)
   - Cloud IMC pausiert; lokal Docker + pnpm supabase:web:*
@@ -40,11 +44,15 @@ Lies zuerst:
   - projects/rest_data_platform/00_overview/mvp.md
 
 Nächster Schritt:
-  1) ~~Logistics · CAPEX-Portfolio · CDS AV Stunden · Stakeholders DE · VPI-Contracts DE light~~
-  2) Optional: DE-ERA5-Tagesbatch
-  3) Partner-IA-Review parallel
+  1) ~~Demo-Daten/UI-Freeze Stage A Backbone~~ (Register, Economics, Wetter, Akteure, VPI-Einsätze, Sim-Rollen-Pilot)
+  2) Partner-Sync Marc (Stunden-CSV + Katalog + was er wirklich braucht) — Sequenz/Sim-CSV blockiert
+  3) Optional: DE-ERA5-Tagesbatch Screener; Thomas BOM/LCA parallel
   Geblockt fachlich: BOM Thomas; Sequenz/Sim-CSV Marc; Vessel-Wetter final
-  Nicht: Contracts-17k blind, Sim/LCA in der Plattform, MCP-Cloud-Seed
+  Nicht: Contracts-17k blind; Decom-Steps aus 4C ableiten; Sim/LCA in der Plattform; MCP-Cloud-Seed
+
+Produkt-Klarstellung Logistik:
+  - Akteure ≠ Marc-Sequenz; Schiffseinsätze = Historie; Sim-Rollen = kuratierter Typ-Bridge
+  - Aus Akteuren/Contracts keine automatischen Decom-Steps — AAS-Parties/Demo ok, AnyLogic-Plan nicht
 
 Git-Regeln:
   - Meta-Repo (ai-projects): nur Doku/Infra committen
@@ -73,6 +81,7 @@ Zusätzlich lesen:
 - code/astra-imc-platform/apps/web/AGENTS.md
 - projects/rest_data_platform/03_roadmap/imc_app_bootstrap.md (Integrationsvariante A)
 - Scope: kein Feature außerhalb 00_overview/scope.md ohne Rückfrage
+- i18n: apps/web/i18n/request.ts — neue Keys brauchen next-dev-Restart
 ```
 
 ## Wenn der Chat über STAKEHOLDER / COMMS geht
