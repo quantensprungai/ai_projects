@@ -40,8 +40,8 @@ Lies zuerst:
   - projects/rest_data_platform/00_overview/mvp.md
 
 Nächster Schritt:
-  1) ~~Logistics · CAPEX-Portfolio · CDS AV Stunden~~
-  2) Optional: DE-ERA5-Tagesbatch, VPI-Contracts light, Stakeholders/OEM
+  1) ~~Logistics · CAPEX-Portfolio · CDS AV Stunden · Stakeholders DE · VPI-Contracts DE light~~
+  2) Optional: DE-ERA5-Tagesbatch
   3) Partner-IA-Review parallel
   Geblockt fachlich: BOM Thomas; Sequenz/Sim-CSV Marc; Vessel-Wetter final
   Nicht: Contracts-17k blind, Sim/LCA in der Plattform, MCP-Cloud-Seed

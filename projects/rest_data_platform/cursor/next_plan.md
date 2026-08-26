@@ -63,7 +63,7 @@ Plattform = **Offshore-Register + Logistik + Economics + Wetter**, aus dem Partn
 3. ~~CAPEX-Portfolio-Seite~~ — `/home/[account]/assets/economics`  
 4. ~~ERA5 Stunden CDS (echt)~~ — AV 2024-01→2026-08, `cds+hourly`  
 5. **Locale-Persistenz** — Workspace-Switch hält `/en/` (WorkspaceDropdown + Team-Home-Redirect)  
-6. Optional: ~~Stakeholders/OEM~~ (DE Supply Chain geladen); VPI-Contracts-Subset-ETL; DE-ERA5-Tagesbatch; i18n-Switcher in Team-Chrome
+6. Optional: ~~Stakeholders/OEM~~; ~~VPI-Contracts-Subset-ETL~~ (DE); DE-ERA5-Tagesbatch; i18n-Switcher in Team-Chrome
 
 ## IA-Selbstentscheidungen (ohne Partner-Warten)
 

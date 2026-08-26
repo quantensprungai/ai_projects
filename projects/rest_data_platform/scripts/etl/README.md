@@ -247,6 +247,19 @@ python transform_4c_vessels.py --latest
 ## Nächste Skripte (Backlog)
 
 - ~~Stakeholders Supply Chain~~ (`transform_4c_stakeholders.py`)
-- Vessel-**Contracts** light (Subset, nicht 17k blind)
+- ~~Vessel-**Contracts** light~~ (`transform_4c_vessel_contracts.py --country Germany`)
 - Turbine-Transform auf weitere DE-Parks ausweiten
 - optional DE-ERA5-Tagesbatch Screener-KPI
+
+## Vessel-Contracts light (VPI)
+
+```powershell
+python transform_4c_vessel_contracts.py --latest --country Germany
+# Vollimport absichtlich nicht Default:
+# python transform_4c_vessel_contracts.py --latest --all
+```
+
+- Sheet `Vessel Contracts` → `imc_vessel_contracts`
+- Farm-Match über `ProjectId` / `ProjectName`+Country; Vessel über `VesselId` → `ext_vessel_key`
+- `ext_contract_key` = `vpi:{WindfarmStakeholderId}` (Pilotzeilen `pilot:*` bleiben)
+- UI: `/assets/vessels` + Park-Detail Abschnitt Contracts
