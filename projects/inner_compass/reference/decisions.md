@@ -1,6 +1,326 @@
 # Inner Compass — Design-Entscheidungen
 
-> Lebendes Dokument. Neue Entscheidungen oben anfügen. Format: Decision → Rationale → Consequences.
+## 2026-08-26: Locale — Graph, Terms, Wordings; kein Display aus term_mapping
+
+**Kontext:** KARTE-Chrome ist DE, Atomtexte EN. Frage: `sys_term_mapping` jetzt als Label-Katalog für alle Systeme füllen? Graph-Namen (Kopf, Sonne) nachziehen? Extra-DB-Spalte je Sprache?
+
+**Decision:**
+1. **Eine App-Locale** (`[locale]`, später Profil-Default). Graph, Chrome und Texte folgen derselben Locale. Kein zweiter Sprachen-Schalter am Chart.
+2. **Vier Töpfe, keine neue Spalte:**
+   - **Invariant:** Zahlen, Glyphen, Geometrie, Canonical-IDs. Unabhängig von Locale.
+   - **Chrome:** Buttons, „Design“, „definiert“, Zentrumsnamen auf dem Graph — `next-intl`. Nicht KG.
+   - **Essays:** `sys_synthesis_wordings` — **eine Zeile** je `(canonical_id, language, version)`; Styles (natural/coaching/…) liegen **in derselben Zeile** (`styles` jsonb), nicht als Extra-Spalte. Zweite Sprache = zweite Zeile, kein Überschreiben.
+   - **Aliases (Pipeline):** `sys_term_mapping` existiert und ist produktiv. Viele Synonyme → eine ID („Power Gate“ / „Kraft-Tor“ → `hd.gate.34`). Das ist **Inbound für text2kg**, nicht das Display-Label auf dem Graph.
+3. **term_mapping nicht zum UI-Katalog umbauen.** Viele-zu-eins. Ein Graph braucht **ein** Vorzugswort je `(canonical_id, language)`. Dafür später entweder next-intl (kleine Mengen) oder eine eigene Label-Zeile mit Unique `(canonical_id, language)` — nicht synonym-rows recyceln. Andere Systeme bekommen Aliase, wenn ihre PDFs `extract_term_mapping` laufen; das füllt die Pipeline, nicht die Chart-UI.
+4. **Graph-Namen jetzt nicht „sauber i18n’en“.** Ist: Zentren fest DE, Planeten-Rails EN (`HD_PLANET_LABEL`; `HD_PLANET_LABEL_DE` ungenutzt). Bewusste Mischung bis Locale-Produkt (2026-08-17 bleibt). Dann next-intl, nicht Figma, nicht Geometry-TS.
+5. **Keine Übersetzungswelle, kein DE-Re-Synth, kein Full-term_mapping-Seed als UI-Vorarbeit.** Overlay-Cache weiter `person_id + locale + ruleset`.
+
+**Nicht:** `sys_kg_nodes` um `label_de`/`label_en`-Spalten erweitern; Essays in term_mapping legen; Overlay aus EN-Cache übersetzen.
+
+---
+## 2026-08-17: Sprache — Quelle, Overlay, UI-Chrome getrennt
+
+**Kontext:** KARTE mischt DE-Chrome (`definiert`, `Mechanik`) mit EN-Atom-/S0.5-Texten. Overlay-Prompt ist EN. `pickWording` bevorzugt `language=de`, fällt auf `en`. Locale-Route existiert (`[locale]`), Produkt-Locale für HD-Content ist nicht gewählt. Decision 2026-08-13: Atom-UI folgt später Locale/`wordings.language`.
+
+**Decision:**
+1. **DB/KG bleibt Quellsprache.** HD S0/S0.5-Bücher sind EN → Interpretationen und `canonical_wording` bleiben EN, Feld `language` setzen. Nicht im Extract übersetzen. Zweite Sprache = zweite Wording-Zeile (`canonical_id` × `language`), kein Überschreiben.
+2. **Inspector** = Lookup, kein LLM. Zeigt den Text der gewählten Locale, sonst Fallback EN. Chrome (Labels, definiert/undefiniert) über next-intl, nicht in die Atomtexte mischen.
+3. **Overlay** = read-time, Sprache = Request-Locale, gleicher Fallback. Cache-Schlüssel später: `person_id + locale + overlay_ruleset`. Nicht den EN-Absatz nachträglich übersetzen — neu generieren. Bis Locale-Produkt: Overlay EN (wie die Atome).
+4. **Jetzt keine Übersetzungswelle**, kein DE-Re-Synth. Chrome der KARTE darf DE bleiben als Arbeits-UI; Content bleibt EN. Mischung ist bewusst, bis Locale live ist.
+
+**Nicht:** Chunks auf Deutsch neu extrahieren; Overlay in der DB ohne `locale` als einzige Wahrheit speichern.
+
+---
+## 2026-08-17: State-Vertrag — 13 Typen, Display-Policy, Träger, Provenienz
+
+**Kontext:** Anzeige „undefined → nur shadow / defined → nur gift“ wäre Ontologie-Lüge. `open` im Code ist Invert von `defined`. Planetenbedeutung fehlte als eigene Schicht. 64keys/Gene-Keys-Umbenennung wäre Kosmetik.
+
+**Decision:**
+1. 13 `chart_element_types`, keine 13 Ebenen. `not_self_theme`/`signature` = `descriptor_element`. `concept` = `node_kind`, nicht Chart-Typ. Begriff System-Facette streichen (B≠C).
+2. Center-Kern: `defined | undefined`. `open` nicht persistieren. Display-Policy = Priorität, nicht Existenz. SoT: `reference/hd_state_contract.md` + `contracts.md` §1b.
+3. Planeten/Punkte = Activation-Source + optional `planetary_accent`. R = `activation.motion`. Juxtaposition aggregiert aus zwei Pol-Fixierungen (Code bereits so).
+4. Mind dreifach: Type-Theme ≠ Center-C `mind_when_open` ≠ Systemprinzip. `hd.not_self_mind.*` nicht seeden.
+5. Interpretative Inhalte: `content_provenance`. Keine Massen-Umbenennung, kein DB-Wipe vor Audit.
+6. Nächster Bau: Shared Packer Inspector/Overlay nach diesem Vertrag. Concept-Node P2. Planeten-Buch queued. Kein Center-Re-Synth.
+
+**Nicht jetzt:** Mandala, `tag_ic_metadata`, Dynamics-Job, PHS-UI, Aura-K2, MinerU aller unused.
+
+---
+
+## 2026-08-17: Wissensarten ≠ mention; Mandala ≠ 15 Keys; HD-KARTE bleibt System-Linse
+
+**Kontext:** S0.5-Overview in contrast/mention zu packen ist keine Königslösung. Drei Vokabulare (Tradition-Slots vs. Chart-State vs. App-Sicht) wurden vermischt. `dimensions.*` (15) sind nicht die 12 Mandala-Segmente und nicht die 3 Ringe (Kern/Nah/Feld). Overlay/Inspector sind KARTE Layer 2 (HD), nicht das Mandala.
+
+**Decision:**
+1. Aboutness bleibt primary/contrast/mention. Gattung, Werk-Overview, Beziehungen, Kombinationen haben eigene Fächer (Concept-Node, Source-Essay, Edges, `sys_dynamics`) — siehe `contracts.md` §1a.
+2. C-Slots entstehen durch **Recherche oder UI-Bedarf**, nicht automatisch aus MinerU. Kein Corpus-Scan aller Werke auf Verdacht.
+3. `sys_dynamics` bleibt kombinatorisch/zeitlich, separat von `payload.process`.
+4. Nächste Bau-Schritte: HD-Inspector/Overlay lesen dieselben A/C-Slots, die später Handbuch Tiefe 1–2 nutzt. Mandala und Cross erst nach einem Domänen-Spike + zweitem System. Kein Center-Re-Synth.
+5. Landkarte-Draft: Canvas `ic-wissenslandkarte`.
+
+**Nicht jetzt:** Mandala-SVG, `tag_ic_metadata`, Dynamics-Job, Full-Re-Synth.
+
+---
+
+## 2026-08-15: Facetten-Vertrag — Achse A für alle Elemente, C nur wo die Tradition einen Essay hat
+
+**Kontext:** „Nur Center zuerst“ war **Füll-Reihenfolge**, nicht Architektur. Overlay, Handbuch und Werkstatt brauchen Achse A (gift/shadow/trap/…) an **jedem** Element. Achse C (z. B. `mind_when_open`) nur, wo ein eigener Essay existiert. Details: `cursor/contracts.md` §1a.
+
+**Decision:** Vertrag gilt für alle `element_type` / Systeme. Nacharbeit = Lesen vorhandener Payloads + S0.5-Relink in Center-C, kein Wipe, kein Massen-Re-Synth. Klassen-Wissen nicht als mention an Geschwister.
+
+---
+
+## 2026-08-15: Eine ID, viele Facetten — Anzeige ≠ Overlay-Synth
+
+**Kontext:** S0.5 (Never Mind + You and the Shadow) hängt an `hd.center.*`. Ein Re-Synth dieser Nodes mit Top-8 würde Funktions-Text (Winn/Schoeber-Karten) und Mind-wenn-offen in einen Absatz rühren. 64keys zeigt dasselbe Material auf **Sichten** (Typ/Profil vs. Aktivierung: offen|definiert × Potenzial|Schatten), nicht als einen Mischabsatz. Extract-Contract hat die Facetten schon (`dimensions.gift`/`shadow`, `process.trap`/`gift_activation`); Read-Path und `synthesize_node` kippen sie in **ein** `canonical_wording`. Das ist dasselbe Muster wie Rails: eine Line, drei Ebenen — nicht ein Glyph.
+
+**Decision:**
+1. **Ein K2-Node bleibt ein Element** (`hd.center.ajna`). Keine `hd.not_self_mind.*` seeden, solange Inspector/Overlay keinen eigenen klickbaren Mind-Knoten brauchen.
+2. **Atom-Wording** (`sys_synthesis_wordings`) = mechanisch „was das Element *ist*“. Center-Karten (S0) **nicht** neu synth’en, nicht wipen. Der kurze „wenn offen/definiert“-Satz darin ist Altlast, kein Wipe-Grund.
+3. **Facetten** (offen|definiert, gift|shadow, Mind-wenn-offen) werden **read-time** geholt: Chart-State (K1) wählt die Spalte; Quelle ist `link_role=primary` und/oder `dimensions`/`process` — nicht ein zweiter Full-Synth-Topf.
+4. **Zwei Lesarten, ein Speicher:** Inspector/Aktivierung-Äquivalent = Key-Lookup, kein LLM, Facetten gestapelt (wie Inspector schon Buchpole vs. Aktivierung trennt). Overlay = wenige Atome **dieser** Person kombinieren; offene Zentren bekommen einen **zweiten** Prompt-Block (Mind/Schatten), nicht denselben Center-Excerpt nochmal länger.
+5. **text2kg ohne Rolle ist Recall, keine Wahrheit.** S0.5-Overview-Chunks (`mention`) dürfen am Node bleiben, dürfen aber nicht Inspector/Overlay/Synth füttern. Heart-Chunk (Shadow #20) gehört zu `hd.center.heart`, nicht Solar Plexus.
+6. RAG/Embeddings sind nicht der Atom-Abruf. Atom = `canonical_id` + State + Facette.
+
+**Consequences:** Nächster S0.5-Schritt = Relink `primary`/`mention`, dann Overlay-Slot + Inspector-Stapel — kein Center-Re-Synth, keine neuen IDs. `payload.process` bleibt der Werkstatt-Pfad (Decision 2026-08-05), sobald die UI ihn liest.
+
+**Nicht:** Full-Re-Interpret der Center-Bücher; `not_self_mind.*` aus TOC; S0.5 in `IC_SYNTHESIS_MAX_INTERPS` „durchsetzen“.
+
+---
+
+## 2026-08-14: Abgeleitete Fixierung — Overlay differenziert, Rails nicht vermischen
+
+**Kontext:** Jovian Archive (Line Fixing, 2026-06-09) belegt Same-Gate: ein Planet kann andere Linien *desselben* Gates fixieren, wenn er deren Pol-Planet ist (Bsp. Mars 16.1 → 16.3/16.4). IHDS + Jovian belegen Harmonic: Pol-Planet im Partner-Gate des Kanals (Bsp. Venus in 39 → 55.2). Dachau/64keys: Saturn 18.3 ▼ plausibel Jupiter 18.1 Same-Gate; 57.5 Stern plausibel Pluto 57.5 ▲ direkt + Mond 10.1 ▼ harmonic über 10–57. „Juxtaposition“ an der Line ≠ Juxtaposition-Kreuz (4/1).
+
+**Decision:**
+1. Glyphe bleibt ▲ / ▼ / ★ (= beide Pole fixiert). Sie zeigt den **Zustand**, nicht den **Weg**.
+2. Intern und im Overlay zählt ein Pol mit **Quelle**: `direct` | `same_gate` | `harmonic` (+ später transit/relationship). Felder: Ziel-Line, Pol, Planet, Aktivierung `gate.line`, Seite (Design/Persönlichkeit), Kanal wenn harmonic.
+3. Overlay/LLM **nicht** „ist juxtaposition“ als Stempel. Stattdessen: allgemeiner Line-Text + beide Pol-Absätze + Herkunft in einem Satz (Planet, Gate.Line, Mechanismus). Keine Rangfolge `direkt > same-gate > harmonic` erfinden. Bewusst/unbewusst (Persönlichkeit/Design) darf genannt werden — das ist HD-Mechanik, keine Skala.
+4. Rails v1 bleiben **direkt**. Abgeleitete Marken nicht so malen, als wäre der sitzende Planet der Buchplanet. Inspector: Buchpole / diese Aktivierung / abgeleitete Quelle getrennt.
+5. Edges: abgeleitete Fixierung ist **chart-computed** (Read-time), kein geseedeter Literatur-Edge. Form sinngemäß `Moon 10.1 —fixes_pole:detriment→ 57.5`. Retrieval darf das später als Kontext kanten, nicht als ontologischen Layer.
+6. Zwei 64keys-Charts (Dachau + 26.07.2023) stützen Same-Gate und Harmonic am Renderer. Rails bleiben direkt, bis Inspector/Overlay die **Quelle** zeigen. Kein dritter Chart als Blocker für den Rechner.
+
+**Consequences:** Overlay v1b bekommt Fixing-Facts, nicht nur Status-Enum. 18.3: Saturn aktiviert, Jupiter 18.1 liefert ▼. 57.5: Pluto ▲ direkt, Mond 10.1 ▼ harmonic — Line-Juxtaposition, nicht „ausgeglichen“. Weder Planet-Gewichte noch Intensitätsprozente.
+
+**Zweit-Chart 26.07.2023 11:47 Berlin** (Zahlen gleich). Direkt gleich: Mond 39.2 ▲, Mars 53.2 ▼, Jupiter 24.6 ▲, Venus 29.5 neither, Saturn 37.1 neither (Buch: Venus exalted, `detriment_planet: null`; 64keys ohne ▼). Abweichungen = Wege: Saturn 55.6 bei uns ▲ / 64keys Stern → Mond 39.2 Detriment von 55.6 im Partner-Gate 39. Uranus 2.6 leer / 64keys ▲ → Merkur 2.2 Same-Gate. NN 3.3 leer / 64keys ▼ → Pluto in 60 Detriment von 3.3.
+
+**Nicht als Nächstes:** alle unused HD-PDFs durch MinerU. Die Fixing-Mechanik braucht die 384er-Tabelle + Kanalpaare (beides da). *Understanding the Planets* erst, wenn Overlay Träger-Sätze braucht (Chunk-Profil, nicht Chart-Blocker). *Holistic Analysis* Teil 1 fehlt auf Disk. *Line Companion* fehlt; nicht beschaffen nur für diese Regel.
+
+---
+
+## 2026-08-14: Polarität = drei Ebenen, Rails nur direkt
+
+**Kontext:** 64keys zeigt Personality Saturn 18.3 ▼. Rave I’Ching 18.3 ist Neptune exalted / Jupiter detriment. IHDS: eine Linie kann zusätzlich über dasselbe Gate oder das harmonische Gate des Kanals fixiert werden — das ist nicht die Buchzeile.
+
+Dachau: kein Gate 58 (Harmonisches von 18). Dafür Personality Jupiter 18.1 — der Detriment-Planet von 18.3 — im selben Gate. Das kann 64keys’ Saturn-▼ erklären, wäre aber **abgeleitete** Fixierung. 57.5 Pluto ohne ▲ in 64keys erklärt Harmonic nicht (Mond ist 10.1, nicht 10.5).
+
+**Decision:**
+1. Rails v1 bleiben **direkt**: Glyph nur wenn dieser Planet der Exalt-/Detriment-Planet **dieser** Gate.Line ist. 384er-Tabelle nicht an 64keys anpassen.
+2. Inspector trennt Buchzeile und Chart-Planet: „Linien-Pole (I’Ching)“ vs. „Diese Aktivierung“.
+3. Same-Gate / Harmonic / Transit / Beziehung = eigene Ebene (v2), nur wenn IHDS-Regel als Code steht und als „Chart-Fixierung“ beschriftet ist — nicht still auf die Säule.
+4. `both` / Juxtaposition ist keine dritte Buch-Zuordnung. v1 = zwei Träger auf derselben Gate.Line.
+
+**Consequences:** Saturn 18.3 bleibt ohne ▲/▼. Jupiter 18.1 bleibt ▼. 29.5 Sonne bleibt ▲. Line-Prosa im Inspector bleibt allgemein; Polarität steht an der Säule / in den zwei Inspector-Zeilen.
+
+---
+
+## 2026-08-14: pdftotext 384er-Tabelle, Lookup an
+
+**Kontext:** `pdftotext -layout` der Complete Rave I’Ching (Storage). Glyph-Map aus benannten Sätzen im selben Extract, nicht geraten. 384/384 Line-Blöcke, 363 mit beiden Polen.
+
+**Decision:** Lookup an. Dachau-64keys 7/8. **18.3:** I’Ching Neptune exalted / Jupiter detriment; 64keys zeigt Saturn ▼. Kein Override — I’Ching ist die Tabelle. User prüft 64keys-18.3.
+
+**Consequences:** Nach Reload: 8.3 ohne Marke, 29.5 ▲, 18.1 ▼ (Jupiter). Saturn 18.3 ohne Marke (Ra, nicht 64keys). **R** aus Swiss-Ephemeris-Speed (`swe.calc_ut` xx[3] < 0); Sun/Earth/Moon nie R. HD-Container neu starten, damit Python-Änderung live ist.
+
+---
+
+**Kontext:** Dachau 18.11.1980 19:20. App zeigte Personality Earth 8.3 als detriment und Design Sun 29.5 als Stern. 64keys: 8.3 ohne Marke; 29.5 = ▲ exalted; both = gestapelte Dreiecke (= Stern); R = Retrograd.
+
+**Decision:**
+1. MinerU-named-Katalog nicht anzeigen (`POLARITY_LOOKUP_ENABLED=false`). Falsch ist schlimmer als leer.
+2. Zeichen: ▲ exalted, ▼ detriment, ▲▼-Stack = Stern = both. Nicht ★ für exalted.
+3. **R** ist K1 (Ephemeris-Speed), nicht I’Ching. Engine-Aktivierungen haben nur `degree` — Retrograd später extra.
+4. 100%: `pdftotext -layout` der Complete Rave I’Ching in Storage, Parser, Abgleich gegen 64keys-Fixture `apps/web/lib/hd/hd-dachau-1980-64keys-fixture.ts`, dann Flag an.
+5. 8.3 `detriment_planet: earth` war OCR-Spill von Line 8.2 („The earth in detriment“). 8.3-Chunk hat keine Planetennamen, nur `p`/`s`.
+
+**Consequences:** Nach Reload keine Polaritäts-Glyphen. Nächster Content-Schritt pdftotext, nicht Overlay v1.
+
+---
+
+**Kontext:** Contract verlangt 384er `gate+line → exalt_planet, detriment_planet` aus I’Ching-Line-Chunks. MinerU-Zweispalter: rekonstruierte Line-Chunks enthalten fast keine Planetennamen und keine Unicode-Glyphen. Buchstaben+`p`/`s` als Glyph-Map erzeugt Falsch-Mars.
+
+**Decision:**
+1. Runtime + Rails-Sterne + Inspector-Status sind gebaut (`unknown` / `exalted` / `detriment` / `neither` / `both`).
+2. Katalog nur **named** Treffer (`Mars exalted` / `in detriment` / `no planet in detriment`).
+3. Volle 384 = `pdftotext -layout` der Complete Rave I’Ching in Storage, dann denselben Parser. Kein LLM, keine erfundenen Planeten.
+
+**Consequences:** Die meisten Zeilen zeigen noch keine Sterne. Nächster Content-Schritt ist pdftotext, nicht Overlay v1.
+
+---
+
+## 2026-08-14: Offene Zentren immer im Wording-Lookup
+
+**Kontext:** Die HD-Engine schreibt nur *definierte* Center in `chart.nodes`. Der Lookup holte deshalb keine `hd.center.*` für offene Zentren — Inspector ohne Text, Overlay nur Namensliste.
+
+**Decision:** `wordingLookupIds` unioniert **immer** alle neun `hd.center.*`. Overlay v0 bekommt Open-Center-Excerpts (kein Gate-Invent). Engine-`nodes` bleiben definiert-only (K1-Wahrheit).
+
+**Consequences:** Nach Reboot einmal neu berechnen. Nächster Chart-Schritt bleibt 384er Exalt-Lookup, nicht Center-Re-Synth.
+
+---
+
+## 2026-08-14: HD Bodygraph-Rails, Polarität, Overlay-Rezept
+
+**Kontext:** Slice 1 zeigt Zentren + OS-Chips + Overlay v0. Klassische Planetensäulen, Exalt/Detriment und Planeten-Bedeutung fehlten im Konzept.
+
+**Decision:**
+1. `/karte/hd` **ist** die zukünftige HD-Karte. Rails links Design / rechts Persönlichkeit gehören in `HdBodygraph`, nicht ins Mandala.
+2. Aktivierungen = K1 (Planet × Gate.Line). Polarität = vier Stati (`exalted` / `detriment` / `neither` / `both`) via Lookup auf `hd.line.*`, keine 13×384 Kombi-Nodes.
+3. Inspector = Gate-Atom + Line-Atom (+ Planet wenn Nodes da). Overlay bekommt Polarität erst, wenn Gates/Lines im Prompt sind — als Flag + Pol-Absatz, nicht als generischer Status-Stempel.
+4. Bau: UI-Säulen → I’Ching-Lookup → Planeten-Buch (`Understanding the Planets…`, queued_unused) → Overlay v1/Edges.
+5. SoT: `reference/hd_bodygraph_overlay_contract.md`. Bandbreiten-These und Planet-Hierarchie = Literatur-Check, kein Gewicht.
+
+**Rationale:** Line-Wordings existieren; die 384er-Tabelle nicht. Planeten färben das Tor, sind aber kein 14. Layer.
+
+**Consequences:** Nächster UI-Slice = Säulen klickbar. Keine erfundenen Overlay-Gewichte. PHS-Pfeile bleiben eigene Ansicht.
+
+---
+
+## 2026-08-13: Chart-UI Slice 1 + Overlay v0 (HD KARTE)
+
+**Kontext:** S0-Wordings und HD-Engine waren da; die App hatte keine Chart-Seite. Slice 1 ist der HD-Raum (KARTE layer 2), nicht Vier Spiegel / Mandala.
+
+**Decision:**
+1. Route `/home/karte/hd`: Geburt → `POST /api/ic/hd-chart` → Python-HD-Service → `user_persons` / `user_charts` → Bodygraph + Atom-Lookup `sys_synthesis_wordings`.
+2. Atomtexte bleiben **Lookup**, kein LLM pro Klick. Overlay (Typ+Strategie+Autorität) ist **read-time**; v0 = Headline-Template. Fließtext nur mit `IC_LLM_URL` oder Langdock (`LANGDOCK_*`, dasselbe Konto wie Worker-Synth). SGLang auf Spark ist dafür nicht Voraussetzung.
+3. UI-Sprache der Atoms folgt später Locale/`wordings.language`. Keine fest verdrahteten DE-Atomlabels.
+4. `supabase db reset` vermeiden — KG lebt nur in lokaler Postgres. Dump: `supabase db dump --local --data-only`.
+
+**Rationale:** Erst ein Aufrufer (persistierter Chart), dann Overlay. Template ohne LLM ist ehrlich; gestapelte Atomtexte sind keine Kombination.
+
+**Consequences:** Nächster Schritt Overlay-LLM oder S0.5. Schulen nicht ingestieren. Makerkit v4 nicht in diesem Slice.
+
+---
+
+## 2026-08-13: HD-Schulen / Gate-Stimmen — `tradition` auf `hd.*`, kein zweites KG
+
+**Kontext:** S0-Wordings sind jovian (Ra). Weitere Bücher sollen später **Linsen** sein, nicht parallele Human-Design-Graphen. Cosmic Way, Blue I Ching und Schoeber waren in Doku teils als I Ging bzw. „nicht 64keys“ geführt — Produktzuordnung jetzt:
+
+**Decision:**
+
+1. **Gleiche Nodes** `hd.gate.*` / `hd.channel.*` / `hd.center.*`. Unterschied nur **K3/K4** über `tradition` (und `source_work` / optional `teacher`). **Keine** zweite Engine, **kein** zweites `system_id` für diese Stimmen.
+2. **Default-Wording (S0, Chart-MVP):** `tradition: jovian` (Ra / Complete Rave I’Ching + übrige S0-Werke). Schulen **nicht** in denselben `canonical_wording`-Topf, solange `tradition` in der Pipeline fehlt.
+3. **Gate-Stimmen (64 Tore):**
+   | `tradition` | Werk | Rolle |
+   |---|---|---|
+   | `jovian` | Ra Complete Rave I’Ching | Default |
+   | `64keys` | Ebhart *Blue I Ching* (`64keys_Blue-I-Ching.pdf`) | 64keys-Sicht der 64 Gates (Potential/Shadow) |
+   | `cosmic_sidereal` | Anthony/Moog *Oracle of the Cosmic Way* | **Beschreibung der 64 Gates aus sideraler Sicht** — K3 auf `hd.gate.*`, **keine** Engine, **kein** `i_ching.*`-Primärziel |
+4. **Sidereal rechnen** bleibt `compute_profile.hd` (contracts §13). Cosmic-Way-**Texte** ≠ Ayanamsha. Produkt-Linse „sidereal/cosmic“ darf später **beide** Schalter setzen (Profil + diese Stimme).
+5. **Klassisches I Ging** (Wilhelm/Baynes, Legge, Huang, Shaughnessy) = eigenes Struktursystem `i_ching.hex.*` + `text_line` — wie später Kabbala/Chakren: **Ur-System**, nicht HD-Schule. Parkyn *Book of Lines* bleibt HD-Schule (`parkyn`), nicht I-Ging-KG.
+6. **Schoeber:** Person/Schule = **64keys-Orbit**. *The Centres* ist **für HD geschrieben** → dieses Werk bleibt in den **jovian/HD-Center-Wordings** (`tradition: jovian`, `teacher: schoeber`). **Kein** Center-Re-Synth, **kein** Mix-Problem 64keys vs. HD auf diesem Buch. 64keys-Gate-Sicht = **nur** Blue I Ching, nicht die Center-Prosa.
+7. **Quantum HD** (Curry) unverändert `quantum_hd`. Gene Keys unverändert eigenes `gk.*`.
+8. **Jetzt nicht:** Blue I Ching / Cosmic Way ingest+synth; `tradition`-Feld in der Pipeline; Center-Wipe.
+
+**Rationale:** Ein Chart, mehrere Stimmen. Mix entsteht nur, wenn verschiedene `tradition`s ungetaggt in ein Default-Wording fallen. Schoeber-Centers ist Zweitstimme **derselben** HD-Matrix, nicht die Blue-I-Ching-Linse.
+
+**Consequences:** Mapping in `cursor/engines.md` §6.7b; Canon-Policy: Default-Synth nur jovian. Pipeline-`tradition` erst beim **ersten** Schul-Ingest. Nächster Produktschritt bleibt Chart-UI (oder GK/BaZi), nicht Schul-Coverage.
+
+---
+
+## 2026-08-13: Canon-first Synthesis — Mechanik-Wahrheit vor Coverage
+
+**Kontext:** Forensic nach HA2/Four-Views Close-out: `ego_projected` (G/25-51), `self_projected` (splenic-Klang), `definition.none` (Authority/Strategy-Vermischung) trotz Links. Ursache: Relink-Recall + Synth ohne Canon/Verify; Score/Poison allein = Heuristik, keine Gewissheit.
+
+**Decision:**
+1. **Canon-first:** Mechanik aus Canon-Cards; Interps nur belegen/ausschmücken.
+2. **Status-Enum:** `blocked` | `canon_fallback` | `synth_draft` | `verified` — steuert Write/UI; kein weiches Confidence als Gate.
+3. **Placeholder** bei blocked: `[UNSYNTHESIZED:{canonical_id}] Insufficient clean evidence; awaiting review.` — nie erfundene Prosa.
+4. **Evidence-Admission binär**; Score höchstens Sortierung unter Admitted.
+5. **Vergleichs-/Multi-Topic-Chunks:** nicht default in Synth-Context; Soll `link_role=contrast|mention|primary` — Synth nur `primary`.
+6. **contrast/mention** bleiben wertvoll für **Edges/Interactions** (`amplifies` / `depends_on` / `clashes_with`) — anderer Pfad als Node-Wording.
+7. **Verify-before-write:** Regeln zuerst; Check-LLM nur bei `verify: semantic` / inconclusive / explizit.
+8. **Canon-Rollout:** Auth/Def YAML jetzt; Type/Strategy/Signature als Nächstes; Gates/Channels per Template; andere Systeme beim Antasten.
+9. **Bestand:** kein Full-Wipe — Risiko-Queue (BAD/WARN zuerst); stabile Layer nur Stichprobe.
+
+**Rationale:** 100 % Mechanik-Sauberkeit ist erreichbar über Canon+Admission+Verify; Literatur-Reichtum bleibt ehrlich dünn wo Bücher schwach sind.
+
+**Consequences / SoT:**
+- Policy + Chat-Playbook: `cursor/reference/synthesis_canon_first.md`
+- Canon Auth/Def: `reference/canon/hd_auth_def_canon_v1.yaml`
+- Implementierung folgt in Worker (`ic_worker.py` synthesize_node) + Relink `link_role`; bis dahin keine blinden force-Synths auf Auth-Edge-Nodes.
+
+---
+
+## 2026-08-07: Gate-Lines Layer abgeschlossen (384/384 Wordings)
+
+**Status:** ✅ erledigt (folgt auf Decision 2026-08-06 „additive Line-Chunks“).
+
+**Ergebnis:**
+1. Line-Chunks **384/384** (Cascade-Fix Gates 26–36, Spot 44.1, PDF-Refill thin/Spill).
+2. Interps **384/384** → Relink 1:1 (`ic_hd_iching_line_relink_1to1.py`) → Orphan/Cross-Link-Cleanup.
+3. Scoped Synth → **384/384** `sys_synthesis_wordings` für `hd.line.*` (Job `d3a349cb-…`).
+4. Kein destruktives Re-Extract der Gate-Chunks.
+
+**Nächster HD-Fokus:** Authority/Definition (General-Bücher) oder Schulen — nicht erneut Lines.
+
+---
+
+## 2026-08-06: Gate-Lines — additive Line-Chunks; Sibling-Share ablösen
+
+**Kontext:** Nach Sibling-Share (Coverage) war Line-Präzision bewusst offen. Entscheidung revidiert: **jetzt sauber**, ohne destruktives `extract_text` (löscht alle Chunks der Source).
+
+**Decision:**
+1. Additive Rekonstruktion per `ic_hd_iching_line_chunks.py`: MinerU-Gate-Stream + Spill-Korrektur + `pdftotext`-Fill → neue Chunks mit `chunking.method=rave_iching_gate_lines_reconstructed`, `canonical_id=hd.line.{g}_{n}`.
+2. Ziel **384/384** (anfangs 378; Gate 26 + Kaskade später per Audit/pdftotext geschlossen).
+3. Danach: `extract_interpretations` → Relink 1:1 (Sibling-Share ablösen) → scoped `synthesize_node` für `hd.line.*`.
+4. Kein flächendeckendes Re-Extract der 65 Gate-Chunks.
+
+**Qualitätssicherung im Parser:** Positions-Claims (Titel wiederholen sich gate-übergreifend), keine Free-Text-Anker, Degree-first-OCR-Header, Core-Cluster-Guard gegen MinerU-Spill, Spill-Repair, später `ic_hd_iching_line_pdf_refill.py`.
+
+**Rationale:** Produkt braucht unterscheidbare Line-Wortings; Coverage-Stopgap reicht nicht. Additive Insert vermeidet Orphan-Interps und Wipe-Risiko.
+
+**Consequences:** Abgeschlossen 2026-08-07 — siehe Eintrag oben. Alter Sibling-Share-Eintrag unten bleibt als Historie.
+
+---
+
+## 2026-08-06: Gate-Lines — Sibling-Share jetzt; Line-Präzision bewusst offen
+
+**Status:** **überholt** durch Eintrag „additive Line-Chunks“ oben (gleiche Datumswelle). Sibling-Share war Zwischenstand; Line-Chunks sind deployed.
+
+**Audit-Befund:**
+- Extremfälle: Gate 1 und 10 = Stub-Chunks (78/63 Zeichen); Line-Text steckt im Kopf von Gate 2 bzw. 11 → Override `MERGED_LINE_CONTENT={2:1, 11:10}` im Relink-Script.
+- Häufiges Muster: ~20 Gate-Chunks starten mit `6 <LineName> …°` (= Line 6 des **vorherigen** Gates). Anker für Gate N+1 feuert oft eine Seite zu früh → Tail von Gate N landet im Head von N+1.
+- Weitere kurze Intro-Chunks ohne Line-Header (z. B. 5, 8, 14, 20, …) wurden bei `len≥400` trotzdem auf alle 6 Lines verlinkt (weiche Abdeckung).
+
+**Decision (jetzt):**
+1. **Sibling-Share behalten** als Layer-Abdeckung — kein Line-Chunk-Profil und kein Re-Interpret in diesem Sprint.
+2. Extremfälle 1/10 per Override abdecken (Inhalt existiert, nur falsch zugeordnet).
+3. **Kein** flächendeckendes Nachziehen weiterer `MERGED_LINE_CONTENT`-Paare ohne Messung — würde Nachbar-Interps noch stärker vermischen.
+
+**Decision (später, bewusst offen — wann Line-Präzision produktrelevant wird):**
+1. Eigenes Task: Chunk-Grenzen im I'Ching **reparieren** (Profil-Anker so, dass Gate N nicht in N+1 hineinragt) **oder** neues Profil `rave_iching_gate_lines` (Split an `N LineName DD°`).
+2. Danach Re-Interpret der betroffenen Chunks + Relink 1:1 `hd.line.{g}_{n}` (Sibling-Share ablösen).
+3. Trigger: Handbuch/Chart braucht unterscheidbare Line-Wortings (z. B. „dein Sun in 13.3“ vs. generisches Gate-13-Kapitel) — nicht nur Coverage-Zahlen.
+
+**Rationale:** Dieselbe Kosten-/Risiko-Logik wie Crosses 2026-08-05 (Tagging/Relink vor teurem Re-Chunk). Line-Präzision ist real nötig für die Produkt-Tiefe, aber ein anderer Arbeitspaket-Schnitt als „Layer erstmal füllen“.
+
+**Consequences / Doku:** Eintrag hier + `reference/hd_layer_id_and_chunk_profiles.md` (Offen-Abschnitt Gate-Lines) + Handover-Hinweis. Script-Override und Sibling-Share bleiben bis zum gezielten Fix.
+
+---
+
+## 2026-08-05: Incarnation Cross — Theme-Parent + Varianten-Children; kein `_1`-Default; Chunk-Profil Pflicht
+
+**Kontext:** Seed hat 192 flache `hd.incarnation_cross.*`-Nodes (je RAC/JC/LAC × nummerierte Variante `(1)–(4)`). Literatur und LLMs sprechen oft nur „Vessel of Love“ ohne Nummer. Remap-Versuch mit Default auf `_1` war **verlustbehaftet** (vier echte Crosses = vier Sun-Gates/Quarters). Generic Chunking der Cross-Bücher (1440 Chunks ohne Meta) → 14/192 mit Interps. Analogie zu Gates: dort half `rave_iching_gates`-Chunk-Profil + `gate_number`-Hint; Crosses bekamen kein Äquivalent → gleiches Klassenproblem, andere Buchstruktur.
+
+**Decision:**
+1. **Ontologie (Soll):** Pro benanntem Cross-Thema ein **Parent** `hd.cross_theme.{stem}` (z. B. `vessel_of_love`) + **Children** die bestehenden 192 Varianten-Nodes, Edge `variant_of` / `part_of`. Allgemeiner Fließtext → Theme; Chart-Engine liefert immer die **spezifische** Variante → Child. Abfrage Handbuch: Child + Parent (Theme-Kontext), nie still eine andere Variante unterschieben.
+2. **Kein Auto-Map** mehrdeutiger Kurzformen auf `_1` (zurückgenommen in `normalize_hd_canonical_id`). Nur 1:1-eindeutige Aliase.
+3. **Chunk-Profil** `incarnation_crosses_by_profile` (wie Gates): Split an `THE Nth GATE`, Metadata = exakte RAC/JC/LAC-`canonical_id`s aus `hd_crosses_extracted.json` für dieses Sun-Gate. Danach Re-Chunk/Re-Interpret der Cross-Quellen — nicht Blind-Re-Interpret auf Meta-losen Chunks.
+4. **Checkliste vor jedem neuen Struktur-Layer** (Gates, Crosses, PHS, …): Katalog-IDs klar? Theme vs. Instanz? Chunk-Profil nötig? Primary-Hint? → `reference/hd_layer_id_and_chunk_profiles.md`.
+
+**Rationale:** Entspricht bereits dem Muster `line_def` (Theme) vs. `line.{gate}_{n}` (Instanz). Chart-Korrektheit verlangt die richtige `(N)`-Variante; Literatur-Korrektheit braucht einen Ort für unnummerierte Aussagen.
+
+**Consequences:** (1) Theme-Nodes + Edges seeden (nächster Seed-Schritt, noch nicht ausgeführt). (2) Cross-Bücher mit Profil neu chunking/interpret. (3) Vorherige Remap-Links auf `_1` bei Mehrdeutigkeit als verdächtig behandeln / nach Re-Interpret ersetzen. (4) Doku: dieser Eintrag + Layer-Checkliste.
 
 ---
 
@@ -322,6 +642,30 @@
 **Rationale:** NVIDIA text2kg ist NER+RE für faktische Domänen (News, Finance) mit festen Entity-Typen (ORG, PERSON) und 15 Relationsverben. Esoterische Texte brauchen Kontext für Bedeutung — 512-Zeichen-Chunks reißen das auseinander. Unsere Dimensions-Struktur (shadow, gift, archetype...) fängt mehr auf als flache Triples. Text2kg kommt danach deterministisch.
 
 **Consequences:** Kein NVIDIA-Pipeline-Klon. Eigene Ontologie (Gate, Center, Stem, Archetype). Eigene Relationsverben (symbolisiert, korrespondiert_mit, aktiviert). Chunk-Größe bleibt ~1000 Tokens. Von NVIDIA übernehmen: Pipeline-Architektur, ggf. cuGraph für spätere Graph-Analytik, LoRA Fine-Tuning als Option.
+
+---
+
+## 2026-08-05: Incarnation Crosses — Chunk-Meta-Tagging statt Re-Chunk/Re-Interpret (Korrektur des Vorschlags vom selben Tag)
+
+**Kontext:** Vorheriger Plan (dokumentiert oben, "Theme-Parent + Varianten-Children") sah als nächsten Schritt vor, entweder (a) `hd.cross_theme.*` Parent-Nodes zu seeden ODER (b) q6 *(„Incarnation Crosses by Profile")* mit dem neuen Chunk-Profil **komplett neu zu chunken und neu zu interpretieren** (löscht alte Chunks via `_delete sys_source_chunks`, danach volle LLM-Re-Interpretation aller ~1440 Chunks über Langdock).
+
+**Warum das ein Fehler gewesen wäre:**
+1. **Kosten:** Volles Re-Interpret von 1440 Chunks über Langdock (gpt-5-mini) kostet unnötig Geld/Zeit für etwas, das rein strukturell (Canonical-ID-Zuordnung) ist — keine inhaltliche Extraktionsschwäche.
+2. **Risiko:** `_handle_extract_text` löscht `sys_source_chunks` für die Quelle komplett (`_delete ... where source_id=...`). Ob/wie dabei bereits verlinkte `sys_interpretations` (4732 Stück, inkl. der frisch gefixten 546 Cross-Links aus dem Elements-Remap) betroffen sind, war nicht verifiziert (FK-Verhalten unklar). Unnötiges Risiko für bereits vorhandene Arbeit.
+3. **Der eigentliche Engpass war nie die Extraktion**, sondern dass `sys_source_chunks.metadata` für q6 keine `canonical_id`/`canonical_ids` trug (Buch nutzte generisches `paragraph_accumulate`-Chunking statt eines Profils) — der Worker-Code (`_resolve_canonical_ids_from_interp`, `_primary_element_hint_from_chunk_meta`) liest genau diese Felder bereits.
+
+**Decision:** Statt Re-Chunk/Re-Interpret → **reines Metadata-Patch + kostenloser Re-Link:**
+1. Neues Skript `ic_hd_cross_chunk_tag.py` scannt die **bestehenden** 1440 Chunks von q6 nach `"THE Nth GATE"`-Ankern (Regex, gleiche Logik wie das Chunk-Profil) und trägt den zuletzt gesehenen Gate-Anker pro Chunk fort (Forward-Fill über Chunk-Grenzen, da altes Chunking nicht an Gate-Grenzen ausgerichtet war).
+2. Für jeden Chunk werden `personality_sun_gate`, `quarter`, `canonical_ids` (RAC/JC/LAC), `canonical_id`/`primary_canonical_id` **additiv in die Metadata gepatcht** — kein Löschen, kein Re-Chunk. Ergebnis: 1439/1440 Chunks getaggt, alle 64 Gates abgedeckt.
+3. Ein einziger `text2kg`-Job wird für die Quelle neu enqueued. `text2kg` liest bei jedem Lauf **alle** Interpretationen der Quelle frisch + aktuelle Chunk-Metadata neu (kein "skip existing") — der Worker-Code hängt jetzt automatisch die `canonical_ids` aus der Chunk-Metadata an jede Interpretation an (Ergänzung vom 2026-08-05 in `_resolve_canonical_ids_from_interp`), **ohne LLM-Call**. Reines DB-Linking.
+
+**Trade-off, den wir bewusst eingehen:** Die Genauigkeit der Gate-Zuordnung pro Chunk ist eine Näherung (letzter Anker im Chunk gewinnt für den ganzen Chunk; TOC-Abschnitte am Buchanfang können vereinzelt falsch/uneindeutig getaggt sein). Für 1440 Chunks ist das kein Problem — echte Content-Kapitel sind lang genug, dass die Näherung trägt.
+
+**Bekannte Ineffizienz (nicht behoben, nur dokumentiert):** `_handle_text2kg` → `_link_interpretation_to_node` macht pro (Interpretation × Canonical-ID) einen **GET+PATCH-Roundtrip** gegen `sys_kg_nodes` (kein Batching). Bei ~4700 Interpretationen × jetzt ~3 zusätzlichen Cross-IDs pro getaggtem Chunk sind das grob 15–20k sequenzielle HTTP-Calls → Laufzeit im Bereich von 30–90+ Minuten für einen einzelnen Re-Link-Lauf. Für kleine Quellen unkritisch, für große/wiederholte Relinks ein Kandidat für Batch-Optimierung (`sys_kg_nodes` Upsert mit mehreren IDs pro Request), aber **kein Blocker jetzt**.
+
+**Nacharbeit (Abend 2026-08-05):** Der erste Full-`text2kg` nach Tagging endete bei nur **51/192**, weil der laufende Spark-Worker den lokalen Chunk-Meta-Fix (`canonical_ids` in `_resolve_canonical_ids_from_interp`) **noch nicht deployed/restarted** hatte — und weil `payload.elements` oft schon (falsche) IDs trägt und den Fallback auf `chunk_meta.canonical_id` überspringt. Lösung: dediziertes Skript `ic_hd_cross_chunk_relink.py` (lädt Chunks+Interps, aggregiert in-memory, **1 PATCH pro Cross-Node**) → **192/192 Nodes, +4190 Links**. Worker danach neu gestartet. Scoped Synth für alle 192 enqueued.
+
+**Offen:** `hd.cross_theme.*` Parent-Nodes bewusst **noch nicht** geseedet — Chart-Engine kennt immer die exakte Variante; erst messen, ob genug Literatur nur den Kurznamen ohne Gate-Kontext nennt.
 
 ---
 

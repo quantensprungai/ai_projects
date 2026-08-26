@@ -9,7 +9,7 @@ in_scope:
 out_of_scope:
   - Chart-Berechnung (siehe reference/hd_state_contract.md)
   - Content-Admission (siehe cursor/contracts.md)
-last_update: 2026-08-25
+last_update: 2026-08-26
 ---
 
 # Figma × KARTE
@@ -119,13 +119,16 @@ Frame `KARTE / Rails+Graph` auf Seite 01: Design links · Graph · Persönlichke
 Spiegel (nicht 64keys-Kopie; gleiche Idee „Zahlen am Körper“):
 
 ```
-Design:     Name  R  ▲▼  Tor.Linie  | Graph |
-Persönlichkeit:                 | Graph |  Tor.Linie  ▲▼  R  Glyphe
+Design:     Name  ▲▼  Tor.Linie  R  | Graph |
+Persönlichkeit:                 | Graph |  ▲▼  Tor.Linie  R  Glyphe
 ```
+
+Color/Tone ist eine **eigene Spalte**, Default **aus**. Toggle „Color/Tone an Rails“ blendet `C/T` ein, ohne dass ▲/▼/R/Tor.Linie verrutschen (feste Slots). Mini-L/R nur an den vier Kopf-Pfeilen.
 
 - **Innen** (am Graph): `Tor.Linie` — das ist die Aktivierung.
 - **Außen ungleich:** Design = Name (lesbar). Persönlichkeit = Glyphe (Marke). Nicht beides auf beiden Seiten.
 - **▲ / ▼ / Stern** und **R** sitzen am Wert, nicht an der Glyphe. `neither` = leerer Slot, nicht ein drittes Symbol.
+- **Color/Tone** = optionale Spalte (Toggle, Default aus). Hexagramm-Tiefe dieser Aktivierung, nicht die Variable-Bedeutung. Mini-L/R nur an den vier Kopf-Pfeilen.
 - Pilotzahlen = Dachau, **Ra-direct** (Saturn 18.3 `neither`, auch wenn 64keys ▼ malt).
 - Code (`hd-activation-rails.tsx`) ist **gespiegelt**: innen `Tor.Linie`, außen Glyphe; Name nur Inspector/`aria-label`. Figma ist der Entwurf.
 - Rails in Figma = **Spaltenlayout** (innen Zahl, außen Glyphe, Zeilenabstand).
@@ -156,8 +159,9 @@ einem flachen Bild zusammenschmelzen — IDs müssen bleiben.
 | Tornummern 1–64 | keine | IDs |
 | `29.5` auf der Schiene | keine | Chart-State |
 | Glyphen ☉ ⊕ … | keine | `HD_PLANET_GLYPH` |
-| „Kopf“, „Sonne“, „Design“ | ja | App-Locale (`next-intl`), nicht Figma |
-| Atom-Essays im Inspector | ja | `wordings.language` |
+| „Kopf“, „Sonne“, „Design“ | ja | App-Locale (`next-intl`), nicht Figma, **nicht** `sys_term_mapping` |
+| Atom-Essays im Inspector | ja | `sys_synthesis_wordings` Zeile je Sprache |
+| Line-C Pol-Absätze (I’Ching) | en (Buch) | `sys_source_chunks` reconstructed, nicht Synth |
 
 Figma-Labels auf dem Geometry-Frame sind Gerüst. Die App übersetzt; sie liest
 keine deutschen Layer-Namen als Copy.
@@ -256,7 +260,7 @@ Diese Wahrnehmungsregeln bleiben, auch wenn Centers größer und Kanäle neu sin
   Register Körper.
 Geometrie-Stand vor dem Neuzeichnen: `cursor/reference/geometry-backup-2026-08-24/`.
 
-**Stand 2026-08-25:** Graph + Rails folgen §4b. Variable: vier Marker neben dem Kopf — Chevron + Color mit Tone als Tiefzahl. Design links, Persönlichkeit rechts. Klick öffnet Register Körper.
+**Stand 2026-08-26:** Graph + Rails folgen §4b. Variable: vier Marker neben dem Kopf — Chevron + Color mit Tone als Tiefzahl. Rails: Color/Tone als zwei Mini-Ziffern je Planetenzeile. Design links, Persönlichkeit rechts. Klick öffnet Register Körper bzw. Tore.
 
 ## 5. Bodygraph-Geometrie — Exportformat
 

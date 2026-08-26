@@ -174,8 +174,9 @@ export IC_LLM_MODEL="Qwen/Qwen3-32B"            # je nach Setup
 .venv/bin/python3 ic_worker.py --loop --sleep 5
 ```
 
-- Worker verarbeitet: classify_domain → extract_term_mapping → extract_interpretations → text2kg → synthesize_node
-- Jeder Job braucht LLM (außer text2kg, der ist deterministisch)
+- Worker verarbeitet Content-Welle typischerweise: classify → term_mapping → extract_interpretations → **text2kg**
+- **`synthesize_node` nicht nach jedem PDF** (Content-Welle): Job synchtet systemweit alle Nodes mit Interps → nach Layer/Welle oder `only_canonical_ids` / `ic_k2_synth_batch.py`. Details: `cursor/reference/literature_content_wave_2026-07-18.md` §Synth-Policy.
+- text2kg ist deterministisch (kein LLM); Interpret + Synth brauchen LLM
 
 ---
 

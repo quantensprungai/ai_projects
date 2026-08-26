@@ -1,19 +1,82 @@
 # Literatur Content-Wellen — Stand 2026-07-18
 
-last_update: 2026-08-04 (Gates+Channels+Circuits Layer-Synth Re-Fix; text2kg Auto-Synth Root-Cause behoben; Inventar-Audit + Start Profiles-Layer)
+last_update: 2026-08-11 (Layer-Master-Checkliste + TOC-Audit; Quality-Matrix + Enrich unverändert)
 
-### Inventar-Realitätscheck (2026-08-04)
+### Inventar-Realitätscheck (2026-08-04 / Update 2026-08-10)
 
-Insgesamt nur **16 Quellen** je hochgeladen (Account-weit). Tatsächlicher Fortschritt gegen die Queue-CSV (`literature_content_wave_queue_2026-07-18.csv`, 68 HD / 49 BaZi / 9 GeneKeys / 0 für alle 14 übrigen Systeme):
+Insgesamt **~36 HD-Quellen** hochgeladen (Account wächst). Fortschritt gegen die Queue-CSV (`literature_content_wave_queue_2026-07-18.csv`, 68 HD / 49 BaZi / 9 GeneKeys / 0 für alle 14 übrigen Systeme):
 
 | System | Bücher verarbeitet | Anmerkung |
 | --- | --- | --- |
-| HD | 11/68 (16%) | nur Bodygraph-Kern (Types/Channels/Circuits/Centers/Gates); Profiles/PHS/Psychology/Schulen/Optional = 0 |
+| HD | ~20+/68 | Bodygraph-Kern + Profiles/PHS/Crosses/Lines ✅; Auth/Def + Strategy/Signature/Not-Self Enrich 2026-08-10 (Definitive, Manifestor Manifesto, Projector Empowerment, Complete Guide) |
 | BaZi | 1/49 (2%) | nur *Destiny Code* (moderne Übersicht) — **Klassiker (子平真诠/滴天髓/三命通会/渊海子平) laut Plan zuerst fällig, aber noch nicht angefasst** |
 | GeneKeys | 2/9 (22%) | nur Opening Doors + 64 Ways; Golden-Path/Bridge-Bücher offen |
 | 14 weitere Systeme (Astro, Ziwei, Jyotish, Chakra, Enneagram, I Ging, Numerologie, Wu Xing, Kabbalah ×2, Maya Tzolkin, Akan, Pancha Bhuta, Western Elements, Nine Star Ki) | 0/… (0%) | komplett unberührt |
 
-**Entscheidung 2026-08-04:** Nächster Schritt = HD-Profiles-Layer (Punkt 6 der Reihenfolge) statt neues System, da direkteste Lücke zum aktuellen Stand.
+## HD Content Quality — gut vs. dünn (Stand 2026-08-10)
+
+> **Policy ab 2026-08-13:** Coverage allein reicht nicht. Synth/Wording-Korrektheit → `cursor/reference/synthesis_canon_first.md` + `reference/canon/hd_auth_def_canon_v1.yaml`. Forensic BAD: `ego_projected`, `self_projected`, `definition.none`.
+
+**Legende:** Wordings = Synth vorhanden + Soll/Work-Check; Dichte = Primärchunks/Interps-Tiefe (nicht nur Keyword-OK).
+
+| Layer / Nodes | Coverage Wordings | Qualitätsurteil | Bemerkung |
+| --- | --- | --- | --- |
+| Types (5) | ✅ voll | **gut** | lang im System |
+| Centers (9) | ✅ voll | **gut** | |
+| Gates (64) | ✅ voll | **gut** | I’Ching-Welle |
+| Channels (36) | ✅ voll | **gut** | Life Force + by Type |
+| Circuits (10) | ✅ 10/10 inkl. integration | **gut / integration ok** | integration nachgezogen (46 Links); früher stub |
+| Gate-Lines (384) | ✅ 384/384 | **gut** | 1:1 Relink + PDF-Refill |
+| line_def (6) | ✅ 6/6 | **gut** | |
+| Profiles (12) | ✅ voll | **gut** | |
+| Incarnation Crosses (192) | ✅ voll | **gut genug** | Theme-Parent `cross_theme.*` bewusst **nicht** geseedet |
+| PHS color/tone/base/variable_def | ✅ voll | **gut** | |
+| Strategy (4) | ✅ 4/4 | **differenziert** | inform/invitation **gut** (Manifestor/Projector-Bücher); respond/lunar **genug** (Overview, keine Monografie) — siehe Master-Checkliste |
+| Signature (4) | ✅ 4/4 | **genug** | selten eigenes TOC-Kapitel; peace/success gestärkt; satisfaction/surprise dünner; LYD würde helfen |
+| Not-Self (5) Type | ✅ 5/5 | **gut** (nach Enrich) | anger/bitterness gestärkt; **Not-Self-Mind** = S0.5 nach Chart-UI (nicht dasselbe) |
+| Authority (9) | ✅ 9/9 | **gemischt** | emotional/sacral/splenic/mental **gut**; lunar/none ok; **ego_manifested / ego_projected / self_projected dünn** (1–5 Chunks, kaum mehr in Literatur) |
+| Definition (5) | ✅ 5/5 | **gemischt** | single/split/triple ok; none manuell gehärtet; quadruple_split **dünn** (1 Chunk) |
+| cross_theme.* | 0 (bewusst) | **offen / default nein** | Parent für Kreuz-Kurznamen; Children 192 schon genug — seeden erst bei Kurzform-Bedarf (siehe Master-Checkliste) |
+| Ra *Living Your Design* | nicht gefunden | **deferred** | kein brauchbares Ra-PDF; Rudd-LYD = falsches Buch — nicht jagen/uploaden |
+| Four Views + HA2 | Stichprobe ✅ | **P1 Upload** | Four Views = Def-Primär (inkl. quadruple); HA2 = Sekundär; HA1/3 lokal fehlend |
+
+### Dünne Nodes — explizit (nach Enrich trotzdem dünn)
+
+| Node | Warum dünn | Mitigation |
+| --- | --- | --- |
+| `hd.authority.ego_manifested` | Definitive hat nur kurze Passage + Profiles-Bullet | Canon-Wording + 2–3 Links; LYD/PTL würde helfen |
+| `hd.authority.ego_projected` | wie oben | erstmals aus Definitive verlinkt |
+| `hd.authority.self_projected` | wenig Primärtext; Channels-by-Type oft falsch gematcht | Canon-Wording gesetzt; Projector Empowerment hilft nur indirekt |
+| `hd.authority.none` | Katalog-Overlap mit mental/lunar | Wording benennt Overlap bewusst |
+| `hd.definition.quadruple_split` | sehr selten in Literatur | 1 Chunk — akzeptieren oder General-Buch |
+| `hd.signature.surprise` | weniger Fließtext als andere Signatures | WORK_OK, aber weniger Belege |
+
+### Was „nächster Layer“ meint
+
+**Nicht** Strategy/Signature — das Enrich ist **erledigt** (2026-08-10).
+
+Sinnvolle nächste Optionen (wählen):
+
+1. **Human-Signoff** Auth/Def + Strategy/Signature/Not-Self Wordings  
+2. **HD Rest-Lücken schließen** nur wo Aufwand lohnt (Ra LYD suchen; optional Book of Letters / Black Book) — ego_*/quadruple  
+3. **`cross_theme.*` Entscheidung** (seeden ja/nein)  
+4. **Nächstes System** in der Wellen-Reihenfolge (Gene Keys Golden Path / BaZi-Klassiker) — weg vom HD-Bodygraph-Feinschliff  
+5. **Phase-1/UI** Chart-Ansichten (parallel möglich)
+
+**Empfehlung:** (1) kurzes Sign-off, dann (4) oder (5) — HD-Bodygraph ist für MVP-Kern weitgehend „gut genug“.
+
+### TOC ↔ K2 High-Level-Abgleich (2026-08-11)
+
+Lokale Werke `hd/` + `other_hd/` per Outline/Frontmatter gescannt (kein MinerU):
+
+→ [`reference/literature_hd_toc_coverage_2026-08-11.md`](../../reference/literature_hd_toc_coverage_2026-08-11.md)
+
+**Layer-Master-Checkliste** (Rubrik + Staffeln S0–S2 + P0–P3-Aktionen):
+
+→ [`reference/hd_layer_master_checklist_2026-08-11.md`](../../reference/hd_layer_master_checklist_2026-08-11.md)
+
+Skript TOC: `code/inner_compass_app/apps/web/scripts/ic_hd_toc_coverage_audit.py`
+
 scope: Alle kuratierten Werke bleiben im Scope; Reihenfolge = K2-Struktur + Subsysteme, nicht Alphabet
 in_scope: Inventar-Refresh, Queue, Orientierungsprinzip, Synth-Wellen-Policy, Open Hygiene
 out_of_scope: PDF-Upload/Pipeline-Ausführung (läuft separat)
@@ -75,11 +138,12 @@ Entspricht `hd_catalog_v0.json` Subsysteme + `deep_structure_plan.md`:
 2. **Channels** (Life Force ✅ → Channels by Type 1–4 ✅ + Layer-Synth ✅ 2026-07-23, **Re-Synth mit Selection-Fix ✅ 2026-08-04**)
 3. **Circuits** (Ra: *Rave BodyGraph Circuitry* ✅ extract → text2kg → Alias-Relink → Layer-Synth 2026-07-24, **Re-Synth mit Selection-Fix ✅ 2026-08-04**)
 4. **Centers** (kein Ra-Original im Inventar → Winn → Schoeber als K3/K4; **strict text2kg** ✅ 0 Stubs; Layer-Synth ✅ 9/9 2026-08-04)
-5. **Gates/Lines Companion** (Rave I'Ching ✅ Re-Interpret 2026-08-04; Layer-Synth ✅ 64/64 2026-08-04; ~~Line-Companion-Bücher nachziehen~~ **korrigiert 2026-08-04: kein separates Line-Companion-Buch im Inventar** — Line-Dichte bleibt dünn bis weitere Bücher covern)
-6. **Profiles / Incarnation Crosses** 🔄 **in Arbeit seit 2026-08-04**: 3 Bücher hochgeladen (Incarnation Crosses by Profile 15,7 MB/1440 Chunks, Incarnation Cross Clinic 2,1 MB/38 Chunks, Understanding the Profiles [Winn] 1,8 MB/149 Chunks) — Pipeline extract→classify→term_mapping→interpret(Langdock)→text2kg läuft (`start_hd_profiles_worker.py`, Job-ID `langdock-hd-profiles`); Layer-Synth folgt danach separat via `ic_synth_layer_ops.py --prepare-layer profile --system hd`.
-7. **PHS** (Variables, Color/Tone/Base)
+5. **Gates/Lines** (Rave I'Ching Gates ✅ 64/64 Synth 2026-08-04; **Gate-Lines ✅ 384/384** Chunks+Interps+1:1-Relink+Wordings 2026-08-07 — additive Line-Chunks aus I'Ching, kein separates Line-Companion-Buch)
+6. **Profiles / Incarnation Crosses** ✅ extract→text2kg (q6–q12); Profile-Synth ✅. Cross-Coverage dünn (14/192) wegen fehlendem Chunk-Profil. **2026-08-05 Fix-Pfad:** `_1`-Default entfernt; Profil `incarnation_crosses_by_profile` gebaut; Decision Theme-Parent `hd.cross_theme.*` + Children; Doku `reference/hd_layer_id_and_chunk_profiles.md`. **Nächster Lauf:** Theme seeden → q6 Re-Chunk mit Profil → Re-Interpret → Synth.
+7. **PHS** — 2026-08-05/06: q1–q5 (PRIMARY HEALTH + Lunar) durch + Relink + Synth ✅.
+   q6–q8 (Rave Psychology Black/White + Post-Graduate) 2026-08-06 hochgeladen, Pipeline läuft.
 8. **Rave Psychology**
-9. **Schulen** (Quantum, Parkyn, …) — `tradition`-Tags
+9. **Schulen** (64keys Blue I Ching, Cosmic Way sideral, Quantum, Parkyn) — `tradition`-Tags; **nicht** S0; Mapping `engines.md` §6.7b
 10. **Optional:** DreamRave, BG5, Design of Forms, Cosmology
 
 **Reihenfolge ist Leitplanke, kein Dogma:** Ra-`K2_ref` vor Schulen. Deshalb Circuits (Ra) vor Winn-Centers, auch wenn die Queue-CSV Centers numerisch früher listet.
@@ -112,7 +176,8 @@ Channels-Layer ist **sauber** (36/36 + Synth). Darüber hinaus offen:
 | **BaZi Re-Synth** (Destiny Code, war am stärksten vom alten Fenster betroffen) | ✅ 34/34 via Langdock, Job `d1a70862…`, bis zu 105 Interps/Node vorher gekappt auf 8 | done 2026-08-04 |
 | GeneKeys Re-Synth (Vollständigkeit, geringes Risiko)  | ✅ 64/64 via Langdock, Job `76e5b1d7…`, ~12 Min                               | done 2026-08-04       |
 | **Voll-Audit:** Stubs noch verlinkt? Jobs hängend?    | ✅ 0 Stub-Interps verlinkt (alle Systeme), 0 queued/running Jobs              | verifiziert 2026-08-04 |
-| Profile/Lines Inhaltslücken                           | erwartet (dünne Interp-Dichte je Line, nicht behebbar ohne mehr Bücher)       | beobachten            |
+| Gate-Lines 1:1 (I'Ching)                              | ✅ 384/384 Chunks/Interps/Relink/Wordings (`d3a349cb-…`)                     | done 2026-08-07       |
+| Profile/Lines Inhaltslücken (theme `line_def`)        | Theme-Layer weiter dünn ohne weitere Bücher; Gate-Lines Instanz-Layer ✅       | beobachten            |
 
 ### LLM-Betrieb / Kosten (empirisch 2026-08-04)
 

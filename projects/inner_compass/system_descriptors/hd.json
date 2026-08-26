@@ -19,6 +19,34 @@
     "not_self_theme",
     "signature"
   ],
+  "facet_schema": {
+    "comment": "Abruf-Slots. SoT: cursor/contracts.md §1a/§1b + reference/hd_state_contract.md. A = alle Typen; C nur wenn gesetzt. B = defined|undefined, kein open-Enum. not_self_theme/signature = descriptor_element, nicht 14. Chart-Typ.",
+    "axis_a_life": [
+      "mechanical",
+      "gift",
+      "shadow",
+      "trap",
+      "gift_activation",
+      "experiment_seed",
+      "temporal_phase"
+    ],
+    "axis_b_state": "chart_k1",
+    "by_element_type": {
+      "center": ["defined_expression", "open_expression", "mind_when_open"],
+      "line": ["exalt", "detriment"],
+      "type": [],
+      "strategy": [],
+      "authority": [],
+      "gate": [],
+      "channel": [],
+      "profile": [],
+      "circuit": [],
+      "definition": [],
+      "incarnation_cross": [],
+      "not_self_theme": [],
+      "signature": []
+    }
+  },
   "identifier_rules": {
     "gate": "1-64",
     "line": "1-6",
@@ -62,7 +90,16 @@
       "Profile",
       "Circuit",
       "Definition",
-      "Cross"
+      "Cross",
+      "Concept"
+    ],
+    "concepts": [
+      {
+        "canonical_id": "hd.concept.open_center",
+        "node_kind": "concept",
+        "knowledge_kind": "class_overview",
+        "comment": "Gattung undefined/open centers. Overlay und Center-Inspector lesen ihn nicht. Relink: class_overview, nicht ≥4 Zentren als primary auf hd.center.*"
+      }
     ]
   },
   "dynamics_rules": {

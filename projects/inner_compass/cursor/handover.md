@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-08-25
+last_update: 2026-08-26
 scope: Chat-Handover Inner Compass (Copy-Paste-Block + Themen-Anhänge)
 in_scope: aktueller Chart-Stand, Reboot, Code-Anker, Don'ts, Verweise
 out_of_scope: Implementierung; S5-Runbook-Details außer als Archiv unten
@@ -29,7 +29,7 @@ Pipeline-Wörter: cursor/pipeline.md §1a
 
 Gesamtprozess:
   Phase 0 Fundament 100% · Phase 1 Engines ~95% · Phase 2 Content ~75% · Phase 3 Cross-System 0%
-  Phase 4 App ~35% — HD KARTE Graph visuell zu (ohne Gate-Chips); Overlay-LLM v1m; andere Spaces 0%
+  Phase 4 App ~35% — HD KARTE Graph visuell zu (ohne Gate-Chips); Overlay-LLM v1o; andere Spaces 0%
 
 ROTER FADEN (Stand 2026-08-25; 1–17 bis 08-19, 18 = Chart-Visual):
   1. ✅ S5 E2E + HD Bodygraph-Wellen + HD S0 Close-out
@@ -51,13 +51,13 @@ ROTER FADEN (Stand 2026-08-25; 1–17 bis 08-19, 18 = Chart-Visual):
  10. ✅ State-Vertrag 2026-08-17 + Packer P1: Inspector-Stapel nach Display-Policy; Overlay Block 2 = undefined-Center-Priorslots.
        Overlay-Cache v1f (`user_charts.overlay`, undefined-first + Center-C quality). Profil in Satz 1. Concept-Node P2 Skript.
  11. ✅ S0 Defined-C Relink v2 (Qualität): Quellen **Winn + Schoeber**; PHS/andere demoted. Will Center → Heart (1 Defined-C). Identity+Will Mix nicht mehr am G. S0.5-Solarplexus: Welle/Authority = `gift` (nur defined SP); open emotional bleibt Shadow.
-       Overlay-Cache `hd_overlay_v1m`. Mechanical-Atom: Read-time-Split nach defined/undefined (kein Wipe). Sakral-Zyklus am Defined-Satz; SP Cue-Split. Heart-Tor-Inventar nicht im Center-Atom. S0.5 Hint = nur dieser Slot.
- 12. ✅ Stream F Channel-C Relink v1c (`ic_s0_channel_facet_relink.py`): `primary` + gift/shadow an **36/36**. Logic (63/4), Brainwave (20–57), Concentration (9–52) aus Circuitry. Type-unnamed skip. Type 4 = Transit, ungelesen. Inspector: Atom + Achse A. Overlay-Cache jetzt `hd_overlay_v1m`.
+       Overlay-Cache `hd_overlay_v1n`. Mechanical-Atom: Read-time-Split nach defined/undefined (kein Wipe). Sakral-Zyklus am Defined-Satz; SP Cue-Split. Heart-Tor-Inventar nicht im Center-Atom. S0.5 Hint = nur dieser Slot.
+ 12. ✅ Stream F Channel-C Relink v1c (`ic_s0_channel_facet_relink.py`): `primary` + gift/shadow an **36/36**. Logic (63/4), Brainwave (20–57), Concentration (9–52) aus Circuitry. Type-unnamed skip. Type 4 = Transit, ungelesen. Inspector: Atom + Achse A. Overlay-Cache jetzt `hd_overlay_v1n`.
  13. ✅ Ego-Authority + Quadruple Relink (Four Views; HA2 ohne Authority-Essays). `ic_hd_authority_definition_relink.py --only` **ohne Synth**. ego_manifested/projected/self_projected haben wieder Primaries; quadruple Four-Views-Essays.
  14. ✅ KARTE Register-IA (2026-08-18): Inspector = 5 Register **Zentren · Kanäle · Tore · Betriebssystem · Zusammenschau**. Default nach Berechnung = Zentren (alle 9, definierte zuerst, Akkordeon), Overlay-Absatz ist das **letzte** Register — Lookup vor LLM. Kanäle-Register listet alle definierten Kanäle + hängende Tore (aktiviert, Gegentor fehlt; deterministisch aus `chart.channels`). Chips bleiben Navigation, Register tragen den Inhalt. Trap unter dem Namen des Slots (secondary), nicht als eigene Sicht. Frequenz-Hinweis einmal pro Pane, nicht pro Zentrum. OS-Zeile mit Feldnamen (Typ/Strategie/Autorität/Profil/Definition/Kreuz) statt kontextloser Chips; Definition kommt aus `chart.nodes`, **nicht** in `headlines` (sonst Overlay-Hash-Miss). Geburtsformular klappt nach der ersten Berechnung weg (bis Onboarding steht).
  15. ✅ **Mapping Instanz → Def + Register „Körper"** (2026-08-18): neu `apps/web/lib/hd/hd-phs.ts` (`hd_variable_mapping_v1`): Pfeilposition = Primärschlüssel, `colorDefId/toneDefId/baseDefId`, 21 Def-IDs (`HD_PHS_DEF_CANONICAL_IDS`) immer im `wordingLookupIds`. `normalize-hd-chart.ts` reicht jetzt `color/tone/base` je Aktivierung **und** `variable` (vier Pfeile mit direction/aspect/defId) durch — beide Engine-Formen (`variable.<key>` des Adapters und `variable.arrows[]` der README) werden auf die Position gemappt.
        DB-Stand geprüft: **6 color_def · 6 tone_def · 5 base_def · 4 variable_def, alle mit Wording**; Engine-Kombi-IDs (`hd.color.48.3.2`) haben **0 Nodes** — genau die Lücke, kein Literatur-Thema.
-       Engine-Ground-Truth (Dachau, `:8002`): `raw.variable = {digestion|environment|motivation|perspective: {value,name,aspect,def_type}, arrow_string "<<<>", short_code "PLR DLL"}`. Kurzcode/Pfeil-String = abgeleitetes Label, kein State. Register Körper zeigt vier Pfeile + PHS-Tiefe **beider Sonnen**; Tore-Register zeigt Color/Tone/Base der gewählten Aktivierung.
+       Engine-Ground-Truth (Dachau, `:8002`): `raw.variable = {digestion|environment|motivation|perspective: {value,name,aspect,def_type}, arrow_string "<<<>", short_code "PLR DLL"}`. Kurzcode/Pfeil-String = Engine-Label, **kein UI** (vier Ecken + Color.Tone reichen). Register Körper zeigt vier Pfeile (gleiche Chevron-Glyphe wie am Graph) + PHS-Tiefe **beider Sonnen**; Tore-Register zeigt Color/Tone/Base der gewählten Aktivierung.
        Fußnote: `services/hd/src/hd_compute.py` (Fallback ohne dturkuler) benennt Perspective/Motivation anders als der Adapter. Live-Pfad ist der Adapter; deshalb mappt die UI über die **Position**, nicht über Engine-Schlüsselnamen.
        ⚠️ **Befund PHS-Achsen:** die 6/6/5 Def-Nodes sind nicht achsengebunden — aufgelöst in 16.
 
@@ -70,30 +70,28 @@ ROTER FADEN (Stand 2026-08-25; 1–17 bis 08-19, 18 = Chart-Visual):
        **`hd.line_def.1-6` existierten schon** (59-95 Interps, alle 6 mit Wording) — kein Seed nötig, nur Lookup. Register **Fakten** ist live: Persönlichkeits-Sonne-Viertel + Design-Sonne-Viertel, Verteilung mit ausgeschriebenem „Design / Persönlichkeit". Linien-Zählung 1-6 (Dachau: Mutation über Tor 14, Design-Sonne Dualität Tor 29).
        **Wordings (Langdock gpt-5-mini, 2026-08-19):** 28/28 Nodes mit Literatur synthetisiert (4 Quarter + 6 Determination + 6 Cognition + 6 Motivation + 6 Perspective). Environment 1-6 ohne Literatur, daher kein Synth. Aufruf: `python ic_run_with_langdock.py ic_k2_synth_batch.py --system hd --only-id … --force`.
        **Figma:** https://www.figma.com/design/6KCXRVzu39tqEjpr66hGwc — Starter **3 Seiten**. 00 Contract · 01 Tokens & Geometry · 06 Captures. Geometry v0 als Frame rechts auf 01 (`Bodygraph Geometry v0`, x=1600): 9 Zentren + 64 Tore + 36 Kanäle, `visible`/`label`/`hit_area`, Katalog-IDs. Kein Page-03 (Plan-Limit). Captures: `6:2` aktuell, `2:2` älter. Dump nicht putzen. Vertrag `cursor/reference/figma_karte_contract.md`.
- 17. ✅ Overlay-Policy (2026-08-19): Zusammenschau ist **eng aus Produktregel** (eine Lesung, kein zweiter Inspector), nicht weil gpt-5-mini Quota/Tokens nicht reicht. v1l hat bereits 16k Completion-Cap. Constraint = Admission. Live = v1m. **v1n = Kandidat** (ein Fakten-Satz aus `hd-facts.ts`), nicht gebaut. SoT: Overlay-Vertrag §5.0. PHS-Labels höchstens später Facts, keine Overlay-Essays (§5.1).
+  17. ✅ Overlay-Policy (2026-08-19): Zusammenschau ist **eng aus Produktregel** (eine Lesung, kein zweiter Inspector), nicht weil gpt-5-mini Quota/Tokens nicht reicht. v1l hat bereits 16k Completion-Cap. Constraint = Admission. Live = **v1o** (optionaler Fakten-Satz aus `hd-facts.ts`; Pol-Absatz je fixiertem Schlüssel-Pol aus I’Ching-Chunks; LLM klebt Zahlen, schreibt Viertel-/Linien-Atome nicht um). SoT: Overlay-Vertrag §5.0. PHS-Labels höchstens später Facts, keine Overlay-Essays (§5.1).
        ⚠️ **Environment-Hub** (Höhle / Markt / Küche / Berg / Täler / Ufer): Labels sind thick enough, Atome too thin — **nicht** in KG kopieren. `hd.environment.1-6` bleibt Struktur ohne Relink/Synth.
  18. ✅ **Chart-Visual (2026-08-24/25).** Geometrie live in `hd-bodygraph-geometry.ts` (Backup `cursor/reference/geometry-backup-2026-08-24/`). Wahrnehmungsregeln: `cursor/reference/figma_karte_contract.md` §4b.
        Zentren: Jovian-Füllung wenn definiert, **hell genug für einheitliche dunkle Schrift** (Kopf/G Gold `#E0B84E`, Ajna `#6FB8A6`, Kehle/Milz/Solar/Wurzel Sand `#C4A07C`, Sakral `#E85C4A`, Herz `#E07A72`) — kein Bordeaux, keine weiße Schrift auf dunklem Fill. Undefined = opakes Background + `fill-foreground` (Dark-Theme). Design/Persönlichkeit **nicht** auf die Form — Rails + Kanalhälften. Hanging = Mitte *dieses* Pfads. Integration 10–20–34–57 = sechs Pfade (einen Tick dünner, weil Überlappung). Übrige Kanäle dicker; beide Seiten aktiv = extra dick. Selection = dickere Füllfarbe, kein Gold-Halo. Tore = Zahl ohne Chip (hue-Chips und Papier-Chips verworfen). Rails: Header fett bei Selection, Polarität|Zahl|R.
        64keys malt Zentren XOR blau/orange, nie gestreift. Tie-Break unbelegt → nicht malen.
-       ✅ **Vier Pfeile am Graph** (2026-08-25): runder Chevron + Color mit Tone-Tiefzahl neben dem Kopf. Design links, Persönlichkeit rechts. Mapping `collectVariableMarkers`. Klick → Register Körper (Color-Achse). Die fünf PHS-Achsen in Körper sind die *Zahlen* derselben vier Ecken; Cognition teilt den oberen linken Pfeil (Tone der Design-Sonne), kein fünfter Chevron. Mini-Pfeile an Rails erst PHS-Ansicht. Overlay bleibt v1m. Chart-State nur clientseitig (HMR wirft aufs Geburtsformular zurück).
+       ✅ **Vier Pfeile am Graph** (2026-08-25): runder Chevron + Color mit Tone-Tiefzahl neben dem Kopf. Design links, Persönlichkeit rechts. Mapping `collectVariableMarkers`. Klick → Register Körper (Color-Achse). Die fünf PHS-Achsen in Körper sind die *Zahlen* derselben vier Ecken; Cognition teilt den oberen linken Pfeil (Tone der Design-Sonne), kein fünfter Chevron. Color/Tone neben den Planeten = Toggle (Default aus). Overlay v1o. Chart-State: SessionStorage + GET. Inspector Tore: zwei Extreme der Linie (keine Quelltitel/IDs in der UI). KARTE spricht **Handbuch**, nicht Pipeline.
 
 **Quadranten / Linien-Statistik:** Gate→Viertel aus `hd_crosses_extracted.json` (16/16/16/16). `hd.quarter.*` geseedet + gewordet (16). Generische Rollen lagen schon als `hd.line_def.1–6` vor (nicht `hd.line.1`). Register Fakten zählt, Atome bleiben generisch.
 
 Wörterbuch Chunk/Interp/Anhang/Synth/primary: cursor/pipeline.md §1a.
 
-Aktueller Punkt: **HD-KARTE Graph freeze** (2026-08-25). Letzte Feile: leere Tubes kühles Schiefer (Light `#5F6B72` / Dark `#6A7571`), idle-Tore leichter. Keine Gate-Chips. Nächster Schritt ist nicht weiter am Graph feilen, außer der User will es.
+Aktueller Punkt: **HD-KARTE Graph freeze** (2026-08-26). Locale-Modell fest (Decision 2026-08-26): Chrome = next-intl später; Essays = Wording-**Zeilen**; `sys_term_mapping` = Pipeline-Alias, kein Graph-Label. **Sprache/i18n jetzt nicht bauen.** Mischung DE-Chrome / EN-Atome bewusst.
 
 Nächstes Paket (Reihenfolge, nicht parallel):
-  KARTE) Freeze, außer expliziter User-Wunsch. Mini-Pfeile an Rails nicht in diesem Schnitt. Gate-Chips nicht noch einmal versuchen.
+  KARTE) Freeze halten. Graph-Labels nicht nach next-intl ziehen, solange Locale-Produkt nicht startet.
+  Locale) Nicht jetzt. Vorarbeit = Decision 2026-08-26, kein term_mapping-Umbau, keine DE-Wording-Welle.
+  Overlay) v1o live. C-check Dachau wenn User Chart-Qualität will.
+  Q) Relink-Qualität (kein LLM-Rewrite) — nächster stiller HD-Schritt, wenn kein neues UI.
+  B) Edges / sys_dynamics — frei, Chart-Pfeile durch; das ist die „Verbindung“, nicht der Inspector.
+  Git) Commit+push nur auf expliziten User-Wunsch.
+  Makerkit) v4 = eigenes späteres Paket.
   KARTE-nicht) 64keys Blau/Orange am Zentrum — erst wenn ein Chart den Mischfall belegt.
-  Overlay) v1n Fakten-Satz optional, nicht blockierend.
-  Git) Demnächst commit+push, **wenn User explizit sagt** — nicht jetzt.
-  Makerkit) v4 = eigenes späteres Paket. Bleibt in NICHT TUN.
-  C-check) Dachau neu berechnen (Overlay-Cache v1m miss): Satz 1 „3/5 Splenic Projector“; keine Center-Checkliste. Solar undefined ohne Mind-Trap.
-  Q) Relink-Qualität (kein LLM-Rewrite): Q.1 Planeten-Beispiele. Q.2 Regex über alle Atoms + Packer-Primaries. Line-Leaks `29.5`/`20.4` gepatcht. Open-SP Shadow: Manifestor-Anekdote → generic (`cf9a77db`). Kanal-Primaries dürfen Circuit-Geschwister nennen (kein Natal-Leak). Center-Atoms mix defined+undefined = bekannt, read-time split, nicht wipen.
-  D) ✅ `openCenters` → `undefinedCenters` (Code). UI-Wort „offen“ bleibt. Overlay-Hash-Key mitumbenannt (ein Cache-Miss).
-  B) Edges / sys_dynamics / tag_ic_metadata — jetzt frei, Chart-Pfeile sind durch.
-  H) Corpus-Hygiene Center (optional): Geschwister auf `mention`. Nie Massen-Classify.
 
 Nicht: Full-Re-Synth, Center-Wipe, `open` als dritte Enum, SGLang über 7973 Interps / 20877 Anhänge.
 Sources: S0.5 `37170478-…` / `cf923ac4-…`. S0 Defined: `ic_s0_center_defined_relink.py`. Channel: `ic_s0_channel_facet_relink.py` (`channel_relink_v1c`; Life Force `2a9272bc-…`). Planeten-Source `7e52cc9a-…`. Auth/Def: Four Views `c3135579-…` (HA2 `5517ac0c-…` Diagnostics, 0 Ego/Quad-Hits).
@@ -110,12 +108,13 @@ NACH REBOOT (Reihenfolge):
        pnpm --filter web exec next dev --port 3000
      Env: apps/web/.env.development + .env.development.local
      HD_SERVICE_URL=http://127.0.0.1:8002
-     5. http://localhost:3000/home/karte/hd — einmal Chart berechnen (Overlay-Cache v1m miss). Mechanik am Center nur noch dieser State.
+     5. http://localhost:3000/home/karte/hd — letzter Chart lädt von allein (GET). Overlay-Cache v1o miss beim ersten Mal. Mechanik am Center nur noch dieser State.
 
 CODE:
   apps/web/app/[locale]/home/_components/hd-karte/
   apps/web/lib/hd/hd-wording-lookup.ts   (immer 9 hd.center.*)
   apps/web/lib/hd/hd-line-polarity.ts + hd-line-polarity.json
+  apps/web/lib/hd/hd-line-facets.ts
   apps/web/lib/hd/hd-line-fixing.ts
   apps/web/scripts/ic_hd_line_polarity_from_pdftotext.py
   apps/web/lib/hd/normalize-hd-chart.ts
@@ -126,6 +125,8 @@ CODE:
   apps/web/lib/hd/hd-overlay-cache.ts
   apps/web/lib/hd/hd-phs.ts
   apps/web/lib/hd/hd-facts.ts
+  apps/web/lib/hd/hd-chart-assemble.ts
+  apps/web/lib/hd/hd-karte-session.ts
   apps/web/lib/hd/hd-bodygraph-geometry.ts
   apps/web/lib/hd/hd-bodygraph-path.ts
   apps/web/lib/hd/hd-karte-palette.ts

@@ -1,7 +1,9 @@
 # Inner Compass — Contracts & Enums
 
-> Autoritative Referenz für Dimensionen, Lebensbereiche, Payloads, Enums.
+> Autoritative Referenz für Dimensionen, Lebensbereiche, Payloads, Enums, Facetten.
 > Wenn Schema und dieses Dokument sich widersprechen, gilt dieses Dokument.
+> Facetten-Vertrag (§1a) + State/Display (§1b) + Decision `reference/decisions.md` 2026-08-17.
+> HD-State-Matrix: `reference/hd_state_contract.md`.
 
 ## 1. Dimensions-Contract (15 Keys)
 
@@ -34,6 +36,107 @@ Im Backend-Schema als `jsonb`-Feld `dimensions` im Interpretations-Payload.
 | `projection_field` | Was andere in dir sehen | HD (Offene Zentren), Astro (ASC) |
 
 User-facing (Landkarte/Mandala): Primär die 11 Kern-Dimensionen. Ergänzende erscheinen bei System-Filter-Wechsel.
+
+**Verhältnis zu Facetten (§1a):** Diese 15 Keys sind die **Extraktionsbrille** (LLM füllt, was der Chunk hergibt). Sie sind **nicht** der Abruf-Index. Abruf = Element × Achse A/B/C unten. `mechanical` / `gift` / `shadow` kommen in beiden vor — Extract schreibt sie, die Sicht *liest* sie als Life-Facette.
+
+## 1a. Facetten-Vertrag (Abruf, alle Element-Typen)
+
+Eine **ID** bleibt ein K2-Element. Facetten sind **Slots am Typ**, keine Kind-Nodes (Ausnahme: wo das *andere System* sie als Katalog hat, z. B. Gene Keys Shadow/Gift/Siddhi = eigene K2).
+
+Drei Achsen, nicht vermischen:
+
+| Achse | Was | Quelle | Beispiel |
+|---|---|---|---|
+| **A — Leben / Prozess** | systemweit, Handbuch + Overlay + Werkstatt | `dimensions.*`, `process.*` (schon im Payload) | gift, shadow, trap, gift_activation, experiment |
+| **B — Chart-State** | was *bei dieser Person* wahr ist | Engine K1 | Center `defined\|undefined`; Gate hanging vs. im Kanal; Line-Pol fixiert |
+| **C — Struktur-Slot** | Essay, den die Tradition *nur für diesen Typ* hat | Deskriptor `facet_schema.by_element_type` | Center `mind_when_open`; Line Exalt-/Detriment-*Absatz* (Buchzeile) |
+
+**Aboutness** (`link_role` primary | contrast | mention) ist **keine** Wissensart. Sie entscheidet nur: darf dieser Chunk *diesen* Node füttern? Wörterbuch der Pipeline-Objekte (Chunk vs Interp vs Anhang vs Synth): `pipeline.md` §1a.
+
+Wissensarten (nicht alles in mention stopfen):
+
+| Art | Wohin |
+|---|---|
+| Essay *dieses* Elements | `primary` → Slot A oder C |
+| Namensnennung | `mention` — tot für Wording |
+| Geschwister-Vergleich | `contrast` → Kante, nicht Node-Prosa |
+| Gattung (Klasse „undefined centers“) | Concept-Node, `node_kind=concept`, z. B. `hd.concept.open_center` (P2 live; Overlay liest ihn nicht) |
+| Beziehung A→B | `interactions` / `sys_kg_edges` |
+| Werk-Einleitung | Source-Essay oder Klassen-Node, nicht 9 Center |
+| Kombination 2+ Elemente/Systeme | `sys_dynamics` (nicht Facette am Einzel-Node) |
+
+`sys_dynamics` (`trap` / `phase_cycle` / `growth_path` / `spectrum`) ist **eine Ebene höher** als `payload.process`: process = Falle *dieses* Centers; dynamics = Falle wenn Center × Typ × anderes System.
+
+### Achse A — fest, alle Systeme, alle Elemente
+
+Entspricht PRD Handbuch + Spaces. Nicht raten, nicht pro Layer neu erfinden:
+
+| Slot | Payload | Handbuch | Space | Overlay |
+|---|---|---|---|---|
+| `mechanical` | `dimensions.mechanical` / essence | Tiefe 1 Spiegel | KARTE / Inspector-Atom | ja (OS, Kanäle, Center-„was es ist“) |
+| `gift` | `dimensions.gift` | Tiefe 2 Muster | KARTE / 64keys-Potenzial | ja, wenn die Sicht es braucht |
+| `shadow` | `dimensions.shadow` | Tiefe 2 Muster | KARTE / Schatten-Sicht | ja, gleichrangig mit gift; Overlay nennt beides kurz bei undefined |
+| `trap` | `process.trap` | Tiefe 3 Prozess | WERKSTATT Brunnen | selten im Overlay (zu tief) |
+| `gift_activation` | `process.gift_activation` | Tiefe 3 | WERKSTATT Leiter | selten |
+| `experiment_seed` | `process.experiment_seed` | Tiefe 4 Experiment | WERKSTATT | nein |
+| `temporal_phase` | `dimensions.temporal_phase` | — | ZEIT | nur wenn Transit das Element trifft |
+| `life_domain` | Tag, kein Slot | Mandala-Ring | KARTE | Navigation, keine Prosa |
+
+Gewohnheiten / Lösungen: **kein** neuer Key. `expression` + `experiment_seed` + `gift_activation`. Kombinatorische Fallen (HD-Shadow × BaZi-Clash) bleiben `sys_dynamics`, nicht Facette am Einzel-Node (`decisions.md` 2026-08-05).
+
+`ic_tags` (Tiefe, Brunnen, Leiter, Grammatik) **ordnen** vorhandene Interps den Spaces zu — sie verdoppeln Achse A nicht. Job `tag_ic_metadata` (pipeline.md) ist genau dieses Mapping, noch nicht gelaufen.
+
+### Achse B — Selector, kein Text-Slot
+
+`definition_status` (`defined | undefined`) wählt den **C-Slot** (defined_expression vs. open_expression / mind_when_open), nicht ob Gift oder Shadow „wahr“ ist. Gift und Shadow bleiben zwei Frequenzen. UI: definiert/undefiniert; HD-Lehrsprache „offen“ = derselbe State. `open` ist kein dritter Kern-Enum (`hd_state_contract.md`).
+
+64keys-ähnliche Spalten = A × B (Potenzial/Schatten × defined/undefined) — das ist eine **Anbietersicht**, kein universeller HD-State. Provenienz: `vendor_64keys`.
+
+### Achse C — nur wo die Tradition einen eigenen Essay hat
+
+Nicht für alle Typen erfinden. Im Deskriptor deklarieren, sonst existiert der Slot nicht.
+
+**HD (Stand 2026-08-15, ehrlich unvollständig):**
+
+| element_type | C-Slots | Bemerkung |
+|---|---|---|
+| `center` | `defined_expression`, `open_expression`, `mind_when_open` | S0.5 füllt mind/open; Karten = mechanical. `mind_when_open` = C-Slot (Center-Frage), nicht Not-Self Theme, nicht Mind-Prinzip |
+| `line` | `exalt`, `detriment` | Buchzeile 384er; Chart-Pol ist Achse B |
+| `gate` | — | Line ist Child-K2; Gate-Atom = A |
+| `channel` | — | Circuit ist Parent-K2 |
+| `type` | — | `not_self_theme` + `signature` sind schon eigene K2 |
+| `strategy` / `authority` / `profile` / `circuit` / `definition` / `cross` | — | vorerst nur A; C nachziehen wenn Literatur+UI einen eigenen Essay erzwingen |
+| `phs` / `variable` | `body_mechanics`, `environment` | schon in dimensions-Ergänzung |
+
+Andere Systeme: dieselben **A**-Slots. **C** im jeweiligen Deskriptor (BaZi: z. B. Day-Master useful/unuseful; GK: Shadow/Gift/Siddhi = K2, nicht C).
+
+### Nacharbeit (kein Corpus-Wipe)
+
+1. **Vertrag jetzt** — dieses §1a + `facet_schema` in `hd.json`. Kein Re-Interpret, kein Center-Re-Synth.
+2. **Lesen jetzt** — UI/Overlay dürfen `dimensions.gift|shadow` und `process.*` der *bereits* verlinkten Interps nutzen (process ist laut Audit ~100 % befüllt, nur ungelesen).
+3. **S0.5 als erstes C-Füllen** — Relink primary → `mind_when_open` / `shadow` für **undefined**; Overview → `hd.concept.open_center`, nicht 9 Center. Open-Center-Gift nicht auf definierte Center kopieren. Unhinted S0-Primaries nur wenn Essay eindeutig defined oder open.
+3a. **S0 Defined-C Relink** — `ic_s0_center_defined_relink.py` v2: nur Winn + Schoeber; Will Center → Heart; Mix/Kanal/PHS skip. S0.5-Solarplexus: Welle/Authority nicht auf undefined.
+3b. **Channel Achse-A Relink** — `ic_s0_channel_facet_relink.py` v1c: `primary` + `gift|shadow`. Quellen: Life Force (Hash-Titel), **Rave BodyGraph Circuitry**, Channels by Type 1–3, Winn. Type 4 = Transit-Programm, skip. Max. 3 Primaries/Kanal. Logic (63/4, Node `hd.channel.4_63`) aus Circuitry. Hygiene 20–57 / 9–52: Type-unnamed skip; named/focus darf 1 Geschwister; Circuitry-Scan-Add.
+4. **C-Recherche pro Typ** — kurze Tabelle + Literatur, wenn Overlay/Inspector diesen Typ *differenziert* braucht. Historische `canonical_wording` = weiter `mechanical`.
+5. **`tag_ic_metadata`** — wenn WERKSTATT/Handbuch-Tiefen gebaut werden, nicht vor S0.5-Relink.
+
+## 1b. HD State, Display, Träger, Provenienz
+
+SoT-Details: `reference/hd_state_contract.md`. Kurz:
+
+**13 `chart_element_types`**, keine 13 Ebenen. Zusätzlich `descriptor_element` (`not_self_theme`, `signature`), `node_kind` (`chart_element|concept|source|system_class`), Activation-Sources (Planeten/Punkte). `hd.concept.*` ist kein 14. Chart-Typ.
+
+**Display-Policy Center:** immer `mechanical`. Danach C-Slot zum State. **Gift und Shadow gleichrangig** (zwei Frequenzen). Trap/Feld sekundär. Overlay darf enger sein — warum und was als Nächstes: Overlay-Vertrag §5.0 (`reference/hd_bodygraph_overlay_contract.md`). S0.5-Essays nicht auf definierte Center.
+
+**Planeten** = Träger (`node_kind=source`), nicht Chart-Typ. `motion` an der Aktivierung. Accent-Text später aus *Understanding the Planets*. Fixation = Event mit `source_activation`.
+
+**Mind dreifach:** Not-Self Theme (Type-K2) ≠ `mind_when_open` (Center-C) ≠ Mind-Prinzip (Systemlehre).
+
+**Provenienz** auf interpretativen Inhalten (`framework`, `rights_status`, `text_origin`). Keine Massen-Umbenennung, kein Wipe vor Audit.
+
+**C-Persistenz:** `payload.facets` (Vertrag). MVP liest `metadata.facet_hints` + `link_role=primary`. Intern: `not_applicable|no_evidence|not_extracted|pending_review|populated`.
+
+`knowledge_kind` ist nicht `link_role`. Concept-Relink: `class_overview`, nicht „≥4 Zentren“.
 
 ## 2. Lebensbereiche (12 Enums)
 
@@ -89,7 +192,20 @@ Erweiterung von 10→12 (2026-03): §20d-Revision in ergebnis_modelle.md — "Ko
     "gift_activation": "string | null — Wie wird das Geschenk aktiviert",
     "experiment_seed": "string | null — Konkreter Experiment-Ansatz"
   },
-  "life_domain": "string | null — Enum aus Abschnitt 2",
+  "facets": {
+    "mind_when_open": "string | null",
+    "open_expression": "string | null",
+    "defined_expression": "string | null",
+    "exalt": "string | null",
+    "detriment": "string | null"
+  },
+  "content_provenance": {
+    "framework": "hd_core | traditional_hd | vendor_64keys | gene_keys | source_other | app_custom | unknown",
+    "rights_status": "unknown | pending_review | owned | licensed | do_not_publish",
+    "text_origin": "imported | original | unknown",
+    "display_allowed": "boolean"
+  },
+  "life_domain": "string | null — Enum aus Abschnitt 2; später life_domains[]",
   "interactions": {
     "amplifies": ["canonical_id"],
     "depends_on": ["canonical_id"],

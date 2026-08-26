@@ -1,6 +1,6 @@
 ---
-last_update: 2026-08-25
-status: contract v0 — KARTE Graph visuell zu; Overlay v1m; Variable-Pfeile live; v1n-Kandidat
+last_update: 2026-08-26
+status: contract v0 — KARTE Graph visuell zu; Overlay v1o; Variable-Pfeile live; Rails Color/Tone
 scope:
   summary: "HD-Karte: Bodygraph + Planetensäulen, Inspector, Exalt/Detriment-Stati, Overlay-Rezept, Planeten-KG, Bau-Reihenfolge."
   in_scope:
@@ -176,8 +176,10 @@ Zur Laufzeit: zuerst direkt `activation.planet` × Lookup; zusätzlich abgeleite
 
 Bei Säulen-Zeile / Tor, **gestapelt, nicht vermischt**:
 
-1. **Linien-Pole (I’Ching)** — statisch: Exalt-Planet ▲ / Detriment-Planet ▼ dieser Line
-2. **Diese Aktivierung** — Chart-Planet × Lookup (`neither` wenn er nicht der Pol-Planet ist)
+1. **Extreme der Linie** — zwei Planeten, die diese Linie polarisieren (▲ / ▼), plus die zwei Absätze. Aktives Extrem hervorheben; `neither` = Occupying ist nicht einer der beiden Planeten.
+2. **Dieser Planet** — Chart-Planet × Lookup. **R** = rückläufig, Eigenschaft des Planeten hier, nicht der Extreme.
+
+UI-Stimme (Handbuch): keine Quelltitel, keine canonical IDs, kein Engine-Jargon, kein „Buch“. Mechanik-IDs bleiben intern (`data-canonical-id`). Fachbegriff-Toggle ist Profil-Sache, nicht Default auf der KARTE.
 3. **Abgeleitete Fixierung** (v2) — Same-Gate / Harmonic mit Quelle; nicht als Buchplanet des Occupying
 4. **Gate** — `hd.gate.N` (Thema)
 5. **Line** — `hd.line.{g}_{n}` (Oktave; allgemeiner Atomtext, keine Chart-Lesung)
@@ -197,12 +199,11 @@ Die Zusammenschau ist **eine Lesung**, kein zweiter Inspector. Regel: wenn der O
 
 Das ist **Architektur**, kein Token-Notstand. Constraint = **Admission** (was der Absatz darf), nicht Modellgröße. `gpt-5-mini` hat genug Fenster (v1l: 16k Completion-Cap, `reasoning_effort` medium). Mehr Atome in den Prompt zu kippen macht den Absatz nicht wahrer — es macht ihn inventiv: Gates, die nicht da sind; Gift als Existenzbedingung; Juxtaposition als Balance.
 
-**Was schon drin ist (v1m):** Typ × Strategie × Autorität, Profil in Satz 1–2, definierte Kanäle, Kreuz, undefined-Center (Namen + Wisdom/Conditioning), Fixing+R nur an Schlüssel-Lines (Sonne/Erde + Kanal-Tore).
+**Was schon drin ist (v1o):** Typ × Strategie × Autorität, Profil in Satz 1–2, definierte Kanäle, Kreuz, undefined-Center (Namen + Wisdom/Conditioning), Fixing+R nur an Schlüssel-Lines (Sonne/Erde + Kanal-Tore), **ein optionaler Fakten-Satz** (Viertel beider Sonnen + Linien-Gewicht), **Pol-Absatz je fixiertem Schlüssel-Pol** aus I’Ching-Chunks (paraphrasiert im Overlay, voll im Inspector). Overlay ist ohne den Fakten-Satz vollständig.
 
-**Was als Nächstes rein darf (v1n, ein Satz, keine Essays):**
-Chart-Fakten als Klebstoff, nicht als Rewrite der Atome. Beispiel Dachau:
-„Persönlichkeits-Sonne im Viertel der Mutation (Tor 14); 13 der 26 Aktivierungen liegen dort. Design-Sonne in Dualität (Tor 29). Linie 5 trägt das meiste Gewicht.“
-Zahlen kommen aus `hd-facts.ts`, nicht aus dem LLM. Das Modell verbindet sie; es darf die Viertel-/Linien-Atome nicht umschreiben.
+**Fakten-Satz (v1n, live):** Chart-Fakten als Klebstoff, nicht als Rewrite der Atome. Beispiel Dachau:
+„Personality Sun sits in the Quarter of Mutation (gate 14); 13 of 26 activations fall there. Design Sun sits in Duality (gate 29). Line 5 carries the most weight.“
+Zahlen kommen aus `hd-facts.ts`, nicht aus dem LLM. Das Modell klebt genau einen Satz mit diesen Zahlen; es darf die Viertel-/Linien-Atome nicht umschreiben. Fehlt der Block oder das Modell lässt ihn weg — der Absatz bleibt gültig.
 
 **Was später, nur als Facts, nicht als Literaturstapel:**
 PHS-Achsen-Labels der Instanz (`Determination 3 · Thirst` …) — ein halber Satz, sobald das Mapping sitzt. Nicht die vier Pfeil-Essays (`hd.variable_def.*`) und nicht Environment ohne Quelle.
@@ -220,7 +221,7 @@ Register **Fakten / Körper / Zentren** = Lookup. Overlay = Kombination. So blei
 
 v0 (live): Typ × Strategie × Autorität + Profil-Label + **undefined Center mit Atomtext** (Lookup aller 9 `hd.center.*`, nicht nur Engine-`nodes`). Prompt: Chart-State **undefined** zuerst; HD-Wort „open“ nur als Klammer. Keine Gates erfinden. S0.5 ist **zweiter** Block für undefined Center (Priorslots), nicht Ersatz/Re-Synth des Atoms und nicht „defined haben keinen Schatten“. **Profil in Satz 1–2** (Typ × Profil, z. B. 3/5 Splenic Projector). `hd.concept.open_center` wird **nicht** ins Overlay gelesen.
 
-**Cache (v1m):** `user_charts.overlay` jsonb, Schlüssel `person_id + locale + ruleset (hd_overlay_v1m) + chartHash`. v1l→v1m = undefined Center im Prompt als Namen + Wisdom/Conditioning, keine Center-Checkliste. Hinted S0.5-Karten füllen nur den Hint-Slot (Shadow nicht mehr Expression/Trap/Projektion).
+**Cache (v1o):** `user_charts.overlay` jsonb, Schlüssel `person_id + locale + ruleset (hd_overlay_v1o) + chartHash` (Hash enthält den Fakten-Summary + `polesMode`). v1n→v1o = Pol-Absatz der fixierten Schlüssel-Lines aus I’Ching-Chunks; v1m→v1n = optionaler Fakten-Satz; v1l→v1m = undefined Center im Prompt als Namen + Wisdom/Conditioning, keine Center-Checkliste. Hinted S0.5-Karten füllen nur den Hint-Slot (Shadow nicht mehr Expression/Trap/Projektion). Chart-Anzeige: SessionStorage (HMR/Refresh) + GET `/api/ic/hd-chart` (letzter `user_charts`-Snapshot, ohne Engine).
 
 **v1a/v1b (live):** definierte Kanäle + Inkarnationskreuz im Prompt. Channel-IDs Katalog-Reihenfolge (`8_1` nicht `1_8`). Cross-Slug: Engine `the_right_angle_…` → KG ohne `the_`.
 
@@ -240,7 +241,8 @@ Rezept:
 | v1k | Langdock gpt-5-mini `reasoning_effort: low`; Template+Fehler kein Cache-Hit |
 | v1l | wieder medium + 16k Token-Cap (nicht Geld); low nur Retry; Prosa statt Checkliste |
 | v1m | Overlay: Center-Namen + Wisdom/Conditioning; Packer: Hint = nur dieser Slot |
-| v1n (Kandidat) | ein Fakten-Satz: Viertel der beiden Sonnen + Linien-Gewicht; Zahlen aus `hd-facts.ts` |
+| v1n | ein optionaler Fakten-Satz: Viertel der beiden Sonnen + Linien-Gewicht; Zahlen aus `hd-facts.ts` |
+| v1o | Pol-Absatz je *fixiertem* Schlüssel-Pol aus reconstructed I’Ching-Chunks; Inspector beide Buch-Absätze |
 | später | weitere Träger-Sätze nur wenn das Buch eine klare Rolle hergibt; keine Gewichte |
 
 Prompt-Regeln sobald Polarität im Overlay ist: keine erfundenen Gates; Exalt ≠ gut, Detriment ≠ schlecht; Line-Juxtaposition nicht als Balance; Occupying nicht mit Pol-Planet verwechseln; Herkunft nennen.
@@ -256,8 +258,8 @@ Die Engine schreibt **Chart-Instanzen**. Das KG speichert **Bedeutungs-Nodes**. 
 | `hd.line.34.1` | `hd.line.34_1` | ✅ Remap in `wordingLookupIds` |
 | `hd.channel.10_57` (min_max) | `hd.channel.10_57` bzw. Katalog-Reihenfolge (z. B. Charisma `20_34`) | Wordings **36/36**; Lookup + Overlay + **Kanal-Chips** live |
 | `hd.incarnation_cross.{slugify(Name)}` | 192 `hd.incarnation_cross.*` | Nodes + Wordings **genug** (Checkliste 2026-08-11). Lookup + Chip live (`the_`-Slug). |
-| `hd.variable.<<>>` (vier Pfeile als String) | `hd.variable.digestion` … `perspective` und/oder `hd.variable_def.*`; Color/Tone/Base = `hd.color_def.N` nicht `hd.color.34.1.3` | Engine-Kombi-ID ≠ Def-Node. Deshalb „IDs passen oft nicht“. PHS-Ansicht braucht Mapping Instanz → Def (`hd-phs.ts`). **Keine Overlay-Essays** (keine Pfeil-Texte, keine `hd.variable_def.*` im Absatz). PHS-Labels der Instanz dürfen später als **v1n-Facts** (ein halber Satz), nicht als Literaturstapel. |
-| `hd.color.34.1.3` | `hd.color_def.3` | dasselbe Muster; Mini-Pfeile erst PHS-Ansicht |
+| `hd.variable.<<>>` (vier Pfeile als String) | `hd.variable.digestion` … `perspective` und/oder `hd.variable_def.*`; Color/Tone/Base = `hd.color_def.N` nicht `hd.color.34.1.3` | Engine-Kombi-ID ≠ Def-Node. Deshalb „IDs passen oft nicht“. PHS-Ansicht braucht Mapping Instanz → Def (`hd-phs.ts`). **Keine Overlay-Essays** (keine Pfeil-Texte, keine `hd.variable_def.*` im Absatz). PHS-Labels der Instanz dürfen später als Facts (ein halber Satz), nicht als Literaturstapel. |
+| `hd.color.34.1.3` | `hd.color_def.3` | dasselbe Muster; Color/Tone-Ziffern an den Rails; Mini-L/R nur an den vier Kopf-Pfeilen |
 
 Cross-Wordings sind nicht mehr „14/192 dünn“ — das war der Stand vor dem Tagging 2026-08-05/11. `literature_content_wave` dazu ist veraltet; SoT Dichte: `hd_layer_master_checklist_2026-08-11.md`.
 
@@ -268,7 +270,7 @@ Nicht Fixing+R+Pfeile+Kreuz in einen v0-Absatz. Reihenfolge:
 1. ✅ **Overlay v1a/v1b — Kanäle + Kreuz** (Lookup + Prompt). Slug: `the_` abstreifen.
 2. ✅ **Inspector-Kanal:** definierte Kanäle als Chips → Atom + Achse A (`channel_relink_v1`). Kein SVG-Umbau.
 3. ✅ **Overlay v1c — Fixing+R** nur für Sonne/Erde (Kreuz) und Tore genannter Kanäle.
-4. ✅ **Variables/Pfeile:** Mapping `hd-phs.ts` + Marker am Graph (←/→ Color.Tone) + Register Körper/Fakten. Mini-Pfeile an Rails später. Nicht Zusammenschau; höchstens v1n-Facts.
+4. ✅ **Variables/Pfeile:** Mapping `hd-phs.ts` + Marker am Graph (←/→ Color.Tone) + Register Körper/Fakten. Color/Tone-Ziffern an den Rails (keine 26 Mini-L/R). Overlay v1n-Facts live.
 5. **Nicht blockierend:** Planeten-Buch, Holistic Analysis 1, Line Companion, `cross_theme.*`, Edges-Retrieval.
 
 v1a braucht keinen Content-Lauf. v1b einen Slug-Check am Dachau-Chart. Pfeile brauchen Mapping, keinen MinerU-All-Ingest.
@@ -310,18 +312,20 @@ Kreuz: Nodes 192 + Wordings laut Checkliste genug. Overlay holt sie jetzt (Slug-
 - [x] Overlay-Prompt v1c: Fixing-Facts statt Status-Stempel (kein „balanced juxtaposition“).
 - [x] I’Ching-Zeilen ohne Detriment-Planet — Lookup `detriment_planet: null` (37.1: 64keys und wir neither).
 - [ ] Anzeige-Reihenfolge der 13 Zeilen (Sonne oben … Pluto unten) vs. irgendeine Wirkungs-Rangfolge
-- [x] Line-Wordings (Synth): Exalt/Detri-Absätze **nicht** trennbar — paraphrasiert. Pol-Absatz später aus pdftotext-Chunks, nicht aus `canonical_wording`.
+- [x] Line-Wordings (Synth): Exalt/Detri-Absätze **nicht** trennbar — paraphrasiert. Pol-Absatz aus reconstructed pdftotext-Chunks (`hd-line-facets.ts`), nicht aus `canonical_wording`.
 
 ## 10. Code-Anker (Ist)
 
 - UI: `apps/web/app/[locale]/home/_components/hd-karte/`
 - Overlay: `apps/web/lib/hd/hd-overlay.ts` (OS + Kanäle + Kreuz + v1c Schlüssel-Fixing + Profil-Lead + undefined-first)
-- Overlay-Cache: `apps/web/lib/hd/hd-overlay-cache.ts` + `user_charts.overlay` (`hd_overlay_v1m`)
+- Overlay-Cache: `apps/web/lib/hd/hd-overlay-cache.ts` + `user_charts.overlay` (`hd_overlay_v1o`)
+- Chart-Hydrate: GET `/api/ic/hd-chart` + `hd-karte-session.ts` (SessionStorage)
+- Overlay-Facts: `apps/web/lib/hd/hd-facts.ts` (`packOverlayFacts`)
 - Center-Packer: `apps/web/lib/hd/hd-center-facets.ts` (unhinted S0 nur wenn eindeutig defined/open; Atom `splitMechanicalForState`)
 - S0 Defined-Relink: `apps/web/scripts/ic_s0_center_defined_relink.py`
 - Overlay-Fixing: `apps/web/lib/hd/hd-overlay-fixing.ts` — nur Sonne/Erde + Kanal-Tore
 - Wording-Lookup: `apps/web/lib/hd/hd-wording-lookup.ts` — Center + Channel-Remap + Cross-`the_`-Slug
-- Polarität: `apps/web/lib/hd/hd-line-polarity.ts` + `hd-line-polarity.json` + `hd-line-fixing.ts`
+- Polarität: `apps/web/lib/hd/hd-line-polarity.ts` + `hd-line-polarity.json` + `hd-line-fixing.ts` + `hd-line-facets.ts`
 - Extract: `apps/web/scripts/ic_hd_line_polarity_from_pdftotext.py`
 - Wording-Lookup: `apps/web/lib/hd/hd-wording-lookup.ts` — **immer** alle 9 `hd.center.*` (Engine-`nodes` = nur definierte Center)
 - Normalize: `apps/web/lib/hd/normalize-hd-chart.ts` (Polarität via Lookup; Variable/Color/Tone/Base durchgereicht)

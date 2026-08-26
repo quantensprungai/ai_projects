@@ -10,6 +10,18 @@
 - **Interpretation** (LLM-Pipeline) = KOMBINATIONEN — "was bedeutet Gate 34 IN Color 3 für diese Person"
 - Engines kommen in P3 (Chart-Berechnung für User). Strukturvertiefung kommt demand-driven.
 
+## 69.120 Kombinationen — nicht 69.120 Nodes
+
+HD: 64 × 6 × 6 × 6 × 5 ≈ **69.120** mögliche Sub-Gate-Positionen (Gate/Line/Color/Tone/Base) pro Aktivierung.
+
+| Was | Modell |
+|-----|--------|
+| Berechnete Position „Gate 34 Line 3 Color 2“ | **K1** — Ergebnis der Engine, Property auf Chart-Entität |
+| Atomare Nodes `hd.gate.34`, `hd.color.2`, … | **K2** — Strukturbaum (~700–780 Nodes für HD) |
+| Bedeutung der Kombination zur Laufzeit | **K4** — LLM/App kombiniert Texte der beteiligten atomaren Nodes |
+
+**Vollständig** heißt: alle **13 Layer als atomare Instanzen** geseedet — **nicht** jede Kombination als eigener Node. Siehe `reference/hd_structure_13_layers_and_engines.md` §2.
+
 ## Aktueller Stand (S4 erledigt): 832 Nodes, 698 Edges
 
 | System | Nodes | Abdeckung | Was fehlt (Backlog) |

@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-08-25
+last_update: 2026-08-26
 scope: IC Projektstatus (Phasen 0–4), Chart-Engines, Content-Akquise, Ur-Systeme, Gene Keys, Konvergenz/Meta-KG
 in_scope: Stand, nächste Schritte, Systemliste, Anna's Archive entity-first, Klarstellung HD-Schulen vs. GK, Konvergenz personenbezogen vs. strukturell
 out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_compass_app AGENTS.md
@@ -22,7 +22,7 @@ out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_c
 > - **Nine Star Ki**: K1/K2 **v1** (`ic_nine_star_ki_v1`) — Honmei + Getsumei + **energetic**; feste Sonnenmonats-Schnitte; Vitest **Step 3** Katalog-Regeln ✅ — `reference/decisions.md` **2026-04-16**
 > - **Numerologie / Akan**: Engines + Kataloge + `POST /api/.../calculate` ✅ *(Playbook-Validierung optional)*
 >
-> **Nächste Reihenfolge (jetzt):** Overlay v1n optional; Edges / sys_dynamics; Relink-Q. Graph freeze außer explizitem User-Wunsch. 64keys Blau/Orange am Zentrum nicht raten.
+> **Nächste Reihenfolge (jetzt):** Sprache/i18n **nicht**. `sys_term_mapping` nicht zum UI-Katalog machen (Decision 2026-08-26). HD-KARTE freeze. Als Nächstes: Relink-Q **oder** Edges/`sys_dynamics` (Verbindungen), nicht Graph-Labels. Overlay v1o. 64keys Blau/Orange am Zentrum nicht raten.
 >
 > **Roter Faden (Gesamtplan):** HD Close-out → System-Wellen → Phase 3 (nach 2 Reviews) → Makerkit Deps/v4 → MVP Phase 4 → Voll — kanonisch in `cursor/handover.md` § Roter Faden. Content-Nachrüst: `reference/hd_layer_master_checklist_2026-08-11.md`. Wave: `cursor/reference/literature_content_wave_2026-07-18.md`. UX: `reference/ux_konzept_2026-07.md`.
 

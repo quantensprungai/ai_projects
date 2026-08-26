@@ -1,6 +1,7 @@
 # Inner Compass — Pipeline & Jobs
 
 > Alle Pipeline-Jobs, ihre Inputs/Outputs, Reihenfolge, Prompts.
+> **Wörterbuch der Objekte:** §1a (Chunk, Interp, Anhang, Node, Synth, Relink, primary).
 
 ## 1. Pipeline-Überblick
 
@@ -16,6 +17,54 @@ PDF → extract_text → chunk → classify_domain → extract_entities
 ```
 
 Jobs in `[Klammern]` sind noch nicht implementiert.
+
+**Ist-Reihenfolge (HD, 2026-08-18):** Seed-K2 → MinerU-Chunks → classify → term_mapping → interpret → **text2kg strict** (Anhänge, 0 neue Nodes) → **Relink** (`link_role`) → **Synth nur scoped** (`IC_TEXT2KG_AUTO_SYNTH=false`). UI liest danach entweder `canonical_wording` (Atom) oder `primary`-Interps (Packer).
+
+**Vier Stränge, nicht ein Ablauf:** Dieses Dokument = **Literaturpipeline**. Chart-State berechnet der HD-Service (`services/hd`, Vertrag `hd_state_contract.md`) — nicht aus PDFs. Packer (Inspector/Overlay) verbindet beides erst zur Anzeige. Transit/NLP bleiben Runtime, schreiben nicht ins KG. Personenzustände liegen nicht in `sys_kg_nodes`.
+
+## 1a. Objekte — vom Buch zur KARTE
+
+Ein Satz: **Chunk ist Rohtext, Interp ist die LLM-Lesung, Anhang hängt die Lesung an einen Katalog-Haken, Relink sagt wie fest, Synth schreibt den UI-Absatz.**
+
+| Wort | Tabelle / Ort | Was es ist | Was es nicht ist |
+|---|---|---|---|
+| **Source** | `sys_sources` | Ein PDF/Buch | kein Graph-Element |
+| **Chunk** | `sys_source_chunks` | Textblock aus dem PDF (~500–1000 Tokens) | noch keine „Bedeutung“ |
+| **Interp** | `sys_interpretations` | LLM-JSON aus einem Chunk (`essence`, `dimensions`, `elements[]`) | nicht der UI-Text |
+| **Node** | `sys_kg_nodes` | Katalog-Haken, existiert **vor** PDFs (`hd.gate.34`) | kein Buchabsatz |
+| **Anhang** | `metadata.interpretation_ids` am Node | „diese Interp-UUID hängt an diesem Node“ | nicht `sys_kg_edges` |
+| **Rolle** | `metadata.interpretation_link_roles` | `primary` / `contrast` / `mention` — *wie fest* der Anhang den Node füttern darf | keine Wissensart (nicht Gift/Shadow) |
+| **Edge** | `sys_kg_edges` | Beziehung Node→Node (`part_of`, Kanal-Gates) | kein Essay |
+| **Synth / Wording** | `sys_synthesis_wordings.canonical_wording` | ein UI-Absatz **pro Node**, aus Canon + admitted `primary` | nicht die Roh-Interp |
+| **Facet / Packer** | Read-time (`hd-center-facets.ts` …) | Inspector-Stapel aus `primary` + Hints | schreibt den Corpus nicht |
+
+### Rollen (Aboutness)
+
+Vertrag: `contracts.md` §1a. Synth-Policy: `reference/synthesis_canon_first.md`.
+
+| Rolle | Bedeutung | Inspector / Synth |
+|---|---|---|
+| **primary** | Der Essay *ist* über diesen Node | ja — füttert Slot |
+| **contrast** | Geschwister-Vergleich | nein (Kante, nicht Prosa) |
+| **mention** | Namensnennung / Beispiel | tot für Wording, Link bleibt |
+| *(fehlt)* | text2kg-Default | zählt als Anhang; Packer ignoriert ihn |
+
+**Kein `primary` ist kein Warnsignal an sich.** Packer brauchen primary (Center-C, Kanal-A, Authority, Planeten). Gate/Line/Kreuz nutzen das **Atom** (`canonical_wording`) — Relink auf `primary` dort bewusst nicht, solange die KARTE nur das Atom zeigt.
+
+### Jobs in Alltagssprache
+
+| Job | Tut | Tut nicht |
+|---|---|---|
+| **classify_domain** | Chunk → System-Tag (`hd`) | kein Graph |
+| **extract_term_mapping** | „Power Gate“ → `hd.gate.34` | kein Essay |
+| **extract_interpretations** | Chunk → Interp-JSON | hängt noch nichts an Nodes |
+| **text2kg** | Interp an Seed-IDs **anhängen** (strict: 0 neue Nodes) | keine Rollen, kein Synth |
+| **Relink** | vorhandene Anhänge sortieren (`link_role`, Hints); kein Re-Extract | kein neuen Text |
+| **synthesize_node** | aus Canon + `primary` einen Wording-Absatz schreiben | überschreibt Interps nicht |
+
+Beispiel Planeten-Buch: 22 Chunks → 22 Interps (`planet_split_v1`: Archetyp in essence, Beispiel-Methode in process.trap) → 61 text2kg-Anhänge (davon 43 Gates als *Beispiele*) → Relink setzt Träger-`primary` (Sun/Earth/Moon/Mercury je 1) → `--demote-examples` setzt Gate/Center/Kanal auf `mention`. Synth für Planeten bewusst **nicht**.
+
+Zahlen / Audit-Schnitt: Canvas `hd-audit-scale` + Layer-Checkliste.
 
 ## 2. Bestehende Jobs (funktionieren)
 
@@ -56,6 +105,13 @@ Jobs in `[Klammern]` sind noch nicht implementiert.
 - **Wichtig:** Seed-Graph (K1/K2) existiert **vor** PDFs — text2kg **reichert an**, erzeugt keine parallelen Gate-Nodes. **strict mode (2026-07-10):** `IC_TEXT2KG_STRICT=true` default — kein Node-Create; BaZi zusätzlich Whitelist. Audit: `debug.text2kg_unmatched[]`. → `reference/k2_seed_scope_and_strict_text2kg.md`, `reference/structure_descriptor_seed.md`.
 - **Status:** ✅ Fix 2026-07-01 (Gate-Linking via Chunk-Metadata)
 
+### Relink (kein Worker-Job, Skripte)
+- **Input:** bereits verlinkte Interps an Seed-Nodes
+- **Engine:** Regeln (`ic_s0_*_relink.py`), kein LLM
+- **Output:** `interpretation_link_roles` + optional `facet_hints`
+- **Logik:** Aboutness nachziehen, nachdem text2kg ohne Rolle angehängt hat. Planeten-Beispiele: `--demote-examples` → `mention` auf Gate/Center/Kanal.
+- **Status:** ✅ Center S0/S0.5, Channel v1c, Auth/Def, Planeten v1
+
 ### synthesize_node
 - **Input:** sys_kg_nodes mit `interpretation_ids` in metadata (priorisiert vor leeren Seed-Nodes)
 - **Engine:** LLM (**nur Spark** — nicht parallel lokal auf Windows)
@@ -64,6 +120,7 @@ Jobs in `[Klammern]` sind noch nicht implementiert.
 - **Job-Debug:** `only_canonical_ids` / `only_node_keys` — gezielter Rerun (paginierter Node-Fetch ab 2026-07-07)
 - **Worker:** `_parse_llm_json` repariert ungültige LLM-Escapes; Spark: `spark_s6_synth_only.sh` / `spark_s5b_synth.sh` + `.env.vm105`
 - **Betrieb:** Siehe `reference/s6_pipeline_learnings.md` § Worker-Failures (1000-Limit, lokale Worker, CRLF)
+- **Qualität (SoT ab 2026-08-13):** Canon-first — `cursor/reference/synthesis_canon_first.md` + Canon YAML `reference/canon/`. Mechanik aus Canon; Evidence nur admitted `primary`; Verify-before-write; `blocked` → Placeholder statt Halluzination. contrast/mention → Edges/Interactions, nicht Node-Prosa.
 
 ## 3. Geplante Aufspaltung: extract_interpretations → 4 Jobs
 
@@ -167,6 +224,7 @@ PDFs REICHERN die Nodes AN (Interpretationen), sie ERZEUGEN sie nicht.
 - **69k-Regel:** ~69.120 berechenbare HD-Positionen sind **K1/Chart**, keine Struktur-Nodes. Vollständigkeit K2 = atomare Layer (inkl. 17 PHS, 192 Crosses), nicht 69k Einzelknoten.
 - **text2kg:** verknüpft K4-Interpretationen mit **bestehenden** K2-Nodes (PATCH metadata), nicht mit `hd.asset_chunk.{source}:{index}`.
 - **synthesize_node:** LLM-Synthese für UI (`sys_synthesis_wordings`); Roh-Interpretationen bleiben in `sys_interpretations` für Phase 3.
+- **Content-Welle:** Synth **nicht** nach jedem PDF — systemweiter Node-Lauf; Wellen/Batches (`only_canonical_ids`, `ic_k2_synth_batch.py`). Policy: `cursor/reference/literature_content_wave_2026-07-18.md` §Synth-Policy.
 - **Cross-System (Phase 3):** `extract_cross_mappings` / `sys_kg_edges` maps_to — Synthese-Wortlaut für UI, Roh-Interps für tiefe Analyse. Review: `reference/cross_system_mapping*.md`.
 
 ## 7. Worker-Architektur
@@ -297,6 +355,36 @@ Separate Services neben dem bestehenden Batch-Worker. Laufen als eigene Prozesse
   3. Zählen: Welche Domäne hat 3+ aktive Elemente aus verschiedenen Systemen?
 - **Output:** Top 1–3 Konvergenz-Highlights für JETZT-Space
 - **Cache:** Pro User, 15 Min TTL (an Transit-Service gekoppelt)
+
+## 12a. Nächstes Element — Vorgehen (MinerU / vorhandenes / KI-Docs)
+
+Nicht raten. Reihenfolge:
+
+1. **Welcher `element_type`?** Deskriptor `facet_schema` + `contracts.md` §1a: Achse A gilt immer; C-Slots nur wenn schon deklariert oder Literatur+UI einen Essay erzwingen — dann erst Slot in `hd.json` eintragen.
+2. **Chart-State (Achse B)** kennen: `defined|undefined`, hanging/Kanal, Line-Pol. Engine, nicht PDF. `open` nicht als dritte Enum. Details: `hd_state_contract.md`.
+3. **Literatur:** Master-Checkliste + TOC-Matrix. Neues PDF nur wenn Primärwerk fehlt. Sonst vorhandene Chunks/Interps (alle Werke bleiben im Archiv).
+4. **Pipeline wenn neu:** `s5_runbook.md` — Upload → MinerU `extract_text` (Spark) → classify/term → **Langdock** interpret → text2kg **strict** → **kein** Auto-Synth. Job-Types eng halten.
+5. **Vorhandenes nutzen:** Relink/`link_role` + `facet_hints`, nicht Re-Extract. Synth nur scoped (`ic_synth_layer_ops.py --enqueue-layer`) und nur für `mechanical`, nie A+C in einen Topf.
+6. **Lesen bauen** (Inspector-Stapel / Overlay-Block) **bevor** oder **statt** Re-Synth. Admission: nur `primary` in den Slot.
+7. **Klassen-Texte** (Overview „alle offenen Zentren“) nicht an Geschwister hängen — Concept/`hd.definition.*` oder `mention`.
+
+**Was die KI lesen muss** (in dieser Reihenfolge, nicht die ganze `reference/`):
+
+| # | Datei | Wofür |
+|---|---|---|
+| 1 | `cursor/handover.md` | wo wir stehen |
+| 2 | `cursor/contracts.md` §1a + §1b | Facetten vs. Dimensions vs. State |
+| 3 | `reference/hd_state_contract.md` | defined/undefined, Träger, Display-Policy |
+| 4 | `reference/hd_bodygraph_overlay_contract.md` | Inspector vs Overlay |
+| 5 | `reference/hd_layer_master_checklist_2026-08-11.md` | gut/dünn + Delta 2026-08-17 |
+| 6 | `reference/decisions.md` (oben, 2026-08-17) | warum nicht mixen |
+| 7 | `cursor/pipeline.md` **§1a** + dieser Abschnitt | Wörterbuch (Chunk/Interp/Anhang/Synth) + MinerU/Worker |
+| 8 | `reference/s5_runbook.md` | nur wenn neues PDF |
+| 9 | `cursor/reference/synthesis_canon_first.md` | nur bei Synth/Relink-Qualität |
+
+Dazu Code-Anker: `ic_worker.py`, `hd-overlay.ts`, `hd-wording-lookup.ts`, Relink-Skripte unter `apps/web/scripts/`.
+
+**Nicht als SoT:** `scratch/`, `projects/hd_saas/`, `consolidation/`, Z-Dokumente (in cursor/ konsolidiert), Quality-Rohnotizen. Widerspruch → neuere Decision/Contract gewinnt.
 
 ## 12. NLP-Pipeline (NEU — ab v2)
 

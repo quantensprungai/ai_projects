@@ -444,16 +444,25 @@ Zwei verschiedene Kategorien:
 **Kategorie A: HD-Schulen (gleicher Stammbaum, nur K3/K4 unterschiedlich)**
 
 
-| Schule                    | Gründer            | Was ist anders?                                                |
-| ------------------------- | ------------------ | -------------------------------------------------------------- |
-| Jovian Archive (Original) | Ra Uru Hu          | Die Referenz — K1+K2 sind identisch bei allen                  |
-| Quantum HD                | Karen Curry Parker | Typen umbenannt (Manifestor → "Initiator"), positivere Sprache |
-| 64Keys                    | Andrea Reikl-Wolf  | Deutschsprachig, eigene Interpretation                         |
-| Chetan Parkyn             | Chetan Parkyn      | Vereinfacht, andere Betonung                                   |
+| Schule / Stimme | Wer / Werk | Was ist anders? | `tradition` | Nicht verwechseln mit |
+| --- | --- | --- | --- | --- |
+| Jovian Archive (Default) | Ra Uru Hu; Complete Rave I’Ching | Referenz-K1+K2; S0-Wordings | `jovian` | — |
+| Quantum HD | Karen Curry Parker | Typen umbenannt, andere Valenz | `quantum_hd` | Gene Keys |
+| **64keys (Gates)** | **Nicole & Andreas Ebhart**, *Blue I Ching* | 64keys-Sicht der 64 Gates (Potential/Shadow); „64keys version of Ra’s Rave I Ching“ | `64keys` | Gene Keys / *The 64 Ways* (Rudd); klassisches I Ging |
+| **64keys (Person), HD-Centers** | **Peter Schoeber**, *The Centres* | Schoeber = 64keys-Orbit; **dieses Buch ist für HD geschrieben** → bleibt in Default-Center-Wordings | `jovian` + `teacher: schoeber` | Blue I Ching (das ist die 64-Gate-Linse) |
+| Cosmic / sidereal (Gates) | Anthony/Moog, *Oracle of the Cosmic Way* | **K3-Beschreibung der 64 Gates aus sideraler Sicht** — keine Engine | `cosmic_sidereal` | `compute_profile` sidereal (Rechnen); `i_ching.*` (Wilhelm/Legge/Huang) |
+| Chetan Parkyn | *Book of Lines* | HD-Linien in I-Ging-Sprache | `parkyn` | klassisches I Ging |
 
 
-→ **Eine Engine** berechnet alles. K3-Texte bekommen ein `tradition`-Tag.
-→ Im KG: Alles unter `hd.`*, Interpretation-Nodes mit `tradition: "jovian" | "quantum_hd" | "64keys"`
+→ **Eine Engine**, **ein** K2 (`hd.gate.1` bleibt `hd.gate.1`).  
+→ Unterschied sitzt in **K3/K4**: Interpretationen + **eigene Synthesis-Linsen**, Feld `tradition`.  
+→ **Sidereal rechnen** (`compute_profile.hd`) ist **orthogonal** zur Cosmic-Way-**Prosa**; eine UI-Linse darf beide koppeln.  
+→ **Nicht** implementiert: `tradition` in der Pipeline. Default-Wording **jovian**. Blue I Ching + Cosmic Way **nicht** in S0-Synth. Schoeber-Centers **nicht** re-synthen.  
+→ Volltext: `reference/decisions.md` **2026-08-13 HD-Schulen / Gate-Stimmen**.
+
+**Inventar:** `I Ching/64keys_Blue-I-Ching.pdf` = **HD-Schule `64keys`**, Queue `queued`. Cosmic Way = **`hd.gate.*` + `cosmic_sidereal`**, nicht klassisches I-Ging-KG. Wilhelm/Huang/Legge/Shaughnessy = `i_ching.*` (Ur-System, später).
+
+**Kategorie B: Gene Keys (eigener Stammbaum)** — unverändert unten.
 
 **Kategorie B: Gene Keys (eigener Stammbaum)**
 

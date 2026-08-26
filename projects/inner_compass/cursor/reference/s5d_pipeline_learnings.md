@@ -1,8 +1,8 @@
 # S5d BaZi Pipeline — Learnings (Joey Yap Destiny Code)
 
-last_update: 2026-07-12
-scope: S5d BaZi E2E auf VM105 + Spark
-in_scope: MinerU 648p, Phase-2-Batches, Wu-Relink, Recovery, Qualitäts-Gate/Wildwuchs, Sanierung 2026-07-12
+last_update: 2026-07-22
+scope: S5d BaZi E2E auf VM105 + Spark + Content-Wave Learnings
+in_scope: MinerU 648p, Phase-2-Batches, Wu-Relink, Recovery, Qualitäts-Gate/Wildwuchs, Sanierung 2026-07-12, Synth-Wellen-Policy, Case-Normalize HD
 out_of_scope: BaZi Deep-Structure-Seed (→ deep_structure_plan.md)
 
 ## Source
@@ -22,6 +22,10 @@ out_of_scope: BaZi Deep-Structure-Seed (→ deep_structure_plan.md)
 
 - **`attempts` undefined** in `process_one_job` except → Jobs hingen auf `running`.
 - **`text2kg` nach Partial-Batch:** `enqueue_text2kg` nur wenn `only_chunk_ids` leer oder `debug.enqueue_text2kg`.
+- **Fix 2026-07-19:** Retry-Job setzt `enqueue_text2kg: true` in `ic_worker.py`, damit nach erfolgreichem Interpret-Retry automatisch `text2kg` folgt (Content-Wave Design Concepts).
+- **Content-Wave Design Concepts Recovery:** Ohne `IC_TEXT2KG_STRICT_HD` entstanden 106 `hd.asset_chunk.*`-Nodes → `ic_hd_wildwuchs_cleanup.py` (88 gelöscht) + `ic_relink_strict.py` (407 strict links). `spark_s5d_phase2.sh` exportiert jetzt Strict-Flags.
+- **Case-Normalize 2026-07-20:** LLM liefert oft `hd.center.G` / `hd.type.Generator`; Katalog ist lowercase → `normalize_hd_canonical_id` foldet Slugs für type/center/authority/…
+- **Synth-Wellen (2026-07-22):** `synthesize_node` = systemweit (alle Nodes mit Interps eines `system_id`), nicht buchlokal. Content-Welle: nach PDF nur bis text2kg; Synth in Layern/Batches. Siehe `literature_content_wave_2026-07-18.md` §Synth-Policy. Zombies oft durch Spark↔VM105 Supabase-Timeouts.
 
 ## Phase 2 — Interpretationen
 

@@ -20,7 +20,10 @@
 - **Struktur/Deskriptor/Seed, Kit-first, Ebenen:** structure_descriptor_seed.md  
 - **HD 13 Ebenen, Strukturbaum vs. KG, Engines, Lizenz:** hd_structure_13_layers_and_engines.md  
 - **HD Ebenen-Recherche, Vollständigkeit Strukturbaum, Gene Keys pro Schule:** hd_ebenen_recherche_und_strukturbaum_vollstaendigkeit.md  
-- **S5 E2E (PDF → MinerU → LLM):** s5_runbook.md  
+- **S5 E2E (PDF → MinerU → LLM):** s5_runbook.md
+- **Nächstes Element / Facetten-Lesen:** `../cursor/pipeline.md` §12a + `../cursor/contracts.md` §1a/§1b  
+- **HD State-Vertrag (defined/undefined, Träger, Display-Policy):** hd_state_contract.md  
+- **Layer-Ist + Delta 2026-08-17:** hd_layer_master_checklist_2026-08-11.md
 - **Unlimited-OCR Spike (Spark, Vergleich gegen MinerU):** unlimited_ocr_spike_runbook.md  
 - **K3-Kanon / Ur-Systeme / Scope:** literature_canon_by_scope.md  
 - **Split vs. Tags (Entscheidungs-Matrix):** ontology_policy.md  

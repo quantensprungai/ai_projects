@@ -2,7 +2,7 @@
 
 > **Projekt:** Geburtsbasiertes Meta-System — kulturell diverse Wissenssysteme über gemeinsamen Knowledge Graph vereint.
 > **Status:** Pre-Launch (Pipeline funktioniert für HD, Schema-Migration auf sys_* steht an)
-> **Stand:** 2026-02-16
+> **Stand:** 2026-02-16 (Index). **KARTE/State 2026-08-25:** Lesereihenfolge unten, nicht `status.md` zuerst.
 
 ## Was ist Inner Compass?
 
@@ -10,15 +10,20 @@ Eine App, die aus Geburtsdaten (Datum, Uhrzeit, Ort) das persönliche Profil aus
 
 Das Alleinstellungsmerkmal ist die **Verbindungsschicht**: Ein Knowledge Graph, der Elemente über Systeme hinweg mappt (Schicht D: Cross-System-Mappings) und emergente Meta-Konzepte erzeugt (Schicht E: Meta-Knoten).
 
+## KI-Lesereihenfolge (nicht die ganze reference/)
+
+1. `handover.md` → 2. `contracts.md` **§1a + §1b** → 3. `reference/hd_state_contract.md` → 4. Overlay-Contract → 5. Layer-Checkliste (Delta 2026-08-17) → 6. `decisions.md` oben → 7. `pipeline.md` §12a bei neuem Element/PDF.
+
 ## Docs in diesem Ordner (Reihenfolge)
 
 | Datei | Inhalt | Wann lesen |
 |-------|--------|------------|
 | **status.md** | Was existiert, was fehlt, nächste Schritte | Immer zuerst |
-| **contracts.md** | Dimensions-Contract (15 Keys), Lebensbereiche (12), Payloads, Enums | Bei Schema/Pipeline-Arbeit |
+| **contracts.md** | Dimensions (15), Facetten-Vertrag §1a, Lebensbereiche (12), Payloads | Bei Schema/Pipeline/Overlay-Slots |
 | **architecture.md** | 5 Datenschichten, sys_*-Schema (SQL), Tech Stack | Bei DB/Infra-Arbeit |
-| **pipeline.md** | 8 Pipeline-Jobs, Flows, Extraktionslogik | Bei Worker/Pipeline-Arbeit |
+| **pipeline.md** | Jobs + **§1a Wörterbuch** (Chunk/Interp/Anhang/Synth/Relink) | Bei Worker/Pipeline; wenn die Wörter unklar sind |
 | **engines.md** | Chart-Engines pro System, Integration, Was sie liefern | Bei Engine-Integration |
+| **reference/synthesis_canon_first.md** | Canon-first Synth-Policy + Chat-Playbook (Verify, link_role, Sanierung) | Bei synthesize_node / Wording-Qualität / Relink |
 | **reference/engine_integration_playbook.md** | Phase 1 wiederholbar: Katalog → Struktur → Tests → KG-Seed pro `system_id` | Bei neuem System / Engine-Integration |
 
 **Doku-Regel:** cursor/ = max. 6–8 aktive Docs. Phasierung über **status.md** (S1–S7, …) und reference/ (Runbooks, Pläne), keine extra Dateien pro Phase.

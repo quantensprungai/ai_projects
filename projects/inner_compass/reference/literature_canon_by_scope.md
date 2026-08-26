@@ -1,6 +1,6 @@
 ---
 
-last_update: 2026-05-06
+last_update: 2026-08-13
 status: draft
 scope:
   summary: "K3/K4-Quellen nach Vollständigkeitsstufe; Gene Keys vs Registry; Ur-Systeme mit Start-Kanon-Tabellen (K2_ref/K3_deutung); Abgleich manueller Downloads; Architektur separate KG vs. Tradition-Tags."
@@ -61,7 +61,7 @@ So explodiert der Umfang nicht: erst **Core/Concept**, dann **Extended** pro `sy
   - `**wu_xing` / TCM:** strikt **medizinisch-kosmologisch** vs. rein **philosophische** Lesart der 五行 — Kanten zu Organen/Jahreszeiten vs. „reine“ Korrespondenz; meist **ein** `wu_xing` mit `lens: tcm | philosophy`.
   - `**pancha_bhuta`:** Sāṃkhya-/Yoga‑Kontext vs. **Ayurveda‑Doṣa‑Netz** — oft **ein** Graph mit zwei **Teilgraphen** und klaren `maps_to` zwischen Bhūta und Doṣa, statt zwei Welten.
 - **Wann wirklich zwei `system_id`s?** Wenn zwei Linien **keine** gemeinsame, stabile K2-Knotenbasis teilen sollen (oder ihr **bewusst** getrennte Curricula/AA-Profile/MinerU-Pipelines wollt). Kabbala jüdisch vs. hermetisch ist der häufigste Fall; alles andere **erst** splitten, wenn der **eine-Pfad-mit-Tags**-Ansatz in Queries oder UI bricht.
-- **I Ging:** unterschiedliche Übersetzungs-/Kommentarlinien (Wilhelm vs. Legge vs. Shaughnessy) = **parallele K3-Schichten** über **derselben** K2-Struktur (64 Hexagramme) — **gleiche** `i_ching.hex.*`, verschiedene Glossen/Properties mit `tradition` — **kein** zweiter `system_id` nötig.
+- **I Ging:** unterschiedliche Übersetzungs-/Kommentarlinien (Wilhelm vs. Legge vs. Shaughnessy) = **parallele K3-Schichten** über **derselben** K2-Struktur (64 Hexagramme) — **gleiche** `i_ching.hex.*`, verschiedene Glossen/Properties mit `text_line` — **kein** zweiter `system_id` nötig. **Nicht** in dieses KG: *Blue I Ching* (`hd` / `tradition: 64keys`) und *Oracle of the Cosmic Way* (`hd` / `tradition: cosmic_sidereal` — 64-Gate-Prosa sideral). Siehe `decisions.md` 2026-08-13 HD-Schulen.
 
 **Kurz:** Für eure Zwecke macht **ein Graph + `tradition`/`text_line`/`source_work`** fast immer Sinn; ein **zweiter Pfad** (`system_id` oder physisch getrennter Teilgraph) nur dort, wo **Begriffe gleich heißen, die Sache aber nicht dieselbe ist** — Kabbala ist das Paradebeispiel, nicht die einzige mögliche Ausnahme.
 
@@ -128,8 +128,11 @@ So explodiert der Umfang nicht: erst **Core/Concept**, dann **Extended** pro `sy
 | i_ching   | Edward L. Shaughnessy (Übers./Komm.)             | I Ching: The Classic of Changes                                         | 1996                 | EN      | K2_ref (moderne textkritische Linie)                 | P1       |
 | i_ching   | Stephen Karcher                                  | Total I Ching (o. vergleichbares Werk)                                  | 2003                 | EN      | K3_deutung (popular/interpretativ)                   | P2       |
 | i_ching   | Richard Rudd                                     | The Gene Keys (Brücke: 64 Archetypen, Shadow/Gift/Siddhi)               | 2009 ff.             | EN      | K3_deutung (GK↔I Ching)                              | P0       |
-| i_ching   | Chetan Parkyn                                    | The Book of Lines                                                       | 2007                 | EN      | K3_deutung (HD-Brücke „Lines“)                       | P0       |
-| i_ching   | Hanna Moog; Carol K. Anthony                     | I Ching: The Oracle of the Cosmic Way (Titel/Edition im Bestand prüfen) | 2002/2011            | EN      | K3_deutung (I-Ching-Brücke; ggf. bereits archiviert) | P0–P1    |
+| i_ching   | Chetan Parkyn                                    | The Book of Lines                                                       | 2007                 | EN      | K3_deutung (HD-Brücke „Lines“) — IC: `hd` / `parkyn`, nicht I-Ging-KG | P0       |
+| **hd**    | Hanna Moog; Carol K. Anthony                     | I Ching: The Oracle of the Cosmic Way                                   | 2002/2011            | EN      | **64-Gate-Prosa sideral** (`tradition: cosmic_sidereal`); nicht `i_ching.*` | P1 (Linse) |
+
+
+> Zeile Cosmic Way sitzt in der I-Ging-Tabelle nur inventarisch (Datei oft im I-Ging-Ordner). **Produktziel:** `hd.gate.*`. Blue I Ching analog: Datei im I-Ging-Ordner, `tradition: 64keys`. Volltext: `decisions.md` 2026-08-13.
 
 
 ### 6.2 Kabbalah — `kabbalah_jewish` vs. `kabbalah_hermetic`

@@ -52,7 +52,7 @@ alwaysApply: false
 - **Control Plane:** Supabase Cloud (Postgres + pgvector + Auth + Storage)
 - **Data Plane:** Spark (MinerU GPU). LLM über **Langdock** (`gpt-5-mini`); SGLang kann aus bleiben. Worker: `apps/web/scripts/ic_start_langdock_worker.py` (classify/term/interpret/text2kg, **kein** Synth).
 - **Engine-Architektur:** Hybrid TS-first (TS in Next.js + Python-Microservices für **HD** und **Jyotish**)
-- **Chart-UI:** `/home/karte/hd` — Bodygraph + Rails + Overlay-LLM v1m. Graph visuell zu (helle Jovian-Zentren, Kanalhälften, Hanging, Variable-Chevrons, keine Gate-Chips). Polaritäts-Lookup **AN**. Glyphs: ▲ exalted / ▼ detriment / gestapelt = Stern = both. **R** an der Aktivierung. Inspector-Register: Zentren · Kanäle · Tore · Betriebssystem · Körper · Fakten · Zusammenschau. Contract: overlay-contract + `hd_state_contract.md` + `cursor/reference/figma_karte_contract.md` §4b. HD-Docker: `docker compose -f services/hd/docker-compose.yml up -d` (`ic-hd-service` :8002).
+- **Chart-UI:** `/home/karte/hd` — Bodygraph + Rails + Overlay-LLM v1o. Graph visuell zu (helle Jovian-Zentren, Kanalhälften, Hanging, Variable-Chevrons, keine Gate-Chips). Polaritäts-Lookup **AN**. Glyphs: ▲ exalted / ▼ detriment / gestapelt = Stern = both. **R** an der Aktivierung. Color/Tone-Ziffern an den Rails. Inspector Tore: I’Ching-Pol-Absätze (Line-C). Register: Zentren · Kanäle · Tore · Betriebssystem · Körper · Fakten · Zusammenschau. Letzter Chart: SessionStorage + GET. Contract: overlay-contract + `hd_state_contract.md` + `cursor/reference/figma_karte_contract.md` §4b. HD-Docker: `docker compose -f services/hd/docker-compose.yml up -d` (`ic-hd-service` :8002).
 
 ## MCP-Tools (3 Server)
 

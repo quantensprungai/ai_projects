@@ -217,11 +217,11 @@
     { "num": 6, "theme": "Acceptance", "sense": "Sound", "arrow_side": "right", "canonical_id": "hd.tone_def.6" }
   ],
   "bases": [
-    { "num": 1, "theme": "Investigator", "canonical_id": "hd.base_def.1" },
-    { "num": 2, "theme": "Hermit", "canonical_id": "hd.base_def.2" },
-    { "num": 3, "theme": "Martyr", "canonical_id": "hd.base_def.3" },
-    { "num": 4, "theme": "Opportunist", "canonical_id": "hd.base_def.4" },
-    { "num": 5, "theme": "Heretic", "canonical_id": "hd.base_def.5" }
+    { "num": 1, "theme": null, "canonical_id": "hd.base_def.1", "note": "Katalog hatte fälschlich Line-Keynote Investigator; Name in PHS q2/q3 nicht als Überschrift belegt." },
+    { "num": 2, "theme": "Evolution", "canonical_id": "hd.base_def.2", "theme_evidence": "CW HD PHS q3: The 2nd Base: Evolution" },
+    { "num": 3, "theme": null, "canonical_id": "hd.base_def.3", "note": "Katalog hatte fälschlich Line-Keynote Martyr; Name in PHS q2/q3 nicht als Überschrift belegt." },
+    { "num": 4, "theme": null, "canonical_id": "hd.base_def.4", "note": "Katalog hatte fälschlich Line-Keynote Opportunist; Name in PHS q2/q3 nicht als Überschrift belegt." },
+    { "num": 5, "theme": null, "canonical_id": "hd.base_def.5", "note": "Katalog hatte fälschlich Line-Keynote Heretic; Name in PHS q2/q3 nicht als Überschrift belegt." }
   ],
   "variables": [
     { "key": "digestion", "label_en": "Digestion / Diet", "position": "top_left", "source": "design_sun_tone", "aspect": "Design (Brain)", "left_type": "Active", "right_type": "Passive", "subsystem": "phs", "canonical_id": "hd.variable_def.digestion" },
