@@ -15,6 +15,7 @@ notes:
   - "Chat-SoT bleibt cursor/handover.md. Klickpfad: cursor/demo_runbook_slice1.md."
   - "Keine neue cursor/-Datei — Ordner ist voll."
   - "PPTX neu bauen optional: python scripts/build_team_session_pptx.py — Inhalt hier pflegen."
+  - "2026-08-26 Abend: Zahlen/UI auf Demo-Freeze nachgezogen (CDS h, Akteure, Schiffseinsätze, Economics)."
 -->
 
 # Stand, Plan, Team-Session — August 2026
@@ -29,9 +30,10 @@ notes:
 
 ## 1) Kurzfazit
 
-- Backbone steht lokal: Register, Provenance, MaStR, Schutzgebiete, Häfen, ERA5 (Tag + Stunden-Pilot), CAPEX/OPEX/Events, Vessel-Katalog + VPI-Flotte.
+- Backbone steht lokal: Register, Provenance, MaStR, Schutzgebiete, Häfen, ERA5 (Tag + **AV CDS-Stunden**), CAPEX/OPEX/Events, Vessel-Katalog + VPI-Flotte, Akteure DE, Schiffseinsätze DE light.
 - Die UI ist ein **Working Board auf diesem Register**, kein Produkt A (Screener) und kein DPP.
-- Nächster inhaltlicher Schnitt: Partner-Review der IAs (Marc Stunden/Zeitraum; Thomas BOM). Simulation und Voll-DPP bleiben draußen.
+- **Demo-Freeze:** weitere Light-ETLs nur bei Bedarf. Nächster Hebel = **Partner-Sync Marc** (Stunden-CSV, Katalog), parallel Thomas BOM / Shubham AAS-Form.
+- Simulation und Voll-DPP bleiben draußen. Decom-Steps werden **nicht** aus 4C-Akteuren/Contracts abgeleitet.
 
 ---
 
@@ -39,7 +41,7 @@ notes:
 
 Zahlen lokal, abgeglichen **2026-08-26**.
 
-**Folien:** [`ASTRA_IMC_Team_Stand_2026_08.pptx`](ASTRA_IMC_Team_Stand_2026_08.pptx) — Eisberg → Quellen → Schema-Visualizer → Board → Plan. Neu bauen (wenn Folien nachgezogen werden sollen): `python scripts/build_team_session_pptx.py`. **Dieses Markdown ist die inhaltliche SoT für die Präsi.**
+**Folien:** [`ASTRA_IMC_Team_Stand_2026_08.pptx`](ASTRA_IMC_Team_Stand_2026_08.pptx) — Eisberg → Quellen → Schema-Visualizer → Board → Plan. Neu bauen (wenn Folien nachgezogen werden sollen): `python scripts/build_team_session_pptx.py`. **Dieses Markdown ist die inhaltliche SoT für die Präsi** (PPTX optional/nachlaufend).
 
 **Landing (Code):** `de` + `en` aktiv (Default **de**) · Hero `working-board-hero-v2.png` · Sprachumschalter im Header.
 
@@ -48,11 +50,11 @@ Zahlen lokal, abgeglichen **2026-08-26**.
 | Schicht | Inhalt |
 |---------|--------|
 | Plattform | Next.js/Makerkit + Supabase, Team-Accounts, RLS, Repo `astra-imc-platform` |
-| Schema | `imc_*` v1/v1.2 + MaStR + Natura + Häfen + ERA5 daily/hourly + CAPEX/OPEX/Revenue/Events + Vessel-Katalog-Flag |
-| Quellen | 4C Windfarm/POP/LCOE/Events/VPI Specs, MaStR-DE, BfN marin, Nordsee-Häfen, ERA5 CDS (+ AV Stunden-Pilot) |
+| Schema | `imc_*` v1/v1.2 + MaStR + Natura + Häfen + ERA5 daily/hourly + CAPEX/OPEX/Revenue/Events + Vessel + Stakeholders |
+| Quellen | 4C Windfarm/POP/LCOE/Events/VPI Specs+Contracts/Supply Chain, MaStR-DE, BfN marin, Nordsee-Häfen, ERA5 CDS |
 | Provenance | `imc_data_sources`, Raw-Mirror, `source_id` an Ingests |
-| Pilot | Alpha Ventus: Tripod, MaStR AV01–AV12, Emden, ERA5 Tag + ~720 h Pilot |
-| UI Working Board | Assets: Liste/KPI/Filter/Karte/Zeitstrahl/Detail/CSV; CAPEX/OPEX/Erlöse + Events am Park; Wetter-CSV; **Vessels-Seite** Katalog + Flotte |
+| Pilot AV | Tripod, MaStR AV01–AV12, Emden, ERA5 Tag + **~23k CDS-Stunden**, Akteure, Schiffseinsätze, Sim-Rollen-Pilot |
+| UI Working Board | Assets Liste/KPI/Karte/Detail; **Economics-Portfolio**; Park: CAPEX/Events/Wetter/Akteure/Schiffseinsätze/Sim-Rollen; **Vessels**-Seite Katalog+Flotte |
 
 ### Grobe Größenordnungen (lokal)
 
@@ -61,9 +63,9 @@ Zahlen lokal, abgeglichen **2026-08-26**.
 - Schutzgebiete: **~205**.
 - Häfen: **118** Ports, **677** Farm-Links; Distanz nicht überall; Draft/Kai leer.
 - ERA5 daily: 3 Parks / **1858** Tage (AV, Albatros, Amrumbank West). DE-Batch nicht durch.
-- ERA5 hourly: **AV Pilot ~720 h** (synthetic/CDS-Pfad); Grain für Marc-IA = Stunde.
+- ERA5 hourly: **AV CDS ~23 232 h** (2024-01→2026-08, `cds+hourly`). Grain für Marc-IA = Stunde.
 - CAPEX/OPEX/Revenue: reported/summary ~974, modelled ~17k, opex ~974, revenue ~421; Events ~41k gemappt.
-- Vessels: **8 Typenkatalog** + **2210** VPI-Instances; UI unter `/home/[account]/assets/vessels`. Hs in Flotte ~6 %; Katalog-Wetter = Platzhalter.
+- Vessels: **8 Typenkatalog** + **2210** VPI-Instances; Schiffseinsätze DE ~**1183**; Akteure DE ~**3633** Links.
 - Cloud-Projekt: pausiert; kein MCP-Chunk-Seed.
 
 ### Architektur, die gilt
@@ -71,7 +73,10 @@ Zahlen lokal, abgeglichen **2026-08-26**.
 - Postgres = System of Record. AAS = Interop/Export-Projektion, kein zweites Register.
 - Marc/Thomas arbeiten **an der DB** (CSV/View). AAS ist für später externe Interop und den DPP-Prototyp.
 - `operable` = Screener-KPI (Default 12 m/s / 1,5 m). Für AnyLogic zählen Reihen `day`/`hour` + `wind_ms` + `hs_m`.
-- Vessel: **Katalog** = Sim-Defaults; **Flotte** = Referenz/Ops — nicht Farm-Detail.
+- Vessel-Schichten am Park (nicht vermischen):
+  - **Akteure** = 4C Supply Chain (Owner/OEM/…) — Demo / AAS-Parties light
+  - **Schiffseinsätze (VPI)** = historische echte Schiffe — Kontext, kein Sim-Plan
+  - **Sim-Rollen (Pilot)** = kuratierte Typ×Phase für Marc — nicht VPI-Historie
 - Produkt A = Decom Capacity Screener (noch nicht gebaut). Produkt B = DPP-Prototyp (Shubham, noch kein Exporter).
 
 ### Bewusst nicht drin (nicht vergessen)
@@ -81,7 +86,7 @@ Zahlen lokal, abgeglichen **2026-08-26**.
 | BOM / Massen / GWP | Fachdaten Thomas | Thomas |
 | Decom-Sequenz, Dauern, Kosten | Fachmodell Marc; Plattform simuliert nicht | Marc |
 | AASX / semanticIds final | Form Shubham; Interface fehlt | Shubham + Heiko |
-| Vessel-Weather final / Assignments | Platzhalter + Marc-Override; Assignments später | Marc / später |
+| Vessel-Wetter final | Katalog-Platzhalter → Marc-Override | Marc |
 | Upload, Custom-Dashboards, Cloud-Vollstand | Stage A | — |
 
 ---
@@ -92,17 +97,17 @@ Zwei Spuren parallel. Keine Spur blockiert die andere.
 
 ### Spur A — Daten / Screener-Bausteine
 
-1. Partner-Review IA Marc (Stunden ok? Zeitraum? Vessel-Defaults von euch oder Override?).
-2. ~~CAPEX-Portfolio UI~~ (`/assets/economics`) — reported/modelled aus 4C.
-3. ~~CDS-Stunden Alpha Ventus~~ (2024-01→2026-08, `cds+hourly` ~23k h) + Stunden-CSV am Park.
-4. ~~Stakeholders DE~~ + ~~VPI-Contracts DE light~~ (Park: Akteure / Schiffseinsätze / Sim-Rollen-Pilot).
+1. **Partner-Review IA Marc** (Stunden-CSV ok? Zeitraum? Vessel-Defaults override?).
+2. ~~CAPEX-Portfolio UI~~ (`/assets/economics`).
+3. ~~CDS-Stunden Alpha Ventus~~ (`cds+hourly` ~23k h) + Stunden-CSV am Park.
+4. ~~Stakeholders DE~~ + ~~VPI-Contracts DE light~~ + Park-UI-Schliff (Akteure / Schiffseinsätze / Sim-Rollen).
 5. Optional: DE-ERA5-Tagesbatch Screener.
 6. Cloud nur mit direktem `psql`/`DATABASE_URL`, nicht MCP.
 
 ### Spur B — Interop / DPP-Form
 
 1. Heiko legt Industrie-Normen ab (IDTA, DPP/ESPR/CIRPASS, Shubham-Draft).
-2. Gemeinsam mit Shubham: AAS-Schnitt Alpha Ventus + **Interface Agreement** DB→AAS.
+2. Gemeinsam mit Shubham: AAS-Schnitt Alpha Ventus + **Interface Agreement** DB→AAS (Parties aus Akteuren denkbar).
 3. Festziehen: Shell vs. DB-only (ERA5-Tage/Stunden, GIS-Joins, Vessel-Katalog).
 4. Erst danach Code: AASX-Export / `dpp_templates`.
 
@@ -114,7 +119,7 @@ Zwei Spuren parallel. Keine Spur blockiert die andere.
 
 ### Nicht tun
 
-AnyLogic in der Plattform, VPI-Vertragsvollimport, zweites CDS parallel, MCP-Cloud-Seed, CAPEX-Forecast-UI vor IA-Freigabe.
+AnyLogic in der Plattform · VPI-Vertragsvollimport (17k) · Decom-Steps aus 4C generieren · zweites CDS parallel · MCP-Cloud-Seed · CAPEX-Forecast-UI vor Bedarf.
 
 ---
 
@@ -130,9 +135,9 @@ Die richtige Reihenfolge: **Arbeit darunter → Oberfläche als Ergebnis → Lü
 | Min | Block | Was du tust | Was du nicht tust |
 |-----|--------|-------------|-------------------|
 | 0–3 | Rahmen | Zwei Produkte A/B. Dual-Track: DB = Wahrheit, AAS = Form. | App öffnen |
-| 3–12 | Eisberg | Quellen, Matching, Provenance, Geo, Häfen, Wetter, CAPEX/Events, Vessel-Katalog. Alpha Ventus nennen. | Feature-Wunschliste aufnehmen |
-| 12–20 | Working Board | Demo: Assets + Park-Detail (CAPEX/Events/Wetter) + **Vessels**-Seite (Katalog-CSV). | Alle Filter durchklicken |
-| 20–27 | Nächste Schritte | Abschnitt 3. Pro Person ein Satz. | Zusagen Simulation/DPP-Produkt |
+| 3–12 | Eisberg | Quellen, Matching, Provenance, Geo, Häfen, Wetter (**CDS-Stunden**), CAPEX/Events, Vessel-Katalog, Akteure. Alpha Ventus nennen. | Feature-Wunschliste aufnehmen |
+| 12–20 | Working Board | Demo: Assets → Park (CAPEX, Wetter Tag/Stunde, Akteure, Schiffseinsätze, Sim-Rollen) → Economics → Vessels-Katalog-CSV. | Alle Filter durchklicken; 17k Contracts versprechen |
+| 20–27 | Nächste Schritte | Abschnitt 3. Pro Person ein Satz. Fokus **Marc-Abnahme**. | Zusagen Simulation/DPP-Produkt |
 | 27–30 | Bitten | Was du von wem brauchst. | Offene Runde ohne Entscheidung |
 
 ### Drei Sätze, bevor jemand „da fehlt …“ sagt
@@ -143,15 +148,15 @@ Die richtige Reihenfolge: **Arbeit darunter → Oberfläche als Ergebnis → Lü
 
 ### Satz pro Person
 
-- **Marc:** Stunden-Wetter-Pilot + Vessel-Typenkatalog (CSV). Brauche: Zeitraum/Grain OK? Defaults override oder eigene Werte?
+- **Marc:** CDS-Stunden + CSV am Park + Vessel-Typenkatalog. Brauche: Zeitraum/Grain OK? Defaults override oder eigene Werte? Sequenz-Vorlage wann?
 - **Thomas:** Register und Pilot stehen; Massen/GWP kommen von dir in die DB.
-- **Shubham:** Sobald Normen da: Mapping + Interface Agreement. Du Form, ich Spalten und Keys.
-- **Leitung:** Stage A = Register + Schnittstellen, kein Vollprodukt.
+- **Shubham:** Sobald Normen da: Mapping + Interface Agreement. Parties können an Akteure anknüpfen. Du Form, ich Spalten und Keys.
+- **Leitung:** Stage A = Register + Schnittstellen, kein Vollprodukt. Demo-Freeze erreicht — Partner-Hebel jetzt.
 
 ### Demo
 
 Voraussetzung und Klickpfad: [`../cursor/demo_runbook_slice1.md`](../cursor/demo_runbook_slice1.md).  
-Zusätzlich: `/home/research-team/assets/vessels` — Katalog + Flotte.  
+Zusätzlich zeigen: `/assets/economics` · Park Alpha Ventus (Akteure / Schiffseinsätze / Sim-Rollen / Stunden-Wetter) · `/assets/vessels`.  
 Lokal Team-Slug oft **`research-team`**.
 
 ---
