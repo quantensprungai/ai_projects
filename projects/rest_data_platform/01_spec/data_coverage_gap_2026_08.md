@@ -26,7 +26,7 @@ notes:
 | 4C Cables/Auction/Floating | nicht kuratiert | Dateien lokal | Later |
 | MaStR | 51 Parks agg, 33 Matches, 1593 Units | EEG/Einheiten | Rest-Matches; Unit-Enrichment |
 | ERA5 daily | **3 Parks / 1858 Tage** | Cache | DE-Batch optional |
-| ERA5 hourly | **AV Pilot 720 h** (synthetic) | Cache | CDS-Stunden AV; Export-CSV |
+| ERA5 hourly | **AV CDS ~23k h** (2024-01→2026-08) | Cache | optional DE-Tagesbatch; weitere Parks |
 | `ext_windfarm_id` | **~974** | — | Re-Run Windfarm-Transform |
 
 ## Wo stehen wir?
