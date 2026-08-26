@@ -22,9 +22,9 @@ out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_c
 > - **Nine Star Ki**: K1/K2 **v1** (`ic_nine_star_ki_v1`) — Honmei + Getsumei + **energetic**; feste Sonnenmonats-Schnitte; Vitest **Step 3** Katalog-Regeln ✅ — `reference/decisions.md` **2026-04-16**
 > - **Numerologie / Akan**: Engines + Kataloge + `POST /api/.../calculate` ✅ *(Playbook-Validierung optional)*
 >
-> **Nächste Reihenfolge (jetzt):** App-Shell (JETZT/KARTE/WERKSTATT/ZEIT + Onboarding). Sprache/i18n **nicht**. Relink-Q und Dynamics-Jobs nicht vor mehr UI. Overlay v1o. 64keys Blau/Orange am Zentrum nicht raten.
+> **Nächste Reihenfolge (jetzt):** Onboarding-Gate nach Signup + eine Fläche füllen. Makerkit **4.0.6** / Next 16.3 liegt. Sprache/i18n **nicht**. Relink-Q und Dynamics-Jobs nicht vor mehr UI. Overlay v1o. 64keys Blau/Orange am Zentrum nicht raten.
 >
-> **Roter Faden (Gesamtplan):** HD Close-out → System-Wellen → Phase 3 (nach 2 Reviews) → Makerkit Deps/v4 → MVP Phase 4 → Voll — kanonisch in `cursor/handover.md` § Roter Faden. Content-Nachrüst: `reference/hd_layer_master_checklist_2026-08-11.md`. Wave: `cursor/reference/literature_content_wave_2026-07-18.md`. UX: `reference/ux_konzept_2026-07.md`.
+> **Roter Faden (Gesamtplan):** HD Close-out → System-Wellen → Phase 3 (nach 2 Reviews) → **Makerkit v4 ✅** → MVP Phase 4 → Voll — kanonisch in `cursor/handover.md` § Roter Faden. Content-Nachrüst: `reference/hd_layer_master_checklist_2026-08-11.md`. Wave: `cursor/reference/literature_content_wave_2026-07-18.md`. UX: `reference/ux_konzept_2026-07.md`.
 
 ## Was EXISTIERT und FUNKTIONIERT
 
@@ -166,7 +166,7 @@ Phase 4: App                ████░░░░░░░░  ~35%  HD KARTE
 - [x] Spike: **Westl. Astro** — **celestine** in `@ic/engines` (`computeAstroChart`, Katalog `projects/inner_compass/system_structure/astro_catalog_v0.json`, Tests). Optional offen: Präzisions-/Ephemeris-Abgleich vs. Referenz (Swiss o. ä.), falls Produkt es braucht.
 - [x] Spike: PyJHora als FastAPI-Microservice — `services/jyotish/` (Docker, D1); AGPL bleibt auf diesem Service isoliert; siehe `services/jyotish/README.md`
 - [ ] Swiss Ephemeris **kommerzielle** Lizenz nur nötig, wenn ihr Swiss Ephemeris **ohne** AGPL-konforme Open-Source-Kette nutzen wollt; aktuell: `pyswisseph`+PyJHora im AGPL-Service = üblicher Open-Source-Pfad (rechtlich mit eurem Anwalt finalisieren)
-- Code-Repo: `code/inner_compass_app/` (Makerkit 3.1.3, frischer Clone 2026-03-31)
+- Code-Repo: `code/inner_compass_app/` (Makerkit **4.0.6**, Next 16.3.3; Branch `cursor/makerkit-v4`)
 - TS-Engines: `packages/engines/` (@ic/engines, npm-basiert)
 - Python-Service: `services/jyotish/` (PyJHora + jyotishganit + VedAstro, Docker)
 - ⚠️ Noch zu installieren / priorisieren: **Maya**-Kit, triviale Systeme (iztro ✅, @yhjs/bazi ✅, **celestine** ✅)

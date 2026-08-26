@@ -18,7 +18,7 @@ out_of_scope: Implementierung; S5-Runbook-Details außer als Archiv unten
 
 ```
 Projekt: Inner Compass — geburtsbasiertes Meta-System (11 Quellsysteme + Basisstrukturen → 3-Schichten-KG → personalisiertes Handbuch)
-Tech: Next.js (Makerkit 3.1.3) + Supabase + Spark (GPU, Worker, MinerU, LLM)
+Tech: Next.js 16.3 (Makerkit 4.0.6) + Supabase + Spark (GPU, Worker, MinerU, LLM)
 Code: code/inner_compass_app/   Docs: projects/inner_compass/
 SoT Chart: projects/inner_compass/reference/hd_bodygraph_overlay_contract.md
 SoT State: projects/inner_compass/reference/hd_state_contract.md
@@ -81,16 +81,16 @@ ROTER FADEN (Stand 2026-08-25; 1–17 bis 08-19, 18 = Chart-Visual):
 
 Wörterbuch Chunk/Interp/Anhang/Synth/primary: cursor/pipeline.md §1a.
 
-Aktueller Punkt: **App-Shell** (2026-08-26). HD-KARTE Graph freeze bleibt. Vier Spaces als leere Rahmen: JETZT `/home` · KARTE `/home/karte` · WERKSTATT `/home/werkstatt` · ZEIT `/home/zeit`. HD = `/home/karte/hd`. Onboarding `/home/onboarding` (Formular live; Begleiter-Feld `data-ic-entry=companion` leer). Locale-Modell fest. **Sprache/i18n jetzt nicht bauen.**
+Aktueller Punkt: **Makerkit 4.0.6** (2026-08-26, Branch `cursor/makerkit-v4`). Spaces bleiben leer. Nächstes Produktpaket: Onboarding-Gate + eine Fläche. **Sprache/i18n jetzt nicht bauen.**
 
 Nächstes Paket (Reihenfolge, nicht parallel):
-  Shell) Spaces + Onboarding füllen, sobald eine Fläche Inhalt braucht. Kein hartes Gate.
+  Gate) Onboarding nach Signup verdrahten + eine Fläche füllen (JETZT oder KARTE-Hub).
   KARTE) Freeze halten. Graph-Labels nicht nach next-intl ziehen.
   Locale) Nicht jetzt.
   Dynamik) Atom-Prozess liegt; System-Dynamik (`sys_dynamics` intra) und Cross-Dynamik **nicht** jetzt. Relink-Q still, nach UI-Mix.
   Agent) Nicht bauen. Nur das Companion-Feld freihalten.
   Git) Commit+push nur auf expliziten User-Wunsch.
-  Makerkit) v4 = eigenes späteres Paket.
+  Makerkit) **v4.0.6 da** (Branch `cursor/makerkit-v4`). Node ≥ 22.13 (pnpm 11).
   KARTE-nicht) 64keys Blau/Orange am Zentrum — erst wenn ein Chart den Mischfall belegt.
 
 Nicht: Full-Re-Synth, Center-Wipe, `open` als dritte Enum, SGLang über 7973 Interps / 20877 Anhänge.
@@ -104,7 +104,7 @@ NACH REBOOT (Reihenfolge):
        docker compose up -d
      Health: http://127.0.0.1:8002/health
      Nach einmaligem `up -d` startet Docker Desktop ihn neu (`restart: unless-stopped`).
-  4. Next aus code/inner_compass_app:
+  4. Next aus code/inner_compass_app (Node ≥ 22.13, pnpm 11):
        pnpm --filter web exec next dev --port 3000
      Env: apps/web/.env.development + .env.development.local
      HD_SERVICE_URL=http://127.0.0.1:8002
@@ -156,7 +156,7 @@ NICHT TUN:
   Gate-Chips am Bodygraph (hue-gematcht oder Papier) — ausprobiert, verworfen
   Figma-MCP-Reads (Quota); Geometrie nicht aus Figma flachziehen
   open als dritten Center-State persistieren
-  Makerkit v4 in diesem Slice (eigenes späteres Paket; bleibt 3.1.3)
+  Makerkit v4 erledigt (4.0.6, Branch `cursor/makerkit-v4`; Node ≥ 22.13)
   SGLang über alle Interps/Anhänge (Stream Q ist Regeln + Stichprobe, nicht 8k)
 
 KG nur lokal. HD-Schulen nicht ingest vor tradition-Feld.

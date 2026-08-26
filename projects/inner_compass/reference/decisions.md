@@ -1,5 +1,19 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-08-26: Makerkit v4 zuerst (4.0.6)
+
+**Kontext:** Kit war 3.1.3 / Next 16.2.2. Die HD-KARTE ist schwer; leere Space-Shells liefen billig mit. Offizielle Tags, kein Fresh Clone. Branch `cursor/makerkit-v4` vom Checkpoint `cursor/engine-api-integration-checkpoint`.
+
+**Decision:**
+1. v3-LTS zuerst (Next **16.3.3**), dann die 9 `v4-step/*`-Tags, dann `upstream/main` → **4.0.6**.
+2. Bei Konflikten Kit-Hülle, IC-Inhalt: KARTE/Engines/`optimizePackageImports` ohne `@ic/engines`, Catalog `iztro`/`@yhjs/*`/`celestine`.
+3. Design-Tag gemerged — er hat HD-Palette/Geometrie nicht angefasst.
+4. pnpm 11 braucht **Node ≥ 22.13**.
+5. Spaces bleiben leer. Nächstes Produktpaket: Onboarding-Gate.
+
+**Nicht:** Fresh Clone, `supabase db reset`, i18n, Mandala, Dynamics-Jobs, Force-Push auf `main`.
+
+---
 ## 2026-08-26: Dynamiken — drei Höhen, nicht nur Cross-System
 
 **Kontext:** `sys_kg_edges` „weitgehend da“ klang so, als lägen Zyklen/Fallen schon. Die KARTE (Natal-Inspector) ist eine **System-Linse**, nicht die Dynamik-Schicht. `payload.process` ist Trap/Experiment *eines* Elements. `sys_dynamics` war in der Pipeline (`extract_processes`) systemintern gedacht: Zyklen, Spektren, Wachstumspfade, Fallen über **mehrere Elemente**. Die Decision 2026-08-05 hat die Tabelle auf 2+ Systeme verengt — das ist nur die *obere* Stufe.
