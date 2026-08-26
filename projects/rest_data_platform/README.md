@@ -30,6 +30,9 @@ notes: []
 - `01_spec/ipw_email_templates.md`: sehr schlanke IPW‑Formulierungen + Mail‑Vorlagen
 - `01_spec/idea_backlog.md`: offener Ideen-Backlog (Hypothesen/Experimente, noch nicht festgelegt)
 - `01_spec/interface_agreement_template.md`: Template fuer Modul-Schnittstellen (Schema, Keys, Format, Abnahme)
+- `01_spec/interface_agreement_marc_anylogic_v0.md`: Draft IA Marc / AnyLogic (Stunden-Wetter + Sim-Output)
+- `01_spec/interface_agreement_thomas_lca_v0.md`: Draft IA Thomas / LCA-BOM (openLCA/PCF)
+- `01_spec/data_coverage_gap_2026_08.md`: 4C/MaStR/ERA5/CAPEX — Ist vs. Luecken (Stand 2026-08)
 - `01_spec/data_ampel_stage_a.md`: Stage-A Datenboard (Gruen/Gelb/Rot) fuer Meeting-Entscheidungen
 - `01_spec/imc_rls_policy_patterns.md`: IMC RLS/Grant-Muster (Team-Accounts / `has_role_on_account`)
 - `03_roadmap/phase_a_timeline_2026_2028.md`: Phase A Roadmap (bis 31.08.2028) + Übergabepunkt
