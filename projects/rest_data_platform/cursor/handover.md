@@ -37,7 +37,7 @@ Stand (2026-08-27) — Plan: projects/rest_data_platform/cursor/next_plan.md
       3) Sim-Rollen (Pilot) — kuratierte Typ×Phase für Simulation (UI ohne Partnernamen)
   - Locale: Workspace-Switch hält EN; i18n-Messages `use cache`+`cacheLife(max)` → nach Key-Änderungen `next dev` neu starten
   - IA Drafts: 01_spec/interface_agreement_marc_anylogic_v0.md + …_thomas_lca_v0.md
-  - Präsi-Inhalt: 04_communication/team_stand_plan_2026_08.md (PPTX optional neu bauen)
+  - Präsi-Inhalt: 04_communication/team_stand_plan_2026_08.md (+ PPTX Script Stand 2026-08-27)
   - Cloud IMC pausiert; lokal Docker + pnpm supabase:web:*
 
 Zielbild MVP (5–12 Wochen):
