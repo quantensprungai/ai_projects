@@ -25,7 +25,7 @@ Stand (2026-08-27) — Plan: projects/rest_data_platform/cursor/next_plan.md
   - Waves `/assets/waves` — Gegenverkehr Ausbau/Rückbau (MW, Schätzung); CTA vom Register
   - Economics `/assets/economics` · Vessels `/assets/vessels`
   - Vessel-Katalog: Marc-Felder (Kapazität, Dayrate, Fuel, Speed, MetOcean, Jacking, Availability) + CSV; Platzhalter
-  - Vessels Contracts-UI: Schiffname zuerst; DE light bis 1500 Zeilen; scrollbares Fenster (~max-h)
+  - Vessels Contracts-UI: Schiffname zuerst; Suche + Sort (Name/Typ/Projekt/Periode); DE light scrollbares Fenster
   - Park-Dossier (Collapsibles): Steckbrief · Economics · Lebenszyklus · Einheiten (BOM-Anker) · Standort · Wetter · Akteure · Schiffe
   - Steckbrief Site-Design: Tiefe/Küste/Fläche/Wind; Register-Filter Depth/Shore (Query `depth`/`shore`)
   - GIS-Haltung: **Map-light** (Leaflet + Attribute) — kein GIS-Produkt / kein Router jetzt
