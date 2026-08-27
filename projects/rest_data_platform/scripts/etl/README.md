@@ -71,14 +71,18 @@ Get-Content .\curate_alpha_ventus.sql -Raw |
   docker exec -i supabase_db_next-supabase-saas-kit-turbo psql -U postgres -d postgres
 ```
 
-Turbine-Minimal (Alpha Ventus / DE01):
+Turbine models (4C Katalog + Farm-Link) und MaStR-Einheiten:
 
 ```powershell
-python transform_4c_turbine_alpha_ventus.py
+python transform_4c_turbine_models.py
+# optional nur ein Park:
+python transform_4c_turbine_models.py --windfarm-id DE01
 python transform_mastr_turbines_farm.py --ext-windfarm-id DE01
 # alle accepted DE-Matches:
 python transform_mastr_turbines_farm.py --all-accepted
 ```
+
+`transform_4c_turbine_models.py` schreibt `imc_turbine_models` und setzt `imc_farm_design.turbine_model_id` (+ Aliases `Turbine:…`). Der alte Pilot `transform_4c_turbine_alpha_ventus.py` bleibt nur als Referenz.
 
 `transform_4c_windfarm.py` normalisiert leere Excel-Zellen zu `NULL` und kappt numerische Ausreißer auf die aktuellen v1-Spaltenlimits, statt den MVP-Transform zu blockieren.
 

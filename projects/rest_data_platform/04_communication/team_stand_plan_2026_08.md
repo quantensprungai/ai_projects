@@ -15,6 +15,7 @@ notes:
   - "Chat-SoT bleibt cursor/handover.md. Klickpfad: cursor/demo_runbook_slice1.md."
   - "Keine neue cursor/-Datei — Ordner ist voll."
   - "PPTX neu bauen optional: python scripts/build_team_session_pptx.py — Inhalt hier pflegen."
+  - "2026-08-27: 4C-Turbine-Typ Steckbrief (~369 Modelle / ~619 Farms); Daten-Backlog light fertig → Marc-Sync."
   - "2026-08-27: Grid/OHVS light + MaStR 1651 Units; Steckbrief Netz/OHVS Owner; Branch feat/assets-ia-restructure."
   - "2026-08-27: Assets-IA (Waves, Dossier, Site-Filter), Vessel-Katalog Marc-Felder, Contracts-UI, Marc-IA Owner-Matrix."
   - "2026-08-26 Abend: Zahlen/UI auf Demo-Freeze nachgezogen (CDS h, Akteure, Schiffseinsätze, Economics)."
@@ -32,11 +33,12 @@ notes:
 
 ## 1) Kurzfazit
 
-- Backbone steht lokal: Register, Provenance, MaStR, Schutzgebiete, Häfen, ERA5 (Tag + **AV CDS-Stunden**), CAPEX/OPEX/Events, Vessel-Katalog + VPI-Flotte, Akteure DE, Schiffseinsätze DE light.
-- Die UI ist ein **Working Board auf diesem Register** — mit **Waves** (Gegenverkehr light), Park-Dossier und Vessels-Katalog für Marc — kein Voll-Screener und kein DPP.
-- **Demo-Freeze** für Light-ETLs gilt weiter. Nächster Hebel = **Partner-Sync Marc** (Stunden-CSV-Abnahme, Katalog-Werte, Barge-Typ, Sequenz).
-- Simulation und Voll-DPP bleiben draußen. Decom-Steps werden **nicht** aus 4C-Akteuren/Contracts abgeleitet.
-- Transfer-Modell mit Marc: **Snapshot + on-demand Wetter-CSV** — kein Dauerstream. GIS = **Map-light**, kein Router-Produkt.
+- Backbone steht lokal: Register, Provenance, MaStR-Einheiten, 4C-Turbine-Typ, Grid/OHVS, Schutzgebiete, Häfen, ERA5 (Tag + **AV CDS-Stunden**), CAPEX/OPEX/Events, Vessel-Katalog + VPI-Flotte, Akteure DE, Schiffseinsätze DE light.
+- Die UI ist ein **Working Board auf diesem Register** — mit **Waves**, Park-Dossier und Vessels-Katalog — kein Voll-Screener und kein DPP.
+- **Daten-Backlog light erledigt.** Nächster Hebel = **Partner-Sync Marc** (Stunden-CSV, Katalog-Werte, Barge, Sequenz) + PR → main.
+- Simulation und Voll-DPP bleiben draußen. Decom-Steps werden **nicht** aus 4C abgeleitet.
+- Transfer mit Marc: **Snapshot + on-demand Wetter-CSV**. GIS = **Map-light**.
+- **Pilot AV** = dichter Demo-Pfad (ERA5-Stunden, Sim-Rollen, Kuratierung); Typ/Grid/Einheiten sind auch auf anderen matched DE-Parks.
 
 ---
 
@@ -56,20 +58,21 @@ Zahlen lokal, abgeglichen **2026-08-27** (Branch `feat/assets-ia-restructure`).
 | Schema | `imc_*` v1/v1.2 + MaStR + Natura + Häfen + ERA5 daily/hourly + CAPEX/OPEX/Revenue/Events + Vessel (+ Jacking/Availability am Katalog) + Stakeholders + Grid/Platforms |
 | Quellen | 4C Windfarm/POP/LCOE/Events/VPI Specs+Contracts/Supply Chain/Platform Type, MaStR-DE, BfN marin, Nordsee-Häfen, ERA5 CDS |
 | Provenance | `imc_data_sources`, Raw-Mirror, `source_id` an Ingests |
-| Pilot AV | Tripod, MaStR AV01–AV12, Emden, ERA5 Tag + **~23k CDS-Stunden**, Akteure, Schiffseinsätze, Sim-Rollen-Pilot, Grid+OHVS |
-| UI Working Board | **Nav:** Assets → Waves → Economics → Vessels. Park-Dossier (Steckbrief inkl. Site-Design + Netz/OHVS, Economics, Lebenszyklus, Einheiten, Standort, Wetter, Akteure, Schiffe). Register-Filter Depth/Shore. Waves Gegenverkehr. Vessels: Katalog Marc-Felder + CSV, Contracts DE light (Suche/Sort/Scroll), Flotte |
+| Pilot AV | Tripod, MaStR AV01–AV12, Emden, ERA5 Tag + **~23k CDS-Stunden**, Akteure, Schiffseinsätze, Sim-Rollen-Pilot, Grid+OHVS+4C-Typ |
+| UI Working Board | **Nav:** Assets → Waves → Economics → Vessels. Park-Dossier (Steckbrief inkl. Site-Design + Netz/OHVS + **4C-Turbine-Typ**, Economics, Lebenszyklus, Einheiten/MaStR, Standort, Wetter, Akteure, Schiffe). Register-Filter Depth/Shore. Waves Gegenverkehr. Vessels: Katalog Marc-Felder + CSV, Contracts DE light. |
 
 ### Grobe Größenordnungen (lokal)
 
 - Farms gesamt: **~3606**; DE aktiv (nicht cancelled): weiterhin ~76 mit Fokus Nordsee.
 - Grid light: **~1423** Farms; Platforms/OHVS: **~686**.
+- 4C Turbine-Modelle: **~369**; Farms mit Typ-Link: **~619**.
 - MaStR: ~33 Parks accepted/applied, **1651** Einheiten (Name-Varianten per park_key).
 - Schutzgebiete: **~205**.
 - Häfen: **118** Ports, **677** Farm-Links; Distanz nicht überall; Draft/Kai leer.
 - ERA5 daily: 3 Parks / **1858** Tage (AV, Albatros, Amrumbank West). DE-Batch nicht durch.
 - ERA5 hourly: **AV CDS ~23 232 h** (2024-01→2026-08, `cds+hourly`). Grain für Marc-IA = Stunde.
 - CAPEX/OPEX/Revenue: reported/summary ~974, modelled ~17k, opex ~974, revenue ~421; Events ~41k gemappt.
-- Vessels: **8 Typenkatalog** + **2210** VPI-Instances; Schiffseinsätze DE ~**1183** (Linking Farm/Vessel erschöpft); Akteure DE ~**3633** Links.
+- Vessels: **8 Typenkatalog** + **2210** VPI-Instances; Schiffseinsätze DE ~**1183**; Akteure DE ~**3633** Links.
 - Cloud-Projekt: pausiert; kein MCP-Chunk-Seed.
 
 ### Architektur, die gilt
@@ -109,9 +112,10 @@ Zwei Spuren parallel. Keine Spur blockiert die andere.
 4. ~~Stakeholders DE~~ + ~~VPI-Contracts DE light~~ + Park-UI (Akteure / Schiffseinsätze / Sim-Rollen).
 5. ~~Assets-IA~~: Waves, Park-Dossier, Site-Design-Filter, Vessel-Katalog Marc-Felder, Contracts-UI.
 6. ~~Grid/OHVS light + MaStR Units park_key-Fix~~ (Steckbrief Netz/OHVS+Owner; 1651 Units).
-7. Optional: DE-ERA5-Tagesbatch Screener.
-8. Cloud nur mit direktem `psql`/`DATABASE_URL`, nicht MCP.
-9. PR `feat/assets-ia-restructure` → main wenn Demo ok.
+7. ~~4C Turbine-Modelle~~ → Steckbrief Typ (MW/Ø/HH); ~369 Modelle / ~619 Farms.
+8. Optional: DE-ERA5-Tagesbatch Screener.
+9. Cloud nur mit direktem `psql`/`DATABASE_URL`, nicht MCP.
+10. PR `feat/assets-ia-restructure` → main wenn Demo ok.
 
 ### Spur B — Interop / DPP-Form
 

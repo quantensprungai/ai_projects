@@ -2,7 +2,7 @@
 last_update: 2026-08-27
 status: active
 scope:
-  summary: "Aktiver Arbeitsplan ASTRA IMC — Grid/OHVS light + MaStR Pipeline; Marc-Sync als Hebel."
+  summary: "Aktiver Arbeitsplan ASTRA IMC — Daten-Backlog light fertig; nächster Hebel Marc-Sync / PR."
   in_scope:
     - next implementation order
     - glossary for events vs marc steps
@@ -12,11 +12,9 @@ scope:
     - GIS routing product
 notes:
   - "Handover-Block in handover.md parallel aktualisieren."
-  - "2026-08-27: Grid light (imc_farm_grid ~1423) + OHVS/Platforms (~686) + Steckbrief; MaStR Pipeline re-applied (33 accepted / 1593 Units)."
-  - "2026-08-27: Site-Design Steckbrief + Register Depth/Shore; IA Marc Owner-Matrix + Barge-offen; GIS=Map-light."
-  - "2026-08-27: Assets-IA — Nav Waves, Gegenverkehr-Seite, Park-Dossier inkl. Einheiten; Branch feat/assets-ia-restructure."
-  - "2026-08-26: Stakeholders DE + VPI-Contracts DE + Park-UI (Akteure / Schiffseinsätze / Sim-Rollen)."
-  - "2026-08-26: CAPEX-Portfolio UI; CDS-Stunden AV; Locale Workspace-Switch."
+  - "2026-08-27: 4C Turbine-Modelle (~369 / ~619 Farms) im Steckbrief; Grid/OHVS; MaStR 1651 Units."
+  - "2026-08-27: Grid light + OHVS/Platforms + MaStR park_key-Fix; Site-Design; Assets-IA; Vessel Marc-Felder."
+  - "2026-08-26: Stakeholders/VPI DE; CAPEX-Portfolio; CDS-Stunden AV."
 -->
 
 # Aktiver Plan (2026-08-27)
@@ -53,8 +51,9 @@ Plattform = **Offshore-Register + Logistik + Economics + Wetter + Waves**, aus d
 | Waves | `/assets/waves` Dual-Serie MW; Filter vom Register; CTA auf Assets-Liste |
 | Park-Dossier | Steckbrief · Economics · Lebenszyklus · **Einheiten** · Standort · Wetter · Akteure · Schiffe |
 | Site-Design | Steckbrief: Tiefe/Küste/Fläche/Wind; Register-Filter `depth` / `shore` |
+| 4C Turbine-Typ | `imc_turbine_models` ~**369**; ~**619** Farms gelinkt; Steckbrief OEM·Modell·MW·Ø·HH (+ Multi-Typ-Aliases) |
 | Grid / OHVS | `imc_farm_grid` ~**1423** (DE ~120); Platforms ~**686**; Steckbrief Landing/Export/Infield/OSS/OHVS (Owner) |
-| MaStR | 51 agg · **33 accepted** · 1 candidate · 1 rejected · **1651** Units (park_key-Varianten fix) |
+| MaStR | 51 agg · **33 accepted** · 1 candidate · 1 rejected · **1651** Units (park_key-Varianten) |
 | ERA5 daily | 3 Parks / 1858 Tage |
 | ERA5 hourly | **AV CDS** ~23 232 h (2024-01-01→2026-08-25, `cds+hourly`); UI Tag+Stunde + CSV |
 | CAPEX/OPEX/Events | in DB + Asset-Detail + Portfolio `/assets/economics` |
@@ -69,10 +68,10 @@ Plattform = **Offshore-Register + Logistik + Economics + Wetter + Waves**, aus d
 
 | Block | Inhalt | Default |
 |-------|--------|---------|
-| Steckbrief | Stammdaten + Site-Design + **Netz/OHVS light** | offen |
+| Steckbrief | Stammdaten + Site-Design + **Netz/OHVS** + **4C-Turbine-Typ** | offen |
 | Economics | CAPEX/OPEX + Link Portfolio | offen |
 | Lebenszyklus | 4C Events | zu |
-| Einheiten | Turbinen/MaStR — BOM-Anker | zu |
+| Einheiten | MaStR-Stückliste — BOM-Anker (≠ 4C-Typ) | zu |
 | Standort | Häfen | zu |
 | Wetter | ERA5 | zu |
 | Akteure | 4C Supply Chain + Parties-CSV | zu |
@@ -102,16 +101,29 @@ Details + Owner-Matrix + Barge-Offenpunkt: `01_spec/interface_agreement_marc_any
 
 ## Daten-Backlog (Slice-weise, kein Mega-Plan)
 
-1. ~~Site-Design Steckbrief~~ · ~~Register-Filter Depth/Shore~~ · ~~Marc-IA Gap-Review (Matrix + Barge)~~ · ~~Vessel-Katalog Marc-Felder (UI + Fuel/Jacking/Avail-Platzhalter)~~ · ~~Contracts-UI Kosmetik (scroll + Schiffname)~~ · ~~Grid light~~ · ~~OHVS/Platforms light~~ · ~~MaStR Pipeline (Accept/Apply/Units)~~
-2. Optional: Day-Rates/Fuel mit Marc finalisieren (Werte sind Platzhalter)
-3. Rest-MaStR nur bei klaren Namen (Gode Wind 1+2 kombiniert / Nordsee Ost Split / Bard-Cluster) — kein Algorithmus-Rewrite
-4. Routing/Polylinien erst wenn Marc „real routes“ verbindlich will
+1. ~~Site-Design / Depth-Shore~~ · ~~Vessel Marc-Felder / Contracts-UI~~ · ~~Grid / OHVS~~ · ~~MaStR Units~~ · ~~4C Turbine-Modelle Steckbrief~~
+2. Optional mit Marc: Day-Rates/Fuel/Jacking-Werte finalisieren (jetzt Platzhalter)
+3. Rest-MaStR nur bei klaren Namen (Gode 1+2 / Nordsee Ost Split / Bard) — kein Rewrite
+4. Routing/Polylinien erst wenn Marc „real routes“ will
+5. Transmission / Spec-Vollbreite / DE-ERA5-Batch — nur bei konkretem Partner-Bedarf
+
+## Was offen ist / was jetzt tun
+
+| Priorität | Was | Warum |
+|-----------|-----|--------|
+| **1 Jetzt** | **Marc-Sync** (Stunden-CSV, Katalog-Defaults, Barge, Snapshot-IA) | Fachblocker; ETL-Breite ist ausreichend |
+| **1 parallel** | **PR** `feat/assets-ia-restructure` → main wenn Demo ok | Code einfrieren |
+| **2 Partner** | Thomas BOM/LCA an Einheiten-Anker; Shubham AAS-Schnitt | nicht aus 4C ableitbar |
+| **3 Optional** | DE-ERA5-Tagesbatch; Katalog-Zahlen mit Marc; MaStR-Rest nur klar | kein Sim-/BOM-Blocker |
+| **Nicht** | Transmission-Vollimport, GIS-Router, unitweiser 4C↔MaStR-Join, Contracts-17k | Scope |
+
+**Pilot AV vs. andere:** Typ/Grid/OHVS/MaStR-Einheiten sind DE-breit wo gelinkt. AV bleibt dichter bei **ERA5-Stunden**, **Sim-Rollen**, Kuratierung (Emden/Tripod) und Demo-Pfad — nicht mehr „einziger Park mit Daten“.
 
 ## Reihenfolge (jetzt)
 
-1. ~~Logistics-Struktur~~ · ~~CAPEX-Portfolio~~ · ~~CDS AV Stunden~~ · ~~Stakeholders/VPI DE~~ · ~~Assets-IA (Waves + Dossier)~~ · ~~Site-Design + Depth/Shore-Filter~~ · ~~Vessel-Katalog Marc-Felder~~ · ~~Contracts-UI Kosmetik~~ · ~~Grid/OHVS Steckbrief~~ · ~~MaStR re-apply~~  
+1. ~~… Grid/OHVS / MaStR / 4C-Turbine-Typ …~~ (Daten-Backlog light erledigt)  
 2. **Marc-Sync** — Stunden-CSV-Abnahme, Katalog-Defaults, Owner-Matrix/Barge in IA (§3d)  
-3. Optional Daten-Backlog light: Katalog-Werte finalisieren; Einheiten BOM-Hinweis; DE-ERA5-Tagesbatch; Thomas BOM/LCA  
+3. Optional: DE-ERA5-Tagesbatch; Thomas BOM/LCA; Katalog-Werte final  
 4. PR `feat/assets-ia-restructure` → main wenn Demo ok  
 
 ## IA-Selbstentscheidungen (ohne Partner-Warten)
