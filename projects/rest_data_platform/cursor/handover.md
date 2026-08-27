@@ -15,7 +15,7 @@ Workspace: ai-projects Root — Doku + Code + Infra zusammen (NICHT nur projects
 
 Stand (2026-08-27) — Plan: projects/rest_data_platform/cursor/next_plan.md
   - Doku: projects/rest_data_platform/ · Code: code/astra-imc-platform/ → quantensprungai/astra-imc-platform
-  - Branch UI: `feat/assets-ia-restructure` (Waves + Park-Dossier); Parties-CSV auf Akteuren
+  - Branch UI: `feat/assets-ia-restructure` (Waves + Park-Dossier + Site-Design-Filter)
   - Makerkit catalog + Passkeys/react-email/native-sharing auf main (PR #1 merged)
   - Schema: IMC v1/v1.2 + MaStR + Natura + Häfen + ERA5 daily/hourly + CAPEX/OPEX/Events + Vessel-Katalog
   - Dual-Track: Postgres = SoT; AAS = Export. Partner: CSV/View, nicht AAS.
@@ -25,6 +25,10 @@ Stand (2026-08-27) — Plan: projects/rest_data_platform/cursor/next_plan.md
   - Waves `/assets/waves` — Gegenverkehr Ausbau/Rückbau (MW, Schätzung); CTA vom Register
   - Economics `/assets/economics` · Vessels `/assets/vessels`
   - Park-Dossier (Collapsibles): Steckbrief · Economics · Lebenszyklus · Einheiten (BOM-Anker) · Standort · Wetter · Akteure · Schiffe
+  - Steckbrief Site-Design: Tiefe/Küste/Fläche/Wind; Register-Filter Depth/Shore (Query `depth`/`shore`)
+  - GIS-Haltung: **Map-light** (Leaflet + Attribute) — kein GIS-Produkt / kein Router jetzt
+  - Marc-Transfer: Snapshot/Revision + Wetter on-demand CSV — **kein** Dauerstream; IA §3c/3d Owner-Matrix
+  - Barges: Enum nur `jack_up_barge` (kein generisches barge/feeder) — mit Marc klären
   - Park-Detail Logistik-Schichten (nicht vermischen):
       1) Akteure — 4C Supply Chain DE (~3633 Links); Kernkacheln + Parties-CSV
       2) Schiffseinsätze (VPI) — DE Contracts light ~1183; Filter O&M/Install; AV ~60
@@ -47,11 +51,11 @@ Lies zuerst:
   - projects/rest_data_platform/00_overview/mvp.md
 
 Nächster Schritt:
-  1) ~~Demo-Daten/UI-Freeze Stage A Backbone~~ · ~~Assets-IA (Waves + Dossier)~~
-  2) Partner-Sync Marc (Stunden-CSV + Katalog + was er wirklich braucht) — Sequenz/Sim-CSV blockiert
-  3) Optional: ~~Waves MW↔Parks-Toggle~~; Einheiten→BOM light (Massen); DE-ERA5-Tagesbatch; Thomas BOM/LCA
-  Geblockt fachlich: BOM Thomas; Sequenz/Sim-CSV Marc; Vessel-Wetter final
-  Nicht: Contracts-17k blind; Decom-Steps aus 4C ableiten; Sim/LCA in der Plattform; MCP-Cloud-Seed; Mega-Dashboard
+  1) ~~Demo-Daten/UI-Freeze Stage A Backbone~~ · ~~Assets-IA (Waves + Dossier)~~ · ~~Site-Design Steckbrief + Register Depth/Shore~~
+  2) Partner-Sync Marc (Stunden-CSV + Katalog + Owner-Matrix/Barge in IA) — Sequenz/Sim-CSV blockiert
+  3) Optional Daten-Backlog light (Slice-weise): Vessel-Katalog-Felder mit Marc; Grid/OHVS/MaStR — eigene Stories
+  Geblockt fachlich: BOM Thomas; Sequenz/Sim-CSV Marc; Vessel-Wetter final; Barge-Typ-Entscheidung
+  Nicht: Contracts-17k blind; Decom-Steps aus 4C ableiten; Sim/LCA in der Plattform; MCP-Cloud-Seed; Mega-Dashboard; GIS-Router
 
 Produkt-Klarstellung Logistik:
   - Akteure ≠ Partner-Sequenz; Schiffseinsätze = Historie; Sim-Rollen = kuratierter Typ-Bridge

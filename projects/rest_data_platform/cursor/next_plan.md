@@ -2,14 +2,17 @@
 last_update: 2026-08-27
 status: active
 scope:
-  summary: "Aktiver Arbeitsplan ASTRA IMC — IA Waves/Dossier gelandet, dann Marc-Sync."
+  summary: "Aktiver Arbeitsplan ASTRA IMC — Site-Filter + Marc-IA Gap; Snapshot-Modell; Map-light."
   in_scope:
     - next implementation order
     - glossary for events vs marc steps
+    - daten-backlog light
   out_of_scope:
     - full roadmap rewrite
+    - GIS routing product
 notes:
   - "Handover-Block in handover.md parallel aktualisieren."
+  - "2026-08-27: Site-Design Steckbrief + Register Depth/Shore; IA Marc Owner-Matrix + Barge-offen; GIS=Map-light."
   - "2026-08-27: Assets-IA — Nav Waves, Gegenverkehr-Seite, Park-Dossier inkl. Einheiten; Branch feat/assets-ia-restructure."
   - "2026-08-26: Stakeholders DE + VPI-Contracts DE + Park-UI (Akteure / Schiffseinsätze / Sim-Rollen)."
   - "2026-08-26: CAPEX-Portfolio UI; CDS-Stunden AV; Locale Workspace-Switch."
@@ -24,7 +27,7 @@ notes:
 | **Diesen Plan** | `cursor/next_plan.md` | Kurze To-do-Reihenfolge für Chats |
 | **Handover** | `cursor/handover.md` | Copy-Paste Kontextblock für neuen Chat |
 | **Team-Stand** | `04_communication/team_stand_plan_2026_08.md` | Narrative für Session/Folien |
-| **IA Marc** | `01_spec/interface_agreement_marc_anylogic_v0.md` | Stunden-Wetter + Sim-CSV |
+| **IA Marc** | `01_spec/interface_agreement_marc_anylogic_v0.md` | Stunden-Wetter + Sim-CSV + Owner-Matrix |
 | **IA Thomas** | `01_spec/interface_agreement_thomas_lca_v0.md` | BOM/PCF |
 | **Datenlücken** | `01_spec/data_coverage_gap_2026_08.md` | 4C/MaStR/ERA5/CAPEX Ist |
 
@@ -38,6 +41,7 @@ Plattform = **Offshore-Register + Logistik + Economics + Wetter + Waves**, aus d
 | Vessels | Typenkatalog + Flotte + Day-Rates + Contracts (light) + Sim-Rollen-Pilot |
 | Economics | am Park + Portfolio `/assets/economics` (4C reported/modelled) |
 | Waves | Gegenverkehr Ausbau/Rückbau `/assets/waves` (Produkt A light) |
+| Karte | **Map-light** (Leaflet + Attribute) — kein GIS-Produkt/Router |
 | Partner | IA-Review Marc/Thomas — **jetzt der Hebel**, nicht weitere ETL-Breite |
 
 ## Ist (lokal / Code, 2026-08-27)
@@ -47,6 +51,7 @@ Plattform = **Offshore-Register + Logistik + Economics + Wetter + Waves**, aus d
 | Nav | **Assets → Waves → Economics → Vessels** (Labels DE=EN Produktbegriffe) |
 | Waves | `/assets/waves` Dual-Serie MW; Filter vom Register; CTA auf Assets-Liste |
 | Park-Dossier | Steckbrief · Economics · Lebenszyklus · **Einheiten** · Standort · Wetter · Akteure · Schiffe |
+| Site-Design | Steckbrief: Tiefe/Küste/Fläche/Wind; Register-Filter `depth` / `shore` |
 | ERA5 daily | 3 Parks / 1858 Tage |
 | ERA5 hourly | **AV CDS** ~23 232 h (2024-01-01→2026-08-25, `cds+hourly`); UI Tag+Stunde + CSV |
 | CAPEX/OPEX/Events | in DB + Asset-Detail + Portfolio `/assets/economics` |
@@ -61,7 +66,7 @@ Plattform = **Offshore-Register + Logistik + Economics + Wetter + Waves**, aus d
 
 | Block | Inhalt | Default |
 |-------|--------|---------|
-| Steckbrief | Stammdaten | offen |
+| Steckbrief | Stammdaten + Site-Design | offen |
 | Economics | CAPEX/OPEX + Link Portfolio | offen |
 | Lebenszyklus | 4C Events | zu |
 | Einheiten | Turbinen/MaStR — BOM-Anker | zu |
@@ -80,11 +85,30 @@ Plattform = **Offshore-Register + Logistik + Economics + Wetter + Waves**, aus d
 
 **Nicht ableiten:** Decom-Workflow aus Akteuren oder Contracts. Sequenz + BOM kommen von Partnern.
 
+## Marc — Snapshot-Modell (kein Dauerstream)
+
+| Richtung | Was | Frequenz |
+|----------|-----|----------|
+| Plattform → Marc | Park/Port-Kontext, Vessel-Typen-Katalog, ERA5-Stunden | Snapshot / on-demand |
+| Marc → Plattform | Sequenz-Vorlage, Sim-Run-CSV (optional) | Revision / Szenario |
+| Nicht | Live-Stream Flotte, Dauer-Sync, Simulation in der App | — |
+
+Details + Owner-Matrix + Barge-Offenpunkt: `01_spec/interface_agreement_marc_anylogic_v0.md` §3c/3d.
+
+**Barges:** Enum nur `jack_up_barge` — kein generisches Transport-/Feeder-`barge`. Mit Marc klären.
+
+## Daten-Backlog (Slice-weise, kein Mega-Plan)
+
+1. ~~Site-Design Steckbrief~~ · ~~Register-Filter Depth/Shore~~ · ~~Marc-IA Gap-Review (Matrix + Barge)~~
+2. Optional: Vessel-Katalog-Felder mit Marc (dayrate, wind/wave limits, fuel placeholder)
+3. Grid/OHVS/Turbinen-Specs/MaStR — eigene Stories
+4. Routing/Polylinien erst wenn Marc „real routes“ verbindlich will
+
 ## Reihenfolge (jetzt)
 
-1. ~~Logistics-Struktur~~ · ~~CAPEX-Portfolio~~ · ~~CDS AV Stunden~~ · ~~Stakeholders/VPI DE~~ · ~~Assets-IA (Waves + Dossier)~~  
-2. **Marc-Sync** — Stunden-CSV-Abnahme, Katalog-Defaults, was er wirklich braucht (Sequenz/Sim-CSV)  
-3. Optional: ~~Waves MW↔Parks-Toggle~~ · Einheiten BOM-Hinweis; Massen/BOM light noch offen; DE-ERA5-Tagesbatch; Thomas BOM/LCA  
+1. ~~Logistics-Struktur~~ · ~~CAPEX-Portfolio~~ · ~~CDS AV Stunden~~ · ~~Stakeholders/VPI DE~~ · ~~Assets-IA (Waves + Dossier)~~ · ~~Site-Design + Depth/Shore-Filter~~  
+2. **Marc-Sync** — Stunden-CSV-Abnahme, Katalog-Defaults, Owner-Matrix/Barge in IA (§3d)  
+3. Optional Daten-Backlog light: Katalog-Felder; Einheiten BOM-Hinweis; DE-ERA5-Tagesbatch; Thomas BOM/LCA  
 4. PR `feat/assets-ia-restructure` → main wenn Demo ok  
 
 ## IA-Selbstentscheidungen (ohne Partner-Warten)
@@ -96,7 +120,10 @@ Plattform = **Offshore-Register + Logistik + Economics + Wetter + Waves**, aus d
 | Grain | **Stunde** (schon Draft) | nein |
 | Zeitraum Pilot AV | **2024-01-01 → 2026-08** bis Marc widerspricht | nein |
 | Vessel-Typen | **unser Katalog (8)** bleibt Default; Marc override | nein |
+| Transfer | Snapshot + on-demand Wetter — kein Dauerstream | nein |
+| GIS | Map-light; kein Router | nein |
 | Sim-Output-Spalten | warten auf Marc | nein |
+| Barge-Typ | offen (Frage in IA §3d) | nein |
 | CDS vs Synthetic | AV Stunden = **CDS echt** | nein |
 
 ### Thomas — blockt CAPEX-Portfolio nicht
@@ -120,4 +147,4 @@ BOM/PCF/Toolwahl sind **LCA-Spur**. Portfolio braucht nur 4C Economics (schon in
 
 ## Nicht blind
 
-AnyLogic/LCA in der App · MCP-Cloud-Seed · CAPEX-Forecast-Charts ohne Bedarf · Contracts-17k ohne Mapping · Decom-Steps aus 4C generieren · Mega-Dashboard
+AnyLogic/LCA in der App · MCP-Cloud-Seed · CAPEX-Forecast-Charts ohne Bedarf · Contracts-17k ohne Mapping · Decom-Steps aus 4C generieren · Mega-Dashboard · GIS-Router / Mega-Datenplan
