@@ -15,11 +15,11 @@ Workspace: ai-projects Root — Doku + Code + Infra zusammen (NICHT nur projects
 
 Stand (2026-08-27) — Plan: projects/rest_data_platform/cursor/next_plan.md
   - Doku: projects/rest_data_platform/ · Code: code/astra-imc-platform/ → quantensprungai/astra-imc-platform
-  - Branch UI: `feat/assets-ia-restructure` (Waves + Park-Dossier + Site-Design-Filter + Vessel-Katalog Marc-Felder)
+  - Branch UI: `feat/assets-ia-restructure` (Waves + Park-Dossier + Site-Design-Filter + Vessel-Katalog Marc-Felder + Grid/OHVS Steckbrief)
   - Makerkit catalog + Passkeys/react-email/native-sharing auf main (PR #1 merged)
-  - Schema: IMC v1/v1.2 + MaStR + Natura + Häfen + ERA5 daily/hourly + CAPEX/OPEX/Events + Vessel-Katalog
+  - Schema: IMC v1/v1.2 + MaStR + Natura + Häfen + ERA5 daily/hourly + CAPEX/OPEX/Events + Vessel-Katalog + Grid/Platforms
   - Dual-Track: Postgres = SoT; AAS = Export. Partner: CSV/View, nicht AAS.
-  - Zahlen lokal: Farms 3606 · MaStR 33 accepted / 1593 Units · Natura ~205 · Häfen 118 / 677 Links
+  - Zahlen lokal: Farms 3606 · Grid ~1423 · Platforms ~686 · MaStR 33 accepted / **1651** Units · Natura ~205 · Häfen 118 / 677 Links
   - ERA5 daily: 3 Parks / 1858 Tage. Hourly: AV **CDS** ~23k h (2024-01→2026-08, `cds+hourly`).
   - Nav (Produktbegriffe DE=EN): Assets → Waves → Economics → Vessels
   - Waves `/assets/waves` — Gegenverkehr Ausbau/Rückbau (MW, Schätzung); CTA vom Register
@@ -27,7 +27,8 @@ Stand (2026-08-27) — Plan: projects/rest_data_platform/cursor/next_plan.md
   - Vessel-Katalog: Marc-Felder (Kapazität, Dayrate, Fuel, Speed, MetOcean, Jacking, Availability) + CSV; Platzhalter
   - Vessels Contracts-UI: Schiffname zuerst; Suche + Sort (Name/Typ/Projekt/Periode); DE light scrollbares Fenster
   - Park-Dossier (Collapsibles): Steckbrief · Economics · Lebenszyklus · Einheiten (BOM-Anker) · Standort · Wetter · Akteure · Schiffe
-  - Steckbrief Site-Design: Tiefe/Küste/Fläche/Wind; Register-Filter Depth/Shore (Query `depth`/`shore`)
+  - Steckbrief: Site-Design + Netz (Landing/Export/Infield/OSS) + OHVS (Name·Typ·Owner, OSS-Mismatch-Hinweis); Register-Filter Depth/Shore
+  - ETL: `transform_4c_farm_grid.py`, `transform_4c_platforms.py`; MaStR Units per park_key (Amrumbank-Fix → 1651)
   - GIS-Haltung: **Map-light** (Leaflet + Attribute) — kein GIS-Produkt / kein Router jetzt
   - Marc-Transfer: Snapshot/Revision + Wetter on-demand CSV — **kein** Dauerstream; IA §3c/3d Owner-Matrix
   - Barges: Enum nur `jack_up_barge` (kein generisches barge/feeder) — mit Marc klären
@@ -53,11 +54,11 @@ Lies zuerst:
   - projects/rest_data_platform/00_overview/mvp.md
 
 Nächster Schritt:
-  1) ~~Demo-Daten/UI-Freeze Stage A Backbone~~ · ~~Assets-IA (Waves + Dossier)~~ · ~~Site-Design Steckbrief + Register Depth/Shore~~ · ~~Vessel-Katalog Marc-Felder~~ · ~~Contracts-UI Kosmetik~~
+  1) ~~Demo-Daten/UI-Freeze Stage A Backbone~~ · ~~Assets-IA~~ · ~~Site-Design~~ · ~~Vessel-Katalog Marc-Felder~~ · ~~Contracts-UI~~ · ~~Grid/OHVS light~~ · ~~MaStR Pipeline~~
   2) Partner-Sync Marc (Stunden-CSV + Katalog-Abnahme + Owner-Matrix/Barge in IA) — Sequenz/Sim-CSV blockiert
-  3) Optional Daten-Backlog light: Grid/OHVS/MaStR — eigene Stories; Katalog-Werte mit Marc finalisieren
+  3) Optional: Katalog-Werte mit Marc finalisieren; DE-ERA5; Thomas BOM/LCA
   Geblockt fachlich: BOM Thomas; Sequenz/Sim-CSV Marc; Vessel-Wetter final; Barge-Typ-Entscheidung
-  Nicht: Contracts-17k blind; Decom-Steps aus 4C ableiten; Sim/LCA in der Plattform; MCP-Cloud-Seed; Mega-Dashboard; GIS-Router
+  Nicht: Contracts-17k blind; Decom-Steps aus 4C ableiten; Sim/LCA in der Plattform; MCP-Cloud-Seed; Mega-Dashboard; GIS-Router; Transmission-Vollimport
 
 Produkt-Klarstellung Logistik:
   - Akteure ≠ Partner-Sequenz; Schiffseinsätze = Historie; Sim-Rollen = kuratierter Typ-Bridge

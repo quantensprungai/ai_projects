@@ -15,6 +15,7 @@ notes:
   - "Chat-SoT bleibt cursor/handover.md. Klickpfad: cursor/demo_runbook_slice1.md."
   - "Keine neue cursor/-Datei — Ordner ist voll."
   - "PPTX neu bauen optional: python scripts/build_team_session_pptx.py — Inhalt hier pflegen."
+  - "2026-08-27: Grid/OHVS light + MaStR 1651 Units; Steckbrief Netz/OHVS Owner; Branch feat/assets-ia-restructure."
   - "2026-08-27: Assets-IA (Waves, Dossier, Site-Filter), Vessel-Katalog Marc-Felder, Contracts-UI, Marc-IA Owner-Matrix."
   - "2026-08-26 Abend: Zahlen/UI auf Demo-Freeze nachgezogen (CDS h, Akteure, Schiffseinsätze, Economics)."
 -->
@@ -41,7 +42,7 @@ notes:
 
 ## 2) Aktueller Stand (2026-08-27)
 
-Zahlen lokal, abgeglichen **2026-08-26**; UI-Stand **2026-08-27** (Branch `feat/assets-ia-restructure`).
+Zahlen lokal, abgeglichen **2026-08-27** (Branch `feat/assets-ia-restructure`).
 
 **Folien:** [`ASTRA_IMC_Team_Stand_2026_08.pptx`](ASTRA_IMC_Team_Stand_2026_08.pptx) — Eisberg → Quellen → Schema-Visualizer → Board → Plan. Neu bauen: `python scripts/build_team_session_pptx.py`. **Dieses Markdown ist die inhaltliche SoT für die Präsi** (PPTX optional/nachlaufend).
 
@@ -52,16 +53,17 @@ Zahlen lokal, abgeglichen **2026-08-26**; UI-Stand **2026-08-27** (Branch `feat/
 | Schicht | Inhalt |
 |---------|--------|
 | Plattform | Next.js/Makerkit + Supabase, Team-Accounts, RLS, Repo `astra-imc-platform` |
-| Schema | `imc_*` v1/v1.2 + MaStR + Natura + Häfen + ERA5 daily/hourly + CAPEX/OPEX/Revenue/Events + Vessel (+ Jacking/Availability am Katalog) + Stakeholders |
-| Quellen | 4C Windfarm/POP/LCOE/Events/VPI Specs+Contracts/Supply Chain, MaStR-DE, BfN marin, Nordsee-Häfen, ERA5 CDS |
+| Schema | `imc_*` v1/v1.2 + MaStR + Natura + Häfen + ERA5 daily/hourly + CAPEX/OPEX/Revenue/Events + Vessel (+ Jacking/Availability am Katalog) + Stakeholders + Grid/Platforms |
+| Quellen | 4C Windfarm/POP/LCOE/Events/VPI Specs+Contracts/Supply Chain/Platform Type, MaStR-DE, BfN marin, Nordsee-Häfen, ERA5 CDS |
 | Provenance | `imc_data_sources`, Raw-Mirror, `source_id` an Ingests |
-| Pilot AV | Tripod, MaStR AV01–AV12, Emden, ERA5 Tag + **~23k CDS-Stunden**, Akteure, Schiffseinsätze, Sim-Rollen-Pilot |
-| UI Working Board | **Nav:** Assets → Waves → Economics → Vessels. Park-Dossier (Steckbrief inkl. Site-Design, Economics, Lebenszyklus, Einheiten, Standort, Wetter, Akteure, Schiffe). Register-Filter Depth/Shore. Waves Gegenverkehr. Vessels: Katalog Marc-Felder + CSV, Contracts DE light (Suche/Sort/Scroll), Flotte |
+| Pilot AV | Tripod, MaStR AV01–AV12, Emden, ERA5 Tag + **~23k CDS-Stunden**, Akteure, Schiffseinsätze, Sim-Rollen-Pilot, Grid+OHVS |
+| UI Working Board | **Nav:** Assets → Waves → Economics → Vessels. Park-Dossier (Steckbrief inkl. Site-Design + Netz/OHVS, Economics, Lebenszyklus, Einheiten, Standort, Wetter, Akteure, Schiffe). Register-Filter Depth/Shore. Waves Gegenverkehr. Vessels: Katalog Marc-Felder + CSV, Contracts DE light (Suche/Sort/Scroll), Flotte |
 
 ### Grobe Größenordnungen (lokal)
 
 - Farms gesamt: **~3606**; DE aktiv (nicht cancelled): weiterhin ~76 mit Fokus Nordsee.
-- MaStR: ~33 Parks accepted/applied, **1593** Einheiten.
+- Grid light: **~1423** Farms; Platforms/OHVS: **~686**.
+- MaStR: ~33 Parks accepted/applied, **1651** Einheiten (Name-Varianten per park_key).
 - Schutzgebiete: **~205**.
 - Häfen: **118** Ports, **677** Farm-Links; Distanz nicht überall; Draft/Kai leer.
 - ERA5 daily: 3 Parks / **1858** Tage (AV, Albatros, Amrumbank West). DE-Batch nicht durch.
@@ -106,9 +108,10 @@ Zwei Spuren parallel. Keine Spur blockiert die andere.
 3. ~~CDS-Stunden Alpha Ventus~~ (`cds+hourly` ~23k h) + Stunden-CSV am Park.
 4. ~~Stakeholders DE~~ + ~~VPI-Contracts DE light~~ + Park-UI (Akteure / Schiffseinsätze / Sim-Rollen).
 5. ~~Assets-IA~~: Waves, Park-Dossier, Site-Design-Filter, Vessel-Katalog Marc-Felder, Contracts-UI.
-6. Optional: DE-ERA5-Tagesbatch Screener; Grid/OHVS/MaStR-Breite.
-7. Cloud nur mit direktem `psql`/`DATABASE_URL`, nicht MCP.
-8. PR `feat/assets-ia-restructure` → main wenn Demo ok.
+6. ~~Grid/OHVS light + MaStR Units park_key-Fix~~ (Steckbrief Netz/OHVS+Owner; 1651 Units).
+7. Optional: DE-ERA5-Tagesbatch Screener.
+8. Cloud nur mit direktem `psql`/`DATABASE_URL`, nicht MCP.
+9. PR `feat/assets-ia-restructure` → main wenn Demo ok.
 
 ### Spur B — Interop / DPP-Form
 

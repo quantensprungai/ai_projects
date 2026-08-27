@@ -2,7 +2,8 @@
 """
 MaStR Einheit → imc_turbines for accepted farm matches.
 
-Uses EinheitenWind rows for the matched NameWindpark (snapshot of park_agg).
+Uses EinheitenWind rows whose NameWindpark normalizes to the same park_key
+as the matched park (hyphen/space variants like Amrumbank West / Amrumbank-West).
 
 Beispiel:
   python transform_mastr_turbines_farm.py --ext-windfarm-id DE01
@@ -13,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import sys
+from collections import defaultdict
 from datetime import datetime
 from decimal import Decimal, InvalidOperation
 
@@ -20,6 +22,7 @@ import psycopg
 from dotenv import load_dotenv
 
 from config import SOURCE_MASTR, get_database_url
+from match_mastr_de import park_key_for
 
 load_dotenv()
 
@@ -86,33 +89,37 @@ def load_targets(cur: psycopg.Cursor, *, ext_id: str | None, all_accepted: bool)
     return cur.fetchall()
 
 
-def transform_farm(
-    cur: psycopg.Cursor,
-    *,
-    farm_id,
-    farm_name: str,
-    ext_id: str | None,
-    park_name: str,
-    snapshot_id,
-    source_id: str,
-) -> int:
+def load_units_by_park_key(
+    cur: psycopg.Cursor, snapshot_id
+) -> dict[str, list[dict]]:
     cur.execute(
         """
         SELECT payload
         FROM public.imc_source_raw_rows
         WHERE snapshot_id = %s
           AND sheet_name = 'EinheitenWind'
-          AND lower(payload->>'NameWindpark') = lower(%s)
-        ORDER BY payload->>'NameStromerzeugungseinheit' NULLS LAST,
-                 payload->>'EinheitMastrNummer'
+          AND nullif(trim(payload->>'NameWindpark'), '') IS NOT NULL
         """,
-        (snapshot_id, park_name),
+        (snapshot_id,),
     )
-    payloads = [r[0] for r in cur.fetchall()]
-    if not payloads:
-        print(f"SKIP: {farm_name} — keine Einheiten für Park '{park_name}'")
-        return 0
+    by_key: dict[str, list[dict]] = defaultdict(list)
+    for (payload,) in cur.fetchall():
+        if not isinstance(payload, dict):
+            continue
+        name = payload.get("NameWindpark")
+        if not name:
+            continue
+        by_key[park_key_for(str(name))].append(payload)
+    return by_key
 
+
+def insert_units(
+    cur: psycopg.Cursor,
+    *,
+    farm_id,
+    payloads: list[dict],
+    source_id: str,
+) -> int:
     cur.execute(
         """
         DELETE FROM public.imc_turbines
@@ -171,6 +178,26 @@ def transform_farm(
             ),
         )
         inserted += 1
+    return inserted
+
+
+def transform_farm(
+    cur: psycopg.Cursor,
+    *,
+    farm_id,
+    farm_name: str,
+    ext_id: str | None,
+    park_name: str,
+    payloads: list[dict],
+    source_id: str,
+) -> int:
+    if not payloads:
+        print(f"SKIP: {farm_name} — keine Einheiten für Park '{park_name}'")
+        return 0
+
+    inserted = insert_units(
+        cur, farm_id=farm_id, payloads=payloads, source_id=source_id
+    )
 
     cur.execute(
         """
@@ -186,7 +213,7 @@ def transform_farm(
     )
 
     label = ext_id or "—"
-    print(f"OK: {farm_name} ({label}) ← {inserted} units from '{park_name}'")
+    print(f"OK: {farm_name} ({label}) <- {inserted} units from '{park_name}'")
     return inserted
 
 
@@ -215,16 +242,29 @@ def main() -> int:
                 print("Keine Ziele gefunden", file=sys.stderr)
                 return 1
 
+            units_cache: dict[str, dict[str, list[dict]]] = {}
             total_units = 0
             farms_ok = 0
             for farm_id, farm_name, ext_id, park_name, snapshot_id in targets:
+                snap = str(snapshot_id)
+                if snap not in units_cache:
+                    units_cache[snap] = load_units_by_park_key(cur, snapshot_id)
+                payloads = units_cache[snap].get(park_key_for(park_name), [])
+                # Stable order for diffs / UI
+                payloads = sorted(
+                    payloads,
+                    key=lambda p: (
+                        str(p.get("NameStromerzeugungseinheit") or ""),
+                        str(p.get("EinheitMastrNummer") or ""),
+                    ),
+                )
                 n = transform_farm(
                     cur,
                     farm_id=farm_id,
                     farm_name=farm_name,
                     ext_id=ext_id,
                     park_name=park_name,
-                    snapshot_id=snapshot_id,
+                    payloads=payloads,
                     source_id=args.source_id,
                 )
                 if n:

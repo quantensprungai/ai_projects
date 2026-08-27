@@ -172,6 +172,23 @@ python transform_4c_capex.py --latest
 
 Schreibt `imc_farm_capex_reported|modelled|summary`, `imc_farm_opex_*`, `imc_farm_revenue`. Setzt fehlende `ext_windfarm_id` per POP-`WindfarmId` (COALESCE).
 
+### Grid light (Project Details → imc_farm_grid)
+
+```powershell
+$env:DATABASE_URL="postgresql://postgres:postgres@127.0.0.1:54330/postgres"
+python transform_4c_farm_grid.py --latest
+```
+
+Landing, Export/Infield-Kabel, OSS-Anzahl. Key in Raw: `WindfarmId`. Upsert 1:1 auf `farm_id`.
+
+### Platforms / OHVS light (Platform Type → imc_offshore_platforms)
+
+```powershell
+python transform_4c_platforms.py --latest
+```
+
+Farm-Link über `WindfarmID` oder Codes in `ConnectingWindfarms` (`Name (DE2X)`). Ohne auflösbaren Farm-Link: skip (`farm_id` NOT NULL).
+
 ### 4C Events (Lifecycle-Log)
 
 ```powershell
