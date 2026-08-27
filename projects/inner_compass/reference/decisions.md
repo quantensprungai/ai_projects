@@ -1,5 +1,75 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-08-27: Ziwei-Natal wie HD — nicht UI-first
+
+**Kontext:** Nach dem HD-Handbuch-Keil (C→B) lag der Impuls nahe, ein leeres 12-Palast-Gitter als „Basis“ zu bauen. Genau das Slice-Problem: KI setzt auf halbem Gerüst auf. 13 中州-PDFs sind lokal inventarisiert und queued, **0 ingestiert**. HD/BaZi-Pipeline-Fallen (Seed nach PDF, Auto-Synth, Interp-Dump in die UI, Spark-Qwen als Default) waren im ersten Ziwei-Schnitt zu weich.
+
+**Decision:**
+
+1. **Pfad A — Natal-Parität.** Nicht B (大限/流年 vor UI). Nicht C (HD-Transit zuerst). Compute = iztro, ein `ziwei.*`-Baum. Kit ≠ Ontologie.
+2. **Erste Tradition = 中州 / 王亭之** (`tradition=zhongzhou` auf den 13). 三合/飞星 = Tags, nicht zweite Engine. Tu Vi = Locale, gleiches `system_id`.
+3. **13 lokale Werke, nicht neu beschaffen.** Queue-CSV Zeilen 121–133. **12 Natal ingestieren, 流年凶灾详析 parken** (Jahres-Timing, analog HD-Transit). **深造讲义 ist Natal-wichtig** (进阶-Paar zur 初级); ~158 MB = Scan-Gewicht, eigenes MinerU-Fenster mit `PAGE_BATCH`, nicht wie 流年 behandeln.
+4. **Staffel:** Seed+Whitelist → 初级+星曜性质 (Smoke) → 深造 (eigenes Extract) → 补注 → 全集. Nicht alle 13 als P0 dumpen.
+5. **HD-Gates Pflicht:** K2-Seed **vor** PDFs; `IC_TEXT2KG_STRICT=true`; **`IC_TEXT2KG_STRICT_ZIWEI`** (Whitelist `ic_ziwei_k2_catalog.py`); `IC_TEXT2KG_AUTO_SYNTH=false`; Relink `link_role`; scoped Synth, Canon-first. UI liest Atom/`primary`, kein Interp-Dump.
+6. **LLM-Standard = Langdock** (`gpt-5-mini`, `ic_start_langdock_worker.py` / `ic_run_with_langdock.py`). Spark nur MinerU/`extract_text`. `IC_LLM_URL` nicht auf Spark `:30001` / Qwen. SGLang für diese Welle nicht starten.
+7. **MinerU:** `IC_MINERU_LANG=ch` (nicht `latin`). `IC_MINERU_PAGE_BATCH=50`. **Kein** `IC_CHUNK_PROFILE=rave_iching_gates`. Spezialprofil `ziwei_stars_palaces` erst nach TOC-Smoke. Classify-Tag = `ziwei`.
+8. **Zeitvertrag:** iztro `bySolar(gregorianisches Wanddatum, 时辰-Index, Geschlecht)` — Geo/TZ ignoriert. Berlin und Shanghai 09:00 gleiches Kalenderdatum → gleiches Plate. `isoDateToSolarString` nur `YYYY-MM-DD`, kein `Date()`-Fallback. Unbekannt 12:00 = 午时, kommunizieren. 真太阳时 später.
+9. **Geschlecht** in `user_persons` ist Blocker: ohne 男/女 kein Plate.
+10. **Git:** HD-Slice auf bestehendem Docs-Branch einfrieren. Ziwei-Arbeit auf `cursor/ziwei-natal` (Docs vom Freeze-Tip, Code von `cursor/makerkit-v4`). **Nicht** zuerst auf `main` mergen (Makerkit 4 / KARTE liegen nicht auf Code-`main`).
+11. **UI** `/home/karte/ziwei` erst wenn Palast/Hauptstern-Atome `verified` oder bewusster `canon_fallback`. Hub-Linse live.
+
+**Nicht:** Mandala, Handbuch-Generator, 大限/流年-UI, BaZi-Klassiker-Ingest parallel, Jyotish-UI, HD-Transit-UI, `classify_domain` umbenennen, Spark-Qwen als Interpret/Synth, 深造 wegen MB skippen.
+
+---
+## 2026-08-27: Domänen-Routing, Katalog-Drift, nächstes Ziel
+
+**Kontext:** Handbuch-Keil (C→B) ist dünn. Frage war, ob `life_domain` ein DB-/Chunk-Durchlauf wie Edges werden soll, ob Launch 12×Tiefe 4 braucht, und welches System als Nächstes kommt. Staffeln (PRD/Leitdokument „Vier Spiegel“) sind frühe Produkt-Verpackung — Engines für Ziwei/Jyotish/BaZi/Astro/Maya rechnen bereits; Content außer HD fast leer.
+
+**Decision:**
+
+1. **Staffeln sind historisch.** Sie diktieren nicht mehr die technische Reihenfolge. Reihenfolge folgt: was testet die IC-Wette (12 Lebensbereiche als Navigation), und was hat schon Engine+Katalog.
+2. **Routing = Kanten, nicht Singular-Index.** `belongs_to_domain` (multi, `candidate`/`approved`, evidence). `payload.life_domain` darf bleiben, ist nicht der Abruf. Plural `life_domains[]` weiter nur dokumentieren, bis Kanten existieren (`hd_state_contract.md`).
+3. **Zwei Ebenen:** Katalog-v0 (deterministisch, Haus/Palast/Bhava/OS-Feld → Domäne) vs. Literatur-Pass (welche Absätze in welcher Domäne; erst wenn ein Leser da ist). Kein neuer LLM-Job jetzt. Backfill 2026-08-05 hat Element↔Element, **nicht** Element↔Domäne.
+4. **`classify_domain` nicht umbenennen.** Job-Typ bleibt (Queue/Spark-Worker). Semantik = Chunk → `system_id`. Alias in `cursor/pipeline.md`. Rename erst bei Worker-Touch, mit Alias.
+5. **WO/WANN ist Dramaturgie, kein Routing.** Leitdokument VI.2 (Astro=WO, BaZi=WANN) gilt für Serie/Onboarding-Ton. 12-Räder (Häuser/Bhavas/Paläste) sind alle WO. Timing (Luck Pillars, Dashas, Transite) ist WANN in mehreren Systemen.
+6. **Nächstes Ziel: 12-Rad-Overlay, nicht Handbuch-Generator, nicht Staffel-1-Korpus zuerst.** Dünne zweite KARTE-Quelle = **Ziwei** (Map schon in IC-Enums, anderes Kulturkreis als HD, Playbook-Referenz, unabhängig von Astro↔Jyotish). Katalog-v0-Dateien parallel (HD-OS → Selbst; Ziwei-Map liegt). BaZi-Klassiker bleiben die nächste *Literaturwelle* auf Spark, nicht die nächste App-Fläche. Jyotish nicht als zweites UI (Staffel-2-Label egal; Überlappung mit Astro). Kein Mandala-SVG, keine Tiefe 3–4, kein `tag_ic_metadata`.
+
+**Katalog-Stand (nicht raten, Dateien lesen):**
+
+| System | 12-Rad? | Map vs. `contracts.md` §2 | Lücken |
+|---|---|---|---|
+| HD | nein (Typ/Zentren/Tore) | Leitdokument V.5: Typ+Autorität+Profil → Selbst | Sex/Geld/Austausch schwach natal |
+| Ziwei | 12 Paläste | `ziwei_structure_v0.json` `life_domain_map` = §2-Enums | Sex + Wandlung ohne Palast (Z3: 10/12) |
+| Jyotish | 12 Bhavas | `karakatva[]`, **kein** `life_domain` | ein Bhava → oft mehrere Domänen (Bhava 2 = Geld+Familie+Rede) |
+| Astro | 12 Häuser | **Drift:** Katalog-Enums ≠ §2 (`resources_values` vs `money_resources`, …) | Haus 8 mischt Sex/Geld/Wandlung |
+| BaZi | nein (4 Pfeiler) | Struktur ohne Domain-Map | schlecht als Mandala-Test; gut als HD-Komplement |
+| I Ging | nein (64) | Hexagramm = HD-Tor (faktisch) | 8 Trigramme ≠ 12 Domänen |
+
+**Prüfpunkte** (hier nachschlagen, nicht vorher „fixen“):
+
+| Wenn ihr hier seid | Prüfen |
+|---|---|
+| Astro-UI oder Astro-Katalog anfassen | Enums in `astro_catalog_v0.json` an §2 angleichen oder explizites `life_domain_map` wie Ziwei. Nicht prophylaktisch. |
+| Jyotish-UI / Bhava-Routing | Multi-Map aus `karakatva` schreiben; nicht 1:1 erzwingen. |
+| Ziwei-KARTE | Vorhandene Map nutzen; Sex/Wandlung über Sterne, nicht Palast erfinden. |
+| BaZi-UI oder BaZi-Ingest | Kein 12-Rad erwarten. Pfeiler ≠ Häuser. |
+| I-Ging-Ingest | 64 = `hd.gate.N`, kein Domänen-Rad. |
+| Worker-Rewrite | `classify_domain` → `classify_system` plus Alias auf den alten Job-Typ. |
+| Handbuch-Generator / `/karte/[domain]` | Abruf über `belongs_to_domain`, nicht über `payload.life_domain`. Stimme `handbook_level`. L-Form: Breite Tiefe 1, eine Spalte tiefer — Content-Ökonomie, nicht Staffel. |
+| Phase-3 `maps_to` | Astro↔Jyotish genealogisch nah (~70–80 % in VI.3). Ziwei unabhängiger Test. Methodik weiter `cross_system_mapping_methodology_review.md`. |
+| Mandala-SVG | Erst wenn ein zweites 12-Rad in der UI liegt. |
+| Launch Tiefe 4 / Werkstatt | Tiefe 3–4 = Werkstatt + Safety-Gate. 12×Tiefe 4 nicht füllen. |
+
+**Nicht:** Job-Rename, Handbuch-Generator, `extract_relationships` neu, `tag_ic_metadata`, Mandala, Jyotish als zweite Graph-UI, Astro-Enum-Rewrite ohne Astro-UI, Staffel-1 als Blocker.
+
+**Klarstellung (gleicher Tag, Nachfragen):**
+
+- **Spark läuft nicht.** Es gibt keinen offenen BaZi-Klassiker-Job. S5d (*Destiny Code*, modern) ist durch. Die Klassiker (子平真诠 / 滴天髓 / 三命通会 / 渊海子平) sind in der Welle **geplant und nicht angefasst**. „Kann auf Spark weiterlaufen“ hieß: *optionaler Literatur-Track später*, kein „jetzt fertigstellen“. Nicht als Blocker vor der nächsten KARTE-Quelle starten.
+- **„Ziwei dünn“ = erster UI-Schnitt, nicht dünne Literatur.** Wie HD: zuerst Natal-Chart als KARTE-Quelle (12-Palast-Gitter, Lookup, Freeze). Schulen/Werke danach in Wellen, ein `ziwei.*`-Baum, `tradition`-Tags (中州 / 三合 / 飞星), Compute-Default = iztro (analog jovian). Kein paralleles KG. Tu Vi = Locale, gleiches `system_id`. Große Limite/流年 nicht im ersten Slice (wie HD-Transit).
+- **HD Natal bleibt freeze.** Engine-Transit (`/transit/daily`) existiert, App-UI nicht. Type-4-Kanäle bewusst ungelesen. Sidereal/Hybrid/Composite-UI offen. Das ist nicht „HD unfertig also blockiert alles“ — Vollausbau (ZEIT, JETZT-Radar, restliche Bücher) ist ein anderes Ziel. Transit bauen, wenn JETZT/ZEIT das Ziel ist, nicht als HD-Komplettismus vor dem zweiten System.
+- **Jyotish ist das nächste Schwere, nicht das nächste Richtige.** Engine (PyJHora, D1–D9, Dashas, 16 Vargas) und Korpus sind größer. Derselbe 12-Haus-Gedanke wie westl. Astro (~70–80 % in VI.3) — wenig Overlay-Lernen, HD-skaliger Aufwand. Ziwei zuerst, weil natives 12-Rad, Map schon in §2-Enums, anderer Kulturkreis, TS-Playbook fertig.
+
+---
 ## 2026-08-27: HD-Handbuch-Keil — C dann B
 
 **Kontext:** JETZT zeigte Engine-Labels (`Projector · Wait for the Invitation`). SoT ist Alltagssprache auf der Handbuch-/KARTE-Ebene (Leitdokument XVII, UX §5) und ein Onboarding-Aha (UX §3). Launch-MVP (Mandala, Vier Spiegel, Transite, Schicht E) fehlt noch.

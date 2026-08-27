@@ -137,6 +137,11 @@ export IC_MINERU_LANG=latin
 export IC_MINERU_TIMEOUT=3600
 export IC_WORKER_JOB_TYPES=extract_text
 
+# Ziwei / chinesische PDFs (Decision 2026-08-27): LANG=ch, PAGE_BATCH=50,
+# kein rave_iching_gates, kein Spark-LLM. Runbook: reference/ziwei_natal_ingest_runbook.md
+# export IC_MINERU_LANG=ch
+# export IC_MINERU_PAGE_BATCH=50
+
 .venv/bin/python3 ic_worker.py --loop --sleep 5
 ```
 
@@ -208,7 +213,7 @@ limit 20;
 |--------|--------|
 | MinerU nicht gefunden | Worker mit `.venv/bin/python3` starten (nicht system `python3`); MinerU liegt in venv |
 | MinerU OOM / sehr langsam | SGLang stoppen: `docker stop sglang-r1-8b-josiefied` (oder `docker ps` → laufenden Container) |
-| MinerU Timeout | `IC_MINERU_LANG=latin` setzen (DE-PDFs); `IC_MINERU_TIMEOUT=7200` für große Docs |
+| MinerU Timeout | `IC_MINERU_LANG=latin` für DE-PDFs; `IC_MINERU_LANG=ch` für Ziwei/BaZi-Klassiker; `IC_MINERU_TIMEOUT=7200` + `IC_MINERU_PAGE_BATCH=50` für große Scans |
 | Storage 403 | service_role Key prüfen, RLS-Policy sys_uploads_raw_service_role |
 | LLM Timeout | IC_LLM_URL prüfen, Modell läuft? |
 | classify_domain skipped | Confidence < 0.3 → PDF evtl. nicht HD-relevant |

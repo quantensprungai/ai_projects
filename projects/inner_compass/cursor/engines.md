@@ -836,6 +836,17 @@ Die Divergenzen (verschiedene Empfehlungen) werden nicht versteckt, sondern als 
 
 **Kein Ersatz nötig** für Phase 1; spätere Validierung gegen Referenzliteratur (K3/K4) ist unabhängig vom Kit.
 
+### 15.4 Zeitvertrag (Wandzeit, kein China-TZ-Bug)
+
+iztro rechnet `bySolar(gregorianisches Datum, Stundenindex 0–12, Geschlecht)`. `latitude` / `longitude` / `timezone` am `BirthData` werden **ignoriert** (`_ic.note`). Input = Standesamt-**Wanddatum** + Uhr → `util.timeToIndex(hour)` (Minuten fallen weg). Berlin 09:00 und Shanghai 09:00 am selben Kalendertag → **identisches** Plate; HD würde differieren. BaZi nutzt TZ bereits korrekt.
+
+- `isoDateToSolarString` akzeptiert nur `YYYY-MM-DD`. Kein `new Date(iso)`-Fallback (UTC-unsicher).
+- Unbekannte Uhr 12:00 = 午时 — in der UI kommunizieren.
+- 真太阳时 (geographische Länge) später, analog HD-Sidereal: nicht in Welle 1.
+- Tests: `ziwei-time-contract.test.ts` (Berlin vs Shanghai gleiche Wandzeit; ungültiges Datum wirft `INVALID_DATE`).
+
+Compute-Default bleibt iztro. Schulen-Text kommt aus Literatur (`tradition=zhongzhou`), nicht aus einem zweiten Kit.
+
 ### 15.2 Contract (1c) — Stabile API
 
 - **Input:** `ZiweiComputeInput` — `BirthData` + `gender` (`male`  `female`  `男`  `女`) + optional `language`, `fixLeap`.

@@ -1,8 +1,8 @@
 # K2-Seed — Scope, Lücken, strict text2kg
 
-last_update: 2026-07-11
+last_update: 2026-08-27
 scope: Inner Compass — wann Seed vollständig sein muss, was fehlt, strict mode
-in_scope: BaZi/HD Seed-Gaps, Pipeline-Regeln, text2kg_unmatched Audit
+in_scope: BaZi/HD/Ziwei Seed-Gaps, Pipeline-Regeln, text2kg_unmatched Audit
 out_of_scope: Vollimplementierung aller Seeds (→ deep_structure_plan.md, ic_seed_structure.py)
 
 ## Kernregel (aus S5d gelernt)
@@ -53,6 +53,7 @@ Literatur-PDFs liefern **K3/K4** (Interpretation + Synthese), **nicht** neue K2-
 | `IC_TEXT2KG_STRICT` | **true** | **Kein** `created` — nur Link auf existierende Seed-Nodes (alle Systeme) |
 | `IC_TEXT2KG_STRICT_BAZI` | **true** | Zusätzlich: canonical_id muss in `ic_bazi_k2_catalog.BAZI_K2_STRICT_IDS` (Kern + 60 Jiazi) |
 | `IC_TEXT2KG_STRICT_HD` | **true** | Whitelist + Aliase via `ic_hd_k2_catalog.py` |
+| `IC_TEXT2KG_STRICT_ZIWEI` | **true** | Whitelist via `ic_ziwei_k2_catalog.py` (Paläste, Sterne, Stems/Branches, …). Decision 2026-08-27. |
 
 **Seed-Regel (2026-07-11):** `ic_seed_structure.py` erhält bei Re-Seed `interpretation_ids`, `chunk_ids` und `canonical_description` — Upsert überschreibt K3/K4 nicht mehr.
 
@@ -89,5 +90,6 @@ Literatur-PDFs liefern **K3/K4** (Interpretation + Synthese), **nicht** neue K2-
   - `ic_gk_wildwuchs_cleanup.py` — 167 `genekeys.asset_chunk.*` gelöscht
   - `ic_k2_state_audit.py` — One-Shot-Audit (Nodes/Interps/Synthese/Jobs)
   - 3 Zombie-Jobs geschlossen (synthesize_node queued/running)
+- [x] `ic_ziwei_k2_catalog.py` + Seed `build_ziwei` + `IC_TEXT2KG_STRICT_ZIWEI` (Decision 2026-08-27)
 
 → Master-Backlog: `reference/deep_structure_plan.md`

@@ -55,7 +55,7 @@ Vertrag: `contracts.md` §1a. Synth-Policy: `reference/synthesis_canon_first.md`
 
 | Job | Tut | Tut nicht |
 |---|---|---|
-| **classify_domain** | Chunk → System-Tag (`hd`) | kein Graph |
+| **classify_domain** | Chunk → System-Tag (`hd`) | kein Graph, **kein** Lebensbereich. Alias: classify_system. Job-Typ nicht umbenennen (Decision 2026-08-27) |
 | **extract_term_mapping** | „Power Gate“ → `hd.gate.34` | kein Essay |
 | **extract_interpretations** | Chunk → Interp-JSON | hängt noch nichts an Nodes |
 | **text2kg** | Interp an Seed-IDs **anhängen** (strict: 0 neue Nodes) | keine Rollen, kein Synth |
@@ -80,6 +80,7 @@ Zahlen / Audit-Schnitt: Canvas `hd-audit-scale` + Layer-Checkliste.
 - **Engine:** LLM
 - **Output:** system-Tag auf Chunk ('hd' | 'bazi' | 'astro' | ...)
 - **Status:** ✅ Produktiv
+- **Name:** Historischer Job-Typ. Semantik = **System**, nicht IC-Lebensbereich (`contracts.md` §2). Lebensbereich-Routing = `belongs_to_domain` (noch nicht geseedet). Worker/Queue behalten `classify_domain`. Rename auf `classify_system` nur mit Alias, wenn der Worker sowieso angefasst wird. `reference/decisions.md` 2026-08-27.
 
 ### extract_term_mapping
 - **Input:** sys_source_chunk + bestehende sys_kg_nodes (Seed-basiert)
@@ -363,7 +364,7 @@ Nicht raten. Reihenfolge:
 1. **Welcher `element_type`?** Deskriptor `facet_schema` + `contracts.md` §1a: Achse A gilt immer; C-Slots nur wenn schon deklariert oder Literatur+UI einen Essay erzwingen — dann erst Slot in `hd.json` eintragen.
 2. **Chart-State (Achse B)** kennen: `defined|undefined`, hanging/Kanal, Line-Pol. Engine, nicht PDF. `open` nicht als dritte Enum. Details: `hd_state_contract.md`.
 3. **Literatur:** Master-Checkliste + TOC-Matrix. Neues PDF nur wenn Primärwerk fehlt. Sonst vorhandene Chunks/Interps (alle Werke bleiben im Archiv).
-4. **Pipeline wenn neu:** `s5_runbook.md` — Upload → MinerU `extract_text` (Spark) → classify/term → **Langdock** interpret → text2kg **strict** → **kein** Auto-Synth. Job-Types eng halten.
+4. **Pipeline wenn neu:** `s5_runbook.md` — Upload → MinerU `extract_text` (Spark, Ziwei: `IC_MINERU_LANG=ch`, `PAGE_BATCH=50`, kein I-Ching-Profil) → classify/term → **Langdock** interpret → text2kg **strict** (`IC_TEXT2KG_STRICT_ZIWEI` analog HD/BaZi) → **kein** Auto-Synth. Job-Types eng halten. Spark-Qwen nicht. SoT: Decision 2026-08-27 Ziwei-Natal.
 5. **Vorhandenes nutzen:** Relink/`link_role` + `facet_hints`, nicht Re-Extract. Synth nur scoped (`ic_synth_layer_ops.py --enqueue-layer`) und nur für `mechanical`, nie A+C in einen Topf.
 6. **Lesen bauen** (Inspector-Stapel / Overlay-Block) **bevor** oder **statt** Re-Synth. Admission: nur `primary` in den Slot.
 7. **Klassen-Texte** (Overview „alle offenen Zentren“) nicht an Geschwister hängen — Concept/`hd.definition.*` oder `mention`.

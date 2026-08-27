@@ -1,6 +1,6 @@
 # Literatur Content-Wellen — Stand 2026-07-18
 
-last_update: 2026-08-11 (Layer-Master-Checkliste + TOC-Audit; Quality-Matrix + Enrich unverändert)
+last_update: 2026-08-27 (Ziwei-Natal-Parität + Domänen-Routing; Quality-Matrix + Enrich unverändert)
 
 ### Inventar-Realitätscheck (2026-08-04 / Update 2026-08-10)
 
@@ -64,6 +64,8 @@ Sinnvolle nächste Optionen (wählen):
 5. **Phase-1/UI** Chart-Ansichten (parallel möglich)
 
 **Empfehlung:** (1) kurzes Sign-off, dann (4) oder (5) — HD-Bodygraph ist für MVP-Kern weitgehend „gut genug“.
+
+**App-Reihenfolge 2026-08-27:** Nächste *KARTE-Quelle* = Ziwei **Natal-Parität** (Decision 2026-08-27): 13 lokale 中州-PDFs, Seed vor Ingest, Langdock nicht Spark-LLM, 流年-Band parken, 深造 ingestieren. Nicht BaZi-Graph. BaZi-Klassiker bleiben die nächste *andere* Literaturwelle, nicht parallel. Staffel-Labels historisch. `reference/decisions.md` 2026-08-27.
 
 ### TOC ↔ K2 High-Level-Abgleich (2026-08-11)
 

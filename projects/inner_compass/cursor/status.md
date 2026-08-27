@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-08-26
+last_update: 2026-08-27
 scope: IC Projektstatus (Phasen 0–4), Chart-Engines, Content-Akquise, Ur-Systeme, Gene Keys, Konvergenz/Meta-KG
 in_scope: Stand, nächste Schritte, Systemliste, Anna's Archive entity-first, Klarstellung HD-Schulen vs. GK, Konvergenz personenbezogen vs. strukturell
 out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_compass_app AGENTS.md
@@ -12,7 +12,7 @@ out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_c
 > **App (Phase 4):** HD KARTE Graph visuell zu (helle Jovian-Fills, Kanalhälften, Hanging, Variable-Chevrons, keine Gate-Chips). Overlay-LLM v1m. HD-Docker `ic-hd-service` :8002.
 > **Content (Phase 2):** **HD S0 Close-out ✅** — Canon-first Synth, link_role, ID-Strip. S0.5 Relink live. SoT: `reference/hd_layer_master_checklist_2026-08-11.md`.
 >
-> **Wo wir sind:** Phase 0 erledigt. Phase 1 — **Chart-Engines Staffel 1:** fünf Kerne + **Maya Tzolkin, Nine Star Ki, Numerologie, Akan** in `@ic/engines` + API-Routen + Kataloge v0 ✅
+> **Wo wir sind:** Phase 0 erledigt. Phase 1 — Chart-Engines (historisch „Staffel 1“ genannt, Label nicht mehr reihenfolge-bindend): fünf Kerne + **Maya Tzolkin, Nine Star Ki, Numerologie, Akan** in `@ic/engines` + API-Routen + Kataloge v0 ✅
 > - **Ziwei Doushu** (iztro): TS, Katalog + Validierung ✅
 > - **BaZi** (@yhjs): TS, Katalog + Validierung ✅
 > - **Jyotish** (PyJHora): Python-Microservice, D1+D9+Dasha+Bhavas+Yogas+16 Vargas ✅
@@ -22,7 +22,7 @@ out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_c
 > - **Nine Star Ki**: K1/K2 **v1** (`ic_nine_star_ki_v1`) — Honmei + Getsumei + **energetic**; feste Sonnenmonats-Schnitte; Vitest **Step 3** Katalog-Regeln ✅ — `reference/decisions.md` **2026-04-16**
 > - **Numerologie / Akan**: Engines + Kataloge + `POST /api/.../calculate` ✅ *(Playbook-Validierung optional)*
 >
-> **Nächste Reihenfolge (jetzt):** Onboarding-Gate + JETZT-Start liegen. Nächste Fläche oder Mandala-Reveal später. Makerkit **4.0.6** / Next 16.3. Sprache/i18n **nicht**. Relink-Q und Dynamics-Jobs nicht vor mehr UI. Overlay v1o. 64keys Blau/Orange am Zentrum nicht raten.
+> **Nächste Reihenfolge (jetzt):** HD-Linse + Handbuch-Keil liegen. Nächstes Ziel = **Ziwei-Natal wie HD** (Seed, MinerU ch, Langdock, dann KARTE-Gitter) — Decision 2026-08-27 Natal-Parität. Nicht Mandala, nicht Handbuch-Generator. Staffeln historisch. Overlay v1o. 64keys Blau/Orange am Zentrum nicht raten.
 >
 > **Roter Faden (Gesamtplan):** HD Close-out → System-Wellen → Phase 3 (nach 2 Reviews) → **Makerkit v4 ✅** → MVP Phase 4 → Voll — kanonisch in `cursor/handover.md` § Roter Faden. Content-Nachrüst: `reference/hd_layer_master_checklist_2026-08-11.md`. Wave: `cursor/reference/literature_content_wave_2026-07-18.md`. UX: `reference/ux_konzept_2026-07.md`.
 

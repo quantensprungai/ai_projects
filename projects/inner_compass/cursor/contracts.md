@@ -3,6 +3,7 @@
 > Autoritative Referenz für Dimensionen, Lebensbereiche, Payloads, Enums, Facetten.
 > Wenn Schema und dieses Dokument sich widersprechen, gilt dieses Dokument.
 > Facetten-Vertrag (§1a) + State/Display (§1b) + Decision `reference/decisions.md` 2026-08-17.
+> Domänen-Routing / Katalog-Drift: `reference/decisions.md` 2026-08-27.
 > HD-State-Matrix: `reference/hd_state_contract.md`.
 
 ## 1. Dimensions-Contract (15 Keys)
@@ -81,7 +82,7 @@ Entspricht PRD Handbuch + Spaces. Nicht raten, nicht pro Layer neu erfinden:
 | `gift_activation` | `process.gift_activation` | Tiefe 3 | WERKSTATT Leiter | selten |
 | `experiment_seed` | `process.experiment_seed` | Tiefe 4 Experiment | WERKSTATT | nein |
 | `temporal_phase` | `dimensions.temporal_phase` | — | ZEIT | nur wenn Transit das Element trifft |
-| `life_domain` | Tag, kein Slot | Mandala-Ring | KARTE | Navigation, keine Prosa |
+| `life_domain` | Tag, kein Slot | Mandala-Ring | KARTE | Navigation, keine Prosa. Abruf später `belongs_to_domain` (Decision 2026-08-27), nicht dieser Singular |
 
 Gewohnheiten / Lösungen: **kein** neuer Key. `expression` + `experiment_seed` + `gift_activation`. Kombinatorische Fallen (HD-Shadow × BaZi-Clash) bleiben `sys_dynamics`, nicht Facette am Einzel-Node (`decisions.md` 2026-08-05).
 
@@ -160,6 +161,17 @@ User-facing Navigation. Tag `life_domain` im Interpretations-Payload.
 
 Lebensbereiche sind ein Tag, kein Schema-Constraint. Hinzufügen/Entfernen/Mergen jederzeit möglich.
 
+**Abruf:** nicht der Singular `payload.life_domain`. Soll = Kanten `belongs_to_domain` (multi, `candidate`/`approved`, evidence). Plural `life_domains[]` nur dokumentiert, bis die Kanten existieren. Katalog-v0 (Haus/Palast/Bhava/OS) ist deterministisch; Literatur-Pass erst, wenn etwas die Kanten liest. SoT: `reference/decisions.md` 2026-08-27.
+
+**Katalog vs. dieses Enum (Drift — erst prüfen, wenn das System gelesen wird):**
+
+| Datei | Stand |
+|---|---|
+| `system_structure/ziwei_structure_v0.json` `life_domain_map` | nutzt die Enums dieser Tabelle |
+| `system_structure/astro_catalog_v0.json` `houses[].life_domain` | **andere** Strings (`resources_values`, `home_roots`, `partnerships`, …) — angleichen oder eigenes `life_domain_map`, wenn Astro-UI kommt |
+| `system_structure/jyotish_catalog_v0.json` `bhavas` | `karakatva[]`, kein `life_domain` — Multi-Map schreiben, wenn Jyotish geroutet wird |
+| BaZi / I Ging | kein 12-Rad (4 Pfeiler / 64 Hexagramme) |
+
 Erweiterung von 10→12 (2026-03): §20d-Revision in ergebnis_modelle.md — "Kommunikation" und "Transformation" wurden bei 10 Systemen zu Recht abgelehnt; mit 14 Systemen (inkl. Jyotish 12 Bhavas, Ziwei 12 Paläste, Westl. Astro 12 Häuser) ist die Lücke nicht mehr vertretbar.
 
 ## 3. Interpretations-Payload (jsonb)
@@ -206,7 +218,7 @@ Erweiterung von 10→12 (2026-03): §20d-Revision in ergebnis_modelle.md — "Ko
     "text_origin": "imported | original | unknown",
     "display_allowed": "boolean"
   },
-  "life_domain": "string | null — Enum aus Abschnitt 2; später life_domains[]",
+  "life_domain": "string | null — Enum aus Abschnitt 2; kein Abruf-Index (Decision 2026-08-27). später life_domains[] oder belongs_to_domain-Kanten",
   "interactions": {
     "amplifies": ["canonical_id"],
     "depends_on": ["canonical_id"],
@@ -244,13 +256,16 @@ system_id: 'meta'
 
 ```
 relation_type: 'part_of' | 'amplifies' | 'depends_on' | 'modifies' | 
-               'clashes_with' | 'maps_to' | 'produces' | 'controls'
+               'clashes_with' | 'maps_to' | 'produces' | 'controls' |
+               'belongs_to_domain'
 edge_scope:    'intra_system' | 'cross_system'
 review_status: 'approved' | 'candidate' | 'rejected'
 strength:      'low' | 'medium' | 'strong' | 'dominant'
 ```
 
 `maps_to` + `cross_system` = Cross-System-Mapping (Schicht D).
+
+`belongs_to_domain` = Element → Lebensbereich (§2). Ziwei-Paläste: `candidate` in Node-Metadata aus `life_domain_map` (Seed 2026-08-27). Ziel-Node später `ic.life_domain.{enum}` (12 Stück). Multi erlaubt. Leitdokument IX.4; Decision 2026-08-27. Nicht verwechseln mit Job `classify_domain` (der taggt `system_id`).
 
 ## 6. Dynamic-Types
 

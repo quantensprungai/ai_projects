@@ -22,7 +22,7 @@ Tech: Next.js 16.3 (Makerkit 4.0.6) + Supabase + Spark (GPU, Worker, MinerU, LLM
 Code: code/inner_compass_app/   Docs: projects/inner_compass/
 SoT Chart: projects/inner_compass/reference/hd_bodygraph_overlay_contract.md
 SoT State: projects/inner_compass/reference/hd_state_contract.md
-Decision: reference/decisions.md 2026-08-17 State-Vertrag + 2026-08-14 Rails
+Decision: reference/decisions.md 2026-08-27 Ziwei-Natal-Parität + Domänen-Routing + Handbuch-Keil; 2026-08-17 State-Vertrag + 2026-08-14 Rails
 Layer: reference/hd_layer_master_checklist_2026-08-11.md (Delta 2026-08-17)
 Synth: cursor/reference/synthesis_canon_first.md
 Pipeline-Wörter: cursor/pipeline.md §1a
@@ -81,17 +81,19 @@ ROTER FADEN (Stand 2026-08-25; 1–17 bis 08-19, 18 = Chart-Visual):
 
 Wörterbuch Chunk/Interp/Anhang/Synth/primary: cursor/pipeline.md §1a.
 
-Aktueller Punkt: **Makerkit 4.0.6** + **HD-Handbuch-Keil C→B** (2026-08-27, Branch `cursor/makerkit-v4`). Landkarte spricht Alltag (Typ×Strategie-Gloss DE). Nach Signatur ein Insight + Resonanz (nicht gespeichert) → KARTE. JETZT = Radar-Stub, kein Typ-Essay. Overlay bleibt EN auf der HD-Linse. **Sprache/i18n-Welle nicht.**
+Aktueller Punkt: **Makerkit 4.0.6** + **HD-Handbuch-Keil C→B** (2026-08-27). **Nächste Welle = Ziwei-Natal wie HD** (Decision 2026-08-27 Natal-Parität): nicht leeres Gitter. 13 中州-PDFs lokal/queued, 流年-Band parken, 深造 trotz 158 MB ingestieren. LLM = **Langdock gpt-5-mini**, Spark nur MinerU (`IC_MINERU_LANG=ch`). Seed+STRICT_ZIWEI vor PDFs. Branches: Docs/Code `cursor/ziwei-natal` (Code-Basis `cursor/makerkit-v4`). **Nicht zuerst main mergen.** Overlay bleibt EN auf der HD-Linse. **Sprache/i18n-Welle nicht.** SoT: `reference/decisions.md` 2026-08-27 (Domänen + Ziwei-Natal).
 
 Nächstes Paket (Reihenfolge, nicht parallel):
   Gate) ✅ Nach Signup ohne `user_persons.role=self` → `/home/onboarding` (test@makerkit.dev ausgenommen). JETZT = Radar-Stub + CTA KARTE.
   KARTE) Lebenswelt zuerst: Handbuch-Karte (HD-Gloss) oben, System-Charts als Quellen. Freeze am Graph halten. Graph-Labels nicht nach next-intl ziehen.
   Onboarding) ✅ 3 Steps + ein Insight (C-Text) + Resonanz ohne Persistenz → `/home/karte`. Unbekannt = 12:00 + kommunizieren.
+  Overlay) HD-Linse freeze. **Ziwei-Natal:** Seed → MinerU-Smoke 初级 → 深造 eigenes Fenster → Relink/scoped Synth Langdock → erst dann `/home/karte/ziwei`. Nicht Handbuch-Generator, nicht Mandala. BaZi-Klassiker nicht parallel. 三合/飞星 nicht Welle 1.
   Locale) Keine Übersetzungs-Welle. Datums-Picker bleibt OS; Bestätigung folgt App-Chrome (`de`). Handbuch-Gloss ist fest DE.
   Dynamik) Atom-Prozess liegt; System-Dynamik (`sys_dynamics` intra) und Cross-Dynamik **nicht** jetzt. Relink-Q still, nach UI-Mix.
   Agent) Nicht bauen. Nur das Companion-Feld freihalten.
-  Git) Commit+push nur auf expliziten User-Wunsch.
+  Git) Docs-Freeze auf Handover-Branch, Arbeit auf `cursor/ziwei-natal`. Code von `makerkit-v4`. Kein Merge auf main als Ziwei-Blocker.
   Makerkit) **v4.0.6 da** (Branch `cursor/makerkit-v4`). Node ≥ 22.13 (pnpm 11).
+  LLM) **Langdock gpt-5-mini** Standard (classify/interpret/synth). Spark-Qwen nicht. Key in `.env.development.local`.
   KARTE-nicht) 64keys Blau/Orange am Zentrum — erst wenn ein Chart den Mischfall belegt.
 
 Nicht: Full-Re-Synth, Center-Wipe, `open` als dritte Enum, SGLang über 7973 Interps / 20877 Anhänge.
@@ -153,7 +155,13 @@ CODE:
 NICHT TUN:
   supabase db reset (KG nur lokal; Dump Desktop 2026-08-13)
   Mandala-SVG / volle Space-Inhalte (Shell ist da)
+  Handbuch-Generator / 12×Tiefe 4 / tag_ic_metadata
+  classify_domain Job-Typ umbenennen (Alias reicht; Decision 2026-08-27)
+  Spark-Qwen als Interpret/Synth (Langdock ist Standard)
+  流年凶灾详析 in der Natal-Welle; 深造 wegen Dateigröße skippen
   Schul-Ingest / tradition-Pipeline / Center-Wipe
+  IC_CHUNK_PROFILE=rave_iching_gates auf Ziwei-PDFs
+  IC_MINERU_LANG=latin auf chinesischen PDFs
   Planet-Gewichte erfinden
   hd.not_self_mind.* seeden
   64keys/Gene Keys Massen-Rename

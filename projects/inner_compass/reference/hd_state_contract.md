@@ -1,6 +1,7 @@
 ---
-last_update: 2026-08-25
+last_update: 2026-08-27
 status: active — P0 freeze; Packer + Relink live; KARTE Graph visuell zu; Variable-Pfeile live
+note: "life_domains / belongs_to_domain: decisions.md 2026-08-27. Ziwei-Natal-Welle berührt diesen HD-Vertrag nicht (HD freeze)."
 scope:
   summary: "HD State-Vertrag: 13 chart_element_types, Chart-State, Display-Policy, Planeten als Träger, Type-derived facts, Provenienz. Keine 13 hierarchischen Ebenen."
   in_scope:
@@ -194,7 +195,7 @@ Interpretative Inhalte:
 
 HD-Schulen = `tradition` auf gleichem `hd.gate.N`. Gene Keys = eigenes System `gk.*`. Kein Wipe vor Audit. Shadow/Gift zuerst quellenspezifische Slots, keine universellen HD-States.
 
-C-Persistenz (Vertrag, keine Massenmigration): `payload.facets` für `mind_when_open`, `open_expression`, `defined_expression`, `exalt`, `detriment`. MVP liest `facet_hints` + primary-Interps. Intern Null: `not_applicable | no_evidence | not_extracted | pending_review | populated`. `life_domains` Plural nur dokumentieren.
+C-Persistenz (Vertrag, keine Massenmigration): `payload.facets` für `mind_when_open`, `open_expression`, `defined_expression`, `exalt`, `detriment`. MVP liest `facet_hints` + primary-Interps. Intern Null: `not_applicable | no_evidence | not_extracted | pending_review | populated`. `life_domains` Plural nur dokumentieren — Abruf später `belongs_to_domain` (`reference/decisions.md` 2026-08-27), nicht den Singular zum Index machen.
 
 ## 9. State-Matrix (13 Typen, Kern)
 
