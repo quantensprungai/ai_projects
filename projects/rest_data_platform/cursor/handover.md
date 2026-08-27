@@ -15,7 +15,7 @@ Workspace: ai-projects Root — Doku + Code + Infra zusammen (NICHT nur projects
 
 Stand (2026-08-27) — Plan: projects/rest_data_platform/cursor/next_plan.md
   - Doku: projects/rest_data_platform/ · Code: code/astra-imc-platform/ → quantensprungai/astra-imc-platform
-  - Branch UI: `feat/assets-ia-restructure` (Waves + Park-Dossier + Site-Design-Filter)
+  - Branch UI: `feat/assets-ia-restructure` (Waves + Park-Dossier + Site-Design-Filter + Vessel-Katalog Marc-Felder)
   - Makerkit catalog + Passkeys/react-email/native-sharing auf main (PR #1 merged)
   - Schema: IMC v1/v1.2 + MaStR + Natura + Häfen + ERA5 daily/hourly + CAPEX/OPEX/Events + Vessel-Katalog
   - Dual-Track: Postgres = SoT; AAS = Export. Partner: CSV/View, nicht AAS.
@@ -24,6 +24,8 @@ Stand (2026-08-27) — Plan: projects/rest_data_platform/cursor/next_plan.md
   - Nav (Produktbegriffe DE=EN): Assets → Waves → Economics → Vessels
   - Waves `/assets/waves` — Gegenverkehr Ausbau/Rückbau (MW, Schätzung); CTA vom Register
   - Economics `/assets/economics` · Vessels `/assets/vessels`
+  - Vessel-Katalog: Marc-Felder (Kapazität, Dayrate, Fuel, Speed, MetOcean, Jacking, Availability) + CSV; Platzhalter
+  - Vessels Contracts-UI: Schiffname zuerst; DE light bis 1500 Zeilen; scrollbares Fenster (~max-h)
   - Park-Dossier (Collapsibles): Steckbrief · Economics · Lebenszyklus · Einheiten (BOM-Anker) · Standort · Wetter · Akteure · Schiffe
   - Steckbrief Site-Design: Tiefe/Küste/Fläche/Wind; Register-Filter Depth/Shore (Query `depth`/`shore`)
   - GIS-Haltung: **Map-light** (Leaflet + Attribute) — kein GIS-Produkt / kein Router jetzt
@@ -31,7 +33,7 @@ Stand (2026-08-27) — Plan: projects/rest_data_platform/cursor/next_plan.md
   - Barges: Enum nur `jack_up_barge` (kein generisches barge/feeder) — mit Marc klären
   - Park-Detail Logistik-Schichten (nicht vermischen):
       1) Akteure — 4C Supply Chain DE (~3633 Links); Kernkacheln + Parties-CSV
-      2) Schiffseinsätze (VPI) — DE Contracts light ~1183; Filter O&M/Install; AV ~60
+      2) Schiffseinsätze (VPI) — DE Contracts light ~1183; Filter O&M/Install; AV ~60; Linking erschöpft
       3) Sim-Rollen (Pilot) — kuratierte Typ×Phase für Simulation (UI ohne Partnernamen)
   - Locale: Workspace-Switch hält EN; i18n-Messages `use cache`+`cacheLife(max)` → nach Key-Änderungen `next dev` neu starten
   - IA Drafts: 01_spec/interface_agreement_marc_anylogic_v0.md + …_thomas_lca_v0.md
@@ -51,9 +53,9 @@ Lies zuerst:
   - projects/rest_data_platform/00_overview/mvp.md
 
 Nächster Schritt:
-  1) ~~Demo-Daten/UI-Freeze Stage A Backbone~~ · ~~Assets-IA (Waves + Dossier)~~ · ~~Site-Design Steckbrief + Register Depth/Shore~~
-  2) Partner-Sync Marc (Stunden-CSV + Katalog + Owner-Matrix/Barge in IA) — Sequenz/Sim-CSV blockiert
-  3) Optional Daten-Backlog light (Slice-weise): Vessel-Katalog-Felder mit Marc; Grid/OHVS/MaStR — eigene Stories
+  1) ~~Demo-Daten/UI-Freeze Stage A Backbone~~ · ~~Assets-IA (Waves + Dossier)~~ · ~~Site-Design Steckbrief + Register Depth/Shore~~ · ~~Vessel-Katalog Marc-Felder~~ · ~~Contracts-UI Kosmetik~~
+  2) Partner-Sync Marc (Stunden-CSV + Katalog-Abnahme + Owner-Matrix/Barge in IA) — Sequenz/Sim-CSV blockiert
+  3) Optional Daten-Backlog light: Grid/OHVS/MaStR — eigene Stories; Katalog-Werte mit Marc finalisieren
   Geblockt fachlich: BOM Thomas; Sequenz/Sim-CSV Marc; Vessel-Wetter final; Barge-Typ-Entscheidung
   Nicht: Contracts-17k blind; Decom-Steps aus 4C ableiten; Sim/LCA in der Plattform; MCP-Cloud-Seed; Mega-Dashboard; GIS-Router
 

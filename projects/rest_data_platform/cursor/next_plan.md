@@ -55,8 +55,8 @@ Plattform = **Offshore-Register + Logistik + Economics + Wetter + Waves**, aus d
 | ERA5 daily | 3 Parks / 1858 Tage |
 | ERA5 hourly | **AV CDS** ~23 232 h (2024-01-01→2026-08-25, `cds+hourly`); UI Tag+Stunde + CSV |
 | CAPEX/OPEX/Events | in DB + Asset-Detail + Portfolio `/assets/economics` |
-| Vessel-Katalog / Flotte | 8 + 2210, UI `/assets/vessels` |
-| Schiffseinsätze (VPI) | DE light ~**1183**; AV ~60; UI Filter |
+| Vessel-Katalog / Flotte | 8 + 2210, UI `/assets/vessels`; Marc-Felder + Platzhalter (Fuel/Jacking/Avail) |
+| Schiffseinsätze (VPI) | DE light ~**1183**; AV ~60; UI Filter; globale Tabelle scrollbar + Schiffname |
 | Sim-Rollen (Pilot) | AV: CTV/SOV/WTIV × Phase (kuratiert); UI-Text ohne Partnernamen |
 | Akteure | DE Supply Chain ~**3633**; Parties-CSV Export |
 | Code-Branch | `feat/assets-ia-restructure` ( gepusht ) |
@@ -99,16 +99,16 @@ Details + Owner-Matrix + Barge-Offenpunkt: `01_spec/interface_agreement_marc_any
 
 ## Daten-Backlog (Slice-weise, kein Mega-Plan)
 
-1. ~~Site-Design Steckbrief~~ · ~~Register-Filter Depth/Shore~~ · ~~Marc-IA Gap-Review (Matrix + Barge)~~ · ~~Vessel-Katalog Marc-Felder (UI + Fuel/Jacking/Avail-Platzhalter)~~
+1. ~~Site-Design Steckbrief~~ · ~~Register-Filter Depth/Shore~~ · ~~Marc-IA Gap-Review (Matrix + Barge)~~ · ~~Vessel-Katalog Marc-Felder (UI + Fuel/Jacking/Avail-Platzhalter)~~ · ~~Contracts-UI Kosmetik (scroll + Schiffname)~~
 2. Optional: Day-Rates/Fuel mit Marc finalisieren (Werte sind Platzhalter)
 3. Grid/OHVS/Turbinen-Specs/MaStR — eigene Stories
 4. Routing/Polylinien erst wenn Marc „real routes“ verbindlich will
 
 ## Reihenfolge (jetzt)
 
-1. ~~Logistics-Struktur~~ · ~~CAPEX-Portfolio~~ · ~~CDS AV Stunden~~ · ~~Stakeholders/VPI DE~~ · ~~Assets-IA (Waves + Dossier)~~ · ~~Site-Design + Depth/Shore-Filter~~  
+1. ~~Logistics-Struktur~~ · ~~CAPEX-Portfolio~~ · ~~CDS AV Stunden~~ · ~~Stakeholders/VPI DE~~ · ~~Assets-IA (Waves + Dossier)~~ · ~~Site-Design + Depth/Shore-Filter~~ · ~~Vessel-Katalog Marc-Felder~~ · ~~Contracts-UI Kosmetik~~  
 2. **Marc-Sync** — Stunden-CSV-Abnahme, Katalog-Defaults, Owner-Matrix/Barge in IA (§3d)  
-3. Optional Daten-Backlog light: Katalog-Felder; Einheiten BOM-Hinweis; DE-ERA5-Tagesbatch; Thomas BOM/LCA  
+3. Optional Daten-Backlog light: Katalog-Werte finalisieren; Einheiten BOM-Hinweis; DE-ERA5-Tagesbatch; Thomas BOM/LCA  
 4. PR `feat/assets-ia-restructure` → main wenn Demo ok  
 
 ## IA-Selbstentscheidungen (ohne Partner-Warten)
@@ -135,7 +135,7 @@ BOM/PCF/Toolwahl sind **LCA-Spur**. Portfolio braucht nur 4C Economics (schon in
 | Teil | Sinnvoll jetzt | Später / nicht blind |
 |------|----------------|----------------------|
 | Day-Rate UI | Spalte im Katalog + Flotte; Katalog-Seed/Override | Markt-Scraper, Live-Charter |
-| Contracts | DE-Subset + UI Schiffseinsätze | 17k Contracts blind |
+| Contracts | DE-Subset + UI Schiffseinsätze + scrollbare globale Tabelle | 17k Contracts blind |
 | Farm-Assignments | Pilot Sim-Rollen AV | Historie aller VPI-Events als Assignments |
 
 ## Klarstellungen (kurz)
