@@ -1,8 +1,8 @@
 <!-- Reality Block
-last_update: 2026-08-26
+last_update: 2026-08-27
 status: active
 scope:
-  summary: "Aktiver Arbeitsplan ASTRA IMC — Demo-Freeze Backbone, dann Marc-Sync."
+  summary: "Aktiver Arbeitsplan ASTRA IMC — IA Waves/Dossier gelandet, dann Marc-Sync."
   in_scope:
     - next implementation order
     - glossary for events vs marc steps
@@ -10,11 +10,12 @@ scope:
     - full roadmap rewrite
 notes:
   - "Handover-Block in handover.md parallel aktualisieren."
+  - "2026-08-27: Assets-IA — Nav Waves, Gegenverkehr-Seite, Park-Dossier inkl. Einheiten; Branch feat/assets-ia-restructure."
   - "2026-08-26: Stakeholders DE + VPI-Contracts DE + Park-UI (Akteure / Schiffseinsätze / Sim-Rollen)."
   - "2026-08-26: CAPEX-Portfolio UI; CDS-Stunden AV; Locale Workspace-Switch."
 -->
 
-# Aktiver Plan (2026-08-26)
+# Aktiver Plan (2026-08-27)
 
 ## Wo liegt was?
 
@@ -29,45 +30,62 @@ notes:
 
 ## Zielbild (grün, nicht „Stage A genug“)
 
-Plattform = **Offshore-Register + Logistik + Economics + Wetter**, aus dem Partner exportieren (CSV/Views), nicht in dem sie simulieren/LCA rechnen.
+Plattform = **Offshore-Register + Logistik + Economics + Wetter + Waves**, aus dem Partner exportieren (CSV/Views), nicht in dem sie simulieren/LCA rechnen.
 
 | Spur | Soll |
 |------|------|
 | Wetter | Tages- **und** Stundenreihen, Export am Park |
 | Vessels | Typenkatalog + Flotte + Day-Rates + Contracts (light) + Sim-Rollen-Pilot |
 | Economics | am Park + Portfolio `/assets/economics` (4C reported/modelled) |
+| Waves | Gegenverkehr Ausbau/Rückbau `/assets/waves` (Produkt A light) |
 | Partner | IA-Review Marc/Thomas — **jetzt der Hebel**, nicht weitere ETL-Breite |
 
-## Ist (lokal, 2026-08-26)
+## Ist (lokal / Code, 2026-08-27)
 
 | Baustein | Stand |
 |----------|--------|
+| Nav | **Assets → Waves → Economics → Vessels** (Labels DE=EN Produktbegriffe) |
+| Waves | `/assets/waves` Dual-Serie MW; Filter vom Register; CTA auf Assets-Liste |
+| Park-Dossier | Steckbrief · Economics · Lebenszyklus · **Einheiten** · Standort · Wetter · Akteure · Schiffe |
 | ERA5 daily | 3 Parks / 1858 Tage |
 | ERA5 hourly | **AV CDS** ~23 232 h (2024-01-01→2026-08-25, `cds+hourly`); UI Tag+Stunde + CSV |
 | CAPEX/OPEX/Events | in DB + Asset-Detail + Portfolio `/assets/economics` |
 | Vessel-Katalog / Flotte | 8 + 2210, UI `/assets/vessels` |
-| `day_rate_eur` | Katalog-Platzhalter gesetzt; Flotte/Contracts meist leer |
-| Schiffseinsätze (VPI) | DE light ~**1183** in `imc_vessel_contracts` (`vpi:{id}`); AV ~60; UI Filter |
-| Sim-Rollen (Pilot) | AV: CTV/SOV/WTIV × Phase (kuratiert, nicht aus VPI abgeleitet) |
-| Akteure | DE Supply Chain ~**3633** Links; Park-UI Kernkacheln + Anteile (Freitext-%) + Gruppen |
-| Locale / i18n | Workspace hält `/en/`; Message-Cache `cacheLife('max')` → Restart nach neuen Keys |
+| Schiffseinsätze (VPI) | DE light ~**1183**; AV ~60; UI Filter |
+| Sim-Rollen (Pilot) | AV: CTV/SOV/WTIV × Phase (kuratiert); UI-Text ohne Partnernamen |
+| Akteure | DE Supply Chain ~**3633**; Parties-CSV Export |
+| Code-Branch | `feat/assets-ia-restructure` ( gepusht ) |
+| Locale / i18n | Workspace hält `/en/`; Message-Cache → Restart nach neuen Keys |
+
+### Park-Blöcke (verbindlich)
+
+| Block | Inhalt | Default |
+|-------|--------|---------|
+| Steckbrief | Stammdaten | offen |
+| Economics | CAPEX/OPEX + Link Portfolio | offen |
+| Lebenszyklus | 4C Events | zu |
+| Einheiten | Turbinen/MaStR — BOM-Anker | zu |
+| Standort | Häfen | zu |
+| Wetter | ERA5 | zu |
+| Akteure | 4C Supply Chain + Parties-CSV | zu |
+| Schiffe | VPI-Einsätze + Sim-Rollen | zu |
 
 ### Logistik-Schichten am Park (verbindlich)
 
 | UI | Quelle | Nutzen | Nicht |
 |----|--------|--------|-------|
-| **Akteure** | 4C Supply Chain | Demo, AAS-Parties light | Marc-Sequenz / Decom-Steps |
+| **Akteure** | 4C Supply Chain | Demo, AAS-Parties light | Partner-Sequenz / Decom-Steps |
 | **Schiffseinsätze (VPI)** | Vessel Contracts DE | Historie / Kontext | Sim-Plan, Day-Rate-Markt |
-| **Sim-Rollen (Pilot)** | kuratierte Assignments | Marc Typ×Phase Bridge | VPI-Historie ersetzen |
+| **Sim-Rollen (Pilot)** | kuratierte Assignments | Typ×Phase Bridge | VPI-Historie ersetzen |
 
-**Nicht ableiten:** Decom-Workflow aus Akteuren oder Contracts. Marc braucht eigene Sequenz (+ Thomas BOM für LCA).
+**Nicht ableiten:** Decom-Workflow aus Akteuren oder Contracts. Sequenz + BOM kommen von Partnern.
 
 ## Reihenfolge (jetzt)
 
-1. ~~Logistics-Struktur~~ · ~~CAPEX-Portfolio~~ · ~~CDS AV Stunden~~ · ~~Stakeholders DE~~ · ~~VPI-Contracts DE~~ · ~~Park-UI-Schliff~~  
-2. **Demo-Freeze** — Stand committen; keine weiteren Light-ETLs ohne Bedarf  
-3. **Marc-Sync** — Stunden-CSV-Abnahme, Katalog-Defaults, was er wirklich braucht (Sequenz/Sim-CSV)  
-4. Optional: DE-ERA5-Tagesbatch Screener; Thomas BOM/LCA; i18n-Switcher in Team-Chrome  
+1. ~~Logistics-Struktur~~ · ~~CAPEX-Portfolio~~ · ~~CDS AV Stunden~~ · ~~Stakeholders/VPI DE~~ · ~~Assets-IA (Waves + Dossier)~~  
+2. **Marc-Sync** — Stunden-CSV-Abnahme, Katalog-Defaults, was er wirklich braucht (Sequenz/Sim-CSV)  
+3. Optional klein: Waves MW↔Parks-Toggle; Einheiten→BOM light; DE-ERA5-Tagesbatch; Thomas BOM/LCA  
+4. PR `feat/assets-ia-restructure` → main wenn Demo ok  
 
 ## IA-Selbstentscheidungen (ohne Partner-Warten)
 
@@ -83,7 +101,7 @@ Plattform = **Offshore-Register + Logistik + Economics + Wetter**, aus dem Partn
 
 ### Thomas — blockt CAPEX-Portfolio nicht
 
-BOM/PCF/Toolwahl sind **LCA-Spur**. Portfolio braucht nur 4C Economics (schon in DB).
+BOM/PCF/Toolwahl sind **LCA-Spur**. Portfolio braucht nur 4C Economics (schon in DB). Einheiten-Block ist der UI-Anker für spätere Massen.
 
 ## Logistics — was „Struktur“ heißt (nicht Vollausbau)
 
@@ -95,10 +113,11 @@ BOM/PCF/Toolwahl sind **LCA-Spur**. Portfolio braucht nur 4C Economics (schon in
 
 ## Klarstellungen (kurz)
 
-- **Events ≠ Marc-Sequenz** — 4C Lifecycle vs. AnyLogic-Zerlegung  
-- **VPI** — Specs = Flotte; Contracts = Schiffseinsätze; Assignments = unsere Sim-Rollen  
-- Anteils-% bei Ownern: Freitext-Extrakt (~oft vorhanden), **kein** Cap-Table; `stake_value` oft MW/€  
+- **Events ≠ Partner-Sequenz** — 4C Lifecycle vs. Sim-Zerlegung  
+- **Einheiten ≠ Lebenszyklus** — Inventar/BOM-Anker vs. Event-Timeline  
+- **VPI** — Specs = Flotte; Contracts = Schiffseinsätze; Assignments = Sim-Rollen  
+- Anteils-% bei Ownern: Freitext-Extrakt (~oft vorhanden), **kein** Cap-Table  
 
 ## Nicht blind
 
-AnyLogic/LCA in der App · MCP-Cloud-Seed · CAPEX-Forecast-Charts ohne Bedarf · Contracts-17k ohne Mapping · Decom-Steps aus 4C generieren
+AnyLogic/LCA in der App · MCP-Cloud-Seed · CAPEX-Forecast-Charts ohne Bedarf · Contracts-17k ohne Mapping · Decom-Steps aus 4C generieren · Mega-Dashboard
