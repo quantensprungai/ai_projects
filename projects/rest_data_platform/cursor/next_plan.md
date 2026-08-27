@@ -99,8 +99,8 @@ Details + Owner-Matrix + Barge-Offenpunkt: `01_spec/interface_agreement_marc_any
 
 ## Daten-Backlog (Slice-weise, kein Mega-Plan)
 
-1. ~~Site-Design Steckbrief~~ · ~~Register-Filter Depth/Shore~~ · ~~Marc-IA Gap-Review (Matrix + Barge)~~
-2. Optional: Vessel-Katalog-Felder mit Marc (dayrate, wind/wave limits, fuel placeholder)
+1. ~~Site-Design Steckbrief~~ · ~~Register-Filter Depth/Shore~~ · ~~Marc-IA Gap-Review (Matrix + Barge)~~ · ~~Vessel-Katalog Marc-Felder (UI + Fuel/Jacking/Avail-Platzhalter)~~
+2. Optional: Day-Rates/Fuel mit Marc finalisieren (Werte sind Platzhalter)
 3. Grid/OHVS/Turbinen-Specs/MaStR — eigene Stories
 4. Routing/Polylinien erst wenn Marc „real routes“ verbindlich will
 
