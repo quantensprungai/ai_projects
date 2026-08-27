@@ -22,7 +22,7 @@ out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_c
 > - **Nine Star Ki**: K1/K2 **v1** (`ic_nine_star_ki_v1`) — Honmei + Getsumei + **energetic**; feste Sonnenmonats-Schnitte; Vitest **Step 3** Katalog-Regeln ✅ — `reference/decisions.md` **2026-04-16**
 > - **Numerologie / Akan**: Engines + Kataloge + `POST /api/.../calculate` ✅ *(Playbook-Validierung optional)*
 >
-> **Nächste Reihenfolge (jetzt):** Onboarding-Gate nach Signup + eine Fläche füllen. Makerkit **4.0.6** / Next 16.3 liegt. Sprache/i18n **nicht**. Relink-Q und Dynamics-Jobs nicht vor mehr UI. Overlay v1o. 64keys Blau/Orange am Zentrum nicht raten.
+> **Nächste Reihenfolge (jetzt):** Onboarding-Gate + JETZT-Start liegen. Nächste Fläche oder Mandala-Reveal später. Makerkit **4.0.6** / Next 16.3. Sprache/i18n **nicht**. Relink-Q und Dynamics-Jobs nicht vor mehr UI. Overlay v1o. 64keys Blau/Orange am Zentrum nicht raten.
 >
 > **Roter Faden (Gesamtplan):** HD Close-out → System-Wellen → Phase 3 (nach 2 Reviews) → **Makerkit v4 ✅** → MVP Phase 4 → Voll — kanonisch in `cursor/handover.md` § Roter Faden. Content-Nachrüst: `reference/hd_layer_master_checklist_2026-08-11.md`. Wave: `cursor/reference/literature_content_wave_2026-07-18.md`. UX: `reference/ux_konzept_2026-07.md`.
 
@@ -304,7 +304,7 @@ Mit vollständigem atomarem Seed können **alle** Kombinationen interpretiert we
 - [ ] 4 App-Spaces: JETZT, KARTE, WERKSTATT, ZEIT
 - [ ] WERKSTATT: Brunnen→Leiter Flow-Engine + Anker v1
 - [ ] Transit-Service, Konvergenz-Service, Lens-Switcher
-- [ ] Onboarding-Flow
+- [x] Onboarding-Gate nach Signup (`role=self`); JETZT Signatur-Highlight
 - → Scope: consolidation/ic_gesamtinventur.md §XX (v1/v2/v3)
 - → Delta: consolidation/ic_gesamtinventur.md §XXI (8 Lücken)
 

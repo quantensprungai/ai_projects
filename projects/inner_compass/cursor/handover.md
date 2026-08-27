@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-08-26
+last_update: 2026-08-27
 scope: Chat-Handover Inner Compass (Copy-Paste-Block + Themen-Anhänge)
 in_scope: aktueller Chart-Stand, Reboot, Code-Anker, Don'ts, Verweise
 out_of_scope: Implementierung; S5-Runbook-Details außer als Archiv unten
@@ -81,12 +81,13 @@ ROTER FADEN (Stand 2026-08-25; 1–17 bis 08-19, 18 = Chart-Visual):
 
 Wörterbuch Chunk/Interp/Anhang/Synth/primary: cursor/pipeline.md §1a.
 
-Aktueller Punkt: **Makerkit 4.0.6** (2026-08-26, Branch `cursor/makerkit-v4`). Spaces bleiben leer. Nächstes Produktpaket: Onboarding-Gate + eine Fläche. **Sprache/i18n jetzt nicht bauen.**
+Aktueller Punkt: **Makerkit 4.0.6** + **HD-Handbuch-Keil C→B** (2026-08-27, Branch `cursor/makerkit-v4`). Landkarte spricht Alltag (Typ×Strategie-Gloss DE). Nach Signatur ein Insight + Resonanz (nicht gespeichert) → KARTE. JETZT = Radar-Stub, kein Typ-Essay. Overlay bleibt EN auf der HD-Linse. **Sprache/i18n-Welle nicht.**
 
 Nächstes Paket (Reihenfolge, nicht parallel):
-  Gate) Onboarding nach Signup verdrahten + eine Fläche füllen (JETZT oder KARTE-Hub).
-  KARTE) Freeze halten. Graph-Labels nicht nach next-intl ziehen.
-  Locale) Nicht jetzt.
+  Gate) ✅ Nach Signup ohne `user_persons.role=self` → `/home/onboarding` (test@makerkit.dev ausgenommen). JETZT = Radar-Stub + CTA KARTE.
+  KARTE) Lebenswelt zuerst: Handbuch-Karte (HD-Gloss) oben, System-Charts als Quellen. Freeze am Graph halten. Graph-Labels nicht nach next-intl ziehen.
+  Onboarding) ✅ 3 Steps + ein Insight (C-Text) + Resonanz ohne Persistenz → `/home/karte`. Unbekannt = 12:00 + kommunizieren.
+  Locale) Keine Übersetzungs-Welle. Datums-Picker bleibt OS; Bestätigung folgt App-Chrome (`de`). Handbuch-Gloss ist fest DE.
   Dynamik) Atom-Prozess liegt; System-Dynamik (`sys_dynamics` intra) und Cross-Dynamik **nicht** jetzt. Relink-Q still, nach UI-Mix.
   Agent) Nicht bauen. Nur das Companion-Feld freihalten.
   Git) Commit+push nur auf expliziten User-Wunsch.
@@ -132,6 +133,9 @@ CODE:
   apps/web/lib/hd/hd-karte-palette.ts
   cursor/reference/figma_karte_contract.md
   apps/web/lib/ic/ic-spaces.ts
+  apps/web/lib/ic/ic-onboarding-gate.ts
+  apps/web/lib/ic/birth-time-precision.ts
+  apps/web/lib/ic/ic-karte-lenses.ts
   apps/web/app/[locale]/home/_components/ic-spaces/
   apps/web/scripts/ic_s05_center_facet_relink.py
   apps/web/scripts/ic_s0_center_defined_relink.py
@@ -143,6 +147,7 @@ CODE:
   apps/web/scripts/ic_start_langdock_worker.py
   apps/web/scripts/ic_s05_open_center_concept.py
   apps/web/app/api/ic/hd-chart/route.ts
+  apps/web/app/api/ic/geocode/route.ts
   services/hd/src/hd_compute.py
 
 NICHT TUN:

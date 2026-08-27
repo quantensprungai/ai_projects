@@ -1,5 +1,18 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-08-27: HD-Handbuch-Keil — C dann B
+
+**Kontext:** JETZT zeigte Engine-Labels (`Projector · Wait for the Invitation`). SoT ist Alltagssprache auf der Handbuch-/KARTE-Ebene (Leitdokument XVII, UX §5) und ein Onboarding-Aha (UX §3). Launch-MVP (Mandala, Vier Spiegel, Transite, Schicht E) fehlt noch.
+
+**Decision:**
+1. **Keil, nicht Ersatz.** Dieselben Slots wie im UX-Konzept; schmal, weil Material fehlt.
+2. **C vor B.** Eine Landkarte-Karte in Handbuch-Sprache (HD Typ×Strategie, deterministisch DE). Danach ein Insight nach Chart-POST mit Resonanz Ja/Teilweise/Nein, ohne Persistenz. Weiter → `/home/karte`.
+3. **JETZT bleibt Radar-Stub** („Heute nichts Dringendes“), kein Natal-Essay.
+4. **Kein Overlay-Dump**, keine i18n-Welle, keine anderen Engines, kein Mandala-SVG.
+
+**Nicht:** Top-3, Schicht-E-Meta-Wörter, Resonanz in der DB, Transit-JETZT.
+
+---
 ## 2026-08-26: Makerkit v4 zuerst (4.0.6)
 
 **Kontext:** Kit war 3.1.3 / Next 16.2.2. Die HD-KARTE ist schwer; leere Space-Shells liefen billig mit. Offizielle Tags, kein Fresh Clone. Branch `cursor/makerkit-v4` vom Checkpoint `cursor/engine-api-integration-checkpoint`.
@@ -9,7 +22,7 @@
 2. Bei Konflikten Kit-Hülle, IC-Inhalt: KARTE/Engines/`optimizePackageImports` ohne `@ic/engines`, Catalog `iztro`/`@yhjs/*`/`celestine`.
 3. Design-Tag gemerged — er hat HD-Palette/Geometrie nicht angefasst.
 4. pnpm 11 braucht **Node ≥ 22.13**.
-5. Spaces bleiben leer. Nächstes Produktpaket: Onboarding-Gate.
+5. Spaces bleiben leer bis Onboarding-Gate. **Erledigt:** Gate + JETZT-Start (Decision 2026-08-26 Onboarding-Gate).
 
 **Nicht:** Fresh Clone, `supabase db reset`, i18n, Mandala, Dynamics-Jobs, Force-Push auf `main`.
 
@@ -40,7 +53,20 @@ KARTE/Overlay bleiben Lookup + eine Lesung. Dynamiken erscheinen in WERKSTATT/ZE
 4. Ungefähr/unbekannte Geburtszeit = später (UX-Konzept §3). Engine braucht weiter eine Uhrzeit.
 5. Bottom-Nav laut UX kommt, wenn die Shell sitzt — jetzt Makerkit-Nav mit den vier Labels.
 
-**Nicht:** Mandala-SVG, Transit-UI, Composite, Voice-Agent, Makerkit v4.
+**Nicht:** Mandala-SVG, Transit-UI, Composite, Voice-Agent, volles UX-§3 (unbekannte Geburtszeit).
+
+---
+## 2026-08-26: Onboarding-Gate in der App, nicht auf Marketing
+
+**Kontext:** Makerkit v4. UX §3 Warm Welcome = Marketing-Versprechen; Aha nach Account. Architecture §14: `/onboarding` unter `/home`. Freemium: Signatur frei, viral via Mandala-Share später.
+
+**Decision:**
+1. Kein Geburtsformular auf der Marketing-Site.
+2. Nach Signup: keine Person `role=self` → Redirect `/home/onboarding`. Settings/Billing bleiben erreichbar. `test@makerkit.dev` ist ausgenommen.
+3. JETZT ist die Startseite nach der Signatur (Typ · Strategie · Profil + CTA KARTE). Andere Spaces bleiben leer.
+4. Unbekannte Geburtszeit und Mandala-Reveal bleiben ein späteres Paket.
+
+**Nicht:** Öffentlicher Chart-Teaser, Onboarding in der Nav, Fan-out aller Engines in diesem Slice.
 
 ---
 ## 2026-08-26: Locale — Graph, Terms, Wordings; kein Display aus term_mapping
