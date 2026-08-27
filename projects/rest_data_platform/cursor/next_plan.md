@@ -84,7 +84,7 @@ Plattform = **Offshore-Register + Logistik + Economics + Wetter + Waves**, aus d
 
 1. ~~Logistics-Struktur~~ · ~~CAPEX-Portfolio~~ · ~~CDS AV Stunden~~ · ~~Stakeholders/VPI DE~~ · ~~Assets-IA (Waves + Dossier)~~  
 2. **Marc-Sync** — Stunden-CSV-Abnahme, Katalog-Defaults, was er wirklich braucht (Sequenz/Sim-CSV)  
-3. Optional klein: Waves MW↔Parks-Toggle; Einheiten→BOM light; DE-ERA5-Tagesbatch; Thomas BOM/LCA  
+3. Optional: ~~Waves MW↔Parks-Toggle~~ · Einheiten BOM-Hinweis; Massen/BOM light noch offen; DE-ERA5-Tagesbatch; Thomas BOM/LCA  
 4. PR `feat/assets-ia-restructure` → main wenn Demo ok  
 
 ## IA-Selbstentscheidungen (ohne Partner-Warten)

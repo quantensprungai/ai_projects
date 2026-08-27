@@ -49,7 +49,7 @@ Lies zuerst:
 Nächster Schritt:
   1) ~~Demo-Daten/UI-Freeze Stage A Backbone~~ · ~~Assets-IA (Waves + Dossier)~~
   2) Partner-Sync Marc (Stunden-CSV + Katalog + was er wirklich braucht) — Sequenz/Sim-CSV blockiert
-  3) Optional: Waves MW↔Parks-Toggle; Einheiten→BOM light; DE-ERA5-Tagesbatch; Thomas BOM/LCA
+  3) Optional: ~~Waves MW↔Parks-Toggle~~; Einheiten→BOM light (Massen); DE-ERA5-Tagesbatch; Thomas BOM/LCA
   Geblockt fachlich: BOM Thomas; Sequenz/Sim-CSV Marc; Vessel-Wetter final
   Nicht: Contracts-17k blind; Decom-Steps aus 4C ableiten; Sim/LCA in der Plattform; MCP-Cloud-Seed; Mega-Dashboard
 
