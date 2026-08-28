@@ -1,5 +1,5 @@
 <!-- Reality Block
-last_update: 2026-01-13
+last_update: 2026-06-30
 status: draft
 scope:
   summary: "Konsolidierte Endpoint-Übersicht für Spark-Services (intern/extern), inkl. Health & Example Calls."
@@ -7,10 +7,12 @@ scope:
     - endpoint list
     - port mapping (documentation)
     - example curls
+    - Cursor Custom Model Setup (Funnel + Bearer)
   out_of_scope:
-    - auth/secrets
+    - auth/secrets (Token-Werte nie committen)
     - public exposure / firewall rules
-notes: []
+notes:
+  - "2026-06-30: Cursor Custom Model bestätigt — Bearer + neues Chat-Fenster; Base URL ohne /v1 ok."
 -->
 
 # Inference Endpoints (Spark)
@@ -92,19 +94,47 @@ Ergebnis: du bekommst eine **HTTPS**‑URL im Tailnet (typisch `https://spark-56
 
 #### 3) Cursor Settings (Spark Provider)
 
-- **Base URL**: nutze die **HTTPS**‑URL von `tailscale serve status`.
-  - Manche Cursor‑Builds erwarten hier **explizit** ein Suffix `/v1` (dann wird intern `GET /models` → effektiv `GET /v1/models`).
-  - Wenn du **ohne** `/v1` einträgst, kann Cursor `GET /models` callen → das ist bei SGLang typischerweise **404**.
-  - Deshalb, wenn bei “Refresh” **no models available** kommt, setze die Base URL auf: `https://<spark>.ts.net/v1`
+**Bestätigtes Setup (2026-06-30, Funnel + Caddy-Proxy aktiv):**
+
+| Feld | Wert |
+|---|---|
+| **Base URL** | `https://spark-56d0.tail2d2ae0.ts.net` (ohne `/v1` — bestätigt) oder mit `/v1` |
+| **Custom Model** | `qwen3-32b-nvfp4` (exakt wie in `GET /v1/models`) |
+| **API Key** | Bearer Token aus `~/ai/configs/caddy/cursor_bearer_token.txt` auf Spark |
+| **API Key Toggle** | an |
+
+**Pflicht nach Config-Änderung:** **neues Chat-Fenster** (oder Reload Window). Cursor cached Provider/Model pro Chat — alte Sessions nutzen die alte Config.
+
+**`sk-local` gilt hier nicht:** Tailnet verbunden zu sein reicht nicht. Der Traffic geht über Funnel → Caddy (`:31001`) → SGLang. Caddy verlangt Bearer; `sk-local` liefert `401`.
+
+**Agent-Modus:** Custom Spark-Modelle sind primär für **Chat/Ask**. Im **Agent-Modus** kann Cursor kurz „Planning next moves“ zeigen und dann hängen (Tool-Protokoll nicht voll unterstützt). Für Agent-Arbeit Cursor-eigene Modelle nutzen.
+
+**PowerShell-Schnelltest (Windows):**
+
+```powershell
+$token = "DEIN_TOKEN_AUS_SPARK"
+Invoke-WebRequest -UseBasicParsing `
+  -Uri "https://spark-56d0.tail2d2ae0.ts.net/v1/models" `
+  -Headers @{ Authorization = "Bearer $token" } |
+  Select-Object StatusCode, Content
+```
+
+Erwartet: `200` und `"id":"qwen3-32b-nvfp4"`.
+
+**Base URL — mit oder ohne `/v1`:**
+
+- **Ohne `/v1`:** bei uns bestätigt funktionierend (`https://spark-56d0.tail2d2ae0.ts.net`).
+- **Mit `/v1`:** Alternative, wenn „Refresh“ / Model-Liste zickt (`https://<spark>.ts.net/v1`).
+
 - **Model Name**: `qwen3-32b-nvfp4` (oder wie du ihn via `--served-model-name` gesetzt hast)
-- **API Key**: falls Cursor eins verlangt, Dummy wie `sk-local`
 
-> Für reine CLI-Tests/`curl` kannst du weiterhin `http://<spark-host>:30001` nutzen. Für Cursor bevorzugen wir HTTPS.
+> Für reine CLI-Tests/`curl` kannst du weiterhin `http://<spark-host>:30001` nutzen. Für Cursor bevorzugen wir HTTPS via Funnel.
 
-**API Key Feld (wenn Cursor eins verlangt):**
-- **Tailnet-only (Serve)**: oft reicht ein Dummy wie `sk-local` (Spark/Caddy validiert standardmäßig keinen Key).
-- **Internet (Funnel)**: **Dummy ist NICHT sicher**. Wenn Funnel dauerhaft an ist, musst du am Proxy **echte Auth** erzwingen
-  (sonst kann jeder mit der URL dein Compute nutzen).
+**API Key Feld — wann welcher Key:**
+
+- **Funnel + Caddy-Proxy (unser Standard):** Bearer Token aus `cursor_bearer_token.txt` — **Pflicht**.
+- **Tailnet-only, direkt SGLang ohne Proxy:** Dummy wie `sk-local` kann reichen (selten bei Cursor wegen SSRF-Block).
+- **Internet (Funnel) ohne Auth:** **nicht** — Token am Proxy erzwingen.
 
 ### Funnel (Internet) – Security Minimalstandard (Bearer Token Pflicht)
 
@@ -249,12 +279,15 @@ Reality Check aus unserem Setup: Cursor kann den Endpoint **nutzen**, zeigt aber
 
 ### Wichtiger Reality Check: Config wird pro Chat “gecacht”
 
-Wenn du Base URL / API Key / Model in Cursor änderst, gilt das manchmal **nicht** für bereits offene Chats/Agent-Sessions.
-Symptom: “We’re having trouble connecting…” obwohl `/v1/models` via `curl` **200** liefert.
+Wenn du Base URL / API Key / Model in Cursor änderst, gilt das **nicht** für bereits offene Chats/Agent-Sessions.
+Symptome:
+- “We're having trouble connecting…” obwohl `/v1/models` via Test **200** liefert
+- kurz „Planning next moves“, dann Stille (besonders im Agent-Modus)
 
-**Pragmatischer Fix:**
-- **Neuen Chat starten** (oder Cursor “Reload Window”)
-- Dann das Custom‑Model erneut auswählen und testen
+**Pflicht-Fix (bestätigt 2026-06-30):**
+- **Neues Chat-Fenster** starten (oder Cursor „Reload Window“)
+- Custom Model erneut auswählen
+- Für Spark: **Chat/Ask**, nicht Agent
 
 ### Stabiler Pfad für Cursor: lokale Port‑Forwards (SSH)
 

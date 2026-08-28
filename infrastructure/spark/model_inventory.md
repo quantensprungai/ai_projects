@@ -1,5 +1,5 @@
 <!-- Reality Block
-last_update: 2026-01-22
+last_update: 2026-06-02
 status: draft
 scope:
   summary: "Ist-Stand der Model-Assets auf Spark (Disk) + Serve-Namen/Ports + Hinweise zu Quant/Alignment."
@@ -51,6 +51,7 @@ notes:
 | Model folder (Spark) | Vermutetes Format | Größe (du) | On disk | Alignment/“uncensored” | Notes |
 |---|---|---:|---:|---|---|
 | `~/ai/models/qwen3/qwen3-32b-nvfp4` | NVFP4 | ~20G | ✅ | unbekannt | Aktuell “known good” für Cursor. |
+| `~/ai/models/qwen36/qwen3.6-27b-fp8` | FP8 | ~28G | ✅ on disk | unbekannt | **Serve:** braucht SGLang ≥0.5.10 / Transformers ≥5.3 (`qwen3_5`). Stock-Image `lmsysorg/sglang:spark` scheitert aktuell → neueres GB10-Image (`SGLANG_IMAGE`, z. B. `scitrera/dgx-spark-sglang:0.5.11`) oder Fallback `qwen3-32b-nvfp4`. |
 | `~/ai/models/llama4/llama4-scout-17b-nvfp4` | NVFP4 | ~61G | ✅ | unbekannt | Served‑Name steht im Script. |
 | `~/ai/models/phi4/phi4-reasoning` | (vermutl. FP8/BF16) | ~28G | ✅ | eher “safe” | Gute Reasoning‑Baseline; nicht “uncensored”. |
 | `~/ai/models/qwen/qwen3-coder-30b-nvfp4` | NVFP4 | ~17G | ✅ | unbekannt | Coding‑Candidate. Serve/Switch‑Script vorhanden (served‑name: `qwen3-coder-30b-nvfp4`). |

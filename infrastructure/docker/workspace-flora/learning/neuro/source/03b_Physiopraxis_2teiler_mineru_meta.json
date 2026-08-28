@@ -1,0 +1,14 @@
+{
+  "engine": "mineru",
+  "mineru_bin": "/home/sparkuser/srv/hd-worker/.venv/bin/mineru",
+  "pdf": "/home/sparkuser/flora_extract/2026-08-05_03b_Physiopraxis_2teiler/03b_Physiopraxis_2teiler.pdf",
+  "input_pdf": "/home/sparkuser/flora_extract/2026-08-05_03b_Physiopraxis_2teiler/out/.work_03b_Physiopraxis_2teiler/03b_Physiopraxis_2teiler_first5p.pdf",
+  "backend": "pipeline",
+  "device": "cpu",
+  "lang": "latin",
+  "method": "auto",
+  "max_pages": 5,
+  "chars": 9375,
+  "elapsed_seconds": 92.3,
+  "source_md": "/home/sparkuser/flora_extract/2026-08-05_03b_Physiopraxis_2teiler/out/.work_03b_Physiopraxis_2teiler/mineru_out/03b_Physiopraxis_2teiler_first5p/auto/03b_Physiopraxis_2teiler_first5p.md"
+}

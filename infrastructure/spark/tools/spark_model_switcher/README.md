@@ -1,5 +1,5 @@
 <!-- Reality Block
-last_update: 2026-01-26
+last_update: 2026-06-02
 status: draft
 scope:
   summary: "Kleines GUI, um Spark-Modelle zu sehen und per SSH zu switchen."
@@ -45,6 +45,7 @@ Konfig kopieren und anpassen:
 - Trage `spark.host` ein (z. B. `100.x`, MagicDNS, oder `spark-56d0...ts.net`)
 - Optional: `ssh_identity_file` setzen (Pfad zu privatem Key)
 - Optional: `actions[].remote_path` für Modelle ergänzen
+- Für Qwen3.6 FP8: `remote_path` auf `/home/sparkuser/ai/scripts/serve/sglang_switch_to_qwen36_27b_fp8.sh` setzen
 
 ## Actions Schema (Model Picker)
 
@@ -65,6 +66,36 @@ Die GUI sortiert Buttons wie ein “Model Picker” über optionale Felder:
 
 - **Kann**: Buttons → remote Switch‑Scripts starten; Status anzeigen; Command‑Output anzeigen.
 - **Kann nicht**: “magisch” neue Modelle bauen/abliterate/quantizen. Dafür bleiben `~/ai/scripts/` und separate Workflows zuständig.
+
+## Troubleshooting: Exit Code 126
+
+Wenn der Switcher `Exit Code: 126` meldet, ist das Skript auf Spark meist nicht ausführbar oder hat Windows-Zeilenenden (`CRLF`) nach `scp`.
+
+Auf Spark (SSH):
+
+```bash
+sed -i 's/\r$//' /home/sparkuser/ai/scripts/serve/sglang_switch_to_qwen36_27b_fp8.sh
+chmod +x /home/sparkuser/ai/scripts/serve/sglang_switch_to_qwen36_27b_fp8.sh
+bash /home/sparkuser/ai/scripts/serve/sglang_switch_to_qwen36_27b_fp8.sh
+```
+
+Der Switcher ruft Scripts seit dem Fix per `bash <remote_path>` auf (nicht mehr als direktes Executable).
+
+## Qwen3.6-27B-FP8: `qwen3_5` / Transformers zu alt
+
+Symptom im Container-Log:
+
+`model type qwen3_5 but Transformers does not recognize this architecture`
+
+Ursache: `lmsysorg/sglang:spark` ist älter als Qwen3.6. Auf Spark:
+
+```bash
+docker pull scitrera/dgx-spark-sglang:0.5.11
+export SGLANG_IMAGE=scitrera/dgx-spark-sglang:0.5.11
+bash /home/sparkuser/ai/scripts/serve/sglang_switch_to_qwen36_27b_fp8.sh
+```
+
+Bis das klappt: im Switcher **Qwen3 32B (NVFP4)** starten (`sglang_switch_to_qwen.sh`).
 
 ## Ports / Slots (praktisch)
 

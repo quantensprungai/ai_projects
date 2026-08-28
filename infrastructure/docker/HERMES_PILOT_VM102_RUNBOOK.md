@@ -1,10 +1,12 @@
 <!-- Reality Block
-last_update: 2026-04-16
+last_update: 2026-08-05
 status: active
 scope:
   summary: "Hermes-Agent Pilot parallel zu Clawdbot auf VM102 (docker-apps): Installation, Profil pilot, Migration, Telegram-Gateway (eigener Bot), systemd user unit; Phase 2 Signal nur mit getrennter Identität."
   in_scope:
     - Hermes-Installation (manuell via uv, ohne interaktives install.sh)
+    - Update via `hermes update` (Stand 2026-08-05: v0.20.0 / 2026.8.3)
+    - Modell: Claude Sonnet 5 (`claude-sonnet-5`)
     - Profil pilot unter ~/.hermes/profiles/pilot
     - Migration aus ~/.clawdbot-personal (ohne ~/.openclaw)
     - Workspace-Dateien (SOUL/USER/AGENTS) aus ~/clawd/workspace-flora
@@ -16,6 +18,7 @@ scope:
     - Clawdbot-Produktionskonfiguration ändern
 notes:
   - "Falls Geheimnisse während der Einrichtung in Logs sichtbar wurden: betroffene Keys rotieren (Anthropic, Hermes-Gateway-Token, Telegram-Bot-Token, …)."
+  - "Backup vor Update: ~/backups/hermes-pilot-profile-*.tgz und hermes-agent-preupdate-*.tgz (z. B. 20260805_143721)."
 -->
 
 # Hermes Pilot auf VM102 (docker-apps) – Runbook
@@ -79,11 +82,25 @@ CLI prüfen:
 
 ## 3. Modell (Anthropic)
 
-Beispiel (Namen an euren Hermes-Katalog anpassen):
+Aktuell (Pilot, Stand 2026-08-05): **Claude Sonnet 5**.
 
 ```bash
-~/.local/bin/hermes config set model.provider anthropic
-~/.local/bin/hermes config set model.default anthropic/claude-sonnet-4-5-20250929
+~/.local/bin/pilot config set model.provider anthropic
+~/.local/bin/pilot config set model.default claude-sonnet-5
+```
+
+Smoke-Test (CLI ab v0.20):
+
+```bash
+~/.local/bin/pilot chat -Q -q 'Antworte nur mit OK.'
+```
+
+Update Hermes selbst:
+
+```bash
+systemctl --user stop hermes-gateway-pilot
+~/.local/bin/hermes update
+systemctl --user start hermes-gateway-pilot
 ```
 
 ---

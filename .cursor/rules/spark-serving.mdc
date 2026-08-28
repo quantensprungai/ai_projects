@@ -1,6 +1,6 @@
 <!--
 title: Spark Serving – SGLang/vLLM/Ollama (operational rules)
-last_update: 2026-01-21
+last_update: 2026-06-30
 status: draft
 scope:
   summary: "Regeln für LLM-Serving Entscheidungen und Debugging im Spark-Setup."
@@ -27,8 +27,14 @@ notes: []
 - Vermeide “Override OpenAI Base URL” dauerhaft; das kann Cursor-eigene Modelle (GPT‑5.2 etc.) brechen.
 
 ## Cursor UI Footgun: bestehende Chats cachen Provider/Model
-- Nach Änderungen an Base URL / API Key / Model ggf. **neuen Chat öffnen** oder **Reload Window**.
-- Sonst kann Cursor “We’re having trouble connecting…” zeigen, obwohl der Endpoint per `curl /v1/models` OK ist.
+- Nach Änderungen an Base URL / API Key / Model: **neues Chat-Fenster** (bestätigt 2026-06-30) oder **Reload Window**.
+- Sonst hängt Cursor trotz funktionierendem Endpoint (Test `200` auf `/v1/models`).
+
+## Cursor Custom Model + Funnel (2026-06-30)
+- Pfad: Funnel HTTPS → Caddy `:31001` → SGLang `:30001`.
+- **API Key = Bearer Token** aus `~/ai/configs/caddy/cursor_bearer_token.txt` — **`sk-local` liefert 401**.
+- Base URL ohne `/v1` ok (`https://spark-56d0.tail2d2ae0.ts.net`).
+- Custom Model für **Chat/Ask**; Agent-Modus kann nach „Planning next moves“ hängen.
 
 ## Funnel (Internet): niemals “Dummy-Key” als Security
 - Wenn Tailscale **Funnel** genutzt wird, ist der Endpoint internet-exponiert.

@@ -230,7 +230,12 @@ def main() -> None:
                         if clicked:
                             if typ == "script" and remote_path:
                                 st.write("Ausführung…")
-                                rc, out = run_ssh(spark, f"{remote_path}", timeout_s=600)
+                                # Run via bash (not direct exec): avoids exit 126 when +x/CRLF missing after scp.
+                                rc, out = run_ssh(
+                                    spark,
+                                    f"bash {remote_path}",
+                                    timeout_s=600,
+                                )
                                 st.write(f"Exit Code: `{rc}`")
                                 if out:
                                     st.code(out)

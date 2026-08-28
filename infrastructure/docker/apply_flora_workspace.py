@@ -19,6 +19,7 @@ import shutil
 BASE = "/home/user/clawd"
 DEFAULT_TEMPLATE_DIR = "/tmp/workspace-flora"
 FILES = ["AGENTS.md", "SOUL.md", "USER.md", "WELCOME_MESSAGE.md", "HEARTBEAT.md", "CRON.md"]
+# learning/esf: siehe deploy_flora_esf.py (inkl. Module, ohne .env)
 
 
 def main():

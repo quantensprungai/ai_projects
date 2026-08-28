@@ -14,6 +14,16 @@
   },
   "actions": [
     {
+      "id": "qwen3.6-27b-fp8",
+      "label": "Qwen3.6 27B (FP8)",
+      "category": "Allround",
+      "order": 9,
+      "slot": "primary",
+      "description": "Neuer Default-Kandidat: stark für Coding/Agentic + lange Doku-Analysen.",
+      "type": "script",
+      "remote_path": "/home/sparkuser/ai/scripts/serve/sglang_switch_to_qwen36_27b_fp8.sh"
+    },
+    {
       "id": "deepseek-r1-8b-abliterated-bf16",
       "label": "DeepSeek R1 8B (BF16)",
       "category": "Uncensored-ish",
