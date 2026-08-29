@@ -8,7 +8,7 @@
 
 1. **Pfad A — Natal-Parität.** Nicht B (大限/流年 vor UI). Nicht C (HD-Transit zuerst). Compute = iztro, ein `ziwei.*`-Baum. Kit ≠ Ontologie.
 2. **Erste Tradition = 中州 / 王亭之** (`tradition=zhongzhou` auf den 13). 三合/飞星 = Tags, nicht zweite Engine. Tu Vi = Locale, gleiches `system_id`.
-3. **13 lokale Werke, nicht neu beschaffen.** Queue-CSV Zeilen 121–133. **12 Natal ingestieren, 流年凶灾详析 parken** (Jahres-Timing, analog HD-Transit). **深造讲义 ist Natal-wichtig** (进阶-Paar zur 初级); ~158 MB = Scan-Gewicht, eigenes MinerU-Fenster mit `PAGE_BATCH`, nicht wie 流年 behandeln.
+3. **13 lokale Werke = Staffel 1**, Queue-CSV Zeilen 121–133. **12 Natal ingestieren, 流年凶灾详析 parken** (Jahres-Timing, analog HD-Transit). **深造讲义 ist Natal-wichtig** (进阶-Paar zur 初级); ~158 MB = Scan-Gewicht, eigenes MinerU-Fenster mit `PAGE_BATCH`, nicht wie 流年 behandeln. Juli-CSV „中州派-Kern komplett“ war **zu früh** — 四书/安星-Prosa/格局-Namen fehlten. **Welle 1b** (lokal `ziwei/neu/`): 安星法, 谈斗数, 八喜楼与格局, 骨髓赋, 太微赋-Kurznote. 四书 Band 1 (太微+形性 Satz) nicht Blocker. Have/Missing: `reference/ziwei_natal_ingest_runbook.md`.
 4. **Staffel:** Seed+Whitelist → 初级+星曜性质 (Smoke) → 深造 (eigenes Extract) → 补注 → 全集. Nicht alle 13 als P0 dumpen.
 5. **HD-Gates Pflicht:** K2-Seed **vor** PDFs; `IC_TEXT2KG_STRICT=true`; **`IC_TEXT2KG_STRICT_ZIWEI`** (Whitelist `ic_ziwei_k2_catalog.py`); `IC_TEXT2KG_AUTO_SYNTH=false`; Relink `link_role`; scoped Synth, Canon-first. UI liest Atom/`primary`, kein Interp-Dump.
 6. **LLM-Standard = Langdock** (`gpt-5-mini`, `ic_start_langdock_worker.py` / `ic_run_with_langdock.py`). Spark nur MinerU/`extract_text`. `IC_LLM_URL` nicht auf Spark `:30001` / Qwen. SGLang für diese Welle nicht starten.
@@ -19,6 +19,14 @@
 11. **UI** `/home/karte/ziwei` erst wenn Palast/Hauptstern-Atome `verified` oder bewusster `canon_fallback`. Hub-Linse live.
 
 **Nicht:** Mandala, Handbuch-Generator, 大限/流年-UI, BaZi-Klassiker-Ingest parallel, Jyotish-UI, HD-Transit-UI, `classify_domain` umbenennen, Spark-Qwen als Interpret/Synth, 深造 wegen MB skippen.
+
+**Nachtrag 2026-08-28:** 初级-Smoke (pipeline, Qwen/SGLang aus) lieferte 125 Chunks. Cover/TOC-OCR (`液`/`人`) ist Scan, nicht Chunk-Größe. **Wörterbuch-Nachkorrektur gegen K2 für alle Natal-Werke, vor text2kg** — Details `reference/ziwei_natal_ingest_runbook.md`. Extract-Staffel bleibt: 星曜 → 深造 eigenes Fenster → 补注 → 全集; nicht alle PDFs parallel.
+
+**流年 2026-08-28:** Das 13. Werk darf MinerU jetzt mitlaufen (`wave=ziwei_liunian`), damit der Scan nicht später fehlt. **Nicht** in natal-text2kg/Relink/Synth — gleiche `ziwei.*`-Whitelist würde Jahres-Timing in Palast/Stern-Atome mischen (HD-Transit-Analog). Classify-Job nach Extract verwerfen, bis eine 流年-Welle existiert.
+
+**Welle 1b 2026-08-28:** Nach Korpus-Lücken (格局-Namen, 安星-Prosa) nachgelegt, nicht weil die 13 falsch waren. Ingest **nach** Staffel-1 Interpret/text2kg, nicht parallel. 别序/yuceweb und Motivations-格局 nicht ingestieren.
+
+**Nachtrag 2026-08-29 — Natal-First-Cut + KARTE-Gitter liegen:** Staffel 1 + Welle 1b sind durch (Extract/OCR/Langdock/text2kg, Homophone, Palast v2, 四化, 辅星 Relink, scoped Synth EN). Atome sind First Cut / `synth_draft`, nicht `verified`. **Qualitätsschulden und was nicht nachziehen:** `reference/ziwei_natal_ingest_runbook.md` § Stand + Qualität. Gitter: `/home/karte/ziwei`, Plate-Contract 6/6. Nicht von allein: 来因, 煞, Band 1, restliche Palast-Re-Synth, DE, Overlay-LLM, 流年-KG, Mention-Bloat-Repair, Full-Synth.
 
 ---
 ## 2026-08-27: Domänen-Routing, Katalog-Drift, nächstes Ziel

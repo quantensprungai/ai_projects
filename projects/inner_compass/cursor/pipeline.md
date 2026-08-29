@@ -20,6 +20,8 @@ Jobs in `[Klammern]` sind noch nicht implementiert.
 
 **Ist-Reihenfolge (HD, 2026-08-18):** Seed-K2 → MinerU-Chunks → classify → term_mapping → interpret → **text2kg strict** (Anhänge, 0 neue Nodes) → **Relink** (`link_role`) → **Synth nur scoped** (`IC_TEXT2KG_AUTO_SYNTH=false`). UI liest danach entweder `canonical_wording` (Atom) oder `primary`-Interps (Packer).
 
+**Welle-Standard (HD/BaZi/Ziwei, 2026-08-29):** dieselben Schienen, Knöpfe pro System — `cursor/reference/k2_foundation_wave_playbook.md` § Welle-Standard. Nicht jedes System-Runbook neu erfinden.
+
 **Vier Stränge, nicht ein Ablauf:** Dieses Dokument = **Literaturpipeline**. Chart-State berechnet der HD-Service (`services/hd`, Vertrag `hd_state_contract.md`) — nicht aus PDFs. Packer (Inspector/Overlay) verbindet beides erst zur Anzeige. Transit/NLP bleiben Runtime, schreiben nicht ins KG. Personenzustände liegen nicht in `sys_kg_nodes`.
 
 ## 1a. Objekte — vom Buch zur KARTE
@@ -80,7 +82,7 @@ Zahlen / Audit-Schnitt: Canvas `hd-audit-scale` + Layer-Checkliste.
 - **Engine:** LLM
 - **Output:** system-Tag auf Chunk ('hd' | 'bazi' | 'astro' | ...)
 - **Status:** ✅ Produktiv
-- **Name:** Historischer Job-Typ. Semantik = **System**, nicht IC-Lebensbereich (`contracts.md` §2). Lebensbereich-Routing = `belongs_to_domain` (noch nicht geseedet). Worker/Queue behalten `classify_domain`. Rename auf `classify_system` nur mit Alias, wenn der Worker sowieso angefasst wird. `reference/decisions.md` 2026-08-27.
+- **Name:** Historischer Job-Typ. Semantik = **System** (`hd` | `ziwei` | `bazi` …), nicht IC-Lebensbereich und **nicht** Natal vs. Timing. 流年/Transit bleiben `system_id=ziwei`/`hd`. Trennung = Source-`wave` + `skip_text2kg` nach Classify (kein zweiter Job-Typ). HD analog später: `hd_transit`.
 
 ### extract_term_mapping
 - **Input:** sys_source_chunk + bestehende sys_kg_nodes (Seed-basiert)

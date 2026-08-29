@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-08-27
+last_update: 2026-08-29
 scope: Chat-Handover Inner Compass (Copy-Paste-Block + Themen-Anhänge)
 in_scope: aktueller Chart-Stand, Reboot, Code-Anker, Don'ts, Verweise
 out_of_scope: Implementierung; S5-Runbook-Details außer als Archiv unten
@@ -81,19 +81,19 @@ ROTER FADEN (Stand 2026-08-25; 1–17 bis 08-19, 18 = Chart-Visual):
 
 Wörterbuch Chunk/Interp/Anhang/Synth/primary: cursor/pipeline.md §1a.
 
-Aktueller Punkt: **Makerkit 4.0.6** + **HD-Handbuch-Keil C→B** (2026-08-27). **Nächste Welle = Ziwei-Natal wie HD** (Decision 2026-08-27 Natal-Parität): nicht leeres Gitter. 13 中州-PDFs lokal/queued, 流年-Band parken, 深造 trotz 158 MB ingestieren. LLM = **Langdock gpt-5-mini**, Spark nur MinerU (`IC_MINERU_LANG=ch`). Seed+STRICT_ZIWEI vor PDFs. Branches: Docs/Code `cursor/ziwei-natal` (Code-Basis `cursor/makerkit-v4`). **Nicht zuerst main mergen.** Overlay bleibt EN auf der HD-Linse. **Sprache/i18n-Welle nicht.** SoT: `reference/decisions.md` 2026-08-27 (Domänen + Ziwei-Natal).
+Aktueller Punkt: **Makerkit 4.0.6** + **HD-Handbuch-Keil C→B**. **Ziwei Natal-First-Cut + KARTE-Gitter:** `/home/karte/ziwei` 4×4 地支, Inspector draft/canon_fallback. Plate-Contract 6/6 (`ziwei-plate-contract.test.ts`). Qualität: `reference/ziwei_natal_ingest_runbook.md`. Nicht Overlay-LLM, nicht DE-Atome. Branches `cursor/ziwei-natal`.
 
 Nächstes Paket (Reihenfolge, nicht parallel):
   Gate) ✅ Nach Signup ohne `user_persons.role=self` → `/home/onboarding` (test@makerkit.dev ausgenommen). JETZT = Radar-Stub + CTA KARTE.
-  KARTE) Lebenswelt zuerst: Handbuch-Karte (HD-Gloss) oben, System-Charts als Quellen. Freeze am Graph halten. Graph-Labels nicht nach next-intl ziehen.
+  KARTE) Lebenswelt zuerst: Handbuch-Karte (HD-Gloss) oben, System-Charts als Quellen. Freeze am Graph halten. Graph-Labels nicht nach next-intl ziehen. Ziwei-Gitter liegt; nächster *kleiner* Schnitt: Dev-500 nach `.next`-Wipe (clean rebuild), optional Hub-Snippet / Gender im Onboarding. Nicht Overlay-LLM.
   Onboarding) ✅ 3 Steps + ein Insight (C-Text) + Resonanz ohne Persistenz → `/home/karte`. Unbekannt = 12:00 + kommunizieren.
-  Overlay) HD-Linse freeze. **Ziwei-Natal:** Seed → MinerU-Smoke 初级 → 深造 eigenes Fenster → Relink/scoped Synth Langdock → erst dann `/home/karte/ziwei`. Nicht Handbuch-Generator, nicht Mandala. BaZi-Klassiker nicht parallel. 三合/飞星 nicht Welle 1.
+  Overlay) HD-Linse freeze. **Ziwei-Natal First-Cut + Gitter live** (`/home/karte/ziwei`). SoT Qualität: `reference/ziwei_natal_ingest_runbook.md`. Nicht Full-Synth, nicht DE-Atome, nicht Overlay-LLM, nicht 来因/煞/流年-KG, nicht Handbuch-Generator, nicht Mandala. 三合/飞星 nicht Welle 1.
   Locale) Keine Übersetzungs-Welle. Datums-Picker bleibt OS; Bestätigung folgt App-Chrome (`de`). Handbuch-Gloss ist fest DE.
   Dynamik) Atom-Prozess liegt; System-Dynamik (`sys_dynamics` intra) und Cross-Dynamik **nicht** jetzt. Relink-Q still, nach UI-Mix.
   Agent) Nicht bauen. Nur das Companion-Feld freihalten.
   Git) Docs-Freeze auf Handover-Branch, Arbeit auf `cursor/ziwei-natal`. Code von `makerkit-v4`. Kein Merge auf main als Ziwei-Blocker.
   Makerkit) **v4.0.6 da** (Branch `cursor/makerkit-v4`). Node ≥ 22.13 (pnpm 11).
-  LLM) **Langdock gpt-5-mini** Standard (classify/interpret/synth). Spark-Qwen nicht. Key in `.env.development.local`.
+  LLM) **Langdock gpt-5-mini** Standard (classify/interpret/synth). Spark-Qwen nicht. Key in `.env.development.local`. Nächste System-Welle: `cursor/reference/k2_foundation_wave_playbook.md` § Welle-Standard (nicht HD/Ziwei-Skript 1:1 kopieren).
   KARTE-nicht) 64keys Blau/Orange am Zentrum — erst wenn ein Chart den Mischfall belegt.
 
 Nicht: Full-Re-Synth, Center-Wipe, `open` als dritte Enum, SGLang über 7973 Interps / 20877 Anhänge.
@@ -147,6 +147,10 @@ CODE:
   apps/web/scripts/ic_s0_planet_relink.py  (--tighten-carriers v1b; --demote-examples)
   apps/web/scripts/ic_s0_planet_reinterpret.py  (planet_split_v1, nosynth)
   apps/web/scripts/ic_start_langdock_worker.py
+  apps/web/scripts/ic_ziwei_natal_relink.py
+  apps/web/scripts/ic_ziwei_mutagen_relink.py
+  apps/web/scripts/ic_ziwei_minor_relink.py
+  apps/web/scripts/ic_ziwei_natal_full_audit.py
   apps/web/scripts/ic_s05_open_center_concept.py
   apps/web/app/api/ic/hd-chart/route.ts
   apps/web/app/api/ic/geocode/route.ts
@@ -158,7 +162,11 @@ NICHT TUN:
   Handbuch-Generator / 12×Tiefe 4 / tag_ic_metadata
   classify_domain Job-Typ umbenennen (Alias reicht; Decision 2026-08-27)
   Spark-Qwen als Interpret/Synth (Langdock ist Standard)
-  流年凶灾详析 in der Natal-Welle; 深造 wegen Dateigröße skippen
+  流年凶灾详析 in der Natal-Welle (Extract ok, kein text2kg); 深造 wegen Dateigröße skippen
+  别序/yuceweb; 四书-Ingest parallel zum laufenden Interpret
+  安星法 Mention-Bloat „reparieren“ (Synth liest primary; Label-Hit nicht wieder an)
+  煞-Nebensterne / 来因-Content / Band 1 / restliche Palast-Re-Synth / DE-Wortings — bis explizit gefragt
+  三合/飞星/玄空/Motivations-格局 in Welle 1
   Schul-Ingest / tradition-Pipeline / Center-Wipe
   IC_CHUNK_PROFILE=rave_iching_gates auf Ziwei-PDFs
   IC_MINERU_LANG=latin auf chinesischen PDFs

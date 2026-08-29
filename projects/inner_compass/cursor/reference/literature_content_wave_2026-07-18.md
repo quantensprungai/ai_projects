@@ -1,6 +1,6 @@
 # Literatur Content-Wellen — Stand 2026-07-18
 
-last_update: 2026-08-27 (Ziwei-Natal-Parität + Domänen-Routing; Quality-Matrix + Enrich unverändert)
+last_update: 2026-08-29 (Ziwei Natal-First-Cut; Juli-CSV und HD-Quality-Matrix unverändert)
 
 ### Inventar-Realitätscheck (2026-08-04 / Update 2026-08-10)
 
@@ -11,7 +11,9 @@ Insgesamt **~36 HD-Quellen** hochgeladen (Account wächst). Fortschritt gegen di
 | HD | ~20+/68 | Bodygraph-Kern + Profiles/PHS/Crosses/Lines ✅; Auth/Def + Strategy/Signature/Not-Self Enrich 2026-08-10 (Definitive, Manifestor Manifesto, Projector Empowerment, Complete Guide) |
 | BaZi | 1/49 (2%) | nur *Destiny Code* (moderne Übersicht) — **Klassiker (子平真诠/滴天髓/三命通会/渊海子平) laut Plan zuerst fällig, aber noch nicht angefasst** |
 | GeneKeys | 2/9 (22%) | nur Opening Doors + 64 Ways; Golden-Path/Bridge-Bücher offen |
-| 14 weitere Systeme (Astro, Ziwei, Jyotish, Chakra, Enneagram, I Ging, Numerologie, Wu Xing, Kabbalah ×2, Maya Tzolkin, Akan, Pancha Bhuta, Western Elements, Nine Star Ki) | 0/… (0%) | komplett unberührt |
+| 14 weitere Systeme (Astro, Ziwei, Jyotish, Chakra, Enneagram, I Ging, Numerologie, Wu Xing, Kabbalah ×2, Maya Tzolkin, Akan, Pancha Bhuta, Western Elements, Nine Star Ki) | 0/… (0%) | Juli-Snapshot: komplett unberührt |
+
+**Update 2026-08-29:** **Ziwei** ist aus dieser „0 %“-Zeile raus — Natal-First-Cut (中州 Staffel 1 + Welle 1b, scoped EN-Atome). SoT + was nicht 100 %: [`reference/ziwei_natal_ingest_runbook.md`](../../reference/ziwei_natal_ingest_runbook.md). Queue-CSV vom 18.07. **nicht** umschreiben. Die anderen 13 Systeme in der Zeile bleiben unberührt. Nächste *Literaturwelle* außer Ziwei weiter BaZi-Klassiker, nicht parallel.
 
 ## HD Content Quality — gut vs. dünn (Stand 2026-08-10)
 
@@ -65,7 +67,7 @@ Sinnvolle nächste Optionen (wählen):
 
 **Empfehlung:** (1) kurzes Sign-off, dann (4) oder (5) — HD-Bodygraph ist für MVP-Kern weitgehend „gut genug“.
 
-**App-Reihenfolge 2026-08-27:** Nächste *KARTE-Quelle* = Ziwei **Natal-Parität** (Decision 2026-08-27): 13 lokale 中州-PDFs, Seed vor Ingest, Langdock nicht Spark-LLM, 流年-Band parken, 深造 ingestieren. Nicht BaZi-Graph. BaZi-Klassiker bleiben die nächste *andere* Literaturwelle, nicht parallel. Staffel-Labels historisch. `reference/decisions.md` 2026-08-27.
+**App-Reihenfolge 2026-08-29:** Ziwei-Natal First-Cut **und** KARTE-Gitter liegen (`/home/karte/ziwei`). BaZi-Klassiker bleiben die nächste *andere* Literaturwelle, nicht parallel. Staffel-Labels historisch. `reference/decisions.md` 2026-08-27 + Nachtrag 2026-08-29.
 
 ### TOC ↔ K2 High-Level-Abgleich (2026-08-11)
 

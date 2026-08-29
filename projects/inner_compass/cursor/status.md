@@ -1,16 +1,16 @@
 <!--
 Reality Block
-last_update: 2026-08-27
+last_update: 2026-08-29
 scope: IC Projektstatus (Phasen 0–4), Chart-Engines, Content-Akquise, Ur-Systeme, Gene Keys, Konvergenz/Meta-KG
-in_scope: Stand, nächste Schritte, Systemliste, Anna's Archive entity-first, Klarstellung HD-Schulen vs. GK, Konvergenz personenbezogen vs. strukturell
+in_scope: Stand, nächste Schritte, Systemliste, Anna's Archive entity-first, Klarstellung HD-Schulen vs. GK, Konvergenz personenbezogen vs. strukturell, Ziwei Natal-First-Cut und KARTE-Gitter Verweis
 out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_compass_app AGENTS.md
 -->
 
 # Inner Compass — Status & Nächste Schritte
 
-> **Stand:** 2026-08-25 — Phasen 0–3 / Engines / Content bleiben hier. **HD-KARTE SoT:** `cursor/handover.md` (Copy-Paste) + Overlay-Vertrag + `figma_karte_contract.md` §4b.
-> **App (Phase 4):** HD KARTE Graph visuell zu (helle Jovian-Fills, Kanalhälften, Hanging, Variable-Chevrons, keine Gate-Chips). Overlay-LLM v1m. HD-Docker `ic-hd-service` :8002.
-> **Content (Phase 2):** **HD S0 Close-out ✅** — Canon-first Synth, link_role, ID-Strip. S0.5 Relink live. SoT: `reference/hd_layer_master_checklist_2026-08-11.md`.
+> **Stand:** 2026-08-29 — Phasen 0–3 / Engines / Content bleiben hier. **HD-KARTE SoT:** `cursor/handover.md` (Copy-Paste) + Overlay-Vertrag + `figma_karte_contract.md` §4b.
+> **App (Phase 4):** HD KARTE Graph visuell zu (helle Jovian-Fills, Kanalhälften, Hanging, Variable-Chevrons, keine Gate-Chips). Overlay-LLM v1m. HD-Docker `ic-hd-service` :8002. **Ziwei-KARTE Natal-Gitter live** (`/home/karte/ziwei`, 4×4 地支, Inspector EN-draft / canon_fallback). Kein Overlay-LLM, keine DE-Atome.
+> **Content (Phase 2):** **HD S0 Close-out ✅** — Canon-first Synth, link_role, ID-Strip. S0.5 Relink live. SoT: `reference/hd_layer_master_checklist_2026-08-11.md`. **Ziwei Natal-First-Cut ✅** (中州 Staffel 1 + Welle 1b) — SoT + Qualitätsschulden: `reference/ziwei_natal_ingest_runbook.md`.
 >
 > **Wo wir sind:** Phase 0 erledigt. Phase 1 — Chart-Engines (historisch „Staffel 1“ genannt, Label nicht mehr reihenfolge-bindend): fünf Kerne + **Maya Tzolkin, Nine Star Ki, Numerologie, Akan** in `@ic/engines` + API-Routen + Kataloge v0 ✅
 > - **Ziwei Doushu** (iztro): TS, Katalog + Validierung ✅
@@ -22,7 +22,7 @@ out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_c
 > - **Nine Star Ki**: K1/K2 **v1** (`ic_nine_star_ki_v1`) — Honmei + Getsumei + **energetic**; feste Sonnenmonats-Schnitte; Vitest **Step 3** Katalog-Regeln ✅ — `reference/decisions.md` **2026-04-16**
 > - **Numerologie / Akan**: Engines + Kataloge + `POST /api/.../calculate` ✅ *(Playbook-Validierung optional)*
 >
-> **Nächste Reihenfolge (jetzt):** HD-Linse + Handbuch-Keil liegen. Nächstes Ziel = **Ziwei-Natal wie HD** (Seed, MinerU ch, Langdock, dann KARTE-Gitter) — Decision 2026-08-27 Natal-Parität. Nicht Mandala, nicht Handbuch-Generator. Staffeln historisch. Overlay v1o. 64keys Blau/Orange am Zentrum nicht raten.
+> **Nächste Reihenfolge (jetzt):** HD-Linse + Handbuch-Keil + **Ziwei Natal-Gitter** liegen (First-Cut EN, draft/fallback; Plate-Contract 6/6). Nicht Overlay-LLM, nicht DE-Welle, nicht 来因/煞/Band 1/流年-KG unless asked. Decision 2026-08-27 Natal-Parität. Nicht Mandala, nicht Handbuch-Generator. Overlay v1o. 64keys Blau/Orange am Zentrum nicht raten.
 >
 > **Roter Faden (Gesamtplan):** HD Close-out → System-Wellen → Phase 3 (nach 2 Reviews) → **Makerkit v4 ✅** → MVP Phase 4 → Voll — kanonisch in `cursor/handover.md` § Roter Faden. Content-Nachrüst: `reference/hd_layer_master_checklist_2026-08-11.md`. Wave: `cursor/reference/literature_content_wave_2026-07-18.md`. UX: `reference/ux_konzept_2026-07.md`.
 
@@ -97,7 +97,7 @@ out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_c
 ```
 Phase 0: Fundament          ████████████ 100%  Infrastruktur (Schema sys_*, Worker, Minimal-K2-Seed)
 Phase 1: Engine Eval+Integ. ███████████░  ~95%  Chart-Engines + Kataloge v0; **offen:** Seed ↔ system_structure/*
-Phase 2: Content-Pipeline   ████████░░░░  ~70%  S5a ✅ · S5b ✅ · S5c ✅ · S5d Mechanik ✅ / QA ⚠️ · S6 ✅ 36/36
+Phase 2: Content-Pipeline   █████████░░░  ~75%  HD S0–S6 ✅ · BaZi Mechanik ✅ · **Ziwei Natal-First-Cut ✅** (Qualität: Runbook)
 Phase 3: Cross-System       ░░░░░░░░░░░░   0%  → IC-Sprache entsteht hier (Datenschicht E)
 Phase 4: App                ████░░░░░░░░  ~35%  HD KARTE Graph visuell zu; andere Spaces 0%
 ```
@@ -262,6 +262,19 @@ Mit vollständigem atomarem Seed können **alle** Kombinationen interpretiert we
 - [x] Orphan Reverse-/Bogus-Nodes bereinigt (`ic_s6_orphan_channel_cleanup.py`)
 - [x] Worker-Learnings dokumentiert: `reference/s6_pipeline_learnings.md` (lokal vs. Spark, 1000-Limit, CRLF)
 - **Skripte:** `ic_elements_rerun.py`, `ic_s6_channel_*`, `spark_s6_phase2.sh`, `spark_s6_synth_only.sh`
+
+### Ziwei Natal-First-Cut (中州) ✅ First Cut 2026-08-29 — nicht verified
+
+Pfad A Natal-Parität (Decision 2026-08-27). Compute = iztro. LLM = Langdock gpt-5-mini. Spark nur MinerU. Zwischenstand-Sprache der Atome = **en** (DE später zweite `wordings.language`-Zeile).
+
+- [x] K2-Seed + Strict-Whitelist `ic_ziwei_k2_catalog.py` (`zw.*`→`ziwei.*`, Homophone 天府/天福, 四化-Aliase)
+- [x] Staffel 1 Extract+OCR+interpret+text2kg (初级/星曜/深造/补注/全集); 流年-Buch Extract geparkt
+- [x] Welle 1b: 安星法 86 · 谈斗数 32 · 八喜楼 34 · 骨髓赋 28 · 太微赋-Note 5
+- [x] Homophone-Repair, Palast-Relink **v2**, 四化-Relink v1 (4/4 Synth), 辅星-Relink+Synth v1 **8/8**
+- [x] Scoped Synth EN: 14 Maj + 身 + 命/财/官 nach v2 + 四化 + 辅星 — **kein** Full-Synth
+- **Qualität / was nicht 100 %:** `reference/ziwei_natal_ingest_runbook.md` (Soul-Palace-Name, 9 Paläste+身 ohne Re-Synth, 化权-Mix, 安星法-Mentions lassen, 来因/煞/Band 1/DE/流年-KG offen)
+- [x] KARTE Natal-Gitter 2026-08-29: 4×4 地支, 辅星+四化 im Inspector, Badge draft/canon_fallback (nicht verified)
+- **Nicht:** Overlay-LLM, Mandala, Handbuch-Generator, Qwen, 三合/飞星, DE-Atome, 来因/煞/流年-UI
 
 ### S6 — Anna's Archive Pipeline
 - [x] hd_saas_uploader.py: `--sys-mode`

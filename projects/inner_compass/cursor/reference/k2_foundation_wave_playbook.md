@@ -1,9 +1,56 @@
 # K2 Foundation Wave — Playbook
 
-last_update: 2026-07-12
-scope: Wiederholbares Vorgehen pro System vor Content-PDFs
-in_scope: Seed → strict → Test-PDF → QA → Skalierung
-out_of_scope: App-Implementierung (Phase 4)
+last_update: 2026-08-29
+scope: Wiederholbares Vorgehen pro System (K2-Welle + Literatur)
+in_scope: Seed → strict → Extract → Relink → scoped Synth; Schienen vs. System-Knöpfe (HD/BaZi/Ziwei)
+out_of_scope: App-Implementierung (Phase 4); systemeigene Runbooks ersetzen
+
+## Welle-Standard 2026-08-29 (HD + BaZi + Ziwei)
+
+Ein Ablauf, **Knöpfe pro System**. Kein drittes Parallel-Dokument — Ziwei-Details bleiben im Natal-Runbook, HD-Canon in `synthesis_canon_first.md`, BaZi-Wildwuchs in `s5d_pipeline_learnings.md`.
+
+### Schienen (jedes System)
+
+1. **Karte vor Literatur.** Ground / Extra / Mechanik / Timing analog mappen (HD Type↔Ziwei Palast+Maj; Environment↔来因 extra-leer ok; Channels↔辅星; Lines↔四化; Transit↔流年). Timing-Werke **parken**, nicht in natal-text2kg.
+2. **Seed vor PDF.** Ohne Seed erfindet text2kg Nodes (BaZi 460 statt 37). `ic_seed_structure.py --system {id}` zuerst.
+3. **Strict + Whitelist.** `IC_TEXT2KG_STRICT=true` + `IC_TEXT2KG_STRICT_{SYSTEM}`. 0 neue Nodes. Alias/Homophone im Katalog, nicht im LLM (`normalize_*`, 天府≠天福).
+4. **Spark nur MinerU.** Interpret/text2kg/Synth = **Langdock**. Kein Qwen, kein `IC_LLM_URL=:30001`, kein I-Ching-Chunk-Profil auf fremde PDFs.
+5. **Reihenfolge fest:** Extract → (OCR/Term-Dict wenn Skript) → classify → interpret → text2kg → Unwrap/Alias → **Relink `link_role`** → **scoped Synth**. `IC_TEXT2KG_AUTO_SYNTH=false`. Nie Full-Synth.
+6. **Relink ≠ text2kg.** text2kg hängt nur an. Relink setzt primary/contrast/mention. Synth liest primary (+ contrast wenn Rollen da). **Mentions nicht „reparieren“.** Kein Label-Spray / Blanket-Keyword-Attach (安星法-Hänger).
+7. **Lexikon → Überblick → Spezial.** Re-Synth nur `--only-id` der betroffenen Schicht. Token-Budget für Reasoning-Modelle hoch genug (`IC_LLM_MAX_TOKENS=8000`; 2000 = leerer Content).
+8. **First Cut ≠ verified.** UI liest Atom/`primary`, keinen Interp-Dump. `job.debug.text2kg_unmatched` ist oft stale/capped — nicht als Miss-Rate lesen.
+9. **Eine Tradition zuerst.** Schulen nicht in denselben Wording-Topf. Zwischensprache der Atome ist eine Decision (Ziwei = en; DE = zweite `wordings.language`-Zeile, nicht Extract-Rewrite).
+10. **Metadata erhalten.** Re-Seed darf `interpretation_ids` nicht wischen. Node/Chunk-`metadata` PATCH als Dict, nicht `json.dumps`.
+
+### Knöpfe (pro System, nicht raten)
+
+| Knopf | HD | Ziwei | nächstes System |
+|---|---|---|---|
+| MinerU-Lang / Profil | latin, ggf. `rave_iching_gates` | `ch`, **kein** I-Ching-Profil | aus TOC/Skript |
+| Whitelist-Modul | `ic_hd_k2_catalog.py` | `ic_ziwei_k2_catalog.py` | `ic_{sys}_k2_catalog.py` |
+| OCR/Term | `sys_term_mapping` | `ic_ziwei_ocr_dict_correct.py` vor text2kg | wenn Scan/Skript das verlangt |
+| Relink-Heuristik | Facet/Defined-C/Channel-Skripte | Palast-v2 (voller Name+宫), Sibling-Cap, 流日→mention | neu schreiben, nicht HD kopieren |
+| Extra-Slot | Environment | 来因 — leer ok | bewusst leer lassen dürfen |
+| Geparkt | Transit-UI | 流年-Buch (`wave=…_liunian`) | Timing-Band analog |
+| Canon | `hd_auth_def_canon_v1.yaml` | First-Cut EN, kein YAML | erst wenn Mechanik-Wahrheit ≠ Literatur |
+
+### Fallen (nicht wiederholen)
+
+| Falle | Wo gelernt |
+|---|---|
+| PDF vor Seed | BaZi S5d |
+| Auto-Synth / Full-Synth | HD + Ziwei |
+| Spark-Qwen als Default | Ziwei-Decision |
+| Alias/Homophone dem LLM überlassen | Ziwei 天府/天福, BaZi 戊/午 |
+| Mentions als Qualitätsproblem behandeln | Ziwei 安星法 |
+| Timing-Buch in Natal-Atome | 流年 / HD-Transit-Analog |
+| Synth-Budget zu klein (Reasoning) | Ziwei 2000→8000 |
+| Audit nur Essence, ohne Chunk-Text | Ziwei Palast `hits=0` |
+| UI-Gitter vor Atomen | Decision 2026-08-27 |
+
+### Abschluss einer Welle
+
+Nicht „jede Interp-Node hat Synth“ (Playbook Juli — zu grob). Sondern: Ground-Schicht scoped synched; Extra/Timing dokumentiert leer oder geparkt; Qualitätsschulden im **System-Runbook**; `ic_k2_state_audit.py` auf Wildwuchs=0. Product-Schritt (KARTE) ist ein anderes Paket.
 
 ## Wann anwenden?
 
@@ -97,7 +144,8 @@ Verbesserungen (Backlog, nicht implementiert):
 | 1 | BaZi | ✅ 97 Nodes · 34 Interp-Nodes · **37 Synthese** · Wildwuchs 0 |
 | 2 | HD | ✅ 777 Nodes · Katalog 195/195 · **114/114 Interp-Nodes mit Synthese** · Wildwuchs 0 |
 | 3 | Gene Keys | ✅ 64 Nodes · **64/64 Interps + Synthese** · Wildwuchs 0 |
-| 4 | Astro, Ziwei, Jyotish | Minimal-Skeleton — Welle startet erst vor 1. PDF |
+| 4 | Ziwei | Natal-First-Cut + KARTE-Gitter 2026-08-29 — Runbook `reference/ziwei_natal_ingest_runbook.md`. Plate-Contract 6/6. Nicht Overlay/DE/来因/煞 unless asked |
+| 5 | Astro, Jyotish | Minimal-Skeleton — Welle erst vor 1. PDF, nach diesem Playbook |
 
 **Qualitäts-Gate-Status:** Alle drei aktiven Systeme haben 0 offene Jobs, 0 Wildwuchs, jede Interp-Node hat Synthese (`ic_k2_state_audit.py`).
 
