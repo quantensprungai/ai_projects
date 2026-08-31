@@ -1,5 +1,21 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-08-31: Agent-Schichten getrennt — FLOP nicht Produktwährung
+
+**Kontext:** Überlegung, FLOP (Hayes) und „Agent Protocol“ (Cloudflare/Isenberg) in IC zu ziehen: User, fremde Agents, eigene Protagonisten-Agents, Airdrop-Testnet. Vision §7 (MCP-Readiness 2027) existiert schon; Makerkit-MCP ist Dev, nicht Produkt.
+
+**Decision:**
+
+1. **Vier Leitungen, nicht ein Token.** (1) Mensch zahlt IC. (2) Fremder Agent zahlt für KG/Tools (MCP + metering). (3) Mensch spricht mit IC-Protagonist. (4) IC-Agent kauft Compute. FLOP gehört höchstens zu (4), Cloudflare/MCP zu (2), Virtuals-artig zu (3).
+2. **Produkt-MCP ist die echte „Protocol-Readiness“** — saubere Tools auf Chart/Synthesis/Zyklen, frei/bezahlt/blockiert, später Wallets. Nicht bauen, bevor eine öffentliche, nicht-private Ressource existiert (KARTE/Handbuch zuerst, Decision 2026-08-27).
+3. **FLOP bleibt Lab.** Testnet/Airdrop darf als Adapter-Experiment gegen Langdock laufen. Kein FLOP in Schema, Billing, Onboarding, Login.
+4. **Protagonisten** (Aria/Jian/…) erst auf echtem KG; Tokenisierung/Anteile nicht vor nachweisbarer Tool-Nutzung.
+5. **SoT:** `reference/agent_surface_and_monetization.md`. Zeitenwende-Geopolitik (Hayes YCC) bleibt dort.
+
+**Nicht:** FLOP-native App, Character-Coin ohne Inhalt, Dev-MCP als Agent-Tür verkaufen, Pay-per-Crawl vor öffentlicher Resource-Schicht.
+
+---
+
 ## 2026-08-27: Ziwei-Natal wie HD — nicht UI-first
 
 **Kontext:** Nach dem HD-Handbuch-Keil (C→B) lag der Impuls nahe, ein leeres 12-Palast-Gitter als „Basis“ zu bauen. Genau das Slice-Problem: KI setzt auf halbem Gerüst auf. 13 中州-PDFs sind lokal inventarisiert und queued, **0 ingestiert**. HD/BaZi-Pipeline-Fallen (Seed nach PDF, Auto-Synth, Interp-Dump in die UI, Spark-Qwen als Default) waren im ersten Ziwei-Schnitt zu weich.
@@ -26,7 +42,9 @@
 
 **Welle 1b 2026-08-28:** Nach Korpus-Lücken (格局-Namen, 安星-Prosa) nachgelegt, nicht weil die 13 falsch waren. Ingest **nach** Staffel-1 Interpret/text2kg, nicht parallel. 别序/yuceweb und Motivations-格局 nicht ingestieren.
 
-**Nachtrag 2026-08-29 — Natal-First-Cut + KARTE-Gitter liegen:** Staffel 1 + Welle 1b sind durch (Extract/OCR/Langdock/text2kg, Homophone, Palast v2, 四化, 辅星 Relink, scoped Synth EN). Atome sind First Cut / `synth_draft`, nicht `verified`. **Qualitätsschulden und was nicht nachziehen:** `reference/ziwei_natal_ingest_runbook.md` § Stand + Qualität. Gitter: `/home/karte/ziwei`, Plate-Contract 6/6. Nicht von allein: 来因, 煞, Band 1, restliche Palast-Re-Synth, DE, Overlay-LLM, 流年-KG, Mention-Bloat-Repair, Full-Synth.
+**Nachtrag 2026-08-29 — Natal-First-Cut + KARTE-Gitter liegen:** Staffel 1 + Welle 1b sind durch (Extract/OCR/Langdock/text2kg, Homophone, Palast v2, 四化, 辅星 Relink, scoped Synth EN). Atome sind First Cut / `synth_draft`, nicht `verified`. **Qualitätsschulden und was nicht nachziehen:** `reference/ziwei_natal_ingest_runbook.md` § Stand + Qualität. Gitter: `/home/karte/ziwei`. Nicht von allein: 来因, Band 1, restliche Palast-Re-Synth, DE-Atome, 流年-KG, Mention-Bloat-Repair, Full-Synth.
+
+**Nachtrag 2026-08-31 — dichte Platte + Zusammenschau v3 + Kleinstern-Lexikon + Palast-Re-Synth:** Chrome DE; Overlay `ziwei_overlay_v3` (Lebenssatz+Belege, keine EN-Buchdumps). Langdock: Key in `.env.development.local`, BASE_URL+Modell in `.env.development`. Kleinstern: 20 EN mit primary. Paläste+身 scoped Re-Synth; 命宫 „Life Palace“; 化权 Authority; 天钺 Patronage (`tianyueMin`; EN-Pinyin bis DE). **Extract-ahead 2026-08-31:** MinerU darf PDFs weiterer Systeme scannen (`extract_text` + `wave=`), während ein System KARTE/KG macht. Volle Kette (classify→text2kg→relink→synth) bleibt **ein System nach dem anderen**; Seed+Whitelist vor text2kg; Classify nach Extract parken. SoT: `cursor/reference/k2_foundation_wave_playbook.md` §4a.
 
 ---
 ## 2026-08-27: Domänen-Routing, Katalog-Drift, nächstes Ziel

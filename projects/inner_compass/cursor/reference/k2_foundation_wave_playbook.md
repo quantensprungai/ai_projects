@@ -1,6 +1,6 @@
 # K2 Foundation Wave — Playbook
 
-last_update: 2026-08-29
+last_update: 2026-08-31
 scope: Wiederholbares Vorgehen pro System (K2-Welle + Literatur)
 in_scope: Seed → strict → Extract → Relink → scoped Synth; Schienen vs. System-Knöpfe (HD/BaZi/Ziwei)
 out_of_scope: App-Implementierung (Phase 4); systemeigene Runbooks ersetzen
@@ -15,6 +15,7 @@ Ein Ablauf, **Knöpfe pro System**. Kein drittes Parallel-Dokument — Ziwei-Det
 2. **Seed vor PDF.** Ohne Seed erfindet text2kg Nodes (BaZi 460 statt 37). `ic_seed_structure.py --system {id}` zuerst.
 3. **Strict + Whitelist.** `IC_TEXT2KG_STRICT=true` + `IC_TEXT2KG_STRICT_{SYSTEM}`. 0 neue Nodes. Alias/Homophone im Katalog, nicht im LLM (`normalize_*`, 天府≠天福).
 4. **Spark nur MinerU.** Interpret/text2kg/Synth = **Langdock**. Kein Qwen, kein `IC_LLM_URL=:30001`, kein I-Ching-Chunk-Profil auf fremde PDFs.
+4a. **Extract-ahead ja, KG-Welle nein (2026-08-31).** MinerU `extract_text` mit `wave=` darf PDFs *anderer* Systeme scannen, während ein System KARTE/Relink/Synth läuft. Classify/interpret/text2kg/Relink/Synth bleiben **ein System nach dem anderen**. Seed+Whitelist **vor** text2kg. Nach Extract anfallende Classify-Jobs verwerfen, bis die System-Welle startet. Analog 流年 2026-08-28.
 5. **Reihenfolge fest:** Extract → (OCR/Term-Dict wenn Skript) → classify → interpret → text2kg → Unwrap/Alias → **Relink `link_role`** → **scoped Synth**. `IC_TEXT2KG_AUTO_SYNTH=false`. Nie Full-Synth.
 6. **Relink ≠ text2kg.** text2kg hängt nur an. Relink setzt primary/contrast/mention. Synth liest primary (+ contrast wenn Rollen da). **Mentions nicht „reparieren“.** Kein Label-Spray / Blanket-Keyword-Attach (安星法-Hänger).
 7. **Lexikon → Überblick → Spezial.** Re-Synth nur `--only-id` der betroffenen Schicht. Token-Budget für Reasoning-Modelle hoch genug (`IC_LLM_MAX_TOKENS=8000`; 2000 = leerer Content).
@@ -144,7 +145,7 @@ Verbesserungen (Backlog, nicht implementiert):
 | 1 | BaZi | ✅ 97 Nodes · 34 Interp-Nodes · **37 Synthese** · Wildwuchs 0 |
 | 2 | HD | ✅ 777 Nodes · Katalog 195/195 · **114/114 Interp-Nodes mit Synthese** · Wildwuchs 0 |
 | 3 | Gene Keys | ✅ 64 Nodes · **64/64 Interps + Synthese** · Wildwuchs 0 |
-| 4 | Ziwei | Natal-First-Cut + KARTE-Gitter 2026-08-29 — Runbook `reference/ziwei_natal_ingest_runbook.md`. Plate-Contract 6/6. Nicht Overlay/DE/来因/煞 unless asked |
+| 4 | Ziwei | Natal-KARTE First Cut geschlossen 2026-08-31: dichte Platte, Zusammenschau v3, Kleinstern 20 EN, Paläste+身 Re-Synth. Runbook `reference/ziwei_natal_ingest_runbook.md`. Offen: Overlay-Sprache, DE, 来因, 流年-KG |
 | 5 | Astro, Jyotish | Minimal-Skeleton — Welle erst vor 1. PDF, nach diesem Playbook |
 
 **Qualitäts-Gate-Status:** Alle drei aktiven Systeme haben 0 offene Jobs, 0 Wildwuchs, jede Interp-Node hat Synthese (`ic_k2_state_audit.py`).

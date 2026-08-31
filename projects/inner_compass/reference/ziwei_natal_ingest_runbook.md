@@ -1,5 +1,5 @@
 ---
-last_update: 2026-08-29
+last_update: 2026-08-31
 status: active
 scope:
   summary: "Ziwei-Natal Ingest — Staffel-1 plus Welle 1b (四书/安星/谈斗数), Spark nur MinerU, LLM Langdock."
@@ -8,6 +8,7 @@ in_scope:
   - OCR-Wörterbuch-Nachkorrektur vor text2kg (alle Natal-Werke)
   - Have/Missing 中州-Natal (nicht Juli-CSV umschreiben)
   - Stand 2026-08-29 Natal-First-Cut + Qualität/Nacharbeit
+  - KARTE-Stand 2026-08-31 (dichte Platte, Chrome DE, Zusammenschau v3, Palast-Re-Synth)
 out_of_scope:
   - Spark-Qwen Interpret/Synth
   - 大限/流年-UI
@@ -92,10 +93,10 @@ HD-Analogie (fest): Paläste+14 Maj+身 = Ground wie Type/Strategy/Authority. �
 
 | Schicht | Relink | Synth EN | Hinweis |
 |---|---|---|---|
-| 12 Paläste | v2 (`ziwei_natal_relink_v2`) | nur 命/财/官 nachgezogen | übrige 9 + 身: Primaries enger, Wording oft noch v1 |
+| 12 Paläste | v2 (`ziwei_natal_relink_v2`) | 命/财/官 (29. Aug) + übrige 9 + 身 (31. Aug scoped `--force`) | 来因 leer; Atome weiter EN `draft` |
 | 14 Hauptsterne | v1 dann v2-Nachlauf | 14/14 (erster Cut 27. Aug, vor Palast-v2) | nicht nochmal synched nach v2 |
-| 身宫 | v2 | erster Cut, kein Re-Synth nach v2 | |
-| 四化 化禄权科忌 | `ziwei_mutagen_relink_v1` je 6 primary | **4/4** | 化权-Atom mischt Tianfu/化科 — First Cut, kein Re-Synth |
+| 身宫 | v2 | scoped Re-Synth 31. Aug (im 10er-Batch mit den 9 Palästen) | |
+| 四化 化禄权科忌 | `ziwei_mutagen_relink_v1` je 6 primary | **4/4**; 化权 Re-Synth 31. Aug | First Cut `draft` |
 | 辅星 辅弼昌曲禄马魁钺 | `ziwei_minor_relink_v1` 8/8 | **8/8** | 天钺 2 primary, 左辅 3 — dünn, synched |
 | 来因 `originalPalace` | — | — | extra-leer, nicht diese Welle |
 | 煞 羊陀火铃空劫 | — | — | nicht diese Welle |
@@ -105,7 +106,29 @@ Homophone: Catalog `tianfu` = 天福, `tianfuMaj` = 天府. Repair 190 天福→
 
 Welle 1b Interps: 安星法 86 · 谈斗数 32 · 八喜楼 34 · 骨髓赋 28 · 太微赋 5 = **185**.
 
-**KARTE 2026-08-29:** `/home/karte/ziwei` 4×4 地支-Plate + Inspector. Atome EN First Cut → `draft`, sonst `canon_fallback`. 辅星 (8) und 四化 aus iztro `mutagen`. Fixture-Test `@ic/engines` `ziwei-plate-contract.test.ts` **6/6** (1990-06-15 09:00: 命丑 / 身亥 / 火六局 / 禄权科忌). Browser-E2E kann nach `.next/dev`-Teilwipe 500 liefern (Turbopack-Barrel `@ic/engines`); Dev-Server neu compilieren, dann Seite laden. 煞/来因 ohne Inhalt. Kein Overlay-LLM, keine DE-Atomzeile.
+**KARTE 2026-08-29:** `/home/karte/ziwei` 4×4 地支-Plate + Inspector. Atome EN First Cut → `draft`, sonst `canon_fallback`. 辅星 (8) und 四化 aus iztro `mutagen`.
+
+**KARTE 2026-08-31 (aktuell):** Dichte Platte — Kleinsterne als Position plus First-Cut-Lexikon wo Relink Primaries hat. Chrome DE (`ziwei-chrome-de.ts`). Fixture-Test **5/5**. Zusammenschau `ziwei_overlay_v3` (Lebenssatz+Belege, DE, keine EN-Buchdumps). **Langdock-URL** in `.env.development`; Key in `.env.development.local`. Paläste+身 scoped Re-Synth nach v2; 命宫/化权/天钺 nachgezogen.
+
+**Kleinstern-Lexikon (Welle, 2026-08-31):** Relink `ic_ziwei_sha_adj_relink.py` (`ziwei_sha_adj_relink_v1`) über 六煞 + Platten-杂曜 (kein 长生-Zyklus, kein 流年). Scoped Synth EN für 20 Nodes mit primary (六煞 vollständig + u. a. 天刑/天喜/华盖/咸池). Rest ohne primary bleibt Inspector-Hinweis „nur die Position“. Nicht DE-Atome, nicht 来因.
+
+**Zusammenschau (`ziwei_overlay_v3`):** HD-Overlay-Analog, nicht Handbuch-Generator. Erst der Lebenssatz dieser Platte, dann Belege (Helligkeit und Wandlungen mitgelesen, Beruf × Partnerschaft). Leer 命宫 → Reise/迁移 im Satz. Langdock gpt-5-mini, deutscher Chrome, **keine** EN-Buchzitate im Overlay (Inspector bleibt Lookup). Cache `user_charts.overlay` Ruleset `ziwei_overlay_v3`. GET ohne LLM-Wait (Cache oder Lage-Template). POST rechnet die Lesung. Kleinsterne in der Zusammenschau nicht erfinden. Overlay-Alltagssprache für Leser = spätere Welle.
+
+**Nächste Ingest-Welle:** nichts Geparktes nachziehen unless asked.
+
+## Offen / geparkt (nicht diese KARTE-Welle)
+
+| Thema | Status | Wann |
+|---|---|---|
+| Overlay-Alltagssprache (Himmelsmaschine, gefallen, …) | First Cut bewusst kryptisch | eigene Produktwelle |
+| DE-Atome `wordings.language=de` | Locale, nicht Extract-Rewrite | wenn alle Systeme EN-First-Cut haben |
+| 来因 `originalPalace` | Extra-Slot leer (HD-Environment-Analog) | nicht ohne Quelle |
+| 流年-KG / 大限-Essays | Extract `wave=ziwei_liunian` liegt; kein natal-text2kg | Timing-Welle, analog HD-Transit |
+| 27 Kleinsterne ohne primary | Position-only | nicht Label-Spray |
+| 安星法 Mention-Bloat | lassen; Synth liest primary | nicht reparieren |
+| `verified`-Gate | UI zeigt `draft` | nicht Ziwei-First-Cut |
+| 四书 Band 1, 化权-Feile 2, 天钺 EN-Pinyin | dünn / Locale | unless asked |
+| 三合/飞星, Mandala, Handbuch-Generator | out of scope | — |
 
 ## Qualität / Nacharbeit (nicht 100 %)
 
@@ -113,10 +136,11 @@ Nicht von allein nachziehen — nur wenn gefragt. Synth liest **primary** (+ con
 
 **Atome / Relink**
 
-- **命宫** branded „Soul Palace“ (iztro `soulPalace` = 命宫/Life). Inhalt nach v2-Re-Synth ok, Namensmix bleibt. Gleicher Pinyin-Mix bei 辅星 (天钺-Atom sagt „Tianyue“).
-- **9 Paläste + 身** nicht re-synched nach v2 (nur 命/财/官). Primaries enger; Wordings können alte Listen-Chunks spiegeln.
+- **命宫** 2026-08-31 scoped Re-Synth: „Life Palace“ statt Soul-Palace-Branding. Atom bleibt generisch (Tianji/Taiyin als Typ-Paar, nicht diese Platte).
+- **化权** 2026-08-31 scoped Re-Synth: Authority-Transform, nicht mehr Tianfu/化科-Mitte.
+- **天钺** (`tianyueMin`) 2026-08-31 scoped Re-Synth: Patronage/贵人; EN sagt weiter Pinyin „Tianyue“ (Chrome = Himmelsbeil). 天月 (`tianyue`) unberührt.
+- **9 Paläste + 身** 2026-08-31 scoped Re-Synth nach v2 (`ic_k2_synth_batch.py --force`, 10/10). Weiter EN First Cut / `draft`, nicht `verified`.
 - Palast v2: **仆役** nur 5 Primaries (Cap 6). 辅星: **天钺** 2, **左辅** 3 — dünn, aber synchbar.
-- **化权** First Cut mischt Tianfu/化科. Kein Re-Synth unless asked.
 - **安星法 Mention-Bloat nicht reparieren.** Blanket label-hit + `ic_relink_strict --natal-wave` auf 安星法 abgebrochen (~48 min, 命宫 Mentions n=429). Nur 5/139 Primaries aus dem Buch. Mentions bewusst aufgebläht lassen.
 - Full-Audit „liunian“ in Wordings = **False Positive** (中州 liest natal durch 大限/流年-Linse in EN-Prosa, nicht das geparkte 流年-Buch).
 - Full-Audit Palast-primary `hits=0` unterzählte, weil nur Essence ohne Chunk-Text; Relink nutzt Blob+Chunk.

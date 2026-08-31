@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-08-29
+last_update: 2026-08-31
 scope: Chat-Handover Inner Compass (Copy-Paste-Block + Themen-Anhänge)
 in_scope: aktueller Chart-Stand, Reboot, Code-Anker, Don'ts, Verweise
 out_of_scope: Implementierung; S5-Runbook-Details außer als Archiv unten
@@ -29,7 +29,7 @@ Pipeline-Wörter: cursor/pipeline.md §1a
 
 Gesamtprozess:
   Phase 0 Fundament 100% · Phase 1 Engines ~95% · Phase 2 Content ~75% · Phase 3 Cross-System 0%
-  Phase 4 App ~35% — vier Spaces als leere Shell; HD KARTE Graph visuell zu; Overlay-LLM v1o
+  Phase 4 App ~35% — vier Spaces als leere Shell; HD KARTE Graph visuell zu; Overlay-LLM v1o; Ziwei-Zusammenschau v3
 
 ROTER FADEN (Stand 2026-08-25; 1–17 bis 08-19, 18 = Chart-Visual):
   1. ✅ S5 E2E + HD Bodygraph-Wellen + HD S0 Close-out
@@ -81,13 +81,13 @@ ROTER FADEN (Stand 2026-08-25; 1–17 bis 08-19, 18 = Chart-Visual):
 
 Wörterbuch Chunk/Interp/Anhang/Synth/primary: cursor/pipeline.md §1a.
 
-Aktueller Punkt: **Makerkit 4.0.6** + **HD-Handbuch-Keil C→B**. **Ziwei Natal-First-Cut + KARTE-Gitter:** `/home/karte/ziwei` 4×4 地支, Inspector draft/canon_fallback. Plate-Contract 6/6 (`ziwei-plate-contract.test.ts`). Qualität: `reference/ziwei_natal_ingest_runbook.md`. Nicht Overlay-LLM, nicht DE-Atome. Branches `cursor/ziwei-natal`.
+Aktueller Punkt: **Makerkit 4.0.6** + **HD-Handbuch-Keil C→B**. **Ziwei KARTE First Cut geschlossen (2026-08-31):** dichte Platte, Chrome DE, Kleinstern-Lexikon 20/47 EN, Zusammenschau `ziwei_overlay_v3` (Lebenssatz+Belege, DE, keine Buchzitate). Paläste+身 scoped Re-Synth; 命宫 Life Palace; 化权 Authority; 天钺 Patronage (EN-Pinyin „Tianyue“ bis DE). Plate-Contract **5/5**. SoT Qualität: `reference/ziwei_natal_ingest_runbook.md`. Branches `cursor/ziwei-natal`. Nicht DE-Atome, nicht Handbuch-Generator.
 
 Nächstes Paket (Reihenfolge, nicht parallel):
   Gate) ✅ Nach Signup ohne `user_persons.role=self` → `/home/onboarding` (test@makerkit.dev ausgenommen). JETZT = Radar-Stub + CTA KARTE.
-  KARTE) Lebenswelt zuerst: Handbuch-Karte (HD-Gloss) oben, System-Charts als Quellen. Freeze am Graph halten. Graph-Labels nicht nach next-intl ziehen. Ziwei-Gitter liegt; nächster *kleiner* Schnitt: Dev-500 nach `.next`-Wipe (clean rebuild), optional Hub-Snippet / Gender im Onboarding. Nicht Overlay-LLM.
+  KARTE) Lebenswelt zuerst: Handbuch-Karte (HD-Gloss) oben, System-Charts als Quellen. Freeze am Graph halten. Graph-Labels nicht nach next-intl ziehen. **Ziwei-KARTE First Cut liegt.** Overlay-Sprache für Leser = spätere Welle. Optional Hub-Snippet / Gender im Onboarding. 杂 ohne primary nicht nachziehen unless asked.
   Onboarding) ✅ 3 Steps + ein Insight (C-Text) + Resonanz ohne Persistenz → `/home/karte`. Unbekannt = 12:00 + kommunizieren.
-  Overlay) HD-Linse freeze. **Ziwei-Natal First-Cut + Gitter live** (`/home/karte/ziwei`). SoT Qualität: `reference/ziwei_natal_ingest_runbook.md`. Nicht Full-Synth, nicht DE-Atome, nicht Overlay-LLM, nicht 来因/煞/流年-KG, nicht Handbuch-Generator, nicht Mandala. 三合/飞星 nicht Welle 1.
+  Overlay) HD-Linse freeze (v1o). **Ziwei-Zusammenschau `ziwei_overlay_v3`** — Lebenssatz+Belege, DE Chrome, keine EN-Buchdumps. URL+Key wie HD. Kleinstern 20/47 mit primary. Nicht Full-Synth, nicht DE-Atome, nicht 来因/流年-KG, nicht Handbuch-Generator, nicht Mandala.
   Locale) Keine Übersetzungs-Welle. Datums-Picker bleibt OS; Bestätigung folgt App-Chrome (`de`). Handbuch-Gloss ist fest DE.
   Dynamik) Atom-Prozess liegt; System-Dynamik (`sys_dynamics` intra) und Cross-Dynamik **nicht** jetzt. Relink-Q still, nach UI-Mix.
   Agent) Nicht bauen. Nur das Companion-Feld freihalten.
@@ -111,7 +111,10 @@ NACH REBOOT (Reihenfolge):
        pnpm --filter web exec next dev --port 3000
      Env: apps/web/.env.development + .env.development.local
      HD_SERVICE_URL=http://127.0.0.1:8002
+     LANGDOCK_BASE_URL in .env.development; LANGDOCK_API_KEY in .env.development.local
+     Nach Env-Änderung Next neu starten, sonst bleibt Overlay auf der Lage-Vorlage.
      5. http://localhost:3000/home/karte/hd — letzter Chart lädt von allein (GET). Overlay-Cache v1o miss beim ersten Mal. Mechanik am Center nur noch dieser State.
+     6. http://localhost:3000/home/karte/ziwei — GET lädt Platte + gecachte Zusammenschau (kein LLM-Wait). Neu rechnen = iztro + Overlay `ziwei_overlay_v3` (Langdock). Import nur `@ic/engines/ziwei`, nie den Barrel.
 
 CODE:
   apps/web/app/[locale]/home/_components/hd-karte/
@@ -129,6 +132,12 @@ CODE:
   apps/web/lib/hd/hd-phs.ts
   apps/web/lib/hd/hd-facts.ts
   apps/web/lib/hd/hd-chart-assemble.ts
+  apps/web/lib/ziwei/ziwei-chart-assemble.ts
+  apps/web/lib/ziwei/ziwei-overlay.ts
+  apps/web/lib/ziwei/ziwei-overlay-cache.ts
+  apps/web/lib/ziwei/ziwei-chrome-de.ts
+  apps/web/lib/ziwei/ziwei-plate-model.ts
+  apps/web/app/[locale]/home/_components/ziwei-karte/ziwei-karte-view.tsx
   apps/web/lib/hd/hd-karte-session.ts
   apps/web/lib/hd/hd-bodygraph-geometry.ts
   apps/web/lib/hd/hd-bodygraph-path.ts
@@ -150,9 +159,11 @@ CODE:
   apps/web/scripts/ic_ziwei_natal_relink.py
   apps/web/scripts/ic_ziwei_mutagen_relink.py
   apps/web/scripts/ic_ziwei_minor_relink.py
+  apps/web/scripts/ic_ziwei_sha_adj_relink.py
   apps/web/scripts/ic_ziwei_natal_full_audit.py
   apps/web/scripts/ic_s05_open_center_concept.py
   apps/web/app/api/ic/hd-chart/route.ts
+  apps/web/app/api/ic/ziwei-chart/route.ts
   apps/web/app/api/ic/geocode/route.ts
   services/hd/src/hd_compute.py
 
@@ -165,7 +176,7 @@ NICHT TUN:
   流年凶灾详析 in der Natal-Welle (Extract ok, kein text2kg); 深造 wegen Dateigröße skippen
   别序/yuceweb; 四书-Ingest parallel zum laufenden Interpret
   安星法 Mention-Bloat „reparieren“ (Synth liest primary; Label-Hit nicht wieder an)
-  煞-Nebensterne / 来因-Content / Band 1 / restliche Palast-Re-Synth / DE-Wortings — bis explizit gefragt
+  煞-Nebensterne ohne primary nicht per Label-Spray „reparieren“. 来因-Content / Band 1 / DE-Wortings — bis explizit gefragt. Paläste+身 nach v2: scoped Re-Synth 2026-08-31.
   三合/飞星/玄空/Motivations-格局 in Welle 1
   Schul-Ingest / tradition-Pipeline / Center-Wipe
   IC_CHUNK_PROFILE=rave_iching_gates auf Ziwei-PDFs
@@ -263,6 +274,16 @@ Zusätzlich lesen:
 - cursor/pipeline.md (Jobs, Flows, Prompts, §10-12 NEU)
 - Worker-Specs in cursor/pipeline.md §7
 - Infra: infrastructure/spark/ (MinerU, LLM-Serving)
+```
+
+## Wenn der Chat über AGENTS / MCP-PRODUKT / FLOP geht
+
+```
+Zusätzlich lesen:
+- reference/agent_surface_and_monetization.md (vier Ströme, Cloudflare vs FLOP vs Virtuals)
+- reference/vision_and_story.md §7 MCP-Readiness
+- reference/decisions.md → 2026-08-31 Agent-Schichten
+Nicht: Makerkit packages/mcp-server als Produkt-Tür; kein FLOP in Billing
 ```
 
 ## Wenn der Chat über PRODUKT/DESIGN geht

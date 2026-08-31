@@ -1,15 +1,15 @@
 <!--
 Reality Block
-last_update: 2026-08-29
+last_update: 2026-08-31
 scope: IC Projektstatus (Phasen 0–4), Chart-Engines, Content-Akquise, Ur-Systeme, Gene Keys, Konvergenz/Meta-KG
-in_scope: Stand, nächste Schritte, Systemliste, Anna's Archive entity-first, Klarstellung HD-Schulen vs. GK, Konvergenz personenbezogen vs. strukturell, Ziwei Natal-First-Cut und KARTE-Gitter Verweis
+in_scope: Stand, nächste Schritte, Systemliste, Anna's Archive entity-first, Klarstellung HD-Schulen vs. GK, Konvergenz personenbezogen vs. strukturell, Ziwei Natal-First-Cut, KARTE-Gitter, Zusammenschau
 out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_compass_app AGENTS.md
 -->
 
 # Inner Compass — Status & Nächste Schritte
 
-> **Stand:** 2026-08-29 — Phasen 0–3 / Engines / Content bleiben hier. **HD-KARTE SoT:** `cursor/handover.md` (Copy-Paste) + Overlay-Vertrag + `figma_karte_contract.md` §4b.
-> **App (Phase 4):** HD KARTE Graph visuell zu (helle Jovian-Fills, Kanalhälften, Hanging, Variable-Chevrons, keine Gate-Chips). Overlay-LLM v1m. HD-Docker `ic-hd-service` :8002. **Ziwei-KARTE Natal-Gitter live** (`/home/karte/ziwei`, 4×4 地支, Inspector EN-draft / canon_fallback). Kein Overlay-LLM, keine DE-Atome.
+> **Stand:** 2026-08-31 — Phasen 0–3 / Engines / Content bleiben hier. **HD-KARTE SoT:** `cursor/handover.md` (Copy-Paste) + Overlay-Vertrag + `figma_karte_contract.md` §4b.
+> **App (Phase 4):** HD KARTE Graph visuell zu (helle Jovian-Fills, Kanalhälften, Hanging, Variable-Chevrons, keine Gate-Chips). Overlay-LLM v1o. HD-Docker `ic-hd-service` :8002. **Ziwei-KARTE First Cut** (`/home/karte/ziwei`): dichte 4×4-Platte, Chrome DE, Kleinsterne Position+20 EN-Lexikon, Inspector `draft`/`canon_fallback`, **Zusammenschau `ziwei_overlay_v3`**. Keine DE-Atome.
 > **Content (Phase 2):** **HD S0 Close-out ✅** — Canon-first Synth, link_role, ID-Strip. S0.5 Relink live. SoT: `reference/hd_layer_master_checklist_2026-08-11.md`. **Ziwei Natal-First-Cut ✅** (中州 Staffel 1 + Welle 1b) — SoT + Qualitätsschulden: `reference/ziwei_natal_ingest_runbook.md`.
 >
 > **Wo wir sind:** Phase 0 erledigt. Phase 1 — Chart-Engines (historisch „Staffel 1“ genannt, Label nicht mehr reihenfolge-bindend): fünf Kerne + **Maya Tzolkin, Nine Star Ki, Numerologie, Akan** in `@ic/engines` + API-Routen + Kataloge v0 ✅
@@ -22,7 +22,7 @@ out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_c
 > - **Nine Star Ki**: K1/K2 **v1** (`ic_nine_star_ki_v1`) — Honmei + Getsumei + **energetic**; feste Sonnenmonats-Schnitte; Vitest **Step 3** Katalog-Regeln ✅ — `reference/decisions.md` **2026-04-16**
 > - **Numerologie / Akan**: Engines + Kataloge + `POST /api/.../calculate` ✅ *(Playbook-Validierung optional)*
 >
-> **Nächste Reihenfolge (jetzt):** HD-Linse + Handbuch-Keil + **Ziwei Natal-Gitter** liegen (First-Cut EN, draft/fallback; Plate-Contract 6/6). Nicht Overlay-LLM, nicht DE-Welle, nicht 来因/煞/Band 1/流年-KG unless asked. Decision 2026-08-27 Natal-Parität. Nicht Mandala, nicht Handbuch-Generator. Overlay v1o. 64keys Blau/Orange am Zentrum nicht raten.
+> **Nächste Reihenfolge (jetzt):** Ziwei-Natal-KARTE First Cut geschlossen. Nächste *Literaturwelle* außer Ziwei: BaZi-Klassiker (Playbook), nicht parallel text2kg. Overlay-Sprache für Leser / DE-Atome / 来因 / 流年-KG geparkt. Decision 2026-08-27 Natal-Parität. Nicht Mandala, nicht Handbuch-Generator.
 >
 > **Roter Faden (Gesamtplan):** HD Close-out → System-Wellen → Phase 3 (nach 2 Reviews) → **Makerkit v4 ✅** → MVP Phase 4 → Voll — kanonisch in `cursor/handover.md` § Roter Faden. Content-Nachrüst: `reference/hd_layer_master_checklist_2026-08-11.md`. Wave: `cursor/reference/literature_content_wave_2026-07-18.md`. UX: `reference/ux_konzept_2026-07.md`.
 
@@ -272,9 +272,13 @@ Pfad A Natal-Parität (Decision 2026-08-27). Compute = iztro. LLM = Langdock gpt
 - [x] Welle 1b: 安星法 86 · 谈斗数 32 · 八喜楼 34 · 骨髓赋 28 · 太微赋-Note 5
 - [x] Homophone-Repair, Palast-Relink **v2**, 四化-Relink v1 (4/4 Synth), 辅星-Relink+Synth v1 **8/8**
 - [x] Scoped Synth EN: 14 Maj + 身 + 命/财/官 nach v2 + 四化 + 辅星 — **kein** Full-Synth
-- **Qualität / was nicht 100 %:** `reference/ziwei_natal_ingest_runbook.md` (Soul-Palace-Name, 9 Paläste+身 ohne Re-Synth, 化权-Mix, 安星法-Mentions lassen, 来因/煞/Band 1/DE/流年-KG offen)
+- **Qualität / was nicht 100 %:** `reference/ziwei_natal_ingest_runbook.md` (安星法-Mentions lassen, 来因/煞/Band 1/DE/流年-KG offen). 命宫/化权/天钺 scoped Re-Synth 2026-08-31; EN-Pinyin „Tianyue“ bleibt bis DE-Atome.
 - [x] KARTE Natal-Gitter 2026-08-29: 4×4 地支, 辅星+四化 im Inspector, Badge draft/canon_fallback (nicht verified)
-- **Nicht:** Overlay-LLM, Mandala, Handbuch-Generator, Qwen, 三合/飞星, DE-Atome, 来因/煞/流年-UI
+- [x] KARTE Chrome+dichte Platte 2026-08-31: DE-Labels, Helligkeit, Kleinsterne als Position, Dekade, Legende, 命主≠命宫-Sterne. Plate-Contract **5/5** (inkl. Fixture 1980-11-18)
+- [x] Zusammenschau 2026-08-31: `ziwei_overlay_v3` (Lebenssatz+Belege, DE, keine Buchzitate; Cache-Ruleset v3). URL in `.env.development`, Key in `.env.development.local`.
+- [x] Kleinstern-Lexikon First Cut 2026-08-31: Relink `ziwei_sha_adj_relink_v1`, scoped Synth EN **20** Nodes mit primary (六煞 + u. a. 天刑/天喜/华盖/咸池). Rest ohne primary = Position-only.
+- [x] Paläste+身 scoped Re-Synth nach v2 (10/10); 命宫 Life Palace; 化权 Authority; 天钺 Patronage (`tianyueMin`). 天月 unberührt.
+- **Nicht:** Mandala, Handbuch-Generator, Qwen, 三合/飞星, DE-Atome, 来因/流年-UI. 杂 ohne primary nicht Label-Spray. Overlay-Alltagssprache = spätere Welle. `verified`-Gate für Ziwei-Atome aus.
 
 ### S6 — Anna's Archive Pipeline
 - [x] hd_saas_uploader.py: `--sys-mode`
