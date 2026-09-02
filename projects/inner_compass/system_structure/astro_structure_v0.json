@@ -2,7 +2,7 @@
   "meta": {
     "step": 2,
     "version": "0.1.0",
-    "description": "Western tropical astro structure: zodiac ring, rulerships, house ring, angle axes, planetary joys, essential dignities, cross-system element links. Placements/aspects are runtime edges (K1); this file is static K2 scaffold.",
+    "description": "Western tropical astro structure: zodiac ring, rulerships, house ring, angle axes, planetary joys, essential dignities. life_domain_map uses contracts.md §2 enums (catalog houses[].life_domain stays drifted). maps_to_element is cross-system and not seeded. Placements/aspects are runtime (K1).",
     "catalog_ref": "astro_catalog_v0.json",
     "source": "IC catalog + classical rulerships/joys/dignities",
     "generated_at": "2026-04-17T10:08:06.963Z"
@@ -75,6 +75,21 @@
         "celestine isDaytime"
       ]
     }
+  ],
+  "life_domain_map": [
+    { "house_num": 1, "canonical_id": "astro.house.1", "life_domain": "self_identity" },
+    { "house_num": 2, "canonical_id": "astro.house.2", "life_domain": "money_resources" },
+    { "house_num": 3, "canonical_id": "astro.house.3", "life_domain": "exchange_learning" },
+    { "house_num": 4, "canonical_id": "astro.house.4", "life_domain": "family_home" },
+    { "house_num": 5, "canonical_id": "astro.house.5", "life_domain": "creativity_expression" },
+    { "house_num": 6, "canonical_id": "astro.house.6", "life_domain": "health_body" },
+    { "house_num": 7, "canonical_id": "astro.house.7", "life_domain": "love_partnership" },
+    { "house_num": 8, "canonical_id": "astro.house.8", "life_domain": "sexuality_intimacy" },
+    { "house_num": 8, "canonical_id": "astro.house.8", "life_domain": "transformation_renewal" },
+    { "house_num": 9, "canonical_id": "astro.house.9", "life_domain": "meaning_spirituality" },
+    { "house_num": 10, "canonical_id": "astro.house.10", "life_domain": "career_calling" },
+    { "house_num": 11, "canonical_id": "astro.house.11", "life_domain": "relationships_community" },
+    { "house_num": 12, "canonical_id": "astro.house.12", "life_domain": "transformation_renewal" }
   ],
   "edges": [
     {

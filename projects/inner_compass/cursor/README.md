@@ -2,7 +2,7 @@
 
 > **Projekt:** Geburtsbasiertes Meta-System — kulturell diverse Wissenssysteme über gemeinsamen Knowledge Graph vereint.
 > **Status:** Pre-Launch (Pipeline funktioniert für HD, Schema-Migration auf sys_* steht an)
-> **Stand:** 2026-02-16 (Index). **KARTE/State 2026-08-25:** Lesereihenfolge unten, nicht `status.md` zuerst.
+> **Stand:** 2026-02-16 (Index). **KARTE 2026-09-02:** Lesereihenfolge unten — Astro-Rad First Cut in `handover.md` + `reference/astro_natal_ingest_runbook.md`, nicht `status.md` zuerst.
 
 ## Was ist Inner Compass?
 
@@ -34,6 +34,7 @@ Das Alleinstellungsmerkmal ist die **Verbindungsschicht**: Ein Knowledge Graph, 
 - **Infra-Docs:** `infrastructure/spark/` (Worker, MinerU, LLM-Serving)
 - **System-Deskriptoren:** `projects/inner_compass/system_descriptors/*.json`
 - **Vollständiges PRD + Entscheidungen:** `projects/inner_compass/reference/`
+- **Agents / MCP-Produkt / FLOP:** `projects/inner_compass/reference/agent_surface_and_monetization.md`
 
 ## Kernzahlen
 

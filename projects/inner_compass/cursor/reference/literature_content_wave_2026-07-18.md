@@ -1,6 +1,6 @@
 # Literatur Content-Wellen — Stand 2026-07-18
 
-last_update: 2026-08-31 (Ziwei-KARTE First Cut geschlossen; Juli-CSV und HD-Quality-Matrix unverändert)
+last_update: 2026-09-02 (Astro Interpret+t2k 14/14 + Relink/Synth Nachzug; Juli-CSV und HD-Quality-Matrix unverändert)
 
 ### Inventar-Realitätscheck (2026-08-04 / Update 2026-08-10)
 
@@ -13,7 +13,11 @@ Insgesamt **~36 HD-Quellen** hochgeladen (Account wächst). Fortschritt gegen di
 | GeneKeys | 2/9 (22%) | nur Opening Doors + 64 Ways; Golden-Path/Bridge-Bücher offen |
 | 14 weitere Systeme (Astro, Ziwei, Jyotish, Chakra, Enneagram, I Ging, Numerologie, Wu Xing, Kabbalah ×2, Maya Tzolkin, Akan, Pancha Bhuta, Western Elements, Nine Star Ki) | 0/… (0%) | Juli-Snapshot: komplett unberührt |
 
-**Update 2026-08-31:** Ziwei-KARTE First Cut geschlossen (dichte Platte, Zusammenschau v3, Kleinstern 20 EN, Palast-Re-Synth). Overlay braucht `LANGDOCK_BASE_URL` in `.env.development`. Kein 流年-KG, keine BaZi-Klassiker parallel im text2kg. MinerU extract-ahead anderer Systeme ok (Playbook 4a), volle Kette nicht parallel.
+**Update 2026-09-02 Abend:** Interpret-Welle durch; 14/14 natal text2kg; Relink 58/58 nach t2k; scoped Synth 16 (Häuser+AC/DC/IC/MC). AC nicht mehr Stub. Later-PDFs ohne Classify. BaZi-Klassiker weiter nicht parallel. SoT: `reference/astro_natal_ingest_runbook.md`.
+
+**Update 2026-09-02:** Astro-KARTE First Cut (`/home/karte/astro`) + Natal-KG Ground (Relink/Synth 25 EN). 14 Natal-Werke in der KG-Queue. Later-PDFs ohne Classify. SoT: `reference/astro_natal_ingest_runbook.md`.
+
+**Update 2026-08-31:** Ziwei-KARTE First Cut geschlossen. Astro Extract-ahead gestartet (8 unique PDFs, `wave=astro_natal` / `_transit` / `_psychological`). Overlay braucht `LANGDOCK_BASE_URL` in `.env.development`. Kein 流年-KG, keine BaZi-Klassiker parallel im text2kg. MinerU extract-ahead ok (Playbook 4a), volle Kette nicht parallel. Runbook `reference/astro_natal_ingest_runbook.md`.
 
 **Update 2026-08-29:** **Ziwei** ist aus dieser „0 %“-Zeile raus — Natal-First-Cut (中州 Staffel 1 + Welle 1b, scoped EN-Atome). SoT + was nicht 100 %: [`reference/ziwei_natal_ingest_runbook.md`](../../reference/ziwei_natal_ingest_runbook.md). Queue-CSV vom 18.07. **nicht** umschreiben. Die anderen 13 Systeme in der Zeile bleiben unberührt. Nächste *Literaturwelle* außer Ziwei weiter BaZi-Klassiker, nicht parallel.
 

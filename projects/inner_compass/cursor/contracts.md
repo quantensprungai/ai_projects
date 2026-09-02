@@ -168,7 +168,8 @@ Lebensbereiche sind ein Tag, kein Schema-Constraint. Hinzufügen/Entfernen/Merge
 | Datei | Stand |
 |---|---|
 | `system_structure/ziwei_structure_v0.json` `life_domain_map` | nutzt die Enums dieser Tabelle |
-| `system_structure/astro_catalog_v0.json` `houses[].life_domain` | **andere** Strings (`resources_values`, `home_roots`, `partnerships`, …) — angleichen oder eigenes `life_domain_map`, wenn Astro-UI kommt |
+| `system_structure/astro_structure_v0.json` `life_domain_map` | nutzt die Enums dieser Tabelle (Haus 8 zwei Zeilen). Katalog-`houses[].life_domain` bleibt Drift |
+| `system_structure/astro_catalog_v0.json` `houses[].life_domain` | **andere** Strings (`resources_values`, `home_roots`, …) — Seed liest sie **nicht**; Map ist SoT |
 | `system_structure/jyotish_catalog_v0.json` `bhavas` | `karakatva[]`, kein `life_domain` — Multi-Map schreiben, wenn Jyotish geroutet wird |
 | BaZi / I Ging | kein 12-Rad (4 Pfeiler / 64 Hexagramme) |
 

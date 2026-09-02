@@ -845,7 +845,13 @@ iztro rechnet `bySolar(gregorianisches Datum, Stundenindex 0–12, Geschlecht)`.
 - 真太阳时 (geographische Länge) später, analog HD-Sidereal: nicht in Welle 1.
 - Tests: `ziwei-time-contract.test.ts` (Berlin vs Shanghai gleiche Wandzeit; ungültiges Datum wirft `INVALID_DATE`).
 
-Compute-Default bleibt iztro. Schulen-Text kommt aus Literatur (`tradition=zhongzhou`), nicht aus einem zweiten Kit.
+### 15.5 Schulen (Welle 1 = 中州)
+
+Compute-Default bleibt iztro. Schulen-Text kommt aus Literatur (`tradition=zhongzhou` auf Seed, `sys_sources.metadata` und `user_charts.compute_profile`), nicht aus einem zweiten Kit.
+
+- **Welle 1:** 中州 / 王亭之. 12 Natal-PDFs. 流年-Band parken.
+- **Nicht Welle 1:** 三合、飞星 (nur `tradition`-Tags, wenn später Literatur kommt). Kein zweites Compute.
+- **Tu Vi:** Locale, gleiches `system_id=ziwei`.
 
 ### 15.2 Contract (1c) — Stabile API
 

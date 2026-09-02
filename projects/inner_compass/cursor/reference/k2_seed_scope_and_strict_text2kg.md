@@ -1,8 +1,8 @@
 # K2-Seed — Scope, Lücken, strict text2kg
 
-last_update: 2026-08-27
+last_update: 2026-09-02
 scope: Inner Compass — wann Seed vollständig sein muss, was fehlt, strict mode
-in_scope: BaZi/HD/Ziwei Seed-Gaps, Pipeline-Regeln, text2kg_unmatched Audit
+in_scope: BaZi/HD/Ziwei/Astro Seed-Gaps, Pipeline-Regeln, text2kg_unmatched Audit
 out_of_scope: Vollimplementierung aller Seeds (→ deep_structure_plan.md, ic_seed_structure.py)
 
 ## Kernregel (aus S5d gelernt)
@@ -26,12 +26,14 @@ Literatur-PDFs liefern **K3/K4** (Interpretation + Synthese), **nicht** neue K2-
 |--------|-----------------|---------------------|--------|
 | **HD** | ~810 Seed-Nodes, Katalog **195/195** | 195 Katalog + Crosses/Lines | `ic_hd_k2_catalog.py`, `ic_hd_wildwuchs_cleanup.py` |
 | **BaZi** | **97** (Kern 37 + 60 Jiazi, 2026-07-11) | **~130** Deep (Hidden Stems, Interaktionen, …) | `bazi_catalog_v0.json`, Whitelist: `ic_bazi_k2_catalog.py` |
-| **Astro** | 39 | ~90 | `astro_catalog_v0.json` |
+| **Astro** | Katalog-Typen (~71) | ~71 Typen; Instanzen runtime | `astro_catalog_v0.json`, Whitelist: `ic_astro_k2_catalog.py` |
 | **Jyotish** | 60 Platzhalter | ~500–700 | `jyotish_catalog_v0.json` |
 | **Gene Keys** | 64 | 64 ✅ | `gk_catalog_v0.json` |
 | **Andere** | Skeleton | siehe `deep_structure_plan.md` | teils nur Deskriptor |
 
-**BaZi — was in DB ist (97):** 10 Stems, 12 Branches, 5 Elements, 10 Ten Gods, **60 Jiazi** (`bazi.jiazi.*`).
+**Astro — was in DB ist:** Katalog-Typen aus `astro_catalog_v0.json` (71 Nodes). Ground-Synth 25 EN + Nachzug 16 (12 Häuser + AC/DC/IC/MC) 2026-09-02. 7 Planeten nicht re-synched. **Nicht** Chart-Instanzen (`astro.placement.*`, `astro.aspect.sun__moon__trine`). Skeleton-`astro.aspect.*` gelöscht 2026-09-01 (Alias bleibt).
+
+**Astro — nicht seeden:** Placement × Zeichen/Haus, Körperpaar-Aspekte, Progression, Synastrie, `maps_to_element` nach `we.element.*`.
 
 **BaZi — noch nicht geseedet (Deep-Backlog):**
 
@@ -54,6 +56,7 @@ Literatur-PDFs liefern **K3/K4** (Interpretation + Synthese), **nicht** neue K2-
 | `IC_TEXT2KG_STRICT_BAZI` | **true** | Zusätzlich: canonical_id muss in `ic_bazi_k2_catalog.BAZI_K2_STRICT_IDS` (Kern + 60 Jiazi) |
 | `IC_TEXT2KG_STRICT_HD` | **true** | Whitelist + Aliase via `ic_hd_k2_catalog.py` |
 | `IC_TEXT2KG_STRICT_ZIWEI` | **true** | Whitelist via `ic_ziwei_k2_catalog.py` (Paläste, Sterne, Stems/Branches, …). Decision 2026-08-27. |
+| `IC_TEXT2KG_STRICT_ASTRO` | **true** | Typ-Whitelist via `ic_astro_k2_catalog.py`. `astro.aspect.*` → `aspect_type`; Placement/Paar-Aspekt reject. Decision 2026-09-01. |
 
 **Seed-Regel (2026-07-11):** `ic_seed_structure.py` erhält bei Re-Seed `interpretation_ids`, `chunk_ids` und `canonical_description` — Upsert überschreibt K3/K4 nicht mehr.
 
@@ -91,5 +94,6 @@ Literatur-PDFs liefern **K3/K4** (Interpretation + Synthese), **nicht** neue K2-
   - `ic_k2_state_audit.py` — One-Shot-Audit (Nodes/Interps/Synthese/Jobs)
   - 3 Zombie-Jobs geschlossen (synthesize_node queued/running)
 - [x] `ic_ziwei_k2_catalog.py` + Seed `build_ziwei` + `IC_TEXT2KG_STRICT_ZIWEI` (Decision 2026-08-27)
+- [x] `ic_astro_k2_catalog.py` + Seed `build_astro` aus Katalog + `IC_TEXT2KG_STRICT_ASTRO` (Decision 2026-09-01)
 
 → Master-Backlog: `reference/deep_structure_plan.md`

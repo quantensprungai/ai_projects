@@ -1,9 +1,9 @@
 # K2 Foundation Wave — Playbook
 
-last_update: 2026-08-31
-scope: Wiederholbares Vorgehen pro System (K2-Welle + Literatur)
-in_scope: Seed → strict → Extract → Relink → scoped Synth; Schienen vs. System-Knöpfe (HD/BaZi/Ziwei)
-out_of_scope: App-Implementierung (Phase 4); systemeigene Runbooks ersetzen
+last_update: 2026-09-02
+scope: Wiederholbares Vorgehen pro System (K2-Welle + Literatur); Astro-Knopf + Extract-ahead
+in_scope: Seed → strict → Extract → Relink → scoped Synth; Schienen vs. System-Knöpfe (HD/BaZi/Ziwei/Astro)
+out_of_scope: systemeigene Runbooks ersetzen
 
 ## Welle-Standard 2026-08-29 (HD + BaZi + Ziwei)
 
@@ -15,7 +15,7 @@ Ein Ablauf, **Knöpfe pro System**. Kein drittes Parallel-Dokument — Ziwei-Det
 2. **Seed vor PDF.** Ohne Seed erfindet text2kg Nodes (BaZi 460 statt 37). `ic_seed_structure.py --system {id}` zuerst.
 3. **Strict + Whitelist.** `IC_TEXT2KG_STRICT=true` + `IC_TEXT2KG_STRICT_{SYSTEM}`. 0 neue Nodes. Alias/Homophone im Katalog, nicht im LLM (`normalize_*`, 天府≠天福).
 4. **Spark nur MinerU.** Interpret/text2kg/Synth = **Langdock**. Kein Qwen, kein `IC_LLM_URL=:30001`, kein I-Ching-Chunk-Profil auf fremde PDFs.
-4a. **Extract-ahead ja, KG-Welle nein (2026-08-31).** MinerU `extract_text` mit `wave=` darf PDFs *anderer* Systeme scannen, während ein System KARTE/Relink/Synth läuft. Classify/interpret/text2kg/Relink/Synth bleiben **ein System nach dem anderen**. Seed+Whitelist **vor** text2kg. Nach Extract anfallende Classify-Jobs verwerfen, bis die System-Welle startet. Analog 流年 2026-08-28.
+4a. **Extract-ahead ja, KG-Welle nein (2026-08-31).** MinerU `extract_text` mit `wave=` darf PDFs *anderer* Systeme scannen, während ein System KARTE/Relink/Synth läuft. Classify/interpret/text2kg/Relink/Synth bleiben **ein System nach dem anderen**. Seed+Whitelist **vor** text2kg — und **während** Extract-ahead erlaubt (Astro 2026-09-01: Katalog-Seed parallel zu MinerU). Nach Extract anfallende Classify-Jobs verwerfen, bis die System-Welle startet. Analog 流年 2026-08-28.
 5. **Reihenfolge fest:** Extract → (OCR/Term-Dict wenn Skript) → classify → interpret → text2kg → Unwrap/Alias → **Relink `link_role`** → **scoped Synth**. `IC_TEXT2KG_AUTO_SYNTH=false`. Nie Full-Synth.
 6. **Relink ≠ text2kg.** text2kg hängt nur an. Relink setzt primary/contrast/mention. Synth liest primary (+ contrast wenn Rollen da). **Mentions nicht „reparieren“.** Kein Label-Spray / Blanket-Keyword-Attach (安星法-Hänger).
 7. **Lexikon → Überblick → Spezial.** Re-Synth nur `--only-id` der betroffenen Schicht. Token-Budget für Reasoning-Modelle hoch genug (`IC_LLM_MAX_TOKENS=8000`; 2000 = leerer Content).
@@ -25,15 +25,15 @@ Ein Ablauf, **Knöpfe pro System**. Kein drittes Parallel-Dokument — Ziwei-Det
 
 ### Knöpfe (pro System, nicht raten)
 
-| Knopf | HD | Ziwei | nächstes System |
+| Knopf | HD | Ziwei | Astro |
 |---|---|---|---|
-| MinerU-Lang / Profil | latin, ggf. `rave_iching_gates` | `ch`, **kein** I-Ching-Profil | aus TOC/Skript |
-| Whitelist-Modul | `ic_hd_k2_catalog.py` | `ic_ziwei_k2_catalog.py` | `ic_{sys}_k2_catalog.py` |
-| OCR/Term | `sys_term_mapping` | `ic_ziwei_ocr_dict_correct.py` vor text2kg | wenn Scan/Skript das verlangt |
-| Relink-Heuristik | Facet/Defined-C/Channel-Skripte | Palast-v2 (voller Name+宫), Sibling-Cap, 流日→mention | neu schreiben, nicht HD kopieren |
-| Extra-Slot | Environment | 来因 — leer ok | bewusst leer lassen dürfen |
-| Geparkt | Transit-UI | 流年-Buch (`wave=…_liunian`) | Timing-Band analog |
-| Canon | `hd_auth_def_canon_v1.yaml` | First-Cut EN, kein YAML | erst wenn Mechanik-Wahrheit ≠ Literatur |
+| MinerU-Lang / Profil | latin, ggf. `rave_iching_gates` | `ch`, **kein** I-Ching-Profil | `latin`, **kein** I-Ching-Profil (Job-Debug; Spark-Env kann `ch` sein) |
+| Whitelist-Modul | `ic_hd_k2_catalog.py` | `ic_ziwei_k2_catalog.py` | `ic_astro_k2_catalog.py` (Typen; Placement/Paar-Aspekt reject) |
+| OCR/Term | `sys_term_mapping` | `ic_ziwei_ocr_dict_correct.py` vor text2kg | erst wenn Scan (Dorotheus) das verlangt |
+| Relink-Heuristik | Facet/Defined-C/Channel-Skripte | Palast-v2 (voller Name+宫), Sibling-Cap, 流日→mention | neu schreiben; Häuser ≠ Paläste |
+| Extra-Slot | Environment | 来因 — leer ok | bewusst leer |
+| Geparkt | Transit-UI | 流年 (`wave=ziwei_liunian`) | `astro_transit` (Hand + Teachings), `astro_psychological` (Rudhyar), Horary (Lilly II im 3-vol, nicht extra extractet) |
+| Canon | `hd_auth_def_canon_v1.yaml` | First-Cut EN, kein YAML | hellenistic/medieval zuerst; `life_domain_map` = §2, Katalog-Drift unberührt |
 
 ### Fallen (nicht wiederholen)
 
@@ -45,6 +45,7 @@ Ein Ablauf, **Knöpfe pro System**. Kein drittes Parallel-Dokument — Ziwei-Det
 | Alias/Homophone dem LLM überlassen | Ziwei 天府/天福, BaZi 戊/午 |
 | Mentions als Qualitätsproblem behandeln | Ziwei 安星法 |
 | Timing-Buch in Natal-Atome | 流年 / HD-Transit-Analog |
+| PDF natal/transit physisch splitten | Astro 2026-09-01 — `wave` retaggen, ein Extract |
 | Synth-Budget zu klein (Reasoning) | Ziwei 2000→8000 |
 | Audit nur Essence, ohne Chunk-Text | Ziwei Palast `hits=0` |
 | UI-Gitter vor Atomen | Decision 2026-08-27 |
@@ -84,6 +85,8 @@ python ic_seed_structure.py --system {system_id}
 | `IC_TEXT2KG_STRICT` | true — kein Node-Create |
 | `IC_TEXT2KG_STRICT_BAZI` | true — Whitelist `ic_bazi_k2_catalog.py` |
 | `IC_TEXT2KG_STRICT_HD` | true — Whitelist `ic_hd_k2_catalog.py` |
+| `IC_TEXT2KG_STRICT_ZIWEI` | true — Whitelist `ic_ziwei_k2_catalog.py` |
+| `IC_TEXT2KG_STRICT_ASTRO` | true — Whitelist `ic_astro_k2_catalog.py` (Typen, keine Chart-Instanzen) |
 | `IC_SYNTHESIS_MAX_INTERPS` | 8 — max. Interps im LLM-Prompt |
 | `IC_SYNTHESIS_LOAD_INTERPS` | 15 — max. geladene Interps |
 
@@ -146,7 +149,8 @@ Verbesserungen (Backlog, nicht implementiert):
 | 2 | HD | ✅ 777 Nodes · Katalog 195/195 · **114/114 Interp-Nodes mit Synthese** · Wildwuchs 0 |
 | 3 | Gene Keys | ✅ 64 Nodes · **64/64 Interps + Synthese** · Wildwuchs 0 |
 | 4 | Ziwei | Natal-KARTE First Cut geschlossen 2026-08-31: dichte Platte, Zusammenschau v3, Kleinstern 20 EN, Paläste+身 Re-Synth. Runbook `reference/ziwei_natal_ingest_runbook.md`. Offen: Overlay-Sprache, DE, 来因, 流年-KG |
-| 5 | Astro, Jyotish | Minimal-Skeleton — Welle erst vor 1. PDF, nach diesem Playbook |
+| 5 | Astro | KARTE-Rad First Cut 2026-09-02 (Whole Sign, Selektion-Linien, Typ-Atome, kein Overlay). Natal-KG: Seed 71, Relink 58/58 nach t2k, Synth 25+16 EN (Häuser+Achsen nachgezogen), Wildwuchs 0. Interpret+text2kg 14/14 durch. Jobs ≠ Chunks. Runbook `reference/astro_natal_ingest_runbook.md`. |
+| 6 | Jyotish | Minimal-Skeleton — nicht parallel zu Astro (Haus-Überlappung). Welle erst vor 1. PDF. |
 
 **Qualitäts-Gate-Status:** Alle drei aktiven Systeme haben 0 offene Jobs, 0 Wildwuchs, jede Interp-Node hat Synthese (`ic_k2_state_audit.py`).
 

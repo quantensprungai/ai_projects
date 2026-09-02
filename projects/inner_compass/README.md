@@ -16,12 +16,15 @@
 | Was sind offene Ideen? | `reference/ideas.md` |
 | Welche Theorien stecken dahinter? | `reference/inspirations.md` |
 | Story, UX, Zukunftsvision? | `reference/vision_and_story.md` |
+| Agents, MCP-Produkt, FLOP vs Cloudflare? | `reference/agent_surface_and_monetization.md` |
 | Layer-Schemas, Descriptor-Spec? | `reference/schema_and_descriptor_specs.md` |
 | Phase 1 Engine-Integration pro System? | `reference/engine_integration_playbook.md` |
 | Struktur vs. Deskriptor vs. Seed, Kit-first, Ebenen? | `reference/structure_descriptor_seed.md` |
 | HD-Kit: Was steht in bodygraph-data/constants/hdkit? | `reference/hd_kit_structure_extraction.md` |
 | HD Tropical/Sidereal/Hybrid, KG, Roadmap | `reference/hd_compute_profiles_kg_and_roadmap.md` |
 | S5 E2E-Runbook (PDF → MinerU → LLM)? | `reference/s5_runbook.md` |
+| Astro-Natal Ingest / KARTE-Rad? | `reference/astro_natal_ingest_runbook.md` |
+| Ziwei-Natal Ingest / KARTE? | `reference/ziwei_natal_ingest_runbook.md` |
 | Reference nach Phasen gruppiert (Struktur/Pipeline/Produkt)? | `reference/README.md` |
 
 ## Verwandte Orte

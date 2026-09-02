@@ -1,15 +1,15 @@
 <!--
 Reality Block
-last_update: 2026-08-31
+last_update: 2026-09-02
 scope: IC Projektstatus (Phasen 0–4), Chart-Engines, Content-Akquise, Ur-Systeme, Gene Keys, Konvergenz/Meta-KG
-in_scope: Stand, nächste Schritte, Systemliste, Anna's Archive entity-first, Klarstellung HD-Schulen vs. GK, Konvergenz personenbezogen vs. strukturell, Ziwei Natal-First-Cut, KARTE-Gitter, Zusammenschau
+in_scope: Stand, nächste Schritte, Systemliste, Anna's Archive entity-first, Klarstellung HD-Schulen vs. GK, Konvergenz personenbezogen vs. strukturell, Ziwei Natal-First-Cut, Astro-KARTE First Cut, KARTE-Gitter, Zusammenschau
 out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_compass_app AGENTS.md
 -->
 
 # Inner Compass — Status & Nächste Schritte
 
-> **Stand:** 2026-08-31 — Phasen 0–3 / Engines / Content bleiben hier. **HD-KARTE SoT:** `cursor/handover.md` (Copy-Paste) + Overlay-Vertrag + `figma_karte_contract.md` §4b.
-> **App (Phase 4):** HD KARTE Graph visuell zu (helle Jovian-Fills, Kanalhälften, Hanging, Variable-Chevrons, keine Gate-Chips). Overlay-LLM v1o. HD-Docker `ic-hd-service` :8002. **Ziwei-KARTE First Cut** (`/home/karte/ziwei`): dichte 4×4-Platte, Chrome DE, Kleinsterne Position+20 EN-Lexikon, Inspector `draft`/`canon_fallback`, **Zusammenschau `ziwei_overlay_v3`**. Keine DE-Atome.
+> **Stand:** 2026-09-02 — Phasen 0–3 / Engines / Content bleiben hier. **KARTE SoT:** `cursor/handover.md` (Copy-Paste). HD: Overlay-Vertrag + `figma_karte_contract.md` §4b. Astro: `reference/astro_natal_ingest_runbook.md`.
+> **App (Phase 4):** HD KARTE Graph visuell zu (helle Jovian-Fills, Kanalhälften, Hanging, Variable-Chevrons, keine Gate-Chips). Overlay-LLM v1o. HD-Docker `ic-hd-service` :8002. **Ziwei-KARTE First Cut** (`/home/karte/ziwei`): dichte 4×4-Platte, Chrome DE, Kleinsterne Position+20 EN-Lexikon, Inspector `draft`/`canon_fallback`, **Zusammenschau `ziwei_overlay_v3`**. **Astro-KARTE First Cut** (`/home/karte/astro`): tropisch Whole Sign, AC links, Big Three + Rad, Selektion-Linien, Typ-Atome EN-Draft, Chrome DE, **kein Overlay**. Keine DE-Atome.
 > **Content (Phase 2):** **HD S0 Close-out ✅** — Canon-first Synth, link_role, ID-Strip. S0.5 Relink live. SoT: `reference/hd_layer_master_checklist_2026-08-11.md`. **Ziwei Natal-First-Cut ✅** (中州 Staffel 1 + Welle 1b) — SoT + Qualitätsschulden: `reference/ziwei_natal_ingest_runbook.md`.
 >
 > **Wo wir sind:** Phase 0 erledigt. Phase 1 — Chart-Engines (historisch „Staffel 1“ genannt, Label nicht mehr reihenfolge-bindend): fünf Kerne + **Maya Tzolkin, Nine Star Ki, Numerologie, Akan** in `@ic/engines` + API-Routen + Kataloge v0 ✅
@@ -22,7 +22,7 @@ out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_c
 > - **Nine Star Ki**: K1/K2 **v1** (`ic_nine_star_ki_v1`) — Honmei + Getsumei + **energetic**; feste Sonnenmonats-Schnitte; Vitest **Step 3** Katalog-Regeln ✅ — `reference/decisions.md` **2026-04-16**
 > - **Numerologie / Akan**: Engines + Kataloge + `POST /api/.../calculate` ✅ *(Playbook-Validierung optional)*
 >
-> **Nächste Reihenfolge (jetzt):** Ziwei-Natal-KARTE First Cut geschlossen. Nächste *Literaturwelle* außer Ziwei: BaZi-Klassiker (Playbook), nicht parallel text2kg. Overlay-Sprache für Leser / DE-Atome / 来因 / 流年-KG geparkt. Decision 2026-08-27 Natal-Parität. Nicht Mandala, nicht Handbuch-Generator.
+> **Nächste Reihenfolge (jetzt):** Astro-KARTE First Cut liegt; Interpret+text2kg 14/14 durch; Relink 58/58 + scoped Synth 16 (Häuser+AC/DC/IC/MC). Nächster Gate: Inspector-Stichprobe, dann Commit zwei Repos wenn gefragt. BaZi-Klassiker weiter die nächste *andere* Literaturwelle, nicht parallel. Overlay-Sprache / DE-Atome / 来因 / 流年 / Astro-Overlay / Horary-KG geparkt. Decision 2026-08-27 Natal-Parität + 2026-09-02 Rad + Relink/Synth-Nachzug. Nicht Mandala, nicht Handbuch-Generator.
 >
 > **Roter Faden (Gesamtplan):** HD Close-out → System-Wellen → Phase 3 (nach 2 Reviews) → **Makerkit v4 ✅** → MVP Phase 4 → Voll — kanonisch in `cursor/handover.md` § Roter Faden. Content-Nachrüst: `reference/hd_layer_master_checklist_2026-08-11.md`. Wave: `cursor/reference/literature_content_wave_2026-07-18.md`. UX: `reference/ux_konzept_2026-07.md`.
 
@@ -39,7 +39,7 @@ out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_c
 - **D1 (Rāśi):** PyJHora `rasi_chart` (Swiss Ephemeris via `pyswisseph`)
 - **Docker:** `python:3.12-slim` + `build-essential` (Build `pyswisseph`); `requirements.txt` enthält u. a. explizit **`pytz`**, **`geocoder`**, **`geopy`**, **`timezonefinder`**, **`python-dateutil`** — PyJHora listet nicht alle Laufzeit-Imports als pip-Dependencies; ohne diese Module bricht die Berechnung mit ImportError ab
 - **E2E (2026-04-13):** Image bauen, Container starten, nach ~25 s `GET /health` + `POST /calculate` (Test: Berlin 1990-01-15 12:30) → `raw.placeholder: false`, `raw.bodies`: 13 Einträge, `raw.chart: D1`, `nodes` mit `jyotish.lagna` / `jyotish.rasi.*` / `jyotish.graha.*`
-- **Next.js (Chart-API, `apps/web/app/api/`):** `hd` · `ic/hd-chart` (UI) · `jyotish` (Env-URLs) · `ziwei` · `bazi` · `astro` · **`maya-tzolkin`** · **`nine-star-ki`** · **`numerology`** · **`akan`**. **HD-UI:** `/home/karte/hd` ✅. Andere Systeme: API ohne Chart-Seite. Artefakte unter `projects/inner_compass/system_structure/` (siehe Playbook).
+- **Next.js (Chart-API, `apps/web/app/api/`):** `hd` · `ic/hd-chart` (UI) · `jyotish` (Env-URLs) · `ziwei` · `bazi` · `astro` · **`maya-tzolkin`** · **`nine-star-ki`** · **`numerology`** · **`akan`**. **Chart-UI:** `/home/karte/hd` ✅ · `/home/karte/ziwei` ✅ · `/home/karte/astro` ✅ First Cut. Übrige Systeme: API ohne Chart-Seite. Artefakte unter `projects/inner_compass/system_structure/` (siehe Playbook).
 
 ### Philosophische Konsolidierung ✅ (Z-Dokumente)
 - Z1 Gesamtwerk v0.5, Z2 User-Journey v0.1, Z3 Modell-Referenz v0.4, Glossar v1.2
@@ -316,7 +316,7 @@ Pfad A Natal-Parität (Decision 2026-08-27). Compute = iztro. LLM = Langdock gpt
 - [ ] User Data Model (user_persons, user_charts, user_progress, user_sessions)
 - [ ] Chart-Engine-Service (nutzt Phase-1-Engines)
 - [ ] IC Mandala Visualisierung
-- [ ] System-Chart-Renderer: HD BodyGraph, Astro Wheel, BaZi Pillars, Maya Kin
+- [x] System-Chart-Renderer First Cut: HD BodyGraph ✅ · Ziwei-Platte ✅ · Astro-Rad ✅ (2026-09-02). Offen: BaZi Pillars, Maya Kin, Overlay Astro
 - [ ] Handbuch-Generator (Tiefe 1–2)
 - [ ] 4 App-Spaces: JETZT, KARTE, WERKSTATT, ZEIT
 - [ ] WERKSTATT: Brunnen→Leiter Flow-Engine + Anker v1

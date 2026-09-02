@@ -1,5 +1,68 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-09-02: Astro Relink nach text2kg + scoped Häuser/Achsen-Synth
+
+**Kontext:** 14/14 natal text2kg completed. Erster Ground-Synth (25 EN) hatte MC, nicht AC/DC/IC. text2kg erweiterte `interpretation_ids`, setzte `interpretation_link_roles` nicht. Dry-Relink: alle Ground-Nodes würden sich ändern. Achsen-Stubs (`"AC"`). 7 Planeten schon Cap-6 Primaries + Wordings.
+
+**Decision:**
+
+1. Relink `--apply` auf das **ganze** Relink-Set (`astro_natal_relink_v1` 58/58), nicht nur Ground.
+2. Scoped Synth **nur 16 IDs:** 12 Häuser + `astro.angle.ascendant|descendant|midheaven|imum_coeli` via `ic_k2_synth_batch.py --force --only-id` (Langdock gpt-5-mini, EN). **Nicht** `ic_astro_natal_synth.py` — das syncht alle 28 Ground-IDs inkl. Planeten.
+3. **7 Planeten nicht `--force`.** Inspector funktioniert; Re-Synth wäre Würfeln.
+4. AC/DC/IC/MC Atome EN First Cut (desc 433–587, Wordings 776–904). DC 4 Primaries (dünneres Material). Häuser Cap 6.
+
+**Nicht:** Full-Synth, Overlay, DE-Atome, Planeten-Re-Synth, later-PDFs classify, Merge `main`.
+
+---
+
+## 2026-09-02: Astro-KARTE Rad — Körper-Selektion, Jobs ≠ Chunks
+
+**Kontext:** Seed 71, Relink `astro_natal_relink_v1`, Ground-Synth 25 EN lagen. Rad zeigte Linien bei Mond-in-Widder, kaum bei Sonne-in-Skorpion / AC-in-Krebs. Queue-Zähler „269“ klang nach Chunks.
+
+**Decision:**
+
+1. **Rad.** Tropisch + Whole Sign, Engine **celestine** (nicht sidereal). AC links. Körper auf ekliptikaler Länge. **Klick auf Körper** → nur seine Major-Aspekte (Slice 24). Hausklick = keine Linien. Konjunktion im selben Haus = Mini-Chord, kein Bug. AC-Atom bleibt dünn (Ground-Synth: MC, nicht AC). Inspector = Typ-Atome, Chrome DE, **kein Overlay**.
+2. **269** = completed `extract_interpretations`-**Jobs** über alle Systeme, nicht Chunks. Batch 50. Astro-Soll ≈ 14 Natal-Werke / ~3,6k+ Chunks minus mixed-skip.
+3. **HD-Zombie** `5ba2f841` (Bunnell *Definitive*, `running` seit 2026-08-10) nicht canceln unless asked. Blockiert den Astro-Worker nicht.
+4. **SoT:** `reference/astro_natal_ingest_runbook.md`. Branch `cursor/astro-natal`.
+
+**Nicht:** Linien fürs ganze Rad oder per Zeichen; Overlay/Mandala; Jyotish parallel; DE-Atome; Full-Synth; Spark-Qwen; later-PDFs classify.
+
+---
+
+## 2026-09-01: Astro K2 aus Katalog — Typen seeden, Instanzen nicht
+
+**Kontext:** Extract-ahead (MinerU) läuft. Skeleton-Seed war 39 hardcoded Nodes (`astro.aspect.conjunction` statt Katalog `astro.aspect_type.*`). Playbook sagt Seed aus `*_catalog_v0.json` vor text2kg. Frage: Katalog vs Engine-Instanz vs First Cut.
+
+**Decision:**
+
+1. **Drei Schichten.** (1) `astro_catalog_v0.json` = endliches Typ-Lexikon für Literatur/text2kg (~71 IDs: Körper/Punkte, Achsen, Zeichen, Häuser, Aspekt-*Arten*, Würden, Freuden, Sekte). (2) Engine-Instanz (`computeAstroChart`) erzeugt Placement/Paar-Aspekt/Chart-Ruler zur Laufzeit — **nicht** seeden. (3) First Cut = Produktfläche + Atomqualität, kein halber Katalog.
+2. **Seed jetzt aus Katalog.** `build_astro` liest Catalog + intra-Kanten aus `astro_structure_v0.json`. Whitelist `ic_astro_k2_catalog.py`, `IC_TEXT2KG_STRICT_ASTRO=true`. Aliase `astro.aspect.*` → `astro.aspect_type.*`. Reject: `astro.placement.*`, `astro.aspect.*__*`, Progression/Synastrie.
+3. **life_domain_map** in `astro_structure_v0.json` mit **contracts.md §2-Enums** (wie Ziwei). Katalog-`houses[].life_domain` bleibt Drift (nicht umschreiben). Haus 8 → `sexuality_intimacy` + `transformation_renewal`; Haus 12 → `transformation_renewal`. `maps_to_element` → `we.element.*` nicht seeden (cross-system, Ziel nicht im Astro-Seed).
+4. **Alte 5 `astro.aspect.*`-Skeleton-Nodes** gelöscht 2026-09-01 (0 Interps). Alias `astro.aspect.*` → `aspect_type` bleibt in der Whitelist.
+5. **Kein physisches PDF-Split.** Ein Extract, alle Chunks bleiben. Natal-First-Cut verdrahtet Mixed-Kapitel (Lilly II, Carmen IV/V) **nicht** an Natal-Atome. Transit/Horary = **zweite KG-Welle auf denselben Chunks**, kein zweites MinerU. Ganzes Timing-Werk: `wave` retaggen (Teachings `921e728e`). `ingest_note` ist Merker, kein Filter.
+
+**Nicht:** Kombinations-Nodes (`sun_aries`, `sun__moon__trine`), Katalog-Enum-Rewrite, MinerU unterbrechen, Spark-Worker für Whitelist neu deployen (Extract braucht das File nicht), Bücher in Natal/Transit-PDFs zerschneiden.
+
+---
+
+## 2026-08-31: Astro nächste KARTE — Extract-ahead, Transit/Horary/Psychologie getrennt
+
+**Kontext:** Ziwei-KARTE First Cut geschlossen. Nächste **App-Fläche** = westliches 12-Häuser-Rad (Astro), nicht BaZi-UI und nicht Jyotish. Frage: welche lokalen Werke durch MinerU, was analog HD-Transit / 流年 draußen bleibt.
+
+**Decision:**
+
+1. **Extract-ahead jetzt, volle KG-Kette nicht.** Acht unique PDFs → Spark MinerU `extract_text`, `extract_ahead=true`, kein classify/text2kg/Relink/Synth. Seed+Whitelist+Katalog-Drift erst vor der Astro-System-Welle / KARTE-UI.
+2. **Drei Park-Wellen neben Natal:** `astro_transit` (Hand *Planets in Transit*), `astro_psychological` (Rudhyar), `astro_horary` (Lilly Book II — PDF liegt, nicht extra extractet, steckt in den 3 Bänden). Worker `_parks_kg_downstream`. Gleiche Begründung wie 流年: Timing- oder Fremdschul-Sätze dürfen nicht an Haus/Planet-Natal-Atome.
+3. **Erste Tradition = hellenistic/medieval** (Ptolemy Book I, Dorotheus, Lilly natal, George Vol I+II). Clark 2006 = Epitome-Tag, kein zweiter Primärtext. 三合-Analog: Rudhyar nicht in denselben Wording-Topf.
+4. **Duplikate nicht nochmal MinerU:** Lilly Book II standalone; `astro/K2/` = Ptolemy root; `astro/K4/` = Clark root. George 2019 in `archiv/` ist **Vol I**, 2022 in `astro/` ist **Vol II** — beide.
+5. **Registry-Lücken nicht in dieser Welle beschaffen** (Brennan, Houlding, Sasportas, Tompkins, Arroyo, Valens, …).
+6. **SoT:** `reference/astro_natal_ingest_runbook.md`. Skript `ic_astro_natal_upload.py`.
+
+**Nicht:** Astro-UI, Enum-Rewrite prophylaktisch, Jyotish parallel, Horary-KG, Transit-UI, Full-Synth, Spark-Qwen.
+
+---
+
 ## 2026-08-31: Agent-Schichten getrennt — FLOP nicht Produktwährung
 
 **Kontext:** Überlegung, FLOP (Hayes) und „Agent Protocol“ (Cloudflare/Isenberg) in IC zu ziehen: User, fremde Agents, eigene Protagonisten-Agents, Airdrop-Testnet. Vision §7 (MCP-Readiness 2027) existiert schon; Makerkit-MCP ist Dev, nicht Produkt.
@@ -67,7 +130,7 @@
 | HD | nein (Typ/Zentren/Tore) | Leitdokument V.5: Typ+Autorität+Profil → Selbst | Sex/Geld/Austausch schwach natal |
 | Ziwei | 12 Paläste | `ziwei_structure_v0.json` `life_domain_map` = §2-Enums | Sex + Wandlung ohne Palast (Z3: 10/12) |
 | Jyotish | 12 Bhavas | `karakatva[]`, **kein** `life_domain` | ein Bhava → oft mehrere Domänen (Bhava 2 = Geld+Familie+Rede) |
-| Astro | 12 Häuser | **Drift:** Katalog-Enums ≠ §2 (`resources_values` vs `money_resources`, …) | Haus 8 mischt Sex/Geld/Wandlung |
+| Astro | 12 Häuser | `astro_structure_v0.json` `life_domain_map` = §2-Enums (Katalog-`houses[].life_domain` bleibt Drift) | Haus 8 mischt Sex/Wandlung (zwei Map-Zeilen) |
 | BaZi | nein (4 Pfeiler) | Struktur ohne Domain-Map | schlecht als Mandala-Test; gut als HD-Komplement |
 | I Ging | nein (64) | Hexagramm = HD-Tor (faktisch) | 8 Trigramme ≠ 12 Domänen |
 
@@ -75,7 +138,7 @@
 
 | Wenn ihr hier seid | Prüfen |
 |---|---|
-| Astro-UI oder Astro-Katalog anfassen | Enums in `astro_catalog_v0.json` an §2 angleichen oder explizites `life_domain_map` wie Ziwei. Nicht prophylaktisch. |
+| Astro-UI oder Astro-Katalog anfassen | Map liegt (`life_domain_map`). Katalog-Strings nicht umschreiben, bis UI sie liest. |
 | Jyotish-UI / Bhava-Routing | Multi-Map aus `karakatva` schreiben; nicht 1:1 erzwingen. |
 | Ziwei-KARTE | Vorhandene Map nutzen; Sex/Wandlung über Sterne, nicht Palast erfinden. |
 | BaZi-UI oder BaZi-Ingest | Kein 12-Rad erwarten. Pfeiler ≠ Häuser. |

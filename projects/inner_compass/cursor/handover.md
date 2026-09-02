@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-08-31
+last_update: 2026-09-02
 scope: Chat-Handover Inner Compass (Copy-Paste-Block + Themen-Anhänge)
 in_scope: aktueller Chart-Stand, Reboot, Code-Anker, Don'ts, Verweise
 out_of_scope: Implementierung; S5-Runbook-Details außer als Archiv unten
@@ -29,7 +29,7 @@ Pipeline-Wörter: cursor/pipeline.md §1a
 
 Gesamtprozess:
   Phase 0 Fundament 100% · Phase 1 Engines ~95% · Phase 2 Content ~75% · Phase 3 Cross-System 0%
-  Phase 4 App ~35% — vier Spaces als leere Shell; HD KARTE Graph visuell zu; Overlay-LLM v1o; Ziwei-Zusammenschau v3
+  Phase 4 App ~35% — vier Spaces als leere Shell; HD KARTE Graph visuell zu; Overlay-LLM v1o; Ziwei-Zusammenschau v3; Astro-Rad First Cut (kein Overlay)
 
 ROTER FADEN (Stand 2026-08-25; 1–17 bis 08-19, 18 = Chart-Visual):
   1. ✅ S5 E2E + HD Bodygraph-Wellen + HD S0 Close-out
@@ -54,7 +54,7 @@ ROTER FADEN (Stand 2026-08-25; 1–17 bis 08-19, 18 = Chart-Visual):
        Overlay-Cache `hd_overlay_v1n`. Mechanical-Atom: Read-time-Split nach defined/undefined (kein Wipe). Sakral-Zyklus am Defined-Satz; SP Cue-Split. Heart-Tor-Inventar nicht im Center-Atom. S0.5 Hint = nur dieser Slot.
  12. ✅ Stream F Channel-C Relink v1c (`ic_s0_channel_facet_relink.py`): `primary` + gift/shadow an **36/36**. Logic (63/4), Brainwave (20–57), Concentration (9–52) aus Circuitry. Type-unnamed skip. Type 4 = Transit, ungelesen. Inspector: Atom + Achse A. Overlay-Cache jetzt `hd_overlay_v1n`.
  13. ✅ Ego-Authority + Quadruple Relink (Four Views; HA2 ohne Authority-Essays). `ic_hd_authority_definition_relink.py --only` **ohne Synth**. ego_manifested/projected/self_projected haben wieder Primaries; quadruple Four-Views-Essays.
- 14. ✅ KARTE Register-IA (2026-08-18): Inspector = 5 Register **Zentren · Kanäle · Tore · Betriebssystem · Zusammenschau**. Default nach Berechnung = Zentren (alle 9, definierte zuerst, Akkordeon), Overlay-Absatz ist das **letzte** Register — Lookup vor LLM. Kanäle-Register listet alle definierten Kanäle + hängende Tore (aktiviert, Gegentor fehlt; deterministisch aus `chart.channels`). Chips bleiben Navigation, Register tragen den Inhalt. Trap unter dem Namen des Slots (secondary), nicht als eigene Sicht. Frequenz-Hinweis einmal pro Pane, nicht pro Zentrum. OS-Zeile mit Feldnamen (Typ/Strategie/Autorität/Profil/Definition/Kreuz) statt kontextloser Chips; Definition kommt aus `chart.nodes`, **nicht** in `headlines` (sonst Overlay-Hash-Miss). Geburtsformular klappt nach der ersten Berechnung weg (bis Onboarding steht).
+ 14. ✅ KARTE Register-IA (2026-08-18): Inspector = 5 Register **Zentren · Kanäle · Tore · Betriebssystem · Zusammenschau**. Default nach Berechnung = Zentren (alle 9, definierte zuerst, Akkordeon), Overlay-Absatz ist das **letzte** Register — Lookup vor LLM. Kanäle-Register listet alle definierten Kanäle + hängende Tore (aktiviert, Gegentor fehlt; deterministisch aus `chart.channels`). Chips bleiben Navigation, Register tragen den Inhalt. Trap unter dem Namen des Slots (secondary), nicht als eigene Sicht. Frequenz-Hinweis einmal pro Pane, nicht pro Zentrum. OS-Zeile mit Feldnamen (Typ/Strategie/Autorität/Profil/Definition/Kreuz/Viertel) statt kontextloser Chips; Definition kommt aus `chart.nodes`, Viertel aus der Persönlichkeits-Sonne — **nicht** in `headlines` (sonst Overlay-Hash-Miss). Geburtsformular klappt nach der ersten Berechnung weg (bis Onboarding steht).
  15. ✅ **Mapping Instanz → Def + Register „Körper"** (2026-08-18): neu `apps/web/lib/hd/hd-phs.ts` (`hd_variable_mapping_v1`): Pfeilposition = Primärschlüssel, `colorDefId/toneDefId/baseDefId`, 21 Def-IDs (`HD_PHS_DEF_CANONICAL_IDS`) immer im `wordingLookupIds`. `normalize-hd-chart.ts` reicht jetzt `color/tone/base` je Aktivierung **und** `variable` (vier Pfeile mit direction/aspect/defId) durch — beide Engine-Formen (`variable.<key>` des Adapters und `variable.arrows[]` der README) werden auf die Position gemappt.
        DB-Stand geprüft: **6 color_def · 6 tone_def · 5 base_def · 4 variable_def, alle mit Wording**; Engine-Kombi-IDs (`hd.color.48.3.2`) haben **0 Nodes** — genau die Lücke, kein Literatur-Thema.
        Engine-Ground-Truth (Dachau, `:8002`): `raw.variable = {digestion|environment|motivation|perspective: {value,name,aspect,def_type}, arrow_string "<<<>", short_code "PLR DLL"}`. Kurzcode/Pfeil-String = Engine-Label, **kein UI** (vier Ecken + Color.Tone reichen). Register Körper zeigt vier Pfeile (gleiche Chevron-Glyphe wie am Graph) + PHS-Tiefe **beider Sonnen**; Tore-Register zeigt Color/Tone/Base der gewählten Aktivierung.
@@ -81,17 +81,17 @@ ROTER FADEN (Stand 2026-08-25; 1–17 bis 08-19, 18 = Chart-Visual):
 
 Wörterbuch Chunk/Interp/Anhang/Synth/primary: cursor/pipeline.md §1a.
 
-Aktueller Punkt: **Makerkit 4.0.6** + **HD-Handbuch-Keil C→B**. **Ziwei KARTE First Cut geschlossen (2026-08-31):** dichte Platte, Chrome DE, Kleinstern-Lexikon 20/47 EN, Zusammenschau `ziwei_overlay_v3` (Lebenssatz+Belege, DE, keine Buchzitate). Paläste+身 scoped Re-Synth; 命宫 Life Palace; 化权 Authority; 天钺 Patronage (EN-Pinyin „Tianyue“ bis DE). Plate-Contract **5/5**. SoT Qualität: `reference/ziwei_natal_ingest_runbook.md`. Branches `cursor/ziwei-natal`. Nicht DE-Atome, nicht Handbuch-Generator.
+Aktueller Punkt: **Makerkit 4.0.6** + **HD-Handbuch-Keil C→B**. **Ziwei KARTE First Cut geschlossen (2026-08-31).** **Astro-KARTE First Cut (2026-09-02):** `/home/karte/astro` tropisch + Whole Sign, AC links, Big Three + Rad. Körper auf Grad; Klick auf Körper → nur seine Major-Aspekte (Slice 24). Hausklick = keine Linien. Konjunktion im selben Haus = Mini-Chord (wirkt leer). Inspector Typ-Atome (`astro.house.*` / `planet` / `aspect_type` / `angle.*`), Chrome DE, kein Overlay, keine Placement-IDs. Login-Person 1980-11-18 19:20 Berlin (AC Krebs, Sonne Skorpion H5, Mond Widder H10). Same-Birth-Test Fixture 1990-06-15 14:30, Ziwei-Plate 09:00 unangetastet. **Natal-KG:** 71 Katalog-Nodes, Wildwuchs 0. Interpret-Welle durch (~3217 Astro-Interps). **14/14 text2kg completed** (Catch-up 2026-09-02). Relink `astro_natal_relink_v1` **58/58 apply Abend** (Rollen nach t2k; unmatched Cap 200 = Whitelist). Erster Ground-Synth 25 EN (Häuser+7 Planeten+5 Majors+MC); **Nachzug 16 EN** (12 Häuser + AC/DC/IC/MC, `--force`, Langdock gpt-5-mini). AC/DC/IC nicht mehr Stub. 7 Planeten nicht re-synched. DC 4 Primaries. 18 failed = Altlast. HD-Zombie `5ba2f841` nicht canceln. Later-PDFs ohne Classify. SoT: `reference/astro_natal_ingest_runbook.md`. Branch `cursor/astro-natal`. Nicht DE-Atome, nicht Handbuch-Generator, nicht Full-Synth, nicht Spark-Qwen, nicht Overlay/Mandala, nicht Jyotish parallel.
 
 Nächstes Paket (Reihenfolge, nicht parallel):
   Gate) ✅ Nach Signup ohne `user_persons.role=self` → `/home/onboarding` (test@makerkit.dev ausgenommen). JETZT = Radar-Stub + CTA KARTE.
-  KARTE) Lebenswelt zuerst: Handbuch-Karte (HD-Gloss) oben, System-Charts als Quellen. Freeze am Graph halten. Graph-Labels nicht nach next-intl ziehen. **Ziwei-KARTE First Cut liegt.** Overlay-Sprache für Leser = spätere Welle. Optional Hub-Snippet / Gender im Onboarding. 杂 ohne primary nicht nachziehen unless asked.
+  KARTE) Lebenswelt zuerst: Handbuch-Karte (HD-Gloss) oben, System-Charts als Quellen. Freeze am Graph halten. Graph-Labels nicht nach next-intl ziehen. **Ziwei-KARTE First Cut liegt.** **Astro-KARTE First Cut liegt** (`/home/karte/astro`: Whole Sign, Selektion-Linien, Typ-Atome). Interpret+text2kg 14/14 durch; Relink 58/58 nach t2k; scoped Synth 16 (Häuser+AC/DC/IC/MC). Planeten nicht `--force`. Nächster Gate: Inspector-Stichprobe AC/Haus 1, dann Commit zwei Repos wenn gefragt. Overlay-Sprache Ziwei = spätere Welle. Astro-Overlay nicht in dieser Welle.
   Onboarding) ✅ 3 Steps + ein Insight (C-Text) + Resonanz ohne Persistenz → `/home/karte`. Unbekannt = 12:00 + kommunizieren.
   Overlay) HD-Linse freeze (v1o). **Ziwei-Zusammenschau `ziwei_overlay_v3`** — Lebenssatz+Belege, DE Chrome, keine EN-Buchdumps. URL+Key wie HD. Kleinstern 20/47 mit primary. Nicht Full-Synth, nicht DE-Atome, nicht 来因/流年-KG, nicht Handbuch-Generator, nicht Mandala.
   Locale) Keine Übersetzungs-Welle. Datums-Picker bleibt OS; Bestätigung folgt App-Chrome (`de`). Handbuch-Gloss ist fest DE.
-  Dynamik) Atom-Prozess liegt; System-Dynamik (`sys_dynamics` intra) und Cross-Dynamik **nicht** jetzt. Relink-Q still, nach UI-Mix.
+  Dynamik) Atom-Prozess liegt; System-Dynamik (`sys_dynamics` intra) und Cross-Dynamik **nicht** jetzt. Relink-Q ✅ 2026-09-01 (Mix-Split + Packer-Stichprobe; kein Wipe).
   Agent) Nicht bauen. Nur das Companion-Feld freihalten.
-  Git) Docs-Freeze auf Handover-Branch, Arbeit auf `cursor/ziwei-natal`. Code von `makerkit-v4`. Kein Merge auf main als Ziwei-Blocker.
+  Git) Docs-Freeze auf Handover-Branch. Astro-Arbeit auf `cursor/astro-natal` (Docs+Code, von `cursor/ziwei-natal`). Ziwei-First-Cut bleibt auf dem alten Branch. Kein Merge auf main als Astro-Blocker.
   Makerkit) **v4.0.6 da** (Branch `cursor/makerkit-v4`). Node ≥ 22.13 (pnpm 11).
   LLM) **Langdock gpt-5-mini** Standard (classify/interpret/synth). Spark-Qwen nicht. Key in `.env.development.local`. Nächste System-Welle: `cursor/reference/k2_foundation_wave_playbook.md` § Welle-Standard (nicht HD/Ziwei-Skript 1:1 kopieren).
   KARTE-nicht) 64keys Blau/Orange am Zentrum — erst wenn ein Chart den Mischfall belegt.
@@ -115,6 +115,7 @@ NACH REBOOT (Reihenfolge):
      Nach Env-Änderung Next neu starten, sonst bleibt Overlay auf der Lage-Vorlage.
      5. http://localhost:3000/home/karte/hd — letzter Chart lädt von allein (GET). Overlay-Cache v1o miss beim ersten Mal. Mechanik am Center nur noch dieser State.
      6. http://localhost:3000/home/karte/ziwei — GET lädt Platte + gecachte Zusammenschau (kein LLM-Wait). Neu rechnen = iztro + Overlay `ziwei_overlay_v3` (Langdock). Import nur `@ic/engines/ziwei`, nie den Barrel.
+     7. http://localhost:3000/home/karte/astro — GET lädt Rad wenn `user_charts.system_id=astro` liegt. Neu rechnen = celestine tropisch whole-sign, AC links, kein Overlay. Import `@ic/engines/astro`. Klick Körper = nur seine Aspekte; Haus = keine Linien. Inspector: Typ-Atome EN-Draft, Chrome DE. Login test@makerkit.dev = Person 1980-11-18 19:20.
 
 CODE:
   apps/web/app/[locale]/home/_components/hd-karte/
@@ -164,7 +165,21 @@ CODE:
   apps/web/scripts/ic_s05_open_center_concept.py
   apps/web/app/api/ic/hd-chart/route.ts
   apps/web/app/api/ic/ziwei-chart/route.ts
+  apps/web/app/api/ic/astro-chart/route.ts
   apps/web/app/api/ic/geocode/route.ts
+  apps/web/lib/astro/astro-chart-assemble.ts
+  apps/web/lib/astro/astro-chrome-de.ts
+  apps/web/lib/astro/astro-wheel-geometry.ts
+  apps/web/lib/astro/astro-wheel-model.ts
+  apps/web/app/[locale]/home/_components/astro-karte/astro-karte-view.tsx
+  apps/e2e/tests/ic/karte-astro.spec.ts
+  apps/web/scripts/ic_astro_k2_catalog.py
+  apps/web/scripts/ic_astro_mixed_skip.py
+  apps/web/scripts/ic_astro_natal_relink.py
+  apps/web/scripts/ic_astro_natal_synth.py
+  apps/web/scripts/ic_astro_natal_audit.py
+  apps/web/scripts/ic_start_langdock_worker.py
+  packages/engines/src/natal-same-birth-coverage.test.ts
   services/hd/src/hd_compute.py
 
 NICHT TUN:
@@ -173,6 +188,9 @@ NICHT TUN:
   Handbuch-Generator / 12×Tiefe 4 / tag_ic_metadata
   classify_domain Job-Typ umbenennen (Alias reicht; Decision 2026-08-27)
   Spark-Qwen als Interpret/Synth (Langdock ist Standard)
+  HD-Interpret-Zombie `5ba2f841` (Bunnell Definitive, running seit 2026-08-10) canceln/resetten unless asked
+  Aspektlinien fürs ganze Rad oder per Zeichen (nur Selektion); Overlay-LLM / Mandala / Jyotish parallel
+  7 traditionelle Planeten `--force` re-synchen (Cap-6 + Wordings liegen) unless asked
   流年凶灾详析 in der Natal-Welle (Extract ok, kein text2kg); 深造 wegen Dateigröße skippen
   别序/yuceweb; 四书-Ingest parallel zum laufenden Interpret
   安星法 Mention-Bloat „reparieren“ (Synth liest primary; Label-Hit nicht wieder an)
@@ -273,6 +291,7 @@ Zusätzlich lesen:
 Zusätzlich lesen:
 - cursor/pipeline.md (Jobs, Flows, Prompts, §10-12 NEU)
 - Worker-Specs in cursor/pipeline.md §7
+- Astro-Natal-Queue/Jobs: reference/astro_natal_ingest_runbook.md (269 = Jobs über alle Systeme, nicht Chunks)
 - Infra: infrastructure/spark/ (MinerU, LLM-Serving)
 ```
 
