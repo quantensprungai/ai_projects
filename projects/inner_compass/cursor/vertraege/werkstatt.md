@@ -21,6 +21,6 @@ Dritter Fuß des USP: Arbeit mit den Infos, nicht nur Beschreibung.
 
 **Tiefe:** Ziel 4 in allen 12. 1 Spiegel, 2 Muster, **3–4 = Werkstatt**. Safety-Gate vor 3–4.
 
-**Phase 2:** nur ein **Tor** — ein Satz aus `experiment_seed` des stärksten HD-Elements auf der Bereichsseite. Keine eigene Werkstatt-Seite.
+**Phase 2:** nur ein **Tor** — ein Satz aus `experiment_seed` des stärksten HD-Elements auf der Bereichsseite (`lib/ic/domain-assemble.ts`, Karte „Ein Experiment dazu“). Keine eigene Werkstatt-Seite. EN-Seeds werden nicht gezeigt; stattdessen ein deutscher Entwurfs-Hinweis.
 
 Material: `payload.process.{trap, gift_activation, experiment_seed}` ~100 % befüllt. `extract_pattern_traps` × Domäne → `sys_dynamics` erst Phase 5.

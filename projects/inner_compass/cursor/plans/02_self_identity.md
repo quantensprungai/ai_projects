@@ -18,7 +18,7 @@ Code-Repo: `code/inner_compass_app` (eigenes Git, Branch `cursor/astro-natal`). 
 2. Wirkungskanten sichten (nur lesen) — **erledigt 2026-09-04**
 3. Resonanz-Tabelle — **erledigt 2026-09-04**
 4. Handbuch-Stimme — **erledigt 2026-09-04**
-5. Route + Assembler
+5. Route + Assembler — **erledigt 2026-09-04**
 6. Browser, dann 3–5 echte Charts
 7. Phasen-Review 2
 

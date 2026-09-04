@@ -163,7 +163,7 @@ Lebensbereiche sind ein Tag, kein Schema-Constraint. Hinzufügen/Entfernen/Merge
 
 **Abruf:** nicht der Singular `payload.life_domain`. Soll = Kanten `belongs_to_domain` (multi, `candidate`/`approved`, evidence) auf Zielknoten `ic.life_domain.{enum}`. Plural `life_domains[]` nur dokumentiert, bis die Kanten existieren. Katalog-v0 (Haus/Palast/Bhava/OS) ist deterministisch; Literatur-Pass erst, wenn etwas die Kanten liest. SoT: `reference/decisions.md` 2026-09-04 und 2026-08-27; Vertrag `cursor/vertraege/domaene.md`.
 
-**Ist (2026-09-04, nach Plan-02 Todo 1):** 12 Zielknoten `ic.life_domain.*` (`system=meta`). Strukturelle `belongs_to_domain` (`approved`): HD-OS 30, Ziwei 12 Paläste, Astro 13 (Haus 8 doppelt). `sexuality_intimacy` strukturell genau eine Kante (`astro.house.8`). Inhaltlich HD: Schwelle v0 ≥3 Interps und ≥30 %, `candidate`. UI liest die Kanten noch nicht (Assembler ist Todo 5). Node-Metadata bleibt stehen.
+**Ist (2026-09-04, nach Plan-02 Todo 5):** 12 Zielknoten `ic.life_domain.*` (`system=meta`). Strukturelle `belongs_to_domain` (`approved`): HD-OS 30, Ziwei 12 Paläste, Astro 13 (Haus 8 doppelt). `sexuality_intimacy` strukturell genau eine Kante (`astro.house.8`). Inhaltlich HD: Schwelle v0 ≥3 Interps und ≥30 %, `candidate`. `domain-assemble.ts` liest die Kanten für `self_identity`; zwölf Bereichsseiten nicht vor Phase 6. Node-Metadata bleibt stehen.
 
 **Schicht-2-Name:** **Muster** (dieses Dokument §10, UX). `kern/IC_Fundament_v06.md` sagt „SYNTHESE“ — Altname, nicht UI.
 

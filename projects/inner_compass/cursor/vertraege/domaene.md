@@ -25,4 +25,6 @@ Zielknoten: `ic.life_domain.{enum}`, `system='meta'`, 12 Stück. Abruf über Kan
 
 **Ist (Plan 02 Todo 1, 2026-09-04):** 12 Zielknoten liegen. Strukturelle Kanten `approved` aus den Maps (HD-OS, Ziwei 10/12, Astro inkl. Haus 8 zwei Kanten). `sexuality_intimacy` strukturell nur Astro Haus 8. Inhaltliche HD-Kanten `candidate`, Schwelle v0 ≥3 Interps und ≥30 %. Node-Metadata bleibt.
 
+**Ist (Plan 02 Todo 5, 2026-09-04):** `lib/ic/domain-assemble.ts` liest `belongs_to_domain`, schneidet gegen Chart-Knoten, eine Karte pro Quelle (`approved` vor `candidate`). Route `karte/bereich/[domain]`, nur `self_identity` frei.
+
 **Ziwei** passt auf die Domänen-Achse. Es testet die Konvergenz-These nicht (Häuser-Stamm). Deshalb BaZi als nächste Content-Welle, nicht gegen Ziwei.
