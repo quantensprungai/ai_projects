@@ -18,6 +18,6 @@ Signal hängt an der **Handbuch-Karte**, nicht am KG-Knoten. Wenige Dutzend `car
 - `answer`, `wording_version`, `created_at`
 - RLS auf Account
 
-Onboarding-Resonanz (`ic-onboarding-view.tsx`, bisher nur UI-State) schreibt in dieselbe Tabelle.
+Onboarding-Resonanz (`ic-onboarding-view.tsx`) schreibt in dieselbe Tabelle (`card_key=hd.type`, `domain=self_identity`). UI-Chip `partial` wird als `partly` gespeichert.
 
-Gemeinsame Sprache später: Formulierungen mit vielen `yes` schärfen v0. Nicht der Start.
+**Ist (2026-09-04):** Tabelle + RLS in `apps/web/supabase/migrations/20260904130339_ic_resonance.sql`. Action `karte/bereich/_lib/resonance-action.ts`. Append-only, `account_id` kommt vom Server, nicht vom Client.
