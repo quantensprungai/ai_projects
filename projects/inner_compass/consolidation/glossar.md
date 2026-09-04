@@ -1,15 +1,16 @@
 # IC Konsolidierung — Kanonisches Glossar
 
 <!-- Reality Block
-last_update: 2026-03-31
+last_update: 2026-09-04
 status: v1.0
 scope: Kanonische Begriffsdefinitionen fuer alle IC-Dokumente
 purpose: Verwechslungsschutz + Wording-Konsistenz
 depends_on: ergebnis_modelle.md v0.9, z1_gesamtwerk.md, z3_modell_referenz.md
 -->
 
-> **Regel:** Wenn ein Begriff in einem IC-Dokument verwendet wird, gilt die hier definierte
-> kanonische Schreibweise. Alte/alternative Namen dienen nur dem Mapping zu frueheren Versionen.
+> **Regel:** Team-Schreibweise in Docs. **UI** folgt `cursor/vertraege/handbuch_stimme.md` und `cursor/nordstern.md` — Prozess-Konzepte (Brunnen, Leiter, Anker, Gezeiten, Gabel) dürfen Produktstruktur sein, Wörter im UI erst nach Testern. Prisma, 5D-Inhaltsraum, 9 Schritte, 7 Perspektiven, Stimme-Register = **Team-Vokabular, nie UI**. SoT-Enums der Lebensbereiche: `cursor/contracts.md` §2 (12), nicht die 10er-Tabelle unten.
+
+> **Regel (historisch):** Wenn ein Begriff in einem IC-Dokument verwendet wird, gilt die hier definierte Schreibweise. Alte/alternative Namen dienen nur dem Mapping zu früheren Versionen.
 
 ---
 
@@ -71,7 +72,9 @@ depends_on: ergebnis_modelle.md v0.9, z1_gesamtwerk.md, z3_modell_referenz.md
 
 ---
 
-## 10 Domaenen (Mandala) — kanonische Bezeichnungen
+## 10 Domaenen (Mandala) — veraltet
+
+> **Veraltet.** SoT sind 12 Enums in `cursor/contracts.md` §2 (`self_identity` … `transformation_renewal`), inkl. `exchange_learning` und `transformation_renewal`. Tabelle bleibt als Mapping auf Leitdokument v5.1.
 
 | # | Kanonischer Name | Ring | NICHT verwechseln mit |
 |---|---|---|---|

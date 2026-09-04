@@ -161,14 +161,19 @@ User-facing Navigation. Tag `life_domain` im Interpretations-Payload.
 
 Lebensbereiche sind ein Tag, kein Schema-Constraint. Hinzufügen/Entfernen/Mergen jederzeit möglich.
 
-**Abruf:** nicht der Singular `payload.life_domain`. Soll = Kanten `belongs_to_domain` (multi, `candidate`/`approved`, evidence). Plural `life_domains[]` nur dokumentiert, bis die Kanten existieren. Katalog-v0 (Haus/Palast/Bhava/OS) ist deterministisch; Literatur-Pass erst, wenn etwas die Kanten liest. SoT: `reference/decisions.md` 2026-08-27.
+**Abruf:** nicht der Singular `payload.life_domain`. Soll = Kanten `belongs_to_domain` (multi, `candidate`/`approved`, evidence) auf Zielknoten `ic.life_domain.{enum}`. Plural `life_domains[]` nur dokumentiert, bis die Kanten existieren. Katalog-v0 (Haus/Palast/Bhava/OS) ist deterministisch; Literatur-Pass erst, wenn etwas die Kanten liest. SoT: `reference/decisions.md` 2026-09-04 und 2026-08-27; Vertrag `cursor/vertraege/domaene.md`.
+
+**Ist (2026-09-04):** Seed schreibt die Zuordnung als **Node-Metadata**, nicht als Kante. Die 12 Zielknoten existieren nicht. UI liest `life_domain` nicht. Zwei Wege nachziehen: strukturell aus den Maps (`approved`) und inhaltlich aus `payload.life_domain` (~99 % an Interpretations, `candidate`). HD hat **keine** `life_domain_map` — „OS → `self_identity`“ war Docs, nicht Daten; jedes System spricht trotzdem in jeden Bereich.
+
+**Schicht-2-Name:** **Muster** (dieses Dokument §10, UX). `kern/IC_Fundament_v06.md` sagt „SYNTHESE“ — Altname, nicht UI.
 
 **Katalog vs. dieses Enum (Drift — erst prüfen, wenn das System gelesen wird):**
 
 | Datei | Stand |
 |---|---|
-| `system_structure/ziwei_structure_v0.json` `life_domain_map` | nutzt die Enums dieser Tabelle |
+| `system_structure/ziwei_structure_v0.json` `life_domain_map` | nutzt die Enums dieser Tabelle. **Deckt 10/12:** `family_home` und `exchange_learning` je zwei Paläste; `sexuality_intimacy` und `transformation_renewal` ohne Palast |
 | `system_structure/astro_structure_v0.json` `life_domain_map` | nutzt die Enums dieser Tabelle (Haus 8 zwei Zeilen). Katalog-`houses[].life_domain` bleibt Drift |
+| `system_structure/hd_structure_v0.json` | **keine** `life_domain_map`. Inhaltlich getaggt an Interpretations; strukturelle OS-Map folgt in Phase 2 |
 | `system_structure/astro_catalog_v0.json` `houses[].life_domain` | **andere** Strings (`resources_values`, `home_roots`, …) — Seed liest sie **nicht**; Map ist SoT |
 | `system_structure/jyotish_catalog_v0.json` `bhavas` | `karakatva[]`, kein `life_domain` — Multi-Map schreiben, wenn Jyotish geroutet wird |
 | BaZi / I Ging | kein 12-Rad (4 Pfeiler / 64 Hexagramme) |
@@ -266,7 +271,7 @@ strength:      'low' | 'medium' | 'strong' | 'dominant'
 
 `maps_to` + `cross_system` = Cross-System-Mapping (Schicht D).
 
-`belongs_to_domain` = Element → Lebensbereich (§2). Ziwei-Paläste: `candidate` in Node-Metadata aus `life_domain_map` (Seed 2026-08-27). Ziel-Node später `ic.life_domain.{enum}` (12 Stück). Multi erlaubt. Leitdokument IX.4; Decision 2026-08-27. Nicht verwechseln mit Job `classify_domain` (der taggt `system_id`).
+`belongs_to_domain` = Element → Lebensbereich (§2). **Ist:** Node-Metadata aus `ic_seed_structure.py` (Seed 2026-08-27), keine Kanten, keine Zielknoten. **Soll:** Kanten auf `ic.life_domain.{enum}` (12 Stück), `approved` strukturell / `candidate` inhaltlich. Multi erlaubt. Vier Familien: `cursor/vertraege/kanten.md`. Decision 2026-09-04. Nicht verwechseln mit Job `classify_domain` (der taggt `system_id`).
 
 ## 6. Dynamic-Types
 

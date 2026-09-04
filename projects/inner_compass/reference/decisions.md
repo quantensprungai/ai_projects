@@ -1,5 +1,25 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-09-04: Nordstern — Verträge vor Content, Anker im Repo
+
+**Kontext:** Handbuch/Mandala-Impuls, zwei Reviews (Bestand + grüne Wiese), Gründer-Korrektur: erster App-Bau, nachträglich anfassen ist teuer, Prozess-Konzepte sind USP nicht Ballast, HD spricht in alle Bereiche (Seed-Artefakt), Kanten haben vier Familien, Sprache v0 ist vorgegeben, Verbreitung gehört zur Landkarte. Cursor-Pläne sind chatgebunden und dürfen nicht der Anker sein.
+
+**Decision:**
+
+1. **Anker dreistufig.** `cursor/nordstern.md` (Warum), `cursor/roadmap.md` (laufend), `cursor/plans/<nn>_<phase>.md` (Arbeitsfassung). Jeder neue Chat liest die Roadmap. Phasen-Review ist Pflicht vor dem nächsten Plan.
+2. **Verträge vor Content.** Content fließt durchs Fließband; teuer nachzurüsten sind Domäne, Kanten, Status, Resonanz, Handbuch-Stimme, Sprache, Werkstatt. Eine Domäne (`self_identity`) macht die Verträge sichtbar, bevor zwölf gebaut werden.
+3. **USP drei Füße:** Provenienz, Resonanz+Konvergenz, Prozess (Werkstatt). Ein-Satz in `nordstern.md`. Prozess-Konzepte (Brunnen, Leiter, Anker, Gezeiten, Gabel) = Produktstruktur. Prisma/5D/9 Schritte/7 Perspektiven = Team-Vokabular, nie UI.
+4. **Lebensbereiche:** 12 aus der Zwölfteilung, Ringe Kern/Nah/Feld. Jedes System in jeden Bereich — strukturelle Kanten (`approved`) und inhaltliche aus `payload.life_domain` (`candidate`). Schicht 2 heißt **Muster** (contracts §10); Fundament-„SYNTHESE“ ist Altname.
+5. **Nächste Content-Welle = BaZi** (nach Phase 2). Astro reicht als zweite Stimme im Slice, nicht als HD-Stand. Ziwei bleibt auf der Domänen-Achse.
+6. **Sprache:** Atome EN, Chrome DE, Handbuch formuliert nicht übersetzt. Keine Übersetzungswelle.
+7. **Altes Handover** nach `cursor/reference/handover_2026-09_archiv.md`. Rules nur noch Leitplanken.
+
+**Nicht:** Mandala mit Katalog-Occupancy; zwölf Bereichsseiten jetzt; Glossar-Kunstbegriffe im UI; Merge `main`; alle Werke chunken bevor die Verträge stehen.
+
+**SoT:** `cursor/nordstern.md`, `cursor/roadmap.md`, `cursor/vertraege/`.
+
+---
+
 ## 2026-09-03: Dünne HD-Authorities — Mix demoten, Restbücher parken, kein Synth
 
 **Kontext:** Definitive-Interpret-Loch geschlossen (632/632 Chunks, 188 neu am 03.09.). text2kg `39b0fbf6` lief mit (kein Synth). 200 unmatched = strict-Cap (`asset_chunk` / unresolved), nicht die dünnen Nodes. ego_*/self_projected unverändert dünn; neue Definitive-Interps ohne Ego-Essence. Self-Projected-Primary `10829c13` mischte G→Kehle mit Mental-Projector-Umgebung.

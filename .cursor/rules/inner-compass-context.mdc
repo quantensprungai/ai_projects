@@ -1,76 +1,23 @@
 ---
-description: Inner Compass Projekt-Kontext – Einstiegspunkte für Architektur, Pipeline, Contracts, MCP-Tools
+description: Inner Compass — Leitplanken. Anker ist die Roadmap, nicht diese Rule.
 globs: projects/inner_compass/**/*,code/inner_compass_app/**/*
 alwaysApply: false
 ---
 
-# Inner Compass Kontext
+# Inner Compass
 
-## Einstieg (immer zuerst lesen)
+Zuerst lesen: `projects/inner_compass/cursor/roadmap.md`, dann den dort verlinkten Phasen-Plan. Warum: `cursor/nordstern.md`. Verträge: `cursor/vertraege/`.
 
-- **Handover:** projects/inner_compass/cursor/handover.md
-- **Facetten-Vertrag:** projects/inner_compass/cursor/contracts.md **§1a + §1b**
-- **HD State:** projects/inner_compass/reference/hd_state_contract.md
-- **Chart/Overlay:** projects/inner_compass/reference/hd_bodygraph_overlay_contract.md
-- **Layer-Ist + Lücken:** projects/inner_compass/reference/hd_layer_master_checklist_2026-08-11.md (Delta 2026-08-17)
-- **Nächstes Element:** projects/inner_compass/cursor/pipeline.md §12a
-- **Pipeline-Wörterbuch:** projects/inner_compass/cursor/pipeline.md **§1a** (Chunk, Interp, Anhang, Node, Synth, Relink, primary)
-- **Status (breit):** projects/inner_compass/cursor/status.md
+## Leitplanken (Schaden verhindern)
 
-## Zentrale Contracts (Implementierung)
+- Antworte auf Deutsch.
+- Docs-Repo ≠ Code-Repo. Nested `code/inner_compass_app/` nicht ins Docs-Repo committen.
+- Kein `supabase db reset` (KG lebt lokal).
+- Kein Force-Push, kein Merge `main` in diesem Slice.
+- Kein Auto-Synth. Kein Spark-Qwen als Interpret oder Synth. Langdock bleibt Standard.
+- Nicht committen: `.env*`, `_tmp_*`, Flora/ESF, PDFs in `scripts/`.
+- HD-Zombie-Job `5ba2f841` nicht anfassen.
 
-- **Dimensionen, Payloads, Enums, Facetten:** projects/inner_compass/cursor/contracts.md
-- **Schema, Schichten, Tech Stack:** projects/inner_compass/cursor/architecture.md
-- **Pipeline-Jobs, Flows:** projects/inner_compass/cursor/pipeline.md
-- **Chart-Engines:** projects/inner_compass/cursor/engines.md
-- **HD-Schulen / Gate-Stimmen:** engines.md §6.7b; Decision `reference/decisions.md` 2026-08-13 HD-Schulen
-- **Synthesis-Qualität (Canon-first):** projects/inner_compass/cursor/reference/synthesis_canon_first.md
-- **Canon Auth/Def (YAML):** projects/inner_compass/reference/canon/hd_auth_def_canon_v1.yaml
-- **Phase 1 Playbook (pro System: Katalog → Struktur → Validierung):** projects/inner_compass/reference/engine_integration_playbook.md
-- **Decisions (oben zuerst):** projects/inner_compass/reference/decisions.md — 2026-08-17 State-Vertrag, 2026-08-15 Facetten, 2026-08-14 Rails/Overlay
+## Nicht hier
 
-## Prinzipien
-
-- Schema nutzt `sys_*`-Präfix (NICHT `hd_*`). Siehe architecture.md.
-- 15 Dimensionen (nicht 12). Siehe contracts.md.
-- **12 Lebensbereiche** (erweitert von 10, März 2026). Siehe contracts.md.
-- Canonical IDs: `{system}.{element_type}.{element_id}` (z.B. `hd.gate.34`)
-- Alle Payloads sind jsonb. Dimensions sind nullable.
-- Strukturbäume aus Deskriptoren (system_descriptors/*.json), NICHT aus PDFs.
-
-## Code-Repo
-
-- **Repo:** `code/inner_compass_app/` — Makerkit **4.0.6**, Next 16.3.3 (Branch `cursor/makerkit-v4`)
-- **GitHub:** quantensprungai/inner-compass-app (privat), Upstream: makerkit/next-supabase-saas-kit-turbo
-- **TS-Engines:** `packages/engines/` (@ic/engines, npm-basiert)
-- **Python-HD:** `services/hd/` (FastAPI, Docker :8002, GPL-isoliert, `HD_SERVICE_URL`). Compose: `services/hd/docker-compose.yml` (`restart: unless-stopped`). Nicht Makerkit-Compose.
-- **Python-Jyotish:** `services/jyotish/` (FastAPI, Docker, AGPL-isoliert)
-- **Makerkit MCP:** `packages/mcp-server/` (DB, Migrations, Env, Dev, Translations)
-
-## Architektur
-
-- **Control Plane:** Supabase Cloud (Postgres + pgvector + Auth + Storage)
-- **Data Plane:** Spark (MinerU GPU). LLM über **Langdock** (`gpt-5-mini`); SGLang kann aus bleiben. Worker: `apps/web/scripts/ic_start_langdock_worker.py` (classify/term/interpret/text2kg, **kein** Synth).
-- **Engine-Architektur:** Hybrid TS-first (TS in Next.js + Python-Microservices für **HD** und **Jyotish**)
-- **Chart-UI:** `/home/karte/hd` — Bodygraph + Rails + Overlay-LLM v1o. Graph visuell zu (helle Jovian-Zentren, Kanalhälften, Hanging, Variable-Chevrons, keine Gate-Chips). Polaritäts-Lookup **AN**. Glyphs: ▲ exalted / ▼ detriment / gestapelt = Stern = both. **R** an der Aktivierung. Color/Tone-Ziffern an den Rails. Inspector Tore: I’Ching-Pol-Absätze (Line-C). Register: Zentren · Kanäle · Tore · Betriebssystem · Körper · Fakten · Zusammenschau. Letzter Chart: SessionStorage + GET. Contract: overlay-contract + `hd_state_contract.md` + `cursor/reference/figma_karte_contract.md` §4b. HD-Docker: `docker compose -f services/hd/docker-compose.yml up -d` (`ic-hd-service` :8002).
-
-## MCP-Tools (3 Server)
-
-| Server | Zweck | Nutzung |
-|--------|-------|---------|
-| **Makerkit Kit MCP** (`packages/mcp-server/`) | DB-Schema, Migrations, Env, Dev-Services, Translations, Scripts | `pnpm --filter "@kit/mcp-server" build` → Cursor mcp.json |
-| **Supabase MCP** (plugin-supabase-supabase) | Supabase Management API, direkte SQL-Queries | Bereits im Workspace, Auth nötig |
-| **Makerkit CLI MCP** | Plugin-Installation, Upstream-Updates, Merge-Konflikte | Via `npx @makerkit/cli@latest makerkit-cli-mcp` |
-
-Makerkit MCP = lokaler Code & Schema. Supabase MCP = Cloud-DB. Beide unabhängig, ergänzen sich.
-
-## Bei Unsicherheit
-
-- projects/inner_compass/README.md — Gesamtindex
-- projects/inner_compass/reference/decisions.md — Warum wurde X so entschieden?
-- projects/inner_compass/reference/prd_v3.md — Vollständige Produktvision
-
-## Wichtig: Alte Docs
-
-- **Nicht SoT:** `scratch/`, `projects/hd_saas/`, `code/hd_saas_app_archived/`, `projects/inner_compass/consolidation/`. Z-Dokumente sind in `cursor/` konsolidiert (status.md).
-- Wenn du Widersprüche findest: **Decision/Contract (neueres Datum) gewinnt.** Nicht die ganze `reference/` linear lesen — §12a in pipeline.md ist die Leseliste.
+Keine Pipeline-Leseliste, keine Chart-Anker, keine Verbotsliste über die Leitplanken hinaus. Das steht in Roadmap, Verträgen und Decisions.

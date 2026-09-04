@@ -1,0 +1,23 @@
+<!--
+Reality Block
+last_update: 2026-09-04
+scope: Ja/Teilweise/Nein an der Handbuch-Karte
+in_scope: Tabelle, Granularität, Onboarding
+out_of_scope: Trainingsdaten, KG-Knoten-Feedback
+-->
+
+# Vertrag: Resonanz
+
+Signal hängt an der **Handbuch-Karte**, nicht am KG-Knoten. Wenige Dutzend `card_key`, nicht Tausende Tore.
+
+**Antworten:** `yes` | `partly` | `no`. Anfangs qualitativ (welcher Satz trifft). Keine Trainingsdaten, keine Scores.
+
+**Tabelle `ic_resonance` (Phase 2):**
+- `account_id`, `card_key` (grob: `hd.type`, `hd.strategy`, `astro.asc_house1`, …), `domain`, `system`
+- `canonical_ids[]` nur Referenz
+- `answer`, `wording_version`, `created_at`
+- RLS auf Account
+
+Onboarding-Resonanz (`ic-onboarding-view.tsx`, bisher nur UI-State) schreibt in dieselbe Tabelle.
+
+Gemeinsame Sprache später: Formulierungen mit vielen `yes` schärfen v0. Nicht der Start.

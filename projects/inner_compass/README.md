@@ -6,7 +6,11 @@
 
 | Frage | Datei |
 |-------|-------|
-| Was ist der aktuelle Stand? | `cursor/status.md` |
+| **Zuerst lesen (neuer Chat)** | `cursor/roadmap.md` |
+| Warum / Ein-Satz / USP | `cursor/nordstern.md` |
+| Fünf Screens | `cursor/produktkarte.md` |
+| Verträge (Domäne, Kanten, Status, …) | `cursor/vertraege/` |
+| Was ist der aktuelle Stand? | `cursor/status.md` (breit) + Roadmap (aktuell) |
 | Wie übergebe ich an neue KI-Session? | `cursor/handover.md` |
 | Wie sieht das Schema aus? | `cursor/architecture.md` + `cursor/contracts.md` |
 | Wie funktioniert die Pipeline? | `cursor/pipeline.md` |
