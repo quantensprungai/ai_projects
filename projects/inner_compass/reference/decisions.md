@@ -1,5 +1,17 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-09-04: Domänen-Substrat gelegt — Schwelle v0 für inhaltliche Kanten
+
+**Kontext:** Plan 02 Todo 1. 12 Knoten `ic.life_domain.*` (`system=meta`), 55 strukturelle `belongs_to_domain` `approved` (HD-OS 30, Ziwei 12, Astro 13). Inhaltlicher HD-Pass aus `payload.life_domain`: 443 Paare über Schwelle, 418 `candidate` neu. Der Plan sah die Schwelle als (S)-Entscheidung nach Dry-Run vor; der ausführende Chat hat sie gesetzt und angewendet.
+
+**Decision:** Schwelle v0 = ≥3 Interpretationen **und** ≥30 % Anteil pro Node. Bleibt stehen, weil `candidate` reversibel ist und nichts sie liest. Wird in Phasen-Review 2 gegen die Bereichsseite geprüft, nicht vorher. `sexuality_intimacy` strukturell nur Astro Haus 8 — nicht kosmetisch auffüllen. Seed-Apply nur über `--only-domain-routing`.
+
+**Befund (offen, nicht dieser Slice):** Worker-Prompt kennt die alten 10 Enums; `exchange_learning` und `transformation_renewal` haben 0 Payload-Tags. `relationships_community` ist mit 199 Treffern der lauteste Cluster — vermutlich Sammelbecken. Vor Phase 6 Prompt-Enums angleichen; kein Re-Synth dafür.
+
+**SoT:** `cursor/vertraege/domaene.md` Ist-Block, `cursor/contracts.md` §2.
+
+---
+
 ## 2026-09-04: Nordstern — Verträge vor Content, Anker im Repo
 
 **Kontext:** Handbuch/Mandala-Impuls, zwei Reviews (Bestand + grüne Wiese), Gründer-Korrektur: erster App-Bau, nachträglich anfassen ist teuer, Prozess-Konzepte sind USP nicht Ballast, HD spricht in alle Bereiche (Seed-Artefakt), Kanten haben vier Familien, Sprache v0 ist vorgegeben, Verbreitung gehört zur Landkarte. Cursor-Pläne sind chatgebunden und dürfen nicht der Anker sein.

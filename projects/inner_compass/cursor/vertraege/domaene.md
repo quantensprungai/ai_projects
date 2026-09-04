@@ -23,6 +23,6 @@ out_of_scope: Mandala-Geometrie, Content-Füllung
 
 Zielknoten: `ic.life_domain.{enum}`, `system='meta'`, 12 Stück. Abruf über Kanten, nicht über `payload.life_domain`. Node-Metadata darf stehen bleiben.
 
-**Ist (vor Phase 2):** Seed schreibt Metadata, keine Zielknoten, keine Kanten. Ziwei-Map deckt 10/12 (`sexuality_intimacy`, `transformation_renewal` ohne Palast). HD ohne strukturelle Map.
+**Ist (Plan 02 Todo 1, 2026-09-04):** 12 Zielknoten liegen. Strukturelle Kanten `approved` aus den Maps (HD-OS, Ziwei 10/12, Astro inkl. Haus 8 zwei Kanten). `sexuality_intimacy` strukturell nur Astro Haus 8. Inhaltliche HD-Kanten `candidate`, Schwelle v0 ≥3 Interps und ≥30 %. Node-Metadata bleibt.
 
 **Ziwei** passt auf die Domänen-Achse. Es testet die Konvergenz-These nicht (Häuser-Stamm). Deshalb BaZi als nächste Content-Welle, nicht gegen Ziwei.
