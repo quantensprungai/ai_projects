@@ -13,13 +13,15 @@ UI-Kurzname: ASTRA IMC
 Tech: Next.js (Makerkit Turbo) + Supabase (Postgres, PostGIS, Auth, Storage, RLS)
 Workspace: ai-projects Root — Doku + Code + Infra zusammen (NICHT nur projects/rest_data_platform/)
 
-Stand (2026-08-27) — Plan: projects/rest_data_platform/cursor/next_plan.md
+Stand (2026-09-04) — Plan: projects/rest_data_platform/cursor/next_plan.md
   - Doku: projects/rest_data_platform/ · Code: code/astra-imc-platform/ → quantensprungai/astra-imc-platform
   - Branch UI: `feat/assets-ia-restructure` (Waves + Dossier + Grid/OHVS + 4C-Turbine-Typ + MaStR Units)
+  - App live: https://imc.ostfriesland.ai (Coolify) · Supabase Cloud `pfprwudrfkugvzpjyrvj` · Team-Slug **astra-imc**
+  - Schema + curated IMC-Daten in Cloud = lokal (Farms 3606 · Häfen 118 · ERA5 hourly 23232 · Units 1651). Roh-Excel `imc_source_raw_rows` nur lokal. Re-Seed: CLI `db query --linked`, **kein MCP**.
   - Makerkit catalog + Passkeys/react-email/native-sharing auf main (PR #1 merged)
   - Schema: IMC v1/v1.2 + MaStR + Natura + Häfen + ERA5 + CAPEX/OPEX/Events + Vessel + Grid/Platforms + Turbine-Models
   - Dual-Track: Postgres = SoT; AAS = Export. Partner: CSV/View, nicht AAS.
-  - Zahlen lokal: Farms 3606 · Grid ~1423 · Platforms ~686 · Turbine-Models ~369 (~619 Farms gelinkt) · MaStR 33 accepted / 1651 Units · Natura ~205 · Häfen 118 / 677
+  - Zahlen lokal=Cloud curated: Farms 3606 · Grid ~1423 · Platforms ~686 · Turbine-Models ~369 (~619 Farms gelinkt) · MaStR 33 accepted / 1651 Units · Natura ~205 · Häfen 118 / 677
   - ERA5 daily: 3 Parks / 1858 Tage. Hourly: AV **CDS** ~23k h (2024-01→2026-08, `cds+hourly`).
   - Nav: Assets → Waves → Economics → Vessels
   - Park-Steckbrief: Site-Design + Netz/OHVS (Owner) + **4C-Turbine-Typ (MW/Ø/HH)**; Einheiten = MaStR-Stückliste
@@ -28,7 +30,7 @@ Stand (2026-08-27) — Plan: projects/rest_data_platform/cursor/next_plan.md
   - Logistik am Park: Akteure (~3633) · VPI-Einsätze DE (~1183) · Sim-Rollen nur AV-Pilot
   - Locale: EN Workspace; nach i18n-Keys `next dev` neu starten
   - IA: marc_anylogic_v0 + thomas_lca_v0 · Präsi: team_stand_plan_2026_08.md (+ PPTX)
-  - Cloud IMC pausiert; lokal Docker + pnpm supabase:web:*
+  - Marketing intern (Anmelden/Kontakt); `/docs` umgeleitet. Invites ohne SMTP (Link kopieren); EMAIL_SENDER fehlt noch.
 
 Zielbild MVP (5–12 Wochen):
   Login/Rollen, Offshore-Asset-Register, minimaler Export.
@@ -44,8 +46,9 @@ Lies zuerst:
 
 Nächster Schritt:
   1) ~~Stage A Backbone / Assets-IA / Grid-OHVS / MaStR / 4C-Turbine-Typ~~ — Daten-Backlog light fertig
-  2) **Marc-Sync** (Stunden-CSV + Katalog + Barge/IA) · parallel **PR → main** wenn Demo ok
-  3) Optional: DE-ERA5; Thomas BOM; Shubham AAS
+  2) ~~Coolify + Cloud-Daten auf Team astra-imc~~ — siehe cursor/cloud_bootstrap.md
+  3) **Marc-Sync** (Stunden-CSV + Katalog + Barge/IA) · parallel **PR → main** wenn Demo ok
+  4) Optional: EMAIL_SENDER/SMTP; DE-ERA5; Thomas BOM; Shubham AAS
   Geblockt: BOM Thomas; Sequenz/Sim-CSV Marc; Vessel-Wetter final; Barge-Typ
   Nicht: Transmission-Vollimport; GIS-Router; 4C↔MaStR unit-Join; Contracts-17k; Decom aus 4C; Sim/LCA in App
 

@@ -1,8 +1,8 @@
 <!-- Reality Block
-last_update: 2026-08-27
+last_update: 2026-09-04
 status: active
 scope:
-  summary: "Aktiver Arbeitsplan ASTRA IMC — Daten-Backlog light fertig; nächster Hebel Marc-Sync / PR."
+  summary: "Aktiver Arbeitsplan ASTRA IMC — Cloud live mit curated Daten; nächster Hebel Marc-Sync / PR."
   in_scope:
     - next implementation order
     - glossary for events vs marc steps
@@ -11,13 +11,14 @@ scope:
     - full roadmap rewrite
     - GIS routing product
 notes:
+  - "2026-09-04: Coolify live; curated IMC-Daten in Cloud auf Team astra-imc (3606 Farms)."
   - "Handover-Block in handover.md parallel aktualisieren."
   - "2026-08-27: 4C Turbine-Modelle (~369 / ~619 Farms) im Steckbrief; Grid/OHVS; MaStR 1651 Units."
   - "2026-08-27: Grid light + OHVS/Platforms + MaStR park_key-Fix; Site-Design; Assets-IA; Vessel Marc-Felder."
   - "2026-08-26: Stakeholders/VPI DE; CAPEX-Portfolio; CDS-Stunden AV."
 -->
 
-# Aktiver Plan (2026-08-27)
+# Aktiver Plan (2026-09-04)
 
 ## Wo liegt was?
 
@@ -61,7 +62,8 @@ Plattform = **Offshore-Register + Logistik + Economics + Wetter + Waves**, aus d
 | Schiffseinsätze (VPI) | DE light ~**1183**; AV ~60; UI Filter; globale Tabelle scrollbar + Schiffname |
 | Sim-Rollen (Pilot) | AV: CTV/SOV/WTIV × Phase (kuratiert); UI-Text ohne Partnernamen |
 | Akteure | DE Supply Chain ~**3633**; Parties-CSV Export |
-| Code-Branch | `feat/assets-ia-restructure` ( gepusht ) |
+| Code-Branch | `feat/assets-ia-restructure` (gepusht) |
+| Cloud | **Live:** https://imc.ostfriesland.ai · Team `astra-imc` · curated Daten 2026-09-04 = lokal (3606 Farms, 118 Häfen, 23k ERA5-h). Roh-Excel nicht in Cloud. Details: `cursor/cloud_bootstrap.md` |
 | Locale / i18n | Workspace hält `/en/`; Message-Cache → Restart nach neuen Keys |
 
 ### Park-Blöcke (verbindlich)
@@ -112,7 +114,7 @@ Details + Owner-Matrix + Barge-Offenpunkt: `01_spec/interface_agreement_marc_any
 | Priorität | Was | Warum |
 |-----------|-----|--------|
 | **1 Jetzt** | **Marc-Sync** (Stunden-CSV, Katalog-Defaults, Barge, Snapshot-IA) | Fachblocker; ETL-Breite ist ausreichend |
-| **1 parallel** | **PR** `feat/assets-ia-restructure` → main wenn Demo ok | Code einfrieren |
+| **1 parallel** | **PR** `feat/assets-ia-restructure` → main wenn Demo ok | Code einfrieren; Coolify+Cloud-Daten stehen |
 | **2 Partner** | Thomas BOM/LCA an Einheiten-Anker; Shubham AAS-Schnitt | nicht aus 4C ableitbar |
 | **3 Optional** | DE-ERA5-Tagesbatch; Katalog-Zahlen mit Marc; MaStR-Rest nur klar | kein Sim-/BOM-Blocker |
 | **Nicht** | Transmission-Vollimport, GIS-Router, unitweiser 4C↔MaStR-Join, Contracts-17k | Scope |

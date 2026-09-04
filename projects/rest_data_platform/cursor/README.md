@@ -2,8 +2,8 @@
 
 > **Projekt:** ReST Data Platform (ASTRA WP 5.2) — Pilot WP 2.1 Offshore Circular Economy / IMC  
 > **UI-Kurzname:** ASTRA IMC  
-> **Status:** Slice-1 Working Board live lokal; Alpha Ventus kuratiert  
-> **Stand:** 2026-08-07
+> **Status:** Working Board lokal **und** auf https://imc.ostfriesland.ai; curated Cloud-Daten = lokal  
+> **Stand:** 2026-09-04
 
 ## Was ist ASTRA IMC?
 
@@ -17,10 +17,13 @@ Eine schlanke **Next.js + Supabase**-Plattform für **Offshore-Wind-Assets**, Do
 | Datei | Inhalt | Wann lesen |
 |-------|--------|------------|
 | **handover.md** | Copy-Paste-Kontext für neue Chats + Zusatzblöcke | Immer bei Chat-Wechsel |
-| **ui_slice1_working_board.md** | Slice-1 UI: KPI + Filter + Tabelle + Detail + CSV | Bei Asset-UI / Vertical Slice |
-| **demo_runbook_slice1.md** | 2-Minuten Demo-Pfad Alpha Ventus | Vor Stakeholder-Demo |
+| **next_plan.md** | Aktiver Arbeitsplan + Klarstellungen (Events/Häfen/VPI) | Nächster Schritt / Prioritäten |
+| **ui_slice1_working_board.md** | Slice-1 UI: KPI + Filter + Tabelle + Detail + CSV + Häfen | Bei Asset-UI / Vertical Slice |
+| **demo_runbook_slice1.md** | 2-Minuten Demo-Pfad Alpha Ventus | Nur der Klickpfad; Team-Session: `04_communication/team_stand_plan_2026_08.md` |
 | **dq_ampel_slice1.md** | Leichter DQ-Check DE aktiv + Pilot | Nach Daten-/Transform-Änderungen |
 | **mastr_matching_de.md** | MaStR-DE Matching-Skelett (Ingest → Review → Apply) | Enrichment / IDs / Inbetriebnahme |
+| **natura_overlay_de.md** | BfN-marin Overlay | Schutzgebiete Karte/Detail |
+| **cloud_bootstrap.md** | Coolify + Supabase Cloud, Demo-Login, Re-Seed ohne MCP | Cloud, Deploy, Daten nachladen |
 
 **Doku-Regel:** `cursor/` = max. 6–8 aktive Docs. Tiefe liegt in `00_overview/`, `01_spec/`, `02_system_design/`, `03_roadmap/`, `reference/` — nicht alles nach `cursor/` duplizieren.
 
@@ -36,6 +39,7 @@ Eine schlanke **Next.js + Supabase**-Plattform für **Offshore-Wind-Assets**, Do
 | App-Bootstrap | `03_roadmap/imc_app_bootstrap.md` |
 | Schema / RLS / 4C | `reference/imc/README.md`, `01_spec/imc_rls_policy_patterns.md` |
 | Stakeholder / Comms | `04_communication/stakeholders_and_comms.md` |
+| Stand + Plan + Team-Session (Aug 2026) | `04_communication/team_stand_plan_2026_08.md` |
 
 ## Verwandte Orte
 
