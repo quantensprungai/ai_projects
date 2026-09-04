@@ -119,6 +119,7 @@ Phase 4: App                ████░░░░░░░░  ~35%  HD KARTE
 - 1 Migration: `20260216150000_inner_compass_core.sql` (11 sys_*-Tabellen)
 - pgvector + Embedding-Spalte, RLS, Storage Bucket
 - Helper-Schema: ic statt hd
+- **Repo 2026-09-04:** Die Version steht in der lokalen `schema_migrations`, fehlte aber im Git. Nachgezogen als History-Stub (`select 1`) — Original-SQL war nie im Repo. Kein `db reset`; Stub erzeugt die `sys_*`-Tabellen nicht.
 
 ### S3 — Neuer Worker ✅
 - ic_worker.py (~650 Zeilen), sys_*-nativ, 6 Job-Typen, --dry-run, Retry

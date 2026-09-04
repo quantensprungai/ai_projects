@@ -20,4 +20,4 @@ Signal hängt an der **Handbuch-Karte**, nicht am KG-Knoten. Wenige Dutzend `car
 
 Onboarding-Resonanz (`ic-onboarding-view.tsx`) schreibt in dieselbe Tabelle (`card_key=hd.type`, `domain=self_identity`). UI-Chip `partial` wird als `partly` gespeichert.
 
-**Ist (2026-09-04):** Tabelle + RLS in `apps/web/supabase/migrations/20260904130339_ic_resonance.sql`. Action `karte/bereich/_lib/resonance-action.ts`. Append-only, `account_id` kommt vom Server, nicht vom Client.
+**Ist (2026-09-04):** Tabelle + RLS in `apps/web/supabase/migrations/20260904130339_ic_resonance.sql`. Action `karte/bereich/_lib/resonance-action.ts`. Append-only, `account_id` kommt vom Server, nicht vom Client. `card_key` / `domain` / `system` sind Tags ohne CHECK-Constraint (contracts.md §2); erlaubt-Werte in `lib/ic/resonance.ts`. CHECK lokal gedroppt, nicht per `db reset`.
