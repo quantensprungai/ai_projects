@@ -1,7 +1,7 @@
 # K2 Foundation Wave — Playbook
 
-last_update: 2026-09-02
-scope: Wiederholbares Vorgehen pro System (K2-Welle + Literatur); Astro-Knopf + Extract-ahead
+last_update: 2026-09-03
+scope: Wiederholbares Vorgehen pro System (K2-Welle + Literatur); Astro-Knopf + Extract-ahead; HD dünne Auth / Interpret-vor-text2kg
 in_scope: Seed → strict → Extract → Relink → scoped Synth; Schienen vs. System-Knöpfe (HD/BaZi/Ziwei/Astro)
 out_of_scope: systemeigene Runbooks ersetzen
 
@@ -16,7 +16,7 @@ Ein Ablauf, **Knöpfe pro System**. Kein drittes Parallel-Dokument — Ziwei-Det
 3. **Strict + Whitelist.** `IC_TEXT2KG_STRICT=true` + `IC_TEXT2KG_STRICT_{SYSTEM}`. 0 neue Nodes. Alias/Homophone im Katalog, nicht im LLM (`normalize_*`, 天府≠天福).
 4. **Spark nur MinerU.** Interpret/text2kg/Synth = **Langdock**. Kein Qwen, kein `IC_LLM_URL=:30001`, kein I-Ching-Chunk-Profil auf fremde PDFs.
 4a. **Extract-ahead ja, KG-Welle nein (2026-08-31).** MinerU `extract_text` mit `wave=` darf PDFs *anderer* Systeme scannen, während ein System KARTE/Relink/Synth läuft. Classify/interpret/text2kg/Relink/Synth bleiben **ein System nach dem anderen**. Seed+Whitelist **vor** text2kg — und **während** Extract-ahead erlaubt (Astro 2026-09-01: Katalog-Seed parallel zu MinerU). Nach Extract anfallende Classify-Jobs verwerfen, bis die System-Welle startet. Analog 流年 2026-08-28.
-5. **Reihenfolge fest:** Extract → (OCR/Term-Dict wenn Skript) → classify → interpret → text2kg → Unwrap/Alias → **Relink `link_role`** → **scoped Synth**. `IC_TEXT2KG_AUTO_SYNTH=false`. Nie Full-Synth.
+5. **Reihenfolge fest:** Extract → (OCR/Term-Dict wenn Skript) → classify → interpret → **Essence-Check dünner Nodes** → text2kg → Unwrap/Alias → **Relink `link_role`** → **scoped Synth**. `IC_TEXT2KG_AUTO_SYNTH=false`. Nie Full-Synth. Interpret-Jobs: `enqueue_text2kg: false` bis der Check sitzt. Continuation in `ic_worker.py` enqueued text2kg trotzdem — canceln. Dünn/Mix: `synthesis_canon_first.md` §3.4.
 6. **Relink ≠ text2kg.** text2kg hängt nur an. Relink setzt primary/contrast/mention. Synth liest primary (+ contrast wenn Rollen da). **Mentions nicht „reparieren“.** Kein Label-Spray / Blanket-Keyword-Attach (安星法-Hänger).
 7. **Lexikon → Überblick → Spezial.** Re-Synth nur `--only-id` der betroffenen Schicht. Token-Budget für Reasoning-Modelle hoch genug (`IC_LLM_MAX_TOKENS=8000`; 2000 = leerer Content).
 8. **First Cut ≠ verified.** UI liest Atom/`primary`, keinen Interp-Dump. `job.debug.text2kg_unmatched` ist oft stale/capped — nicht als Miss-Rate lesen.
@@ -49,6 +49,9 @@ Ein Ablauf, **Knöpfe pro System**. Kein drittes Parallel-Dokument — Ziwei-Det
 | Synth-Budget zu klein (Reasoning) | Ziwei 2000→8000 |
 | Audit nur Essence, ohne Chunk-Text | Ziwei Palast `hits=0` |
 | UI-Gitter vor Atomen | Decision 2026-08-27 |
+| Interpret-Continuation enqueued text2kg | HD Definitive 2026-09-03 |
+| Mix-Interp als primary synthen | HD self_projected + Mental Projector |
+| Unused-Ra-Buch gegen dünne Auth ingestieren | TOC 2026-09-03: Black Book/Letters/Resonance Mapping parken |
 
 ### Abschluss einer Welle
 

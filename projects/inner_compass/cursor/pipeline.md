@@ -20,6 +20,8 @@ Jobs in `[Klammern]` sind noch nicht implementiert.
 
 **Ist-Reihenfolge (HD, 2026-08-18):** Seed-K2 → MinerU-Chunks → classify → term_mapping → interpret → **text2kg strict** (Anhänge, 0 neue Nodes) → **Relink** (`link_role`) → **Synth nur scoped** (`IC_TEXT2KG_AUTO_SYNTH=false`). UI liest danach entweder `canonical_wording` (Atom) oder `primary`-Interps (Packer).
 
+**Nach Interpret, vor text2kg (2026-09-03):** Bei dünnen/riskanten Layern (HD Auth ego_*/self_projected) Essence gegenlesen, **bevor** angehängt wird. Job-Debug `enqueue_text2kg: false`. Continuation-Jobs in `ic_worker.py` setzen `enqueue_text2kg: true` hardcodiert — entstehenden text2kg-Job **canceln** oder Debug patchen, nicht „später Relink rettet alles“. `debug.text2kg_unmatched` (Cap 200) = Whitelist-Rauschen, keine Qualitätsliste der dünnen Nodes. Mix-Interps: Rolle demoten, nicht re-extracten. SoT: `cursor/reference/synthesis_canon_first.md` §3.4.
+
 **Welle-Standard (HD/BaZi/Ziwei, 2026-08-29):** dieselben Schienen, Knöpfe pro System — `cursor/reference/k2_foundation_wave_playbook.md` § Welle-Standard. Nicht jedes System-Runbook neu erfinden.
 
 **Vier Stränge, nicht ein Ablauf:** Dieses Dokument = **Literaturpipeline**. Chart-State berechnet der HD-Service (`services/hd`, Vertrag `hd_state_contract.md`) — nicht aus PDFs. Packer (Inspector/Overlay) verbindet beides erst zur Anzeige. Transit/NLP bleiben Runtime, schreiben nicht ins KG. Personenzustände liegen nicht in `sys_kg_nodes`.

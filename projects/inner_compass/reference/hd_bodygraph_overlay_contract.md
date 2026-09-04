@@ -1,5 +1,5 @@
 ---
-last_update: 2026-08-26
+last_update: 2026-09-01
 status: contract v0 — KARTE Graph visuell zu; Overlay v1o; Variable-Pfeile live; Rails Color/Tone
 scope:
   summary: "HD-Karte: Bodygraph + Planetensäulen, Inspector, Exalt/Detriment-Stati, Overlay-Rezept, Planeten-KG, Bau-Reihenfolge."
@@ -35,7 +35,7 @@ Diese Seite ist die **zukünftige HD-Karte** (`/home/karte/hd` → später `/kar
 
 | Lesart | Inhalt | Ort |
 |--------|--------|-----|
-| **Betriebssystem** | Typ, Strategie, Autorität, Definition, Profil | Chips neben dem Graph; **Zusammenschau** |
+| **Betriebssystem** | Typ, Strategie, Autorität, Profil, Definition, Kreuz, Viertel (Persönlichkeits-Sonne) | Chips neben dem Graph; **Zusammenschau** |
 | **Körpergraph** | Zentren, Kanäle, Tore + **Planetensäulen** | SVG + linke/rechte Rails |
 | **Thema / Körper** | Inkarnationskreuz; PHS / Variables | eigene Zeile, nicht im Graph, nicht in der Typ-Zusammenschau |
 
@@ -57,7 +57,7 @@ Jede Zeile = eine **Aktivierung** (K1, kein Bedeutungs-Node):
 | Tor-Punkt im SVG | dasselbe Gate (ggf. mehrere Aktivierungen) | Gate, dann Lines dieses Charts |
 | Kanal | Chip (kein klickbares SVG) | Atom + Achse A (gift/shadow) |
 | Zentrum | Center | Center-Wording |
-| Chips Typ/Strategie/Autorität/Profil/Kreuz | Atom | Atom-Text; Overlay unverändert |
+| Chips Typ/Strategie/Autorität/Profil/Definition/Kreuz/Viertel | Atom | Atom-Text; Overlay unverändert. Viertel wie Definition: Lookup, nicht `headlines` |
 
 Zeichen nicht verwechseln:
 

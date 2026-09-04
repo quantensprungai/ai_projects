@@ -1,0 +1,221 @@
+# HD Authority + Definition — Canon Cards v1
+# SoT for mechanics in synthesize_node (Canon-first policy).
+# Policy: projects/inner_compass/cursor/reference/synthesis_canon_first.md
+# last_update: 2026-09-03
+
+version: 1
+system: hd
+verify_default: rules  # rules | semantic
+layers:
+  authority:
+    description: "Inner/outer decision authority — not Type, not Strategy, not Definition."
+  definition:
+    description: "BodyGraph connectivity pattern — not Authority, not Strategy."
+
+nodes:
+  hd.authority.emotional:
+    label: Emotional Authority (Solar Plexus)
+    is: >
+      Decisions through the emotional wave of a defined Solar Plexus;
+      clarity comes over time, not in the immediate heat of the moment.
+    must_cover:
+      - [emotional, solar plexus, wave]
+      - [clarity, time, wait]
+    forbidden:
+      - sacral authority as this mechanism
+      - splenic instant as this mechanism
+      - lunar cycle as this mechanism
+    thin_ok: canon_fallback
+    verify: rules
+
+  hd.authority.sacral:
+    label: Sacral Authority
+    is: >
+      Decision response from a defined Sacral (Generators / Manifesting Generators):
+      gut-level yes/no or energetic response to life, not mental planning.
+    must_cover:
+      - [sacral]
+      - [response, yes/no, gut]
+    forbidden:
+      - emotional wave as this mechanism
+      - wait lunar cycle as this mechanism
+    thin_ok: canon_fallback
+    verify: rules
+
+  hd.authority.splenic:
+    label: Splenic Authority
+    is: >
+      Present-moment instinctive knowing from a defined Spleen;
+      signals are immediate and fleeting — not a prolonged emotional process.
+    must_cover:
+      - [splenic, spleen]
+      - [present, instant, instinct, in the moment]
+    forbidden:
+      - emotional wave as this mechanism
+      - sacral response as this mechanism
+    thin_ok: canon_fallback
+    verify: rules
+
+  hd.authority.ego_manifested:
+    label: Ego-Manifested Authority
+    is: >
+      Heart/Ego (Will) authority with a motor connection to the Throat:
+      truth confirmed through voice and will — speaking/acting from the will.
+    must_cover:
+      - [heart, ego, will]
+      - [throat, voice, verbal, speak]
+    forbidden:
+      - G center as the authority seat
+      - self-projected as this mechanism
+      - channel 25-51 as the definition of this authority
+      - sacral authority as this mechanism
+    thin_ok: canon_fallback
+    verify: rules
+
+  hd.authority.ego_projected:
+    label: Ego-Projected Authority
+    is: >
+      Heart/Ego (Will) as authority without the manifested Throat-motor story:
+      truth tied to will, correct timing through recognition/invitation (projected).
+    must_cover:
+      - [heart, ego, will]
+      - [projected, recognition, invitation, invite]
+    forbidden:
+      - G center as the authority seat
+      - identity center as the authority seat
+      - self-projected as this mechanism
+      - channel 25-51 as the definition of this authority
+      - sacral authority as this mechanism
+    thin_ok: canon_fallback
+    verify: rules
+    notes: >
+      Do not confuse with Self-Projected (G→Throat) or with Channel 25-51 (Initiation).
+
+  hd.authority.self_projected:
+    label: Self-Projected Authority
+    is: >
+      Identity (G Center) connected to Throat: decide by talking it out /
+      hearing what you say.
+    must_cover:
+      - [G, identity, self]
+      - [throat, voice, talk, speak, hear]
+    forbidden:
+      - splenic / present-moment reactions as this mechanism
+      - heart/ego as the authority seat
+      - monopole as framing jargon
+      - sacral authority as this mechanism
+      - mental projector / outer authority as this mechanism
+    thin_ok: canon_fallback
+    verify: rules
+
+  hd.authority.mental:
+    label: Mental / Outer Authority
+    is: >
+      No reliable inner authority below the Throat (typically Mental Projectors):
+      clarity via outer process — sounding board, environment, conversation — not commanding inner authority.
+    must_cover:
+      - [mental, outer, environmental]
+      - [soundboard, conversation, environment, talk it through]
+    forbidden:
+      - sacral yes/no as this mechanism
+      - emotional wave as sole mechanism
+    thin_ok: canon_fallback
+    verify: rules
+
+  hd.authority.lunar:
+    label: Lunar Authority
+    is: >
+      Reflector decision process: no consistent inner authority;
+      major clarity through waiting a full lunar cycle (~28 days).
+    must_cover:
+      - [lunar, moon]
+      - [cycle, 28, wait]
+      - [reflector]
+    forbidden:
+      - wait to respond as this mechanism
+      - sacral as this mechanism
+    thin_ok: canon_fallback
+    verify: rules
+
+  hd.authority.none:
+    label: Authority None (catalog edge)
+    is: >
+      Catalog edge-case for charts described as having no consistent inner authority path;
+      in practice overlaps Mental/Outer and Lunar — must name the overlap, not invent a new motor.
+    must_cover:
+      - [no, none, without]
+      - [inner authority]
+    forbidden:
+      - sacral response as a positive mechanism for this node
+    thin_ok: canon_fallback
+    verify: rules
+    notes: Overlap with mental/lunar is intentional; do not conflate with definition.none.
+
+  hd.definition.none:
+    label: No Definition
+    is: >
+      Structural BodyGraph pattern with no defined centers (typically Reflectors):
+      open definition across the BodyGraph.
+    must_cover:
+      - [no definition, undefined, open]
+      - [centers, bodygraph, reflector]
+    forbidden:
+      - authority as the definition of this node
+      - strategy as the definition of this node
+      - wait to respond
+    thin_ok: canon_fallback
+    verify: rules
+    notes: >
+      If only authority/strategy excerpts are linked, status must be blocked or canon_fallback —
+      never synthesize authority prose into this node.
+
+  hd.definition.single:
+    label: Single Definition
+    is: >
+      All defined centers form one continuous area of definition (no split areas).
+    must_cover:
+      - [single definition, single]
+      - [connected, continuous, one]
+    forbidden:
+      - quadruple split as this pattern
+    thin_ok: canon_fallback
+    verify: rules
+
+  hd.definition.split:
+    label: Split Definition
+    is: >
+      Two separate areas of definition that are not connected by a channel within the design;
+      bridging often happens through others/environment.
+    must_cover:
+      - [split definition, split]
+      - [two, separate, bridge]
+    forbidden:
+      - triple split as this pattern
+      - quadruple as this pattern
+    thin_ok: canon_fallback
+    verify: rules
+
+  hd.definition.triple_split:
+    label: Triple-Split Definition
+    is: >
+      Three separate areas of definition in the BodyGraph.
+    must_cover:
+      - [triple, three]
+      - [split, areas, definition]
+    forbidden:
+      - quadruple as this pattern
+      - single definition as this pattern
+    thin_ok: canon_fallback
+    verify: rules
+
+  hd.definition.quadruple_split:
+    label: Quadruple-Split Definition
+    is: >
+      Four separate areas of definition — rare structural pattern; fragmented clusters without a single bridge.
+    must_cover:
+      - [quadruple, four]
+      - [split, areas, definition]
+    forbidden:
+      - single definition as this pattern
+    thin_ok: canon_fallback
+    verify: rules

@@ -1,5 +1,22 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-09-03: Dünne HD-Authorities — Mix demoten, Restbücher parken, kein Synth
+
+**Kontext:** Definitive-Interpret-Loch geschlossen (632/632 Chunks, 188 neu am 03.09.). text2kg `39b0fbf6` lief mit (kein Synth). 200 unmatched = strict-Cap (`asset_chunk` / unresolved), nicht die dünnen Nodes. ego_*/self_projected unverändert dünn; neue Definitive-Interps ohne Ego-Essence. Self-Projected-Primary `10829c13` mischte G→Kehle mit Mental-Projector-Umgebung.
+
+**Decision:**
+
+1. **Mix:** Interp `10829c13` an `hd.authority.self_projected` von `primary` → `mention`. Four-Views-Primary bleibt. **Kein Synth.** Relink-Regel + Canon-`forbidden`: Mental Projector / Outer Authority ist nicht Self-Projected. Chunk/Interp nicht umschreiben.
+2. **Welle:** Nach Interpret Essence der dünnen Nodes gegenlesen **bevor** text2kg. `enqueue_text2kg: false` am Job; Continuation in `ic_worker.py` setzt `true` — text2kg canceln oder Debug patchen. Relink dry-run → apply ohne `--synth`. Synth nur scoped, nur wenn Primaries wirklich besser.
+3. **Restbücher nicht für ego_*/self_projected ingestieren.** Four Views liegt. Black Book / Book of Letters / Design Resonance Mapping / Personality Resonance Mapping = **parken** (anderes Layer, siehe `literature_hd_toc_coverage_2026-08-11.md` Delta 2026-09-03). Nicht LYD-Ersatz, nicht Quantum/`other_hd`.
+4. **Dünn bleibt ehrlich:** KARTE-Atome = kurze Canon-Fallbacks (13.08.). Relink/Synth kocht sie nicht auf.
+
+**Nicht:** Full-Re-Synth Auth/Def; Relink `--apply --synth`; Personality Resonance jetzt (würde Outer Authority an Self-Projected kleben); Git-Merge als Blocker dieses Schritts.
+
+**SoT:** `cursor/reference/synthesis_canon_first.md` §3.4; Canon `hd_auth_def_canon_v1.yaml`; Relink `ic_hd_authority_definition_relink.py`.
+
+---
+
 ## 2026-09-02: Astro Relink nach text2kg + scoped Häuser/Achsen-Synth
 
 **Kontext:** 14/14 natal text2kg completed. Erster Ground-Synth (25 EN) hatte MC, nicht AC/DC/IC. text2kg erweiterte `interpretation_ids`, setzte `interpretation_link_roles` nicht. Dry-Relink: alle Ground-Nodes würden sich ändern. Achsen-Stubs (`"AC"`). 7 Planeten schon Cap-6 Primaries + Wordings.

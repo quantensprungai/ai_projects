@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-02
+last_update: 2026-09-03
 scope: Chat-Handover Inner Compass (Copy-Paste-Block + Themen-Anhänge)
 in_scope: aktueller Chart-Stand, Reboot, Code-Anker, Don'ts, Verweise
 out_of_scope: Implementierung; S5-Runbook-Details außer als Archiv unten
@@ -22,7 +22,7 @@ Tech: Next.js 16.3 (Makerkit 4.0.6) + Supabase + Spark (GPU, Worker, MinerU, LLM
 Code: code/inner_compass_app/   Docs: projects/inner_compass/
 SoT Chart: projects/inner_compass/reference/hd_bodygraph_overlay_contract.md
 SoT State: projects/inner_compass/reference/hd_state_contract.md
-Decision: reference/decisions.md 2026-08-27 Ziwei-Natal-Parität + Domänen-Routing + Handbuch-Keil; 2026-08-17 State-Vertrag + 2026-08-14 Rails
+Decision: reference/decisions.md 2026-09-03 dünne Auth; 2026-08-27 Ziwei-Natal-Parität + Domänen-Routing + Handbuch-Keil; 2026-08-17 State-Vertrag + 2026-08-14 Rails
 Layer: reference/hd_layer_master_checklist_2026-08-11.md (Delta 2026-08-17)
 Synth: cursor/reference/synthesis_canon_first.md
 Pipeline-Wörter: cursor/pipeline.md §1a
@@ -81,7 +81,7 @@ ROTER FADEN (Stand 2026-08-25; 1–17 bis 08-19, 18 = Chart-Visual):
 
 Wörterbuch Chunk/Interp/Anhang/Synth/primary: cursor/pipeline.md §1a.
 
-Aktueller Punkt: **Makerkit 4.0.6** + **HD-Handbuch-Keil C→B**. **Ziwei KARTE First Cut geschlossen (2026-08-31).** **Astro-KARTE First Cut (2026-09-02):** `/home/karte/astro` tropisch + Whole Sign, AC links, Big Three + Rad. Körper auf Grad; Klick auf Körper → nur seine Major-Aspekte (Slice 24). Hausklick = keine Linien. Konjunktion im selben Haus = Mini-Chord (wirkt leer). Inspector Typ-Atome (`astro.house.*` / `planet` / `aspect_type` / `angle.*`), Chrome DE, kein Overlay, keine Placement-IDs. Login-Person 1980-11-18 19:20 Berlin (AC Krebs, Sonne Skorpion H5, Mond Widder H10). Same-Birth-Test Fixture 1990-06-15 14:30, Ziwei-Plate 09:00 unangetastet. **Natal-KG:** 71 Katalog-Nodes, Wildwuchs 0. Interpret-Welle durch (~3217 Astro-Interps). **14/14 text2kg completed** (Catch-up 2026-09-02). Relink `astro_natal_relink_v1` **58/58 apply Abend** (Rollen nach t2k; unmatched Cap 200 = Whitelist). Erster Ground-Synth 25 EN (Häuser+7 Planeten+5 Majors+MC); **Nachzug 16 EN** (12 Häuser + AC/DC/IC/MC, `--force`, Langdock gpt-5-mini). AC/DC/IC nicht mehr Stub. 7 Planeten nicht re-synched. DC 4 Primaries. 18 failed = Altlast. HD-Zombie `5ba2f841` nicht canceln. Later-PDFs ohne Classify. SoT: `reference/astro_natal_ingest_runbook.md`. Branch `cursor/astro-natal`. Nicht DE-Atome, nicht Handbuch-Generator, nicht Full-Synth, nicht Spark-Qwen, nicht Overlay/Mandala, nicht Jyotish parallel.
+Aktueller Punkt: **Makerkit 4.0.6** + **HD-Handbuch-Keil C→B**. **Ziwei KARTE First Cut geschlossen (2026-08-31).** **Astro-KARTE First Cut (2026-09-02):** `/home/karte/astro` tropisch + Whole Sign, AC links, Big Three + Rad. Körper auf Grad; Klick auf Körper → nur seine Major-Aspekte (Slice 24). Hausklick = keine Linien. Konjunktion im selben Haus = Mini-Chord (wirkt leer). Inspector Typ-Atome (`astro.house.*` / `planet` / `aspect_type` / `angle.*`), Chrome DE, kein Overlay, keine Placement-IDs. Login-Person 1980-11-18 19:20 Berlin (AC Krebs, Sonne Skorpion H5, Mond Widder H10). Same-Birth-Test Fixture 1990-06-15 14:30, Ziwei-Plate 09:00 unangetastet. **Natal-KG:** 71 Katalog-Nodes, Wildwuchs 0. Interpret-Welle durch (~3217 Astro-Interps). **14/14 text2kg completed** (Catch-up 2026-09-02). Relink `astro_natal_relink_v1` **58/58 apply Abend** (Rollen nach t2k; unmatched Cap 200 = Whitelist). Erster Ground-Synth 25 EN (Häuser+7 Planeten+5 Majors+MC); **Nachzug 16 EN** (12 Häuser + AC/DC/IC/MC, `--force`, Langdock gpt-5-mini). AC/DC/IC nicht mehr Stub. 7 Planeten nicht re-synched. DC 4 Primaries. 18 failed = Altlast. **HD Definitive** Interpret 632/632 (Zombie `5ba2f841` durch); text2kg `39b0fbf6` completed, kein Synth. Mix `10829c13` an self_projected → mention (2026-09-03). ego_* bleiben dünn; Black Book/Letters/Resonance Mapping parken. SoT: `reference/astro_natal_ingest_runbook.md`; Auth-Umgang `cursor/reference/synthesis_canon_first.md` §3.4 + Decision 2026-09-03. Branch `cursor/astro-natal`. Nicht DE-Atome, nicht Handbuch-Generator, nicht Full-Synth, nicht Spark-Qwen, nicht Overlay/Mandala, nicht Jyotish parallel.
 
 Nächstes Paket (Reihenfolge, nicht parallel):
   Gate) ✅ Nach Signup ohne `user_persons.role=self` → `/home/onboarding` (test@makerkit.dev ausgenommen). JETZT = Radar-Stub + CTA KARTE.
@@ -97,7 +97,7 @@ Nächstes Paket (Reihenfolge, nicht parallel):
   KARTE-nicht) 64keys Blau/Orange am Zentrum — erst wenn ein Chart den Mischfall belegt.
 
 Nicht: Full-Re-Synth, Center-Wipe, `open` als dritte Enum, SGLang über 7973 Interps / 20877 Anhänge.
-Sources: S0.5 `37170478-…` / `cf923ac4-…`. S0 Defined: `ic_s0_center_defined_relink.py`. Channel: `ic_s0_channel_facet_relink.py` (`channel_relink_v1c`; Life Force `2a9272bc-…`). Planeten-Source `7e52cc9a-…`. Auth/Def: Four Views `c3135579-…` (HA2 `5517ac0c-…` Diagnostics, 0 Ego/Quad-Hits).
+Sources: S0.5 `37170478-…` / `cf923ac4-…`. S0 Defined: `ic_s0_center_defined_relink.py`. Channel: `ic_s0_channel_facet_relink.py` (`channel_relink_v1c`; Life Force `2a9272bc-…`). Planeten-Source `7e52cc9a-…`. Auth/Def: Four Views `c3135579-…` (HA2 `5517ac0c-…` Diagnostics, 0 Ego/Quad-Hits). Definitive `ec0aedc4` Interpret durch; Mix `10829c13` mention.
 
 NACH REBOOT (Reihenfolge):
   1. Docker Desktop
