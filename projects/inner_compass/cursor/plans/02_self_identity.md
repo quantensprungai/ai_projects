@@ -15,7 +15,7 @@ Code-Repo: `code/inner_compass_app` (eigenes Git, Branch `cursor/astro-natal`). 
 ## Reihenfolge
 
 1. Domäne + Routing-Kanten (Substrat) — **erledigt 2026-09-04**
-2. Wirkungskanten sichten (nur lesen)
+2. Wirkungskanten sichten (nur lesen) — **erledigt 2026-09-04**
 3. Resonanz-Tabelle
 4. Handbuch-Stimme
 5. Route + Assembler
