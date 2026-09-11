@@ -1,14 +1,16 @@
 <!--
 Reality Block
-last_update: 2026-09-04
+last_update: 2026-09-11
 scope: Fünf Screens und welcher Vertrag sie speist
-in_scope: JETZT, KARTE/Mandala, Bereichsseite, WERKSTATT, ZEIT
-out_of_scope: Pixel, Figma, Freemium-Code
+in_scope: JETZT, KARTE/Mandala, Bereichsseite, WERKSTATT, ZEIT, visuelle Haltung
+out_of_scope: Pixelwerte, Figma-Files, Freemium-Code
 -->
 
 # Produktkarte
 
 Eine Achse pro Screen. Chrome Deutsch. System-Filter auf der Bereichsseite, nicht als App-Modus.
+
+**Visuelle Haltung:** Die Bereichsseite liest sich wie ein kurzes Handbuchkapitel, nicht wie drei Kit-Karten. Eine Lesesäule; Gewicht auf Benennen; Herkunft leise; Systemname erst im Verorten. System-Charts dürfen dichter und inspector-hafter sein. `@kit/ui` bleibt das Set — Komposition in `apps/web`, kein neues Design-System.
 
 | Screen | Frage | Was drauf ist | Vertrag |
 |---|---|---|---|

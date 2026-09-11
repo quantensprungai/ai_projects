@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-04
+last_update: 2026-09-11
 scope: Phasen-Plan 2 — self_identity vertikal
 in_scope: Kanten, Status-Gate, Resonanz, Handbuch-Stimme, eine Route, Werkstatt-Tor
 out_of_scope: Mandala-SVG, 12 Seiten, Cross-Kanten, Werkstatt-Seite, Re-Synth
@@ -19,7 +19,7 @@ Code-Repo: `code/inner_compass_app` (eigenes Git, Branch `cursor/astro-natal`). 
 3. Resonanz-Tabelle — **erledigt 2026-09-04**
 4. Handbuch-Stimme — **erledigt 2026-09-04**
 5. Route + Assembler — **erledigt 2026-09-04**
-6. Browser, dann 3–5 echte Charts
+6. Browser, dann 3–5 echte Charts — **Browser-Runde 2026-09-11; 3–5 Charts offen**
 7. Phasen-Review 2
 
 ## 1) Domäne und Routing-Kanten — *(D strukturell / S Schwelle)*
@@ -67,7 +67,11 @@ Hub `app/[locale]/home/_components/ic-spaces/ic-karte-hub-view.tsx`: Einstieg �
 
 Voraussetzungen: Docker Desktop, Supabase lokal (`:54321`), HD-Service `docker compose -f services/hd/docker-compose.yml up -d` (`:8002`), `pnpm --filter web exec next dev --port 3000`. Login `test@makerkit.dev` / `testingpassword`, Person 1980-11-18 19:20 Berlin (AC Krebs, Sonne Skorpion H5, Mond Widder H10).
 
-Fragen: Liest sich das wie ein Handbuch oder wie drei geklebte Inspector-Zeilen? Irgendwo EN, Canonical-ID, Engine-Label, Quelltitel? Leerfall lesbar? Resonanz landet in `ic_resonance`? Werkstatt-Satz sinnvoll? JETZT, Onboarding, System-Charts unverändert? Kein E2E in diesem Cut. Danach 3–5 echte Menschen mit eigenem Chart, qualitativ.
+Fragen: Liest sich das wie ein Handbuch oder wie drei geklebte Inspector-Zeilen? Irgendwo EN, Canonical-ID, Engine-Label, Quelltitel? Leerfall lesbar? Resonanz landet in `ic_resonance`? Werkstatt-Satz sinnvoll? JETZT, Onboarding, System-Charts unverändert? Kein E2E in diesem Cut.
+
+Zweite Runde nach dem ersten Render: Abstände, Hierarchie, ob die drei Quellen als Kapitel wirken oder als Dashboard. Nicht die Verträge umbauen, nur die Komposition. Danach 3–5 echte Menschen mit eigenem Chart, qualitativ.
+
+Stand 2026-09-11: Login (Magic-Link; Passwort-Formular scheitert lokal am Captcha/Netz-Fehler). Bereichsseite ist eine Lesesäule, keine drei Insight-Cards; kein EN/Canonical-ID auf der Domäne. Andere Enums „noch nicht“. Resonanz-Insert 201 nach RLS-Fix (Personal-Account ohne `accounts_memberships`). Hub-Zeile ohne Engine-Englisch. Werkstatt-Tor fehlt: `experiment_seed` am HD-Typ leer. 3–5 echte Charts noch offen.
 
 ## Erwartetes Ergebnis
 
