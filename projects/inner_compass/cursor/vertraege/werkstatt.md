@@ -23,4 +23,4 @@ Dritter Fuß des USP: Arbeit mit den Infos, nicht nur Beschreibung.
 
 **Phase 2:** nur ein **Tor** — ein Satz aus `experiment_seed` des stärksten HD-Elements auf der Bereichsseite (`lib/ic/domain-assemble.ts`, Karte „Ein Experiment dazu“). Keine eigene Werkstatt-Seite. EN-Seeds werden nicht gezeigt; stattdessen ein deutscher Entwurfs-Hinweis.
 
-Material: `payload.process.{trap, gift_activation, experiment_seed}` gilt weiter als ~100 % befüllt — **Ausnahme Browser 2026-09-11:** am HD-Typ der Login-Person war `experiment_seed` leer, das Werkstatt-Tor auf der Bereichsseite blieb deshalb aus. Vor Review 2 klären: Lücke nur Typ, oder Retrieval. `extract_pattern_traps` × Domäne → `sys_dynamics` erst Phase 5.
+Material: `payload.process.{trap, gift_activation, experiment_seed}` gilt weiter als weitgehend befüllt. **Review 2:** Das fehlende Tor war Retrieval, nicht zwingend leere Daten. `domain-assemble.ts` liest nur `hd.type.*`. Nächster Assemble-Touch: Typ → Strategie → Autorität, dann ehrlich leer. Kein erfundener DE-Satz, kein Re-Synth der Seeds. Eigene Werkstatt-Seite und `extract_pattern_traps` bleiben Phase 5.

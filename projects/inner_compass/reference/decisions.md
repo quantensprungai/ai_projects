@@ -1,6 +1,29 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-09-11: Phasen-Review 2 — self_identity vertikal
+
+**Kontext:** Plan 02 Todos 1–6. Bereichsseite `self_identity` live (Lesesäule, Handbook-Stimme v1, Resonanz mit Owner-RLS). Browser 2026-09-11; Copy-Schärfung Kopf/HD/Werkstatt-Platzhalter. 3–5 fremde Charts nicht gemacht.
+
+**Decision:**
+
+1. **Inhaltliche Kanten-Schwelle v0 bleibt** (≥3 Interps und ≥30 %). Die Bereichsseite speist `self_identity` aus strukturellen OS-/Lage-Karten, nicht aus den 418 `candidate`-Paaren. Schwelle wird relevant vor Phase 6, nicht jetzt ändern. Worker-Prompt (alte 10 Enums) weiter vor Phase 6 angleichen, kein Re-Synth.
+
+2. **Meta-Begriffe bleiben die vier:** Einladung, Antwort, Eingang, Lebensort. Kein `generate_meta_nodes`. Keine neuen UI-Wörter.
+
+3. **Werkstatt-Tor:** Leere Anzeige ist ehrlich. Assemble liest nur `hd.type.*` — nächster Assemble-Touch Typ → Strategie → Autorität, dann Leerfall. Kein erfundener DE-Satz, kein Seed-Re-Synth. Eigene Werkstatt-Seite = Phase 5.
+
+4. **Familie-2-Wirkungskanten** tragen weiter keinen Handbuch-Satz. Widerspruchsfilter und Fan-out-Dedup sind Phase 4/5, nicht nachrüsten in Phase 2.
+
+5. **Phase 2 zu.** Nächster Plan ist BaZi ([plans/03_bazi.md](../cursor/plans/03_bazi.md)): Unabhängigkeitsbeleg gegen die Häuser-Genealogie, Seed-first, Langdock, kein Auto-Synth. ZEIT-Screen bleibt Stub; Luck Pillars höchstens Engine-Nachweis.
+
+**Nicht:** Mandala, zwölf Bereichsseiten, Cross-Kanten `converges`, Merge `main`, `supabase db reset`.
+
+**SoT:** `cursor/vertraege/` Ist-Blöcke 2026-09-11; Code `35804be3` (Stimme v1) und `7777be97` (RLS/Lesesäule).
+
+---
+
 ## 2026-09-04: Domänen-Substrat gelegt — Schwelle v0 für inhaltliche Kanten
+
 
 **Kontext:** Plan 02 Todo 1. 12 Knoten `ic.life_domain.*` (`system=meta`), 55 strukturelle `belongs_to_domain` `approved` (HD-OS 30, Ziwei 12, Astro 13). Inhaltlicher HD-Pass aus `payload.life_domain`: 443 Paare über Schwelle, 418 `candidate` neu. Der Plan sah die Schwelle als (S)-Entscheidung nach Dry-Run vor; der ausführende Chat hat sie gesetzt und angewendet.
 

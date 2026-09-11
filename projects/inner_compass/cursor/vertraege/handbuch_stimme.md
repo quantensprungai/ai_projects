@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-04
+last_update: 2026-09-11
 scope: Wie ein Handbuch-Satz klingt
 in_scope: Übersetzungsregel, Code-Ort, Meta-Begriffe der einen Domäne
 out_of_scope: Glossar-Projekt, generate_meta_nodes
@@ -12,7 +12,7 @@ out_of_scope: Glossar-Projekt, generate_meta_nodes
 
 Mikro-Erzählung Tiefe 1: **Benennen → Übersetzen → Verorten**. Reflexion und Einladung optional, Werkstatt später.
 
-**Code:** `hd-handbook-gloss.ts` bleibt HD-Keil (Vorbild). Daneben `lib/ic/handbook-voice.ts`: Regel als Kommentar + Helfer. Sprache v0 ist **vorgegeben** und aus den Systemen abgeleitet. Version `handbook-voice-v0`.
+**Code:** `hd-handbook-gloss.ts` bleibt HD-Keil (Vorbild) für Hub/Onboarding. Daneben `lib/ic/handbook-voice.ts`: Regel als Kommentar + Helfer. Sprache ist **vorgegeben** und aus den Systemen abgeleitet. Version `handbook-voice-v1`.
 
 **Handbuch-Text wird formuliert**, nicht aus Atomen übersetzt. Siehe [sprache.md](sprache.md).
 
@@ -27,4 +27,4 @@ Mikro-Erzählung Tiefe 1: **Benennen → Übersetzen → Verorten**. Reflexion u
 | Eingang | Aszendent / Haus 1 | Wie du in einen Raum trittst |
 | Lebensort | 命宫 / soulPalace | Ort, von dem aus du dich selbst liest |
 
-**Ist (Plan 02 Todo 4, 2026-09-04):** Helfer in `handbook-voice.ts`. HD-Übersetzen kommt weiter aus `hd-handbook-gloss.ts`. Astro/Ziwei haben vorgegebene Lage-Sätze, keinen Handbuch-Absatz.
+**Ist (Plan 02, 2026-09-11):** Helfer in `handbook-voice.ts`, Version `handbook-voice-v1`. HD-Bereichskarte: kurzes Benennen, Übersetzen = Textur + Bewegung (nicht derselbe Satz zweimal). Hub/Onboarding nutzen weiter `hd-handbook-gloss.ts`. Astro/Ziwei: Lage-Sätze, keinen Handbuch-Absatz.

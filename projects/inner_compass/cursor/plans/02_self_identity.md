@@ -19,8 +19,8 @@ Code-Repo: `code/inner_compass_app` (eigenes Git, Branch `cursor/astro-natal`). 
 3. Resonanz-Tabelle — **erledigt 2026-09-04**
 4. Handbuch-Stimme — **erledigt 2026-09-04**
 5. Route + Assembler — **erledigt 2026-09-04**
-6. Browser, dann 3–5 echte Charts — **Browser-Runde 2026-09-11; 3–5 Charts offen**
-7. Phasen-Review 2
+6. Browser, dann 3–5 echte Charts — **Browser-Runde 2026-09-11; 3–5 Charts offen (blockiert Review nicht)**
+7. Phasen-Review 2 — **erledigt 2026-09-11**
 
 ## 1) Domäne und Routing-Kanten — *(D strukturell / S Schwelle)*
 
@@ -77,9 +77,15 @@ Stand 2026-09-11: Login (Magic-Link; Passwort-Formular scheitert lokal am Captch
 
 HD-Karte echt (Keil), Astro und Ziwei als Lage-Sätze mit Entwurfs-Hinweis, ein Werkstatt-Satz. Beziffert die DE-Arbeit pro Domäne, bevor zwölf geplant werden.
 
-## 7) Phasen-Review 2 — *(S)*
+## 7) Phasen-Review 2 — *(S)* — **erledigt 2026-09-11**
 
 Verträge gegen Code; Offenes in `roadmap.md`; Decision-Eintrag (Schwelle inhaltliche Kanten, Meta-Begriffe, Befund Werkstatt-Tor); Plan 03 (BaZi) ausarbeiten.
+
+## Review-Check (2026-09-11, bestanden)
+
+Sieben Verträge haben Ist-Blöcke, die zum Code passen. Bereichsseite ist Handbuch, nicht Inspector. Resonanz schreibt (Owner-RLS). Status-Gate hält EN-Absätze fern. Familie 2 stumm. Werkstatt-Seite absichtlich leer (Deutsch). Decision: [reference/decisions.md](../../reference/decisions.md) 2026-09-11. Nächster Chat: [roadmap.md](../roadmap.md) → [03_bazi.md](03_bazi.md).
+
+Abweichungen (bewusst): 3–5 qualitative Charts nicht gelaufen; Werkstatt-Tor oft leer (Retrieval nur Typ); Hub-Hydration in `ic-karte-hub-view.tsx` älter, nicht dieser Slice.
 
 ## Nicht
 

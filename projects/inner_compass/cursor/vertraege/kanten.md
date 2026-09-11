@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-04
+last_update: 2026-09-11
 scope: Vier Kantenfamilien
 in_scope: relation_type, intra vs. routing vs. cross
 out_of_scope: extract_relationships neu bauen (Roadmap)
@@ -49,4 +49,6 @@ Mehrere interne Kanten teilen dieselbe Interpretation (Fan-out). Beispiel: Inter
 
 **Folgerung fürs Handbuch:** Die 11 Kanten tragen in Phase 2 keinen Satz. OS-Paare sind dünn, oft Fan-out, nie `approved`; eine Kante widerspricht sich selbst. Inzidente 445 gehen vor allem auf Tore/Kanäle außerhalb dieses OS-Schnitts. Nichts extrahieren.
 
-Einordnung: Familie 2 speist Muster *innerhalb* eines Systems und die Werkstatt — nicht Tiefe 2 „Wo sich die Quellen treffen“ auf der Bereichsseite; das ist Familie 4 (Phase 4). Bereichsseite Tiefe 2 hängt in Phase 2 nur an „zwei UI-taugliche Quellen“ (Status-Gate), nicht an Wirkungskanten. `domain-assemble.ts` liest Familie 2 nicht. Offen für Review 2/Phase 4: Backfill-Kanten brauchen einen Widerspruchsfilter (A→B `amplifies` und `clashes_with` gleichzeitig) und Ein-Interp-Fan-out darf nicht als mehrere Belege zählen.
+Einordnung: Familie 2 speist Muster *innerhalb* eines Systems und die Werkstatt — nicht Tiefe 2 „Wo sich die Quellen treffen“ auf der Bereichsseite; das ist Familie 4 (Phase 4). Bereichsseite Tiefe 2 hängt in Phase 2 nur an „zwei UI-taugliche Quellen“ (Status-Gate), nicht an Wirkungskanten. `domain-assemble.ts` liest Familie 2 nicht.
+
+**Review 2 (2026-09-11):** Befund steht. Familie 2 bleibt stumm bis Phase 4/5 (Widerspruchsfilter + Fan-out darf nicht als mehrere Belege zählen). Inhaltliche `belongs_to_domain`-Schwelle v0 unverändert — die Bereichsseite liest für `self_identity` die strukturellen OS-/Lage-Karten, nicht die 418 `candidate`-Paare.
