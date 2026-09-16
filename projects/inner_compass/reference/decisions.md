@@ -1,5 +1,17 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-09-16: Tiefe 1 = Färbungskarte, nicht Inspector-Lage
+
+**Kontext:** Liebe-Seite nach Plan 07 las sich als „steht in Steinbock / Schwein“ + Entwurf. Das ist Chart-Lage, nicht das Nordstern-Handbuch (Benennen → Übersetzen → Verorten; Alltagssprache; Prozess später).
+
+**Decision:** Auf einer **freien** Bereichsseite ist Tiefe 1 eine **vorgeschriebene Färbungskarte** in `handbook-voice.ts` (wie HD-Keil und Tagstämme): 12 Zeichen × Liebe, 12 Erdzweige × Bindung. Kein Zeichen-/Tierwort im Benennen. Systemname erst im Verorten. `uiReady`, wenn die Färbung bekannt ist — nicht warten auf DE-Atome. Inspector-Lage („steht in …“) ist kein Handbuchsatz.
+
+**Noch nicht:** dieselbe Karte auf Identität-Astro/Ziwei (bleibt Lage+Entwurf, bis derselbe Schnitt). Kein 418, kein Jiazi in diesem Slice.
+
+**SoT:** [handbuch_stimme.md](../cursor/vertraege/handbuch_stimme.md); Code `composeAstroPartnershipVoice` / `composeZiweiPartnershipVoice`.
+
+---
+
 ## 2026-09-16: Phasen-Review 7 — zweite Bereichsseite Liebe
 
 **Kontext:** Plan 07. Gate `self_identity` **oder** `love_partnership`. Assemble: Haus 7 / Spouse-Palast; HD und BaZi still; Treffen und Werkstatt nur Identität. Hub `handbookLive` auch Liebe. Bestand: `belongs_to_domain` `approved` für `astro.house.7` und `ziwei.palace.spousePalace`; HD auf Liebe 7 `candidate` (Kreuze, Quarter Duality) — nicht promote. Astro-Natal-`nodes` enthalten **keine** `astro.house.*` (nur Placements); Identität erzwang schon Haus 1, Liebe injiziert Haus 7 nur im Assemble-Pick, Occupancy-Formel unverändert (Liebe belegt über Ziwei-Palast). Automatisiertes Browser-Login erneut gescheitert (Auth: „working Internet connection“ + Hydration-Overlay).
