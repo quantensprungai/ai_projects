@@ -1,8 +1,8 @@
 <!--
 Reality Block
-last_update: 2026-09-11
-scope: Laufender Anker — Phasen, Status, nächster Plan
-in_scope: Reihenfolge, Status, Links
+last_update: 2026-09-16
+scope: Laufender Anker — Phasen, Status, nächster Plan, Warteschlange
+in_scope: Reihenfolge, Status, Links, geordnetes Offenes
 out_of_scope: Implementierungsdetails (stehen im Phasen-Plan)
 -->
 
@@ -10,21 +10,43 @@ out_of_scope: Implementierungsdetails (stehen im Phasen-Plan)
 
 Jeder neue Chat liest zuerst diese Datei, dann den verlinkten Phasen-Plan. Cursor-Plan-Dateien unter `.cursor/plans/` sind Duplikate.
 
-**Arbeitsweise:** Innerhalb einer Phase Todos abarbeiten *(D)* schwächeres Modell, *(S)* starkes. Am Ende **Phasen-Review** *(S)*: Verträge gegen Code, Offenes zurückschreiben, Decision, nächsten Plan ausarbeiten — erst dann bauen.
+**Arbeitsweise:** Ein Schnitt, dann Review, dann der nächste Plan — nicht zwei Wellen parallel. Innerhalb einer Phase Todos *(D)* / *(S)*. Offenes steht **nummeriert** (Warteschlange), nicht nur im Chat.
 
 | Phase | Status | Ziel | Plan |
 |---|---|---|---|
-| 0 Git-Hygiene | abgeschlossen 2026-09-04 | Auth-Docs + Relink-Skript auf `cursor/astro-natal`. HD-Pipeline-Skripte (`ic_hd_*`, `ic_s0_*`, `ic_start_langdock_worker.py`) bleiben untracked — zu viele, unreviewed. Astro-Working-Tree uncommitted gelassen. | — |
-| 1 Nordstern + Rules | abgeschlossen 2026-09-04 | Dünnes Set, Rules als Leitplanken, Handover 60 Zeilen. Abweichungen: kein `AGENTS.md` im Code-Repo (nichts angelegt); HD-Pipeline-Skripte weiter untracked. | [plans/01_nordstern.md](plans/01_nordstern.md) |
-| 2 `self_identity` vertikal | abgeschlossen 2026-09-11 | Eine Domäne echt: Kanten, Status-Gate, Resonanz, Handbuch-Stimme, Seite | [plans/02_self_identity.md](plans/02_self_identity.md) |
-| 3 BaZi-Content | offen — nächster Bau | Seed vor Ingest, Langdock, kein Auto-Synth. Unabhängigkeitsbeleg + Chart-First-Cut. ZEIT bleibt Stub. | [plans/03_bazi.md](plans/03_bazi.md) |
-| 4 Cross-Kanten | offen | `converges` / `complements` / `contradicts` pro Element-Paar in einer Domäne | nach Review 3 |
-| 5 Werkstatt | offen | Tiefe 3–4 aus `payload.process`. Tor existiert in Phase 2 (Retrieval Typ→Strategie→Autorität noch nachziehen). | nach Review 3 |
-| 6 Mandala + 11 Bereiche | offen | Chart-Belegung, nicht Katalog-Occupancy. Dann restliche Domänen. Worker-Enums 10→12 vorher. | nach Review 3 |
-| 7 Verbreitung | offen | Mandala-Share, Serie/Botschafter, Social, Agent-Surface. Nicht vor Fläche. | nach Review 3 |
+| 0 Git-Hygiene | abgeschlossen 2026-09-04 | Auth-Docs + Relink-Skript auf `cursor/astro-natal`. HD-Pipeline-Skripte untracked. | — |
+| 1 Nordstern + Rules | abgeschlossen 2026-09-04 | Dünnes Set, Rules, Handover | [plans/01_nordstern.md](plans/01_nordstern.md) |
+| 2 `self_identity` vertikal | abgeschlossen 2026-09-11 | Eine Domäne echt | [plans/02_self_identity.md](plans/02_self_identity.md) |
+| 3 BaZi-Content | abgeschlossen 2026-09-13 | Unabhängigkeit ja. Jiazi-KG Nachzug. | [plans/03_bazi.md](plans/03_bazi.md) · [03a](plans/03a_bazi_extract_ahead.md) |
+| 4 Cross-Kanten | abgeschlossen 2026-09-15 | Familie 4; Jiazi bleibt Nachzug | [plans/04_cross_kanten.md](plans/04_cross_kanten.md) |
+| 5 Werkstatt | abgeschlossen 2026-09-15 | Tor + `/home/werkstatt`. Resonanz = Tür. | [plans/05_werkstatt.md](plans/05_werkstatt.md) |
+| 6 KARTE-Belegung | abgeschlossen 2026-09-15 | Occupancy-Rad. Nur `self_identity` Handbuch. | [plans/06_karte_belegung.md](plans/06_karte_belegung.md) |
+| 7 `love_partnership` | abgeschlossen 2026-09-16 | Zweites Kapitel: Haus 7 + 夫妻宫. HD bewusst still. | [plans/07_love_partnership.md](plans/07_love_partnership.md) |
+| Verbreitung | offen, nach Fläche | Mandala-Share, Serie, Agents | nicht Plan-Nummer 07 |
 
-**Offenes (mitgeschleppt):** Worker-Prompt alte 10 Domänen-Enums → `exchange_learning`/`transformation_renewal` ohne Payload-Tags. Angleichen vor Phase 6, kein Re-Synth. Familie-2-Backfill: Widerspruchsfilter + Fan-out-Dedup vor Nutzung. 3–5 qualitative Charts jederzeit, blockieren nicht. Hub-Hydration `ic-karte-hub-view.tsx`. Assemble-Fallback für `experiment_seed` (Typ→Strategie→Autorität) beim nächsten Touch von `domain-assemble.ts`.
+**Empfehlung:** Phase 7 zu. Nächster Schnitt nach Review 7 in der Warteschlange (Jiazi #2 oder Routing #4), nicht elf Seiten.
 
-**Nicht-Ziele:** Merge `main`, Force-Push, `supabase db reset`, Re-Synth, Spark-Qwen als Interpret, HD-Zombie `5ba2f841`, Flora/`.env`/`_tmp_*`, next-intl-Welle, Jyotish/Maya-UI, zwölf Bereichsseiten vor Phase 6, Luck-Pillar-UI in Phase 3.
+**Nächster Bau:** Roadmap-Warteschlange. Jiazi nicht parallel erzwingen. Plan-Nummer 07 ≠ „Verbreitung“.
+
+### Warteschlange (nichts vergessen)
+
+Review darf umsortieren; streichen nur nach Decision. Details in den verlinkten Plänen.
+
+| # | Schnitt | Warum es liegt | Nicht verwechseln mit |
+|---|---|---|---|
+| 1 | Plan 08 schreiben | Phase 7 zu; Wahl Jiazi (#2) oder HD-Routing auf Liebe (#4) | elf Seiten |
+| 2 | Jiazi-KG | 60 Knoten, 0 Interps; Klassiker **683 Chunks** ohne Classify ([03a](plans/03a_bazi_extract_ahead.md)); Destiny-Relink | *60 Pillars* zuerst; Destiny Full-Re-Synth |
+| 3 | Staffel 2 *60 Pillars* | nur **mit** Schnitt 2 | parallel zu Fläche |
+| 4 | Routing HD/BaZi über OS/Tagstamm | sonst weitere Seiten dünn; HD-Nachzug **auf `love_partnership`** (gleiche Assemble-Pipeline, Occupancy erst `approved`) | 418-Spray in 07; Sex-Manual als Kapitel |
+| 5 | Weitere Bereichsseiten | einzeln, je Review | Mandala-Share |
+| 6 | Familie-2-Filter | Fan-out, Widerspruch | vor Sätzen auf der Fläche |
+| 7 | Trap/Gift DE | `payload.process` wo DE da | `extract_pattern_traps` |
+| 8 | DE-Atome (Astro/Ziwei/BaZi) | Handbuch statt nur Lage+Entwurf | EN-Atome übersetzen |
+| 9 | ZEIT / Luck / Transite | Engine teils, Seite nicht | Occupancy war Phase 6 |
+| 10 | Verbreitung | Share, Serie, Agents | nicht vor Fläche |
+
+**Ops (kein Phasen-Plan):** Login oft 1978-11-10; Langdock-Pin `gpt-5.4-mini`; 3–5 qualitative Charts; Browser-Auth in Automation. Utopia: [ideas.md](../reference/ideas.md), nicht diese Schlange.
+
+**Nicht-Ziele:** Merge `main`, Force-Push, `supabase db reset`, Re-Synth, Spark-Qwen als Interpret, HD-Zombie `5ba2f841`, Flora/`.env`/`_tmp_*`, next-intl-Welle, Jyotish/Maya-UI bevor eine Seite sie speist, zwei Content-Wellen parallel, elf Handbuch-Seiten in einem Plan, SVG-Feinschliff, Mandala-Share vor Fläche.
 
 **Nordstern:** [nordstern.md](nordstern.md). **Verträge:** [vertraege/](vertraege/).

@@ -1,0 +1,165 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "self_identity",
+    "handbook_voice": "handbook-voice-v1",
+    "classified_at": "2026-09-15",
+    "classified_on_person": "1980-11-18 19:20 Berlin (Login-Test; Engine: Projector + Yi)",
+    "description": "Familie-4-Paare für self_identity. Katalog-Kanten, nicht personengebunden. Die Person sieht ein Paar nur, wenn beide Enden in ihrem Natal-Chart liegen. Kein 10×10-Spray, kein Embedding. Evidence = diese Datei + handbook-voice-v1. Write erst nach Enum (Plan 04 Todo 3). strength = genealogische Unabhängigkeit der beiden Wurzeln (low = geteilte Rad-/Ephemeriden-Herkunft, strong = keine), zusätzlich als metadata.independence schreiben. Das ist das Skelett der Konvergenz, nicht der personenbezogene Kernmoment (Read-Time über Evidence, nie gebaut)."
+  },
+  "edges": [
+    {
+      "from": "hd.type.projector",
+      "to": "astro.house.1",
+      "relation_type": "complements",
+      "strength": "low",
+      "edge_scope": "cross_system",
+      "review_status": "approved",
+      "rationale_de": "Einladung (wann du dich hineingibst) vs. Eingang (wie du den Raum betrittst). Westliche Rad-Wurzel gemeinsam — Gewicht niedrig, kein Wahrheitsbeweis."
+    },
+    {
+      "from": "hd.type.projector",
+      "to": "ziwei.palace.soulPalace",
+      "relation_type": "complements",
+      "strength": "strong",
+      "edge_scope": "cross_system",
+      "review_status": "approved",
+      "rationale_de": "Einladung vs. Lebensort (von wo aus du dich liest). Andere Wurzel als Astro-Häuser — Gewicht hoch, trotzdem andere Facette, nicht dieselbe Aussage."
+    },
+    {
+      "from": "hd.type.projector",
+      "to": "bazi.day_master.ji",
+      "relation_type": "complements",
+      "strength": "strong",
+      "edge_scope": "cross_system",
+      "review_status": "approved",
+      "rationale_de": "Sehen wenn gemeint vs. aus dem Vorhandenen etwas Tragendes machen. Keine gemeinsame Teilung — teure Kante, nicht Klumpen."
+    },
+    {
+      "from": "astro.house.1",
+      "to": "ziwei.palace.soulPalace",
+      "relation_type": "complements",
+      "strength": "low",
+      "edge_scope": "cross_system",
+      "review_status": "approved",
+      "rationale_de": "Eingang vs. Lebensort — beide 12-Räder, verschiedene Tradition. Gleiche Teilung senkt das Gewicht. Nicht converges: die Meta-Begriffe sind absichtlich zwei."
+    },
+    {
+      "from": "astro.house.1",
+      "to": "bazi.day_master.ji",
+      "relation_type": "complements",
+      "strength": "strong",
+      "edge_scope": "cross_system",
+      "review_status": "approved",
+      "rationale_de": "Eingang (wie du den Raum betrittst) vs. Tagstamm Erde. Zeichen des Eingangs ist Laufzeit, nicht Teil der Kante. Andere Wurzel. Kein Widerspruch erzwungen."
+    },
+    {
+      "from": "ziwei.palace.soulPalace",
+      "to": "bazi.day_master.ji",
+      "relation_type": "complements",
+      "strength": "strong",
+      "edge_scope": "cross_system",
+      "review_status": "approved",
+      "rationale_de": "Lebensort vs. Tagstamm. Palastkreis und Säulen teilen keine Genealogie."
+    },
+    {
+      "from": "hd.type.projector",
+      "to": "bazi.day_master.yi",
+      "relation_type": "complements",
+      "strength": "strong",
+      "edge_scope": "cross_system",
+      "review_status": "approved",
+      "rationale_de": "Sehen wenn gemeint vs. Wege um Dinge herum statt Durchbrechen. Keine gemeinsame Teilung — teure Kante, nicht Klumpen."
+    },
+    {
+      "from": "astro.house.1",
+      "to": "bazi.day_master.yi",
+      "relation_type": "complements",
+      "strength": "strong",
+      "edge_scope": "cross_system",
+      "review_status": "approved",
+      "rationale_de": "Eingang vs. Tagstamm Holz. Zeichen des Eingangs ist Laufzeit, nicht Teil der Kante. Andere Wurzel."
+    },
+    {
+      "from": "ziwei.palace.soulPalace",
+      "to": "bazi.day_master.yi",
+      "relation_type": "complements",
+      "strength": "strong",
+      "edge_scope": "cross_system",
+      "review_status": "approved",
+      "rationale_de": "Lebensort vs. Tagstamm Holz. Palastkreis und Säulen teilen keine Genealogie."
+    },
+    {
+      "from": "hd.type.generator",
+      "to": "astro.house.1",
+      "relation_type": "complements",
+      "strength": "low",
+      "edge_scope": "cross_system",
+      "review_status": "approved",
+      "rationale_de": "Art zu starten vs. Eingang. Gleiche westliche Rad-Wurzel — Gewicht niedrig. Review 4: Rollen-Kante, alle fünf Typen."
+    },
+    {
+      "from": "hd.type.generator",
+      "to": "ziwei.palace.soulPalace",
+      "relation_type": "complements",
+      "strength": "strong",
+      "edge_scope": "cross_system",
+      "review_status": "approved",
+      "rationale_de": "Art zu starten vs. Lebensort. Andere Wurzel. Review 4: Rollen-Kante."
+    },
+    {
+      "from": "hd.type.manifesting_generator",
+      "to": "astro.house.1",
+      "relation_type": "complements",
+      "strength": "low",
+      "edge_scope": "cross_system",
+      "review_status": "approved",
+      "rationale_de": "Art zu starten vs. Eingang. Review 4: Rollen-Kante."
+    },
+    {
+      "from": "hd.type.manifesting_generator",
+      "to": "ziwei.palace.soulPalace",
+      "relation_type": "complements",
+      "strength": "strong",
+      "edge_scope": "cross_system",
+      "review_status": "approved",
+      "rationale_de": "Art zu starten vs. Lebensort. Review 4: Rollen-Kante."
+    },
+    {
+      "from": "hd.type.manifestor",
+      "to": "astro.house.1",
+      "relation_type": "complements",
+      "strength": "low",
+      "edge_scope": "cross_system",
+      "review_status": "approved",
+      "rationale_de": "Art zu starten vs. Eingang. Review 4: Rollen-Kante."
+    },
+    {
+      "from": "hd.type.manifestor",
+      "to": "ziwei.palace.soulPalace",
+      "relation_type": "complements",
+      "strength": "strong",
+      "edge_scope": "cross_system",
+      "review_status": "approved",
+      "rationale_de": "Art zu starten vs. Lebensort. Review 4: Rollen-Kante."
+    },
+    {
+      "from": "hd.type.reflector",
+      "to": "astro.house.1",
+      "relation_type": "complements",
+      "strength": "low",
+      "edge_scope": "cross_system",
+      "review_status": "approved",
+      "rationale_de": "Art zu starten vs. Eingang. Review 4: Rollen-Kante."
+    },
+    {
+      "from": "hd.type.reflector",
+      "to": "ziwei.palace.soulPalace",
+      "relation_type": "complements",
+      "strength": "strong",
+      "edge_scope": "cross_system",
+      "review_status": "approved",
+      "rationale_de": "Art zu starten vs. Lebensort. Review 4: Rollen-Kante."
+    }
+  ]
+}

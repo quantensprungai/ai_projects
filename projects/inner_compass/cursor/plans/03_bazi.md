@@ -1,9 +1,9 @@
 <!--
 Reality Block
-last_update: 2026-09-11
+last_update: 2026-09-13
 scope: Phasen-Plan 3 — BaZi als unabhängige Stimme
-in_scope: Bestand K2, strukturelles Routing, First-Cut-Chart, Unabhängigkeitsbeleg auf self_identity, Jiazi nur wenn Inventur es verlangt
-out_of_scope: Mandala, 12 Bereichsseiten, Werkstatt-Seite, Cross-Kanten, Luck-Pillar-UI, Re-Synth Destiny Code, Spark-Qwen
+in_scope: Bestand K2, strukturelles Routing, First-Cut-Chart, Unabhängigkeitsbeleg auf self_identity, Jiazi-KG nur nach Chunks
+out_of_scope: Mandala, 12 Bereichsseiten, Werkstatt-Seite, Cross-Kanten, Luck-Pillar-UI, Re-Synth Destiny Code, Spark-Qwen, MinerU-Jobs (Plan 03a)
 -->
 
 # Plan 03 — BaZi
@@ -16,14 +16,16 @@ Code-Repo: `code/inner_compass_app` (eigenes Git, Branch `cursor/astro-natal`).
 
 ## Reihenfolge
 
-1. Bestand lesen — kein Blind-Seed
-2. Strukturelles Routing (Day Master → `self_identity`)
-3. Chart-First-Cut `/home/karte/bazi`
-4. Unabhängigkeitsbeleg auf der Bereichsseite
-5. Jiazi-Literatur nur nach Inventur
-6. Phasen-Review 3
+1. Bestand lesen — kein Blind-Seed — **erledigt 2026-09-11 (kein Re-Seed)**
+2. Strukturelles Routing (Day Master → `self_identity`) — **erledigt 2026-09-11**
+3. Chart-First-Cut `/home/karte/bazi` — **erledigt 2026-09-13** (Chrome + Inspector, kein Atom-Text)
+4. Unabhängigkeitsbeleg auf der Bereichsseite — **belegt 2026-09-13** (Login-Person, Ji-Lage + Entwurf, kein Palast-/Haus-Label)
+5. Jiazi-KG nur nach Extract-ahead (Chunks in 03a) — **nicht in diesem Plan text2kg**. Chunks da (03a).
+6. Phasen-Review 3 — **erledigt 2026-09-13**
 
-## 1) Bestand — *(D)*
+**Parallel:** MinerU-Klassiker laufen in [03a_bazi_extract_ahead.md](03a_bazi_extract_ahead.md) (`extract_text` + `extract_ahead=true`). Classify/interpret/text2kg bleiben aus, bis die Fläche steht. Playbook §4a.
+
+## 1) Bestand — *(D)* — **gelesen 2026-09-11, kein Re-Seed**
 
 Nicht `ic_seed_structure.py --system bazi` ausführen, bevor ein Audit das verlangt. Historisch (2026-07): 97 Nodes (37 Kern + 60 Jiazi), strict text2kg, Destiny Code `cbe86636` mechanisch durch, Wildwuchs 460→37.
 
@@ -31,9 +33,23 @@ Prüfen: `ic_k2_state_audit.py` (oder Studio) auf `system=bazi`. Engine `@yhjs/b
 
 Kein `supabase db reset`. Re-Seed nur wenn Metadata-Wipe oder 0 Kern-Nodes.
 
+### Ist (2026-09-13)
+
+| Schicht | Stand |
+|---|---|
+| Katalog / K2 | unverändert: 97 Nodes, `life_domain_map` nur 10 Day Master → `self_identity`. Kein Re-Seed. |
+| Synthese | 37 EN-Kern. Jiazi 0. Inspector auf der Karte: „kein Atom-Text“ — erwartet. |
+| Literatur | Destiny `cbe86636` (420). Plus Klassiker-Chunks in [03a](03a_bazi_extract_ahead.md) (683, kein Classify). |
+| Engine | `@ic/engines/bazi` → `bazi-public.ts` (Turbopack, kein Barrel). Gender aus `user_persons`. |
+| API / Persist | `GET`/`POST /api/ic/bazi-chart`, `user_charts.system_id='bazi'`. Stateless `POST /api/bazi/calculate` bleibt. |
+| App | Hub `live`. `/home/karte/bazi`: Vier Säulen Chrome DE. Bereich: vierte Quelle (Tagstamm-Lage + Entwurf). |
+| Routing | 10 `bazi.day_master.*` → `self_identity` (`approved`). Ten Gods/Stems nicht gesprüht. |
+
+Nächster Bau: Phase 4. Jiazi-KG = Nachzug, kein Blocker.
+
 ## 2) Routing — *(D)*
 
-`system_structure/bazi_structure_v0.json`: minimale `life_domain_map`. Day Master / Day Stem → `self_identity`. Nicht alle Ten Gods in alle 12 sprühen. `ic_seed_structure.py --only-domain-routing` analog HD-OS. Kanten `belongs_to_domain`, `approved`, Evidence = Datei+Zeile.
+`system_structure/bazi_structure_v0.json`: minimale `life_domain_map`. Die 10 Day Master sind **eine Rolle** (日主), zehn Färbungen — analog HD-Typen, alle → `self_identity`. Nicht die 10 Stems in Jahr/Monat/Stunde, nicht Ten Gods in die 12 sprühen. `ic_seed_structure.py --only-domain-routing` analog HD-OS. Kanten `belongs_to_domain`, `approved`, Evidence = Datei+Zeile.
 
 BaZi hat kein 12-Rad — fehlende Domänen bleiben ohne strukturelle Kante. Inhaltliche Kanten nicht in diesem Plan.
 
@@ -51,13 +67,29 @@ Beleg ist erfüllt, wenn dieselbe Person HD + Astro/Ziwei (Häuser-Stamm) **und*
 
 ZEIT-Seite bleibt Platzhalter. Höchstens notieren, dass die Engine Luck Pillars kann — nicht bauen.
 
-## 5) Jiazi-Literatur — *(D, optional)*
+## 5) Jiazi-Literatur — *(D, nach 03a)*
 
-Nur wenn Inventur zeigt: 60 `bazi.jiazi.*` ohne brauchbare Interps. Dann Playbook: Seed liegt schon, strict, Spark nur MinerU, Interpret/text2kg/Synth = Langdock, `IC_TEXT2KG_AUTO_SYNTH=false`, scoped Synth `--only-id`. Destiny Code nicht full re-synthen.
+Inventur 2026-09-11: 60 `bazi.jiazi.*` **ohne** Interps. Extract-ahead der Klassiker + 60 Pillars liegt in [03a](03a_bazi_extract_ahead.md). In **diesem** Plan keine KG-Kette. Wenn Chunks da sind: Seed liegt schon, strict, Interpret/text2kg/Synth = Langdock, `IC_TEXT2KG_AUTO_SYNTH=false`, scoped Synth `--only-id`. Destiny Code nicht full re-synthen.
 
-## 6) Phasen-Review 3 — *(S)*
+## 6) Phasen-Review 3 — *(S)* — **erledigt 2026-09-13**
 
-Verträge gegen Code. Decision: Unabhängigkeit ja/nein, Jiazi-Welle nötig ja/nein. Offenes in `roadmap.md`. Plan 04 (Cross-Kanten in *einer* Domäne) erst danach.
+Verträge gegen Code. Decision: [../../reference/decisions.md](../../reference/decisions.md) 2026-09-13.
+
+## Review-Check (2026-09-13, bestanden)
+
+| Vertrag | Befund |
+|---|---|
+| Domäne | Vierte Quelle auf `self_identity`. Nur Day Master strukturell geroutet. Kein 12-Rad-Spray. |
+| Handbuch-Stimme | Tagstamm im Benennen/Locate. Lage + Entwurf, kein Atom-Übersetzen. Palast/Haus nicht kopiert. |
+| Status | Gate hält. Karte darf EN-IDs + „kein Atom-Text“. Bereich: kein EN-Absatz. |
+| Sprache | Chrome DE, Atome EN/leer — bewusst. |
+| Resonanz | `card_key=bazi.day_master` in `resonance.ts`. Nicht im Browser neu gedrückt, Schema steht. |
+| Kanten | Familie 3: 10 Day-Master-Kanten. Familie 4 unangetastet. |
+| Werkstatt | Unverändert Phase-2-Tor. BaZi speist kein Experiment. |
+
+**Jiazi:** 60 Katalog-Knoten, 0 Interps. Nicht nötig für den Unabhängigkeitsbeleg. Welle später (strict, Langdock, kein Auto-Synth). Staffel 2 (*60 Pillars*) hängt an dieser Welle, nicht an Plan 04.
+
+Abweichungen (bewusst): 3–5 fremde Charts weiter offen; Resonanz-Klick BaZi nicht verifiziert; systemd-MVP auf Spark weiter crash-loop (`sudo`); `bazi-public.ts` dupliziert Slugs/TZ für Turbopack.
 
 ## Erwartetes Ergebnis
 

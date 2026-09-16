@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-11
+last_update: 2026-09-15
 scope: Was darf Handbuch-Prosa sein
 in_scope: UI-Tauglichkeit, Gate in domain-assemble
 out_of_scope: System-Chart-Inspector (bleibt wie er ist)
@@ -19,4 +19,4 @@ Policy (Soll): `blocked` | `canon_fallback` | `synth_draft` | `verified` — sie
 
 **Schuld:** Spalte `synthesis_status` als spätere Migration. Nicht im Slice erfinden.
 
-**Ist (Plan 02 Todo 5/7, 2026-09-11):** Gate nur in `domain-assemble.ts`. HD-Keil zählt als UI-tauglich. Astro/Ziwei ohne DE-Atom: Lage + Entwurf. Leerfall lesbar (Browser: Astro ohne Rad schweigt). Tiefe 2 (`composeMeetingSentence`) nur bei zwei `uiReady`-Quellen — bei der Login-Person oft nur HD, dann kein Treffen-Satz. Das ist korrekt, kein Fallback-Prosa. System-Charts unverändert. `synthesis_status`-Spalte nicht angelegt.
+**Ist (Plan 04 Todo 3, 2026-09-15):** Gate hält EN-Absätze. Tiefe 2 liest Familie 4, nicht `uiReady`-Zählung. Lage-Sätze dürfen ins Treffen. `synthesis_status`-Spalte nicht angelegt.

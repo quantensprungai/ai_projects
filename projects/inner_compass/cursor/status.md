@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-02
+last_update: 2026-09-15
 scope: IC Projektstatus (Phasen 0–4), Chart-Engines, Content-Akquise, Ur-Systeme, Gene Keys, Konvergenz/Meta-KG
 in_scope: Stand, nächste Schritte, Systemliste, Anna's Archive entity-first, Klarstellung HD-Schulen vs. GK, Konvergenz personenbezogen vs. strukturell, Ziwei Natal-First-Cut, Astro-KARTE First Cut, KARTE-Gitter, Zusammenschau
 out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_compass_app AGENTS.md
@@ -8,6 +8,8 @@ out_of_scope: Kit-Implementierungsdetails → engines.md; Code-Pfade → inner_c
 
 # Inner Compass — Status & Nächste Schritte
 
+> **Anker (2026-09-16):** Phasen und nächster Schnitt: `cursor/roadmap.md` (Phase 7 zu, Plan 08 fehlt). Diese Datei ist **Engine-/Content-Bestand**, kein Chat-Einstieg. Die Zeilen darunter (Stand 2026-09-02, „App Phase 4“) sind historische Content-Notizen, nicht der Produkt-Anker.
+>
 > **Stand:** 2026-09-02 — Phasen 0–3 / Engines / Content bleiben hier. **KARTE SoT:** `cursor/handover.md` (Copy-Paste). HD: Overlay-Vertrag + `figma_karte_contract.md` §4b. Astro: `reference/astro_natal_ingest_runbook.md`.
 > **App (Phase 4):** HD KARTE Graph visuell zu (helle Jovian-Fills, Kanalhälften, Hanging, Variable-Chevrons, keine Gate-Chips). Overlay-LLM v1o. HD-Docker `ic-hd-service` :8002. **Ziwei-KARTE First Cut** (`/home/karte/ziwei`): dichte 4×4-Platte, Chrome DE, Kleinsterne Position+20 EN-Lexikon, Inspector `draft`/`canon_fallback`, **Zusammenschau `ziwei_overlay_v3`**. **Astro-KARTE First Cut** (`/home/karte/astro`): tropisch Whole Sign, AC links, Big Three + Rad, Selektion-Linien, Typ-Atome EN-Draft, Chrome DE, **kein Overlay**. Keine DE-Atome.
 > **Content (Phase 2):** **HD S0 Close-out ✅** — Canon-first Synth, link_role, ID-Strip. S0.5 Relink live. SoT: `reference/hd_layer_master_checklist_2026-08-11.md`. **Ziwei Natal-First-Cut ✅** (中州 Staffel 1 + Welle 1b) — SoT + Qualitätsschulden: `reference/ziwei_natal_ingest_runbook.md`.

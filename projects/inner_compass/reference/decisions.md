@@ -1,5 +1,98 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-09-16: Phasen-Review 7 — zweite Bereichsseite Liebe
+
+**Kontext:** Plan 07. Gate `self_identity` **oder** `love_partnership`. Assemble: Haus 7 / Spouse-Palast; HD und BaZi still; Treffen und Werkstatt nur Identität. Hub `handbookLive` auch Liebe. Bestand: `belongs_to_domain` `approved` für `astro.house.7` und `ziwei.palace.spousePalace`; HD auf Liebe 7 `candidate` (Kreuze, Quarter Duality) — nicht promote. Astro-Natal-`nodes` enthalten **keine** `astro.house.*` (nur Placements); Identität erzwang schon Haus 1, Liebe injiziert Haus 7 nur im Assemble-Pick, Occupancy-Formel unverändert (Liebe belegt über Ziwei-Palast). Automatisiertes Browser-Login erneut gescheitert (Auth: „working Internet connection“ + Hydration-Overlay).
+
+**Decision:**
+
+1. **Muster Occupancy → ein Kapitel ist kopierbar.** Ranking und Natal-Force müssen domain-sensitiv sein. Astro-Häuser liegen nicht in Chart-Nodes — ohne Inject keine Astro-Karte auf Liebe.
+2. **HD bleibt Seed auf Identität**, bis #4. Candidate nicht einschalten. Dieselbe Seite nimmt später genehmigte Kanten auf.
+3. **Kein Familie-4 auf Liebe** in diesem Cut. Werkstatt bleibt Identität.
+4. **Nächster Plan:** Warteschlange. Jiazi bleibt #2, nicht vordrängeln. Routing HD/BaZi = #4, wenn die nächste Bereichsseite sonst dünn wird.
+
+**Nicht:** 418-Spray, Sex-Manual als Kapitel, Occupancy auf candidate, elf Seiten, Jiazi parallel.
+
+**SoT:** `cursor/plans/07_love_partnership.md`; Code `assembleDomainPage` / `isHandbookLiveDomain`.
+
+---
+
+## 2026-09-15: Phasen-Review 6 — KARTE-Belegung
+
+**Kontext:** Plan 06. Hub: Occupancy-Rad + 12-Zeilen-Legende. Belegung = Natal ∩ `approved` `belongs_to_domain`. Worker-Prompt 12 Enums, kein Re-Synth. `assembleDomainPage` und die elf Stub-Routen unverändert. Login-Person in der DB: 1978-11-10 (Generator); Chart-Knoten ∩ approved-Kanten = 10/12 Domänen (`sexuality_intimacy`, `transformation_renewal` leer — kein Natal-Hit, nicht Katalog-Voll). Automatisiertes Browser-Login scheiterte (Auth: „working Internet connection“ + Hydration-Overlay auf Sign-in).
+
+**Decision:**
+
+1. **Occupancy ist Lage, nicht Katalog.** Leere Keile sind die Aussage. Candidate-HD-Tags zünden den Hub nicht.
+2. **Rad + Liste, kein 12er-Card-Grid.** Schlichtes SVG, kein Share, kein Feinschliff. Handbuch-Wort nur an `self_identity`.
+3. **Elf Seiten bleiben Stubs.** Nächster Inhaltsschnitt = erste weitere Bereichsseite (Routing-Nachzug HD/BaZi) **oder** Jiazi — nicht elf Kapitel in einem Plan.
+4. **Worker 12 Enums** nur Prompt; bestehende Interps unangetastet.
+
+**Nicht:** Mandala-Share, SVG-Perfektion, Familie-4 auf anderen Domänen, `extract_pattern_traps`, Re-Synth.
+
+**SoT:** `cursor/plans/06_karte_belegung.md`; Code `assembleKarteOccupancy` / `IcKarteOccupancyWheel`.
+
+---
+
+## 2026-09-15: Phasen-Review 5 — Werkstatt-Tor und Seite
+
+**Kontext:** Plan 05. `/home/werkstatt` Lesesäule; Bereichsseite Tor. Browser: Generator-Identität, Resonanz gesetzt, Experiment aus Strategie formuliert (nicht EN-Seed). Tor und Seite waren kurz identisch — Tor auf Hinweis + Link gekürzt.
+
+**Decision:**
+
+1. **Resonanz ist die Tür, kein Füllstand.** Eine Antwort (Ja/Teilweise/Nein) auf `self_identity` öffnet den Versuch. Vier Klicks ändern den Inhalt nicht. `no` zählt als erkannt (du hast geantwortet), nicht als Ausschluss.
+2. **Tor ≠ Seite.** Unter Identität: ein Satz + Link. In der Werkstatt: Experiment + Anker; Trap/Gift nur wenn `payload.process` etwas Brauchbares hat (sonst weglassen, kein Entwurf-Spray).
+3. **UI-Wörter bleiben Alltag** (Versuch, Körper, woran du merkst). Brunnen/Leiter/Gabel nicht auf der Fläche. Tester später.
+4. **Formulieren vor Seed.** EN-`experiment_seed` nie als Absatz. Fallback = Bewegung aus Typ/Strategie (`handbook-voice-v1`). Deutsche Seeds dürfen den Fallback ersetzen.
+5. **Eine Domäne.** Weitere Werkstätten erst mit dem jeweiligen Bereich (Phase 6), nicht durch mehr Resonanz über die Zeit.
+6. **Nächster Plan = 06** (Mandala + restliche Bereiche — Chart-Belegung, Routing-Nachzug vorher). Jiazi/60 Pillars = eigener Content-Schnitt, kein Blocker für 06, nicht parallel zum ersten 06-Bau.
+
+**Nicht:** `extract_pattern_traps`, Therapie-Ton, zweite Scoreschicht, zwölf Werkstatt-Seiten jetzt.
+
+**SoT:** `cursor/plans/05_werkstatt.md`; Code `assembleWorkshopPage` / `IcWerkstattView`.
+
+---
+
+## 2026-09-15: Phasen-Review 4 — Cross-Kanten-Skelett
+
+**Kontext:** Plan 04 Todos 1–4. Treffen auf `self_identity` aus Familie-4-Kanten (Schablone). Browser: 1980-11-18 Projector+Yi = Versatz-Block; 1978-11-10 Generator+Bing = vier Texte ohne Projector-Paare.
+
+**Decision:**
+
+1. **Rollen-Kanten für alle fünf Typen**, nicht Spray. Jeder Typ × Eingang und jeder Typ × Lebensort = `complements` (Art zu starten vs. Hauskreis vs. Palast). Der Treffen-*Satz* bleibt die Schablone; die vier Lage-Texte tragen die Person. Leerfall = fehlende Quelle, nicht „anderer Typ“.
+2. **Keine 5×10 Tagstämme.** BaZi-Paare nur wo eine Färbung gelesen wurde (v0: Ji und Yi). Bing und die übrigen warten auf Literatur, nicht auf Raster.
+3. **Lage darf ins Treffen.** EN-Absatz weiter Gate. Kernmoment (drei Traditionen sehen dasselbe *bei dir*) bleibt ungebaut.
+4. **Jiazi/60 Pillars bleiben Nachzug**, nicht vor Plan 05. Chunks liegen; 0 Interps. Staffel 2 hängt an der Jiazi-KG-Welle. Nächster Plan = 05 Werkstatt.
+5. **Astro↔Ziwei `low` bleibt** in diesem Cut (Zwölfteilung als Form). Bei feinerer Körnung neu bewerten.
+
+**Nicht:** Mandala, 11 Bereiche, Familie-2-Sätze, DE-Atome-Welle, text2kg, Merge `main`.
+
+**SoT:** `cursor/plans/04_cross_kanten.md`; Seed `system_structure/self_identity_cross_v0.json`.
+
+---
+
+## 2026-09-13: Phasen-Review 3 — BaZi als eigene Stimme
+
+**Kontext:** Plan 03 Todos 1–4 + 03a Extract-ahead. Login-Person 1980-11-18 19:20 Berlin, Tagstamm Ji (己丑). Browser: `/home/karte/bazi` Chrome + Inspector; `self_identity` vierte Quelle (Lage + Entwurf, Locate Tagstamm). Klassiker 683 Chunks, `extract_ahead`, kein Classify/text2kg.
+
+**Decision:**
+
+1. **Unabhängigkeit ja.** BaZi spricht am Tagstamm (eine Rolle, zehn Färbungen), nicht am Palast und nicht am Hauskreis. Das testet die Konvergenz-These, die Ziwei nicht testen konnte. Beleg auf einer Seite mit HD + Astro + Ziwei + BaZi.
+
+2. **Jiazi-Welle nicht jetzt.** 60 `bazi.jiazi.*` bleiben leer (0 Interps). Die Engine schreibt schon `bazi.pillar.{role}.{paar}` — der Inspector darf „kein Atom-Text“ sagen. Chunks der Klassiker liegen; text2kg/Relink/Synth = eigener Schnitt (Langdock, strict, `AUTO_SYNTH=false`, scoped `--only-id`). Destiny nicht full re-synthen. Joey Yap *60 Pillars* (Staffel 2, `latin`) nur wenn dieser Schnitt startet, nicht parallel zu Phase 4.
+
+3. **Phase 3 Fläche/Extract zu.** Nächster Bau ist Phase 4 (Cross-Kanten in *einer* Domäne). Jiazi-KG ist Content-Nachzug, kein Blocker für Plan 04.
+
+4. **Meta-Begriff Tagstamm** bleibt der fünfte in [handbuch_stimme.md](../cursor/vertraege/handbuch_stimme.md). Kein `generate_meta_nodes`.
+
+5. **Turbopack:** System-Charts importieren `@ic/engines/{system}` (`*-public.ts`), nicht den Barrel. Nicht zurückdrehen.
+
+**Nicht:** Luck-Pillar-UI, ZEIT füllen, Staffel 2 jetzt, Spark-Qwen, Merge `main`, `supabase db reset`.
+
+**SoT:** `cursor/plans/03_bazi.md` Review-Check 2026-09-13; `cursor/plans/03a_bazi_extract_ahead.md` Ist.
+
+---
+
 ## 2026-09-11: Phasen-Review 2 — self_identity vertikal
 
 **Kontext:** Plan 02 Todos 1–6. Bereichsseite `self_identity` live (Lesesäule, Handbook-Stimme v1, Resonanz mit Owner-RLS). Browser 2026-09-11; Copy-Schärfung Kopf/HD/Werkstatt-Platzhalter. 3–5 fremde Charts nicht gemacht.

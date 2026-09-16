@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-11
+last_update: 2026-09-15
 scope: Prozess-Konzepte und payload.process
 in_scope: Brunnen, Leiter, Anker, Gabel, Experiment; Tiefe 3-4
 out_of_scope: Therapie, extract_pattern_traps (Roadmap)
@@ -21,6 +21,6 @@ Dritter Fuß des USP: Arbeit mit den Infos, nicht nur Beschreibung.
 
 **Tiefe:** Ziel 4 in allen 12. 1 Spiegel, 2 Muster, **3–4 = Werkstatt**. Safety-Gate vor 3–4.
 
-**Phase 2:** nur ein **Tor** — ein Satz aus `experiment_seed` des stärksten HD-Elements auf der Bereichsseite (`lib/ic/domain-assemble.ts`, Karte „Ein Experiment dazu“). Keine eigene Werkstatt-Seite. EN-Seeds werden nicht gezeigt; stattdessen ein deutscher Entwurfs-Hinweis.
+**Phase 2 (Ist):** Tor auf der Bereichsseite (Hinweis + Link, nicht der volle Versuch).
 
-Material: `payload.process.{trap, gift_activation, experiment_seed}` gilt weiter als weitgehend befüllt. **Review 2:** Das fehlende Tor war Retrieval, nicht zwingend leere Daten. `domain-assemble.ts` liest nur `hd.type.*`. Nächster Assemble-Touch: Typ → Strategie → Autorität, dann ehrlich leer. Kein erfundener DE-Satz, kein Re-Synth der Seeds. Eigene Werkstatt-Seite und `extract_pattern_traps` bleiben Phase 5.
+**Phase 5 (Ist, Review 5):** `/home/werkstatt` — Experiment formuliert aus Strategie, Anker Haltung, Trap/Gift nur bei Payload. Resonanz = Tür (`self_identity`, irgendeine Antwort). Keine Brunnen/Leiter-Labels. Plan: [../plans/05_werkstatt.md](../plans/05_werkstatt.md).

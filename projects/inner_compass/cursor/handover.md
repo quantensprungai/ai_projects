@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-11
+last_update: 2026-09-16
 scope: Chat-Handover Inner Compass, kurz
 in_scope: Einstieg für neuen Chat
 out_of_scope: Historie (siehe reference/handover_2026-09_archiv.md)
@@ -15,12 +15,12 @@ Projekt: Inner Compass
 Docs: projects/inner_compass/   Code: code/inner_compass_app/  (eigenes Git)
 Branch: cursor/astro-natal in beiden. Kein Merge main, kein Force-Push, kein supabase db reset.
 Anker: cursor/roadmap.md → Phasen-Plan. Verträge: cursor/vertraege/. Decisions: reference/decisions.md.
-Login: test@makerkit.dev / testingpassword · Person 1980-11-18 19:20 Berlin
+Login: test@makerkit.dev / testingpassword · Geburten im Slice: 1980-11-18 und 1978-11-10, 19:20 Berlin
 Lokal: Next :3000, Supabase API :54321, HD-Service :8002 (services/hd)
-LLM: Langdock gpt-5-mini. Nicht Spark-Qwen als Interpret/Synth. Key in .env.development.local (nicht committen).
+LLM: Langdock gpt-5.4-mini (Pin in der App noch offen). Nicht Spark-Qwen als Interpret/Synth. Key in .env.development.local (nicht committen).
 ```
 
-**Stand:** Phase 2 (`self_identity`) abgeschlossen 2026-09-11. Bereichsseite `/home/karte/bereich/self_identity` — Lesesäule, Stimme v1, Resonanz, andere Enums „noch nicht“. Nächster Bau: [plans/03_bazi.md](plans/03_bazi.md). KARTE: HD / Ziwei / Astro live; BaZi-Linse `soon`. JETZT/WERKSTATT/ZEIT Platzhalter (WERKSTATT Deutsch, ohne Jargon).
+**Stand:** Phase 7 zu (`love_partnership` Handbuch, HD still). **Nächster Plan:** Warteschlange in [roadmap.md](roadmap.md) — zuerst Plan 08 schreiben (Jiazi #2 oder Routing #4). Jiazi (683 Chunks, 0 Jiazi-Interps) nicht parallel erzwingen.
 
 **Leitplanken:** nested Code nicht ins Docs-Repo. Flora/`.env`/`_tmp_*` nicht committen. HD-Zombie `5ba2f841` nicht anfassen. Auto-Synth aus. Handbuch-Text formulieren, nicht übersetzen. Seed vor text2kg.
 

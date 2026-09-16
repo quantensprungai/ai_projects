@@ -163,7 +163,9 @@ Lebensbereiche sind ein Tag, kein Schema-Constraint. Hinzufügen/Entfernen/Merge
 
 **Abruf:** nicht der Singular `payload.life_domain`. Soll = Kanten `belongs_to_domain` (multi, `candidate`/`approved`, evidence) auf Zielknoten `ic.life_domain.{enum}`. Plural `life_domains[]` nur dokumentiert, bis die Kanten existieren. Katalog-v0 (Haus/Palast/Bhava/OS) ist deterministisch; Literatur-Pass erst, wenn etwas die Kanten liest. SoT: `reference/decisions.md` 2026-09-04 und 2026-08-27; Vertrag `cursor/vertraege/domaene.md`.
 
-**Ist (2026-09-04, nach Plan-02 Todo 5):** 12 Zielknoten `ic.life_domain.*` (`system=meta`). Strukturelle `belongs_to_domain` (`approved`): HD-OS 30, Ziwei 12 Paläste, Astro 13 (Haus 8 doppelt). `sexuality_intimacy` strukturell genau eine Kante (`astro.house.8`). Inhaltlich HD: Schwelle v0 ≥3 Interps und ≥30 %, `candidate`. `domain-assemble.ts` liest die Kanten für `self_identity`; zwölf Bereichsseiten nicht vor Phase 6. Node-Metadata bleibt stehen.
+**Ist (2026-09-04, nach Plan-02 Todo 5):** 12 Zielknoten `ic.life_domain.*` (`system=meta`). Strukturelle `belongs_to_domain` (`approved`): HD-OS 30, Ziwei 12 Paläste, Astro 13 (Haus 8 doppelt). `sexuality_intimacy` strukturell genau eine Kante (`astro.house.8`). Inhaltlich HD: Schwelle v0 ≥3 Interps und ≥30 %, `candidate`. `domain-assemble.ts` liest die Kanten für `self_identity`. Node-Metadata bleibt stehen.
+
+**Ist (2026-09-16, Phase 7):** Hub unverändert Occupancy. Bereichsseiten `self_identity` und `love_partnership` sind Handbuch; die übrigen zehn Stubs.
 
 **Schicht-2-Name:** **Muster** (dieses Dokument §10, UX). `kern/IC_Fundament_v06.md` sagt „SYNTHESE“ — Altname, nicht UI.
 
@@ -263,13 +265,13 @@ system_id: 'meta'
 ```
 relation_type: 'part_of' | 'amplifies' | 'depends_on' | 'modifies' | 
                'clashes_with' | 'maps_to' | 'produces' | 'controls' |
-               'belongs_to_domain'
+               'belongs_to_domain' | 'converges' | 'complements' | 'contradicts'
 edge_scope:    'intra_system' | 'cross_system'
 review_status: 'approved' | 'candidate' | 'rejected'
 strength:      'low' | 'medium' | 'strong' | 'dominant'
 ```
 
-`maps_to` + `cross_system` = Cross-System-Mapping (Schicht D).
+`maps_to` + `cross_system` = historisches GK→HD (definitional, Scope-Drift). Familie 4 für Konvergenz: `converges` / `complements` / `contradicts`, `edge_scope=cross_system`, `approved`. `strength` dort = Unabhängigkeit der Wurzeln, zusätzlich `metadata.independence`. SoT: [kanten.md](vertraege/kanten.md), Plan 04. DB-Spalte bleibt `text` (kein CHECK — zu viele intra-Typen).
 
 `belongs_to_domain` = Element → Lebensbereich (§2). **Ist:** Node-Metadata aus `ic_seed_structure.py` (Seed 2026-08-27), keine Kanten, keine Zielknoten. **Soll:** Kanten auf `ic.life_domain.{enum}` (12 Stück), `approved` strukturell / `candidate` inhaltlich. Multi erlaubt. Vier Familien: `cursor/vertraege/kanten.md`. Decision 2026-09-04. Nicht verwechseln mit Job `classify_domain` (der taggt `system_id`).
 

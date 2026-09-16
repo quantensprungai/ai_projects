@@ -19,6 +19,15 @@ Tägliche Push-Notification: "Heute ist Maya Kin X, dein Transit ist Y, dein BaZ
 ### Compatibility-API
 Relationship Mode als API für Dating-Apps oder Team-Building-Tools.
 
+### Agent-payable KG / Produkt-MCP (geparkt)
+Fremde Agents rufen Chart/Synthesis/Zyklen als Tools auf und zahlen pro Call. Siehe `agent_surface_and_monetization.md`. Blocker: öffentliche Resource-Schicht. Nicht FLOP, nicht Dev-MCP.
+
+### Protagonisten-Agents (geparkt)
+Botschafter (Aria, Jian, …) als dialogische Agents auf dem KG. Virtuals-artige Anteile erst nach echter Tool-Nutzung.
+
+### FLOP-Testnet (Lab, nicht Produkt)
+Optionaler Compute-Adapter / Airdrop-Lernen. Kein Billing.
+
 ## Technische Ideen
 
 ### Lokale Embedding-Modelle statt OpenAI
@@ -32,6 +41,9 @@ Aktuell: KG in Englisch, Wording-Schicht in Deutsch/Englisch. Langfristig: Chine
 
 ### Progressive Web App
 Statt native App: PWA mit Offline-Fähigkeit. Handbuch offline lesbar. Charts berechnen braucht online.
+
+### Utopia (deeplethe) — beobachtet, nicht übernehmen
+Enterprise-„World Model“: bitemporaler KG, Ontologie-Packs, Konflikt-Queue, Decision Ledger, RAG/MCP. Überlapp nur als *Muster* (Widerspruch first-class, gültig-vs-erfasst, abgeleitete Fakten markieren). Kein Ersatz für Natal-Handbuch, kein Fork, kein Pipeline-Wechsel. Später höchstens lesen, wenn ZEIT/Gezeiten echte Gültigkeitsfenster brauchen.
 
 ## Story-Ideen
 

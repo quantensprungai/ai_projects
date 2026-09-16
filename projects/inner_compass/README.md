@@ -58,4 +58,4 @@ projects/inner_compass/
 
 ## Status
 
-Pre-Launch. Engines: Ziwei (iztro), BaZi (@yhjs), Jyotish (PyJHora), HD (dturkuler — 13-Layer-Tiefe + Composite/Transit). Schema-Migration (`hd_*` → `sys_*`) steht an. Details: `cursor/status.md`.
+Pre-Launch. **Produktphasen 0–7 zu** (Anker: `cursor/roadmap.md`). Handbuch: `self_identity` und `love_partnership`. Nächster Bau: Plan 08 (Warteschlange). Details Engines/Content: `cursor/status.md` (nicht Chat-Einstieg).

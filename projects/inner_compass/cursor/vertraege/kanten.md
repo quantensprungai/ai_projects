@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-11
+last_update: 2026-09-15
 scope: Vier Kantenfamilien
 in_scope: relation_type, intra vs. routing vs. cross
 out_of_scope: extract_relationships neu bauen (Roadmap)
@@ -15,7 +15,7 @@ Vier Familien. Enum in [contracts.md §5](../contracts.md).
 | 1 Struktur | `part_of` | Tor gehört zu Zentrum | existiert |
 | 2 Wirkung intra-system | `amplifies`, `depends_on`, `modifies`, `clashes_with`, `produces`, `controls` | verstärken / schwächen / bedingen | HD Backfill liegt (`candidate`). Login-Person `self_identity`: 11 interne, 445 inzident, `modifies` 0. `extract_relationships` nie gebaut. |
 | 3 Routing | `belongs_to_domain` | Element → Lebensbereich | Phase 2. Siehe [domaene.md](domaene.md). |
-| 4 Cross-System | heute `maps_to` (3 Ko-Erwähnungen, keine Methodik) | Konvergenz | Phase 4 ersetzt durch `converges` / `complements` / `contradicts` **pro Element-Paar in einer Domäne**, nicht pro System |
+| 4 Cross-System | `converges` / `complements` / `contradicts` | Konvergenz-Skelett | Review 4: fünf Typen × Eingang/Lebensort; Tagstamm nur Ji/Yi. `maps_to` 143 unangetastet. |
 
 **Cross-Arten (Phase 4):**
 - `converges` — gleiche Aussage. Gewicht nach Genealogie: gleiche Wurzel (HD↔Astro über das Rad) niedrig, verschiedene Wurzel (BaZi↔Astro) hoch.
