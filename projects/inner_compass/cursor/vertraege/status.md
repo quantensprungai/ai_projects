@@ -13,7 +13,7 @@ Policy (Soll): `blocked` | `canon_fallback` | `synth_draft` | `verified` — sie
 **Ist:** `sys_synthesis_wordings` hat **keine** Status-Spalte. Worker schreibt `account_id, node_id, canonical_id, language, version, canonical_description, canonical_wording, styles`.
 
 **Gate im Slice (Phase 2):** nur `lib/ic/domain-assemble.ts`. System-Charts unverändert.
-- UI-tauglich: `language='de'` **oder** explizite Allowlist (HD-Keil) **oder** vorgeschriebene Färbungskarte in `handbook-voice.ts` (Decision 2026-09-16, Liebe-Astro/Ziwei).
+- UI-tauglich: `language='de'` **oder** explizite Allowlist (HD-Keil) **oder** vorgeschriebene Färbungskarte in `handbook-voice.ts` (Decision 2026-09-16: Identität + Liebe, inkl. HD/BaZi-OS auf Liebe).
 - `synth_draft` EN: Lage-Satz + sichtbarer Entwurfs-Hinweis, nie Handbuch-Absatz.
 - Nichts da: Leerfall — ein Satz, welches System hier schweigt und warum. Keine erfundene Prosa.
 

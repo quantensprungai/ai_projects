@@ -51,7 +51,17 @@
     { "canonical_id": "bazi.day_master.geng", "life_domain": "self_identity" },
     { "canonical_id": "bazi.day_master.xin", "life_domain": "self_identity" },
     { "canonical_id": "bazi.day_master.ren", "life_domain": "self_identity" },
-    { "canonical_id": "bazi.day_master.gui", "life_domain": "self_identity" }
+    { "canonical_id": "bazi.day_master.gui", "life_domain": "self_identity" },
+    { "canonical_id": "bazi.day_master.jia", "life_domain": "love_partnership" },
+    { "canonical_id": "bazi.day_master.yi", "life_domain": "love_partnership" },
+    { "canonical_id": "bazi.day_master.bing", "life_domain": "love_partnership" },
+    { "canonical_id": "bazi.day_master.ding", "life_domain": "love_partnership" },
+    { "canonical_id": "bazi.day_master.wu", "life_domain": "love_partnership" },
+    { "canonical_id": "bazi.day_master.ji", "life_domain": "love_partnership" },
+    { "canonical_id": "bazi.day_master.geng", "life_domain": "love_partnership" },
+    { "canonical_id": "bazi.day_master.xin", "life_domain": "love_partnership" },
+    { "canonical_id": "bazi.day_master.ren", "life_domain": "love_partnership" },
+    { "canonical_id": "bazi.day_master.gui", "life_domain": "love_partnership" }
   ],
   "edges": [
     {

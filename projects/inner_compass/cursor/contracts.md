@@ -165,7 +165,7 @@ Lebensbereiche sind ein Tag, kein Schema-Constraint. Hinzufügen/Entfernen/Merge
 
 **Ist (2026-09-04, nach Plan-02 Todo 5):** 12 Zielknoten `ic.life_domain.*` (`system=meta`). Strukturelle `belongs_to_domain` (`approved`): HD-OS 30, Ziwei 12 Paläste, Astro 13 (Haus 8 doppelt). `sexuality_intimacy` strukturell genau eine Kante (`astro.house.8`). Inhaltlich HD: Schwelle v0 ≥3 Interps und ≥30 %, `candidate`. `domain-assemble.ts` liest die Kanten für `self_identity`. Node-Metadata bleibt stehen.
 
-**Ist (2026-09-16, Phase 7):** Hub unverändert Occupancy. Bereichsseiten `self_identity` und `love_partnership` sind Handbuch; die übrigen zehn Stubs.
+**Ist (2026-09-16, Phase 8):** Hub unverändert Occupancy. Bereichsseiten `self_identity` und `love_partnership` sind Handbuch; Liebe Tiefe 1 inkl. HD/BaZi-Färbung. Die übrigen zehn Stubs.
 
 **Schicht-2-Name:** **Muster** (dieses Dokument §10, UX). `kern/IC_Fundament_v06.md` sagt „SYNTHESE“ — Altname, nicht UI.
 
@@ -175,10 +175,10 @@ Lebensbereiche sind ein Tag, kein Schema-Constraint. Hinzufügen/Entfernen/Merge
 |---|---|
 | `system_structure/ziwei_structure_v0.json` `life_domain_map` | nutzt die Enums dieser Tabelle. **Deckt 10/12:** `family_home` und `exchange_learning` je zwei Paläste; `sexuality_intimacy` und `transformation_renewal` ohne Palast |
 | `system_structure/astro_structure_v0.json` `life_domain_map` | nutzt die Enums dieser Tabelle (Haus 8 zwei Zeilen). Katalog-`houses[].life_domain` bleibt Drift |
-| `system_structure/hd_structure_v0.json` | `life_domain_map`: Typ, Strategie, Autorität, Profil → `self_identity`. Nicht Tore/Zentren |
+| `system_structure/hd_structure_v0.json` | `life_domain_map`: Typ, Strategie, Autorität, Profil → `self_identity`; Typ + Strategie zusätzlich `love_partnership`. Nicht Tore/Zentren |
 | `system_structure/astro_catalog_v0.json` `houses[].life_domain` | **andere** Strings (`resources_values`, `home_roots`, …) — Seed liest sie **nicht**; Map ist SoT |
 | `system_structure/jyotish_catalog_v0.json` `bhavas` | `karakatva[]`, kein `life_domain` — Multi-Map schreiben, wenn Jyotish geroutet wird |
-| BaZi / I Ging | kein 12-Rad (4 Pfeiler / 64 Hexagramme) |
+| BaZi / I Ging | kein 12-Rad (4 Pfeiler / 64 Hexagramme). Tagstamm-Map: self_identity + love_partnership |
 
 Erweiterung von 10→12 (2026-03): §20d-Revision in ergebnis_modelle.md — "Kommunikation" und "Transformation" wurden bei 10 Systemen zu Recht abgelehnt; mit 14 Systemen (inkl. Jyotish 12 Bhavas, Ziwei 12 Paläste, Westl. Astro 12 Häuser) ist die Lücke nicht mehr vertretbar.
 

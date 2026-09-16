@@ -16,7 +16,7 @@ Eine Achse pro Screen. Chrome Deutsch. System-Filter auf der Bereichsseite, nich
 |---|---|---|---|
 | **JETZT** | Was gilt heute? | Ein Satz in Alltagssprache, Herkunfts-Chip, Resonanz Ja/Teilweise/Nein. Später Gezeiten (Transite, Luck Pillars). Heute Radar-Stub + CTA. | [resonanz.md](vertraege/resonanz.md), [sprache.md](vertraege/sprache.md) |
 | **KARTE** | Wo bin ich? | Occupancy-Rad + 12 Zeilen (Natal ∩ approved). Identität und Liebe = Handbuch. Andere: Kernfrage + Stub. Quellen-Linsen darunter. | [domaene.md](vertraege/domaene.md), [kanten.md](vertraege/kanten.md) |
-| **Bereichsseite** | Was bedeutet das hier? | Kopf mit Kernfrage. Filter. Tiefe 1 Spiegel + Herkunft + Resonanz. Tiefe 2 Treffen nur auf Identität (Familie 4). Werkstatt-Tor nur Identität. Handbuch: `self_identity` und `love_partnership`. | [handbuch_stimme.md](vertraege/handbuch_stimme.md), [status.md](vertraege/status.md), [kanten.md](vertraege/kanten.md) |
+| **Bereichsseite** | Was bedeutet das hier? | Kopf mit Kernfrage. Filter. Tiefe 1 Spiegel + Herkunft + Resonanz (Liebe: vier Quellen). Tiefe 2 Treffen nur auf Identität (Familie 4). Werkstatt-Tor nur Identität. Handbuch: `self_identity` und `love_partnership`. | [handbuch_stimme.md](vertraege/handbuch_stimme.md), [status.md](vertraege/status.md), [kanten.md](vertraege/kanten.md) |
 | **WERKSTATT** | Was tue ich damit? | `/home/werkstatt` live (Review 5): Versuch + Anker; Trap/Gift nur bei Payload. Tor auf der Bereichsseite = Hinweis + Link. Resonanz = Tür. | [werkstatt.md](vertraege/werkstatt.md) |
 | **ZEIT** | Wann? | Rhythmen. Braucht BaZi Luck Pillars und Transite. Später. | [kanten.md](vertraege/kanten.md) (Gezeiten) |
 

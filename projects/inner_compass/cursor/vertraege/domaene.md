@@ -33,6 +33,6 @@ Zielknoten: `ic.life_domain.{enum}`, `system='meta'`, 12 Stück. Abruf über Kan
 
 **Ist (Phase 5, Review 5, 2026-09-15):** Vertikal auf `self_identity` geschlossen (Spiegel, Treffen, Werkstatt). Zwölf Bereichs-*Routen* existieren; außer Identität: Kernfrage + „noch nicht“. Hub zeigt einen Link plus Quellen-Linsen, Mandala-Platzhalter. BaZi-Routing bleibt Tagstamm → Identität; HD-OS bleibt Identität — ohne Nachzug werden andere Bereichsseiten dünn.
 
-**Ist (Phase 7, Review 7, 2026-09-16):** `love_partnership` ist zweites Handbuch. Strukturell Haus 7 + Spouse; HD/BaZi still (Seed). Assemble injiziert `astro.house.7` auf dieser Seite, weil Natal-Nodes keine Häuser führen (wie Haus 1 auf Identität). Occupancy-Regel unverändert. Candidate-418 unangetastet. Plan: [../plans/07_love_partnership.md](../plans/07_love_partnership.md).
+**Ist (Phase 8, Review 8, 2026-09-16):** `love_partnership` Tiefe 1 spricht HD (Typ/Strategie) und BaZi (Tagstamm) per Färbungskarte, analog Astro/Ziwei. Assemble injiziert ohne DB-Seed. 418 `candidate`. Treffen/Werkstatt Identität. Plan: [../plans/08_hd_routing_love.md](../plans/08_hd_routing_love.md).
 
 **Ziwei** passt auf die Domänen-Achse. Es testet die Konvergenz-These nicht (Häuser-Stamm). Deshalb BaZi als nächste Content-Welle, nicht gegen Ziwei.

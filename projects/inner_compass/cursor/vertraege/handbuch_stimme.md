@@ -34,7 +34,9 @@ Mikro-Erzählung: Tiefe 1 **Benennen → Übersetzen → Verorten**. Tiefe 2 **T
 |---|---|---|
 | Gegenüber / Begegnen | Deszendent / 7. Haus / Steinbock… | Wie du in Bindung trittst |
 | Ort der Bindung | 夫妻宫 / Erdast / Schwein… | Färbung des Palasts, nicht das Tierwort |
+| Einladung (Bindung) | HD-Strategie auf Liebe | Gemeint werden, bevor du dich voll gibst |
+| Tagstamm (Bindung) | Day Master | Wie du in der Bindung da bist |
 
-**Ist (Phase 2–5):** `handbook-voice-v1`. HD: Benennen + Übersetzen. Astro/Ziwei/BaZi auf Identität: Lage + Entwurf. Tiefe 2: `composeMeeting`. Tiefe 3–4: Werkstatt-Experiment aus Strategie.
+**Ist (Phase 2–5):** `handbook-voice-v1`. HD: Benennen + Übersetzen. Tiefe 2: `composeMeeting`. Tiefe 3–4: Werkstatt-Experiment aus Strategie.
 
-**Ist (2026-09-16):** Liebe-Astro/Ziwei: vorgeschriebene Stimme (12 Zeichen, 12 Erdzweige), wie Tagstämme. Kein Zeichenname im Benennen. `uiReady`, wenn die Färbung bekannt ist. Decision: [decisions.md](../../reference/decisions.md) „Tiefe 1 = Färbungskarte“. HD/BaZi auf Liebe weiter still.
+**Ist (2026-09-16, Stimme):** Schablone „Die Bewegung ist…“ raus. Zweites Beat konkret. BaZi-Name = Färbung, nicht Generic+Stamm. Treffen ohne Inspector-Jargon.

@@ -1,14 +1,31 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-09-16: Phasen-Review 8 — HD/BaZi auf Liebe über OS/Tagstamm
+
+**Kontext:** Plan 08. Liebe hatte Astro/Ziwei-Färbung, HD/BaZi still. Vertrag: jedes System spricht in jeden Bereich; HD/BaZi ohne 12-Rad.
+
+**Decision:**
+
+1. **Tiefe 1 auf Liebe** färbt Typ+Strategie und Tagstamm (vorgeschriebene Karte). Inject wie Haus 7 — kein DB-Reset, 418 bleiben `candidate`.
+2. **Treffen und Werkstatt** bleiben Identität. Keine Familie-4-Sätze aus Identitäts-Kanten auf der Liebe-Seite.
+3. **Katalog-Map** Typ/Strategie/Tagstamm → `love_partnership` liegt in den Structure-JSONs. Occupancy-Hub ändert sich erst nach Seed (`approved` in DB); in diesem Cut spricht die Seite trotzdem.
+4. **Nächster Plan:** Warteschlange — Jiazi (#2) oder eine weitere Bereichsseite (#5). Nicht 418.
+
+**Nicht:** 418-Spray, Sex-Manual, Occupancy auf candidate, Jiazi parallel.
+
+**SoT:** `cursor/plans/08_hd_routing_love.md`; Code `composeHdPartnershipVoice` / `composeBaziPartnershipVoice`.
+
+---
+
 ## 2026-09-16: Tiefe 1 = Färbungskarte, nicht Inspector-Lage
 
 **Kontext:** Liebe-Seite nach Plan 07 las sich als „steht in Steinbock / Schwein“ + Entwurf. Das ist Chart-Lage, nicht das Nordstern-Handbuch (Benennen → Übersetzen → Verorten; Alltagssprache; Prozess später).
 
-**Decision:** Auf einer **freien** Bereichsseite ist Tiefe 1 eine **vorgeschriebene Färbungskarte** in `handbook-voice.ts` (wie HD-Keil und Tagstämme): 12 Zeichen × Liebe, 12 Erdzweige × Bindung. Kein Zeichen-/Tierwort im Benennen. Systemname erst im Verorten. `uiReady`, wenn die Färbung bekannt ist — nicht warten auf DE-Atome. Inspector-Lage („steht in …“) ist kein Handbuchsatz.
+**Decision:** Auf einer **freien** Bereichsseite ist Tiefe 1 eine **vorgeschriebene Färbungskarte** in `handbook-voice.ts` (wie HD-Keil und Tagstämme): 12 Zeichen × Liebe, 12 Erdzweige × Bindung, **12 Zeichen × Identität (Aszendent), 12 Erdzweige × Identität (Lebensort)**. Tagstamm auf Identität folgt derselben `uiReady`-Regel. Kein Zeichen-/Tierwort im Benennen. Systemname erst im Verorten. `uiReady`, wenn die Färbung bekannt ist — nicht warten auf DE-Atome. Inspector-Lage („steht in …“) ist kein Handbuchsatz.
 
-**Noch nicht:** dieselbe Karte auf Identität-Astro/Ziwei (bleibt Lage+Entwurf, bis derselbe Schnitt). Kein 418, kein Jiazi in diesem Slice.
+**Ist (2026-09-16, Slice A):** Identität-Astro/Ziwei/BaZi auf Färbung, nicht mehr Lage+Entwurf. Kein 418, kein Jiazi in diesem Slice.
 
-**SoT:** [handbuch_stimme.md](../cursor/vertraege/handbuch_stimme.md); Code `composeAstroPartnershipVoice` / `composeZiweiPartnershipVoice`.
+**SoT:** [handbuch_stimme.md](../cursor/vertraege/handbuch_stimme.md); Code `composeAstroVoice` / `composeZiweiVoice` / `composeBaziVoice` plus Partnership-Varianten.
 
 ---
 

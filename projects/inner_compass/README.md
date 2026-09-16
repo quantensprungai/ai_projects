@@ -58,4 +58,4 @@ projects/inner_compass/
 
 ## Status
 
-Pre-Launch. **Produktphasen 0–7 zu** (Anker: `cursor/roadmap.md`). Handbuch: `self_identity` und `love_partnership`. Nächster Bau: Plan 08 (Warteschlange). Details Engines/Content: `cursor/status.md` (nicht Chat-Einstieg).
+Pre-Launch. **Produktphasen 0–8 zu** (Anker: `cursor/roadmap.md`). Handbuch: `self_identity` und `love_partnership` (Liebe inkl. HD/BaZi-OS). Nächster Bau: Warteschlange. Details Engines/Content: `cursor/status.md` (nicht Chat-Einstieg).
