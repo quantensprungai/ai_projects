@@ -40,3 +40,5 @@ Mikro-Erzählung: Tiefe 1 **Benennen → Übersetzen → Verorten**. Tiefe 2 **T
 **Ist (Phase 2–5):** `handbook-voice-v1`. HD: Benennen + Übersetzen. Tiefe 2: `composeMeeting`. Tiefe 3–4: Werkstatt-Experiment aus Strategie.
 
 **Ist (2026-09-16, Stimme):** Schablone „Die Bewegung ist…“ raus. Zweites Beat konkret. BaZi-Name = Färbung, nicht Generic+Stamm. Treffen ohne Inspector-Jargon.
+
+**Ist (Track Tiefe):** Vorgeschriebene Karten in `handbook-voice.ts` sind **Fallback und Few-Shot**, nicht das Zielbild. Formulierer (Plan 11) schreibt aus Atomen + Natal; Tiefe 1 soll Tore/Kanäle/Placements lesen ([tiefe.md](tiefe.md)).

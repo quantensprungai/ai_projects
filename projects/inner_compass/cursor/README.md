@@ -8,7 +8,7 @@ out_of_scope: Engine-Bestand (status.md)
 
 # Inner Compass — Cursor Documentation Index
 
-> **Anker 2026-09-16:** zuerst `roadmap.md`, dann Review 8 in `../reference/decisions.md`. Nicht `status.md` zuerst.
+> **Anker 2026-09-16:** zuerst `roadmap.md`, dann Decision „Tiefe statt Färbung“ in `../reference/decisions.md`. Vertrag [vertraege/tiefe.md](vertraege/tiefe.md). Nicht `status.md` zuerst.
 
 ## Was ist Inner Compass?
 
@@ -16,7 +16,7 @@ Ein Handbuch über dich in deiner Sprache: Herkunft jedes Satzes, Resonanz, wo Q
 
 ## KI-Lesereihenfolge
 
-1. `roadmap.md` → 2. Review 8 in `../reference/decisions.md` → 3. `nordstern.md` + `vertraege/` → 4. `handover.md`. Nächster Bau = Warteschlange (Jiazi oder weitere Seite).
+1. `roadmap.md` → 2. Decision „Tiefe statt Färbung“ in `../reference/decisions.md` → 3. `nordstern.md` + `vertraege/` (inkl. `tiefe.md`) → 4. `handover.md`. Nächster Bau = [plans/09_tiefe_hd.md](plans/09_tiefe_hd.md).
 
 Pipeline/Engine: `contracts.md` §1a+§1b, `pipeline.md` §1a, `engines.md`, `reference/synthesis_canon_first.md`.
 
@@ -27,7 +27,7 @@ Pipeline/Engine: `contracts.md` §1a+§1b, `pipeline.md` §1a, `engines.md`, `re
 | **roadmap.md** | Phasen, nächster Plan | Immer zuerst |
 | **nordstern.md** | Versprechen, drei Füße | Produkt-Warum |
 | **produktkarte.md** | Fünf Screens | UI-Achse |
-| **vertraege/** | Domäne, Kanten, Status, Resonanz, Stimme, Werkstatt, Sprache | Vor dem Bau |
+| **vertraege/** | Domäne, Kanten, Status, Resonanz, Stimme, Werkstatt, Sprache, Tiefe | Vor dem Bau |
 | **plans/** | Selbsttragende Phasen-Pläne | In der offenen Phase |
 | **handover.md** | Chat-Wechsel, Ports | Nach Roadmap |
 | **contracts.md** | Schema, Enums, Payloads | Bei DB/Pipeline |

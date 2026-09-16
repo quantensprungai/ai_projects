@@ -1,9 +1,9 @@
 <!--
 Reality Block
-last_update: 2026-09-15
+last_update: 2026-09-16
 scope: Vier Kantenfamilien
 in_scope: relation_type, intra vs. routing vs. cross
-out_of_scope: extract_relationships neu bauen (Roadmap)
+out_of_scope: extract_relationships (Plan 10), Backfill-Wipe
 -->
 
 # Vertrag: Kanten
@@ -13,7 +13,7 @@ Vier Familien. Enum in [contracts.md §5](../contracts.md).
 | Familie | Typen | Zweck | Stand |
 |---|---|---|---|
 | 1 Struktur | `part_of` | Tor gehört zu Zentrum | existiert |
-| 2 Wirkung intra-system | `amplifies`, `depends_on`, `modifies`, `clashes_with`, `produces`, `controls` | verstärken / schwächen / bedingen | HD Backfill liegt (`candidate`). Login-Person `self_identity`: 11 interne, 445 inzident, `modifies` 0. `extract_relationships` nie gebaut. |
+| 2 Wirkung intra-system | `amplifies`, `depends_on`, `modifies`, `clashes_with`, `produces`, `controls` | verstärken / schwächen / bedingen | **Drei Schichten** ([tiefe.md](tiefe.md)): (1) Mechanik+`condition` Plan 09; (2) Literatur Plan 10; (3) Synthese-Hypothese Plan 11. Backfill ~13k `candidate`, ohne Interp-ID in Metadata, ohne `condition`; Skript fehlt im Repo. Nicht löschen, nicht lesen. |
 | 3 Routing | `belongs_to_domain` | Element → Lebensbereich | Phase 2. Siehe [domaene.md](domaene.md). |
 | 4 Cross-System | `converges` / `complements` / `contradicts` | Konvergenz-Skelett | Review 4: fünf Typen × Eingang/Lebensort; Tagstamm nur Ji/Yi. `maps_to` 143 unangetastet. |
 
@@ -51,4 +51,4 @@ Mehrere interne Kanten teilen dieselbe Interpretation (Fan-out). Beispiel: Inter
 
 Einordnung: Familie 2 speist Muster *innerhalb* eines Systems und die Werkstatt — nicht Tiefe 2 „Wo sich die Quellen treffen“ auf der Bereichsseite; das ist Familie 4 (Phase 4). Bereichsseite Tiefe 2 hängt in Phase 2 nur an „zwei UI-taugliche Quellen“ (Status-Gate), nicht an Wirkungskanten. `domain-assemble.ts` liest Familie 2 nicht.
 
-**Review 2 (2026-09-11):** Befund steht. Familie 2 bleibt stumm bis Phase 4/5 (Widerspruchsfilter + Fan-out darf nicht als mehrere Belege zählen). Inhaltliche `belongs_to_domain`-Schwelle v0 unverändert — die Bereichsseite liest für `self_identity` die strukturellen OS-/Lage-Karten, nicht die 418 `candidate`-Paare.
+**Review 2 (2026-09-11):** Befund steht. **Ist (2026-09-16):** Backfill = Rohmaterial Schicht 2. Handbuch liest Familie 2 weiter nicht, bis Plan 09 Mechanik-Kanten mit `condition` liefert. 418 `candidate` unangetastet.

@@ -20,7 +20,7 @@ Lokal: Next :3000, Supabase API :54321, HD-Service :8002 (services/hd)
 LLM: Langdock gpt-5.4-mini (Pin in der App noch offen). Nicht Spark-Qwen als Interpret/Synth. Key in .env.development.local (nicht committen).
 ```
 
-**Stand:** Phase 8 zu. Liebe Tiefe 1: HD/Astro/Ziwei/BaZi (OS + Tagstamm + Haus 7 + Spouse). 418 still. Treffen/Werkstatt nur Identität. **Nächster Plan:** Warteschlange — Jiazi (#2) oder weitere Bereichsseite (#5). Jiazi nicht parallel erzwingen.
+**Stand:** Track Tiefe. Phase 8 zu. Färbungskarte = Fallback. **Nächster Plan:** [plans/09_tiefe_hd.md](plans/09_tiefe_hd.md) (Mechanik-Kanten HD mit `condition`). Jiazi nicht parallel. Verbreitung: Namen kanonisch, Handles reservieren, keine Posts.
 
 **Leitplanken:** nested Code nicht ins Docs-Repo. Flora/`.env`/`_tmp_*` nicht committen. HD-Zombie `5ba2f841` nicht anfassen. Auto-Synth aus. Handbuch-Text formulieren, nicht übersetzen. Seed vor text2kg.
 

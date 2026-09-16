@@ -1,5 +1,63 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-09-16: Tiefe statt Färbung — vertikal an HD, dann Matrix
+
+**Kontext:** Färbungskarten (Plan 07–08) machen denselben Generator mit Krebs-AC zum gleichen Satz. Das ist Typologie, nicht Signatur. Familie-2-Backfill (~13k) ist ohne `condition` und ohne Interp-ID in Metadata. Formulierer war nirgends der letzte Schritt. `kern/`-Beschlüsse (E-35/36, E-39, Graduation, …) lagen weder in Ankern noch geparkt.
+
+**Decision:**
+
+1. **Färbungskarte = Fallback + Few-Shot**, nicht Ziel. Tiefe 1 muss Tore/Kanäle/Placements der Person lesen, sobald Routing und Atome reichen.
+2. **Familie 2 in drei Schichten:** (1) Mechanik aus Regeln, `approved`, Evidence = Katalog/Regel + `condition`; (2) Literatur mit Beleg, Interp-ID, Bedingung; (3) Personen-Synthese einmal pro Chart, gecacht, mit Hypothese-Flag. Backfill bleibt `candidate`, nicht löschen, nicht lesen. Skript fehlt im Repo.
+3. **Formulierer ist der letzte Schritt**, nicht der erste. Input: Natal-Kanten der Seite, `verified`/`canon_fallback` oder Fallback-Karte, Stimme-Regel. Cache-Key = Chart-Hash + Stimme-Version. `synth_draft` bleibt keine Prosa.
+4. **Kein Big Bang.** Einmal die ganze Tiefe an HD (`self_identity`), Schema einfrieren, dann horizontal. Launch-Umfang = die vier rechnenden Systeme (HD, Astro, Ziwei, BaZi). Jiazi bleibt Content-Welle.
+5. **Jeder Plan nennt seine Matrix-Zelle** in [tiefe.md](../cursor/vertraege/tiefe.md). Track: Plan 09 Mechanik-Kanten HD → Plan 10 Facetten + Re-Extraktion → Plan 11 Formulierer v0 → Plan 12 Matrix + horizontal.
+
+**Verwaiste `kern/`-Beschlüsse — je ein Status, kein drittes „vergessen“:**
+
+| Beschluss | Status 2026-09-16 |
+|---|---|
+| `level_tag` / 7-Ebenen pro Knoten (E-35/36) | **Tiefe-Track** — Schema in `tiefe.md`; Pflicht bei Plan 12 / nächstem Seed |
+| Qualitäts-Layer A–E, `confidence`, `human_review_required` | **Tiefe-Track** — Provenienz am Formulierer; D/E nicht ohne Review |
+| Widerspruchs-Protokoll (E-39: zeigen → einordnen → einladen) | **Tiefe-Track** — UX für Familie-4 `contradicts`, nicht extra Produkt |
+| Resonanz als Evidenz / Barnum-Rahmen | **Tiefe-Track** — Ja/Teilweise/Nein bleibt Tür; spätere Evidenzklasse, kein Score |
+| System × Ebenen × Phase-Tabelle | **geparkt** — Vorlage nach Matrix-Ist, nicht vor Plan 09 |
+| Domäne × Phase-Matrix (E-19), 7 Phasen / Heldenreise (E-20) | **geparkt** — orthogonal zur Flächen-Tiefe; nach Formulierer v0 |
+| Zeitmodell-Hierarchie (E-40) | **geparkt** — mit ZEIT-Seite (Warteschlange) |
+| Graduation (E-17) | **geparkt** — Ethik bleibt; kein Produkt-Schnitt jetzt |
+| `inner_strategy` / factor_scores (E-27) | **geparkt** — Nordstern: keine Prozent-Scores im UI |
+| Edges `deepens` / `triggers` / `influences` | **geparkt** — vier Familien zuerst; Enum nicht erweitern in 09 |
+| Enneagramm-Brücke (E-06/16/31) | **geparkt** — Filter fürs Zwillings-Problem, nach HD-Tiefe |
+| Gene Keys vertikal | **geparkt** — `maps_to` 143 unangetastet; Staffel-2 |
+| Nervensystem-Check | **geparkt** — Werkstatt-Safety-Wort bleibt; kein Mechanismus in 09 |
+| Zwillings-Problem | **geparkt** — Begründung Multi-System, kein eigener Plan |
+| Lens-Switcher formal (E-14) | **geparkt** — Hub-Linsen reichen bis Formulierer |
+| Biografie-Layer (E-24), Affect (E-22) | **geparkt** |
+| 16er-Matrix Handbuch × Grammatik | **geparkt** — `ic_grammatik` dormiert in contracts |
+| `generate_meta_nodes` | **bleibt geparkt** (bereits Sep) |
+
+**Nicht:** 418-Spray, `supabase db reset`, Merge `main`, Jiazi parallel, Formulierer vor Mechanik-Kanten.
+
+**SoT:** [tiefe.md](../cursor/vertraege/tiefe.md); Plan [09_tiefe_hd.md](../cursor/plans/09_tiefe_hd.md).
+
+---
+
+## 2026-09-16: Verbreitung-Vorlauf — Namen und Handles, keine Posts
+
+**Kontext:** Dreischicht-Release (KI-Serie mit fünf Botschaftern → Unlock → persönliche Journey) liegt in `kern/` und `reference/vision_and_story.md`. Namen widersprüchlich (Luka/Kwame, Amara/Sofia). Keine Sheets, Scripts, Handles. Roadmap: Verbreitung nach Fläche.
+
+**Decision:**
+
+1. **Kanon-Namen:** Aria (West/HD), Jian (China/BaZi), Priya (Indien/Jyotish), Luka (LatAm/Astro), Amara (Afrika/Akan). Kwame und Sofia sind Aliase, keine Handles.
+2. **Handles reservieren** auf X und Instagram unter diesen Vornamen plus Produktmarke, sobald die Marke feststeht. Billig, reversibel. Kein TikTok-Vorlauf nötig.
+3. **Keine Posts, kein Follower-Aufbau, keine Stub-Automation** vor der Fläche. Leere Accounts ohne Produkt schaden der Serie.
+4. Charakter-Sheets nur auf Wunsch, dann unter `reference/`, kein Content. Bau von Agents/MCP bleibt geparkt (`ideas.md`).
+
+**Nicht:** Mandala-Share, Serie-Produktion, globales Feature-Unlock.
+
+**SoT:** Nordstern Story-Rahmen; Roadmap #10; `reference/vision_and_story.md`.
+
+---
+
 ## 2026-09-16: Phasen-Review 8 — HD/BaZi auf Liebe über OS/Tagstamm
 
 **Kontext:** Plan 08. Liebe hatte Astro/Ziwei-Färbung, HD/BaZi still. Vertrag: jedes System spricht in jeden Bereich; HD/BaZi ohne 12-Rad.
