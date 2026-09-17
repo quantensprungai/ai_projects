@@ -1,0 +1,5 @@
+farm_ext_id,turbine_model,subsystem,material,mass_t,eol_route,recycling_rate,is_proxy,source_note,as_of,olca_process_id
+DE01,REpower 5M,nacelle,steel,120.5,recycle,0.85,true,literature proxy — replace,2026-09-17,
+DE01,REpower 5M,blade,GFRP,18.0,landfill,,true,literature proxy — replace,2026-09-17,
+DE01,REpower 5M,tower,steel,210.0,recycle,0.90,true,literature proxy — replace,2026-09-17,
+DE01,REpower 5M,foundation,steel,80.0,recycle,0.70,true,tripod proxy — replace,2026-09-17,

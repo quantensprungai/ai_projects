@@ -1,8 +1,8 @@
 <!-- Reality Block
-last_update: 2026-09-04
+last_update: 2026-09-17
 status: active
 scope:
-  summary: "Aktiver Arbeitsplan ASTRA IMC — Cloud live mit curated Daten; nächster Hebel Marc-Sync / PR."
+  summary: "Aktiver Arbeitsplan ASTRA IMC — Cloud live; Marc-Sync / PR; Sim-Ingest; Thomas LCA Decom-first."
   in_scope:
     - next implementation order
     - glossary for events vs marc steps
@@ -11,6 +11,8 @@ scope:
     - full roadmap rewrite
     - GIS routing product
 notes:
+  - "2026-09-17: Thomas-Gespräch — openLCA 2 + ecoinvent; BOM-Light + Recycling in IMC via CSV; Decom C1–C4 zuerst; kein ecoinvent-Spiegel. IA v0.1 + Mail-Vorlage."
+  - "2026-09-15: Analysis Runs Stufe 1+2 (imc_analysis_runs + API v0 + Park-UI); Live-Engine out of scope."
   - "2026-09-04: Coolify live; curated IMC-Daten in Cloud auf Team astra-imc (3606 Farms)."
   - "Handover-Block in handover.md parallel aktualisieren."
   - "2026-08-27: 4C Turbine-Modelle (~369 / ~619 Farms) im Steckbrief; Grid/OHVS; MaStR 1651 Units."
@@ -28,7 +30,7 @@ notes:
 | **Handover** | `cursor/handover.md` | Copy-Paste Kontextblock für neuen Chat |
 | **Team-Stand** | `04_communication/team_stand_plan_2026_08.md` | Narrative für Session/Folien |
 | **IA Marc** | `01_spec/interface_agreement_marc_anylogic_v0.md` | Stunden-Wetter + Sim-CSV + Owner-Matrix |
-| **IA Thomas** | `01_spec/interface_agreement_thomas_lca_v0.md` | BOM/PCF |
+| **IA Thomas** | `01_spec/interface_agreement_thomas_lca_v0.md` | BOM-Light + Recycling + C-Module; Mail: `04_communication/mail_thomas_lca_openlca_2026_09.md` |
 | **Datenlücken** | `01_spec/data_coverage_gap_2026_08.md` | 4C/MaStR/ERA5/CAPEX Ist |
 
 ## Zielbild (grün, nicht „Stage A genug“)
@@ -115,9 +117,10 @@ Details + Owner-Matrix + Barge-Offenpunkt: `01_spec/interface_agreement_marc_any
 |-----------|-----|--------|
 | **1 Jetzt** | **Marc-Sync** (Stunden-CSV, Katalog-Defaults, Barge, Snapshot-IA) | Fachblocker; ETL-Breite ist ausreichend |
 | **1 parallel** | **PR** `feat/assets-ia-restructure` → main wenn Demo ok | Code einfrieren; Coolify+Cloud-Daten stehen |
-| **2 Partner** | Thomas BOM/LCA an Einheiten-Anker; Shubham AAS-Schnitt | nicht aus 4C ableitbar |
+| **1 parallel** | **Sim-Output-Ingest** (Stufe 1+2: `imc_analysis_runs` + API v0 + Park-UI) — Live-Engine bleibt raus | Ergebnis speichern/zeigen; Marc-Spalten-Abnahme |
+| **2 Partner** | **Thomas:** Mail + AV-Stücklisten-CSV (Massen/Recycling) → Import; Impacts C1–C4; Shubham AAS | Massen kommen von Thomas, nicht aus 4C/openLCA-Dump |
 | **3 Optional** | DE-ERA5-Tagesbatch; Katalog-Zahlen mit Marc; MaStR-Rest nur klar | kein Sim-/BOM-Blocker |
-| **Nicht** | Transmission-Vollimport, GIS-Router, unitweiser 4C↔MaStR-Join, Contracts-17k | Scope |
+| **Nicht** | Transmission-Vollimport, GIS-Router, unitweiser 4C↔MaStR-Join, Contracts-17k, Live-AnyLogic/MCP | Scope |
 
 **Pilot AV vs. andere:** Typ/Grid/OHVS/MaStR-Einheiten sind DE-breit wo gelinkt. AV bleibt dichter bei **ERA5-Stunden**, **Sim-Rollen**, Kuratierung (Emden/Tripod) und Demo-Pfad — nicht mehr „einziger Park mit Daten“.
 
@@ -145,7 +148,7 @@ Details + Owner-Matrix + Barge-Offenpunkt: `01_spec/interface_agreement_marc_any
 
 ### Thomas — blockt CAPEX-Portfolio nicht
 
-BOM/PCF/Toolwahl sind **LCA-Spur**. Portfolio braucht nur 4C Economics (schon in DB). Einheiten-Block ist der UI-Anker für spätere Massen.
+Tool **openLCA 2 + ecoinvent** (bei ihm). BOM/Recycling sind **LCA-Spur**; SoT nach CSV-Import in IMC. ecoinvent bleibt in openLCA. Portfolio braucht nur 4C Economics. Einheiten-Block = UI-Anker, keine Massen.
 
 ## Logistics — was „Struktur“ heißt (nicht Vollausbau)
 

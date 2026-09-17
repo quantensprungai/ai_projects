@@ -1,5 +1,5 @@
 <!-- Reality Block
-last_update: 2026-08-17
+last_update: 2026-09-17
 status: draft
 scope:
   summary: "ReST Data Platform ASTRA WP 5.2 – Doku: Zielbild, Scope, Naming, Stack (Next.js + Supabase); Code: quantensprungai/astra-imc-platform."
@@ -31,7 +31,9 @@ notes: []
 - `01_spec/idea_backlog.md`: offener Ideen-Backlog (Hypothesen/Experimente, noch nicht festgelegt)
 - `01_spec/interface_agreement_template.md`: Template fuer Modul-Schnittstellen (Schema, Keys, Format, Abnahme)
 - `01_spec/interface_agreement_marc_anylogic_v0.md`: Draft IA Marc / AnyLogic (Stunden-Wetter + Sim-Output)
-- `01_spec/interface_agreement_thomas_lca_v0.md`: Draft IA Thomas / LCA-BOM (openLCA/PCF)
+- `01_spec/interface_agreement_thomas_lca_v0.md`: IA Thomas / BOM-Light + Recycling + openLCA Decom-first (v0.1)
+- `01_spec/templates/thomas_bom_light_sample.csv` / `thomas_lca_impacts_sample.csv`: CSV-Köpfe Stückliste + Impacts
+- `04_communication/mail_thomas_lca_openlca_2026_09.md`: Mail-Vorlage Arbeitsteilung Plattform ↔ openLCA
 - `01_spec/data_coverage_gap_2026_08.md`: 4C/MaStR/ERA5/CAPEX — Ist vs. Luecken (Stand 2026-08)
 - `01_spec/data_ampel_stage_a.md`: Stage-A Datenboard (Gruen/Gelb/Rot) fuer Meeting-Entscheidungen
 - `01_spec/imc_rls_policy_patterns.md`: IMC RLS/Grant-Muster (Team-Accounts / `has_role_on_account`)

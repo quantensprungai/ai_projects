@@ -13,7 +13,7 @@ UI-Kurzname: ASTRA IMC
 Tech: Next.js (Makerkit Turbo) + Supabase (Postgres, PostGIS, Auth, Storage, RLS)
 Workspace: ai-projects Root — Doku + Code + Infra zusammen (NICHT nur projects/rest_data_platform/)
 
-Stand (2026-09-04) — Plan: projects/rest_data_platform/cursor/next_plan.md
+Stand (2026-09-17) — Plan: projects/rest_data_platform/cursor/next_plan.md
   - Doku: projects/rest_data_platform/ · Code: code/astra-imc-platform/ → quantensprungai/astra-imc-platform
   - Branch UI: `feat/assets-ia-restructure` (Waves + Dossier + Grid/OHVS + 4C-Turbine-Typ + MaStR Units)
   - App live: https://imc.ostfriesland.ai (Coolify) · Supabase Cloud `pfprwudrfkugvzpjyrvj` · Team-Slug **astra-imc**
@@ -29,7 +29,7 @@ Stand (2026-09-04) — Plan: projects/rest_data_platform/cursor/next_plan.md
   - GIS: Map-light — kein Router. Marc: Snapshot + Wetter-CSV — kein Dauerstream; Barge nur jack_up_barge (offen)
   - Logistik am Park: Akteure (~3633) · VPI-Einsätze DE (~1183) · Sim-Rollen nur AV-Pilot
   - Locale: EN Workspace; nach i18n-Keys `next dev` neu starten
-  - IA: marc_anylogic_v0 + thomas_lca_v0 · Präsi: team_stand_plan_2026_08.md (+ PPTX)
+  - IA: marc_anylogic_v0 + thomas_lca_v0.1 (openLCA 2 + ecoinvent; BOM/Recycling via CSV; Decom C-first; kein ecoinvent-Spiegel) · Mail: 04_communication/mail_thomas_lca_openlca_2026_09.md · Präsi: team_stand_plan_2026_08.md (+ PPTX)
   - Marketing intern (Anmelden/Kontakt); `/docs` umgeleitet. Invites ohne SMTP (Link kopieren); EMAIL_SENDER fehlt noch.
 
 Zielbild MVP (5–12 Wochen):
@@ -48,8 +48,8 @@ Nächster Schritt:
   1) ~~Stage A Backbone / Assets-IA / Grid-OHVS / MaStR / 4C-Turbine-Typ~~ — Daten-Backlog light fertig
   2) ~~Coolify + Cloud-Daten auf Team astra-imc~~ — siehe cursor/cloud_bootstrap.md
   3) **Marc-Sync** (Stunden-CSV + Katalog + Barge/IA) · parallel **PR → main** wenn Demo ok
-  4) Optional: EMAIL_SENDER/SMTP; DE-ERA5; Thomas BOM; Shubham AAS
-  Geblockt: BOM Thomas; Sequenz/Sim-CSV Marc; Vessel-Wetter final; Barge-Typ
+  4) Thomas: Mail senden + AV-Stückliste; Impacts C1–C4; optional EMAIL_SENDER; Shubham AAS
+  Geblockt: BOM-Zahlen (Recherche Thomas); Sequenz/Sim-CSV Marc; Vessel-Wetter final; Barge-Typ
   Nicht: Transmission-Vollimport; GIS-Router; 4C↔MaStR unit-Join; Contracts-17k; Decom aus 4C; Sim/LCA in App
 
 Pilot AV vs andere:

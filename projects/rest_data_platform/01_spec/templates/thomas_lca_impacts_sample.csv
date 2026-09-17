@@ -1,0 +1,5 @@
+external_run_id,farm_ext_id,scenario_name,method,category,value,unit,lifecycle_phase,lci_db,tool,is_proxy,notes
+av_decom_baseline_c1,DE01,av_decom_baseline,IPCC_GWP100,climate_change,0,kg CO2-eq,C1,ecoinvent 3.x,openLCA,true,placeholder — Thomas replaces
+av_decom_baseline_c2,DE01,av_decom_baseline,IPCC_GWP100,climate_change,0,kg CO2-eq,C2,ecoinvent 3.x,openLCA,true,placeholder — Thomas replaces
+av_decom_baseline_c3,DE01,av_decom_baseline,IPCC_GWP100,climate_change,0,kg CO2-eq,C3,ecoinvent 3.x,openLCA,true,placeholder — Thomas replaces
+av_decom_baseline_c4,DE01,av_decom_baseline,IPCC_GWP100,climate_change,0,kg CO2-eq,C4,ecoinvent 3.x,openLCA,true,placeholder — Thomas replaces
