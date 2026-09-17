@@ -1,5 +1,5 @@
 <!-- Reality Block
-last_update: 2026-01-22
+last_update: 2026-09-17
 status: draft
 scope:
   summary: "Ist-Stand der Model-Assets auf Spark (Disk) + Serve-Namen/Ports + Hinweise zu Quant/Alignment."
@@ -34,6 +34,8 @@ notes:
 | `qwen3-32b-nvfp4` | SGLang | `30001` | `31001` | ✅ läuft (per Switch) | NVFP4 ModelOpt; “known good”. |
 
 > Ports/Proxies/Token-Auth: siehe `infrastructure/spark/inference_endpoints.md`.
+>
+> Bildmodelle (ComfyUI): `infrastructure/spark/comfyui.md`.
 
 ## On disk (bestätigt auf Spark)
 
@@ -121,6 +123,16 @@ Diese Liste ist **keine** Aussage, dass die Modelle NVFP4/FP8 sind; das ist pro 
 |---|---|---:|---|---|
 | `~/ai/models/llama/llama-3.1-8b-instruct` | BF16 (safetensors) | ~16G | `llama-3.1-8b-instruct` | Leichtgewichtig; OpenClaw: 14B+ empfohlen |
 | `~/ai/models/llama/llama-3.2-11b-instruct` | BF16 (safetensors) | ~22G | `llama-3.2-11b-instruct` | 11B, multilingual |
+
+### Bildmodelle (ComfyUI, Welle 2026-09)
+
+Nicht unter `~/ai/models/` (LLM-Tree), sondern `~/ai/comfyui/ComfyUI/models/`. Port `8188`. Details: `infrastructure/spark/comfyui.md`.
+
+| Modell | Format | Lizenz | Status |
+|---|---|---|---|
+| FLUX.2 Klein 4B distilled + base | FP8 | Apache 2.0 | on disk |
+| Z-Image-Turbo | BF16 | Apache 2.0 | Download-Skript |
+| Qwen-Image-Edit-2511 | FP8 mixed + Lightning LoRA | Apache 2.0 | Download-Skript |
 
 ### Minimaler Ablauf pro neuem Modell
 1. **Download** nach `~/ai/models/<vendor>/<model>/`
