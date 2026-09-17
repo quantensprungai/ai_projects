@@ -13,7 +13,7 @@ Vier Familien. Enum in [contracts.md §5](../contracts.md).
 | Familie | Typen | Zweck | Stand |
 |---|---|---|---|
 | 1 Struktur | `part_of` | Tor gehört zu Zentrum | existiert |
-| 2 Wirkung intra-system | `amplifies`, `depends_on`, `modifies`, `clashes_with`, `produces`, `controls` | verstärken / schwächen / bedingen | **Drei Schichten** ([tiefe.md](tiefe.md)): (1) Mechanik+`condition` Plan 09; (2) Literatur Plan 10; (3) Synthese-Hypothese Plan 11. Backfill ~13k `candidate`, ohne Interp-ID in Metadata, ohne `condition`; Skript fehlt im Repo. Nicht löschen, nicht lesen. |
+| 2 Wirkung intra-system | `amplifies`, `depends_on`, `modifies`, `clashes_with`, `produces`, `controls` | verstärken / schwächen / bedingen | **Drei Schichten** ([tiefe.md](tiefe.md)): (1) Mechanik Runtime Plan 09; (2) Literatur Schema Plan 10, Lauf 10a; (3) Synthese Plan 11. Backfill ~13k `candidate`, ungelesen. |
 | 3 Routing | `belongs_to_domain` | Element → Lebensbereich | Phase 2. Siehe [domaene.md](domaene.md). |
 | 4 Cross-System | `converges` / `complements` / `contradicts` | Konvergenz-Skelett | Review 4: fünf Typen × Eingang/Lebensort; Tagstamm nur Ji/Yi. `maps_to` 143 unangetastet. |
 

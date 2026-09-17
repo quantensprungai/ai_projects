@@ -273,7 +273,7 @@ strength:      'low' | 'medium' | 'strong' | 'dominant'
 
 `maps_to` + `cross_system` = historisches GK→HD (definitional, Scope-Drift). Familie 4 für Konvergenz: `converges` / `complements` / `contradicts`, `edge_scope=cross_system`, `approved`. `strength` dort = Unabhängigkeit der Wurzeln, zusätzlich `metadata.independence`. SoT: [kanten.md](vertraege/kanten.md), Plan 04. DB-Spalte bleibt `text` (kein CHECK — zu viele intra-Typen).
 
-**Wirkungskanten (Familie 2):** Soll-Metadata `condition` (Chart-State) — Decision 2026-09-16, Vertrag [tiefe.md](vertraege/tiefe.md). Backfill ohne dieses Feld bleibt `candidate`.
+**Wirkungskanten (Familie 2):** Soll-Metadata `condition` (Chart-State) — Decision 2026-09-16, Vertrag [tiefe.md](vertraege/tiefe.md). **Ist Plan 09:** Runtime-Hit `MechanicalHdHit.condition` in `apps/web/lib/hd/hd-mechanical-hits.ts` (kein Insert in `sys_kg_edges`). Backfill ohne dieses Feld bleibt `candidate`. Evidence = Katalogdatei, nicht Interp-ID.
 
 `belongs_to_domain` = Element → Lebensbereich (§2). **Ist:** Node-Metadata aus `ic_seed_structure.py` (Seed 2026-08-27), keine Kanten, keine Zielknoten. **Soll:** Kanten auf `ic.life_domain.{enum}` (12 Stück), `approved` strukturell / `candidate` inhaltlich. Multi erlaubt. Vier Familien: `cursor/vertraege/kanten.md`. Decision 2026-09-04. Nicht verwechseln mit Job `classify_domain` (der taggt `system_id`).
 

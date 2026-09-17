@@ -58,4 +58,4 @@ projects/inner_compass/
 
 ## Status
 
-Pre-Launch. **Produktphasen 0–8 zu**, Track Tiefe offen (Anker: `cursor/roadmap.md`). Nächster Bau: Plan 09 Mechanik-Kanten HD. Details Engines/Content: `cursor/status.md` (nicht Chat-Einstieg).
+Pre-Launch. **Produktphasen 0–9 zu**, Track Tiefe (Anker: `cursor/roadmap.md`). Nächster Bau: Plan 10 umsetzen (`HandbookInput`, kein LLM). Details Engines/Content: `cursor/status.md` (nicht Chat-Einstieg).

@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-16
+last_update: 2026-09-17
 scope: Wie ein Handbuch-Satz klingt
 in_scope: Übersetzungsregel, Code-Ort, Meta-Begriffe der einen Domäne
 out_of_scope: Glossar-Projekt, generate_meta_nodes
@@ -41,4 +41,4 @@ Mikro-Erzählung: Tiefe 1 **Benennen → Übersetzen → Verorten**. Tiefe 2 **T
 
 **Ist (2026-09-16, Stimme):** Schablone „Die Bewegung ist…“ raus. Zweites Beat konkret. BaZi-Name = Färbung, nicht Generic+Stamm. Treffen ohne Inspector-Jargon.
 
-**Ist (Track Tiefe):** Vorgeschriebene Karten in `handbook-voice.ts` sind **Fallback und Few-Shot**, nicht das Zielbild. Formulierer (Plan 11) schreibt aus Atomen + Natal; Tiefe 1 soll Tore/Kanäle/Placements lesen ([tiefe.md](tiefe.md)).
+**Ist (Track Tiefe, Plan 10):** EN = Rohstoff, DE wird formuliert ([tiefe.md](tiefe.md)). Facetten nicht auf die Fläche. Formulierer = Plan 11.

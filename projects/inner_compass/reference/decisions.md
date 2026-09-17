@@ -1,5 +1,24 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-09-16: Phasen-Review 9 — HD Mechanik-Kanten Runtime
+
+**Kontext:** Plan 09. Färbung war Typologie. `hd_structure_v0.json` beschreibt „channel→center_pair ×36“, enthält aber nur Gate→Center und Channel→Circuit. Kanal-Paare liegen in `hd-channel-centers.ts`.
+
+**Decision:**
+
+1. **Schicht 1 zur Laufzeit** aus Chart ∩ 36 Katalog-Paare. `condition` am TypeScript-Hit, nicht in `sys_kg_edges`. Backfill unangetastet.
+2. **`self_identity`:** OS-Keil bleibt; plus ein Mechanik-Hit (Ranking: definierter Kanal am G → anderer Kanal → hängendes Tor am G → anderes hängendes Tor). Stimme: ein vorgeschriebener Satz (Verbindung fest vs. Gegenüber fehlt), kein 36er-Map, kein Canonical-ID. Atom-Prosa = Plan 11.
+3. **Liebe unverändert** Färbung. Kanal-IDs: Katalog-Reihenfolge (`8_1`); Aliase für Lookup.
+4. **Nächster Plan:** 10 Facetten + Re-Extraktion. Jiazi nicht parallel.
+
+**Nachweis:** Fixture `apps/web/scripts/_tmp_mechanical_hits_check.mjs` (Kanal 8–1 vs. hängendes Tor 1; G-Kanal vor 34–57). Browser-Login oft blockiert.
+
+**Nicht:** LLM, 418, Overlay-Umbau, DB-Reset.
+
+**SoT:** `cursor/plans/09_tiefe_hd.md`; Code `hd-mechanical-hits.ts` / `composeHdVoice({ mechanic })`.
+
+---
+
 ## 2026-09-16: Tiefe statt Färbung — vertikal an HD, dann Matrix
 
 **Kontext:** Färbungskarten (Plan 07–08) machen denselben Generator mit Krebs-AC zum gleichen Satz. Das ist Typologie, nicht Signatur. Familie-2-Backfill (~13k) ist ohne `condition` und ohne Interp-ID in Metadata. Formulierer war nirgends der letzte Schritt. `kern/`-Beschlüsse (E-35/36, E-39, Graduation, …) lagen weder in Ankern noch geparkt.
