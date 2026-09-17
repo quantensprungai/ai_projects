@@ -20,7 +20,7 @@ Lokal: Next :3000, Supabase API :54321, HD-Service :8002 (services/hd)
 LLM: Langdock gpt-5.4-mini (Pin in der App noch offen). Nicht Spark-Qwen als Interpret/Synth. Key in .env.development.local (nicht committen).
 ```
 
-**Stand:** Track Tiefe. Phase 10 zu. `HandbookInput` ist EN-Rohstoff, nicht Fläche ([tiefe.md](vertraege/tiefe.md)). **Nächster Plan:** [plans/10a_relationships_lauf.md](plans/10a_relationships_lauf.md) — `extract_relationships` Lauf, kein Formulierer, kein Jiazi. Verbreitung: Namen kanonisch, Handles reservieren, keine Posts.
+**Stand:** Track Tiefe. Phase 10a zu. 869 Schicht-2-`candidate` mit Beleg, nicht Fläche ([tiefe.md](vertraege/tiefe.md)). **Nächster Plan:** [plans/11_formulierer.md](plans/11_formulierer.md) — DE aus `HandbookInput`, kein Jiazi, Backfill ungelesen. Verbreitung: Namen kanonisch, Handles reservieren, keine Posts.
 
 **Leitplanken:** nested Code nicht ins Docs-Repo. Flora/`.env`/`_tmp_*` nicht committen. HD-Zombie `5ba2f841` nicht anfassen. Auto-Synth aus. Handbuch-Text formulieren, nicht übersetzen. Seed vor text2kg.
 

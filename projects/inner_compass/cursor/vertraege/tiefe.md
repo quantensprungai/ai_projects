@@ -48,7 +48,7 @@ Leit-Decision: [decisions.md](../../reference/decisions.md) „Tiefe statt Färb
 | Schicht | Quelle | Status | Liest das Handbuch? |
 |---|---|---|---|
 | 1 Mechanik | Katalog / Structure (Kanal aus Toren, Zentrum, Split, 生剋, Aspekte) | `approved` | ja auf `self_identity` HD (Plan 09, Runtime, nicht DB) |
-| 2 Literatur | Chunk + Interp, eine Kante pro Beleg, mit `condition` | `approved` nach Review sonst `candidate` | Schema Plan 10 (pipeline.md `extract_relationships`); Lauf Plan 10a |
+| 2 Literatur | Chunk + Interp, eine Kante pro Beleg, mit `condition` | `approved` nach Review sonst `candidate` | Plan 10a: 869 `candidate` (`run=plan_10a`), nicht Fläche |
 | 3 Synthese | LLM sieht Chart + 1 + 2 | Hypothese, gecacht | Plan 11 |
 
 **Backfill 2026-08-05:** ~13k `amplifies`/`depends_on`/`clashes_with`, alle `candidate`, ohne Interp-ID in Metadata, ohne `condition`. Skript nicht im Repo. Roh-`payload.interactions` (~64 % nicht-leer) bleibt. Nicht wipen, nicht lesen.
@@ -59,13 +59,13 @@ Zelle = Engine · Katalog · Struktur-Kanten · Routing · Atome · Facetten gel
 
 | System | Engine | Katalog | Struktur | Routing | Atome | Facetten gelesen | Mechanik-Kanten | DE-Wordings |
 |---|---|---|---|---|---|---|---|---|
-| HD | ja | ja | `part_of` ja | OS approved; 418 candidate | Gates/Channels/Lines/OS EN | Overlay/Inspector ja; **HandbookInput Plan 10** (EN Rohstoff, nicht Fläche) | Runtime Schicht 1 (`hd-mechanical-hits.ts`, `condition`); Backfill weiter candidate | Keil + Färbung + ein nataler Mechanik-Satz (kein 36er-Map) |
+| HD | ja | ja | `part_of` ja | OS approved; 418 candidate | Gates/Channels/Lines/OS EN | Overlay/Inspector ja; **HandbookInput Plan 10** (EN Rohstoff, nicht Fläche) | Runtime Schicht 1; Schicht 2: 869 `candidate` (Plan 10a), nicht Fläche; Backfill weiter ungelesen | Keil + Färbung + ein nataler Mechanik-Satz (kein 36er-Map) |
 | Astro | ja | ja | Haus-Map | Haus 1/7 inject | Natal EN-Draft | Inspector dünn | nein | Färbung AC/DC |
 | Ziwei | ja | ja | Palast-Map | Paläste 10/12 | Natal-Cut EN | Inspector | nein | Färbung Lebensort/Spouse |
 | BaZi | ja | ja | Tagstamm-Map | Tagstamm → Identität+Liebe JSON | Day Master EN; Jiazi 0 Interps | nein | nein | Färbung Stamm |
 | Jyotish | Engine ja | Katalog dünn | nein | nein | nein | nein | nein | nein |
 | Maya | Engine ja | Katalog dünn | nein | nein | nein | nein | nein | nein |
 
-**HD ungelesen (nicht verwerfen):** übrige `dimensions.*`, `hd.concept.open_center`, PHS/Variable-Wordings, Quarter-Atome, Planet-Beispiele, Type-4-Kanäle, `maps_to` GK 143. **Nie gebaut:** `sys_dynamics` (0 Zeilen), `extract_pattern_traps`, `generate_meta_nodes`, `tag_ic_metadata`. **`extract_relationships`:** Schema Plan 10, Lauf Plan 10a, nicht in `_JOB_PRIORITY`. Pro Zelle später: bauen oder parken.
+**HD ungelesen (nicht verwerfen):** übrige `dimensions.*`, `hd.concept.open_center`, PHS/Variable-Wordings, Quarter-Atome, Planet-Beispiele, Type-4-Kanäle, `maps_to` GK 143. **Nie gebaut:** `sys_dynamics` (0 Zeilen), `extract_pattern_traps`, `generate_meta_nodes`, `tag_ic_metadata`. **`extract_relationships`:** Handler da, nicht in `_JOB_PRIORITY`, 869 `candidate` Plan 10a, ungelesen auf der Fläche. Pro Zelle später: bauen oder parken.
 
 **Launch-Umfang:** vier rechnende Systeme. Jyotish/Maya/GK/Enneagramm = nach Matrix-Freeze, eigene Content-Welle.

@@ -1,5 +1,24 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-09-17: Phasen-Review 10a — extract_relationships Lauf
+
+**Kontext:** Plan 10a. Schema und `HandbookInput` lagen. Der Worker hatte keinen Job. Backfill (~13k) bleibt ungelesen.
+
+**Decision:**
+
+1. **Handler einmalig**, nicht in `_JOB_PRIORITY`. Claim nur `IC_WORKER_JOB_TYPES=extract_relationships`.
+2. **Chunk-Auswahl** am Node: `primary` → `contrast` → ohne Rolle; `mention` raus; Cap 15/Node. Plan-10-Minimal-Fixture (8–1 / Tor 1) ist nicht der Lauf-Scope — echte Charts: 1978 `59_6`, 1980 `10_57`, 1990 `13_33`.
+3. **Kanten `candidate`**, `intra_system`, `metadata.run=plan_10a` + `condition` + `interp_id` + `evidence.chunk_id`/Zitat. Strict: `from`/`to` müssen als KG-Node existieren. Idempotent über `(from,to,relation_type,interp_id)`.
+4. **Nicht gelesen auf der Fläche.** Leseregel bleibt: `amplifies`+`clashes_with` gleiches Paar → beide stumm (7 Paare im Lauf). Formulierer = Plan 11.
+
+**Nachweis:** 869 Kanten, 3 Jobs completed, 0 LLM-Fail, Stichprobe 8/10 Zitate im Chunk. Modell Langdock `gpt-5.4-mini`.
+
+**Nicht:** `_JOB_PRIORITY` erweitern, Backfill wipen/`approved`, Formulierer, Jiazi, 418.
+
+**SoT:** `cursor/plans/10a_relationships_lauf.md`; Code `ic_worker.py` `_handle_extract_relationships`.
+
+---
+
 ## 2026-09-17: Phasen-Review 10 — Facetten als HandbookInput
 
 **Kontext:** Plan 10. Facetten lagen im Payload ungelesen. Ein DE-Gate wäre stumm (Atome EN). Schicht 2 braucht Schema vor dem Lauf.
