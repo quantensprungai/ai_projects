@@ -1,9 +1,9 @@
 <!--
 Reality Block
-last_update: 2026-09-16
+last_update: 2026-09-17
 scope: Vier Kantenfamilien
 in_scope: relation_type, intra vs. routing vs. cross
-out_of_scope: extract_relationships (Plan 10), Backfill-Wipe
+out_of_scope: extract_relationships Lauf (Plan 10a), Backfill-Wipe
 -->
 
 # Vertrag: Kanten
@@ -51,4 +51,4 @@ Mehrere interne Kanten teilen dieselbe Interpretation (Fan-out). Beispiel: Inter
 
 Einordnung: Familie 2 speist Muster *innerhalb* eines Systems und die Werkstatt — nicht Tiefe 2 „Wo sich die Quellen treffen“ auf der Bereichsseite; das ist Familie 4 (Phase 4). Bereichsseite Tiefe 2 hängt in Phase 2 nur an „zwei UI-taugliche Quellen“ (Status-Gate), nicht an Wirkungskanten. `domain-assemble.ts` liest Familie 2 nicht.
 
-**Review 2 (2026-09-11):** Befund steht. **Ist (2026-09-16):** Backfill = Rohmaterial Schicht 2. Handbuch liest Familie 2 weiter nicht, bis Plan 09 Mechanik-Kanten mit `condition` liefert. 418 `candidate` unangetastet.
+**Review 2 (2026-09-11):** Befund steht. **Ist (2026-09-17):** Schicht 1 Runtime Plan 09. Schicht-2-Schema Plan 10 (`extract_relationships` in pipeline.md). Lauf = Plan 10a. Backfill weiter `candidate`, ungelesen. 418 `candidate` unangetastet.

@@ -1,5 +1,24 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-09-17: Phasen-Review 10 — Facetten als HandbookInput
+
+**Kontext:** Plan 10. Facetten lagen im Payload ungelesen. Ein DE-Gate wäre stumm (Atome EN). Schicht 2 braucht Schema vor dem Lauf.
+
+**Decision:**
+
+1. **`HandbookInput`** = Chart-State + Mechanik-Hits mit `condition` + Facetten EN (`gift`/`shadow`/`trap`) mit `interp_id`/`chunk_id` + Fallback-Keil. Befüllt ohne LLM. Formulierer bleibt Plan 11.
+2. **Leser am Mechanik-Hit**, Aliase `channelIdAliases`. Reihenfolge `payload.facets` → `dimensions` → `process`, erster Treffer, keine Stapelung. Overlay-Packer (`hd-center-facets.ts`) bleibt Zentrum-only.
+3. **Kein DE-Gate auf Facetten.** `looksLikeHandbookGerman` nur für bestehende Werkstatt-Seeds. EN nicht auf Bereichsseite/Werkstatt; Assemble streift Input vor dem Client-View.
+4. **`extract_relationships` spezifiziert**, nicht gelaufen. Worker ohne Job. Backfill weiter `candidate`, ungelesen. Leseregel später: `amplifies` + `clashes_with` gleiches Paar → beide stumm.
+
+**Nachweis:** Fixture `apps/web/scripts/check_handbook_input.ts` — 1978 Kanal 8–1 und 1980 hängendes Tor 1, jeweils Facette mit `interp_id`.
+
+**Nicht:** LLM-Lauf (10a), Formulierer, Jiazi, 418, EN-Handbuch.
+
+**SoT:** `cursor/plans/10_facetten_schicht2.md`; Code `hd-hit-facets.ts` / `handbook-input.ts` / `assembleDomainPage`.
+
+---
+
 ## 2026-09-16: Phasen-Review 9 — HD Mechanik-Kanten Runtime
 
 **Kontext:** Plan 09. Färbung war Typologie. `hd_structure_v0.json` beschreibt „channel→center_pair ×36“, enthält aber nur Gate→Center und Channel→Circuit. Kanal-Paare liegen in `hd-channel-centers.ts`.

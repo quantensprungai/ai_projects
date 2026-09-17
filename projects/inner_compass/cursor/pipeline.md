@@ -143,11 +143,24 @@ Aktuell macht `extract_interpretations` alles in einem LLM-Prompt. Besser: 4 fok
 - **Output:** sys_interpretations (Payload mit dimensions + process-Feld)
 - **Warum separat:** Kann auf erkannte Entities fokussieren statt selbst erkennen zu müssen
 
-### extract_relationships (NEU)
-- **Input:** sys_source_chunk + erkannte Entities
-- **Prompt:** "Welche Beziehungen zwischen Elementen werden beschrieben?"
-- **Output:** sys_kg_edges (from, to, relation_type, evidence) — NUR intra_system
-- **Warum separat:** Triples ≠ Interpretationen. Verschiedene Extraktionslogik.
+### extract_relationships (NEU — Schema Plan 10, Lauf Plan 10a)
+
+**Status:** spezifiziert 2026-09-17 (Plan 10). **Nicht** in `_JOB_PRIORITY` (`ic_worker.py`). Lauf = Plan 10a. Backfill 2026-08-05 (~13k `amplifies`/`depends_on`/`clashes_with`, alle `candidate`, ohne Interp-ID, ohne `condition`) **nicht anfassen, nicht lesen**.
+
+- **Input:** `sys_source_chunk` + `payload.elements[]` (erkannte Entities). Fokus Plan 10a: HD-Chunks der Login-OS-Knoten + Mechanik-Hit, 3–5 Charts, Langdock `gpt-5.4-mini`.
+- **Output:** `sys_kg_edges`, `edge_scope=intra_system`, `review_status=candidate`.
+- **Eine Kante pro Beleg**, keine erzwungene Gegenseitigkeit.
+- **Felder je Kante:**
+  - `from`, `to` — canonical IDs
+  - `relation_type` — bestehender Enum (`amplifies` | `depends_on` | `modifies` | `clashes_with` | `produces` | `controls`; nicht Familie 4)
+  - `metadata.condition` — Chart-State den der Beleg voraussetzt: `defined` | `undefined` | `hanging` | `split` | `none`
+  - `metadata.interp_id`
+  - `evidence.chunk_id` + Zitat
+- **Lesen (sobald Schicht 2 gelesen wird):** `amplifies` und `clashes_with` am gleichen Paar → beide stumm. Nicht der Backfill.
+- **Nicht:** `extract_pattern_traps`, `sys_dynamics`, Worker-Job in diesem Cut, Wipe, `approved` heben.
+
+- **Prompt-Kern:** "Welche Beziehungen zwischen Elementen werden in diesem Chunk beschrieben? Eine Kante pro Beleg, mit Bedingung und Zitat."
+- **Warum separat:** Triples ≠ Interpretationen. Facetten (`gift`/`shadow`/`trap`) sind Formulierer-Input (Plan 10 `HandbookInput`), nicht diese Kanten.
 
 ### extract_processes (NEU)
 - **Input:** sys_source_chunk

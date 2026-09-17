@@ -66,6 +66,8 @@ Lauf auf HD-Chunks der Login-OS-Knoten + Mechanik-Hit, 3–5 Charts, Langdock `g
 
 `HandbookInput` existiert und ist für zwei Charts befüllt. Schema Schicht 2 liegt. Fläche unverändert. Sprachregel in `tiefe.md`.
 
+**Ist (2026-09-17):** gebaut. `facetsForHit` + `HandbookInput`. Assemble füllt Input auf `self_identity` + Hit, schreibt nicht in Stimme/Werkstatt. Fläche unverändert (Input wird vor dem Client-View abgestreift). Schicht-2-Spec in `pipeline.md`. Fixture: `apps/web/scripts/check_handbook_input.ts` (1978 Kanal 8–1, 1980 hängendes Tor 1, Facette mit `interp_id`). Overlay-Leser unangetastet.
+
 ## Nicht
 
 LLM-Lauf, Übersetzen, EN-Handbuch, Umstellung auf EN, Merge `main`, Force-Push, `supabase db reset`, Jiazi, 418, Liebe.
