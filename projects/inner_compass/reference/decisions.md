@@ -1,5 +1,24 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-09-17: Phasen-Review 11 — Formulierer v0
+
+**Kontext:** Plan 10/10a. `HandbookInput` und Schicht-2-`candidate` lagen. Fläche zeigte Färbung + Mechanik-Satz.
+
+**Decision:**
+
+1. **Synchron** beim ersten Miss (Langdock `gpt-5.4-mini`, ~25 s), danach Cache `ic_handbook_texts` Unique `(person_id, domain_id, system, cache_key)`.
+2. **Fehler:** Färbungskarte + `draftHint` „Dieser Satz ist noch nicht für dein Chart formuliert.“ `mode='fallback'`, Retry beim nächsten Laden.
+3. **Keine Schicht-2-Kanten** in v0. `literature: []` bis Plan 12.
+4. Stimme: zweite Person, kein Jargon im Benennen, Systemname nur im Locate (`LOCATE.hd`), keine Canonical-IDs.
+
+**Nachweis:** drei DE-Texte 1978/1980/1990 verschieden, Jargon-Gate, Cache-Hit ohne LLM, ungültiger Key → Fehler.
+
+**Nicht:** Jiazi, 418, Backfill, andere Bereichsseiten, Astro/Ziwei/BaZi formulieren, `db reset`.
+
+**SoT:** `cursor/plans/11_formulierer.md`; Code `handbook-formulator.ts`, `handbook-text-store.ts`.
+
+---
+
 ## 2026-09-17: Phasen-Review 10a — extract_relationships Lauf
 
 **Kontext:** Plan 10a. Schema und `HandbookInput` lagen. Der Worker hatte keinen Job. Backfill (~13k) bleibt ungelesen.

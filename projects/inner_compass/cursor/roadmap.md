@@ -26,13 +26,13 @@ Jeder neue Chat liest zuerst diese Datei, dann den verlinkten Phasen-Plan. Curso
 | 9 Mechanik-Kanten HD | **abgeschlossen 2026-09-16** | Familie 2 Schicht 1 Runtime + `condition`; Identität liest Tor/Kanal | [plans/09_tiefe_hd.md](plans/09_tiefe_hd.md) |
 | 10 Facetten + Schicht-2-Spec | **abgeschlossen 2026-09-17** | Facetten als `HandbookInput` (EN Rohstoff); Job-Spec, Lauf = 10a | [plans/10_facetten_schicht2.md](plans/10_facetten_schicht2.md) |
 | 10a Relationships-Lauf | **abgeschlossen 2026-09-17** | `extract_relationships` auf HD-Chunks, 3 Charts, 869 `candidate` | [plans/10a_relationships_lauf.md](plans/10a_relationships_lauf.md) |
-| 11 Formulierer v0 | geplant | einmal pro Chart, HD-Identität, DE aus Input | [plans/11_formulierer.md](plans/11_formulierer.md) |
-| 12 Matrix + horizontal | geplant | Schema einfrieren, vier Systeme gleiche Checkliste | folgt 11 |
+| 11 Formulierer v0 | **abgeschlossen 2026-09-17** | einmal pro Chart, HD-Identität, DE aus Input | [plans/11_formulierer.md](plans/11_formulierer.md) |
+| 12 Schicht 2 / Matrix | geplant | literature[] + Schema einfrieren | [plans/12_schicht2_matrix.md](plans/12_schicht2_matrix.md) |
 | Verbreitung | offen, nach Fläche | Mandala-Share, Serie, Agents | nicht Plan-Nummer |
 
-**Empfehlung:** Track Tiefe. Phase 10a zu. Nächster Schnitt Plan 11 (Formulierer v0, HD `self_identity`), nicht Jiazi, nicht Backfill.
+**Empfehlung:** Track Tiefe. Phase 11 zu. Nächster Schnitt Plan 12 (Schicht-2 lesen / Matrix), nicht Jiazi, nicht Backfill.
 
-**Nächster Bau:** [plans/11_formulierer.md](plans/11_formulierer.md).
+**Nächster Bau:** [plans/12_schicht2_matrix.md](plans/12_schicht2_matrix.md).
 
 ### Track Tiefe
 
@@ -44,7 +44,7 @@ Review darf umsortieren; streichen nur nach Decision. Details in den verlinkten 
 
 | # | Schnitt | Warum es liegt | Nicht verwechseln mit |
 |---|---|---|---|
-| 1 | Plan 11 Formulierer v0 | HandbookInput + Schicht-2-candidate liegen; Fläche braucht DE | Backfill auf approved; EN auf der Fläche |
+| 1 | Plan 12 Schicht 2 / Matrix | Formulierer v0 DE ohne Literatur; `literature: []` wartet | Backfill auf approved; EN auf der Fläche |
 | 2 | Jiazi-KG | 60 Knoten, 0 Interps; Klassiker **683 Chunks** ohne Classify ([03a](plans/03a_bazi_extract_ahead.md)); Destiny-Relink | *60 Pillars* zuerst; parallel zu Tiefe |
 | 3 | Staffel 2 *60 Pillars* | nur **mit** Schnitt 2 | parallel zu Fläche |
 | 4 | ~~Routing HD/BaZi über OS/Tagstamm~~ | **erledigt Plan 08** | 418-Spray |

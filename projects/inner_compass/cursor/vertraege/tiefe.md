@@ -18,7 +18,7 @@ Leit-Decision: [decisions.md](../../reference/decisions.md) „Tiefe statt Färb
 2. Mechanik-Kanten mit `condition` (Familie 2 Schicht 1) — Regeln, `approved`.
 3. Facetten am Element (`mechanical` / `gift` / `shadow` / `process.*`) — **Input**, nicht Handbuch-Prosa. EN = Rohstoff (Plan 10). DE erst Formulierer (Plan 11).
 4. Routing `belongs_to_domain` — welche Elemente diese Bereichsseite sieht.
-5. Formulierer — einmal pro Chart-Hash + Stimme-Version, gecacht. Hypothese-Flag, wenn Schicht 3 (Schluss, nicht Literatur).
+5. Formulierer — einmal pro Chart-Hash + Stimme-Version, gecacht. Hypothese-Flag, wenn Schicht 3 (Schluss, nicht Literatur). **Ist Plan 11:** HD `self_identity` DE, Cache `ic_handbook_texts`, `literature: []`.
 6. Färbungskarte in `handbook-voice.ts` — Fallback und Few-Shot, wenn (3) oder (5) fehlen.
 
 ## Sprache
@@ -28,7 +28,7 @@ Leit-Decision: [decisions.md](../../reference/decisions.md) „Tiefe statt Färb
 - Nicht auf EN umstellen. Nicht übersetzen. Keine EN-Prosa auf Handbuch-Flächen (Bereichsseite, Werkstatt).
 - Ein DE-Gate auf Facetten bleibt fast immer stumm und beweist nichts.
 - Bis Plan 11 dürfen EN-Facetten nur als Daten / Inspector sichtbar sein, klar als Rohstoff.
-- Formulierer (Plan 11) schreibt DE aus `HandbookInput` + Stimme-Regel.
+- Formulierer (Plan 11) schreibt DE aus `HandbookInput` + Stimme-Regel. **Ist:** HD-Card `translate` auf `self_identity`.
 
 ## Schema (Soll, Plan 09 legt Felder an, Plan 12 friert ein)
 
@@ -59,7 +59,7 @@ Zelle = Engine · Katalog · Struktur-Kanten · Routing · Atome · Facetten gel
 
 | System | Engine | Katalog | Struktur | Routing | Atome | Facetten gelesen | Mechanik-Kanten | DE-Wordings |
 |---|---|---|---|---|---|---|---|---|
-| HD | ja | ja | `part_of` ja | OS approved; 418 candidate | Gates/Channels/Lines/OS EN | Overlay/Inspector ja; **HandbookInput Plan 10** (EN Rohstoff, nicht Fläche) | Runtime Schicht 1; Schicht 2: 869 `candidate` (Plan 10a), nicht Fläche; Backfill weiter ungelesen | Keil + Färbung + ein nataler Mechanik-Satz (kein 36er-Map) |
+| HD | ja | ja | `part_of` ja | OS approved; 418 candidate | Gates/Channels/Lines/OS EN | Overlay/Inspector ja; **HandbookInput Plan 10** (EN Rohstoff, nicht Fläche) | Runtime Schicht 1; Schicht 2: 869 `candidate` (Plan 10a), nicht Fläche; Backfill weiter ungelesen | **Plan 11:** Formulierer v0 DE auf `self_identity`; Keil bleibt `name`; Fallback Färbung + `draftHint` |
 | Astro | ja | ja | Haus-Map | Haus 1/7 inject | Natal EN-Draft | Inspector dünn | nein | Färbung AC/DC |
 | Ziwei | ja | ja | Palast-Map | Paläste 10/12 | Natal-Cut EN | Inspector | nein | Färbung Lebensort/Spouse |
 | BaZi | ja | ja | Tagstamm-Map | Tagstamm → Identität+Liebe JSON | Day Master EN; Jiazi 0 Interps | nein | nein | Färbung Stamm |
