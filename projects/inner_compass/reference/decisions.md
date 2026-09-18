@@ -1,5 +1,25 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-09-18: Phasen-Review 12 — Schicht 2 lesen + Matrix einfrieren
+
+**Kontext:** Formulierer v0 schrieb DE ohne Literatur. 869 Plan-10a-`candidate` lagen. Frage: HD-Welle / Transit zuerst vs. Checkliste an einem zweiten System.
+
+**Decision:**
+
+1. **Literatur am Identitäts-Hit lesen** (`run=plan_10a`, Cap 6). Leseregel verfeinert: `amplifies`+`clashes_with` nur stumm bei gleicher `condition` **und** `interp_id`. Sonst beide, mit Bedingung.
+2. **`hypothesis=true`** bei `candidate`; Locate-Zusatz „Teile davon sind noch Hypothese.“ Formulierer **v1**, Cache-Key inkl. edgeIds. v0-Zeilen ungelesen.
+3. **Schema eingefroren** (`condition`, Evidence, Hypothese, Cache-Key). System-Checkliste: Chart-State → Mechanik-Hit → Facetten → Routing → Literatur → Formulierer.
+4. **Reihenfolge:** eine Domäne HD → eine Domäne zweites System (**Astro**, Jiazi fehlt für BaZi) → Breite (Bereiche, HD-Welle PHS/Quarter/Planeten/Type-4) → Transit/ZEIT (Tages-Cache-Key).
+5. **Parkliste:** `extract_processes`/`sys_dynamics` gestrichen (Facetten + `condition`). `generate_meta_nodes`/`tag_ic_metadata` gestrichen (Stimme + Prompt). `extract_pattern_traps` bleibt Kandidat für Tiefe 2 **nach** Plan 13. Backfill 13k messen, nicht lesen. Werkstatt hängt `process` noch direkt — eigener Plan nach Freeze.
+
+**Nachweis:** 1978 `59_6` ≤6 Kanten, Mute-Unit, Texte mit/ohne Literatur verschieden, hypothesis, Jargon-Gate. Code `handbook-literature.ts`, `handbook-formulator-v1`.
+
+**Nicht:** Backfill `approved`, Jiazi, 418, Astro formulieren in diesem Cut, `_JOB_PRIORITY`, `db reset`.
+
+**SoT:** `cursor/plans/12_schicht2_matrix.md`; Vertrag [tiefe.md](../cursor/vertraege/tiefe.md).
+
+---
+
 ## 2026-09-17: Phasen-Review 11 — Formulierer v0
 
 **Kontext:** Plan 10/10a. `HandbookInput` und Schicht-2-`candidate` lagen. Fläche zeigte Färbung + Mechanik-Satz.

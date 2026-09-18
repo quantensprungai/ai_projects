@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-17
+last_update: 2026-09-18
 scope: Chat-Handover Inner Compass, kurz
 in_scope: Einstieg für neuen Chat
 out_of_scope: Historie (siehe reference/handover_2026-09_archiv.md)
@@ -20,7 +20,7 @@ Lokal: Next :3000, Supabase API :54321, HD-Service :8002 (services/hd)
 LLM: Langdock gpt-5.4-mini (Pin in der App: `IC_LLM_MODEL` / Formulierer-Default). Nicht Spark-Qwen als Interpret/Synth. Key in .env.development.local (nicht committen).
 ```
 
-**Stand:** Track Tiefe. Phase 11 zu. Formulierer v0 schreibt DE auf `self_identity` (Cache `ic_handbook_texts`). Schicht-2 weiter ungelesen. **Nächster Plan:** [plans/12_schicht2_matrix.md](plans/12_schicht2_matrix.md). Verbreitung: Namen kanonisch, Handles reservieren, keine Posts.
+**Stand:** Track Tiefe. Phase 12 zu. Formulierer v1 liest Schicht-2 am Identitäts-Hit (`literature[]`, Hypothese-Zusatz). Schema eingefroren. **Nächster Plan:** [plans/13_zweites_system.md](plans/13_zweites_system.md) — Astro Aszendent durch die Checkliste. HD-Welle und Transit danach. Verbreitung: Namen kanonisch, Handles reservieren, keine Posts.
 
 **Leitplanken:** nested Code nicht ins Docs-Repo. Flora/`.env`/`_tmp_*` nicht committen. HD-Zombie `5ba2f841` nicht anfassen. Auto-Synth aus. Handbuch-Text formulieren, nicht übersetzen. Seed vor text2kg.
 

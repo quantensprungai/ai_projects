@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-17
+last_update: 2026-09-18
 scope: Laufender Anker — Phasen, Status, nächster Plan, Warteschlange
 in_scope: Reihenfolge, Status, Links, geordnetes Offenes
 out_of_scope: Implementierungsdetails (stehen im Phasen-Plan)
@@ -27,12 +27,13 @@ Jeder neue Chat liest zuerst diese Datei, dann den verlinkten Phasen-Plan. Curso
 | 10 Facetten + Schicht-2-Spec | **abgeschlossen 2026-09-17** | Facetten als `HandbookInput` (EN Rohstoff); Job-Spec, Lauf = 10a | [plans/10_facetten_schicht2.md](plans/10_facetten_schicht2.md) |
 | 10a Relationships-Lauf | **abgeschlossen 2026-09-17** | `extract_relationships` auf HD-Chunks, 3 Charts, 869 `candidate` | [plans/10a_relationships_lauf.md](plans/10a_relationships_lauf.md) |
 | 11 Formulierer v0 | **abgeschlossen 2026-09-17** | einmal pro Chart, HD-Identität, DE aus Input | [plans/11_formulierer.md](plans/11_formulierer.md) |
-| 12 Schicht 2 / Matrix | geplant | literature[] + Schema einfrieren | [plans/12_schicht2_matrix.md](plans/12_schicht2_matrix.md) |
+| 12 Schicht 2 / Matrix | **abgeschlossen 2026-09-18** | literature[] am Hit + Schema eingefroren | [plans/12_schicht2_matrix.md](plans/12_schicht2_matrix.md) |
+| 13 Zweites System | geplant | Checkliste an einer Zelle (Vorschlag Astro Aszendent) | [plans/13_zweites_system.md](plans/13_zweites_system.md) |
 | Verbreitung | offen, nach Fläche | Mandala-Share, Serie, Agents | nicht Plan-Nummer |
 
-**Empfehlung:** Track Tiefe. Phase 11 zu. Nächster Schnitt Plan 12 (Schicht-2 lesen / Matrix), nicht Jiazi, nicht Backfill.
+**Empfehlung:** Track Tiefe. Phase 12 zu. Schema eingefroren. Nächster Schnitt Plan 13 (Astro Aszendent durch die Checkliste), nicht HD-Welle, nicht Transit, nicht Jiazi.
 
-**Nächster Bau:** [plans/12_schicht2_matrix.md](plans/12_schicht2_matrix.md).
+**Nächster Bau:** [plans/13_zweites_system.md](plans/13_zweites_system.md).
 
 ### Track Tiefe
 
@@ -44,16 +45,17 @@ Review darf umsortieren; streichen nur nach Decision. Details in den verlinkten 
 
 | # | Schnitt | Warum es liegt | Nicht verwechseln mit |
 |---|---|---|---|
-| 1 | Plan 12 Schicht 2 / Matrix | Formulierer v0 DE ohne Literatur; `literature: []` wartet | Backfill auf approved; EN auf der Fläche |
+| 1 | Plan 13 zweites System (Astro Aszendent) | Checkliste einmal an HD durch; zweites System prüft, ob sie systemneutral ist | Jiazi zuerst; HD-Welle vor Freeze |
 | 2 | Jiazi-KG | 60 Knoten, 0 Interps; Klassiker **683 Chunks** ohne Classify ([03a](plans/03a_bazi_extract_ahead.md)); Destiny-Relink | *60 Pillars* zuerst; parallel zu Tiefe |
 | 3 | Staffel 2 *60 Pillars* | nur **mit** Schnitt 2 | parallel zu Fläche |
 | 4 | ~~Routing HD/BaZi über OS/Tagstamm~~ | **erledigt Plan 08** | 418-Spray |
-| 5 | Weitere Bereichsseiten | einzeln, **nach** Formulierer v0 sonst Typologie | Mandala-Share |
-| 6 | ~~Familie-2-Filter~~ | **aufgelöst in Track:** Schicht 1 = Phase 9, Schicht 2 = Phase 10 | Backfill auf approved heben |
-| 7 | ~~Trap/Gift DE~~ | **Plan 10** liest Facetten als EN-Input; DE = Plan 11 | `extract_pattern_traps`; DE-Gate |
-| 8 | ~~DE-Atome~~ | **Phase 11** Formulierer | EN-Atome übersetzen / Re-Synth |
-| 9 | ZEIT / Luck / Transite | Engine teils, Seite nicht; Zeitmodell-Hierarchie geparkt | Occupancy war Phase 6 |
-| 10 | Verbreitung | nach Fläche; Vorlauf = Namen + Handles, keine Posts (Decision 2026-09-16) | Stub-Content; Mandala-Share jetzt |
+| 5 | Weitere Bereichsseiten | einzeln, **nach** zweitem System sonst Typologie | Mandala-Share |
+| 6 | ~~Familie-2-Filter~~ | **aufgelöst in Track:** Schicht 1 = Phase 9, Schicht 2 = Phase 10/12 | Backfill auf approved heben |
+| 7 | ~~Trap/Gift DE~~ | **Plan 10–12** Facetten + Literatur als Input, Formulierer DE | `extract_pattern_traps` (Kombi über Systeme = nach Plan 13) |
+| 8 | ~~DE-Atome / Formulierer HD Identität~~ | **Phase 11/12** | EN-Atome übersetzen / Re-Synth |
+| 9 | HD-Content-Welle (PHS, Quarter, Planeten, Type-4) | **nach** den Systemen durch die Checkliste, nicht davor | Checkliste wiederholen |
+| 10 | ZEIT / Luck / Transite | eigene Achse, Tages-Cache-Key; nach Natal in ≥2 Systemen | Occupancy war Phase 6 |
+| 11 | Verbreitung | nach Fläche; Vorlauf = Namen + Handles, keine Posts (Decision 2026-09-16) | Stub-Content; Mandala-Share jetzt |
 
 **Ops (kein Phasen-Plan):** Login oft 1978-11-10; Langdock-Pin `gpt-5.4-mini`; 3–5 qualitative Charts; Browser-Auth in Automation. Utopia: [ideas.md](../reference/ideas.md), nicht diese Schlange.
 

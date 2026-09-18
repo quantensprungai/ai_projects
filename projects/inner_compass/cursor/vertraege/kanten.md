@@ -1,9 +1,9 @@
 <!--
 Reality Block
-last_update: 2026-09-17
+last_update: 2026-09-18
 scope: Vier Kantenfamilien
 in_scope: relation_type, intra vs. routing vs. cross
-out_of_scope: Formulierer (Plan 11), Backfill-Wipe
+out_of_scope: Formulierer-Prompt, Backfill-Wipe
 -->
 
 # Vertrag: Kanten
@@ -13,7 +13,7 @@ Vier Familien. Enum in [contracts.md §5](../contracts.md).
 | Familie | Typen | Zweck | Stand |
 |---|---|---|---|
 | 1 Struktur | `part_of` | Tor gehört zu Zentrum | existiert |
-| 2 Wirkung intra-system | `amplifies`, `depends_on`, `modifies`, `clashes_with`, `produces`, `controls` | verstärken / schwächen / bedingen | **Drei Schichten** ([tiefe.md](tiefe.md)): (1) Mechanik Runtime Plan 09; (2) Literatur Plan 10a, 869 `candidate` (`run=plan_10a`), nicht Fläche; (3) Synthese Plan 11. Backfill ~13k `candidate`, ungelesen. |
+| 2 Wirkung intra-system | `amplifies`, `depends_on`, `modifies`, `clashes_with`, `produces`, `controls` | verstärken / schwächen / bedingen | **Drei Schichten** ([tiefe.md](tiefe.md)): (1) Mechanik Runtime Plan 09; (2) Literatur Plan 10a/12, 869 `candidate` (`run=plan_10a`), am Identitäts-Hit gelesen (Cap 6, Leseregel: stumm nur gleiche `condition`+`interp_id`); (3) Synthese Formulierer v1. Backfill ~13k `candidate`, ungelesen. |
 | 3 Routing | `belongs_to_domain` | Element → Lebensbereich | Phase 2. Siehe [domaene.md](domaene.md). |
 | 4 Cross-System | `converges` / `complements` / `contradicts` | Konvergenz-Skelett | Review 4: fünf Typen × Eingang/Lebensort; Tagstamm nur Ji/Yi. `maps_to` 143 unangetastet. |
 
@@ -49,6 +49,6 @@ Mehrere interne Kanten teilen dieselbe Interpretation (Fan-out). Beispiel: Inter
 
 **Folgerung fürs Handbuch:** Die 11 Kanten tragen in Phase 2 keinen Satz. OS-Paare sind dünn, oft Fan-out, nie `approved`; eine Kante widerspricht sich selbst. Inzidente 445 gehen vor allem auf Tore/Kanäle außerhalb dieses OS-Schnitts. Nichts extrahieren.
 
-Einordnung: Familie 2 speist Muster *innerhalb* eines Systems und die Werkstatt — nicht Tiefe 2 „Wo sich die Quellen treffen“ auf der Bereichsseite; das ist Familie 4 (Phase 4). Bereichsseite Tiefe 2 hängt in Phase 2 nur an „zwei UI-taugliche Quellen“ (Status-Gate), nicht an Wirkungskanten. `domain-assemble.ts` liest Familie 2 nicht.
+Einordnung: Familie 2 speist Muster *innerhalb* eines Systems — Schicht 1 Runtime, Schicht 2 als Formulierer-Beleg auf `self_identity` HD (Plan 12). Tiefe 2 „Wo sich die Quellen treffen“ auf der Bereichsseite bleibt Familie 4.
 
-**Review 2 (2026-09-11):** Befund steht. **Ist (2026-09-17):** Schicht 1 Runtime Plan 09. Schicht 2 Plan 10a: Handler + 869 `candidate`, nicht Fläche, nicht `_JOB_PRIORITY`. Backfill weiter `candidate`, ungelesen. 418 `candidate` unangetastet.
+**Review 2 (2026-09-11):** Befund steht. **Ist (2026-09-18):** Schicht 1 Runtime Plan 09. Schicht 2 Plan 12: `run=plan_10a` am Identitäts-Hit gelesen (Cap 6, Leseregel verfeinert). Backfill weiter `candidate`, ungelesen. 418 `candidate` unangetastet.
