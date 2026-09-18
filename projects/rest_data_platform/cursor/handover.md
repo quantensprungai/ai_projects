@@ -13,7 +13,7 @@ UI-Kurzname: ASTRA IMC
 Tech: Next.js (Makerkit Turbo) + Supabase (Postgres, PostGIS, Auth, Storage, RLS)
 Workspace: ai-projects Root — Doku + Code + Infra zusammen (NICHT nur projects/rest_data_platform/)
 
-Stand (2026-09-17) — Plan: projects/rest_data_platform/cursor/next_plan.md
+Stand (2026-09-18) — Plan: projects/rest_data_platform/cursor/next_plan.md
   - Doku: projects/rest_data_platform/ · Code: code/astra-imc-platform/ → quantensprungai/astra-imc-platform
   - Branch UI: `feat/assets-ia-restructure` (Waves + Dossier + Grid/OHVS + 4C-Turbine-Typ + MaStR Units)
   - App live: https://imc.ostfriesland.ai (Coolify) · Supabase Cloud `pfprwudrfkugvzpjyrvj` · Team-Slug **astra-imc**
@@ -24,13 +24,14 @@ Stand (2026-09-17) — Plan: projects/rest_data_platform/cursor/next_plan.md
   - Zahlen lokal=Cloud curated: Farms 3606 · Grid ~1423 · Platforms ~686 · Turbine-Models ~369 (~619 Farms gelinkt) · MaStR 33 accepted / 1651 Units · Natura ~205 · Häfen 118 / 677
   - ERA5 daily: 3 Parks / 1858 Tage. Hourly: AV **CDS** ~23k h (2024-01→2026-08, `cds+hourly`).
   - Nav: Assets → Waves → Economics → Vessels
-  - Park-Steckbrief: Site-Design + Netz/OHVS (Owner) + **4C-Turbine-Typ (MW/Ø/HH)**; Einheiten = MaStR-Stückliste
+  - Park-Steckbrief: Site-Design + Netz/OHVS (Owner) + **4C-Turbine-Typ (MW/Ø/HH)**; Einheiten = MaStR-Stückliste (kein 4C-Typ-je-WEA)
+  - Plan Einheiten×Specs: cursor/unit_spec_integration_plan.md — 4C Specs/Measurements am Typ, extra MaStR am Exemplar; 4C-Massen nicht LCA-SoT
   - ETL u.a.: transform_4c_farm_grid / platforms / turbine_models; MaStR Units park_key
   - GIS: Map-light — kein Router. Marc: Snapshot + Wetter-CSV — kein Dauerstream; Barge nur jack_up_barge (offen)
   - Logistik am Park: Akteure (~3633) · VPI-Einsätze DE (~1183) · Sim-Rollen nur AV-Pilot
   - Locale: EN Workspace; nach i18n-Keys `next dev` neu starten
-  - IA: marc_anylogic_v0 + thomas_lca_v0.1 (openLCA 2 + ecoinvent; BOM/Recycling via CSV; Decom C-first; kein ecoinvent-Spiegel) · Mail: 04_communication/mail_thomas_lca_openlca_2026_09.md · Präsi: team_stand_plan_2026_08.md (+ PPTX)
-  - Marketing intern (Anmelden/Kontakt); `/docs` umgeleitet. Invites ohne SMTP (Link kopieren); EMAIL_SENDER fehlt noch.
+  - IA: marc_anylogic_v0 + thomas_lca_v0.2 (openLCA 2 + BAFU; EF 3.1 / optional ReCiPe; Multi-Impact; BOM via CSV; Decom C-first) · Mail: 04_communication/mail_thomas_lca_openlca_2026_09.md · Präsi: team_stand_plan_2026_08.md (+ PPTX)
+  - Invites: Resend Domain imc.ostfriesland.ai; Signup = Supabase SMTP. Coolify MAILER_PROVIDER=resend. Invite-Link im Inkognito öffnen (Demo-Session sonst „Einladung nicht gefunden“).
 
 Zielbild MVP (5–12 Wochen):
   Login/Rollen, Offshore-Asset-Register, minimaler Export.
@@ -48,9 +49,10 @@ Nächster Schritt:
   1) ~~Stage A Backbone / Assets-IA / Grid-OHVS / MaStR / 4C-Turbine-Typ~~ — Daten-Backlog light fertig
   2) ~~Coolify + Cloud-Daten auf Team astra-imc~~ — siehe cursor/cloud_bootstrap.md
   3) **Marc-Sync** (Stunden-CSV + Katalog + Barge/IA) · parallel **PR → main** wenn Demo ok
-  4) Thomas: Mail senden + AV-Stückliste; Impacts C1–C4; optional EMAIL_SENDER; Shubham AAS
+  4) Thomas: Mail (BAFU/EF) + AV-Stückliste; Impacts C1–C4; optional EMAIL_SENDER; Shubham AAS
+  5) Einheiten×Specs Stufe 0: AV-Stichprobe 4C Specs/Measurements + MaStR-Payload (dann ETL)
   Geblockt: BOM-Zahlen (Recherche Thomas); Sequenz/Sim-CSV Marc; Vessel-Wetter final; Barge-Typ
-  Nicht: Transmission-Vollimport; GIS-Router; 4C↔MaStR unit-Join; Contracts-17k; Decom aus 4C; Sim/LCA in App
+  Nicht: Transmission-Vollimport; GIS-Router; 4C↔MaStR auto unit-Join; Contracts-17k; Decom aus 4C; Sim/LCA in App; 4C-Gewichte als Stücklisten-Masse
 
 Pilot AV vs andere:
   - Breit: Design, Grid, oft 4C-Typ, MaStR-Units (33 Parks), Akteure/Contracts DE

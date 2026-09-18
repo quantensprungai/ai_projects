@@ -1,5 +1,5 @@
 <!-- Reality Block
-last_update: 2026-08-27
+last_update: 2026-09-09
 status: draft
 scope:
   summary: "Kurzinventar: was aus 4C/MaStR/ERA5/CAPEX schon in der DB ist vs. Lücken und nächste Hol-Schritte."
@@ -9,19 +9,22 @@ scope:
   out_of_scope:
     - full field catalogs
 notes:
-  - "Zahlen lokal 2026-08-27: Grid/OHVS/Turbine-Models/MaStR 1651; nächster Hebel Marc-Sync nicht ETL."
+  - "Cloud-Zahlen 2026-09-09: ~127k Zeilen, 29 Tabellen — siehe 04_communication/data_platform_inventory_2026_09.md."
+  - "2026-09-18: Pointer auf cursor/unit_spec_integration_plan.md (Typ-Specs + MaStR-WEA)."
 -->
 
-# Datenabdeckung — Lücken & nächste Hol-Schritte (2026-08-27)
+# Datenabdeckung — Lücken & nächste Hol-Schritte (2026-09-09)
+
+**Vollständiges Inventar + Grafiken:** [`../04_communication/data_platform_inventory_2026_09.md`](../04_communication/data_platform_inventory_2026_09.md)
 
 ## Kurzfassung
 
-| Bereich | In DB (kuratiert) | Raw-Mirror | Nächster Schritt |
-|---------|-------------------|------------|------------------|
-| 4C Windfarms + Design | 3606 Farms, 3606 Design | ja | stabil |
+| Bereich | In DB (kuratiert, Cloud) | Raw-Mirror | Nächster Schritt |
+|---------|--------------------------|------------|------------------|
+| 4C Windfarms + Design | 3606 Farms, 3606 Design | lokal ~151k | stabil |
 | 4C Grid light | **~1423** `imc_farm_grid` (DE ~120); Steckbrief | Project Details | POP modelled optional |
 | 4C Platforms / OHVS | **~686** Platforms; Steckbrief Name·Typ·Owner | Platform Type | Shared ohne Farm-Link skipped |
-| 4C Turbinen Specs | **~369** Modelle; **~619** Farms gelinkt; Steckbrief Typ | Specs + on-farm | weitere Spec-Felder nur bei Thomas |
+| 4C Turbinen Specs | **~369** Modelle; **~619** Farms gelinkt; Steckbrief Typ | Specs + on-farm | Plan: [`../cursor/unit_spec_integration_plan.md`](../cursor/unit_spec_integration_plan.md) |
 | CAPEX/OPEX/Revenue | **befüllt** (~974 / ~17k / ~974 / ~421) | POP/LCOE | live |
 | 4C Events | **~41k** gemappt | Events-Sheet | ok |
 | 4C VPI Vessels | **8 + 2210**; Contracts DE ~**1183** | Specs/Contracts | kein 17k-Vollimport |
@@ -46,7 +49,8 @@ Working-Board-Backbone **fertig** (inkl. Typ/Netz/OHVS/Einheiten).
 |------|------|---------|
 | 1 | Marc IA-Abnahme | Stunden-CSV, Katalog-Werte, Barge, Snapshot |
 | 1 | PR Branch → main | Demo-Freeze Code |
-| 2 | Thomas BOM an Einheiten | nicht aus 4C ableiten |
+| 2 | Thomas BOM an Einheiten | nicht aus 4C ableiten; Typ-Specs separat (siehe unit_spec-Plan) |
+| 2 | 4C-Specs + MaStR-WEA an Einheiten | [`../cursor/unit_spec_integration_plan.md`](../cursor/unit_spec_integration_plan.md) — Stufe 0 Inventar AV |
 | 2 | Shubham AAS-Schnitt | Interop, nicht Register |
 | 3 | DE-ERA5 daily batch | Screener, optional |
 | 3 | MaStR-Rest | nur klare Cases |

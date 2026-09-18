@@ -1,0 +1,17 @@
+external_run_id;farm_ext_id;scenario_name;method;category;value;unit;lifecycle_phase;lci_db;tool;is_proxy;notes
+;DE01;av_decom_baseline;EF_3.1;climate_change;;kg CO2-eq;C1;BAFU;openLCA;true;
+;DE01;av_decom_baseline;EF_3.1;climate_change;;kg CO2-eq;C2;BAFU;openLCA;true;
+;DE01;av_decom_baseline;EF_3.1;climate_change;;kg CO2-eq;C3;BAFU;openLCA;true;
+;DE01;av_decom_baseline;EF_3.1;climate_change;;kg CO2-eq;C4;BAFU;openLCA;true;
+;DE01;av_decom_baseline;EF_3.1;ecotoxicity;;;C1;BAFU;openLCA;true;category name + unit as in openLCA
+;DE01;av_decom_baseline;EF_3.1;ecotoxicity;;;C2;BAFU;openLCA;true;
+;DE01;av_decom_baseline;EF_3.1;ecotoxicity;;;C3;BAFU;openLCA;true;
+;DE01;av_decom_baseline;EF_3.1;ecotoxicity;;;C4;BAFU;openLCA;true;
+;DE01;av_decom_baseline;EF_3.1;human_toxicity;;;C1;BAFU;openLCA;true;category name + unit as in openLCA
+;DE01;av_decom_baseline;EF_3.1;human_toxicity;;;C2;BAFU;openLCA;true;
+;DE01;av_decom_baseline;EF_3.1;human_toxicity;;;C3;BAFU;openLCA;true;
+;DE01;av_decom_baseline;EF_3.1;human_toxicity;;;C4;BAFU;openLCA;true;
+;DE01;av_decom_baseline;ReCiPe_2016;marine_ecotoxicity;;;C1;BAFU;openLCA;true;optional second method
+;DE01;av_decom_baseline;ReCiPe_2016;marine_ecotoxicity;;;C2;BAFU;openLCA;true;
+;DE01;av_decom_baseline;ReCiPe_2016;marine_ecotoxicity;;;C3;BAFU;openLCA;true;
+;DE01;av_decom_baseline;ReCiPe_2016;marine_ecotoxicity;;;C4;BAFU;openLCA;true;

@@ -1,5 +1,5 @@
 <!-- Reality Block
-last_update: 2026-09-17
+last_update: 2026-09-18
 status: draft
 scope:
   summary: "ReST Data Platform ASTRA WP 5.2 – Doku: Zielbild, Scope, Naming, Stack (Next.js + Supabase); Code: quantensprungai/astra-imc-platform."
@@ -31,8 +31,13 @@ notes: []
 - `01_spec/idea_backlog.md`: offener Ideen-Backlog (Hypothesen/Experimente, noch nicht festgelegt)
 - `01_spec/interface_agreement_template.md`: Template fuer Modul-Schnittstellen (Schema, Keys, Format, Abnahme)
 - `01_spec/interface_agreement_marc_anylogic_v0.md`: Draft IA Marc / AnyLogic (Stunden-Wetter + Sim-Output)
-- `01_spec/interface_agreement_thomas_lca_v0.md`: IA Thomas / BOM-Light + Recycling + openLCA Decom-first (v0.1)
-- `01_spec/templates/thomas_bom_light_sample.csv` / `thomas_lca_impacts_sample.csv`: CSV-Köpfe Stückliste + Impacts
+- `01_spec/interface_agreement_thomas_lca_v0.md`: IA Thomas / BOM-Light + Recycling + openLCA Decom-first (v0.2, BAFU/EF 3.1)
+- `01_spec/templates/README.md`: CSV-Paket Thomas (was reist)
+- `01_spec/templates/av_park_context_v1.csv`: Park-Kontext inkl. Quelle (In)
+- `01_spec/templates/av_units.csv`: 12 MaStR-Einheiten ohne Massen (In)
+- `01_spec/templates/bom_light_sample.csv` / `lca_impacts_sample.csv`: leere Stückliste je Typ + Impacts (Out)
+- `01_spec/templates/feldkatalog.csv`: Pflicht/Typ/Beispiel für Stückliste und Impacts
+- `cursor/unit_spec_integration_plan.md`: 4C-Typ-Specs + MaStR-WEA an Einheiten (ohne 4C-Massen als LCA-SoT)
 - `04_communication/mail_thomas_lca_openlca_2026_09.md`: Mail-Vorlage Arbeitsteilung Plattform ↔ openLCA
 - `01_spec/data_coverage_gap_2026_08.md`: 4C/MaStR/ERA5/CAPEX — Ist vs. Luecken (Stand 2026-08)
 - `01_spec/data_ampel_stage_a.md`: Stage-A Datenboard (Gruen/Gelb/Rot) fuer Meeting-Entscheidungen

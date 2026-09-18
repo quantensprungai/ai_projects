@@ -1,0 +1,32 @@
+tabelle;feld;typ;pflicht;beschreibung;beispiel;hinweis
+bom_light;farm_ext_id;text;ja;Join zum Register;DE01;entspricht ext_windfarm_id
+bom_light;turbine_model;text;ja;Turbinentyp, nicht die einzelne WEA;Senvion 5M;zweiter Typ: Areva Wind M5000-116. Nicht 12-mal kopieren.
+bom_light;subsystem;text;ja;Bauteilgruppe;nacelle;erlaubt: nacelle / blade / tower / foundation
+bom_light;material;text;ja;grobe Stoffklasse, kein BAFU-Flowname;steel;
+bom_light;mass_t;numeric;ja;Masse in Tonnen;120.5;leer lassen wir. Du fuellst.
+bom_light;eol_route;text;ja;End-of-life-Weg;recycle;erlaubt: recycle / landfill / incineration / unknown
+bom_light;recycling_rate;numeric;nein;Anteil 0-1, nur wenn eol_route=recycle;0.85;sonst leer
+bom_light;is_proxy;boolean;ja;Annahme statt Messung?;true;true oder false
+bom_light;source_note;text;ja;Literatur, Messung oder Annahme;;
+bom_light;as_of;date;ja;Stand der Annahme;2026-09-17;ISO-Datum
+bom_light;olca_process_id;text;nein;UUID des in openLCA gewaehlten Datasets;;erst spaeter
+impacts;external_run_id;text;ja;deine Lauf-ID;;eine ID je Methode/Szenario
+impacts;farm_ext_id;text;ja;Join zum Register;DE01;
+impacts;scenario_name;text;ja;Szenarioname;av_decom_baseline;
+impacts;method;text;ja;LCIA-Methode wie in openLCA;EF_3.1;zweiter Lauf: ReCiPe_2016
+impacts;category;text;ja;Wirkungskategorie der Methode;climate_change;auch ecotoxicity / human_toxicity / marine_ecotoxicity. Namen wie openLCA.
+impacts;value;numeric;ja;Ergebniszahl;;
+impacts;unit;text;ja;Einheit der Kategorie;kg CO2-eq;Tox z.B. CTUe / CTUh — wie openLCA
+impacts;lifecycle_phase;text;ja;EN-15804-C-Modul;C1;erlaubt: C1 / C2 / C3 / C4
+impacts;lci_db;text;ja;Hintergrunddatenbank plus Version;BAFU;bitte konkreten Datensatz plus Jahr
+impacts;tool;text;ja;Rechenwerkzeug;openLCA;
+impacts;is_proxy;boolean;ja;Annahme?;true;true oder false
+impacts;notes;text;nein;;;
+hinweis;C1;;;EN 15804;Rueckbau vor Ort;Phase, nicht AAS-Vorlage
+hinweis;C2;;;EN 15804;Transport zur Behandlung;
+hinweis;C3;;;EN 15804;Behandlung / Recycling;
+hinweis;C4;;;EN 15804;Deponie / Rest;
+hinweis;impacts_grain;;;eine Zeile;Methode x Kategorie x C-Modul;kein GWP-only. 02023 spaeter nur GWP.
+hinweis;csv;;;Trennzeichen;Semikolon;deutsches Excel
+hinweis;park_context;;;Datei 1;Ist-Register Alpha Ventus;nicht ausfuellen, nur lesen
+hinweis;units;;;Datei 2;12 MaStR-Einheiten;Masse und Turbinentyp je WEA sind bei uns leer

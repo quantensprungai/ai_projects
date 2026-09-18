@@ -1,5 +1,5 @@
 <!-- Reality Block
-last_update: 2026-09-17
+last_update: 2026-09-18
 status: active
 scope:
   summary: "Aktiver Arbeitsplan ASTRA IMC — Cloud live; Marc-Sync / PR; Sim-Ingest; Thomas LCA Decom-first."
@@ -11,7 +11,8 @@ scope:
     - full roadmap rewrite
     - GIS routing product
 notes:
-  - "2026-09-17: Thomas-Gespräch — openLCA 2 + ecoinvent; BOM-Light + Recycling in IMC via CSV; Decom C1–C4 zuerst; kein ecoinvent-Spiegel. IA v0.1 + Mail-Vorlage."
+  - "2026-09-18: Plan Einheiten×4C-Specs×MaStR — cursor/unit_spec_integration_plan.md"
+  - "2026-09-17: Thomas-Gespräch — openLCA 2; BOM-Light + Recycling in IMC via CSV; Decom C1–C4 zuerst; kein LCI-Spiegel. IA + Mail-Vorlage."
   - "2026-09-15: Analysis Runs Stufe 1+2 (imc_analysis_runs + API v0 + Park-UI); Live-Engine out of scope."
   - "2026-09-04: Coolify live; curated IMC-Daten in Cloud auf Team astra-imc (3606 Farms)."
   - "Handover-Block in handover.md parallel aktualisieren."
@@ -31,7 +32,7 @@ notes:
 | **Team-Stand** | `04_communication/team_stand_plan_2026_08.md` | Narrative für Session/Folien |
 | **IA Marc** | `01_spec/interface_agreement_marc_anylogic_v0.md` | Stunden-Wetter + Sim-CSV + Owner-Matrix |
 | **IA Thomas** | `01_spec/interface_agreement_thomas_lca_v0.md` | BOM-Light + Recycling + C-Module; Mail: `04_communication/mail_thomas_lca_openlca_2026_09.md` |
-| **Datenlücken** | `01_spec/data_coverage_gap_2026_08.md` | 4C/MaStR/ERA5/CAPEX Ist |
+| **Einheiten × Specs** | `cursor/unit_spec_integration_plan.md` | 4C-Typ-Specs + MaStR-WEA, ohne 4C-Massen als LCA-SoT |
 
 ## Zielbild (grün, nicht „Stage A genug“)
 
@@ -109,7 +110,7 @@ Details + Owner-Matrix + Barge-Offenpunkt: `01_spec/interface_agreement_marc_any
 2. Optional mit Marc: Day-Rates/Fuel/Jacking-Werte finalisieren (jetzt Platzhalter)
 3. Rest-MaStR nur bei klaren Namen (Gode 1+2 / Nordsee Ost Split / Bard) — kein Rewrite
 4. Routing/Polylinien erst wenn Marc „real routes“ will
-5. Transmission / Spec-Vollbreite / DE-ERA5-Batch — nur bei konkretem Partner-Bedarf
+5. Transmission / Spec-Vollbreite / DE-ERA5-Batch — nur bei konkretem Partner-Bedarf; Typ-Specs siehe `cursor/unit_spec_integration_plan.md`
 
 ## Was offen ist / was jetzt tun
 
@@ -119,8 +120,9 @@ Details + Owner-Matrix + Barge-Offenpunkt: `01_spec/interface_agreement_marc_any
 | **1 parallel** | **PR** `feat/assets-ia-restructure` → main wenn Demo ok | Code einfrieren; Coolify+Cloud-Daten stehen |
 | **1 parallel** | **Sim-Output-Ingest** (Stufe 1+2: `imc_analysis_runs` + API v0 + Park-UI) — Live-Engine bleibt raus | Ergebnis speichern/zeigen; Marc-Spalten-Abnahme |
 | **2 Partner** | **Thomas:** Mail + AV-Stücklisten-CSV (Massen/Recycling) → Import; Impacts C1–C4; Shubham AAS | Massen kommen von Thomas, nicht aus 4C/openLCA-Dump |
+| **2 parallel** | **Einheiten × Specs Stufe 0** — AV-Stichprobe 4C Specs/Measurements + MaStR-Payload-Keys | Plan: `cursor/unit_spec_integration_plan.md` |
 | **3 Optional** | DE-ERA5-Tagesbatch; Katalog-Zahlen mit Marc; MaStR-Rest nur klar | kein Sim-/BOM-Blocker |
-| **Nicht** | Transmission-Vollimport, GIS-Router, unitweiser 4C↔MaStR-Join, Contracts-17k, Live-AnyLogic/MCP | Scope |
+| **Nicht** | Transmission-Vollimport, GIS-Router, auto 4C↔MaStR-Join, Contracts-17k, Live-AnyLogic/MCP | Scope; Specs-Plan ohne Unit-Join |
 
 **Pilot AV vs. andere:** Typ/Grid/OHVS/MaStR-Einheiten sind DE-breit wo gelinkt. AV bleibt dichter bei **ERA5-Stunden**, **Sim-Rollen**, Kuratierung (Emden/Tripod) und Demo-Pfad — nicht mehr „einziger Park mit Daten“.
 
@@ -148,7 +150,7 @@ Details + Owner-Matrix + Barge-Offenpunkt: `01_spec/interface_agreement_marc_any
 
 ### Thomas — blockt CAPEX-Portfolio nicht
 
-Tool **openLCA 2 + ecoinvent** (bei ihm). BOM/Recycling sind **LCA-Spur**; SoT nach CSV-Import in IMC. ecoinvent bleibt in openLCA. Portfolio braucht nur 4C Economics. Einheiten-Block = UI-Anker, keine Massen.
+Tool **openLCA 2 + BAFU** (nicht ecoinvent). BOM/Recycling sind **LCA-Spur**; SoT nach CSV-Import in IMC. LCIA: EF 3.1, optional ReCiPe 2016, mehrere Kategorien. Portfolio braucht nur 4C Economics. Einheiten-Block = MaStR-Anker, keine Massen; 4C hat Typ-am-Park, nicht Typ-je-WEA.
 
 ## Logistics — was „Struktur“ heißt (nicht Vollausbau)
 

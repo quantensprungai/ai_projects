@@ -1,0 +1,21 @@
+field;value;source
+farm_name;Alpha Ventus;4C
+ext_windfarm_id;DE01;4C
+country;Germany;4C
+region;Niedersachsen;4C
+lifecycle_phase;operational;4C
+capacity_mw;60;4C
+num_turbines;12;4C / MaStR
+foundation_display;various / mixed (4C: Grounded Various);4C as shown in UI
+foundation_curation_note;pilot override intended tripod;platform curation (source 032). UI still shows mixed
+fixed_or_floating;fixed;4C
+water_depth_m;27-30;4C
+distance_shore_km_4c;56;4C
+turbine_types;Senvion 5M (5.08 MW 126m) and Areva Wind M5000-116;4C type catalog
+commissioning_span_mastr;2009-08-01 to 2010-04-12;MaStR units
+design_lifetime_years;20;4C design
+decom_year_estimate;2030;platform derived (commissioning + lifetime 20). not a booked date
+decom_event_4c;2027-04-01;4C event log. narrative: start early 2027 or 2028 under review
+decom_port;Emden;platform curated (4C had no decom port). geom 82.4 km
+om_ports;Eemshaven / Wilhelmshaven / Norddeich / Borkum;4C
+masses;;not in register

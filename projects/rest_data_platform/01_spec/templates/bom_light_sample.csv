@@ -1,0 +1,9 @@
+farm_ext_id;turbine_model;subsystem;material;mass_t;eol_route;recycling_rate;is_proxy;source_note;as_of;olca_process_id
+DE01;Senvion 5M;nacelle;;;;;;true;;
+DE01;Senvion 5M;blade;;;;;;true;;
+DE01;Senvion 5M;tower;;;;;;true;;
+DE01;Senvion 5M;foundation;;;;;;true;;
+DE01;Areva Wind M5000-116;nacelle;;;;;;true;;
+DE01;Areva Wind M5000-116;blade;;;;;;true;;
+DE01;Areva Wind M5000-116;tower;;;;;;true;;
+DE01;Areva Wind M5000-116;foundation;;;;;;true;;
