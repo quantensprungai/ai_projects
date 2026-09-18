@@ -1,5 +1,24 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-09-18: Phasen-Review 13a — Astro Schicht-2-Literatur
+
+**Kontext:** Plan 13 hat Astro durch die Checkliste außer Literatur. Handler war HD-only. 0 Astro-Kanten mit `condition`+`interp_id`.
+
+**Decision:**
+
+1. **`extract_relationships` systemneutral.** `_REL_SYSTEM_PROFILES` hd/astro. `debug.run` (`plan_13a` vs Default `plan_10a`). HD-Prompt unverändert. Interp-Fetch fällt auf unscoped, wenn Katalog-Account ≠ Job-Account.
+2. **Astro-`condition`:** `angular` | `placement` | `rulership` | `aspect` | `none`. Leser prüft am AC-Hit (angular immer; placement berührt `facetNodeIds`; rulership berührt `astro.planet.<ruler>`; aspect nur `asc_conjunction`).
+3. **Lauf 1978** (einziges Astro-Chart in `user_charts`): 59 Chunks, 448 `candidate`, 0 LLM-Fail, 0 Katalog-Fremd-IDs, 10/10 Zitate wörtlich. Cap 6 am Hit, Mute-Regel unverändert, `candidate`→Hypothese auf der Astro-Card.
+4. **Kein zweiter Chart.** 1980/1990 haben kein gespeichertes Astro-Chart. Kein `_JOB_PRIORITY`, kein Backfill, kein Formulierer v3.
+
+**Nachweis:** Job `0b12d8f7-5af8-46f1-a53d-1733eea1505a`. `check_handbook_astro.ts` 6 Literatur-Kanten, hypothesis, kein Astro-Jargon, Cache-Key ≠ ohne Literatur. Regression Formulierer + Literatur + Input grün.
+
+**Nicht:** Descendant/Liebe, Sect/Dignität, Jiazi, HD-Welle, Transit, Wipe, `db reset`.
+
+**SoT:** `cursor/plans/13a_astro_literatur.md`; Vertrag [tiefe.md](../cursor/vertraege/tiefe.md).
+
+---
+
 ## 2026-09-18: Phasen-Review 13 — Astro Aszendent durch die Checkliste
 
 **Kontext:** Checkliste an HD `self_identity` einmal durch (Plan 12). Frage: HD-Welle zuerst vs. zweites System. Astro gewählt, weil BaZi ohne Jiazi-Interps nicht wählbar.

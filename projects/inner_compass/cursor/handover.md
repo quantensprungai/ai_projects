@@ -20,7 +20,7 @@ Lokal: Next :3000, Supabase API :54321, HD-Service :8002 (services/hd)
 LLM: Langdock gpt-5.4-mini (Pin in der App: `IC_LLM_MODEL` / Formulierer-Default). Nicht Spark-Qwen als Interpret/Synth. Key in .env.development.local (nicht committen).
 ```
 
-**Stand:** Track Tiefe. Phase 13 zu. Formulierer v2 schreibt HD + Astro `self_identity` DE. Astro-Literatur leer. **Nächster Plan:** [plans/13a_astro_literatur.md](plans/13a_astro_literatur.md) — `extract_relationships` für Astro. HD-Welle und Transit danach. Verbreitung: Namen kanonisch, Handles reservieren, keine Posts.
+**Stand:** Track Tiefe. Phase 13a zu. Formulierer v2 schreibt HD + Astro `self_identity` DE; Astro liest Schicht-2 (`plan_13a`, Hypothese). **Nächster Schnitt:** Jiazi-KG oder Ziwei durch die Checkliste, nicht HD-Welle, nicht Transit. Verbreitung: Namen kanonisch, Handles reservieren, keine Posts.
 
 **Leitplanken:** nested Code nicht ins Docs-Repo. Flora/`.env`/`_tmp_*` nicht committen. HD-Zombie `5ba2f841` nicht anfassen. Auto-Synth aus. Handbuch-Text formulieren, nicht übersetzen. Seed vor text2kg.
 

@@ -18,7 +18,7 @@ Leit-Decision: [decisions.md](../../reference/decisions.md) „Tiefe statt Färb
 2. Mechanik-Kanten mit `condition` (Familie 2 Schicht 1) — Regeln, `approved`.
 3. Facetten am Element (`mechanical` / `gift` / `shadow` / `process.*`) — **Input**, nicht Handbuch-Prosa. EN = Rohstoff (Plan 10). DE erst Formulierer (Plan 11).
 4. Routing `belongs_to_domain` — welche Elemente diese Bereichsseite sieht.
-5. Formulierer — einmal pro Chart-Hash + Stimme-Version, gecacht. Hypothese-Flag, wenn gelesene Literatur `candidate` ist oder Schicht 3. **Ist Plan 13:** HD + Astro `self_identity` DE v2, Cache inkl. `system`; Astro ohne Literatur.
+5. Formulierer — einmal pro Chart-Hash + Stimme-Version, gecacht. Hypothese-Flag, wenn gelesene Literatur `candidate` ist oder Schicht 3. **Ist Plan 13a:** HD + Astro `self_identity` DE v2; Astro liest `plan_13a`.
 6. Färbungskarte in `handbook-voice.ts` — Fallback und Few-Shot, wenn (3) oder (5) fehlen.
 
 ## Sprache
@@ -60,11 +60,11 @@ Sechs Schritte, einmal an HD `self_identity` durchlaufen. Nächstes System: dies
 | System × Zelle | Chart-State | Mechanik-Hit | Facetten | Routing | Literatur | Formulierer |
 |---|---|---|---|---|---|---|
 | HD `self_identity` | ja | Runtime Kanal/Tor + `condition` | EN im `HandbookInput` | OS approved | Plan-10a am Hit, Cap 6, `candidate`→Hypothese | v2 DE, Cache `ic_handbook_texts` |
-| Astro Aszendent | ja | Runtime `asc_conjunction` / `planet_h1` / `asc_sign` | EN im `HandbookInput` (Katalog-Nodes) | Haus 1 inject | **13a** | v2 DE, Cache `system=astro`; Färbung Fallback |
+| Astro Aszendent | ja | Runtime `asc_conjunction` / `planet_h1` / `asc_sign` | EN im `HandbookInput` (Katalog-Nodes) | Haus 1 inject | Plan-13a am Hit, Cap 6, `candidate`→Hypothese | v2 DE, Cache `system=astro`; Färbung Fallback |
 | Ziwei Lebensort | ja | nein | Inspector | Palast 10 | nein | Färbung |
 | BaZi Tagstamm | ja | nein | nein (Jiazi 0 Interps) | Tagstamm JSON | nein | Färbung |
 
-Reihenfolge: eine Domäne HD → eine Domäne zweites System (**Plan 13 Astro**, Literatur = 13a) → Breite (Bereiche, HD-Welle PHS/Quarter/Planeten/Type-4) → Transit/ZEIT (eigene Achse, Tages-Cache-Key).
+Reihenfolge: eine Domäne HD → eine Domäne zweites System (**Plan 13+13a Astro**, Checkliste durch) → Breite (Bereiche, HD-Welle PHS/Quarter/Planeten/Type-4) oder Jiazi/Ziwei → Transit/ZEIT (eigene Achse, Tages-Cache-Key).
 
 ## Bereitschafts-Matrix (Ist 2026-09-18)
 
@@ -73,12 +73,12 @@ Zelle = Engine · Katalog · Struktur-Kanten · Routing · Atome · Facetten gel
 | System | Engine | Katalog | Struktur | Routing | Atome | Facetten gelesen | Mechanik-Kanten | DE-Wordings |
 |---|---|---|---|---|---|---|---|---|
 | HD | ja | ja | `part_of` ja | OS approved; 418 candidate | Gates/Channels/Lines/OS EN | Overlay/Inspector ja; **HandbookInput** EN-Rohstoff | Runtime Schicht 1; Schicht 2: 869 `candidate` (Plan 10a), **am Identitäts-Hit gelesen** (Plan 12); Backfill weiter ungelesen | **Plan 13:** Formulierer v2 DE; Keil bleibt `name`; Hypothese-Zusatz im Locate; Jargon-Gate inkl. definiert/geschlossen |
-| Astro | ja | ja (71 Nodes) | Haus-Map | Haus 1/7 inject | Natal EN-Draft | **HandbookInput** EN an Katalog (Sign/AC/Planet/Haus 1); Inspector bleibt | Runtime Hit `asc_conjunction`/`planet_h1`/`asc_sign`; Schicht 2 **13a** | **Plan 13:** Formulierer v2 DE am AC; Färbung Fallback |
+| Astro | ja | ja (71 Nodes) | Haus-Map | Haus 1/7 inject | Natal EN-Draft | **HandbookInput** EN an Katalog (Sign/AC/Planet/Haus 1); Inspector bleibt | Runtime Hit; Schicht 2: 448 `candidate` (Plan 13a), **am AC-Hit gelesen** | **Plan 13a:** Formulierer v2 DE am AC + Literatur; Hypothese-Zusatz; Färbung Fallback |
 | Ziwei | ja | ja | Palast-Map | Paläste 10/12 | Natal-Cut EN | Inspector | nein | Färbung Lebensort/Spouse |
 | BaZi | ja | ja | Tagstamm-Map | Tagstamm → Identität+Liebe JSON | Day Master EN; Jiazi 0 Interps | nein | nein | Färbung Stamm |
 | Jyotish | Engine ja | Katalog dünn | nein | nein | nein | nein | nein | nein |
 | Maya | Engine ja | Katalog dünn | nein | nein | nein | nein | nein | nein |
 
-**HD ungelesen (nicht verwerfen, Content-Welle nach den Systemen):** übrige `dimensions.*`, `hd.concept.open_center`, PHS/Variable-Wordings, Quarter-Atome, Planet-Beispiele, Type-4-Kanäle, `maps_to` GK 143. **Ersetzt / gestrichen:** `sys_dynamics` + `extract_processes` (Facetten `process.*`/`trap` + Schicht-2 `condition`); `generate_meta_nodes`, `tag_ic_metadata` (Stimme-Vertrag + Formulierer-Prompt). **Offen nach zwei Systemen:** `extract_pattern_traps` (Kombi-Fallen über Systeme, Tiefe 2). **`extract_relationships`:** Handler da, HD-only; 869 `candidate` Plan 10a am Identitäts-Hit gelesen. Astro-Lauf = Plan 13a. Backfill 13k: messen, nicht lesen.
+**HD ungelesen (nicht verwerfen, Content-Welle nach den Systemen):** übrige `dimensions.*`, `hd.concept.open_center`, PHS/Variable-Wordings, Quarter-Atome, Planet-Beispiele, Type-4-Kanäle, `maps_to` GK 143. **Ersetzt / gestrichen:** `sys_dynamics` + `extract_processes` (Facetten `process.*`/`trap` + Schicht-2 `condition`); `generate_meta_nodes`, `tag_ic_metadata` (Stimme-Vertrag + Formulierer-Prompt). **Offen nach zwei Systemen:** `extract_pattern_traps` (Kombi-Fallen über Systeme, Tiefe 2). **`extract_relationships`:** Handler systemneutral (HD + Astro). 869 `candidate` Plan 10a am HD-Hit gelesen; 448 `candidate` Plan 13a am AC-Hit gelesen. Backfill 13k: messen, nicht lesen.
 
 **Launch-Umfang:** vier rechnende Systeme. Jyotish/Maya/GK/Enneagramm = nach Matrix-Freeze, eigene Content-Welle.

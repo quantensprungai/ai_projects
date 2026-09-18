@@ -143,20 +143,22 @@ Aktuell macht `extract_interpretations` alles in einem LLM-Prompt. Besser: 4 fok
 - **Output:** sys_interpretations (Payload mit dimensions + process-Feld)
 - **Warum separat:** Kann auf erkannte Entities fokussieren statt selbst erkennen zu müssen
 
-### extract_relationships (NEU — Schema Plan 10, Lauf Plan 10a)
+### extract_relationships (Schema Plan 10, Lauf 10a HD / 13a Astro)
 
-**Status:** Handler in `ic_worker.py` (`_handle_extract_relationships`), **nicht** in `_JOB_PRIORITY`. Lauf 2026-09-17 Plan 10a: 3 Charts, Langdock `gpt-5.4-mini`, 869 `candidate`-Kanten mit `metadata.run=plan_10a`. Claim nur über `IC_WORKER_JOB_TYPES=extract_relationships`. Backfill 2026-08-05 (~13k `amplifies`/`depends_on`/`clashes_with`, alle `candidate`, ohne Interp-ID, ohne `condition`) **nicht anfassen, nicht lesen**.
+**Status:** Handler in `ic_worker.py` (`_handle_extract_relationships`), **nicht** in `_JOB_PRIORITY`. Claim nur über `IC_WORKER_JOB_TYPES=extract_relationships`. `_REL_SYSTEM_PROFILES`: `hd` (Plan 10a) und `astro` (Plan 13a). `debug.run` (Default `plan_10a`). Backfill 2026-08-05 (~13k, ohne Interp-ID, ohne `condition`) **nicht anfassen, nicht lesen**.
 
-- **Input:** `sys_source_chunk` + `payload.elements[]` (erkannte Entities). Fokus Plan 10a: HD-Chunks der Login-OS-Knoten + Mechanik-Hit, 3–5 Charts, Langdock `gpt-5.4-mini`.
+- **Input:** `sys_source_chunk` + `payload.elements[]` + Job-`canonical_ids`. Fokus: Login-OS/Hit-Knoten, Langdock `gpt-5.4-mini`.
 - **Output:** `sys_kg_edges`, `edge_scope=intra_system`, `review_status=candidate`.
 - **Eine Kante pro Beleg**, keine erzwungene Gegenseitigkeit.
 - **Felder je Kante:**
-  - `from`, `to` — canonical IDs
+  - `from`, `to` — canonical IDs (Katalog; kein `astro.placement.*`)
   - `relation_type` — bestehender Enum (`amplifies` | `depends_on` | `modifies` | `clashes_with` | `produces` | `controls`; nicht Familie 4)
-  - `metadata.condition` — Chart-State den der Beleg voraussetzt: `defined` | `undefined` | `hanging` | `split` | `none`
+  - `metadata.condition` — HD: `defined` | `undefined` | `hanging` | `split` | `none`. Astro: `angular` | `placement` | `rulership` | `aspect` | `none`
   - `metadata.interp_id`
   - `evidence.chunk_id` + Zitat
-- **Lesen (Plan 12):** `amplifies` und `clashes_with` am gleichen Paar nur stumm, wenn dieselbe `condition` **und** dieselbe `interp_id`. Sonst beide, mit Bedingung. Cap 6 am Identitäts-Hit. Nicht der Backfill. Astro: noch ungelesen, Lauf = Plan 13a (`system_id=astro`, eigenes `condition`-Vokabular).
+  - `metadata.run` — `plan_10a` (HD) / `plan_13a` (Astro)
+- **Lesen (Plan 12 / 13a):** `amplifies` und `clashes_with` am gleichen Paar nur stumm, wenn dieselbe `condition` **und** dieselbe `interp_id`. Sonst beide, mit Bedingung. Cap 6 am Identitäts-Hit. Nicht der Backfill.
+- **Bestand:** HD 869 (`plan_10a`, 3 Charts). Astro 448 (`plan_13a`, 1978 AC-Hit).
 - **Nicht:** `extract_pattern_traps`, `sys_dynamics`, dauerhaft in `_JOB_PRIORITY`, Wipe, `approved` heben.
 
 - **Prompt-Kern:** "Welche Beziehungen zwischen Elementen werden in diesem Chunk beschrieben? Eine Kante pro Beleg, mit Bedingung und Zitat."

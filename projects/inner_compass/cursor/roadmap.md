@@ -29,12 +29,12 @@ Jeder neue Chat liest zuerst diese Datei, dann den verlinkten Phasen-Plan. Curso
 | 11 Formulierer v0 | **abgeschlossen 2026-09-17** | einmal pro Chart, HD-Identität, DE aus Input | [plans/11_formulierer.md](plans/11_formulierer.md) |
 | 12 Schicht 2 / Matrix | **abgeschlossen 2026-09-18** | literature[] am Hit + Schema eingefroren | [plans/12_schicht2_matrix.md](plans/12_schicht2_matrix.md) |
 | 13 Zweites System | **abgeschlossen 2026-09-18** | Checkliste an Astro Aszendent; Formulierer v2 | [plans/13_zweites_system.md](plans/13_zweites_system.md) |
-| 13a Astro-Literatur | geplant | `extract_relationships` für astro, condition-Vokabular, Lesen am AC-Hit | [plans/13a_astro_literatur.md](plans/13a_astro_literatur.md) |
+| 13a Astro-Literatur | **abgeschlossen 2026-09-18** | `extract_relationships` astro, 448 `candidate`, gelesen am AC-Hit | [plans/13a_astro_literatur.md](plans/13a_astro_literatur.md) |
 | Verbreitung | offen, nach Fläche | Mandala-Share, Serie, Agents | nicht Plan-Nummer |
 
-**Empfehlung:** Track Tiefe. Phase 13 zu (Astro AC durch die Checkliste, Literatur leer). Nächster Schnitt Plan 13a (Astro-Literaturlauf), nicht HD-Welle, nicht Transit, nicht Jiazi.
+**Empfehlung:** Track Tiefe. Phase 13a zu (Astro-Literatur am AC-Hit). Nächster Schnitt Jiazi-KG (BaZi wählbar) oder Ziwei durch die Checkliste, nicht HD-Welle zuerst, nicht Transit.
 
-**Nächster Bau:** [plans/13a_astro_literatur.md](plans/13a_astro_literatur.md).
+**Nächster Bau:** Jiazi-KG — [plans/03a_bazi_extract_ahead.md](plans/03a_bazi_extract_ahead.md) als Anker, eigener Plan wenn angeschnitten.
 
 ### Track Tiefe
 
@@ -46,7 +46,7 @@ Review darf umsortieren; streichen nur nach Decision. Details in den verlinkten 
 
 | # | Schnitt | Warum es liegt | Nicht verwechseln mit |
 |---|---|---|---|
-| 1 | Plan 13a Astro-Literatur | Handler HD-only; 0 Astro-Kanten Schicht 2 | HD-Welle zuerst |
+| 1 | ~~Plan 13a Astro-Literatur~~ | **erledigt 2026-09-18** | HD-Welle zuerst |
 | 2 | Jiazi-KG | 60 Knoten, 0 Interps; Klassiker **683 Chunks** ohne Classify ([03a](plans/03a_bazi_extract_ahead.md)); Destiny-Relink | *60 Pillars* zuerst; parallel zu Tiefe |
 | 3 | Staffel 2 *60 Pillars* | nur **mit** Schnitt 2 | parallel zu Fläche |
 | 4 | ~~Routing HD/BaZi über OS/Tagstamm~~ | **erledigt Plan 08** | 418-Spray |

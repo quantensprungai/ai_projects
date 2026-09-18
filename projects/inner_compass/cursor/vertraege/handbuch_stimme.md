@@ -41,4 +41,4 @@ Mikro-Erzählung: Tiefe 1 **Benennen → Übersetzen → Verorten**. Tiefe 2 **T
 
 **Ist (2026-09-16, Stimme):** Schablone „Die Bewegung ist…“ raus. Zweites Beat konkret. BaZi-Name = Färbung, nicht Generic+Stamm. Treffen ohne Inspector-Jargon.
 
-**Ist (Track Tiefe, Plan 13):** Formulierer v2. HD + Astro `self_identity` `translate` = DE aus Hit + Facetten (+ HD Schicht-2). Keine Mechanik-Zustände wörtlich. Locate bleibt `LOCATE.*`; Hypothese-Zusatz nur bei `candidate`-Literatur (HD). Astro `literature[]` leer bis 13a.
+**Ist (Track Tiefe, Plan 13a):** Formulierer v2. HD + Astro `self_identity` `translate` = DE aus Hit + Facetten + Schicht-2. Keine Mechanik-Zustände wörtlich. Locate bleibt `LOCATE.*`; Hypothese-Zusatz bei `candidate`-Literatur (HD und Astro).

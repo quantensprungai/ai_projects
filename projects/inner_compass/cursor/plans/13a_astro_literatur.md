@@ -68,6 +68,18 @@ Nicht: Sect-, Dignitäts-, Transit-Bedingungen. Kommt später, wenn ein Hit sie 
 
 Descendant/Liebe, Sect/Dignität als `condition`, Jiazi, HD-Welle, Transit, Backfill auf `approved`, `_JOB_PRIORITY` dauerhaft, Formulierer v3, Wipe, `db reset`, EN auf der Fläche.
 
-## Ist
+## Ist (2026-09-18)
 
-*(nach Lauf ausfüllen: Jobs, Bestand `run=plan_13a` nach Typ/condition, Stichprobe, Leser-Treffer 1978, UI-Zeile)*
+Schritt 0: `astro.sign.cancer` 94 Interps / 6 primary; `astro.angle.ascendant` 48 / 6; `astro.house.1` 116 / 6; `astro.planet.moon` 383 / 6. Abbruch nicht greifend. Erste Interps oft `elements[]` leer; Kandidaten kommen von Node-canonical + Job-Scope.
+
+Worker `_handle_extract_relationships` systemneutral (`_REL_SYSTEM_PROFILES` hd/astro). `debug.run` (Default `plan_10a`). Interp-Fetch: Account zuerst, Lücken unscoped (Katalog-Account `5deaa894…` ≠ Personen-Account). HD-Prompt unverändert. Nicht in `_JOB_PRIORITY`.
+
+Dry-Run 1978 astro: `nodes=4 units=59 written=56 rejected=3 llm_fail=0 dry_run=True` — keine Writes.
+
+**Job (completed, 0 LLM-Fail):** `0b12d8f7-5af8-46f1-a53d-1733eea1505a` 1978 astro — 59 Chunks, written 448, skipped 36, rejected 46. Langdock `gpt-5.4-mini`.
+
+**Bestand `metadata.run=plan_13a`:** 448 Kanten, alle `candidate`. `controls` 132, `amplifies` 107, `depends_on` 89, `clashes_with` 70, `modifies` 25, `produces` 25. `condition`: none 132, placement 85, rulership 83, aspect 75, angular 73. Fehlende `condition` / `interp_id` / `chunk_id` / Zitat: 0. IDs außerhalb Astro-Katalog / `astro.placement.*`: 0. `amplifies`+`clashes_with` gleiches Paar+condition+interp: 2 (Leser stumm). Stichprobe 10: 10/10 Zitate wörtlich im Chunk.
+
+Nur 1 Astro-Chart in `user_charts` — kein 1980/1990-Lauf.
+
+Leser `loadLiteratureEdges(hit, chart, system)`. 1978 AC-Hit: 6 Kanten (Cap), alle `candidate`, Formulierer `hypothesis=true`, Cache-Key ≠ ohne Literatur. `applyFormulated` hängt „Teile davon sind noch Hypothese.“ an Locate. Proof `check_handbook_astro.ts` + Regression Formulierer / Literatur / Input grün. Browser-Login in Automation nicht verifiziert.
