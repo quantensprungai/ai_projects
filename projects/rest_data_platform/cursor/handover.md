@@ -50,9 +50,9 @@ Nächster Schritt:
   2) ~~Coolify + Cloud-Daten auf Team astra-imc~~ — siehe cursor/cloud_bootstrap.md
   3) **Marc-Sync** (Stunden-CSV + Katalog + Barge/IA) · parallel **PR → main** wenn Demo ok
   4) Thomas: Mail (BAFU/EF) + AV-Stückliste; Impacts C1–C4; optional EMAIL_SENDER; Shubham AAS
-  5) Einheiten×Specs Stufe 0: AV-Stichprobe 4C Specs/Measurements + MaStR-Payload (dann ETL)
+  5) ~~Einheiten×Specs Stufe 0~~ — Inventar: MaStR hat Typ je WEA (AV 6+6); 4C-Gewichte gefüllt. Nächste: ETL Stufe 1–2
   Geblockt: BOM-Zahlen (Recherche Thomas); Sequenz/Sim-CSV Marc; Vessel-Wetter final; Barge-Typ
-  Nicht: Transmission-Vollimport; GIS-Router; 4C↔MaStR auto unit-Join; Contracts-17k; Decom aus 4C; Sim/LCA in App; 4C-Gewichte als Stücklisten-Masse
+  Nicht: Transmission-Vollimport; GIS-Router; 4C-WEA-IDs (gibt es nicht); Contracts-17k; Decom aus 4C; Sim/LCA in App; 4C-Gewichte als Stücklisten-Masse
 
 Pilot AV vs andere:
   - Breit: Design, Grid, oft 4C-Typ, MaStR-Units (33 Parks), Akteure/Contracts DE

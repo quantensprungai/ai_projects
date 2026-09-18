@@ -120,9 +120,9 @@ Details + Owner-Matrix + Barge-Offenpunkt: `01_spec/interface_agreement_marc_any
 | **1 parallel** | **PR** `feat/assets-ia-restructure` → main wenn Demo ok | Code einfrieren; Coolify+Cloud-Daten stehen |
 | **1 parallel** | **Sim-Output-Ingest** (Stufe 1+2: `imc_analysis_runs` + API v0 + Park-UI) — Live-Engine bleibt raus | Ergebnis speichern/zeigen; Marc-Spalten-Abnahme |
 | **2 Partner** | **Thomas:** Mail + AV-Stücklisten-CSV (Massen/Recycling) → Import; Impacts C1–C4; Shubham AAS | Massen kommen von Thomas, nicht aus 4C/openLCA-Dump |
-| **2 parallel** | **Einheiten × Specs Stufe 0** — AV-Stichprobe 4C Specs/Measurements + MaStR-Payload-Keys | Plan: `cursor/unit_spec_integration_plan.md` |
+| **2 parallel** | **Einheiten × Specs Stufe 1–2** — MaStR-Typ/Nabe/Rotor + 4C-Specs an Modelle; Join über Rotor/Typ | Stufe 0: `reference/imc/av_unit_spec_inventory_2026_09.md` |
 | **3 Optional** | DE-ERA5-Tagesbatch; Katalog-Zahlen mit Marc; MaStR-Rest nur klar | kein Sim-/BOM-Blocker |
-| **Nicht** | Transmission-Vollimport, GIS-Router, auto 4C↔MaStR-Join, Contracts-17k, Live-AnyLogic/MCP | Scope; Specs-Plan ohne Unit-Join |
+| **Nicht** | Transmission-Vollimport, GIS-Router, Join über 4C-WEA-IDs, Contracts-17k, Live-AnyLogic/MCP | MaStR-Typ-Join ist ok |
 
 **Pilot AV vs. andere:** Typ/Grid/OHVS/MaStR-Einheiten sind DE-breit wo gelinkt. AV bleibt dichter bei **ERA5-Stunden**, **Sim-Rollen**, Kuratierung (Emden/Tripod) und Demo-Pfad — nicht mehr „einziger Park mit Daten“.
 

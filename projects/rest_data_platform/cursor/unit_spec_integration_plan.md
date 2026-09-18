@@ -8,12 +8,12 @@ scope:
     - ETL + schema + UI sequence
     - what stays raw / later
   out_of_scope:
-    - inventing AV01=Senvion
+    - guessing unit type without MaStR Typenbezeichnung/Rotor
     - GIS turbine layout
     - replacing Thomas BOM with 4C weights
 notes:
-  - "4C Turbine on Windfarms = Typ am Park, keine WEA-IDs."
-  - "MaStR EinheitenWind Rohpayload liegt schon im lokalen Raw-Mirror."
+  - "4C Turbine on Windfarms = Typ am Park, keine WEA-IDs, AV zaehlt 12+12."
+  - "Stufe 0 2026-09-18: MaStR hat Typ je WEA (AV 6+6); 4C-Gewichte gefuellt."
 -->
 
 # Plan — Einheiten × 4C-Specs × MaStR
@@ -26,7 +26,7 @@ Ziel: Thomas und die UI sehen **Typ-Physik** (4C) und **WEA-Identität** (MaStR)
 |------|--------|----------|-----------|
 | Park | 4C Windfarm | `imc_wind_farms` + design | — |
 | **Typ** am Park | 4C `Turbine on Windfarms` + Specs | `imc_turbine_models` (OEM, Modell, MW, Ø, HH) + Farm-Link/Aliases | Specs/Measurements (Gewicht, Blatt, Getriebe, …) |
-| **Einheit** | MaStR `EinheitenWind` | `imc_turbines` (SEE, Name, MW, Datum, Status, Punkt) | weitere MaStR-Felder; `turbine_model_id` fast immer leer |
+| **Einheit** | MaStR `EinheitenWind` | `imc_turbines` (SEE, Name, MW, Datum, Status, Punkt) | Hersteller, Typ, Nabe, Rotor, Tiefe, Küste — **im Payload**, nicht im Transform; `turbine_model_id` leer |
 
 4C hat **keine** AV01–AV12. VPI `Turbine Measurements` hängt an `TurbineId` (= Modell), nicht an einer WEA.
 
@@ -50,19 +50,22 @@ Rohdaten sind da (lokal, nicht Cloud). Es fehlt Transform + schlanke Spalten, ke
 ## Leitplanken
 
 1. **Thomas-BOM bleibt SoT für Massen/Recycling.** 4C-Gewichte = Vergleich / `is_proxy`, nie still überschreiben.
-2. **Kein Raten** welches Exemplar Senvion/Areva ist. Mixed-Parks: Typ am Park; Einheit ohne Modell, bis Kuratierung oder belastbarer Match.
+2. **Kein Raten** aus 4C-on-farm (zählt 12+12). Mixed-Parks: MaStR `Typenbezeichnung`/`Rotordurchmesser` ist der Join, wo gefüllt. Ohne MaStR-Typ bleibt die Einheit ohne Modell.
 3. Specs leben am **Modell**, Einheiten **zeigen** das Modell wenn gelinkt.
 4. Cloud: nur kuratierte Spalten, kein `imc_source_raw_rows`.
 
 ## Stufen
 
-### 0 — Inventar AV (1 Sitzung, kein Schema)
+### 0 — Inventar AV (erledigt 2026-09-18)
 
-- 4C Specs + VPI Measurements für die zwei AV-`TurbineId`.
-- Ein MaStR-`payload` für AV01: welche Keys außer SEE/Name/MW/Datum/Status/LatLon.
-- Kurz: was wäre für Thomas-BOM nützlich vs. nur Steckbrief.
+Ergebnis: [`reference/imc/av_unit_spec_inventory_2026_09.md`](../reference/imc/av_unit_spec_inventory_2026_09.md). Skript: `scripts/etl/inventory_av_unit_specs.py`.
 
-Abbruchkriterium: wenn 4C-Gewichte leer/widersprüchlich → nur MaStR-Anreicherung, Specs als optional jsonb.
+- 4C Specs **gefüllt** inkl. Rotor-/Blatt-/Gondelmasse (Senvion 130/24/325 t; Areva 112/16.5/233 t). Turm Senvion „Site-specific“, Areva 350 t.
+- VPI Measurements = Kopie der Specs für diese zwei `TurbineId`s — nicht extra speichern.
+- 4C on-farm: 2 Zeilen, **je 12** Turbinen (kein 6+6). VPI Foundation: **6 Tripod 700 t + 6 Jacket 500 t** und Text 6× Senvion.
+- MaStR AV01–06 `REpower5M` / 126 m; AV07–12 `Areva Wind M5000` / 116 m. Typ **pro Einheit** war im Raw-Payload.
+
+Abbruchkriterium Gewichte: **nicht** gegriffen. Stufe 2 darf `turbine_model_id` aus MaStR-Typ/Rotor setzen (kein Raten).
 
 ### 1 — Typ-Specs an `imc_turbine_models` (ETL + Migration)
 
@@ -76,13 +79,13 @@ UI: Steckbrief „Typ“ um 4–6 Kennzahlen, Flag 4C/Proxy.
 
 Kandidaten (nur wenn im Payload): Hersteller, Typenbezeichnung, Nabenhöhe, Rotordurchmesser, Seehöhe/Wassertiefe falls vorhanden.
 
-`turbine_model_id` setzen **nur** bei eindeutigem Park (ein 4C-Typ) oder nach Kuratierung. AV: erstmal leer lassen oder Pilot-Override 6+6 nur mit Quelle (Literatur), analog Tripod.
+`turbine_model_id` setzen wenn MaStR `Typenbezeichnung`/`Rotordurchmesser` eindeutig auf ein 4C-Modell **am selben Park** zeigt (AV: 126 m → Senvion 5M, 116 m → Areva M5000-116). Alias REpower↔Senvion dokumentieren. Nicht den 4C-Farm-Link-OEM verwenden (tid 2 steht dort als Siemens Gamesa).
 
 UI-Einheiten: Spalte Typ (MaStR-Text) ≠ 4C-Modell (Join).
 
 ### 3 — Export an Thomas
 
-`av_units.csv`: MaStR-Felder + `turbine_model` wenn gelinkt, sonst leer. Keine 4C-Massen in die Stückliste kopieren — höchstens Hinweis „4C NacelleWeightt am Typ X = … (Proxy)“.
+`av_units.csv`: MaStR-Typ + Nabe/Rotor dürfen mit. 4C-Massen nur als Proxy-Hinweis am Typ. Foundation-Massen (VPI 700/500 t) nicht in die Turbinen-Stückliste.
 
 ### 4 — Nicht in dieser Spur
 
