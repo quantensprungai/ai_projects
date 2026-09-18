@@ -14,6 +14,7 @@ scope:
 notes:
   - "4C Turbine on Windfarms = Typ am Park, keine WEA-IDs, AV zaehlt 12+12."
   - "Stufe 0 2026-09-18: MaStR hat Typ je WEA (AV 6+6); 4C-Gewichte gefuellt."
+  - "Areva Wind → Adwen → Siemens Gamesa: Nameplate bleibt Areva; oem_group = Siemens Gamesa."
 -->
 
 # Plan — Einheiten × 4C-Specs × MaStR
@@ -69,17 +70,17 @@ Abbruchkriterium Gewichte: **nicht** gegriffen. Stufe 2 darf `turbine_model_id` 
 
 ### 1 — Typ-Specs an `imc_turbine_models` (ETL + Migration)
 
-Nullable Spalten oder `specs jsonb` + Provenance `source_id`: Blattzahl/-länge/-masse, Rotor-/Turm-/Gondelmasse, Getriebe, Generator — nur wo 4C/VPI gefüllt.
+Nullable Spalten + `specs jsonb` + `oem_group` (Areva-Linie → Siemens Gamesa). Massen `weights_are_proxy=true`.
 
-ETL: `transform_4c_turbine_models.py` erweitern (Specs ∪ Measurements, Konfliktregel: Measurements vor Specs oder umgekehrt, dokumentieren).
+ETL: `transform_4c_turbine_models.py`. VPI Measurements nicht separat, solange sie Specs duplizieren.
 
-UI: Steckbrief „Typ“ um 4–6 Kennzahlen, Flag 4C/Proxy.
+UI: Steckbrief 4C-Proxy-Massen + OEM-Gruppe wenn ≠ Nameplate.
 
 ### 2 — Mehr MaStR an `imc_turbines`
 
 Kandidaten (nur wenn im Payload): Hersteller, Typenbezeichnung, Nabenhöhe, Rotordurchmesser, Seehöhe/Wassertiefe falls vorhanden.
 
-`turbine_model_id` setzen wenn MaStR `Typenbezeichnung`/`Rotordurchmesser` eindeutig auf ein 4C-Modell **am selben Park** zeigt (AV: 126 m → Senvion 5M, 116 m → Areva M5000-116). Alias REpower↔Senvion dokumentieren. Nicht den 4C-Farm-Link-OEM verwenden (tid 2 steht dort als Siemens Gamesa).
+`turbine_model_id` setzen wenn MaStR `Typenbezeichnung`/`Rotordurchmesser` eindeutig auf ein 4C-Modell **am selben Park** zeigt (AV: 126 m → Senvion 5M, 116 m → Areva M5000-116). Alias REpower↔Senvion, Areva↔Adwen↔Siemens Gamesa (`oem_group`). Nameplate bleibt Areva Wind.
 
 UI-Einheiten: Spalte Typ (MaStR-Text) ≠ 4C-Modell (Join).
 

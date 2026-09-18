@@ -15,6 +15,7 @@ Ersetzt den DE01-only Pilot (transform_4c_turbine_alpha_ventus.py) für den Kata
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from collections import defaultdict
 from decimal import Decimal, InvalidOperation
@@ -23,7 +24,20 @@ import psycopg
 from dotenv import load_dotenv
 
 from config import SOURCE_4C_TURBINE, get_database_url
+from oem_lineage import oem_group_label
 from transform_4c_events import load_farm_index
+
+SPEC_JSON_SKIP = {
+    "TurbineId",
+    "TurbineName",
+    "Manufacturer",
+    "WindfarmSEOurl",
+    "SEOurl",
+    "SellingPoints",
+    "Comments",
+    "Insurance",
+    "WindfarmIds",
+}
 
 load_dotenv()
 
@@ -49,6 +63,25 @@ def blank(value) -> str | None:
     return text or None
 
 
+def jsonable(value):
+    if value is None:
+        return None
+    if isinstance(value, Decimal):
+        return float(value)
+    if hasattr(value, "isoformat"):
+        return value.isoformat()
+    return value
+
+
+def spec_blob(spec: dict | None) -> dict:
+    out: dict = {}
+    for key, value in (spec or {}).items():
+        if key in SPEC_JSON_SKIP or value is None or str(value).strip() == "":
+            continue
+        out[key] = jsonable(value)
+    return out
+
+
 def upsert_model(
     cur: psycopg.Cursor,
     *,
@@ -58,24 +91,68 @@ def upsert_model(
     rated,
     rotor,
     hub,
+    spec: dict | None = None,
 ) -> str:
+    spec = spec or {}
+    blades_n = num(spec.get("BladesNumber"), "99")
+    group = oem_group_label(oem)
     cur.execute(
         """
         INSERT INTO public.imc_turbine_models (
           oem, model, rated_power_mw, rotor_diameter_m, hub_height_m,
+          oem_group, blades_number, blades_length_m, blades_material,
+          blades_weight_t, rotor_weight_t, nacelle_weight_t, tower_weight_t,
+          gearbox_type, generator_type, weights_are_proxy, specs,
           source_id, ext_turbine_model_key
-        ) VALUES (%s, %s, %s, %s, %s, %s, %s)
+        ) VALUES (
+          %s, %s, %s, %s, %s,
+          %s, %s, %s, %s,
+          %s, %s, %s, %s,
+          %s, %s, true, %s::jsonb,
+          %s, %s
+        )
         ON CONFLICT (oem, model) DO UPDATE SET
           rated_power_mw = COALESCE(EXCLUDED.rated_power_mw, imc_turbine_models.rated_power_mw),
           rotor_diameter_m = COALESCE(EXCLUDED.rotor_diameter_m, imc_turbine_models.rotor_diameter_m),
           hub_height_m = COALESCE(EXCLUDED.hub_height_m, imc_turbine_models.hub_height_m),
+          oem_group = COALESCE(EXCLUDED.oem_group, imc_turbine_models.oem_group),
+          blades_number = COALESCE(EXCLUDED.blades_number, imc_turbine_models.blades_number),
+          blades_length_m = COALESCE(EXCLUDED.blades_length_m, imc_turbine_models.blades_length_m),
+          blades_material = COALESCE(EXCLUDED.blades_material, imc_turbine_models.blades_material),
+          blades_weight_t = COALESCE(EXCLUDED.blades_weight_t, imc_turbine_models.blades_weight_t),
+          rotor_weight_t = COALESCE(EXCLUDED.rotor_weight_t, imc_turbine_models.rotor_weight_t),
+          nacelle_weight_t = COALESCE(EXCLUDED.nacelle_weight_t, imc_turbine_models.nacelle_weight_t),
+          tower_weight_t = COALESCE(EXCLUDED.tower_weight_t, imc_turbine_models.tower_weight_t),
+          gearbox_type = COALESCE(EXCLUDED.gearbox_type, imc_turbine_models.gearbox_type),
+          generator_type = COALESCE(EXCLUDED.generator_type, imc_turbine_models.generator_type),
+          weights_are_proxy = true,
+          specs = COALESCE(EXCLUDED.specs, imc_turbine_models.specs),
           source_id = COALESCE(imc_turbine_models.source_id, EXCLUDED.source_id),
           ext_turbine_model_key = COALESCE(
             imc_turbine_models.ext_turbine_model_key, EXCLUDED.ext_turbine_model_key
           )
         RETURNING turbine_model_id::text
         """,
-        (oem, model, rated, rotor, hub, SOURCE_ID, tid),
+        (
+            oem,
+            model,
+            rated,
+            rotor,
+            hub,
+            group,
+            int(blades_n) if blades_n is not None else None,
+            num(spec.get("BladesLengthm"), "9999.9"),
+            blank(spec.get("BladesMaterial")),
+            num(spec.get("BladesWeightt"), "99999.99"),
+            num(spec.get("RotorWeightt"), "99999.99"),
+            num(spec.get("NacelleWeightt"), "99999.99"),
+            num(spec.get("TowerWeightt"), "99999.99"),
+            blank(spec.get("GearboxType")),
+            blank(spec.get("GeneratorType")),
+            json.dumps(spec_blob(spec)),
+            SOURCE_ID,
+            tid,
+        ),
     )
     return str(cur.fetchone()[0])
 
@@ -201,6 +278,7 @@ def main() -> int:
                     rated=rated,
                     rotor=rotor,
                     hub=hub,
+                    spec=spec,
                 )
                 tid_to_model[tid_n] = model_id
                 models_upserted += 1
@@ -241,6 +319,7 @@ def main() -> int:
                             rated=rated,
                             rotor=rotor,
                             hub=hub,
+                            spec=spec,
                         )
                         tid_to_model[tid_n] = model_id
                     entries.append((model_id, rated))

@@ -25,7 +25,7 @@ Stand (2026-09-18) — Plan: projects/rest_data_platform/cursor/next_plan.md
   - ERA5 daily: 3 Parks / 1858 Tage. Hourly: AV **CDS** ~23k h (2024-01→2026-08, `cds+hourly`).
   - Nav: Assets → Waves → Economics → Vessels
   - Park-Steckbrief: Site-Design + Netz/OHVS (Owner) + **4C-Turbine-Typ (MW/Ø/HH)**; Einheiten = MaStR-Stückliste (kein 4C-Typ-je-WEA)
-  - Plan Einheiten×Specs: cursor/unit_spec_integration_plan.md — 4C Specs/Measurements am Typ, extra MaStR am Exemplar; 4C-Massen nicht LCA-SoT
+  - Plan Einheiten×Specs: cursor/unit_spec_integration_plan.md — Stufe 1–2: MaStR-Typ je WEA + 4C-Specs/Proxy-Massen; Areva-Linie oem_group Siemens Gamesa
   - ETL u.a.: transform_4c_farm_grid / platforms / turbine_models; MaStR Units park_key
   - GIS: Map-light — kein Router. Marc: Snapshot + Wetter-CSV — kein Dauerstream; Barge nur jack_up_barge (offen)
   - Logistik am Park: Akteure (~3633) · VPI-Einsätze DE (~1183) · Sim-Rollen nur AV-Pilot
@@ -50,7 +50,7 @@ Nächster Schritt:
   2) ~~Coolify + Cloud-Daten auf Team astra-imc~~ — siehe cursor/cloud_bootstrap.md
   3) **Marc-Sync** (Stunden-CSV + Katalog + Barge/IA) · parallel **PR → main** wenn Demo ok
   4) Thomas: Mail (BAFU/EF) + AV-Stückliste; Impacts C1–C4; optional EMAIL_SENDER; Shubham AAS
-  5) ~~Einheiten×Specs Stufe 0~~ — Inventar: MaStR hat Typ je WEA (AV 6+6); 4C-Gewichte gefüllt. Nächste: ETL Stufe 1–2
+  5) Einheiten×Specs Stufe 1–2: Migration + ETL 4C-Specs/MaStR-Typ-Join (lokal anwenden, dann Cloud)
   Geblockt: BOM-Zahlen (Recherche Thomas); Sequenz/Sim-CSV Marc; Vessel-Wetter final; Barge-Typ
   Nicht: Transmission-Vollimport; GIS-Router; 4C-WEA-IDs (gibt es nicht); Contracts-17k; Decom aus 4C; Sim/LCA in App; 4C-Gewichte als Stücklisten-Masse
 

@@ -23,6 +23,7 @@ from dotenv import load_dotenv
 
 from config import SOURCE_MASTR, get_database_url
 from match_mastr_de import park_key_for
+from oem_lineage import FarmModel, match_farm_model
 
 load_dotenv()
 
@@ -113,12 +114,80 @@ def load_units_by_park_key(
     return by_key
 
 
+def load_catalog(cur: psycopg.Cursor, source_id: str) -> dict[str, str]:
+    cur.execute(
+        """
+        SELECT payload->>'Id', payload->>'Wert'
+        FROM public.imc_source_raw_rows
+        WHERE source_id = %s
+          AND sheet_name = 'Katalogwerte'
+          AND payload->>'Id' IS NOT NULL
+        """,
+        (source_id,),
+    )
+    out: dict[str, str] = {}
+    for cid, wert in cur.fetchall():
+        if cid and wert and str(cid) not in out:
+            out[str(cid)] = str(wert)
+    return out
+
+
+def catalog_label(payload: dict, field: str, catalog: dict[str, str]) -> str | None:
+    labelled = payload.get(f"{field}_label")
+    if labelled:
+        text = str(labelled).strip()
+        return text or None
+    raw = payload.get(field)
+    if raw is None or str(raw).strip() == "":
+        return None
+    return catalog.get(str(raw))
+
+
+def load_farm_models(cur: psycopg.Cursor, farm_id) -> list[FarmModel]:
+    cur.execute(
+        """
+        SELECT DISTINCT tm.turbine_model_id::text, tm.oem, tm.model,
+               tm.rotor_diameter_m::float, tm.oem_group
+        FROM public.imc_turbine_models tm
+        JOIN public.imc_farm_design fd
+          ON fd.turbine_model_id = tm.turbine_model_id
+        WHERE fd.farm_id = %s
+        UNION
+        SELECT DISTINCT tm.turbine_model_id::text, tm.oem, tm.model,
+               tm.rotor_diameter_m::float, tm.oem_group
+        FROM public.imc_wind_farms wf
+        JOIN public.imc_turbine_models tm
+          ON EXISTS (
+            SELECT 1
+            FROM unnest(coalesce(wf.aliases, ARRAY[]::text[])) AS a
+            WHERE a = ('Turbine:' || tm.oem || ' · ' || tm.model)
+          )
+        WHERE wf.farm_id = %s
+        """,
+        (farm_id, farm_id),
+    )
+    models: list[FarmModel] = []
+    for model_id, oem, model, rotor, group in cur.fetchall():
+        models.append(
+            FarmModel(
+                turbine_model_id=str(model_id),
+                oem=oem or "",
+                model=model or "",
+                rotor_diameter_m=float(rotor) if rotor is not None else None,
+                oem_group=group,
+            )
+        )
+    return models
+
+
 def insert_units(
     cur: psycopg.Cursor,
     *,
     farm_id,
     payloads: list[dict],
     source_id: str,
+    catalog: dict[str, str],
+    models: list[FarmModel],
 ) -> int:
     cur.execute(
         """
@@ -134,17 +203,35 @@ def insert_units(
         if not see:
             continue
         name = payload.get("NameStromerzeugungseinheit") or None
-        status = payload.get("EinheitBetriebsstatus_label") or None
+        status = catalog_label(payload, "EinheitBetriebsstatus", catalog)
         rated_mw = mw_from_kw(payload.get("Bruttoleistung"))
         commissioned = parse_date(payload.get("Inbetriebnahmedatum"))
         lat = parse_float(payload.get("Breitengrad"))
         lon = parse_float(payload.get("Laengengrad"))
+        manufacturer = catalog_label(payload, "Hersteller", catalog)
+        type_name = (str(payload.get("Typenbezeichnung")).strip()
+                     if payload.get("Typenbezeichnung") else None)
+        hub = parse_float(payload.get("Nabenhoehe"))
+        rotor = parse_float(payload.get("Rotordurchmesser"))
+        depth = parse_float(payload.get("Wassertiefe"))
+        shore = parse_float(payload.get("Kuestenentfernung"))
+        sea = catalog_label(payload, "Seelage", catalog)
+        eeg = payload.get("EegMaStRNummer") or None
+        model_id = match_farm_model(
+            manufacturer=manufacturer,
+            type_designation=type_name,
+            rotor_diameter_m=rotor,
+            models=models,
+        )
 
         cur.execute(
             """
             INSERT INTO public.imc_turbines (
               farm_id, ext_unit_key, name, rated_power_mw,
-              commissioning_date, status_label, location, source_id
+              commissioning_date, status_label, location, source_id,
+              turbine_model_id, manufacturer_label, type_designation,
+              hub_height_m, rotor_diameter_m, water_depth_m,
+              distance_shore_km, sea_area_label, eeg_mastr_nr
             ) VALUES (
               %s, %s, %s, %s, %s, %s,
               CASE
@@ -152,7 +239,10 @@ def insert_units(
                 THEN ST_SetSRID(ST_MakePoint(%s, %s), 4326)
                 ELSE NULL
               END,
-              %s
+              %s,
+              %s, %s, %s,
+              %s, %s, %s,
+              %s, %s, %s
             )
             ON CONFLICT (farm_id, ext_unit_key) DO UPDATE SET
               name = EXCLUDED.name,
@@ -161,6 +251,15 @@ def insert_units(
               status_label = EXCLUDED.status_label,
               location = EXCLUDED.location,
               source_id = EXCLUDED.source_id,
+              turbine_model_id = EXCLUDED.turbine_model_id,
+              manufacturer_label = EXCLUDED.manufacturer_label,
+              type_designation = EXCLUDED.type_designation,
+              hub_height_m = EXCLUDED.hub_height_m,
+              rotor_diameter_m = EXCLUDED.rotor_diameter_m,
+              water_depth_m = EXCLUDED.water_depth_m,
+              distance_shore_km = EXCLUDED.distance_shore_km,
+              sea_area_label = EXCLUDED.sea_area_label,
+              eeg_mastr_nr = EXCLUDED.eeg_mastr_nr,
               updated_at = now()
             """,
             (
@@ -175,6 +274,15 @@ def insert_units(
                 lon,
                 lat,
                 source_id,
+                model_id,
+                manufacturer,
+                type_name,
+                hub,
+                rotor,
+                depth,
+                shore,
+                sea,
+                str(eeg) if eeg else None,
             ),
         )
         inserted += 1
@@ -195,8 +303,16 @@ def transform_farm(
         print(f"SKIP: {farm_name} — keine Einheiten für Park '{park_name}'")
         return 0
 
+    models = load_farm_models(cur, farm_id)
+    catalog = load_catalog(cur, source_id)
+
     inserted = insert_units(
-        cur, farm_id=farm_id, payloads=payloads, source_id=source_id
+        cur,
+        farm_id=farm_id,
+        payloads=payloads,
+        source_id=source_id,
+        catalog=catalog,
+        models=models,
     )
 
     cur.execute(

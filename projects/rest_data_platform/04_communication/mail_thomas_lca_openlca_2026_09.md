@@ -38,6 +38,8 @@ Wenn du magst, hängt die aktualisierte leere Impact-Tabelle plus Feldkatalog an
 
 Eine Bitte: für `lci_db` den **genauen BAFU-Datensatz plus Jahr/Version**.
 
+Nachtrag Register: die 12 Einheiten haben jetzt den **MaStR-Typ** (AV01–06 REpower/Senvion 5M, AV07–12 Areva M5000). Areva-Linie heute **Siemens Gamesa** (Adwen); Nameplate bleibt Areva. Massen in der Stückliste weiter von dir — 4C-Gewichte nur als Vergleich.
+
 Viele Grüße  
 Heiko
 
@@ -90,7 +92,7 @@ ecoinvent-Version
 
 Nicht aus openLCA-Hintergrund exportieren und nicht in der UI tippen.
 
-**Von mir zu dir (In):** Park-Kontext plus die 12 MaStR-Einheiten (Name, Nummer, MW, Inbetriebnahme, Status). Massen leer. Welches Exemplar Senvion und welches Areva ist, steht bei uns nicht an der Einheit. Decom-Jahr 2030 ist nur Schätzung (Inbetriebnahme + 20 Jahre); 4C-Event nennt 2027/2028. Hafen Emden ist von uns kuratiert, Distanz 82.4 km.
+**Von mir zu dir (In):** Park-Kontext plus die 12 MaStR-Einheiten (Name, Nummer, MW, Inbetriebnahme, Status, **Typ/Nabe/Rotor aus MaStR**). Massen leer. AV01–06 Senvion/REpower 5M, AV07–12 Areva M5000-116 (Linie heute Siemens Gamesa). Decom-Jahr 2030 ist nur Schätzung (Inbetriebnahme + 20 Jahre); 4C-Event nennt 2027/2028. Hafen Emden ist von uns kuratiert, Distanz 82.4 km.
 
 **Von dir zu mir (Out):** grobes Material, Masse, Recycling — in die Stückliste **je Turbinentyp** (nicht 12-mal kopieren, solange die Massen gleich sind). Danach Impacts (GWP je C1–C4).
 

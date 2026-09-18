@@ -29,4 +29,4 @@ hinweis;C4;;;EN 15804;Deponie / Rest;
 hinweis;impacts_grain;;;eine Zeile;Methode x Kategorie x C-Modul;kein GWP-only. 02023 spaeter nur GWP.
 hinweis;csv;;;Trennzeichen;Semikolon;deutsches Excel
 hinweis;park_context;;;Datei 1;Ist-Register Alpha Ventus;nicht ausfuellen, nur lesen
-hinweis;units;;;Datei 2;12 MaStR-Einheiten;Masse und Turbinentyp je WEA sind bei uns leer
+hinweis;units;;;Datei 2;12 MaStR-Einheiten;Typ/Nabe/Rotor aus MaStR. Masse leer — Thomas fuellt die Stueckliste je Typ. 4C-Nameplate: Senvion 5M / Areva Wind M5000-116 (Areva-Linie heute Siemens Gamesa).
