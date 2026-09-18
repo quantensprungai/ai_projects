@@ -156,7 +156,7 @@ Aktuell macht `extract_interpretations` alles in einem LLM-Prompt. Besser: 4 fok
   - `metadata.condition` — Chart-State den der Beleg voraussetzt: `defined` | `undefined` | `hanging` | `split` | `none`
   - `metadata.interp_id`
   - `evidence.chunk_id` + Zitat
-- **Lesen (Plan 12):** `amplifies` und `clashes_with` am gleichen Paar nur stumm, wenn dieselbe `condition` **und** dieselbe `interp_id`. Sonst beide, mit Bedingung. Cap 6 am Identitäts-Hit. Nicht der Backfill.
+- **Lesen (Plan 12):** `amplifies` und `clashes_with` am gleichen Paar nur stumm, wenn dieselbe `condition` **und** dieselbe `interp_id`. Sonst beide, mit Bedingung. Cap 6 am Identitäts-Hit. Nicht der Backfill. Astro: noch ungelesen, Lauf = Plan 13a (`system_id=astro`, eigenes `condition`-Vokabular).
 - **Nicht:** `extract_pattern_traps`, `sys_dynamics`, dauerhaft in `_JOB_PRIORITY`, Wipe, `approved` heben.
 
 - **Prompt-Kern:** "Welche Beziehungen zwischen Elementen werden in diesem Chunk beschrieben? Eine Kante pro Beleg, mit Bedingung und Zitat."

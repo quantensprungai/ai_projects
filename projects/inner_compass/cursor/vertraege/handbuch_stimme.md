@@ -12,7 +12,7 @@ out_of_scope: Glossar-Projekt, generate_meta_nodes
 
 Mikro-Erzählung: Tiefe 1 **Benennen → Übersetzen → Verorten**. Tiefe 2 **Treffen** (Familie 4: Klumpen / Facetten / Widerspruch) — formulierte Schablone, kein Kernmoment. Tiefe 3–4 Werkstatt (Plan 05).
 
-**Code:** `hd-handbook-gloss.ts` bleibt HD-Keil (Vorbild) für Hub/Onboarding. Daneben `lib/ic/handbook-voice.ts`: Regel als Kommentar + Helfer. Sprache ist **vorgegeben** und aus den Systemen abgeleitet. Version `handbook-voice-v1`. Formulierer: `lib/ic/handbook-formulator.ts` Version `handbook-formulator-v1`; Wording `handbook-voice-v1+formulator-v1`.
+**Code:** `hd-handbook-gloss.ts` bleibt HD-Keil (Vorbild) für Hub/Onboarding. Daneben `lib/ic/handbook-voice.ts`: Regel als Kommentar + Helfer. Sprache ist **vorgegeben** und aus den Systemen abgeleitet. Version `handbook-voice-v1`. Formulierer: `lib/ic/handbook-formulator.ts` Version `handbook-formulator-v2`; Wording `handbook-voice-v1+formulator-v2`.
 
 **Handbuch-Text wird formuliert**, nicht aus Atomen übersetzt. Siehe [sprache.md](sprache.md).
 
@@ -41,4 +41,4 @@ Mikro-Erzählung: Tiefe 1 **Benennen → Übersetzen → Verorten**. Tiefe 2 **T
 
 **Ist (2026-09-16, Stimme):** Schablone „Die Bewegung ist…“ raus. Zweites Beat konkret. BaZi-Name = Färbung, nicht Generic+Stamm. Treffen ohne Inspector-Jargon.
 
-**Ist (Track Tiefe, Plan 12):** Formulierer v1. HD `self_identity` `translate` = DE aus Hit + Facetten + gelesene Schicht-2-Belege. Locate bleibt `LOCATE.hd`, plus „Teile davon sind noch Hypothese.“ wenn `candidate`.
+**Ist (Track Tiefe, Plan 13):** Formulierer v2. HD + Astro `self_identity` `translate` = DE aus Hit + Facetten (+ HD Schicht-2). Keine Mechanik-Zustände wörtlich. Locate bleibt `LOCATE.*`; Hypothese-Zusatz nur bei `candidate`-Literatur (HD). Astro `literature[]` leer bis 13a.

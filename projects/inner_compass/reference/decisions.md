@@ -1,5 +1,25 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-09-18: Phasen-Review 13 — Astro Aszendent durch die Checkliste
+
+**Kontext:** Checkliste an HD `self_identity` einmal durch (Plan 12). Frage: HD-Welle zuerst vs. zweites System. Astro gewählt, weil BaZi ohne Jiazi-Interps nicht wählbar.
+
+**Decision:**
+
+1. **Astro-Hit Runtime** Rang AC-Konjunktion (Orb ≤ 3°) → Planet Haus 1 → AC-Zeichen. Chart-Ruler nur `condition`. 1978 = `asc_sign` Cancer, Ruler Mond, keine Haus-1-Planeten.
+2. **`HandbookInput` systemneutral** (`system`, `HandbookHit.facetNodeIds`). Facetten an Katalog-Nodes (71 Astro-Nodes; Instanz-Nodes 0). Füllgrad 1978 Sign/AC/Haus 1 = 100 % gift/shadow/trap, je 6 `primary`.
+3. **Formulierer v2** mit System-Jargonliste. Regel: keine Mechanik-Zustände wörtlich (definiert/geschlossen/in Haus). Cache-Key inkl. `system`. HD-Texte ohne „Verbindung ist geschlossen“.
+4. **Literatur für Astro leer** bis 13a. Handler bleibt HD-only. Kein Hypothese-Zusatz auf der Astro-Card.
+5. **Schnitt:** Plan 13 = Schritte 1–4 + 6; Literaturlauf = 13a.
+
+**Nachweis:** `check_handbook_astro.ts` Hit-Rang, 1978 Cancer-Facetten, DE ohne Astro-Jargon, Cache-Key ≠ HD. Regression Formulierer + Literatur grün.
+
+**Nicht:** Astro-Kanten extrahieren, Descendant/Liebe, Ziwei/BaZi, HD-Welle, Transit, `_JOB_PRIORITY`, `db reset`.
+
+**SoT:** `cursor/plans/13_zweites_system.md`; Vertrag [tiefe.md](../cursor/vertraege/tiefe.md).
+
+---
+
 ## 2026-09-18: Phasen-Review 12 — Schicht 2 lesen + Matrix einfrieren
 
 **Kontext:** Formulierer v0 schrieb DE ohne Literatur. 869 Plan-10a-`candidate` lagen. Frage: HD-Welle / Transit zuerst vs. Checkliste an einem zweiten System.
