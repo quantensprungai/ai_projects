@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-18
+last_update: 2026-09-19
 scope: Laufender Anker — Phasen, Status, nächster Plan, Warteschlange
 in_scope: Reihenfolge, Status, Links, geordnetes Offenes
 out_of_scope: Implementierungsdetails (stehen im Phasen-Plan)
@@ -30,11 +30,13 @@ Jeder neue Chat liest zuerst diese Datei, dann den verlinkten Phasen-Plan. Curso
 | 12 Schicht 2 / Matrix | **abgeschlossen 2026-09-18** | literature[] am Hit + Schema eingefroren | [plans/12_schicht2_matrix.md](plans/12_schicht2_matrix.md) |
 | 13 Zweites System | **abgeschlossen 2026-09-18** | Checkliste an Astro Aszendent; Formulierer v2 | [plans/13_zweites_system.md](plans/13_zweites_system.md) |
 | 13a Astro-Literatur | **abgeschlossen 2026-09-18** | `extract_relationships` astro, 448 `candidate`, gelesen am AC-Hit | [plans/13a_astro_literatur.md](plans/13a_astro_literatur.md) |
+| 14 Zweite Domäne | **abgeschlossen 2026-09-19** | `love_partnership` durch die Kette (HD + Astro), Formulierer v3 | [plans/14_zweite_domaene.md](plans/14_zweite_domaene.md) |
+| 15 Hit-Regel-Tabelle | offen | restliche Bereiche: eine ehrliche Regel, nicht Spray | [plans/15_hit_regel_tabelle.md](plans/15_hit_regel_tabelle.md) |
 | Verbreitung | offen, nach Fläche | Mandala-Share, Serie, Agents | nicht Plan-Nummer |
 
-**Empfehlung:** Track Tiefe. Phase 13a zu (Astro-Literatur am AC-Hit). Nächster Schnitt Jiazi-KG (BaZi wählbar) oder Ziwei durch die Checkliste, nicht HD-Welle zuerst, nicht Transit.
+**Empfehlung:** Track Tiefe. Phase 14 zu (`love_partnership` durch die Kette, Formulierer v3). Nächster Schnitt: restliche Bereiche als Hit-Regel-Tabelle ([Plan 15](plans/15_hit_regel_tabelle.md)) — eine ehrliche Regel, nicht alle zehn. Jiazi/Ziwei und HD-Welle dahinter, nicht Transit.
 
-**Nächster Bau:** Jiazi-KG — [plans/03a_bazi_extract_ahead.md](plans/03a_bazi_extract_ahead.md) als Anker, eigener Plan wenn angeschnitten.
+**Nächster Bau:** Plan 15 — [plans/15_hit_regel_tabelle.md](plans/15_hit_regel_tabelle.md).
 
 ### Track Tiefe
 
@@ -47,16 +49,18 @@ Review darf umsortieren; streichen nur nach Decision. Details in den verlinkten 
 | # | Schnitt | Warum es liegt | Nicht verwechseln mit |
 |---|---|---|---|
 | 1 | ~~Plan 13a Astro-Literatur~~ | **erledigt 2026-09-18** | HD-Welle zuerst |
-| 2 | Jiazi-KG | 60 Knoten, 0 Interps; Klassiker **683 Chunks** ohne Classify ([03a](plans/03a_bazi_extract_ahead.md)); Destiny-Relink | *60 Pillars* zuerst; parallel zu Tiefe |
-| 3 | Staffel 2 *60 Pillars* | nur **mit** Schnitt 2 | parallel zu Fläche |
-| 4 | ~~Routing HD/BaZi über OS/Tagstamm~~ | **erledigt Plan 08** | 418-Spray |
-| 5 | Weitere Bereichsseiten | einzeln, **nach** zweitem System sonst Typologie | Mandala-Share |
-| 6 | ~~Familie-2-Filter~~ | **aufgelöst in Track:** Schicht 1 = Phase 9, Schicht 2 = Phase 10/12 | Backfill auf approved heben |
-| 7 | ~~Trap/Gift DE~~ | **Plan 10–13** Facetten + Literatur als Input, Formulierer DE | `extract_pattern_traps` (Kombi über Systeme = nach 13a) |
-| 8 | ~~DE-Atome / Formulierer HD Identität~~ | **Phase 11–13** | EN-Atome übersetzen / Re-Synth |
-| 9 | HD-Content-Welle (PHS, Quarter, Planeten, Type-4) | **nach** den Systemen durch die Checkliste, nicht davor | Checkliste wiederholen |
-| 10 | ZEIT / Luck / Transite | eigene Achse, Tages-Cache-Key; nach Natal in ≥2 Systemen | Occupancy war Phase 6 |
-| 11 | Verbreitung | nach Fläche; Vorlauf = Namen + Handles, keine Posts (Decision 2026-09-16) | Stub-Content; Mandala-Share jetzt |
+| 1b | ~~Plan 14 Liebe durch die Kette~~ | **erledigt 2026-09-19** | zwölf Domänen auf einmal |
+| 2 | Plan 15 Hit-Regel-Tabelle | Form steht; restliche 10 Domänen nur mit ehrlicher Regel ([15](plans/15_hit_regel_tabelle.md)) | Spray / alle zwölf |
+| 3 | Jiazi-KG | 60 Knoten, 0 Interps; Klassiker **683 Chunks** ohne Classify ([03a](plans/03a_bazi_extract_ahead.md)); Destiny-Relink | *60 Pillars* zuerst; parallel zu Tiefe |
+| 4 | Staffel 2 *60 Pillars* | nur **mit** Schnitt Jiazi | parallel zu Fläche |
+| 5 | ~~Routing HD/BaZi über OS/Tagstamm~~ | **erledigt Plan 08** | 418-Spray |
+| 6 | Weitere Bereichsseiten | einzeln über Plan 15, **nach** zweitem System sonst Typologie | Mandala-Share |
+| 7 | ~~Familie-2-Filter~~ | **aufgelöst in Track:** Schicht 1 = Phase 9, Schicht 2 = Phase 10/12 | Backfill auf approved heben |
+| 8 | ~~Trap/Gift DE~~ | **Plan 10–14** Facetten + Literatur als Input, Formulierer DE | `extract_pattern_traps` (Kombi über Systeme = nach 13a) |
+| 9 | ~~DE-Atome / Formulierer HD Identität~~ | **Phase 11–14** | EN-Atome übersetzen / Re-Synth |
+| 10 | HD-Content-Welle (PHS, Quarter, Planeten, Type-4) | **nach** den Systemen durch die Checkliste **und** Plan 15, nicht davor | Checkliste wiederholen |
+| 11 | ZEIT / Luck / Transite | eigene Achse, Tages-Cache-Key; nach Natal in ≥2 Systemen | Occupancy war Phase 6 |
+| 12 | Verbreitung | nach Fläche; Vorlauf = Namen + Handles, keine Posts (Decision 2026-09-16) | Stub-Content; Mandala-Share jetzt |
 
 **Ops (kein Phasen-Plan):** Login oft 1978-11-10; Langdock-Pin `gpt-5.4-mini`; 3–5 qualitative Charts; Browser-Auth in Automation. Utopia: [ideas.md](../reference/ideas.md), nicht diese Schlange.
 

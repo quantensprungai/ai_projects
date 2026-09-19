@@ -1,5 +1,25 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-09-19: Phasen-Review 14 — Liebe durch die Kette
+
+**Kontext:** Die Kette war bis auf Hit-Wahl, Formulierer-Prompt und `love ? null : hit` domänenneutral. Frage: alle zwölf jetzt vs. Tabelle vs. eine zweite Domäne. Zweite Domäne zuerst, sonst Spray (Plan 07).
+
+**Decision:**
+
+1. **`love_partnership` durch dieselbe Kette** für HD + Astro. Ziwei/BaZi bleiben Färbung.
+2. **Hit-Regel-Tabelle als Form.** `DOMAIN_HIT_RULES` pro System. Identität = bestehende Ränge. Liebe: HD Bindungs-Liste `59_6`/`40_37`/`19_49`/`44_26`/`32_54`/`27_50` → Sakral/Solarplexus-Kanal → hängendes Tor aus der Liste → null. Astro: Planet Haus 7 → DC-Konjunktion (Orb ≤ 3°) → DC-Zeichen. Rest `null`, nicht füllen.
+3. **Formulierer v3.** `systemPrompt(system, domainId)` mit Label + Kernfrage aus `life-domains.ts`. Jargon-Gates unverändert. Cache kippt von selbst.
+4. **Kein Worker `plan_14`.** 1978 DC-Hit liest Bestand `plan_13a` (6 Kanten, Spillover Saturn/Capricorn/Descendant). HD `plan_10a` an `59_6` (6 Kanten). Card nicht dünn.
+5. **Locate** `LOCATE_LOVE.*` bleibt; Hypothese-Suffix wie bisher. Partnership-Voice = Fallback.
+
+**Nachweis:** 1978 AC Cancer / DC Capricorn, kein Haus-7-Planet → `dsc_sign`. HD `59_6`. `check_handbook_love.ts` + Regression Formulierer / Literatur / Input / Astro grün. Cache `love_partnership` hd+astro v3.
+
+**Nicht:** zwölf Domänen, Ziwei/BaZi formulieren, 418, Transit, HD-Welle, Jiazi, `_JOB_PRIORITY`, Wipe, `db reset`.
+
+**SoT:** `cursor/plans/14_zweite_domaene.md`; Vertrag [tiefe.md](../cursor/vertraege/tiefe.md). Nächster Schnitt: [Plan 15](../cursor/plans/15_hit_regel_tabelle.md).
+
+---
+
 ## 2026-09-18: Phasen-Review 13a — Astro Schicht-2-Literatur
 
 **Kontext:** Plan 13 hat Astro durch die Checkliste außer Literatur. Handler war HD-only. 0 Astro-Kanten mit `condition`+`interp_id`.

@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-18
+last_update: 2026-09-19
 scope: Chat-Handover Inner Compass, kurz
 in_scope: Einstieg für neuen Chat
 out_of_scope: Historie (siehe reference/handover_2026-09_archiv.md)
@@ -20,7 +20,7 @@ Lokal: Next :3000, Supabase API :54321, HD-Service :8002 (services/hd)
 LLM: Langdock gpt-5.4-mini (Pin in der App: `IC_LLM_MODEL` / Formulierer-Default). Nicht Spark-Qwen als Interpret/Synth. Key in .env.development.local (nicht committen).
 ```
 
-**Stand:** Track Tiefe. Phase 13a zu. Formulierer v2 schreibt HD + Astro `self_identity` DE; Astro liest Schicht-2 (`plan_13a`, Hypothese). **Nächster Schnitt:** Jiazi-KG oder Ziwei durch die Checkliste, nicht HD-Welle, nicht Transit. Verbreitung: Namen kanonisch, Handles reservieren, keine Posts.
+**Stand:** Track Tiefe. Phase 14 zu. Formulierer v3 schreibt HD + Astro `self_identity` und `love_partnership` DE; Astro liest Schicht-2 am AC- und DC-Hit (`plan_13a`, Hypothese). **Nächster Schnitt:** restliche Bereiche als Hit-Regel-Tabelle ([Plan 15](plans/15_hit_regel_tabelle.md)), nicht alle zehn auf einmal. Jiazi/Ziwei und HD-Welle dahinter, nicht Transit. Verbreitung: Namen kanonisch, Handles reservieren, keine Posts.
 
 **Leitplanken:** nested Code nicht ins Docs-Repo. Flora/`.env`/`_tmp_*` nicht committen. HD-Zombie `5ba2f841` nicht anfassen. Auto-Synth aus. Handbuch-Text formulieren, nicht übersetzen. Seed vor text2kg.
 
