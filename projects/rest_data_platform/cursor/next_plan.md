@@ -1,8 +1,8 @@
 <!-- Reality Block
-last_update: 2026-09-18
+last_update: 2026-09-20
 status: active
 scope:
-  summary: "Aktiver Arbeitsplan ASTRA IMC — Cloud live; Marc-Sync / PR; Sim-Ingest; Thomas LCA Decom-first."
+  summary: "Aktiver Arbeitsplan ASTRA IMC — Cloud live; Waves-Drilldown; Marc-Sync / PR; Thomas LCA Decom-first."
   in_scope:
     - next implementation order
     - glossary for events vs marc steps
@@ -11,6 +11,7 @@ scope:
     - full roadmap rewrite
     - GIS routing product
 notes:
+  - "2026-09-20: Typkarte Elektrik + imc_farm_foundations (~506/451); Commit 8661a570; Waves Jahr→Parks→Proxy+Lücken."
   - "2026-09-18: Plan Einheiten×4C-Specs×MaStR — cursor/unit_spec_integration_plan.md"
   - "2026-09-17: Thomas-Gespräch — openLCA 2; BOM-Light + Recycling in IMC via CSV; Decom C1–C4 zuerst; kein LCI-Spiegel. IA + Mail-Vorlage."
   - "2026-09-15: Analysis Runs Stufe 1+2 (imc_analysis_runs + API v0 + Park-UI); Live-Engine out of scope."
@@ -43,7 +44,7 @@ Plattform = **Offshore-Register + Logistik + Economics + Wetter + Waves**, aus d
 | Wetter | Tages- **und** Stundenreihen, Export am Park |
 | Vessels | Typenkatalog + Flotte + Day-Rates + Contracts (light) + Sim-Rollen-Pilot |
 | Economics | am Park + Portfolio `/assets/economics` (4C reported/modelled) |
-| Waves | Gegenverkehr Ausbau/Rückbau `/assets/waves` (Produkt A light) |
+| Waves | Gegenverkehr Ausbau/Rückbau `/assets/waves` — Jahr aufdröseln + Proxy-Rollup + Lückenliste (Produkt A light) |
 | Karte | **Map-light** (Leaflet + Attribute) — kein GIS-Produkt/Router |
 | Partner | IA-Review Marc/Thomas — **jetzt der Hebel**, nicht weitere ETL-Breite |
 
@@ -52,8 +53,8 @@ Plattform = **Offshore-Register + Logistik + Economics + Wetter + Waves**, aus d
 | Baustein | Stand |
 |----------|--------|
 | Nav | **Assets → Waves → Economics → Vessels** (Labels DE=EN Produktbegriffe) |
-| Waves | `/assets/waves` Dual-Serie MW; Filter vom Register; CTA auf Assets-Liste |
-| Park-Dossier | Steckbrief · Economics · Lebenszyklus · **Einheiten** · Standort · Wetter · Akteure · Schiffe |
+| Waves | `/assets/waves` Dual-Serie MW; Jahr → Parkliste + Proxy-Massen-Rollup + Lückenliste; Filter vom Register |
+| Park-Dossier | Steckbrief · Economics · Lebenszyklus · **Typkarte** · **Fundamente** · **Einheiten** · Standort · Wetter · Akteure · Schiffe · Szenarien |
 | Site-Design | Steckbrief: Tiefe/Küste/Fläche/Wind; Register-Filter `depth` / `shore` |
 | 4C Turbine-Typ | `imc_turbine_models` ~**369**; ~**619** Farms gelinkt; Steckbrief OEM·Modell·MW·Ø·HH (+ Multi-Typ-Aliases) |
 | Grid / OHVS | `imc_farm_grid` ~**1423** (DE ~120); Platforms ~**686**; Steckbrief Landing/Export/Infield/OSS/OHVS (Owner) |
@@ -73,14 +74,17 @@ Plattform = **Offshore-Register + Logistik + Economics + Wetter + Waves**, aus d
 
 | Block | Inhalt | Default |
 |-------|--------|---------|
-| Steckbrief | Stammdaten + Site-Design + **Netz/OHVS** + **4C-Turbine-Typ** | offen |
+| Steckbrief | Stammdaten + Site-Design + **Netz/OHVS** | offen |
 | Economics | CAPEX/OPEX + Link Portfolio | offen |
 | Lebenszyklus | 4C Events | zu |
+| **Typkarte (4C)** | Physik + Elektrik + Proxy-Massen (`weights_are_proxy`) | offen |
+| **Fundamente (VPI)** | Typ × Stück × Proxy-Masse (`imc_farm_foundations`) | offen |
 | Einheiten | MaStR-Stückliste — BOM-Anker (≠ 4C-Typ) | zu |
 | Standort | Häfen | zu |
 | Wetter | ERA5 | zu |
 | Akteure | 4C Supply Chain + Parties-CSV | zu |
 | Schiffe | VPI-Einsätze + Sim-Rollen | zu |
+| Szenarien | Analysis Runs (AnyLogic/openLCA-Import) | zu |
 
 ### Logistik-Schichten am Park (verbindlich)
 
@@ -116,11 +120,11 @@ Details + Owner-Matrix + Barge-Offenpunkt: `01_spec/interface_agreement_marc_any
 
 | Priorität | Was | Warum |
 |-----------|-----|--------|
-| **1 Jetzt** | **Marc-Sync** (Stunden-CSV, Katalog-Defaults, Barge, Snapshot-IA) | Fachblocker; ETL-Breite ist ausreichend |
+| **1 Jetzt** | **Waves-Drilldown** — Jahr → Parks → Proxy-Rollup + Lückenliste | Gegenverkehr lesbar; Coverage sichtbar |
+| **1 parallel** | **Marc-Sync** (Stunden-CSV, Katalog-Defaults, Barge, Snapshot-IA) | Fachblocker; ETL-Breite ist ausreichend |
 | **1 parallel** | **PR** `feat/assets-ia-restructure` → main wenn Demo ok | Code einfrieren; Coolify+Cloud-Daten stehen |
-| **1 parallel** | **Sim-Output-Ingest** (Stufe 1+2: `imc_analysis_runs` + API v0 + Park-UI) — Live-Engine bleibt raus | Ergebnis speichern/zeigen; Marc-Spalten-Abnahme |
 | **2 Partner** | **Thomas:** Mail + AV-Stücklisten-CSV (Massen/Recycling) → Import; Impacts C1–C4; Shubham AAS | Massen kommen von Thomas, nicht aus 4C/openLCA-Dump |
-| **2 parallel** | **Einheiten × Specs Stufe 1–2** — MaStR-Typ/Nabe/Rotor + 4C-Specs an Modelle; Join über Rotor/Typ | Stufe 0: `reference/imc/av_unit_spec_inventory_2026_09.md` |
+| **2 parallel** | ~~Einheiten × Specs Stufe 1–2~~ — erledigt (`8661a570`); MaStR-Join Mixed-Parks weiter wo Payload klar | siehe unit_spec_integration_plan |
 | **3 Optional** | DE-ERA5-Tagesbatch; Katalog-Zahlen mit Marc; MaStR-Rest nur klar | kein Sim-/BOM-Blocker |
 | **Nicht** | Transmission-Vollimport, GIS-Router, Join über 4C-WEA-IDs, Contracts-17k, Live-AnyLogic/MCP | MaStR-Typ-Join ist ok |
 
@@ -129,9 +133,11 @@ Details + Owner-Matrix + Barge-Offenpunkt: `01_spec/interface_agreement_marc_any
 ## Reihenfolge (jetzt)
 
 1. ~~… Grid/OHVS / MaStR / 4C-Turbine-Typ …~~ (Daten-Backlog light erledigt)  
-2. **Marc-Sync** — Stunden-CSV-Abnahme, Katalog-Defaults, Owner-Matrix/Barge in IA (§3d)  
-3. Optional: DE-ERA5-Tagesbatch; Thomas BOM/LCA; Katalog-Werte final  
-4. PR `feat/assets-ia-restructure` → main wenn Demo ok  
+2. ~~Einheiten×Specs Stufe 1–2 + VPI-Fundamente~~ (`8661a570`)  
+3. **Waves-Drilldown** — Jahr → Parkliste → Proxy-Rollup + Lückenliste  
+4. **Marc-Sync** — Stunden-CSV-Abnahme, Katalog-Defaults, Owner-Matrix/Barge in IA (§3d)  
+5. Optional: DE-ERA5-Tagesbatch; Thomas BOM/LCA; Katalog-Werte final  
+6. PR `feat/assets-ia-restructure` → main wenn Demo ok  
 
 ## IA-Selbstentscheidungen (ohne Partner-Warten)
 

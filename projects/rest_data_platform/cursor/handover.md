@@ -13,20 +13,20 @@ UI-Kurzname: ASTRA IMC
 Tech: Next.js (Makerkit Turbo) + Supabase (Postgres, PostGIS, Auth, Storage, RLS)
 Workspace: ai-projects Root — Doku + Code + Infra zusammen (NICHT nur projects/rest_data_platform/)
 
-Stand (2026-09-18) — Plan: projects/rest_data_platform/cursor/next_plan.md
+Stand (2026-09-20) — Plan: projects/rest_data_platform/cursor/next_plan.md
   - Doku: projects/rest_data_platform/ · Code: code/astra-imc-platform/ → quantensprungai/astra-imc-platform
-  - Branch UI: `feat/assets-ia-restructure` (Waves + Dossier + Grid/OHVS + 4C-Turbine-Typ + MaStR Units)
+  - Branch UI: `feat/assets-ia-restructure` — HEAD `8661a570` (Elektrik + VPI-Fundamente); Coolify `SOURCE_COMMIT` setzen
   - App live: https://imc.ostfriesland.ai (Coolify) · Supabase Cloud `pfprwudrfkugvzpjyrvj` · Team-Slug **astra-imc**
   - Schema + curated IMC-Daten in Cloud = lokal (Farms 3606 · Häfen 118 · ERA5 hourly 23232 · Units 1651). Roh-Excel `imc_source_raw_rows` nur lokal. Re-Seed: CLI `db query --linked`, **kein MCP**.
   - Makerkit catalog + Passkeys/react-email/native-sharing auf main (PR #1 merged)
-  - Schema: IMC v1/v1.2 + MaStR + Natura + Häfen + ERA5 + CAPEX/OPEX/Events + Vessel + Grid/Platforms + Turbine-Models
+  - Schema: IMC v1/v1.2 + MaStR + Natura + Häfen + ERA5 + CAPEX/OPEX/Events + Vessel + Grid/Platforms + Turbine-Models + **imc_farm_foundations** + analysis_runs
   - Dual-Track: Postgres = SoT; AAS = Export. Partner: CSV/View, nicht AAS.
-  - Zahlen lokal=Cloud curated: Farms 3606 · Grid ~1423 · Platforms ~686 · Turbine-Models ~369 (~619 Farms gelinkt) · MaStR 33 accepted / 1651 Units · Natura ~205 · Häfen 118 / 677
+  - Zahlen lokal=Cloud curated: Farms 3606 · Grid ~1423 · Platforms ~686 · Turbine-Models ~369 (~619 Farms gelinkt) · **Fundamente VPI ~506 Zeilen / ~451 Parks** · MaStR 33 accepted / 1651 Units · Natura ~205 · Häfen 118 / 677
   - ERA5 daily: 3 Parks / 1858 Tage. Hourly: AV **CDS** ~23k h (2024-01→2026-08, `cds+hourly`).
   - Nav: Assets → Waves → Economics → Vessels
-  - Park-Steckbrief: Site-Design + Netz/OHVS (Owner) + **4C-Turbine-Typ (MW/Ø/HH)**; Einheiten = MaStR-Stückliste (kein 4C-Typ-je-WEA)
-  - Plan Einheiten×Specs: cursor/unit_spec_integration_plan.md — Stufe 1–2: MaStR-Typ je WEA + 4C-Specs/Proxy-Massen; Areva-Linie oem_group Siemens Gamesa
-  - ETL u.a.: transform_4c_farm_grid / platforms / turbine_models; MaStR Units park_key
+  - Park-Steckbrief: Site-Design + Netz/OHVS + **4C-Typkarte** (Physik + Elektrik + Proxy-Massen) + **Fundamente (VPI)**; Einheiten = MaStR-Stückliste (kein 4C-Typ-je-WEA)
+  - Plan Einheiten×Specs: cursor/unit_spec_integration_plan.md — Stufe 1–2 erledigt (Specs jsonb, Elektrik, VPI-Fundamente); Areva oem_group Siemens Gamesa
+  - ETL u.a.: transform_4c_farm_grid / platforms / turbine_models; transform_vpi_foundations; MaStR Units park_key
   - GIS: Map-light — kein Router. Marc: Snapshot + Wetter-CSV — kein Dauerstream; Barge nur jack_up_barge (offen)
   - Logistik am Park: Akteure (~3633) · VPI-Einsätze DE (~1183) · Sim-Rollen nur AV-Pilot
   - Locale: EN Workspace; nach i18n-Keys `next dev` neu starten
@@ -36,7 +36,7 @@ Stand (2026-09-18) — Plan: projects/rest_data_platform/cursor/next_plan.md
 Zielbild MVP (5–12 Wochen):
   Login/Rollen, Offshore-Asset-Register, minimaler Export.
   Upload später. Kein Voll-DPP, keine Simulation in der App, kein Custom-Dashboard-Service.
-  Produkt A light: Waves Gegenverkehr; voller Screener noch offen.
+  Produkt A light: Waves Gegenverkehr — Jahr aufdröseln (Parks + Proxy-Massen + Lückenliste); voller Screener noch offen.
 
 Scope Shield: projects/rest_data_platform/00_overview/scope_shield.md
 
@@ -48,18 +48,20 @@ Lies zuerst:
 Nächster Schritt:
   1) ~~Stage A Backbone / Assets-IA / Grid-OHVS / MaStR / 4C-Turbine-Typ~~ — Daten-Backlog light fertig
   2) ~~Coolify + Cloud-Daten auf Team astra-imc~~ — siehe cursor/cloud_bootstrap.md
-  3) **Marc-Sync** (Stunden-CSV + Katalog + Barge/IA) · parallel **PR → main** wenn Demo ok
-  4) Thomas: Mail (BAFU/EF) + AV-Stückliste; Impacts C1–C4; optional EMAIL_SENDER; Shubham AAS
-  5) Einheiten×Specs Stufe 1–2: Migration + ETL 4C-Specs/MaStR-Typ-Join (lokal anwenden, dann Cloud)
+  3) ~~Einheiten×Specs Stufe 1–2~~ — Typkarte Elektrik + VPI-Fundamente in Cloud (`8661a570`)
+  4) **Waves-Drilldown** — Jahr → Parkliste → Proxy-Rollup + Lückenliste (Coverage sichtbar)
+  5) **Marc-Sync** (Stunden-CSV + Katalog + Barge/IA) · parallel **PR → main** wenn Demo ok
+  6) Thomas: Mail (BAFU/EF) + AV-Stückliste; Impacts C1–C4; optional EMAIL_SENDER; Shubham AAS
   Geblockt: BOM-Zahlen (Recherche Thomas); Sequenz/Sim-CSV Marc; Vessel-Wetter final; Barge-Typ
   Nicht: Transmission-Vollimport; GIS-Router; 4C-WEA-IDs (gibt es nicht); Contracts-17k; Decom aus 4C; Sim/LCA in App; 4C-Gewichte als Stücklisten-Masse
 
 Pilot AV vs andere:
-  - Breit: Design, Grid, oft 4C-Typ, MaStR-Units (33 Parks), Akteure/Contracts DE
-  - AV extra: ERA5-Stunden, Sim-Rollen, Kuratierung (Emden/Tripod) — Demo-Pfad, nicht einziger Datenpark
+  - Breit: Design, Grid, oft 4C-Typ, MaStR-Units (33 Parks), Akteure/Contracts DE, Fundamente wo VPI-Match
+  - AV extra: ERA5-Stunden, Sim-Rollen, Kuratierung (Emden/Tripod+Jacket) — Demo-Pfad, nicht einziger Datenpark
 
 Produkt-Klarstellung:
-  - 4C-Typ = Katalog/Steckbrief; MaStR-Einheiten = Inventar/BOM-Anker; OHVS ≠ Einheiten
+  - 4C-Typ = Katalog/Steckbrief (Elektrik + Proxy-Massen); MaStR-Einheiten = Inventar/BOM-Anker; OHVS ≠ Einheiten
+  - VPI-Fundamente = Park-Korn (Typ×Stück), Proxy; Thomas-BOM bleibt Massen-SoT
   - Akteure ≠ Sequenz; Schiffseinsätze = Historie; Sim-Rollen = Typ-Bridge
 
 Git-Regeln:
