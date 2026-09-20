@@ -89,7 +89,8 @@
     { "house_num": 9, "canonical_id": "astro.house.9", "life_domain": "meaning_spirituality" },
     { "house_num": 10, "canonical_id": "astro.house.10", "life_domain": "career_calling" },
     { "house_num": 11, "canonical_id": "astro.house.11", "life_domain": "relationships_community" },
-    { "house_num": 12, "canonical_id": "astro.house.12", "life_domain": "transformation_renewal" }
+    { "house_num": 12, "canonical_id": "astro.house.12", "life_domain": "transformation_renewal" },
+    { "canonical_id": "astro.planet.venus", "life_domain": "love_partnership" }
   ],
   "edges": [
     {

@@ -1,5 +1,24 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-09-20: Phasen-Review 14b — Methodik statt Ranglisten
+
+**Kontext:** Plan 14 hat die Identitäts-Form (ein Kanal-Hit) auf `love_partnership` kopiert. Review: Pflicht-Hit und Disjunktheit sind Workflow, nicht Lehre. Offene Center sind Zustand, nicht Ersatz-Kanal.
+
+**Decision:**
+
+1. **Natal-Erstlage vor Ranglisten.** HD-Liebe spricht zuerst Typ+Strategie in Bindung (Plan 08). Bindungsschaltung ist Zusatzlage, falls definiert. Offene Center Emotional/Sakral/G sind Bedingung, kein Hit.
+2. **Keine Disjunktheit.** Gleiche Lage in zwei Bereichen ist erlaubt. Unterschiedlich sind Frage, Facetten und Literatur.
+3. **Kein Pflicht-Hit auf der Zusatzlage.** Schweigen am Bindungskanal ist gültig. Astro hat immer die Achse Haus 7/DC; Venus ist Zusatz, kein Ersatz.
+4. **Anderer Chart-Kontext bleibt draußen.** Composite, Penta, Sex Manual, BG5, DreamRave, Transit — nicht in 14b.
+5. **Literatur-Filter über Graph.** Gegen-Node mit `belongs_to_domain` zu anderer Domäne und nicht zu dieser fällt. Ungeroutet bleibt. Kein Wortlisten-Filter.
+6. **Plan 15 liest zuerst die Methodik-Tabelle** pro Domäne, dann eine Hit-Regel.
+
+**Nicht:** Composite/Familie/Transit verdrahten, 418 einschalten, Ziwei/BaZi formulieren, `db reset`.
+
+**SoT:** `cursor/plans/14b_methodik_liebe.md`; Vertrag [tiefe.md](../cursor/vertraege/tiefe.md).
+
+---
+
 ## 2026-09-19: Phasen-Review 14 — Liebe durch die Kette
 
 **Kontext:** Die Kette war bis auf Hit-Wahl, Formulierer-Prompt und `love ? null : hit` domänenneutral. Frage: alle zwölf jetzt vs. Tabelle vs. eine zweite Domäne. Zweite Domäne zuerst, sonst Spray (Plan 07).

@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-19
+last_update: 2026-09-20
 scope: Laufender Anker — Phasen, Status, nächster Plan, Warteschlange
 in_scope: Reihenfolge, Status, Links, geordnetes Offenes
 out_of_scope: Implementierungsdetails (stehen im Phasen-Plan)
@@ -31,10 +31,11 @@ Jeder neue Chat liest zuerst diese Datei, dann den verlinkten Phasen-Plan. Curso
 | 13 Zweites System | **abgeschlossen 2026-09-18** | Checkliste an Astro Aszendent; Formulierer v2 | [plans/13_zweites_system.md](plans/13_zweites_system.md) |
 | 13a Astro-Literatur | **abgeschlossen 2026-09-18** | `extract_relationships` astro, 448 `candidate`, gelesen am AC-Hit | [plans/13a_astro_literatur.md](plans/13a_astro_literatur.md) |
 | 14 Zweite Domäne | **abgeschlossen 2026-09-19** | `love_partnership` durch die Kette (HD + Astro), Formulierer v3 | [plans/14_zweite_domaene.md](plans/14_zweite_domaene.md) |
-| 15 Hit-Regel-Tabelle | offen | restliche Bereiche: eine ehrliche Regel, nicht Spray | [plans/15_hit_regel_tabelle.md](plans/15_hit_regel_tabelle.md) |
+| 14b Methodik Liebe | **abgeschlossen 2026-09-20** | OS-Erstlage + Bindungs-Zusatz; Venus sekundär; Formulierer v4 | [plans/14b_methodik_liebe.md](plans/14b_methodik_liebe.md) |
+| 15 Hit-Regel-Tabelle | offen | restliche Bereiche: zuerst Methodik-Tabelle, dann eine ehrliche Regel, nicht Spray | [plans/15_hit_regel_tabelle.md](plans/15_hit_regel_tabelle.md) |
 | Verbreitung | offen, nach Fläche | Mandala-Share, Serie, Agents | nicht Plan-Nummer |
 
-**Empfehlung:** Track Tiefe. Phase 14 zu (`love_partnership` durch die Kette, Formulierer v3). Nächster Schnitt: restliche Bereiche als Hit-Regel-Tabelle ([Plan 15](plans/15_hit_regel_tabelle.md)) — eine ehrliche Regel, nicht alle zehn. Jiazi/Ziwei und HD-Welle dahinter, nicht Transit.
+**Empfehlung:** Track Tiefe. Phase 14b zu (Methodik vor Ranglisten, Formulierer v4). Nächster Schnitt: restliche Bereiche als Hit-Regel-Tabelle ([Plan 15](plans/15_hit_regel_tabelle.md)) — zuerst die Methodik-Tabelle pro Domäne, dann eine ehrliche Regel, nicht alle zehn. Jiazi/Ziwei und HD-Welle dahinter, nicht Transit.
 
 **Nächster Bau:** Plan 15 — [plans/15_hit_regel_tabelle.md](plans/15_hit_regel_tabelle.md).
 
@@ -50,7 +51,8 @@ Review darf umsortieren; streichen nur nach Decision. Details in den verlinkten 
 |---|---|---|---|
 | 1 | ~~Plan 13a Astro-Literatur~~ | **erledigt 2026-09-18** | HD-Welle zuerst |
 | 1b | ~~Plan 14 Liebe durch die Kette~~ | **erledigt 2026-09-19** | zwölf Domänen auf einmal |
-| 2 | Plan 15 Hit-Regel-Tabelle | Form steht; restliche 10 Domänen nur mit ehrlicher Regel ([15](plans/15_hit_regel_tabelle.md)) | Spray / alle zwölf |
+| 1c | ~~Plan 14b Methodik Liebe~~ | **erledigt 2026-09-20** | Pflicht-Hit / Disjunktheit |
+| 2 | Plan 15 Hit-Regel-Tabelle | Form steht; restliche 10 Domänen nur mit ehrlicher Regel nach Methodik-Tabelle ([15](plans/15_hit_regel_tabelle.md)) | Spray / alle zwölf |
 | 3 | Jiazi-KG | 60 Knoten, 0 Interps; Klassiker **683 Chunks** ohne Classify ([03a](plans/03a_bazi_extract_ahead.md)); Destiny-Relink | *60 Pillars* zuerst; parallel zu Tiefe |
 | 4 | Staffel 2 *60 Pillars* | nur **mit** Schnitt Jiazi | parallel zu Fläche |
 | 5 | ~~Routing HD/BaZi über OS/Tagstamm~~ | **erledigt Plan 08** | 418-Spray |
