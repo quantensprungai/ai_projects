@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-20
+last_update: 2026-09-21
 scope: Wie ein Handbuch-Satz klingt
 in_scope: Übersetzungsregel, Code-Ort, Meta-Begriffe der einen Domäne
 out_of_scope: Glossar-Projekt, generate_meta_nodes
@@ -12,7 +12,7 @@ out_of_scope: Glossar-Projekt, generate_meta_nodes
 
 Mikro-Erzählung: Tiefe 1 **Benennen → Übersetzen → Verorten**. Tiefe 2 **Treffen** (Familie 4: Klumpen / Facetten / Widerspruch) — formulierte Schablone, kein Kernmoment. Tiefe 3–4 Werkstatt (Plan 05).
 
-**Code:** `hd-handbook-gloss.ts` bleibt HD-Keil (Vorbild) für Hub/Onboarding. Daneben `lib/ic/handbook-voice.ts`: Regel als Kommentar + Helfer. Sprache ist **vorgegeben** und aus den Systemen abgeleitet. Version `handbook-voice-v1`. Formulierer: `lib/ic/handbook-formulator.ts` Version `handbook-formulator-v4`; Wording `handbook-voice-v1+formulator-v4`.
+**Code:** `hd-handbook-gloss.ts` bleibt HD-Keil (Vorbild) für Hub/Onboarding. Daneben `lib/ic/handbook-voice.ts`: Regel als Kommentar + Helfer. Sprache ist **vorgegeben** und aus den Systemen abgeleitet. Version `handbook-voice-v1`. Formulierer: `lib/ic/handbook-formulator.ts` Version `handbook-formulator-v5`; Wording `handbook-voice-v1+formulator-v5`.
 
 **Handbuch-Text wird formuliert**, nicht aus Atomen übersetzt. Siehe [sprache.md](sprache.md).
 
@@ -41,4 +41,4 @@ Mikro-Erzählung: Tiefe 1 **Benennen → Übersetzen → Verorten**. Tiefe 2 **T
 
 **Ist (2026-09-16, Stimme):** Schablone „Die Bewegung ist…“ raus. Zweites Beat konkret. BaZi-Name = Färbung, nicht Generic+Stamm. Treffen ohne Inspector-Jargon.
 
-**Ist (Track Tiefe, Plan 14b):** Formulierer v4. Prompt nimmt Label + Kernfrage; HD-Liebe liest OS-Erstlage + optionale Bindung + offene-Center-Zustand. Cache-Key inkl. `secondaryHit` / `openCenters`. Jargon-Gates unverändert. Locate bleibt `LOCATE.*` / `LOCATE_LOVE.*`; Hypothese-Zusatz bei `candidate`-Literatur.
+**Ist (Track Tiefe, Plan 15):** Formulierer v5. Prompt nimmt Label + Kernfrage + `secondaryHits[]` + `overlay[]` + `highlightCenters`. Overlay = gelebte Entscheidung/Auftreten/Einbeziehen, keine Mechanik-Namen. Highlight ≠ Ausschluss. Cache-Key inkl. Listen + Overlay. Jargon-Gates unverändert. Locate bleibt `LOCATE.*` / `LOCATE_LOVE.*`; Hypothese-Zusatz bei `candidate`-Literatur.

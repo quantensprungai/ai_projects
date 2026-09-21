@@ -27,7 +27,7 @@ Gleiche Lage in zwei Bereichen ist erlaubt. Unterschiedlich sind Frage, Facetten
 
 | System | Natal-Erstlage (immer da) | Zusatzlage (falls definiert) | Zustand / Bedingung | Anderer Chart-Kontext (nicht hier) | Schweigen erlaubt? |
 |---|---|---|---|---|---|
-| HD | Typ + Strategie in Bindung | Bindungsschaltung `59_6`, `40_37`, `19_49`, `44_26`, `32_54`, `27_50` plus hängende Bindungstore | offene Center Emotional / Sakral / G | Composite, Penta, Sex Manual | ja auf Zusatzlage |
+| HD | Typ + Strategie in Bindung | Bindungsschaltung `59_6`, `40_37`, `19_49`, `44_26`, `32_54`, `27_50` plus hängende Bindungstore | Highlight offene Center Emotional / Sakral / G (**kein** Ausschluss der übrigen) | Composite, Penta, Sex Manual | ja auf Zusatzlage |
 | Astro | Haus 7 / Deszendent | Venus (Zeichen, Haus) | — | Synastrie, Transit | nein (Achse immer da) |
 | Ziwei | 夫妻宫 | Sterne im Palast (nicht dieser Plan) | — | 合盤 | nein |
 | BaZi | Tagstamm in Beziehung (Plan 08) | Spouse-Star / Ehepalast später | — | Branch-Compare | ja |
@@ -61,3 +61,5 @@ Schritt 1: Fixtures `apps/web/scripts/fixtures/handbook-charts.ts` (6 HD, 4 Astr
 Schritte 2–5: HD `kind=os` Erstlage, Bindung nur Zusatz (kein Sakral-Fallback). Astro Venus sekundär. Formulierer v4. Literatur-Domänenfilter. Seed `--only-domain-routing` mit `IC_PROJECTS_ROOT` natal: 9 HD-OS + Venus `approved` auf Liebe. Fetch-Timeout erzeugte Dubletten, danach Dedup: `belongs_to_domain` approved 85, candidate 418 unangetastet. Seed bricht bei Fetch-Fehler jetzt ab.
 
 Schritt 6: `check_handbook_love.ts` grün. 1978 HD primary `hd.type.generator`, secondary `59_6`; Identität weiter `59_6`. Astro primary `dsc_sign`, secondary Venus. Regression Input / Literatur / Formulierer / Astro grün. HD-Liebestext antwortet auf Bindung (OS), nicht nur Kanal. Astro-Spillover „Pferde“ bleibt Kurationspunkt (Gegen-Nodes ungeroutet). UI: `/home/karte/bereich/love_partnership` → Sign-in; Browser-Login in Automation nicht verifiziert.
+
+Nachtrag 2026-09-21: Identität + Liebe ohne Hit-Änderung nach [Plan 15](15_hit_regel_tabelle.md) migriert (`secondary[]`, Overlay minimal, Formulierer v5). Hits 1978 unverändert.

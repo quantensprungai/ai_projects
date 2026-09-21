@@ -1,5 +1,26 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-09-20: Natal-Vollständigkeit vs Kapitel-Führung
+
+**Kontext:** Hit-Regeln (OS, Bindungskanal, drei offene Center) klangen wie Ausschluss. Lehre: der ganze Natal-Chart ist in jedem Lebensbereich wahr. Kapitel, die alles listen, sind Spray (Plan 07) und klingen wie Identität.
+
+**Decision:**
+
+1. **Kapitel führt, Chart bleibt ganz.** Erstlage + Zusatzlage (`secondary[]`) + optional Highlight sind die Lesung zur Kernfrage. Was fehlt im Kapitel, ist Overlay, spätere Tiefe oder anderer Kontext — nicht „unwichtig“.
+2. **Highlight ≠ Ausschluss.** Liebe reicht Emotional/Sakral/G; Beruf-Entwurf Sakral/Wille/Kehle. Das sind die Center, die die Frage oft zuerst trifft. Alle offenen Center, Autorität, Profil, Definition färben jeden Bereich.
+3. **Tore:** hängende Tore der Domänenliste = Zusatzlage. Tore im geschlossenen Kanal nicht extra. Übrige Tore nicht über `payload.life_domain` (418).
+4. **Spätere Tiefe bleibt auf der Roadmap**, färbt aber dieselben Bereiche: HD-Planeten, Linien, PHS, Kreuz, Variable; Astro-Aspekte; Ziwei-Sterne; BaZi Ten Gods / Luck. Nicht erst bauen, wenn „Gesundheit dran ist“.
+5. **Inventar-SoT:** [plans/15_hit_regel_tabelle.md](../cursor/plans/15_hit_regel_tabelle.md).
+6. **Form einmal, Inhalt in Wellen.** Plan 15 baut das Kapitel-Modell generisch (`primary`, `secondary[]`, `overlay[]`, `highlight[]`; Regeln als Daten `DOMAIN_RULES`; Formulierer v5), damit Overlay und neue Domänen nicht je einzeln nachgezogen werden. Overlay-Inhalt minimal (HD Autorität/Profil/offene Center als Zustand), Füllen = Warteschlange 10b. Beruf wird Plan 16 als reiner Eintrag — Test des Modells.
+
+**Nicht:** jedes Element in jedes Kapitel kippen, 418, Overlay als Pflicht-Hit, Beruf in 15.
+
+**Ist 2026-09-21:** Plan 15 gebaut. Form `primary` / `secondary[]` / `overlay[]` / `highlight`; `DOMAIN_RULES`; Formulierer v5. Overlay-Inhalt HD minimal, Astro leer. Nächster Inhalt: [Plan 16](../cursor/plans/16_beruf.md). Overlay füllen = 10b.
+
+**SoT:** Plan 15 Inventar; Vertrag [tiefe.md](../cursor/vertraege/tiefe.md).
+
+---
+
 ## 2026-09-20: Phasen-Review 14b — Methodik statt Ranglisten
 
 **Kontext:** Plan 14 hat die Identitäts-Form (ein Kanal-Hit) auf `love_partnership` kopiert. Review: Pflicht-Hit und Disjunktheit sind Workflow, nicht Lehre. Offene Center sind Zustand, nicht Ersatz-Kanal.
