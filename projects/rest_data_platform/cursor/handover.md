@@ -13,13 +13,14 @@ UI-Kurzname: ASTRA IMC
 Tech: Next.js (Makerkit Turbo) + Supabase (Postgres, PostGIS, Auth, Storage, RLS)
 Workspace: ai-projects Root — Doku + Code + Infra zusammen (NICHT nur projects/rest_data_platform/)
 
-Stand (2026-09-20) — Plan: projects/rest_data_platform/cursor/next_plan.md
+Stand (2026-09-22) — Plan: projects/rest_data_platform/cursor/next_plan.md
   - Doku: projects/rest_data_platform/ · Code: code/astra-imc-platform/ → quantensprungai/astra-imc-platform
-  - Branch UI: `feat/assets-ia-restructure` — HEAD `8661a570` (Elektrik + VPI-Fundamente); Coolify `SOURCE_COMMIT` setzen
+  - Branch UI: `feat/assets-ia-restructure` — HEAD `858e7193` (Literaturposition + Stahl BDSV 08/2026); Coolify baut diesen Branch
   - App live: https://imc.ostfriesland.ai (Coolify) · Supabase Cloud `pfprwudrfkugvzpjyrvj` · Team-Slug **astra-imc**
   - Schema + curated IMC-Daten in Cloud = lokal (Farms 3606 · Häfen 118 · ERA5 hourly 23232 · Units 1651). Roh-Excel `imc_source_raw_rows` nur lokal. Re-Seed: CLI `db query --linked`, **kein MCP**.
   - Makerkit catalog + Passkeys/react-email/native-sharing auf main (PR #1 merged)
-  - Schema: IMC v1/v1.2 + MaStR + Natura + Häfen + ERA5 + CAPEX/OPEX/Events + Vessel + Grid/Platforms + Turbine-Models + **imc_farm_foundations** + analysis_runs
+  - Schema: IMC v1/v1.2 + MaStR + Natura + Häfen + ERA5 + CAPEX/OPEX/Events + Vessel + Grid/Platforms + Turbine-Models + **imc_farm_foundations** + analysis_runs + **imc_reference_cases / imc_material_lines / imc_material_assumptions**
+  - Literatur: `/assets/reference`, Fall `lit-15mw-offshore-class` (66 × 15 MW), nicht in `imc_wind_farms`. Stahl 287 €/t, BDSV Sorte 3, Stand 2026-08-20, nur `eol_route=recycle`. Kupfer, Blei, Rückstellung: Lücken. Kein Szenario-Editor, kein Niedrig/Basis/Hoch
   - Dual-Track: Postgres = SoT; AAS = Export. Partner: CSV/View, nicht AAS.
   - Zahlen lokal=Cloud curated: Farms 3606 · Grid ~1423 · Platforms ~686 · Turbine-Models ~369 (~619 Farms gelinkt) · **Fundamente VPI ~506 Zeilen / ~451 Parks** · MaStR 33 accepted / 1651 Units · Natura ~205 · Häfen 118 / 677
   - ERA5 daily: 3 Parks / 1858 Tage. Hourly: AV **CDS** ~23k h (2024-01→2026-08, `cds+hourly`).
@@ -30,7 +31,7 @@ Stand (2026-09-20) — Plan: projects/rest_data_platform/cursor/next_plan.md
   - GIS: Map-light — kein Router. Marc: Snapshot + Wetter-CSV — kein Dauerstream; Barge nur jack_up_barge (offen)
   - Logistik am Park: Akteure (~3633) · VPI-Einsätze DE (~1183) · Sim-Rollen nur AV-Pilot
   - Locale: EN Workspace; nach i18n-Keys `next dev` neu starten
-  - IA: marc_anylogic_v0 + thomas_lca_v0.2 (openLCA 2 + BAFU; EF 3.1 / optional ReCiPe; Multi-Impact; BOM via CSV; Decom C-first) · Mail: 04_communication/mail_thomas_lca_openlca_2026_09.md · Präsi: team_stand_plan_2026_08.md (+ PPTX)
+  - IA: marc_anylogic_v0 + thomas_lca_v0.2 (openLCA 2 + BAFU; EF 3.1 / optional ReCiPe; Multi-Impact; BOM via CSV; Decom C-first) · Mail: 04_communication/mail_thomas_lca_openlca_2026_09.md · Produktplan: 03_roadmap/product_service_plan_2026_09.md (fünf Dienste, Literatur-Position; mvp.md bleibt Prototyp) · Präsi intern: team_stand_plan_2026_08.md (+ Team-PPTX) · Außen: ASTRA_IMC_Project_Overview.pptx (Slots in media/project_overview_slots/) · Whitepaper-Arm: 04_communication/whitepaper_wp52_register_first_draft.md · Übersicht: 04_communication/media/astra-imc-platform-overview.html
   - Invites: Resend Domain imc.ostfriesland.ai; Signup = Supabase SMTP. Coolify MAILER_PROVIDER=resend. Invite-Link im Inkognito öffnen (Demo-Session sonst „Einladung nicht gefunden“).
 
 Zielbild MVP (5–12 Wochen):
@@ -49,9 +50,10 @@ Nächster Schritt:
   1) ~~Stage A Backbone / Assets-IA / Grid-OHVS / MaStR / 4C-Turbine-Typ~~ — Daten-Backlog light fertig
   2) ~~Coolify + Cloud-Daten auf Team astra-imc~~ — siehe cursor/cloud_bootstrap.md
   3) ~~Einheiten×Specs Stufe 1–2~~ — Typkarte Elektrik + VPI-Fundamente in Cloud (`8661a570`)
-  4) **Waves-Drilldown** — Jahr → Parkliste → Proxy-Rollup + Lückenliste (Coverage sichtbar)
-  5) **Marc-Sync** (Stunden-CSV + Katalog + Barge/IA) · parallel **PR → main** wenn Demo ok
-  6) Thomas: Mail (BAFU/EF) + AV-Stückliste; Impacts C1–C4; optional EMAIL_SENDER; Shubham AAS
+  4) ~~Waves-Drilldown~~ (`47ecbdea`) · ~~Literaturposition + Stahl-Szenario~~ (`dfe5bfd2`, `858e7193`)
+  5) **PR → main** (`feat/assets-ia-restructure`), danach **Marc-Sync** (Stunden-CSV + Katalog + Barge/IA)
+  6) Literatur als Nächstes: **Kupfer** mit belegtem Schrottabschlag in €/t. Blei danach. Rückstellung braucht Kosten und Zins mit Datum
+  7) Thomas: Mail (BAFU/EF) + AV-Stückliste; Impacts C1–C4; optional EMAIL_SENDER; Shubham AAS
   Geblockt: BOM-Zahlen (Recherche Thomas); Sequenz/Sim-CSV Marc; Vessel-Wetter final; Barge-Typ
   Nicht: Transmission-Vollimport; GIS-Router; 4C-WEA-IDs (gibt es nicht); Contracts-17k; Decom aus 4C; Sim/LCA in App; 4C-Gewichte als Stücklisten-Masse
 

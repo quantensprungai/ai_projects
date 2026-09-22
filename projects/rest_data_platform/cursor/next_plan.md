@@ -1,8 +1,8 @@
 <!-- Reality Block
-last_update: 2026-09-20
+last_update: 2026-09-22
 status: active
 scope:
-  summary: "Aktiver Arbeitsplan ASTRA IMC — Cloud live; Waves-Drilldown; Marc-Sync / PR; Thomas LCA Decom-first."
+  summary: "Aktiver Arbeitsplan ASTRA IMC — Cloud live; Wellen und Literaturposition gebaut; PR nach main; danach Marc-Sync. Kupfer ist die nächste Preisannahme, kein Szenario-Editor."
   in_scope:
     - next implementation order
     - glossary for events vs marc steps
@@ -11,6 +11,11 @@ scope:
     - full roadmap rewrite
     - GIS routing product
 notes:
+  - "2026-09-22: Stahl-Szenario — BDSV Sorte 3, 287 EUR/t, Stand 2026-08-20, nur eol_route=recycle auf Stahl. Kupfer, Blei, Rückstellung bleiben Lücken. Kein Szenario-Editor und kein Niedrig/Basis/Hoch in diesem Schnitt."
+  - "2026-09-22: Referenzposition — Migration imc_material_reference + Seite /assets/reference (Literaturfall, dualer Anker case|farm)."
+  - "2026-09-22: Produktplan 03_roadmap/product_service_plan_2026_09.md — fünf Dienste, Literatur-Position, Stück und Anteil. mvp.md bleibt der Prototyp."
+  - "2026-09-21: Außen-Deck ASTRA_IMC_Project_Overview.pptx — native Formen + Slots in media/project_overview_slots/."
+  - "2026-09-21: Whitepaper-Arm Draft 04_communication/whitepaper_wp52_register_first_draft.md (Akte vor Pass; 4C nicht republizieren)."
   - "2026-09-20: Typkarte Elektrik + imc_farm_foundations (~506/451); Commit 8661a570; Waves Jahr→Parks→Proxy+Lücken."
   - "2026-09-18: Plan Einheiten×4C-Specs×MaStR — cursor/unit_spec_integration_plan.md"
   - "2026-09-17: Thomas-Gespräch — openLCA 2; BOM-Light + Recycling in IMC via CSV; Decom C1–C4 zuerst; kein LCI-Spiegel. IA + Mail-Vorlage."
@@ -22,7 +27,7 @@ notes:
   - "2026-08-26: Stakeholders/VPI DE; CAPEX-Portfolio; CDS-Stunden AV."
 -->
 
-# Aktiver Plan (2026-09-04)
+# Aktiver Plan (2026-09-22)
 
 ## Wo liegt was?
 
@@ -34,6 +39,9 @@ notes:
 | **IA Marc** | `01_spec/interface_agreement_marc_anylogic_v0.md` | Stunden-Wetter + Sim-CSV + Owner-Matrix |
 | **IA Thomas** | `01_spec/interface_agreement_thomas_lca_v0.md` | BOM-Light + Recycling + C-Module; Mail: `04_communication/mail_thomas_lca_openlca_2026_09.md` |
 | **Einheiten × Specs** | `cursor/unit_spec_integration_plan.md` | 4C-Typ-Specs + MaStR-WEA, ohne 4C-Massen als LCA-SoT |
+| **Whitepaper WP 5.2** | `04_communication/whitepaper_wp52_register_first_draft.md` | Register-first / Akte vor Pass; 4C-Lizenzregel; Visuals |
+| **Projektdarstellung außen** | `04_communication/project_presentation_outward_brief.md` + `ASTRA_IMC_Project_Overview.pptx` | Native Formen + Langdock/HTML-Slots; August-Team-PPTX unberührt |
+| **Produkt- und Serviceplan** | `03_roadmap/product_service_plan_2026_09.md` | Fünf Dienste, Literatur-Position, zwei Stücklisten-Sichten. Ersetzt mvp.md nicht |
 
 ## Zielbild (grün, nicht „Stage A genug“)
 
@@ -48,7 +56,7 @@ Plattform = **Offshore-Register + Logistik + Economics + Wetter + Waves**, aus d
 | Karte | **Map-light** (Leaflet + Attribute) — kein GIS-Produkt/Router |
 | Partner | IA-Review Marc/Thomas — **jetzt der Hebel**, nicht weitere ETL-Breite |
 
-## Ist (lokal / Code, 2026-08-27)
+## Ist (lokal / Code, 2026-09-22)
 
 | Baustein | Stand |
 |----------|--------|
@@ -66,7 +74,8 @@ Plattform = **Offshore-Register + Logistik + Economics + Wetter + Waves**, aus d
 | Schiffseinsätze (VPI) | DE light ~**1183**; AV ~60; UI Filter; globale Tabelle scrollbar + Schiffname |
 | Sim-Rollen (Pilot) | AV: CTV/SOV/WTIV × Phase (kuratiert); UI-Text ohne Partnernamen |
 | Akteure | DE Supply Chain ~**3633**; Parties-CSV Export |
-| Code-Branch | `feat/assets-ia-restructure` (gepusht) |
+| Literatur | `/assets/reference` — Fall `lit-15mw-offshore-class`, 66 × 15 MW, nicht in `imc_wind_farms`. Stahl-Schrott 287 €/t, Stand 2026-08-20, BDSV Sorte 3 (Ab-Station). Kupfer, Blei, Entsorgung und Rückstellung: Lücken |
+| Code-Branch | `feat/assets-ia-restructure` — HEAD `858e7193` (gepusht, Coolify-Branch) |
 | Cloud | **Live:** https://imc.ostfriesland.ai · Team `astra-imc` · curated Daten 2026-09-04 = lokal (3606 Farms, 118 Häfen, 23k ERA5-h). Roh-Excel nicht in Cloud. Details: `cursor/cloud_bootstrap.md` |
 | Locale / i18n | Workspace hält `/en/`; Message-Cache → Restart nach neuen Keys |
 
@@ -120,12 +129,13 @@ Details + Owner-Matrix + Barge-Offenpunkt: `01_spec/interface_agreement_marc_any
 
 | Priorität | Was | Warum |
 |-----------|-----|--------|
-| **1 Jetzt** | **Waves-Drilldown** — Jahr → Parks → Proxy-Rollup + Lückenliste | Gegenverkehr lesbar; Coverage sichtbar |
-| **1 parallel** | **Marc-Sync** (Stunden-CSV, Katalog-Defaults, Barge, Snapshot-IA) | Fachblocker; ETL-Breite ist ausreichend |
-| **1 parallel** | **PR** `feat/assets-ia-restructure` → main wenn Demo ok | Code einfrieren; Coolify+Cloud-Daten stehen |
+| **1 Jetzt** | **PR** `feat/assets-ia-restructure` → main | Demo läuft auf Coolify. Branch einfrieren, bevor Marc oder die nächste Preisannahme dazukommen |
+| **1 danach** | **Marc-Sync** (Stunden-CSV, Katalog-Defaults, Barge, Snapshot-IA) | Fachblocker; ETL-Breite ist ausreichend |
+| **2 Literatur** | **Kupfer** als nächste datierte Annahme: belegter Schrottabschlag auf die Kathode, €/t, Quelle und Stand | Eine Annahme je Stoff ist das Modell. Szenario-Editor und Niedrig/Basis/Hoch warten, bis Kupfer und Blei dieselbe Form haben |
 | **2 Partner** | **Thomas:** Mail + AV-Stücklisten-CSV (Massen/Recycling) → Import; Impacts C1–C4; Shubham AAS | Massen kommen von Thomas, nicht aus 4C/openLCA-Dump |
-| **2 parallel** | ~~Einheiten × Specs Stufe 1–2~~ — erledigt (`8661a570`); MaStR-Join Mixed-Parks weiter wo Payload klar | siehe unit_spec_integration_plan |
+| **erledigt** | ~~Waves-Drilldown~~ (`47ecbdea`); ~~Literaturposition~~ (`dfe5bfd2`); ~~Stahl BDSV 08/2026~~ (`858e7193`); ~~Einheiten × Specs Stufe 1–2~~ (`8661a570`) | MaStR-Join Mixed-Parks weiter wo Payload klar |
 | **3 Optional** | DE-ERA5-Tagesbatch; Katalog-Zahlen mit Marc; MaStR-Rest nur klar | kein Sim-/BOM-Blocker |
+| **3 Arm** | **Whitepaper** These+Gliederung (nicht Volltext); Evidenz nur Open Data | Träger-Output; blockt Marc/Thomas nicht |
 | **Nicht** | Transmission-Vollimport, GIS-Router, Join über 4C-WEA-IDs, Contracts-17k, Live-AnyLogic/MCP | MaStR-Typ-Join ist ok |
 
 **Pilot AV vs. andere:** Typ/Grid/OHVS/MaStR-Einheiten sind DE-breit wo gelinkt. AV bleibt dichter bei **ERA5-Stunden**, **Sim-Rollen**, Kuratierung (Emden/Tripod) und Demo-Pfad — nicht mehr „einziger Park mit Daten“.
@@ -134,10 +144,12 @@ Details + Owner-Matrix + Barge-Offenpunkt: `01_spec/interface_agreement_marc_any
 
 1. ~~… Grid/OHVS / MaStR / 4C-Turbine-Typ …~~ (Daten-Backlog light erledigt)  
 2. ~~Einheiten×Specs Stufe 1–2 + VPI-Fundamente~~ (`8661a570`)  
-3. **Waves-Drilldown** — Jahr → Parkliste → Proxy-Rollup + Lückenliste  
-4. **Marc-Sync** — Stunden-CSV-Abnahme, Katalog-Defaults, Owner-Matrix/Barge in IA (§3d)  
-5. Optional: DE-ERA5-Tagesbatch; Thomas BOM/LCA; Katalog-Werte final  
-6. PR `feat/assets-ia-restructure` → main wenn Demo ok  
+3. ~~Waves-Drilldown~~ (`47ecbdea`)  
+4. ~~Literaturposition + Stahl-Szenario BDSV Sorte 3~~ (`dfe5bfd2`, `858e7193`)  
+5. **PR** `feat/assets-ia-restructure` → main  
+6. **Marc-Sync** — Stunden-CSV-Abnahme, Katalog-Defaults, Owner-Matrix/Barge in IA (§3d)  
+7. **Kupfer-Annahme**, sobald Abschlag und €/t belegt sind. Danach Blei. Rückstellung braucht Kostenannahme und Zins mit Datum  
+8. Optional: DE-ERA5-Tagesbatch; Thomas BOM/LCA; Katalog-Werte final  
 
 ## IA-Selbstentscheidungen (ohne Partner-Warten)
 
