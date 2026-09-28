@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-21
+last_update: 2026-09-22
 scope: 12 Lebensbereiche — Herleitung, Routing, Code-Ort
 in_scope: Enums, Ringe, zwei Wege belongs_to_domain
 out_of_scope: Mandala-Geometrie, Content-Füllung
@@ -37,6 +37,6 @@ Zielknoten: `ic.life_domain.{enum}`, `system='meta'`, 12 Stück. Abruf über Kan
 
 **Ist (Plan 14b, 2026-09-20):** HD Typ/Strategie → `love_partnership` und `astro.planet.venus` als strukturelle `approved`-Kanten geseedet (`ic_seed_structure.py --only-domain-routing`). 418 `candidate` unangetastet. Methodik: [../plans/14b_methodik_liebe.md](../plans/14b_methodik_liebe.md).
 
-**Ist (Plan 15, 2026-09-21):** Bereichsseiten mit Handbook = Keys in `DOMAIN_RULES` (`isHandbookLiveDomain` → `hasChapterRule`). Heute `self_identity` + `love_partnership`. Neue Domäne (Plan 16) = Eintrag, Route frei ohne Gate-Code.
+**Ist (Plan 16, 2026-09-22):** `career_calling` ist Handbook-Domäne. HD Typ+Strategie, Astro MC/Haus 10. Ziwei und BaZi auf dieser Seite ohne Satz.
 
 **Ziwei** passt auf die Domänen-Achse. Es testet die Konvergenz-These nicht (Häuser-Stamm). Deshalb BaZi als nächste Content-Welle, nicht gegen Ziwei.

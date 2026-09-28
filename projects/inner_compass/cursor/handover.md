@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-21
+last_update: 2026-09-28
 scope: Chat-Handover Inner Compass, kurz
 in_scope: Einstieg für neuen Chat
 out_of_scope: Historie (siehe reference/handover_2026-09_archiv.md)
@@ -20,7 +20,7 @@ Lokal: Next :3000, Supabase API :54321, HD-Service :8002 (services/hd)
 LLM: Langdock gpt-5.4-mini (Pin in der App: `IC_LLM_MODEL` / Formulierer-Default). Nicht Spark-Qwen als Interpret/Synth. Key in .env.development.local (nicht committen).
 ```
 
-**Stand:** Track Tiefe. Phase 15 zu. Formulierer v5: Kapitel-Modell `primary` / `secondary[]` / `overlay[]` / `highlight`; Regeln in `chapter-rules.ts`. Identität + Liebe ohne Hit-Änderung. Overlay HD minimal (Autorität/Profil/Definition/offene Center), Astro leer. **Nächster Schnitt:** [Plan 16](plans/16_beruf.md) Beruf als Tabelleneintrag + Fixtures + Seed — Test ob das Modell ohne Code-Umbau trägt. Overlay füllen = 10b, Stimme-Register = 13, HD-Welle = 10. Jiazi/Ziwei dahinter, nicht Transit. Verbreitung: Namen kanonisch, Handles reservieren, keine Posts.
+**Stand:** Track Tiefe. Nächster Plan [18_farbe_tor_kanal.md](plans/18_farbe_tor_kanal.md): Farbe nur dort, wo ein Chunk Tor oder Kanal an die Frage bindet. Zuerst die G-Tore der Identität. Schlange bleibt: Ziwei/BaZi-Beruf, dann dieselbe Farbe in Astro, Ziwei, BaZi, dann Welle 10, Overlay 10b, Stimme 13, Transite 11, Jiazi, BG5.
 
 **Leitplanken:** nested Code nicht ins Docs-Repo. Flora/`.env`/`_tmp_*` nicht committen. HD-Zombie `5ba2f841` nicht anfassen. Auto-Synth aus. Handbuch-Text formulieren, nicht übersetzen. Seed vor text2kg.
 

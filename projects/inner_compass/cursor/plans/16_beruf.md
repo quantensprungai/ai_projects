@@ -1,39 +1,75 @@
 <!--
 Reality Block
-last_update: 2026-09-21
-scope: Phasen-Plan 16 — career_calling als erste Domäne im Kapitel-Modell (noch nicht gebaut)
-in_scope: DOMAIN_RULES-Eintrag Beruf HD/Astro, Fixtures, Seed OS+Saturn → career, Route frei, Beweis
-out_of_scope: Code-Umbau am Modell (Plan 15), Haus 6 verdrahten, BG5/Penta, Ziwei/BaZi formulieren, 418
+last_update: 2026-09-24
+scope: Phasen-Plan 16 — career_calling im Kapitel-Modell
+in_scope: DOMAIN_RULES aus der bestätigten Zeile, HD- und Astro-Stimme, Fixtures
+out_of_scope: BG5, Left/Right-Environment formulieren, Ziwei/BaZi formulieren, Haus 6, 418, geratene Kanal-Liste
 -->
 
 # Plan 16 — Beruf & Berufung im Kapitel-Modell
 
-Folgt auf [Plan 15](15_hit_regel_tabelle.md). **Noch nicht gebaut.** Erster Test, ob eine neue Domäne ohne Code-Umbau trägt: Tabelleneintrag + Fixtures + Seed + Beweis.
+Folgt auf [Plan 15](15_hit_regel_tabelle.md). **Zeile reviewed 2026-09-22. Eintrag HD + Astro ist im Code.** Ziwei und BaZi stehen in der Zeile und werden später formuliert.
 
-## Methodik-Entwurf, Review vor Code
+## Befund 2026-09-22, Textschicht
 
-Highlight Sakral/Wille/Kehle = **oft zuerst** von „Was ist meine Arbeit?“ getroffen. Offenes Haupt, G, Milz, Solarplexus, Wurzel bedingen Arbeit genauso — Overlay (Plan 15), kein Ausschluss.
+Lokal gelesen: `sys_source_chunks` (15 630) und `sys_synthesis_wordings` (983). Katalog und Structure bleiben der Index von gestern. Zitate unten sind die Leseanweisung, gekürzt; keine Buchabsätze.
 
-| System | Natal-Erstlage | Zusatzlage (Liste, leer erlaubt) | Highlight | Anderer Kontext | Schweigen |
+### HD
+
+Durchsucht: *Definitive Book*, *Incarnation Crosses by Profile*, *Understanding the Profiles*, *The 36 Roles*, *Design Concepts*, *Holistic Analysis 2*, *Four Views*. Wort `career` in den Profil-, Typ- und Kanal-Wordings: 0. In 14 von 192 Kreuz-Wordings und drei Linien nur beiläufig.
+
+Was die Bücher tun:
+
+- *Definitive Book*, Chunk 194: die Projector-Einladung gilt für vier Lebensentscheidungen, darunter den Beruf. Chunk 416: ein 2/5 tritt über Strategie und Autorität in Beruf oder Beziehung. Chunk 425: das 4/6 sichert in der Dach-Phase Familie, Beruf und Netz.
+- *Definitive Book*, Chunk 72: die Kehle ist der Ort, an dem das Leben beruflich ausgedrückt wird. Ein Satz über das Center, keine Kanalliste.
+- *Holistic Analysis 2*, Chunks 156–165: Tätigkeit und Beruf sind der Fokus der Left-Environment. Der Verstand muss den Beruf nicht führen. Das ist Variable, Welle 10.
+- *Definitive Book*, Index: BG5/OC16 ist ein eigenes Beratungsprogramm.
+- Kreuze, Profile, Rollen: „career“ ist Lebensumstand und Biografie. Keine Stelle sagt, der Beruf werde aus Profil, Kreuz oder einer Kanalgruppe gelesen.
+
+März-Anker „Profil + Kreuz“ und der Entwurf „sechs Kanäle, Sakral/Wille/Kehle“ stehen in diesen Texten nicht als Leseanweisung.
+
+### Astro
+
+*The Houses* (Houlding), Chunk 21: das 10. Haus am MC ist Status, Ruf und die Stellung, zu der man strebt; Ruhm, Ehre, Vollendung des Erfolgs. Chunk 22: ein Licht am MC bringt in die Öffentlichkeit; ein Planet am MC färbt die Sache stark. Chunk 39: Saturn im 10. ist das Beispiel eines Planeten im Haus, die Sekte ändert die Lesung. Saturn-Wording im Bestand enthält `career` nicht.
+
+Dieselbe Quelle, Chunk 56: das 6. Haus bedeutet Krankheit. Es bleibt außerhalb dieser Erstlage.
+
+### Ziwei
+
+*王亭之谈斗数*, Chunk 2: 事业宫, alter Name 官禄宫, liest die Richtung der Tätigkeit: eigenes Unternehmen oder Anstellung, Kopf oder Hand. Chunk 3: 官禄 steht in den Gruppen mit 命, 财帛, 迁移 und mit 福德, 夫妻, 迁移. Chunk 20: 化禄 weist allgemein auf 官禄. Die Treffer liegen in 谈斗数, 全集 und 安星, nicht in der 讲义补注. *流年凶灾* ist geparkt und bleibt Jahreslage.
+
+### BaZi
+
+*子平真诠*, Vorwort: 月令 ist die Kette des ganzen Charts, die zehn Götter die Schussfäden. Die Monatssäule ist damit die Art, jedes Muster zu nehmen, nicht der Berufssatz.
+
+*论正官*, Chunk 32: 正官 ist, was zu achten ist (Herrscher im Staat, Eltern im Haus). 官 und 煞 sind dieselbe Klasse, die den Tag kontrolliert, mit anderer Yin-Yang-Paarung. Die Beispiele sind Beamtencharts und ein hohes Rangmuster. Chunk 19: 丁 im Hai-Monat ist von Haus aus 正官 und kann sich verwandeln. 正官 oder 七煞 sprechen also, wenn der Monat sie zum 用神 macht. In den anderen Mustern (财, 印, 食神) hat dieses Buch keinen eigenen Berufspalast. 功名事业 im Vorspann ist Schicksal überhaupt. Der Tagstamm bleibt die Identität. Jiazi-Texte fehlen weiter, Formulierung später. 取运 ist die andere Zeit.
+
+## Methodik
+
+Highlight ist kein Ausschluss. Offene Center bleiben Overlay. Diese Zeile nennt kein Center-Highlight.
+
+| System | Natal-Erstlage | Zusatzlage | Mitfärbung | Anderer Kontext | Schweigen |
 |---|---|---|---|---|---|
-| HD | Typ + Strategie in Arbeit | `21_45`, `26_44`, `32_54`, `16_48`, `20_34`, `10_20` + hängende Tore daraus | Sakral / Wille / Kehle | BG5, Penta | ja auf Zusatzlage |
-| Astro | MC / Haus 10 (Planet H10 → MC-Konjunktion ≤3° → MC-Zeichen) | Saturn (Haus, Zeichen) | — | Transit; Haus 6 = Alltag, nicht mit MC vermischen | nein |
-| Ziwei | 官禄宫 | Sterne im Palast (nicht 16) | — | 合盤 | nein |
-| BaZi | Tagstamm in Arbeit | Officer-Stern später | — | Branch-Compare | ja |
+| HD | Typ + Strategie, als Art den Beruf zu betreten | keine | Kehle als Ort der Äußerung; Profil-Phase und Kreuz färben das Leben mit; Circuit des definierten Kanals später | BG5, Penta, Left/Right-Environment | ja auf Kanälen und auf Profil oder Kreuz als Berufs-Erstlage |
+| Astro | Haus 10 / MC: Planet im 10. oder am MC, sonst das MC-Zeichen. Inhalt: Status, Ruf, Stellung | keine | Sekte, Würde, Aspekte des Planeten im Haus, später | Transit; Haus 6 bleibt Krankheit | nein auf der Achse |
+| Ziwei | 事业宫 / 官禄宫: Richtung der Tätigkeit | Sterne, Helligkeit, 四化 im Palast, formulieren später | Palastgruppen aus 谈斗数: 命, 财帛, 迁移, 福德, 夫妻 | 合盘, 流年 | nein auf dem Palast |
+| BaZi | 正官 oder 七煞, wenn der Monats-用神 dieses Muster ist: Rang, zustehende Autorität, der ungepaarte Druck | keine Monatssäule als Satz, kein Tagstamm | der übrige 用神 bleibt auf seiner eigenen Frage | 取运 | ja, wenn das Muster weder 正官 noch 七煞 ist |
 
-Vor Code bestätigen: Kanal-Liste; Saturn vs Haus 6.
+Review 2026-09-22: Zeile steht. Eintrag HD + Astro im Code. Ziwei und BaZi später formulieren.
 
 ## Bau
 
-1. `DOMAIN_RULES.career_calling` in `lib/ic/chapter-rules.ts` (HD + Astro aus Tabelle).
-2. Fixtures: 5 HD (OS + 0/1/2 Arbeitskanäle, hängend 45, Reflektor), 4 Astro (Planet H10, MC-Konjunktion, nur MC-Zeichen, Saturn prominent).
-3. `hd_structure_v0.json`: 9 OS-Zeilen → `career_calling`; `astro_structure_v0.json`: `astro.planet.saturn` → `career_calling`. Seed `--only-domain-routing`. 418 unangetastet.
-4. Gating liest `DOMAIN_RULES` (Plan 15, **steht**) → Route frei ohne Code.
-5. Beweis: `check_handbook_chapter.ts` um career erweitern; 1978 live HD/Astro; Jargon-Gate; UI-Sicht.
-6. Docs: Ist, `domaene.md`, roadmap/handover; Commits.
+Eingetragen 2026-09-22. `DOMAIN_RULES.career_calling`: HD Erstlage Typ + Strategie, keine Kanalliste. Astro Achse MC / Haus 10 (Planet im 10., sonst Konjunktion ≤3°, sonst MC-Zeichen). Stimme `LOCATE_CAREER`, nicht die Identitäts-Sätze. Ziwei und BaZi auf dieser Seite ohne Satz. Treffen und Werkstatt bleiben bei Identität. Strukturelle Kanten Haus 10 und 官禄 liegen schon im Structure-Seed. Kein neuer Seed, 418 unberührt.
 
-Wenn Schritt 1–4 Code außerhalb Tabelle/Fixtures/JSON brauchen, ist das ein Befund gegen Plan 15 — zurück ins Modell, nicht Sonderfall.
+Formulierer v7: der Berufsabsatz folgt der Erstlage. Zentrums-Aufsätze und der allgemeine Zeichen-Aufsatz gehen nicht in den Berufs-Prompt. Der Human-Design-Absatz öffnet mit dem Keil. Typ-Facetten und Overlay sind auf Beruf leer, damit die Wahrheitsfärbung nicht den Satz führt. Die Astrologie behält ihren Satz. Hypothese nur, wenn Kandidatenliteratur am Berufs-Hit liegt. Identität und Liebe färben weiter nach der Erstlage.
+
+## Pipeline danach
+
+Left-Environment und BG5 sind zwei Quellen, nicht ein Lauf.
+
+- Left-Environment ist die natal berechnete Variable. Der Satz zur Tätigkeit steht in *Holistic Analysis 2*. Die sechs Orte (`hd.environment.1-6`) brauchen *From the Left/Right* oder *Design Resonance Mapping*, geparkt, Welle 10. Extract → classify → interpret → text2kg nur auf diese Knoten. Mitfärbung, nicht die Erstlage.
+- BG5 *Career Manual 1* liegt auf der Disk, Katalog optional. Dieselbe Pipeline, eigener `chart_context.kind = bg5`. Spricht später als anderer Chart zur Organisation. Nicht in `DOMAIN_RULES.career_calling`.
 
 ## Nicht
 
-Übrige Domänen, Overlay füllen, Haus 6, BG5/Penta, Ziwei/BaZi formulieren, 418, `db reset`, Merge `main`.
+Übrige Domänen, Overlay füllen, Haus 6 in diese Erstlage, BG5/Penta, Ziwei/BaZi formulieren, 418, `db reset`, Merge `main`.

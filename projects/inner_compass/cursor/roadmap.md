@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-21
+last_update: 2026-09-28
 scope: Laufender Anker — Phasen, Status, nächster Plan, Warteschlange
 in_scope: Reihenfolge, Status, Links, geordnetes Offenes
 out_of_scope: Implementierungsdetails (stehen im Phasen-Plan)
@@ -33,12 +33,13 @@ Jeder neue Chat liest zuerst diese Datei, dann den verlinkten Phasen-Plan. Curso
 | 14 Zweite Domäne | **abgeschlossen 2026-09-19** | `love_partnership` durch die Kette (HD + Astro), Formulierer v3 | [plans/14_zweite_domaene.md](plans/14_zweite_domaene.md) |
 | 14b Methodik Liebe | **abgeschlossen 2026-09-20** | OS-Erstlage + Bindungs-Zusatz; Venus sekundär; Formulierer v4 | [plans/14b_methodik_liebe.md](plans/14b_methodik_liebe.md) |
 | 15 Kapitel-Modell | **abgeschlossen 2026-09-21** | Form einmal: primary / secondary[] / overlay[] / highlight; Regeln als Daten; Formulierer v5; Inventar | [plans/15_hit_regel_tabelle.md](plans/15_hit_regel_tabelle.md) |
-| 16 Beruf | offen | erste Domäne nur als Tabelleneintrag + Fixtures + Seed; Test des Modells | [plans/16_beruf.md](plans/16_beruf.md) |
-| Verbreitung | offen, nach Fläche | Mandala-Share, Serie, Agents | nicht Plan-Nummer |
+| 16a Methodik Beruf | erledigt 2026-09-22 | Zeile aus den Chunks, reviewed | [plans/16_beruf.md](plans/16_beruf.md) |
+| 16 Beruf | HD + Astro eingetragen | Ziwei/BaZi formulieren später; BG5 und Environment-Orte eigene Quellen | [plans/16_beruf.md](plans/16_beruf.md) |
+| Verbreitung | offen, nach Fläche | Mandala-Share, Serie, Agents. Agent liest später mehr nur durch Chart, Frage, `condition`, Domäne | nicht Plan-Nummer |
 
-**Empfehlung:** Track Tiefe. Phase 15 zu. Nächster Schnitt: [Plan 16](plans/16_beruf.md) Beruf als Eintrag im Kapitel-Modell (kein Code-Umbau). Overlay füllen = 10b, Stimme-Register = 13, HD-Welle = 10. Jiazi/Ziwei dahinter, nicht Transit.
+**Empfehlung:** Track Tiefe. Nächster Plan: [18_farbe_tor_kanal.md](plans/18_farbe_tor_kanal.md). Erst die Farbe der G-Tore und G-Kanäle aus den Chunks, nicht zwölf Themenlisten.
 
-**Nächster Bau:** Plan 16 — [plans/16_beruf.md](plans/16_beruf.md).
+**Nächster Bau:** Plan 18, nur die Identitäts-Zeile HD. Ziwei/BaZi-Beruf, die anderen Systeme, Welle 10, Overlay, Stimme, Transite, Jiazi, BG5 bleiben in der Schlange.
 
 ### Track Tiefe
 
@@ -53,7 +54,10 @@ Review darf umsortieren; streichen nur nach Decision. Details in den verlinkten 
 | 1 | ~~Plan 13a Astro-Literatur~~ | **erledigt 2026-09-18** | HD-Welle zuerst |
 | 1b | ~~Plan 14 Liebe durch die Kette~~ | **erledigt 2026-09-19** | zwölf Domänen auf einmal |
 | 1c | ~~Plan 14b Methodik Liebe~~ | **erledigt 2026-09-20** | Pflicht-Hit / Disjunktheit |
-| 2 | ~~Plan 15 Kapitel-Modell~~, dann 16 Beruf | **15 erledigt 2026-09-21.** 16 = erste Domäne nur als Eintrag ([16](plans/16_beruf.md)) | Spray / alle zwölf; Overlay füllen (10b) |
+| 2 | ~~Literatur an die Frage~~ | **v6 2026-09-22.** Unzugeordnet bleibt im Graphen. Färbung führt nicht. | 418; Wortliste |
+| 2b | Textschicht Identität, dann Liebe | **gelesen 2026-09-28.** Identität = G / AC / 命宫 / 日主. Liebe 14b bleibt. HD-Rang nur noch G. | alle zwölf vor dem ersten |
+| 2c | Ziwei/BaZi Beruf formulieren | 官禄; 正官/七煞 nur als Monats-用神 | Tagstamm als Berufssatz |
+| 2d | Farbe von Tor und Kanal | **G 2026-09-28.** Acht Tore, zehn Kanäle als Identitäts-Zusatz. Nächste Farbe je System später | alle 64 Tore; zwölf Bereiche |
 | 3 | Jiazi-KG | 60 Knoten, 0 Interps; Klassiker **683 Chunks** ohne Classify ([03a](plans/03a_bazi_extract_ahead.md)); Destiny-Relink | *60 Pillars* zuerst; parallel zu Tiefe |
 | 4 | Staffel 2 *60 Pillars* | nur **mit** Schnitt Jiazi | parallel zu Fläche |
 | 5 | ~~Routing HD/BaZi über OS/Tagstamm~~ | **erledigt Plan 08** | 418-Spray |
@@ -61,7 +65,7 @@ Review darf umsortieren; streichen nur nach Decision. Details in den verlinkten 
 | 7 | ~~Familie-2-Filter~~ | **aufgelöst in Track:** Schicht 1 = Phase 9, Schicht 2 = Phase 10/12 | Backfill auf approved heben |
 | 8 | ~~Trap/Gift DE~~ | **Plan 10–14** Facetten + Literatur als Input, Formulierer DE | `extract_pattern_traps` (Kombi über Systeme = nach 13a) |
 | 9 | ~~DE-Atome / Formulierer HD Identität~~ | **Phase 11–14** | EN-Atome übersetzen / Re-Synth |
-| 10 | HD-Content-Welle (PHS, Quarter, Planeten, Type-4) | **nach** den Systemen durch die Checkliste **und** Plan 15, nicht davor. Färbt **jeden** Bereich, nicht nur Gesundheit. Inventar: [15](plans/15_hit_regel_tabelle.md) | Checkliste wiederholen |
+| 10 | HD-Content-Welle (PHS, Quarter, Planeten, Type-4, Circuit/Integration, sechs Environments) | **nach** den Systemen durch die Checkliste **und** Plan 15, nicht davor. Circuit färbt den Kanal. Environments aus *From the Left/Right*. BG5 danach als eigener Chart. | Checkliste wiederholen; BG5 in den Natal-Absatz |
 | 10b | Overlay in jedem Kapitel (Autorität, Profil, Definition, alle offenen Center) | Form da (Plan 15 `overlay[]`). Inhalt minimal (Labels, Center-Zustand). Facetten/Wordings füllen = diese Warteschlange. Inventar in [15](plans/15_hit_regel_tabelle.md) | 418; Center als Ersatz-Kanal |
 | 11 | ZEIT / Luck / Transite | eigene Achse, Tages-Cache-Key; nach Natal in ≥2 Systemen | Occupancy war Phase 6 |
 | 13 | Stimme-Register (originär ↔ IC, Coaching, …) | Umschalten = zwei Flächen (Inspector vs. Kapitel), nicht Ton-Schalter. Weitere Töne = Cache-Dimension `stimme` nach Plan 15 (zu). Vertrag: [tiefe.md](vertraege/tiefe.md) „Drei Flächen“ | Formulierer-Ton in 16 ändern |

@@ -1,5 +1,25 @@
 # Inner Compass — Design-Entscheidungen
 
+## 2026-09-22: Methodik vor dem Domänen-Eintrag
+
+**Kontext:** Der Beruf-Entwurf (Kanal-Liste, Sakral/Wille/Kehle) und die März-Anker in [ergebnis_modelle.md](../consolidation/ergebnis_modelle.md) §20 sind nicht dieselbe Aussage. §20: HD Profil + Inkarnationskreuz, Astro MC + 10. Haus, Ziwei 官禄宫, BaZi Monatssäule. Der Entwurf in [16_beruf.md](../cursor/plans/16_beruf.md) nennt Typ + Strategie, sechs Kanäle, Saturn. Circuit und Integration liegen im KG und fehlten im Kapitel-Inventar.
+
+**Decision:**
+
+1. **Vor jedem Domänen-Eintrag eine Zeile je System** (HD, Astro, Ziwei, BaZi), gelesen aus der schon eingelesenen Literatur, nicht aus einer geratenen Liste. Jyotish/Maya erst in ihrer Welle.
+2. **Die Zeile ist reviewed und für HD + Astro eingetragen** (2026-09-22). HD Typ+Strategie, keine Kanalliste. Astro Haus 10 / MC. Ziwei 官禄 und BaZi 正官/七煞 bleiben in der Zeile, ohne Formulierung auf der Seite. BG5 und die sechs Environments sind spätere Quellen, nicht dieser Eintrag. 418 unberührt. SoT: [16_beruf.md](../cursor/plans/16_beruf.md).
+3. **Circuit / Integration** = spätere Tiefe, färbt den Kanal, nicht die Berufs-Erstlage. Inventar Plan 15, Welle 10.
+4. **Agent später** nur durch Chart, Frage, `condition`, Domäne.
+5. **Kapitelabsatz** (2026-09-24): nur Literatur, deren Gegenknoten `belongs_to_domain` auf diese Domäne hat. Unzugeordnet bleibt im Graphen, nicht im Satz. Offene Zentren färben Identität und Liebe nach der Erstlage. Auf Beruf gehen die Zentrums-Aufsätze nicht in den Prompt, und der Zeichen-MC liest die Himmelsmitte, nicht den Zeichen-Aufsatz. Formulierer v7.
+6. **Identität** (2026-09-28): G-Zentrum, Aszendent/Haus 1, 命宫, 日主. Ein Kanal ohne G ist nicht die HD-Erstlage. Der Keil ist das G. Liebe bleibt 14b. SoT: [17_identitaet.md](../cursor/plans/17_identitaet.md).
+7. **Farbe** (2026-09-28): Tor, Kanal, Haus, Palast oder Ten God kommt in ein Kapitel nur mit Chunk an dieser Frage. Die Listen in Plan 15 und die sechs Liebes-Kanäle sind noch nicht diese Prüfung. SoT: [18_farbe_tor_kanal.md](../cursor/plans/18_farbe_tor_kanal.md).
+
+**Nicht:** alle zwölf Bereiche vor dem ersten Eintrag lesen, BG5/Penta in den Natal-Eintrag, Circuit als Hit.
+
+**SoT:** [tiefe.md](../cursor/vertraege/tiefe.md); [16_beruf.md](../cursor/plans/16_beruf.md).
+
+---
+
 ## 2026-09-20: Natal-Vollständigkeit vs Kapitel-Führung
 
 **Kontext:** Hit-Regeln (OS, Bindungskanal, drei offene Center) klangen wie Ausschluss. Lehre: der ganze Natal-Chart ist in jedem Lebensbereich wahr. Kapitel, die alles listen, sind Spray (Plan 07) und klingen wie Identität.

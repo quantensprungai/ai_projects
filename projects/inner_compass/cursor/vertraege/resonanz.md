@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-16
+last_update: 2026-09-22
 scope: Ja/Teilweise/Nein an der Handbuch-Karte
 in_scope: Tabelle, Granularität, Onboarding
 out_of_scope: Trainingsdaten, KG-Knoten-Feedback
@@ -25,3 +25,5 @@ Plan 05: Werkstatt **liest** ob mindestens eine Resonanz auf `self_identity` exi
 **Ist (2026-09-11):** Tabelle + RLS in `20260904130339_ic_resonance.sql`. Owner-Fix `20260911113000_ic_resonance_owner_rls.sql`. Action `karte/bereich/_lib/resonance-action.ts`. Append-only. Tags ohne CHECK; Validierung in `lib/ic/resonance.ts`. Browser: Insert `201` (`hd.type` / `yes`) nach dem Fix.
 
 **Ist (2026-09-16):** Keys `astro.house7`, `ziwei.spouse_palace` für Liebe. Onboarding bleibt `hd.type` / `self_identity`.
+
+**Ist (2026-09-22):** Key `astro.house10` für Beruf. HD-Karte bleibt `hd.type`.

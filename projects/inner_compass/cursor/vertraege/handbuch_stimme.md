@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-21
+last_update: 2026-09-22
 scope: Wie ein Handbuch-Satz klingt
 in_scope: Übersetzungsregel, Code-Ort, Meta-Begriffe der einen Domäne
 out_of_scope: Glossar-Projekt, generate_meta_nodes
@@ -42,3 +42,5 @@ Mikro-Erzählung: Tiefe 1 **Benennen → Übersetzen → Verorten**. Tiefe 2 **T
 **Ist (2026-09-16, Stimme):** Schablone „Die Bewegung ist…“ raus. Zweites Beat konkret. BaZi-Name = Färbung, nicht Generic+Stamm. Treffen ohne Inspector-Jargon.
 
 **Ist (Track Tiefe, Plan 15):** Formulierer v5. Prompt nimmt Label + Kernfrage + `secondaryHits[]` + `overlay[]` + `highlightCenters`. Overlay = gelebte Entscheidung/Auftreten/Einbeziehen, keine Mechanik-Namen. Highlight ≠ Ausschluss. Cache-Key inkl. Listen + Overlay. Jargon-Gates unverändert. Locate bleibt `LOCATE.*` / `LOCATE_LOVE.*`; Hypothese-Zusatz bei `candidate`-Literatur.
+
+**Ist (Plan 16, 2026-09-22):** Beruf nutzt `LOCATE_CAREER` und eigene Keile für HD und Astro. Formulierer v6: Erstlage führt, Färbung ersetzt sie nicht. Unzugeordnete Literatur ist nicht im Absatz.

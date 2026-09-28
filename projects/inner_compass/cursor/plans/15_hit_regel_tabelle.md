@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-21
+last_update: 2026-09-22
 scope: Phasen-Plan 15 — Kapitel-Modell: Schichten, Regeln als Daten, Formulierer v5, Natal-Inventar
 in_scope: Natal-Inventar, Kapitel-Schichten primary/secondary[]/overlay[]/highlight, DOMAIN_RULES als Daten, Migration Identität + Liebe, Overlay minimal
 out_of_scope: Beruf (Plan 16), Overlay füllen (10b), PHS/Planeten/Linien lesen, Ziwei/BaZi formulieren, Transit, Jiazi, 418
@@ -43,6 +43,7 @@ KARTE darf den ganzen Chart zeigen. Das Kapitel ist die erste ehrliche Lesung zu
 | Hängende Tore der Domänenliste | Zusatzlage | Liebe: ja (Fixtures 59 + 49) | Ja; Tor im geschlossenen Kanal nicht extra |
 | Übrige Kanäle/Tore | Overlay / später | nicht im Kapitel | Person bleibt ganz; nicht 418-Spray |
 | Linien | später | Inspector / Atome EN | Färben denselben Kanal/Tor in jedem Bereich |
+| Circuit / Integration | später | Katalog + Structure + Synth im KG; nicht im Kapitel | Färbt den Kanal (Individual, Collective, Tribal, Integration). Nicht Berufs-Erstlage |
 | HD-Planeten (Pers./Design) | später | KARTE/Inspector ja (1978: Sonne 1.6 / 4.2, ▲▼, R). HandbookInput nein | Venus in 59 ist Liebe-Tiefe, nicht Career-Ersatz |
 | Polarität ▲▼ / Stern / neither | später | KARTE Rails + Inspector-Status | Overlay-Stempel „ist juxtaposition“ verboten (Decision 2026-07) |
 | Retrograd R | später | KARTE ja | Design/Persönlichkeit darf genannt werden, nicht als Skala |

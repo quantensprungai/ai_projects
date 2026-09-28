@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-21
+last_update: 2026-09-22
 scope: Zielbild Tiefe — Schema, Matrix, Leser
 in_scope: level_tag, condition, Provenienz, Hypothese-Flag, Cache, Bereitschafts-Matrix
 out_of_scope: Jiazi, 418-Spray, Formulierer-Prompt
@@ -21,7 +21,11 @@ Leit-Decision: [decisions.md](../../reference/decisions.md) „Tiefe statt Färb
 5. Formulierer — einmal pro Chart-Hash + Stimme-Version, gecacht. Hypothese-Flag, wenn gelesene Literatur `candidate` ist oder Schicht 3. **Ist Plan 15:** HD + Astro `self_identity` und `love_partnership` DE v5; Schichten `primary` / `secondary[]` / `overlay[]` / `highlight`.
 6. Färbungskarte in `handbook-voice.ts` — Fallback und Few-Shot, wenn (3) oder (5) fehlen.
 
-**Kapitel führt, Chart bleibt ganz** (Decision 2026-09-20): Overlay (Autorität, Profil, alle Center), Zusatzlage-Liste, Highlight-Zustand und spätere Tiefe (Planeten, Linien, PHS, Kreuz, Variable; analog Astro/Ziwei/BaZi) sind Inventar in [../plans/15_hit_regel_tabelle.md](../plans/15_hit_regel_tabelle.md). Nicht im Kapitel = nicht unwichtig.
+**Kapitel führt, Chart bleibt ganz** (Decision 2026-09-20): Overlay (Autorität, Profil, alle Center), Zusatzlage-Liste, Highlight-Zustand und spätere Tiefe (Planeten, Linien, PHS, Kreuz, Variable, Circuit; analog Astro/Ziwei/BaZi) sind Inventar in [../plans/15_hit_regel_tabelle.md](../plans/15_hit_regel_tabelle.md). Nicht im Kapitel = nicht unwichtig.
+
+**Methodik vor dem Eintrag** (Decision 2026-09-22): Bevor eine Domäne in `DOMAIN_RULES` geht, eine Zeile je System, das mitreden soll: HD, Astro, Ziwei, BaZi. Die Zeile kommt aus der schon eingelesenen Literatur dieses Systems (Chunks, Interpretationen, Katalog), nicht aus einer geratenen Liste. Felder: Erstlage, Zusatzliste, Mitfärbung, anderer Chart. Jyotish und Maya bekommen dieselbe Zeile erst in ihrer Welle. Ziwei und BaZi dürfen in der Zeile stehen und später formuliert werden. 16a liest Beruf; nicht alle zwölf Bereiche in allen Büchern vor dem ersten Eintrag.
+
+**Mehr als das Kapitel:** Das Kapitel bleibt die erste Lesung (dieses Chart, diese Frage, Cap). Die KARTE bleibt das einzelne Element. Ungelesene Chunks bleiben im Graphen. Ein späterer Agent zieht mehr nur durch dieselben Filter: Chart, Frage, `condition`, Domäne. Rohzugriff auf den Bestand ist Spray.
 
 ## Drei Flächen (nicht vermischen)
 
