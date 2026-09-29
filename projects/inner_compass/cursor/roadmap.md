@@ -37,9 +37,9 @@ Jeder neue Chat liest zuerst diese Datei, dann den verlinkten Phasen-Plan. Curso
 | 16 Beruf | HD + Astro eingetragen | Ziwei/BaZi formulieren später; BG5 und Environment-Orte eigene Quellen | [plans/16_beruf.md](plans/16_beruf.md) |
 | Verbreitung | offen, nach Fläche | Mandala-Share, Serie, Agents. Agent liest später mehr nur durch Chart, Frage, `condition`, Domäne | nicht Plan-Nummer |
 
-**Empfehlung:** Track Tiefe. Nächster Plan: [18_farbe_tor_kanal.md](plans/18_farbe_tor_kanal.md). Erst die Farbe der G-Tore und G-Kanäle aus den Chunks, nicht zwölf Themenlisten.
+**Empfehlung:** Track Tiefe. Plan 18 für die G-Zeile ist eingetragen. Nächster Schnitt ist 2c: Ziwei-官禄 und BaZi-正官/七煞 auf der Berufs-Seite formulieren.
 
-**Nächster Bau:** Plan 18, nur die Identitäts-Zeile HD. Ziwei/BaZi-Beruf, die anderen Systeme, Welle 10, Overlay, Stimme, Transite, Jiazi, BG5 bleiben in der Schlange.
+**Nächster Bau:** 2c, nur diese zwei Sätze. Danach die Farbe je System (Planet im 1. Haus, Stern im 命宫, Färbung des 日主). Welle 10, Overlay, Stimme, Transite, Jiazi, BG5 bleiben in der Schlange.
 
 ### Track Tiefe
 
