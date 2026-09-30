@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-29
+last_update: 2026-09-30
 scope: Nächster Plan nach der Identitäts-Zeile — Farbe von Tor und Kanal, gleiche Frage in den anderen Systemen
 in_scope: Audit der alten Pläne, Regel für Zuordnung, erster Leseschnitt nur am bestätigten G
 out_of_scope: alle 64 Tore, alle zwölf Bereiche, 418, db reset
@@ -48,7 +48,7 @@ Nur Human Design, nur die Identitäts-Zeile. Die Tore und Kanäle des G aus *Def
 ## Danach, unverändert in der Schlange
 
 1. Ziwei-官禄 und BaZi-正官/七煞 auf der Berufs-Seite formulieren (Roadmap 2c, eingetragen 2026-09-29).
-2. Dieselbe Farblektüre für Astro (Planet im 1. Haus), Ziwei (Stern im 命宫), BaZi (was den 日主 färbt), je ein eigener Schnitt.
+2. Dieselbe Farblektüre: Astro Planet im 1. Haus ist gelesen 2026-09-30 (der Herrscher färbt, nicht jeder Planet). Danach Ziwei (Stern im 命宫), BaZi (was den 日主 färbt), je ein eigener Schnitt.
 3. Die Liebes-Kanalliste erst dann ersetzen, wenn die Chunks sie nennen oder verwerfen.
 4. Welle 10, Overlay 10b, Stimme 13, Transite 11, Jiazi, BG5 als eigener Chart.
 
