@@ -16,7 +16,7 @@ Gelesen 2026-09-28 aus `sys_source_chunks`, dieselbe Art wie [Plan 16](16_beruf.
 |---|---|---|---|---|
 | HD | G-Zentrum. Definiert: festes Selbst, Richtung, Liebe zu sich. Offen: kein festes Selbst, Weisheit über Identität | Kanäle und hängende Tore, die das G definieren | Typ und Strategie, übrige offene Zentren | PHS, Kreuz, BG5 |
 | Astro | Aszendent / 1. Haus: Leben, Charakter, Erscheinung, Heraustreten | Der Herrscher des Aszendenten färbt, wenn er im Chart steht. Nicht jeder Planet im Haus | — | Transit |
-| Ziwei | 命宫 ist die Person | Sterne im 命宫 färben | Gruppen mit 夫妻, 迁移, 子女 | 流年, 合盘 |
+| Ziwei | 命宫 ist die Person | 紫微 im 命宫 färbt; andere Sterne nur mit Chunk | Gruppen mit 夫妻, 迁移, 子女, 福德 | 流年, 合盘 |
 | BaZi | 日主 ist, woran der Chart gewogen wird | 月令 ist der Rahmen, nicht der Identitätssatz | — | 取运 |
 
 ### HD
@@ -33,7 +33,7 @@ Gelesen 2026-09-30: der Aszendent bleibt der erste Satz. Der Herrscher färbt da
 
 ### Ziwei
 
-*王亭之谈斗数*, Chunk 7: 紫微 im 命宫 beschreibt die Person (Haltung, Führung, Einsamkeit), und die Gruppen 三方四正 plus 福德 färben. Chunk 3: 命宫 steht gegenüber 妻妾 und trifft 迁移 und 子女. Der 命宫 bleibt die Identitäts-Färbung. Kein neuer Satz in diesem Schnitt.
+*王亭之谈斗数*, Chunk 3: 命宫 ist die Person; Gruppen mit 迁移, 财帛, 官禄 und gegenüber 夫妻. Chunk 7: 紫微坐命 beschreibt die Person (Ruhe unter Druck, eigene Linie, Vorsprung kann einsam wirken); 三方四正 und 福德 färben, führen nicht. Weitere 坐命-Passagen (天机 Chunk 9, 太阳 10, 天府 13, 巨门 15, 天梁 16, 破军 17, 武曲 25) binden Sterne an die Person, sind aber keine vierzehn Aufsätze. Der Palast bleibt der erste Satz; 紫微 kommt nur als kurzer Satz danach, wenn er im 命宫 steht.
 
 ### BaZi
 
@@ -51,4 +51,4 @@ Offene Zentren färben Identität und Liebe nach dem ersten Satz. Die Berufs-Reg
 
 ## Code
 
-Nur die HD-Identitäts-Zelle. `rankIdentity` nimmt nur noch einen G-Kanal oder ein hängendes G-Tor. Ein anderer Kanal wird nicht zur Identität. Der Keil ist das G, definiert oder offen. Typ und Strategie färben danach. Formulierer v8, damit der alte Typ-Keil nicht aus dem Cache kommt. Astro, Ziwei, BaZi und die Liebes-Zeile ohne Code.
+HD: `rankIdentity` nur G-Kanal oder hängendes G-Tor; Keil ist das G. Astro: Aszendent führt, Herrscher färbt. Ziwei: Palast-Keil bleibt; `composeZiweiVoice` hängt den 紫微-Satz an, nur wenn er im 命宫 steht. Kein Formulierer-Zweig. BaZi und die Liebes-Zeile ohne neuen Code in diesem Schnitt.

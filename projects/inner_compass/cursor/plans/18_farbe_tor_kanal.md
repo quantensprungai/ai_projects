@@ -32,7 +32,7 @@ Geprüft ist die Erstlage von drei Kapiteln:
 Dieselbe Lage in den anderen Systemen, ebenfalls nur die geprüften Zellen:
 
 - Astro: Haus 1 Identität, Haus 7 Liebe, Haus 10 Beruf. Häuser 4, 6, 8 stehen im Inventar und sind nicht als Kapitelzeile nachgelesen, außer Haus 6 als Krankheit bei Houlding.
-- Ziwei: 命宫 Identität, 夫妻宫 Liebe, 官禄宫 Beruf. Sterne, Helligkeit und 四化 im Palast sind die Farbe und noch nicht der Satz.
+- Ziwei: 命宫 Identität, 夫妻宫 Liebe, 官禄宫 Beruf. 紫微 im 命宫 färbt Identität nach dem Palast-Keil (gelesen 2026-09-30). Helligkeit und 四化 bleiben draußen.
 - BaZi: 日主 Identität. 正官/七煞 Beruf nur, wenn der Monat sie zum 用神 macht. Ein Ehe-Ten-God ist nicht als Liebes-Zeile nachgelesen.
 
 Die einzelne Farbe eines Tores oder Kanals ist der nächste Satz auf einer Zeile, die schon steht. Sie ist nicht der Anlass, zwölf Themen mit Listen zu füllen.
@@ -48,7 +48,7 @@ Nur Human Design, nur die Identitäts-Zeile. Die Tore und Kanäle des G aus *Def
 ## Danach, unverändert in der Schlange
 
 1. Ziwei-官禄 und BaZi-正官/七煞 auf der Berufs-Seite formulieren (Roadmap 2c, eingetragen 2026-09-29).
-2. Dieselbe Farblektüre: Astro Planet im 1. Haus ist gelesen 2026-09-30 (der Herrscher färbt, nicht jeder Planet). Danach Ziwei (Stern im 命宫), BaZi (was den 日主 färbt), je ein eigener Schnitt.
+2. Dieselbe Farblektüre: Astro Planet im 1. Haus ist gelesen 2026-09-30 (der Herrscher färbt, nicht jeder Planet). Ziwei Stern im 命宫 gelesen 2026-09-30 (紫微 färbt nach dem Palast; keine vierzehn Aufsätze). Danach BaZi (was den 日主 färbt), je ein eigener Schnitt.
 3. Die Liebes-Kanalliste erst dann ersetzen, wenn die Chunks sie nennen oder verwerfen.
 4. Welle 10, Overlay 10b, Stimme 13, Transite 11, Jiazi, BG5 als eigener Chart.
 
