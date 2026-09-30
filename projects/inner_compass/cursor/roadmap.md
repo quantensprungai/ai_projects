@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-28
+last_update: 2026-09-29
 scope: Laufender Anker — Phasen, Status, nächster Plan, Warteschlange
 in_scope: Reihenfolge, Status, Links, geordnetes Offenes
 out_of_scope: Implementierungsdetails (stehen im Phasen-Plan)
@@ -34,12 +34,12 @@ Jeder neue Chat liest zuerst diese Datei, dann den verlinkten Phasen-Plan. Curso
 | 14b Methodik Liebe | **abgeschlossen 2026-09-20** | OS-Erstlage + Bindungs-Zusatz; Venus sekundär; Formulierer v4 | [plans/14b_methodik_liebe.md](plans/14b_methodik_liebe.md) |
 | 15 Kapitel-Modell | **abgeschlossen 2026-09-21** | Form einmal: primary / secondary[] / overlay[] / highlight; Regeln als Daten; Formulierer v5; Inventar | [plans/15_hit_regel_tabelle.md](plans/15_hit_regel_tabelle.md) |
 | 16a Methodik Beruf | erledigt 2026-09-22 | Zeile aus den Chunks, reviewed | [plans/16_beruf.md](plans/16_beruf.md) |
-| 16 Beruf | HD + Astro eingetragen | Ziwei/BaZi formulieren später; BG5 und Environment-Orte eigene Quellen | [plans/16_beruf.md](plans/16_beruf.md) |
+| 16 Beruf | HD, Astro, Ziwei, BaZi eingetragen | Sterne im Berufspalast später; BG5 und Environment-Orte eigene Quellen | [plans/16_beruf.md](plans/16_beruf.md) |
 | Verbreitung | offen, nach Fläche | Mandala-Share, Serie, Agents. Agent liest später mehr nur durch Chart, Frage, `condition`, Domäne | nicht Plan-Nummer |
 
-**Empfehlung:** Track Tiefe. Plan 18 für die G-Zeile ist eingetragen. Nächster Schnitt ist 2c: Ziwei-官禄 und BaZi-正官/七煞 auf der Berufs-Seite formulieren.
+**Empfehlung:** Track Tiefe. Berufs-Keile der vier Systeme sind auf der Seite. Nächster Schnitt ist die Farbe, ein System: Planet im 1. Haus.
 
-**Nächster Bau:** 2c, nur diese zwei Sätze. Danach die Farbe je System (Planet im 1. Haus, Stern im 命宫, Färbung des 日主). Welle 10, Overlay, Stimme, Transite, Jiazi, BG5 bleiben in der Schlange.
+**Nächster Bau:** Farbe Astro, nur Haus 1. Danach Stern im 命宫, dann was den 日主 färbt. Die sechs Liebeskanäle erst, wenn ein Chunk sie nennt oder verwirft. Welle 10, Overlay, Stimme, Transite, Jiazi, BG5 bleiben in der Schlange.
 
 ### Track Tiefe
 
@@ -56,7 +56,7 @@ Review darf umsortieren; streichen nur nach Decision. Details in den verlinkten 
 | 1c | ~~Plan 14b Methodik Liebe~~ | **erledigt 2026-09-20** | Pflicht-Hit / Disjunktheit |
 | 2 | ~~Literatur an die Frage~~ | **v6 2026-09-22.** Unzugeordnet bleibt im Graphen. Färbung führt nicht. | 418; Wortliste |
 | 2b | Textschicht Identität, dann Liebe | **gelesen 2026-09-28.** Identität = G / AC / 命宫 / 日主. Liebe 14b bleibt. HD-Rang nur noch G. | alle zwölf vor dem ersten |
-| 2c | Ziwei/BaZi Beruf formulieren | 官禄; 正官/七煞 nur als Monats-用神 | Tagstamm als Berufssatz |
+| 2c | ~~Ziwei/BaZi Beruf formulieren~~ | **2026-09-29.** 官禄 als Richtung. 正官/七煞 nur als 本气 des Monats. Sonst Schweigen | Tagstamm als Berufssatz; Sterne im Satz |
 | 2d | Farbe von Tor und Kanal | **G 2026-09-28.** Acht Tore, zehn Kanäle als Identitäts-Zusatz. Nächste Farbe je System später | alle 64 Tore; zwölf Bereiche |
 | 3 | Jiazi-KG | 60 Knoten, 0 Interps; Klassiker **683 Chunks** ohne Classify ([03a](plans/03a_bazi_extract_ahead.md)); Destiny-Relink | *60 Pillars* zuerst; parallel zu Tiefe |
 | 4 | Staffel 2 *60 Pillars* | nur **mit** Schnitt Jiazi | parallel zu Fläche |

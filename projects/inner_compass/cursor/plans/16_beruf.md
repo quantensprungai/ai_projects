@@ -1,14 +1,14 @@
 <!--
 Reality Block
-last_update: 2026-09-24
+last_update: 2026-09-29
 scope: Phasen-Plan 16 — career_calling im Kapitel-Modell
-in_scope: DOMAIN_RULES aus der bestätigten Zeile, HD- und Astro-Stimme, Fixtures
-out_of_scope: BG5, Left/Right-Environment formulieren, Ziwei/BaZi formulieren, Haus 6, 418, geratene Kanal-Liste
+in_scope: DOMAIN_RULES aus der bestätigten Zeile, HD- und Astro-Stimme, Ziwei- und BaZi-Keil, Fixtures
+out_of_scope: BG5, Left/Right-Environment formulieren, Sterne und 四化 im Berufspalast, Haus 6, 418, geratene Kanal-Liste
 -->
 
 # Plan 16 — Beruf & Berufung im Kapitel-Modell
 
-Folgt auf [Plan 15](15_hit_regel_tabelle.md). **Zeile reviewed 2026-09-22. Eintrag HD + Astro ist im Code.** Ziwei und BaZi stehen in der Zeile und werden später formuliert.
+Folgt auf [Plan 15](15_hit_regel_tabelle.md). **Zeile reviewed 2026-09-22.** HD, Astro, Ziwei und BaZi sind im Code. Sterne im Berufspalast bleiben Zusatz.
 
 ## Befund 2026-09-22, Textschicht
 
@@ -55,11 +55,13 @@ Highlight ist kein Ausschluss. Offene Center bleiben Overlay. Diese Zeile nennt 
 | Ziwei | 事业宫 / 官禄宫: Richtung der Tätigkeit | Sterne, Helligkeit, 四化 im Palast, formulieren später | Palastgruppen aus 谈斗数: 命, 财帛, 迁移, 福德, 夫妻 | 合盘, 流年 | nein auf dem Palast |
 | BaZi | 正官 oder 七煞, wenn der Monats-用神 dieses Muster ist: Rang, zustehende Autorität, der ungepaarte Druck | keine Monatssäule als Satz, kein Tagstamm | der übrige 用神 bleibt auf seiner eigenen Frage | 取运 | ja, wenn das Muster weder 正官 noch 七煞 ist |
 
-Review 2026-09-22: Zeile steht. Eintrag HD + Astro im Code. Ziwei und BaZi später formulieren.
+Review 2026-09-22: Zeile steht. Eintrag HD + Astro im Code.
+
+Formuliert 2026-09-29: Ziwei spricht, sobald der Berufspalast auf der Platte liegt. Der Satz ist die Richtung der Tätigkeit (selbst tragen oder Stelle, Kopf oder Hand). Sterne, Helligkeit und 四化 bleiben Zusatz und sind nicht im Satz. BaZi spricht 正官 oder 七煞 nur, wenn die klassische 本气 des Monatszweigs dieses Muster ist. Das Gewichts-Label der Engine ist nicht diese 本气. Fehlt die 本气 oder ist sie ein anderes Muster, bleibt der Satz aus. Monatssäule und Tagstamm sind nicht der Berufssatz.
 
 ## Bau
 
-Eingetragen 2026-09-22. `DOMAIN_RULES.career_calling`: HD Erstlage Typ + Strategie, keine Kanalliste. Astro Achse MC / Haus 10 (Planet im 10., sonst Konjunktion ≤3°, sonst MC-Zeichen). Stimme `LOCATE_CAREER`, nicht die Identitäts-Sätze. Ziwei und BaZi auf dieser Seite ohne Satz. Treffen und Werkstatt bleiben bei Identität. Strukturelle Kanten Haus 10 und 官禄 liegen schon im Structure-Seed. Kein neuer Seed, 418 unberührt.
+Eingetragen 2026-09-22. `DOMAIN_RULES.career_calling`: HD Erstlage Typ + Strategie, keine Kanalliste. Astro Achse MC / Haus 10 (Planet im 10., sonst Konjunktion ≤3°, sonst MC-Zeichen). Stimme `LOCATE_CAREER`, nicht die Identitäts-Sätze. Ziwei und BaZi haben seit 2026-09-29 einen Keil, siehe oben. Treffen und Werkstatt bleiben bei Identität. Strukturelle Kanten Haus 10 und 官禄 liegen schon im Structure-Seed. Kein neuer Seed, 418 unberührt.
 
 Formulierer v7: der Berufsabsatz folgt der Erstlage. Zentrums-Aufsätze und der allgemeine Zeichen-Aufsatz gehen nicht in den Berufs-Prompt. Der Human-Design-Absatz öffnet mit dem Keil. Typ-Facetten und Overlay sind auf Beruf leer, damit die Wahrheitsfärbung nicht den Satz führt. Die Astrologie behält ihren Satz. Hypothese nur, wenn Kandidatenliteratur am Berufs-Hit liegt. Identität und Liebe färben weiter nach der Erstlage.
 
@@ -72,4 +74,4 @@ Left-Environment und BG5 sind zwei Quellen, nicht ein Lauf.
 
 ## Nicht
 
-Übrige Domänen, Overlay füllen, Haus 6 in diese Erstlage, BG5/Penta, Ziwei/BaZi formulieren, 418, `db reset`, Merge `main`.
+Übrige Domänen, Overlay füllen, Haus 6 in diese Erstlage, BG5/Penta, Sterne im Berufspalast, 418, `db reset`, Merge `main`.

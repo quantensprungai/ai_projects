@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-28
+last_update: 2026-09-29
 scope: Chat-Handover Inner Compass, kurz
 in_scope: Einstieg für neuen Chat
 out_of_scope: Historie (siehe reference/handover_2026-09_archiv.md)
@@ -20,7 +20,7 @@ Lokal: Next :3000, Supabase API :54321, HD-Service :8002 (services/hd)
 LLM: Langdock gpt-5.4-mini (Pin in der App: `IC_LLM_MODEL` / Formulierer-Default). Nicht Spark-Qwen als Interpret/Synth. Key in .env.development.local (nicht committen).
 ```
 
-**Stand:** Track Tiefe. G-Tore und G-Kanäle sind die Identitäts-Zusatzlage (Plan 18). **Nächster Schnitt:** Ziwei-官禄 und BaZi-正官/七煞 auf der Berufs-Seite (2c). Danach Farbe je System, dann Welle 10, Overlay 10b, Stimme 13, Transite 11, Jiazi, BG5.
+**Stand:** Track Tiefe. Berufs-Keile: HD Typ+Strategie, Astro Haus 10, Ziwei am Berufspalast, BaZi nur bei 正官/七煞 als Monats-本气. **Nächster Schnitt:** Farbe, ein System — Planet im 1. Haus. Danach Stern im 命宫, Färbung des 日主, Liebeskanäle nur mit Chunk, dann Welle 10, Overlay 10b, Stimme 13, Transite 11, Jiazi, BG5.
 
 **Leitplanken:** nested Code nicht ins Docs-Repo. Flora/`.env`/`_tmp_*` nicht committen. HD-Zombie `5ba2f841` nicht anfassen. Auto-Synth aus. Handbuch-Text formulieren, nicht übersetzen. Seed vor text2kg.
 

@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-22
+last_update: 2026-09-29
 scope: Ja/Teilweise/Nein an der Handbuch-Karte
 in_scope: Tabelle, Granularität, Onboarding
 out_of_scope: Trainingsdaten, KG-Knoten-Feedback
@@ -27,3 +27,5 @@ Plan 05: Werkstatt **liest** ob mindestens eine Resonanz auf `self_identity` exi
 **Ist (2026-09-16):** Keys `astro.house7`, `ziwei.spouse_palace` für Liebe. Onboarding bleibt `hd.type` / `self_identity`.
 
 **Ist (2026-09-22):** Key `astro.house10` für Beruf. HD-Karte bleibt `hd.type`.
+
+**Ist (2026-09-29):** Keys `ziwei.career_palace` und `bazi.career_pattern` für Beruf. Ohne 正官/七煞 als Monats-本气 bleibt die BaZi-Karte ohne Key.

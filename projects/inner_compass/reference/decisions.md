@@ -13,6 +13,7 @@
 5. **Kapitelabsatz** (2026-09-24): nur Literatur, deren Gegenknoten `belongs_to_domain` auf diese Domäne hat. Unzugeordnet bleibt im Graphen, nicht im Satz. Offene Zentren färben Identität und Liebe nach der Erstlage. Auf Beruf gehen die Zentrums-Aufsätze nicht in den Prompt, und der Zeichen-MC liest die Himmelsmitte, nicht den Zeichen-Aufsatz. Formulierer v7.
 6. **Identität** (2026-09-28): G-Zentrum, Aszendent/Haus 1, 命宫, 日主. Ein Kanal ohne G ist nicht die HD-Erstlage. Der Keil ist das G. Liebe bleibt 14b. SoT: [17_identitaet.md](../cursor/plans/17_identitaet.md).
 7. **Farbe** (2026-09-28): Tor, Kanal, Haus, Palast oder Ten God kommt in ein Kapitel nur mit Chunk an dieser Frage. Die Listen in Plan 15 und die sechs Liebes-Kanäle sind noch nicht diese Prüfung. SoT: [18_farbe_tor_kanal.md](../cursor/plans/18_farbe_tor_kanal.md).
+8. **Ziwei- und BaZi-Beruf** (2026-09-29): Der Keil ist formuliert. Ziwei: Richtung der Tätigkeit am Berufspalast, ohne Sterne. BaZi: 正官 oder 七煞 nur als 本气 des Monatszweigs, sonst kein Satz. Die Mechanik der Zelle kann sich später ändern; die Form bleibt `primary` / `secondary[]`. SoT: [16_beruf.md](../cursor/plans/16_beruf.md).
 
 **Nicht:** alle zwölf Bereiche vor dem ersten Eintrag lesen, BG5/Penta in den Natal-Eintrag, Circuit als Hit.
 
