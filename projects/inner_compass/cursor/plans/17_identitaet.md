@@ -45,7 +45,7 @@ Gelesen 2026-09-30 in *秘本子平真诠*. Chunk 3: die Götter sind die Bezieh
 
 14b bleibt.
 
-- HD: *Definitive Book*, Chunk 416 (Beruf-Lesung): Strategie und Autorität sind der Eintritt in Beruf oder Beziehung. Typ + Strategie bleibt die Liebes-Erstlage. Die Bindungskanäle bleiben Zusatz. Kein Kanal bleibt Schweigen.
+- HD: *Definitive Book*, Chunk 416 (Beruf-Lesung): Strategie und Autorität sind der Eintritt in Beruf oder Beziehung. Typ + Strategie bleibt die Liebes-Erstlage. Gelesen 2026-10-01: Zusatz sind 59-6, 37-40 und 19-49. 54-32, 44-26 und 27-50 gehören woanders hin. Kein Kanal bleibt Schweigen.
 - Astro: *The Houses*, Chunk 65: das 7. Haus ist Ehe und enge Beziehungen, Partner, auch Geschäftspartnerschaft. Haus 7 / Deszendent bleibt. Venus bleibt Zusatz, dieser Chunk widerspricht ihr nicht.
 - Ziwei: 夫妻宫 bleibt der Liebespalast (Gruppe in Chunk 3). BaZi: der 日主 bleibt die Person; ein Ehepalast ist nicht diese Zeile.
 
@@ -53,4 +53,4 @@ Offene Zentren färben Identität und Liebe nach dem ersten Satz. Die Berufs-Reg
 
 ## Code
 
-HD: `rankIdentity` nur G-Kanal oder hängendes G-Tor; Keil ist das G. Astro: Aszendent führt, Herrscher färbt. Ziwei: Palast-Keil bleibt; `composeZiweiVoice` hängt den 紫微-Satz an, nur wenn er im 命宫 steht. BaZi: Tagstamm bleibt, kein Satz danach. Kein Formulierer-Zweig. Die Liebes-Zeile ohne neuen Code.
+HD: `rankIdentity` nur G-Kanal oder hängendes G-Tor; Keil ist das G. Astro: Aszendent führt, Herrscher färbt. Ziwei: Palast-Keil bleibt; `composeZiweiVoice` hängt den 紫微-Satz an, nur wenn er im 命宫 steht. BaZi: Tagstamm bleibt, kein Satz danach. Liebe: Typ und Strategie bleiben; die Zusatzlage ist 59-6, 37-40, 19-49. Kein Formulierer-Zweig.

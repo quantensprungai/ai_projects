@@ -14,7 +14,7 @@ Folgt auf [17_identitaet.md](17_identitaet.md). Die Schlange unter [roadmap.md](
 
 | Plan | Behauptet | In den Chunks geprüft? |
 |---|---|---|
-| [14b](14b_methodik_liebe.md) | Liebe: Typ + Strategie, sechs Bindungskanäle, Highlight Emotional/Sakral/G, Venus | Typ + Strategie ja (*Definitive Book*, Chunk 416, nachgelesen in 17). Die sechs Kanäle und das Highlight sind die Methodik-Tabelle von 14b, nicht Tor für Tor nachgelesen |
+| [14b](14b_methodik_liebe.md) | Liebe: Typ + Strategie, Bindungskanäle, Highlight Emotional/Sakral/G, Venus | Typ + Strategie ja. Kanäle gelesen 2026-10-01: 59-6, 37-40, 19-49 färben. 54-32, 44-26, 27-50 nicht diese Frage |
 | [15](15_hit_regel_tabelle.md) | Form `primary` / `secondary[]` / `overlay[]`. Inventar: pro Bereich eine Kanalliste, Astro-Planetenliste „wächst“, Ziwei-Palast, BaZi Ten Gods | Die Form ist gebaut. Die Listen im Inventar sind der Korb, nicht eine Lesezeile. „Saturn Beruf, Mond Familie, Mars Intimität“ ist dort als wachsende Liste markiert |
 | [16](16_beruf.md) | Beruf HD: Typ + Strategie, keine Kanalliste. Kehle ein Satz, kein Kanal. Astro Haus 10 / MC | Ja, Chunks. Eine geratene Kanalliste wurde verworfen |
 | [17](17_identitaet.md) | Identität: G-Zentrum, AC/Haus 1, 命宫, 日主. Liebe 14b bleibt | Ja, für die Erstlage. Die einzelne Farbe der acht G-Tore und der G-Kanäle ist nicht gelesen |
@@ -26,7 +26,7 @@ Nicht jedes Thema hat schon eine eigene, literaturgeprüfte Liste von Zentren, K
 Geprüft ist die Erstlage von drei Kapiteln:
 
 - Identität HD: das G-Zentrum. Kanäle und hängende Tore, die dieses G definieren, färben diese Zeile. Ein Kanal ohne G ist nicht Identität.
-- Liebe HD: Typ + Strategie. Die sechs Kanäle sind noch Annahme.
+- Liebe HD: Typ + Strategie. Zusatz gelesen 2026-10-01: 59-6, 37-40, 19-49. Drei andere Kanäle der alten Liste gehören nicht hierher.
 - Beruf HD: Typ + Strategie. Keine Kanalliste.
 
 Dieselbe Lage in den anderen Systemen, ebenfalls nur die geprüften Zellen:
@@ -49,7 +49,7 @@ Nur Human Design, nur die Identitäts-Zeile. Die Tore und Kanäle des G aus *Def
 
 1. Ziwei-官禄 und BaZi-正官/七煞 auf der Berufs-Seite formulieren (Roadmap 2c, eingetragen 2026-09-29).
 2. Dieselbe Farblektüre: Astro Planet im 1. Haus ist gelesen 2026-09-30 (der Herrscher färbt, nicht jeder Planet). Ziwei Stern im 命宫 gelesen 2026-09-30 (紫微 färbt nach dem Palast; keine vierzehn Aufsätze). BaZi, was den 日主 färbt, gelesen 2026-09-30 (kein Satz danach). Je ein eigener Schnitt.
-3. Die Liebes-Kanalliste erst dann ersetzen, wenn die Chunks sie nennen oder verwerfen.
+3. Die Liebes-Kanalliste ist gelesen 2026-10-01. Drei bleiben Zusatz, drei gehören woanders hin.
 4. Welle 10, Overlay 10b, Stimme 13, Transite 11, Jiazi, BG5 als eigener Chart.
 
 Nicht: alle 64 Tore, alle zwölf Bereiche, 418, `db reset`, Merge `main`.

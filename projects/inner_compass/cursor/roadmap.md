@@ -37,9 +37,9 @@ Jeder neue Chat liest zuerst diese Datei, dann den verlinkten Phasen-Plan. Curso
 | 16 Beruf | HD, Astro, Ziwei, BaZi eingetragen | Sterne im Berufspalast später; BG5 und Environment-Orte eigene Quellen | [plans/16_beruf.md](plans/16_beruf.md) |
 | Verbreitung | offen, nach Fläche | Mandala-Share, Serie, Agents. Agent liest später mehr nur durch Chart, Frage, `condition`, Domäne | nicht Plan-Nummer |
 
-**Empfehlung:** Track Tiefe. Was den 日主 färbt, ist gelesen: der Tagstamm bleibt, kein Gott färbt danach. Nächster Schnitt sind die Liebeskanäle, nur mit Chunk.
+**Empfehlung:** Track Tiefe. Die Liebeskanäle sind gelesen: Typ und Strategie führen, drei Kanäle färben, drei gehören woanders hin. Nächster Schnitt ist Welle 10.
 
-**Nächster Bau:** Die sechs Liebeskanäle erst, wenn ein Chunk sie nennt oder verwirft. Welle 10 (Linien, Binary Pairs), Overlay, Stimme, Transite, Jiazi, BG5 bleiben in der Schlange.
+**Nächster Bau:** Welle 10 (Linien, Binary Pairs). Overlay, Stimme, Transite, Jiazi, BG5 bleiben in der Schlange.
 
 ### Track Tiefe
 
@@ -57,7 +57,7 @@ Review darf umsortieren; streichen nur nach Decision. Details in den verlinkten 
 | 2 | ~~Literatur an die Frage~~ | **v6 2026-09-22.** Unzugeordnet bleibt im Graphen. Färbung führt nicht. | 418; Wortliste |
 | 2b | Textschicht Identität, dann Liebe | **gelesen 2026-09-28.** Identität = G / AC / 命宫 / 日主. Liebe 14b bleibt. HD-Rang nur noch G. | alle zwölf vor dem ersten |
 | 2c | ~~Ziwei/BaZi Beruf formulieren~~ | **2026-09-29.** 官禄 als Richtung. 正官/七煞 nur als 本气 des Monats. Sonst Schweigen | Tagstamm als Berufssatz; Sterne im Satz |
-| 2d | Farbe von Tor und Kanal | **G 2026-09-28.** Astro 2026-09-30: Herrscher des 1. Hauses. Ziwei 2026-09-30: 紫微 nach dem Palast. BaZi 2026-09-30: Tagstamm bleibt, kein Satz danach | alle 64 Tore; zwölf Bereiche |
+| 2d | Farbe von Tor und Kanal | **G 2026-09-28.** Astro 2026-09-30: Herrscher. Ziwei 2026-09-30: 紫微. BaZi 2026-09-30: Tagstamm. Liebe 2026-10-01: 59-6, 37-40, 19-49 | alle 64 Tore; zwölf Bereiche |
 | 3 | Jiazi-KG | 60 Knoten, 0 Interps; Klassiker **683 Chunks** ohne Classify ([03a](plans/03a_bazi_extract_ahead.md)); Destiny-Relink | *60 Pillars* zuerst; parallel zu Tiefe |
 | 4 | Staffel 2 *60 Pillars* | nur **mit** Schnitt Jiazi | parallel zu Fläche |
 | 5 | ~~Routing HD/BaZi über OS/Tagstamm~~ | **erledigt Plan 08** | 418-Spray |

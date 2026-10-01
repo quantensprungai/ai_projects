@@ -17,6 +17,7 @@
 9. **Planet im 1. Haus** (2026-09-30): Der Aszendent bleibt der Identitätssatz. Es färbt der Herrscher dieses Hauses, einmal, nicht jeder Planet im Haus. SoT: [17_identitaet.md](../cursor/plans/17_identitaet.md).
 10. **Stern im 命宫** (2026-09-30): Der Palast bleibt der erste Satz. 紫微 im 命宫 färbt danach, einmal, wenn er dort steht. Keine vierzehn Stern-Aufsätze; Helligkeit und 四化 bleiben draußen. SoT: [17_identitaet.md](../cursor/plans/17_identitaet.md).
 11. **Was den 日主 färbt** (2026-09-30): Der Tagstamm bleibt der Identitätssatz. Der 月令 bleibt der Rahmen des 用神, kein Gott ist fest die Farbe, der Tageszweig ist der Ehepalast. Kein Satz danach. SoT: [17_identitaet.md](../cursor/plans/17_identitaet.md).
+12. **Liebeskanäle** (2026-10-01): Typ und Strategie bleiben der erste Satz. Es färben 59-6, 37-40 und 19-49. 54-32, 44-26 und 27-50 gehören nicht in diese Frage. SoT: [14b_methodik_liebe.md](../cursor/plans/14b_methodik_liebe.md).
 
 **Nicht:** alle zwölf Bereiche vor dem ersten Eintrag lesen, BG5/Penta in den Natal-Eintrag, Circuit als Hit.
 

@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-09-20
+last_update: 2026-10-01
 scope: Phasen-Plan 14b — Methodik vor Hit-Regel für love_partnership
 in_scope: System-Tabelle Natal-Lagen, HD zwei Lagen, Astro Venus-Zusatz, Routing-Seed Typ/Strategie→Liebe, Literatur-Domänenfilter, Formulierer v4
 out_of_scope: Composite, Familie, Transit, Sex Manual verdrahten, BG5, DreamRave, Disjunktheits-Regel, Pflicht-Hit, 418 einschalten, Ziwei/BaZi formulieren, db reset
@@ -27,7 +27,7 @@ Gleiche Lage in zwei Bereichen ist erlaubt. Unterschiedlich sind Frage, Facetten
 
 | System | Natal-Erstlage (immer da) | Zusatzlage (falls definiert) | Zustand / Bedingung | Anderer Chart-Kontext (nicht hier) | Schweigen erlaubt? |
 |---|---|---|---|---|---|
-| HD | Typ + Strategie in Bindung | Bindungsschaltung `59_6`, `40_37`, `19_49`, `44_26`, `32_54`, `27_50` plus hängende Bindungstore | Highlight offene Center Emotional / Sakral / G (**kein** Ausschluss der übrigen) | Composite, Penta, Sex Manual | ja auf Zusatzlage |
+| HD | Typ + Strategie in Bindung | Gebunden 2026-10-01: `59_6`, `40_37`, `19_49` plus ihre hängenden Tore. `32_54`, `44_26`, `27_50` gehören nicht hierher | Highlight offene Center Emotional / Sakral / G (**kein** Ausschluss der übrigen) | Composite, Penta, Sex Manual | ja auf Zusatzlage |
 | Astro | Haus 7 / Deszendent | Venus (Zeichen, Haus) | — | Synastrie, Transit | nein (Achse immer da) |
 | Ziwei | 夫妻宫 | Sterne im Palast (nicht dieser Plan) | — | 合盤 | nein |
 | BaZi | Tagstamm in Beziehung (Plan 08) | Spouse-Star / Ehepalast später | — | Branch-Compare | ja |
@@ -63,3 +63,5 @@ Schritte 2–5: HD `kind=os` Erstlage, Bindung nur Zusatz (kein Sakral-Fallback)
 Schritt 6: `check_handbook_love.ts` grün. 1978 HD primary `hd.type.generator`, secondary `59_6`; Identität weiter `59_6`. Astro primary `dsc_sign`, secondary Venus. Regression Input / Literatur / Formulierer / Astro grün. HD-Liebestext antwortet auf Bindung (OS), nicht nur Kanal. Astro-Spillover „Pferde“ bleibt Kurationspunkt (Gegen-Nodes ungeroutet). UI: `/home/karte/bereich/love_partnership` → Sign-in; Browser-Login in Automation nicht verifiziert.
 
 Nachtrag 2026-09-21: Identität + Liebe ohne Hit-Änderung nach [Plan 15](15_hit_regel_tabelle.md) migriert (`secondary[]`, Overlay minimal, Formulierer v5). Hits 1978 unverändert.
+
+Nachtrag 2026-10-01, *Definitive Book*: Typ und Strategie bleiben der erste Satz. `59_6` (Chunk 359) färbt die nahe Beziehung, `37_40` (380) die, die man liebt, `19_49` (376–377) die Verbindung. `54_32` (368) ist Ehrgeiz, `44_26` (372) ist Unternehmen, `27_50` (363) ist Fürsorge im Stamm. Die drei fallen aus der Liebes-Zusatzlage. Kein neuer Formulierer-Zweig.

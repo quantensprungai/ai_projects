@@ -20,7 +20,7 @@ Lokal: Next :3000, Supabase API :54321, HD-Service :8002 (services/hd)
 LLM: Langdock gpt-5.4-mini (Pin in der App: `IC_LLM_MODEL` / Formulierer-Default). Nicht Spark-Qwen als Interpret/Synth. Key in .env.development.local (nicht committen).
 ```
 
-**Stand:** Track Tiefe. Identität BaZi: der Tagstamm bleibt der Satz, kein Gott färbt danach. **Nächster Schnitt:** Liebeskanäle nur mit Chunk. Danach Welle 10 (dort Linien und Binary Pairs), Overlay 10b, Stimme 13, Transite 11, Jiazi, BG5.
+**Stand:** Track Tiefe. Liebe HD: Typ und Strategie führen. 59-6, 37-40 und 19-49 färben. **Nächster Schnitt:** Welle 10 (dort Linien und Binary Pairs). Danach Overlay 10b, Stimme 13, Transite 11, Jiazi, BG5.
 
 **Leitplanken:** nested Code nicht ins Docs-Repo. Flora/`.env`/`_tmp_*` nicht committen. HD-Zombie `5ba2f841` nicht anfassen. Auto-Synth aus. Handbuch-Text formulieren, nicht übersetzen. Seed vor text2kg.
 
