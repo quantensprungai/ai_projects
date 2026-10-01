@@ -50,7 +50,7 @@ Nur Human Design, nur die Identitäts-Zeile. Die Tore und Kanäle des G aus *Def
 1. Ziwei-官禄 und BaZi-正官/七煞 auf der Berufs-Seite formulieren (Roadmap 2c, eingetragen 2026-09-29).
 2. Dieselbe Farblektüre: Astro Planet im 1. Haus ist gelesen 2026-09-30 (der Herrscher färbt, nicht jeder Planet). Ziwei Stern im 命宫 gelesen 2026-09-30 (紫微 färbt nach dem Palast; keine vierzehn Aufsätze). BaZi, was den 日主 färbt, gelesen 2026-09-30 (kein Satz danach). Je ein eigener Schnitt.
 3. Die Liebes-Kanalliste ist gelesen 2026-10-01. Drei bleiben Zusatz, drei gehören woanders hin.
-4. Welle 10 ist gelesen. Overlay 10b: Autorität gelesen 2026-10-01, sie bleibt beim Einstieg mit Strategie. Nächste Zelle: Profil. Danach Definition, offene Zentren, Stimme 13, Transite 11, Jiazi, BG5 als eigener Chart.
+4. Overlay 10b: Autorität und Profil gelesen 2026-10-01. Die Autorität bleibt beim Einstieg, das Profil das Kostüm. Nächste Zelle: Definition. Danach offene Zentren, Stimme 13, Transite 11, Jiazi, BG5 als eigener Chart.
 
 Nicht: alle 64 Tore, alle zwölf Bereiche, 418, `db reset`, Merge `main`.
 
