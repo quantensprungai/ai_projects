@@ -26,6 +26,7 @@
 18. **Vierter Kanal** (2026-10-01): Drei Kanalarten sind aktiv. Die vierte ist offen, ohne Definition, die Stelle des Not-Self. Sie führt Identität, Liebe und Beruf nicht. Typ und Strategie bleiben der Einstieg. SoT: [roadmap.md](../cursor/roadmap.md) Warteschlange 10. Quelle: *Rave BodyGraph Circuitry*, Chunk 6 und 7.
 19. **Autorität** (2026-10-01): Die Definition stellt Typ, Strategie und Autorität zusammen. Die Autorität ist das verlässliche Ja oder Nein in diesem Einstieg, kein Satz danach und kein Ersatz des Keils. Das Label bleibt. SoT: [roadmap.md](../cursor/roadmap.md) Warteschlange 10b. Quelle: *Four Views*, Chunk 6; *Definitive Book*, Chunk 49.
 20. **Profil** (2026-10-01): Das Profil ist das Kostüm des Zwecks, die Rolle, in die man hineinwächst. Es unterscheidet Menschen desselben Typs und führt Identität, Liebe und Beruf nicht. Das Label bleibt. SoT: [roadmap.md](../cursor/roadmap.md) Warteschlange 10b. Quelle: *Definitive Book*, Chunk 388.
+21. **Definition** (2026-10-01): Die Definition stellt Typ, Strategie und Autorität her. Die fehlende Brücke eines Splits motiviert als Not-Self und ist nicht der Partner und nicht der Beruf. Das Label bleibt. SoT: [roadmap.md](../cursor/roadmap.md) Warteschlange 10b. Quelle: *Definitive Book*, Chunk 49 und 215.
 
 **Nicht:** alle zwölf Bereiche vor dem ersten Eintrag lesen, BG5/Penta in den Natal-Eintrag, Circuit als Hit.
 
