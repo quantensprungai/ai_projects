@@ -20,7 +20,7 @@ Lokal: Next :3000, Supabase API :54321, HD-Service :8002 (services/hd)
 LLM: Langdock gpt-5.4-mini (Pin in der App: `IC_LLM_MODEL` / Formulierer-Default). Nicht Spark-Qwen als Interpret/Synth. Key in .env.development.local (nicht committen).
 ```
 
-**Stand:** Track Tiefe. Liebe HD: Typ und Strategie führen. 59-6, 37-40 und 19-49 färben. Binary Pairs färben die Linie. Circuit (*Rave BodyGraph Circuitry*, Chunk 2) färbt die Art des Kanals und die Verbindung zu anderen, nicht den heutigen Satz. Integration (Chunk 14, 17) ist Überleben in vier Kanälen, kein Kapitel. **Nächster Schnitt:** Welle 10, PHS, Pfeile und Environments. Danach Quarter, Planeten, Overlay 10b, Stimme 13, Transite 11, Jiazi, BG5.
+**Stand:** Track Tiefe. Liebe HD: Typ und Strategie führen. 59-6, 37-40 und 19-49 färben. Binary Pairs färben die Linie. Circuit färbt den Kanal. PHS (*Mechanics of the Vehicle*, Chunk 243 und 248) ist Körper innen und Umgebung außen, nicht der heutige Satz. Die sechs Ortsnamen und die Pfeilgrafik stehen nicht als Liste in den PHS-Chunks; *From the Left/Right* bleibt ungeingestiert. **Nächster Schnitt:** Welle 10, Quarter. Danach Planeten, Overlay 10b, Stimme 13, Transite 11, Jiazi, BG5.
 
 **Leitplanken:** nested Code nicht ins Docs-Repo. Flora/`.env`/`_tmp_*` nicht committen. HD-Zombie `5ba2f841` nicht anfassen. Auto-Synth aus. Handbuch-Text formulieren, nicht übersetzen. Seed vor text2kg.
 
