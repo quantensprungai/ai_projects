@@ -20,7 +20,7 @@ Lokal: Next :3000, Supabase API :54321, HD-Service :8002 (services/hd)
 LLM: Langdock gpt-5.4-mini (Pin in der App: `IC_LLM_MODEL` / Formulierer-Default). Nicht Spark-Qwen als Interpret/Synth. Key in .env.development.local (nicht committen).
 ```
 
-**Stand:** Track Tiefe. Liebe HD: Typ und Strategie führen. 59-6, 37-40 und 19-49 färben. Binary Pairs färben die Linie. Circuit färbt den Kanal. PHS ist Körper und Umgebung. Quarter ist der Rahmen des Kreuzes. HD-Planeten prägen das Tor. Der vierte Kanal (*Rave BodyGraph Circuitry*, Chunk 6 und 7) ist der offene, ohne Definition, die Stelle des Not-Self. Er kommt nicht in den Satz. Typ und Strategie bleiben der Einstieg. **Nächster Schnitt:** Overlay 10b (Autorität, Profil, Definition, offene Zentren). Danach Stimme 13, Transite 11, Jiazi, BG5 als eigener Chart.
+**Stand:** Track Tiefe. Liebe HD: Typ und Strategie führen. 59-6, 37-40 und 19-49 färben. Binary Pairs färben die Linie. Circuit färbt den Kanal. PHS ist Körper und Umgebung. Quarter ist der Rahmen des Kreuzes. HD-Planeten prägen das Tor. Der vierte Kanal ist die offene Stelle. Autorität (*Four Views*, Chunk 6; *Definitive Book*, Chunk 49) kommt mit der Definition zu Typ und Strategie: das verlässliche Ja oder Nein, kein zweiter Satz. Das Label bleibt. **Nächster Schnitt:** Overlay 10b, Profil. Danach Definition, offene Zentren, Stimme 13, Transite 11, Jiazi, BG5 als eigener Chart.
 
 **Leitplanken:** nested Code nicht ins Docs-Repo. Flora/`.env`/`_tmp_*` nicht committen. HD-Zombie `5ba2f841` nicht anfassen. Auto-Synth aus. Handbuch-Text formulieren, nicht übersetzen. Seed vor text2kg.
 
