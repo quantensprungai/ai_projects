@@ -37,9 +37,9 @@ Jeder neue Chat liest zuerst diese Datei, dann den verlinkten Phasen-Plan. Curso
 | 16 Beruf | HD, Astro, Ziwei, BaZi eingetragen | Sterne im Berufspalast später; BG5 und Environment-Orte eigene Quellen | [plans/16_beruf.md](plans/16_beruf.md) |
 | Verbreitung | offen, nach Fläche | Mandala-Share, Serie, Agents. Agent liest später mehr nur durch Chart, Frage, `condition`, Domäne | nicht Plan-Nummer |
 
-**Empfehlung:** Track Tiefe. Die Liebeskanäle sind gelesen. Die Binary Pairs sind gelesen: sie färben die Linie auf späteren Flächen, nicht den heutigen Satz. Nächster Schnitt in Welle 10 ist Circuit und Integration.
+**Empfehlung:** Track Tiefe. Die Liebeskanäle, die Binary Pairs und der Circuit sind gelesen. Der Circuit färbt den Kanal und die Verbindung zu anderen, nicht den heutigen Satz. Nächster Schnitt in Welle 10 ist PHS, Pfeile und Environments.
 
-**Nächster Bau:** Welle 10, Circuit und Integration. PHS, Quarter, Planeten, Overlay, Stimme, Transite, Jiazi, BG5 bleiben in der Schlange.
+**Nächster Bau:** Welle 10, PHS, Pfeile und Environments. Quarter, Planeten, Overlay, Stimme, Transite, Jiazi, BG5 bleiben in der Schlange.
 
 ### Track Tiefe
 
@@ -65,7 +65,7 @@ Review darf umsortieren; streichen nur nach Decision. Details in den verlinkten 
 | 7 | ~~Familie-2-Filter~~ | **aufgelöst in Track:** Schicht 1 = Phase 9, Schicht 2 = Phase 10/12 | Backfill auf approved heben |
 | 8 | ~~Trap/Gift DE~~ | **Plan 10–14** Facetten + Literatur als Input, Formulierer DE | `extract_pattern_traps` (Kombi über Systeme = nach 13a) |
 | 9 | ~~DE-Atome / Formulierer HD Identität~~ | **Phase 11–14** | EN-Atome übersetzen / Re-Synth |
-| 10 | HD-Content-Welle (PHS, Quarter, Planeten, Type-4, Circuit/Integration, Linien und Binary Pairs, sechs Environments) | Binary Pairs gelesen 2026-10-01: Linie 1–2 tribal, 3–4 individual, 5–6 collective. Sie führen nicht, und sie färben keinen Kanal einfarbig (59-6 trägt alle drei). Quelle ist *Channels by Type 3*, Chunk 157. Kein Satz heute. Nächste Zelle: Circuit färbt den Kanal. Environments aus *From the Left/Right*. BG5 danach als eigener Chart. | Checkliste wiederholen; BG5 in den Natal-Absatz |
+| 10 | HD-Content-Welle (PHS, Quarter, Planeten, Type-4, Circuit/Integration, Linien und Binary Pairs, sechs Environments) | Binary Pairs gelesen 2026-10-01, Chunk 157 *Channels by Type 3*. Circuit gelesen 2026-10-01, *Rave BodyGraph Circuitry* Chunk 2: er bestimmt die Art seiner Kanäle und wie man sich mit anderen verbindet. Integration Chunk 14 und 17: vier Kanäle, Überleben, kein Kapitel. Kein Satz heute. Nächste Zelle: PHS, Pfeile, Environments. BG5 danach als eigener Chart. | Checkliste wiederholen; BG5 in den Natal-Absatz |
 | 10b | Overlay in jedem Kapitel (Autorität, Profil, Definition, alle offenen Center) | Form da (Plan 15 `overlay[]`). Inhalt minimal (Labels, Center-Zustand). Facetten/Wordings füllen = diese Warteschlange. Inventar in [15](plans/15_hit_regel_tabelle.md) | 418; Center als Ersatz-Kanal |
 | 11 | ZEIT / Luck / Transite | eigene Achse, Tages-Cache-Key; nach Natal in ≥2 Systemen | Occupancy war Phase 6 |
 | 13 | Stimme-Register (originär ↔ IC, Coaching, …) | Umschalten = zwei Flächen (Inspector vs. Kapitel), nicht Ton-Schalter. Weitere Töne = Cache-Dimension `stimme` nach Plan 15 (zu). Vertrag: [tiefe.md](vertraege/tiefe.md) „Drei Flächen“ | Formulierer-Ton in 16 ändern |

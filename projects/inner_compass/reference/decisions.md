@@ -19,6 +19,7 @@
 11. **Was den 日主 färbt** (2026-09-30): Der Tagstamm bleibt der Identitätssatz. Der 月令 bleibt der Rahmen des 用神, kein Gott ist fest die Farbe, der Tageszweig ist der Ehepalast. Kein Satz danach. SoT: [17_identitaet.md](../cursor/plans/17_identitaet.md).
 12. **Liebeskanäle** (2026-10-01): Typ und Strategie bleiben der erste Satz. Es färben 59-6, 37-40 und 19-49. 54-32, 44-26 und 27-50 gehören nicht in diese Frage. SoT: [14b_methodik_liebe.md](../cursor/plans/14b_methodik_liebe.md).
 13. **Binary Pairs** (2026-10-01): Linien 1–2 tribal, 3–4 individual, 5–6 collective. Sie führen kein Kapitel und färben keinen Kanal einfarbig; 59-6 trägt alle drei. Sie färben die Linie, wenn Mandala, Werkstatt, Karte, Transite oder Composite Linien lesen. Quelle: *Channels by Type 3 — Projected Channels*, Chunk 157. Kein Satz in Identität, Liebe oder Beruf. SoT: [roadmap.md](../cursor/roadmap.md) Warteschlange 10.
+14. **Circuit und Integration** (2026-10-01): Der Circuit bestimmt die Art seiner Kanäle und ist der Faktor, wie Definitionen sich mit anderen verbinden. Er führt kein Kapitel und kommt nicht in den heutigen Satz. Integration sind vier ineinanderliegende Kanäle des Überlebens, nicht Identität und nicht Liebe. SoT: [roadmap.md](../cursor/roadmap.md) Warteschlange 10. Quelle: *Rave BodyGraph Circuitry*, Chunk 2, 14 und 17.
 
 **Nicht:** alle zwölf Bereiche vor dem ersten Eintrag lesen, BG5/Penta in den Natal-Eintrag, Circuit als Hit.
 
