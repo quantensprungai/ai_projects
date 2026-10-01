@@ -37,7 +37,9 @@ Gelesen 2026-09-30: der Aszendent bleibt der erste Satz. Der Herrscher färbt da
 
 ### BaZi
 
-*子平真诠*, Chunks 8–14: der 日主 ist, dessen Stärke gewogen wird; 月令 bleibt der Rahmen, an dem der 用神 hängt. Das bestätigt die Beruf-Zeile: der Tagstamm ist Identität, nicht Beruf. Kein neuer Satz.
+*子平真诠*, Chunks 8–14: der 日主 ist, dessen Stärke gewogen wird; 月令 bleibt der Rahmen, an dem der 用神 hängt. Das bestätigt die Beruf-Zeile: der Tagstamm ist Identität, nicht Beruf.
+
+Gelesen 2026-09-30 in *秘本子平真诠*. Chunk 3: die Götter sind die Beziehung zum Ich (was mich zeugt, was ich bezwinge, was mich bezwingt, gleicher Atem, was ich zeuge). Das ist die Grammatik, keine Farbliste. Chunk 12: der Gebrauch wird vom 月令 her geschätzt. Der Name eines Gottes entscheidet nicht. Was dem Tagstamm dient, kann auch ein scharfer Gott sein; was ihm schadet, kann ein milder sein. Stützen oder dämpfen hängt am Bedarf des 日元. Chunk 13: auch wenn der 用神 nicht im Monat steht, bleibt der Schlüssel der 月令. Chunk 27: der Tageszweig ist der Ehepalast, nicht die Person. Kein neuer Satz. Die zehn Stamm-Sätze bleiben der erste Satz.
 
 ## Liebe gegen 14b
 
@@ -51,4 +53,4 @@ Offene Zentren färben Identität und Liebe nach dem ersten Satz. Die Berufs-Reg
 
 ## Code
 
-HD: `rankIdentity` nur G-Kanal oder hängendes G-Tor; Keil ist das G. Astro: Aszendent führt, Herrscher färbt. Ziwei: Palast-Keil bleibt; `composeZiweiVoice` hängt den 紫微-Satz an, nur wenn er im 命宫 steht. Kein Formulierer-Zweig. BaZi und die Liebes-Zeile ohne neuen Code in diesem Schnitt.
+HD: `rankIdentity` nur G-Kanal oder hängendes G-Tor; Keil ist das G. Astro: Aszendent führt, Herrscher färbt. Ziwei: Palast-Keil bleibt; `composeZiweiVoice` hängt den 紫微-Satz an, nur wenn er im 命宫 steht. BaZi: Tagstamm bleibt, kein Satz danach. Kein Formulierer-Zweig. Die Liebes-Zeile ohne neuen Code.

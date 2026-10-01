@@ -37,9 +37,9 @@ Jeder neue Chat liest zuerst diese Datei, dann den verlinkten Phasen-Plan. Curso
 | 16 Beruf | HD, Astro, Ziwei, BaZi eingetragen | Sterne im Berufspalast später; BG5 und Environment-Orte eigene Quellen | [plans/16_beruf.md](plans/16_beruf.md) |
 | Verbreitung | offen, nach Fläche | Mandala-Share, Serie, Agents. Agent liest später mehr nur durch Chart, Frage, `condition`, Domäne | nicht Plan-Nummer |
 
-**Empfehlung:** Track Tiefe. Stern im 命宫 ist gelesen: der Palast führt, 紫微 färbt. Nächster Schnitt ist, was den 日主 färbt.
+**Empfehlung:** Track Tiefe. Was den 日主 färbt, ist gelesen: der Tagstamm bleibt, kein Gott färbt danach. Nächster Schnitt sind die Liebeskanäle, nur mit Chunk.
 
-**Nächster Bau:** Farbe BaZi, nur was den 日主 färbt. Die sechs Liebeskanäle erst, wenn ein Chunk sie nennt oder verwirft. Welle 10, Overlay, Stimme, Transite, Jiazi, BG5 bleiben in der Schlange.
+**Nächster Bau:** Die sechs Liebeskanäle erst, wenn ein Chunk sie nennt oder verwirft. Welle 10 (Linien, Binary Pairs), Overlay, Stimme, Transite, Jiazi, BG5 bleiben in der Schlange.
 
 ### Track Tiefe
 
@@ -57,7 +57,7 @@ Review darf umsortieren; streichen nur nach Decision. Details in den verlinkten 
 | 2 | ~~Literatur an die Frage~~ | **v6 2026-09-22.** Unzugeordnet bleibt im Graphen. Färbung führt nicht. | 418; Wortliste |
 | 2b | Textschicht Identität, dann Liebe | **gelesen 2026-09-28.** Identität = G / AC / 命宫 / 日主. Liebe 14b bleibt. HD-Rang nur noch G. | alle zwölf vor dem ersten |
 | 2c | ~~Ziwei/BaZi Beruf formulieren~~ | **2026-09-29.** 官禄 als Richtung. 正官/七煞 nur als 本气 des Monats. Sonst Schweigen | Tagstamm als Berufssatz; Sterne im Satz |
-| 2d | Farbe von Tor und Kanal | **G 2026-09-28.** Astro-Identität 2026-09-30: Herrscher des 1. Hauses. Ziwei 命宫 2026-09-30: 紫微 färbt nach dem Palast. Danach 日主 | alle 64 Tore; zwölf Bereiche |
+| 2d | Farbe von Tor und Kanal | **G 2026-09-28.** Astro 2026-09-30: Herrscher des 1. Hauses. Ziwei 2026-09-30: 紫微 nach dem Palast. BaZi 2026-09-30: Tagstamm bleibt, kein Satz danach | alle 64 Tore; zwölf Bereiche |
 | 3 | Jiazi-KG | 60 Knoten, 0 Interps; Klassiker **683 Chunks** ohne Classify ([03a](plans/03a_bazi_extract_ahead.md)); Destiny-Relink | *60 Pillars* zuerst; parallel zu Tiefe |
 | 4 | Staffel 2 *60 Pillars* | nur **mit** Schnitt Jiazi | parallel zu Fläche |
 | 5 | ~~Routing HD/BaZi über OS/Tagstamm~~ | **erledigt Plan 08** | 418-Spray |
@@ -65,7 +65,7 @@ Review darf umsortieren; streichen nur nach Decision. Details in den verlinkten 
 | 7 | ~~Familie-2-Filter~~ | **aufgelöst in Track:** Schicht 1 = Phase 9, Schicht 2 = Phase 10/12 | Backfill auf approved heben |
 | 8 | ~~Trap/Gift DE~~ | **Plan 10–14** Facetten + Literatur als Input, Formulierer DE | `extract_pattern_traps` (Kombi über Systeme = nach 13a) |
 | 9 | ~~DE-Atome / Formulierer HD Identität~~ | **Phase 11–14** | EN-Atome übersetzen / Re-Synth |
-| 10 | HD-Content-Welle (PHS, Quarter, Planeten, Type-4, Circuit/Integration, sechs Environments) | **nach** den Systemen durch die Checkliste **und** Plan 15, nicht davor. Circuit färbt den Kanal. Environments aus *From the Left/Right*. BG5 danach als eigener Chart. | Checkliste wiederholen; BG5 in den Natal-Absatz |
+| 10 | HD-Content-Welle (PHS, Quarter, Planeten, Type-4, Circuit/Integration, Linien und Binary Pairs, sechs Environments) | **nach** den Systemen durch die Checkliste **und** Plan 15, nicht davor. Circuit färbt den Kanal. Binary Pairs (*Projected Channels*, S. 181) färben Mandala, Werkstatt, Karte, Transite, Composite, wenn die drankommen. Environments aus *From the Left/Right*. BG5 danach als eigener Chart. | Checkliste wiederholen; BG5 in den Natal-Absatz |
 | 10b | Overlay in jedem Kapitel (Autorität, Profil, Definition, alle offenen Center) | Form da (Plan 15 `overlay[]`). Inhalt minimal (Labels, Center-Zustand). Facetten/Wordings füllen = diese Warteschlange. Inventar in [15](plans/15_hit_regel_tabelle.md) | 418; Center als Ersatz-Kanal |
 | 11 | ZEIT / Luck / Transite | eigene Achse, Tages-Cache-Key; nach Natal in ≥2 Systemen | Occupancy war Phase 6 |
 | 13 | Stimme-Register (originär ↔ IC, Coaching, …) | Umschalten = zwei Flächen (Inspector vs. Kapitel), nicht Ton-Schalter. Weitere Töne = Cache-Dimension `stimme` nach Plan 15 (zu). Vertrag: [tiefe.md](vertraege/tiefe.md) „Drei Flächen“ | Formulierer-Ton in 16 ändern |
