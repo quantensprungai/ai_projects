@@ -20,7 +20,7 @@ Lokal: Next :3000, Supabase API :54321, HD-Service :8002 (services/hd)
 LLM: Langdock gpt-5.4-mini (Pin in der App: `IC_LLM_MODEL` / Formulierer-Default). Nicht Spark-Qwen als Interpret/Synth. Key in .env.development.local (nicht committen).
 ```
 
-**Stand:** Track Tiefe. Liebe HD: Typ und Strategie führen. 59-6, 37-40 und 19-49 färben. Binary Pairs färben die Linie. Circuit färbt den Kanal. PHS ist Körper und Umgebung. Quarter (*Quarters and Angles*, Chunk 44) ist mit dem Angle der Rahmen für das Kreuz, kein Satz an die Person; auch Dualität (Chunk 102, Zweck durch Bindung) nicht. **Nächster Schnitt:** Welle 10, Planeten. Danach der vierte Typ nur mit Chunk, Overlay 10b, Stimme 13, Transite 11, Jiazi, BG5.
+**Stand:** Track Tiefe. Liebe HD: Typ und Strategie führen. 59-6, 37-40 und 19-49 färben. Binary Pairs färben die Linie. Circuit färbt den Kanal. PHS ist Körper und Umgebung. Quarter ist der Rahmen des Kreuzes. HD-Planeten (*Understanding the Planets in our Design*, Chunk 1 und 13) prägen das Tor; beständig nur im definierten Zentrum, sonst schlafend. Keine zweite Astrologie. **Nächster Schnitt:** Welle 10, der vierte Typ, nur wenn ein Chunk ihn an eine Frage bindet. Danach Overlay 10b, Stimme 13, Transite 11, Jiazi, BG5.
 
 **Leitplanken:** nested Code nicht ins Docs-Repo. Flora/`.env`/`_tmp_*` nicht committen. HD-Zombie `5ba2f841` nicht anfassen. Auto-Synth aus. Handbuch-Text formulieren, nicht übersetzen. Seed vor text2kg.
 
