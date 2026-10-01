@@ -37,9 +37,9 @@ Jeder neue Chat liest zuerst diese Datei, dann den verlinkten Phasen-Plan. Curso
 | 16 Beruf | HD, Astro, Ziwei, BaZi eingetragen | Sterne im Berufspalast später; BG5 und Environment-Orte eigene Quellen | [plans/16_beruf.md](plans/16_beruf.md) |
 | Verbreitung | offen, nach Fläche | Mandala-Share, Serie, Agents. Agent liest später mehr nur durch Chart, Frage, `condition`, Domäne | nicht Plan-Nummer |
 
-**Empfehlung:** Track Tiefe. Die Definition ist gelesen: sie stellt den Einstieg her, der Split ist Not-Self, nicht der Satz. Nächste Zelle von Overlay 10b sind die offenen Zentren.
+**Empfehlung:** Track Tiefe. Overlay 10b ist gelesen. Offene Zentren sind die Stelle des Not-Self, nicht der Satz. Nächster Schnitt ist Stimme 13.
 
-**Nächster Bau:** Overlay 10b, offene Zentren. Stimme, Transite, Jiazi, BG5 bleiben in der Schlange.
+**Nächster Bau:** Stimme 13. Transite 11, Jiazi, BG5 bleiben in der Schlange.
 
 ### Track Tiefe
 
@@ -66,7 +66,7 @@ Review darf umsortieren; streichen nur nach Decision. Details in den verlinkten 
 | 8 | ~~Trap/Gift DE~~ | **Plan 10–14** Facetten + Literatur als Input, Formulierer DE | `extract_pattern_traps` (Kombi über Systeme = nach 13a) |
 | 9 | ~~DE-Atome / Formulierer HD Identität~~ | **Phase 11–14** | EN-Atome übersetzen / Re-Synth |
 | 10 | HD-Content-Welle (PHS, Quarter, Planeten, Type-4, Circuit/Integration, Linien und Binary Pairs, sechs Environments) | Vierter Kanal gelesen 2026-10-01. *Rave BodyGraph Circuitry* Chunk 6: drei aktive Kanalarten, die vierte ist offen wie der Reflector. Chunk 7: dort ist keine Definition; das Not-Self geht hin. Kein Satz. Welle 10 zu. BG5 danach als eigener Chart. | Checkliste wiederholen; BG5 in den Natal-Absatz |
-| 10b | Overlay in jedem Kapitel (Autorität, Profil, Definition, alle offenen Center) | Definition gelesen 2026-10-01. *Definitive Book* Chunk 49: sie stellt Typ, Strategie und Autorität her. Chunk 215: die fehlende Brücke eines Splits motiviert als Not-Self und ist nicht man selbst. Kein Satz. Nächste Zelle: offene Zentren. | 418; Center als Ersatz-Kanal |
+| 10b | Overlay in jedem Kapitel (Autorität, Profil, Definition, alle offenen Center) | Offene Zentren gelesen 2026-10-01. *The Not-Self* Chunk 2: der Schlüssel bleibt Typ und Autorität. Chunk 3: der Verstand hängt an der Offenheit, den Rezeptoren für das, was man nicht ist. Kein Satz, keine neun Aufsätze. Overlay 10b zu. | 418; Center als Ersatz-Kanal |
 | 11 | ZEIT / Luck / Transite | eigene Achse, Tages-Cache-Key; nach Natal in ≥2 Systemen | Occupancy war Phase 6 |
 | 13 | Stimme-Register (originär ↔ IC, Coaching, …) | Umschalten = zwei Flächen (Inspector vs. Kapitel), nicht Ton-Schalter. Weitere Töne = Cache-Dimension `stimme` nach Plan 15 (zu). Vertrag: [tiefe.md](vertraege/tiefe.md) „Drei Flächen“ | Formulierer-Ton in 16 ändern |
 

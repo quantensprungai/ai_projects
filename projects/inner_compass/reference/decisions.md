@@ -27,6 +27,7 @@
 19. **Autorität** (2026-10-01): Die Definition stellt Typ, Strategie und Autorität zusammen. Die Autorität ist das verlässliche Ja oder Nein in diesem Einstieg, kein Satz danach und kein Ersatz des Keils. Das Label bleibt. SoT: [roadmap.md](../cursor/roadmap.md) Warteschlange 10b. Quelle: *Four Views*, Chunk 6; *Definitive Book*, Chunk 49.
 20. **Profil** (2026-10-01): Das Profil ist das Kostüm des Zwecks, die Rolle, in die man hineinwächst. Es unterscheidet Menschen desselben Typs und führt Identität, Liebe und Beruf nicht. Das Label bleibt. SoT: [roadmap.md](../cursor/roadmap.md) Warteschlange 10b. Quelle: *Definitive Book*, Chunk 388.
 21. **Definition** (2026-10-01): Die Definition stellt Typ, Strategie und Autorität her. Die fehlende Brücke eines Splits motiviert als Not-Self und ist nicht der Partner und nicht der Beruf. Das Label bleibt. SoT: [roadmap.md](../cursor/roadmap.md) Warteschlange 10b. Quelle: *Definitive Book*, Chunk 49 und 215.
+22. **Offene Zentren** (2026-10-01): Die Offenheit ist die Stelle, an der der Verstand an dem hängt, was man nicht ist. Offene Zentren führen Identität, Liebe und Beruf nicht. Kein neuer Satz und keine neun Zentrums-Aufsätze. Die dünne Facette nach dem Keil, wo ein Slot schon Text hat, bleibt. SoT: [roadmap.md](../cursor/roadmap.md) Warteschlange 10b. Quelle: *The Not-Self*, Chunk 2 und 3.
 
 **Nicht:** alle zwölf Bereiche vor dem ersten Eintrag lesen, BG5/Penta in den Natal-Eintrag, Circuit als Hit.
 
