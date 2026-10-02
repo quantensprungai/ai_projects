@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-10-01
+last_update: 2026-10-02
 scope: Chat-Handover Inner Compass, kurz
 in_scope: Einstieg für neuen Chat
 out_of_scope: Historie (siehe reference/handover_2026-09_archiv.md)
@@ -20,7 +20,7 @@ Lokal: Next :3000, Supabase API :54321, HD-Service :8002 (services/hd)
 LLM: Langdock gpt-5.4-mini (Pin in der App: `IC_LLM_MODEL` / Formulierer-Default). Nicht Spark-Qwen als Interpret/Synth. Key in .env.development.local (nicht committen).
 ```
 
-**Stand:** Track Tiefe. Liebe HD: Typ und Strategie führen. 59-6, 37-40 und 19-49 färben. Binary Pairs färben die Linie. Circuit färbt den Kanal. PHS ist Körper und Umgebung. Quarter ist der Rahmen des Kreuzes. HD-Planeten prägen das Tor. Der vierte Kanal ist die offene Stelle. Autorität kommt mit der Definition zu Typ und Strategie. Das Profil ist das Kostüm des Zwecks. Die Definition (*Definitive Book*, Chunk 49 und 215) stellt Typ, Strategie und Autorität her. Ein Split sucht die fehlende Brücke als Not-Self, nicht als Partner und nicht als Beruf. Offene Zentren (*The Not-Self*, Chunk 2 und 3) sind die Stelle, an der der Verstand an dem hängt, was man nicht ist. Sie führen Identität, Liebe und Beruf nicht. Kein neuer Satz, keine neun Aufsätze. **Nächster Schnitt:** Stimme 13. Danach Transite 11, Jiazi, BG5 als eigener Chart.
+**Stand:** Track Tiefe. Liebe HD: Typ und Strategie führen. 59-6, 37-40 und 19-49 färben. Binary Pairs färben die Linie. Circuit färbt den Kanal. PHS ist Körper und Umgebung. Quarter ist der Rahmen des Kreuzes. HD-Planeten prägen das Tor. Der vierte Kanal ist die offene Stelle. Autorität kommt mit der Definition zu Typ und Strategie. Das Profil ist das Kostüm des Zwecks. Die Definition (*Definitive Book*, Chunk 49 und 215) stellt Typ, Strategie und Autorität her. Ein Split sucht die fehlende Brücke als Not-Self, nicht als Partner und nicht als Beruf. Offene Zentren (*The Not-Self*, Chunk 2 und 3) sind die Stelle, an der der Verstand an dem hängt, was man nicht ist. Sie führen Identität, Liebe und Beruf nicht. Kein neuer Satz, keine neun Aufsätze. Stimme 13 liegt hinten: Inspector und Kapitel sind schon zwei Sprachen. **Nächster Schnitt:** Gesundheit, eine Zeile je System, HD aus PHS. Die anderen acht Bereiche einzeln danach. Werkstatt bleibt die Tür aus Plan 05. Jiazi mit der BaZi-Zelle, die eine Säule braucht. Zeit (Transit, Luck, Astro-Transit) und Composite, 合盤, BG5, Penta sind eigene Charts, nicht der Abschluss von HD und nicht das Ende einer Neuner-Schlange.
 
 **Leitplanken:** nested Code nicht ins Docs-Repo. Flora/`.env`/`_tmp_*` nicht committen. HD-Zombie `5ba2f841` nicht anfassen. Auto-Synth aus. Handbuch-Text formulieren, nicht übersetzen. Seed vor text2kg.
 

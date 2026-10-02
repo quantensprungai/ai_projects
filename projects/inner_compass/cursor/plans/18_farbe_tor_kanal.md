@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-10-01
+last_update: 2026-10-02
 scope: Nächster Plan nach der Identitäts-Zeile — Farbe von Tor und Kanal, gleiche Frage in den anderen Systemen
 in_scope: Audit der alten Pläne, Regel für Zuordnung, erster Leseschnitt nur am bestätigten G
 out_of_scope: alle 64 Tore, alle zwölf Bereiche, 418, db reset
@@ -50,7 +50,7 @@ Nur Human Design, nur die Identitäts-Zeile. Die Tore und Kanäle des G aus *Def
 1. Ziwei-官禄 und BaZi-正官/七煞 auf der Berufs-Seite formulieren (Roadmap 2c, eingetragen 2026-09-29).
 2. Dieselbe Farblektüre: Astro Planet im 1. Haus ist gelesen 2026-09-30 (der Herrscher färbt, nicht jeder Planet). Ziwei Stern im 命宫 gelesen 2026-09-30 (紫微 färbt nach dem Palast; keine vierzehn Aufsätze). BaZi, was den 日主 färbt, gelesen 2026-09-30 (kein Satz danach). Je ein eigener Schnitt.
 3. Die Liebes-Kanalliste ist gelesen 2026-10-01. Drei bleiben Zusatz, drei gehören woanders hin.
-4. Overlay 10b gelesen 2026-10-01. Autorität, Profil und Definition bleiben Label. Offene Zentren bleiben die Stelle des Not-Self, kein neuer Satz. Danach Stimme 13, Transite 11, Jiazi, BG5 als eigener Chart.
+4. Overlay 10b gelesen 2026-10-01. Autorität, Profil und Definition bleiben Label. Offene Zentren bleiben die Stelle des Not-Self, kein neuer Satz. Stimme 13 liegt hinten. Nächster Schnitt: Gesundheit, eine Zeile je System, HD aus PHS.
 
 Nicht: alle 64 Tore, alle zwölf Bereiche, 418, `db reset`, Merge `main`.
 

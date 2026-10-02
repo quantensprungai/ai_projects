@@ -1,6 +1,6 @@
 <!--
 Reality Block
-last_update: 2026-10-01
+last_update: 2026-10-02
 scope: Laufender Anker — Phasen, Status, nächster Plan, Warteschlange
 in_scope: Reihenfolge, Status, Links, geordnetes Offenes
 out_of_scope: Implementierungsdetails (stehen im Phasen-Plan)
@@ -37,9 +37,9 @@ Jeder neue Chat liest zuerst diese Datei, dann den verlinkten Phasen-Plan. Curso
 | 16 Beruf | HD, Astro, Ziwei, BaZi eingetragen | Sterne im Berufspalast später; BG5 und Environment-Orte eigene Quellen | [plans/16_beruf.md](plans/16_beruf.md) |
 | Verbreitung | offen, nach Fläche | Mandala-Share, Serie, Agents. Agent liest später mehr nur durch Chart, Frage, `condition`, Domäne | nicht Plan-Nummer |
 
-**Empfehlung:** Track Tiefe. Overlay 10b ist gelesen. Offene Zentren sind die Stelle des Not-Self, nicht der Satz. Nächster Schnitt ist Stimme 13.
+**Empfehlung:** Track Tiefe. Overlay 10b ist gelesen. Stimme 13 liegt hinten. Nächster Schnitt ist die Gesundheits-Zeile, ein System nach dem anderen.
 
-**Nächster Bau:** Stimme 13. Transite 11, Jiazi, BG5 bleiben in der Schlange.
+**Nächster Bau:** Gesundheit, eine Zeile je System, HD aus PHS. Nicht: neun Bereiche fertig, dann Werkstatt, dann Jiazi, dann Zeit.
 
 ### Track Tiefe
 
@@ -58,17 +58,17 @@ Review darf umsortieren; streichen nur nach Decision. Details in den verlinkten 
 | 2b | Textschicht Identität, dann Liebe | **gelesen 2026-09-28.** Identität = G / AC / 命宫 / 日主. Liebe 14b bleibt. HD-Rang nur noch G. | alle zwölf vor dem ersten |
 | 2c | ~~Ziwei/BaZi Beruf formulieren~~ | **2026-09-29.** 官禄 als Richtung. 正官/七煞 nur als 本气 des Monats. Sonst Schweigen | Tagstamm als Berufssatz; Sterne im Satz |
 | 2d | Farbe von Tor und Kanal | **G 2026-09-28.** Astro 2026-09-30: Herrscher. Ziwei 2026-09-30: 紫微. BaZi 2026-09-30: Tagstamm. Liebe 2026-10-01: 59-6, 37-40, 19-49 | alle 64 Tore; zwölf Bereiche |
-| 3 | Jiazi-KG | 60 Knoten, 0 Interps; Klassiker **683 Chunks** ohne Classify ([03a](plans/03a_bazi_extract_ahead.md)); Destiny-Relink | *60 Pillars* zuerst; parallel zu Tiefe |
+| 3 | Jiazi-KG | 60 Knoten, 0 Interps; Klassiker **683 Chunks** ohne Classify ([03a](plans/03a_bazi_extract_ahead.md)); Destiny-Relink. Mit der BaZi-Zelle, die eine Säule braucht. | *60 Pillars* zuerst; vor den Bereichen klassifizieren |
 | 4 | Staffel 2 *60 Pillars* | nur **mit** Schnitt Jiazi | parallel zu Fläche |
 | 5 | ~~Routing HD/BaZi über OS/Tagstamm~~ | **erledigt Plan 08** | 418-Spray |
-| 6 | Weitere Bereichsseiten | einzeln über Plan 15, **nach** zweitem System sonst Typologie | Mandala-Share |
+| 6 | Weitere Bereichsseiten | Nächste Zelle 2026-10-02: Gesundheit, eine Zeile je System aus ingestierter Literatur. Z3 A2 nennt PHS, Haus 6 und Element-Balance als Spur, nicht als Satz. Die anderen acht einzeln, nicht als Block. | neun Bereiche × vier Systeme vor allem anderen; Mandala-Share |
 | 7 | ~~Familie-2-Filter~~ | **aufgelöst in Track:** Schicht 1 = Phase 9, Schicht 2 = Phase 10/12 | Backfill auf approved heben |
 | 8 | ~~Trap/Gift DE~~ | **Plan 10–14** Facetten + Literatur als Input, Formulierer DE | `extract_pattern_traps` (Kombi über Systeme = nach 13a) |
 | 9 | ~~DE-Atome / Formulierer HD Identität~~ | **Phase 11–14** | EN-Atome übersetzen / Re-Synth |
 | 10 | HD-Content-Welle (PHS, Quarter, Planeten, Type-4, Circuit/Integration, Linien und Binary Pairs, sechs Environments) | Vierter Kanal gelesen 2026-10-01. *Rave BodyGraph Circuitry* Chunk 6: drei aktive Kanalarten, die vierte ist offen wie der Reflector. Chunk 7: dort ist keine Definition; das Not-Self geht hin. Kein Satz. Welle 10 zu. BG5 danach als eigener Chart. | Checkliste wiederholen; BG5 in den Natal-Absatz |
 | 10b | Overlay in jedem Kapitel (Autorität, Profil, Definition, alle offenen Center) | Offene Zentren gelesen 2026-10-01. *The Not-Self* Chunk 2: der Schlüssel bleibt Typ und Autorität. Chunk 3: der Verstand hängt an der Offenheit, den Rezeptoren für das, was man nicht ist. Kein Satz, keine neun Aufsätze. Overlay 10b zu. | 418; Center als Ersatz-Kanal |
-| 11 | ZEIT / Luck / Transite | eigene Achse, Tages-Cache-Key; nach Natal in ≥2 Systemen | Occupancy war Phase 6 |
-| 13 | Stimme-Register (originär ↔ IC, Coaching, …) | Umschalten = zwei Flächen (Inspector vs. Kapitel), nicht Ton-Schalter. Weitere Töne = Cache-Dimension `stimme` nach Plan 15 (zu). Vertrag: [tiefe.md](vertraege/tiefe.md) „Drei Flächen“ | Formulierer-Ton in 16 ändern |
+| 11 | ZEIT / Luck / Transite | Äußere Uhr über Systeme (Z3 A11: HD-Transit, BaZi-Luck, Astro-Transit). Eigener Chart-Kontext, nicht der Abschluss von HD. Composite, 合盤, BG5, Penta bleiben eigene Charts. | Occupancy war Phase 6; „danach ist HD fertig“ |
+| 13 | Stimme-Register (originär ↔ IC, Coaching, …) | Nach hinten 2026-10-02. Inspector und Kapitel sind die zwei Sprachen. Z3 B3 (Mechanik, Transformation, Praxis) ist Team-Vokabular. Ein dritter Ton erst, wenn eine Fläche ihn verlangt. | Formulierer-Ton in 16 ändern; Ton-Schalter auf derselben Karte |
 
 **Ops (kein Phasen-Plan):** Login oft 1978-11-10; Langdock-Pin `gpt-5.4-mini`; 3–5 qualitative Charts; Browser-Auth in Automation. Utopia: [ideas.md](../reference/ideas.md), nicht diese Schlange.
 
