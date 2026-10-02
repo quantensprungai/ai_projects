@@ -37,9 +37,9 @@ Jeder neue Chat liest zuerst diese Datei, dann den verlinkten Phasen-Plan. Curso
 | 16 Beruf | HD, Astro, Ziwei, BaZi eingetragen | Sterne im Berufspalast später; BG5 und Environment-Orte eigene Quellen | [plans/16_beruf.md](plans/16_beruf.md) |
 | Verbreitung | offen, nach Fläche | Mandala-Share, Serie, Agents. Agent liest später mehr nur durch Chart, Frage, `condition`, Domäne | nicht Plan-Nummer |
 
-**Empfehlung:** Track Tiefe. Overlay 10b ist gelesen. Stimme 13 liegt hinten. Nächster Schnitt ist die Gesundheits-Zeile, ein System nach dem anderen.
+**Empfehlung:** Track Tiefe. Die HD-Zeile zu Gesundheit ist gelesen: PHS ist der Rahmen des Körpers, kein Satz. Nächster Schnitt ist Astro Haus 6 auf derselben Frage.
 
-**Nächster Bau:** Gesundheit, eine Zeile je System, HD aus PHS. Nicht: neun Bereiche fertig, dann Werkstatt, dann Jiazi, dann Zeit.
+**Nächster Bau:** Gesundheit, Astro Haus 6. Nicht: das Kapitel öffnen, neun Bereiche fertig, dann Werkstatt, dann Jiazi, dann Zeit.
 
 ### Track Tiefe
 
@@ -61,7 +61,7 @@ Review darf umsortieren; streichen nur nach Decision. Details in den verlinkten 
 | 3 | Jiazi-KG | 60 Knoten, 0 Interps; Klassiker **683 Chunks** ohne Classify ([03a](plans/03a_bazi_extract_ahead.md)); Destiny-Relink. Mit der BaZi-Zelle, die eine Säule braucht. | *60 Pillars* zuerst; vor den Bereichen klassifizieren |
 | 4 | Staffel 2 *60 Pillars* | nur **mit** Schnitt Jiazi | parallel zu Fläche |
 | 5 | ~~Routing HD/BaZi über OS/Tagstamm~~ | **erledigt Plan 08** | 418-Spray |
-| 6 | Weitere Bereichsseiten | Nächste Zelle 2026-10-02: Gesundheit, eine Zeile je System aus ingestierter Literatur. Z3 A2 nennt PHS, Haus 6 und Element-Balance als Spur, nicht als Satz. Die anderen acht einzeln, nicht als Block. | neun Bereiche × vier Systeme vor allem anderen; Mandala-Share |
+| 6 | Weitere Bereichsseiten | Gesundheit HD gelesen 2026-10-02. *Mechanics of the Vehicle* Chunk 243: was dem Fahrzeug außen gesund ist, eines von 32 nodalen Environments, jedes ein Heilwerkzeug. Chunk 248: innen, was Design-Sonne/Erde aufnimmt; Color ist generisch, die Kette geht zu Tone und Base. Rahmen, kein Satz, kein Eintrag. Nächste Zelle: Astro Haus 6. | neun Bereiche × vier Systeme; 32 Orte als Liste |
 | 7 | ~~Familie-2-Filter~~ | **aufgelöst in Track:** Schicht 1 = Phase 9, Schicht 2 = Phase 10/12 | Backfill auf approved heben |
 | 8 | ~~Trap/Gift DE~~ | **Plan 10–14** Facetten + Literatur als Input, Formulierer DE | `extract_pattern_traps` (Kombi über Systeme = nach 13a) |
 | 9 | ~~DE-Atome / Formulierer HD Identität~~ | **Phase 11–14** | EN-Atome übersetzen / Re-Synth |
